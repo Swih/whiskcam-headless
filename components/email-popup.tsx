@@ -136,19 +136,16 @@ export function EmailPopup() {
             </div>
             <h3 className="text-xl font-bold text-wk-black">Thank you!</h3>
             <p className="mt-2 text-sm text-wk-grey-500">
-              Check your inbox for your 10% off code and the free guide.
+              Check your inbox! 📩
             </p>
           </div>
         ) : (
           <>
             <h2 className="pr-6 text-2xl font-bold leading-tight text-wk-black">
-              Get 10% Off Your First Order
+              Get Your Free Pet Photography Guide
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-wk-grey-500">
-              Plus our free guide:{" "}
-              <span className="font-medium text-wk-grey-600">
-                How to Capture Your Pet&apos;s Secret Life
-              </span>
+              Learn the best tips to capture your pet&apos;s secret adventures. Join 500+ pet parents.
             </p>
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-3">
@@ -162,9 +159,9 @@ export function EmailPopup() {
               />
               <button
                 type="submit"
-                className="w-full rounded-[var(--radius-btn)] bg-wk-amber px-7 py-3.5 text-[15px] font-semibold tracking-wide text-wk-black shadow-sm transition-all duration-200 ease-out hover:bg-wk-amber-hover hover:shadow-md active:scale-[0.98]"
+                className="w-full rounded-[var(--radius-btn)] bg-wk-black px-7 py-3.5 text-[15px] font-semibold tracking-wide text-white shadow-sm transition-all duration-200 ease-out hover:shadow-[0_0_16px_rgba(251,191,36,0.4)] hover:shadow-md active:scale-[0.98]"
               >
-                Claim My 10% Off
+                Get the Free Guide
               </button>
             </form>
 

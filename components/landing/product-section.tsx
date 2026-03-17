@@ -99,8 +99,71 @@ export function ProductSection({ product }: { product?: Product }) {
               ))}
             </ul>
 
+            {/* Free Gifts */}
+            <div className="mt-6 rounded-xl border border-wk-amber/20 bg-wk-amber/5 p-4">
+              <p className="text-xs uppercase tracking-wide font-bold text-wk-amber">
+                🎁 Free Gifts With Your Order
+              </p>
+              <div className="mt-3 space-y-3">
+                {/* MicroSD */}
+                <div className="flex items-center gap-3">
+                  <div className="relative h-12 w-12 flex-none overflow-hidden rounded-lg border border-wk-grey-100 bg-white">
+                    <Image src="/images/product/gift-microsd.webp" alt="32GB MicroSD Card" fill className="object-cover" sizes="48px" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-wk-black">32GB MicroSD Card</p>
+                    <p className="text-xs text-wk-grey-400">Pre-installed, ready to record</p>
+                  </div>
+                  <div className="flex flex-col items-end">
+                    <span className="text-xs text-wk-grey-400 line-through">{currencySymbol}12.90</span>
+                    <span className="text-xs font-bold text-wk-green">FREE</span>
+                  </div>
+                </div>
+                {/* Adapter */}
+                <div className="flex items-center gap-3">
+                  <div className="relative h-12 w-12 flex-none overflow-hidden rounded-lg border border-wk-grey-100 bg-white">
+                    <Image src="/images/product/gift-adapter.webp" alt="USB-C Adapter" fill className="object-cover" sizes="48px" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-wk-black">USB-C/Lightning Adapter</p>
+                    <p className="text-xs text-wk-grey-400">View footage on your phone</p>
+                  </div>
+                  <div className="flex flex-col items-end">
+                    <span className="text-xs text-wk-grey-400 line-through">{currencySymbol}9.90</span>
+                    <span className="text-xs font-bold text-wk-green">FREE</span>
+                  </div>
+                </div>
+                {/* Shipping */}
+                <div className="flex items-center gap-3">
+                  <div className="flex h-12 w-12 flex-none items-center justify-center rounded-lg border border-wk-grey-100 bg-white">
+                    <svg className="h-5 w-5 text-wk-grey-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <rect x="1" y="3" width="15" height="13" /><polygon points="16 8 20 8 23 11 23 16 16 16 16 8" /><circle cx="5.5" cy="18.5" r="2.5" /><circle cx="18.5" cy="18.5" r="2.5" />
+                    </svg>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-wk-black">Free Worldwide Shipping</p>
+                    <p className="text-xs text-wk-grey-400">7-14 business days</p>
+                  </div>
+                  <div className="flex flex-col items-end">
+                    <span className="text-xs text-wk-grey-400 line-through">{currencySymbol}7.90</span>
+                    <span className="text-xs font-bold text-wk-green">FREE</span>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-3 border-t border-wk-amber/20 pt-3 space-y-1">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="font-semibold text-wk-grey-600">Total value</span>
+                  <span className="font-semibold text-wk-grey-600 line-through">{currencySymbol}89.90</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-lg font-bold text-wk-black">You pay</span>
+                  <span className="text-lg font-bold text-wk-black">{price}</span>
+                </div>
+              </div>
+            </div>
+
             {/* ATC */}
-            <div className="mt-6" id="add-to-cart">
+            <div className="mt-4" id="add-to-cart">
               {product ? (
                 <AddToCart product={product} />
               ) : (
@@ -111,6 +174,7 @@ export function ProductSection({ product }: { product?: Product }) {
               <p className="mt-2.5 text-center text-xs text-wk-grey-400">
                 Free shipping &middot; 30-day money back
               </p>
+              <ScarcityCounter />
             </div>
 
             {/* Trust badges */}
@@ -416,6 +480,42 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
           )}
         </div>
       )}
+    </div>
+  );
+}
+
+function ScarcityCounter() {
+  const [count, setCount] = useState(5);
+  const [flash, setFlash] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setFlash(true);
+      setTimeout(() => {
+        setCount(4);
+        setFlash(false);
+      }, 600);
+    }, 30000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div className="flex items-center justify-center gap-2 mt-3">
+      <span
+        className="inline-block h-2 w-2 rounded-full bg-wk-green"
+        style={{ animation: "scarcity-pulse 2s ease-in-out infinite" }}
+      />
+      <p className="text-sm font-semibold text-wk-green">
+        Free gifts included for the next{" "}
+        <span
+          className={`inline-block transition-colors duration-300 ${
+            flash ? "text-wk-red" : "text-wk-green"
+          }`}
+        >
+          {count}
+        </span>{" "}
+        orders!
+      </p>
     </div>
   );
 }

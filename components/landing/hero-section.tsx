@@ -19,7 +19,7 @@ export function HeroSection({ product }: { product?: Product }) {
   };
 
   return (
-    <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden">
+    <section id="hero" className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden">
       {/* Video background fullscreen */}
       <video
         autoPlay
@@ -37,7 +37,7 @@ export function HeroSection({ product }: { product?: Product }) {
       <div className="absolute inset-0 bg-black/50" />
 
       {/* Content — centered, mobile-first */}
-      <div className="relative z-10 mx-auto w-full max-w-3xl px-5 pt-20 pb-16 text-center sm:pt-0 sm:pb-0">
+      <div className="relative z-10 mx-auto w-full max-w-3xl px-5 pt-20 pb-20 text-center sm:pt-0 sm:pb-16">
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}

@@ -8,7 +8,6 @@ export const HERO_CONTENT = {
   title: "See Their World.",
   subtitle: "Ever wonder what your cat does when you leave? Now you'll know.",
   trust: "Loved by 500+ pet parents worldwide",
-  cta: "Shop Now — €49.90",
   ctaSubtext: "Free worldwide shipping",
   videoSrc: "/videos/wk-video-encounter.mp4",
   posterSrc: "/images/hero/whiskcam-hero.webp",

@@ -13,7 +13,7 @@ import { TrustBadges } from "components/landing/trust-badges";
 import Footer from "components/layout/footer";
 import { StickyAtcBar } from "components/ui/sticky-atc-bar";
 import { getProduct } from "lib/shopify";
-import { FAQ_ITEMS } from "lib/content";
+import { FAQ_ITEMS, PRODUCT_HANDLE } from "lib/content";
 import { formatPrice } from "lib/format";
 
 export const metadata = {
@@ -49,7 +49,7 @@ export const metadata = {
 };
 
 export default async function HomePage() {
-  const product = await getProduct("whiskcam-original");
+  const product = await getProduct(PRODUCT_HANDLE);
 
   const productJsonLd = product
     ? {
@@ -143,7 +143,8 @@ export default async function HomePage() {
             product.priceRange.maxVariantPrice.amount,
             product.priceRange.maxVariantPrice.currencyCode
           )}
-          compareAtPrice={`€89.90`}
+          compareAtPrice="€89.90"
+          product={product}
         />
       )}
     </>

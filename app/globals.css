@@ -88,6 +88,27 @@ button {
   animation: popup-in 0.25s ease-out forwards;
 }
 
+/* Scarcity pulse animation */
+@keyframes scarcity-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.3); }
+}
+
+/* Infinite carousel scroll — smooth loop */
+@keyframes carousel-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Hide scrollbar for horizontal scroll containers */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Premium scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

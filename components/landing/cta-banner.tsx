@@ -38,9 +38,9 @@ export function CtaBanner({ product }: { product?: Product }) {
             Join thousands of pet parents who discovered their pet&apos;s secret life.
           </p>
           <div className="mt-8">
-            <a href="#product">
-              <Button size="lg" className="w-full sm:w-auto">Shop Now — {price}</Button>
-            </a>
+            <Button size="lg" className="w-full sm:w-auto" onClick={() => document.getElementById('product')?.scrollIntoView({ behavior: 'smooth' })}>
+              Shop Now — {price}
+            </Button>
           </div>
           <p className="mt-4 text-xs text-wk-grey-500">
             Free shipping worldwide &middot; 30-day money-back guarantee

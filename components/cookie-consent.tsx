@@ -23,8 +23,8 @@ export function CookieConsent() {
 
   return (
     <div
-      className="fixed bottom-16 left-0 right-0 z-40 px-4 pb-2 md:bottom-0 md:pb-4"
-      role="banner"
+      className="fixed bottom-20 left-0 right-0 z-[45] px-4 pb-2 md:bottom-4 md:pb-4"
+      role="dialog"
       aria-label="Cookie consent"
     >
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-3 rounded-[var(--radius-card)] border border-wk-grey-200 bg-white/95 px-5 py-4 shadow-lg backdrop-blur-sm sm:flex-row sm:gap-4">
@@ -40,7 +40,7 @@ export function CookieConsent() {
           </button>
           <button
             onClick={() => respond(true)}
-            className="rounded-[var(--radius-btn)] bg-wk-amber px-5 py-2 text-sm font-semibold text-wk-black shadow-sm transition-all duration-200 hover:bg-wk-amber-hover hover:shadow-md active:scale-[0.98]"
+            className="rounded-[var(--radius-btn)] bg-wk-black px-5 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-wk-black/90 hover:shadow-md active:scale-[0.98]"
           >
             Accept
           </button>
