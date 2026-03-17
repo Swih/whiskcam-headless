@@ -3,19 +3,60 @@
 @plugin "@tailwindcss/container-queries";
 @plugin "@tailwindcss/typography";
 
+@theme {
+  /* Brand colors */
+  --color-wk-black: #1A1A1A;
+  --color-wk-dark: #0D0D0D;
+  --color-wk-amber: #F5A623;
+  --color-wk-amber-hover: #E09510;
+  --color-wk-warm: #F7F7F5;
+
+  /* Grey scale */
+  --color-wk-grey-50: #FAFAFA;
+  --color-wk-grey-100: #F3F4F6;
+  --color-wk-grey-200: #E5E7EB;
+  --color-wk-grey-300: #D1D5DB;
+  --color-wk-grey-400: #9CA3AF;
+  --color-wk-grey-500: #6B7280;
+  --color-wk-grey-600: #4B5563;
+
+  /* Functional */
+  --color-wk-red: #E74C3C;
+  --color-wk-green: #27AE60;
+
+  /* Radius */
+  --radius-card: 16px;
+  --radius-btn: 8px;
+  --radius-pill: 50px;
+}
+
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    border-color: var(--color-wk-grey-200);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    color: var(--color-wk-black);
+    background-color: #ffffff;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
@@ -28,5 +69,33 @@
 a,
 input,
 button {
-  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-neutral-900;
+  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-wk-amber focus-visible:ring-offset-2;
+}
+
+/* Email popup entrance animation */
+@keyframes popup-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-popup-in {
+  animation: popup-in 0.25s ease-out forwards;
+}
+
+/* Premium scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-wk-grey-300);
+  border-radius: 3px;
 }

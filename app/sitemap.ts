@@ -1,51 +1,39 @@
 import { getCollections, getPages, getProducts } from "lib/shopify";
-import { baseUrl, validateEnvironmentVariables } from "lib/utils";
+import { baseUrl } from "lib/utils";
 import { MetadataRoute } from "next";
-
-type Route = {
-  url: string;
-  lastModified: string;
-};
 
 export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  validateEnvironmentVariables();
-
-  const routesMap = [""].map((route) => ({
+  const routesMap = [
+    "",
+    "/about",
+    "/faq",
+    "/policies/shipping",
+    "/policies/returns",
+    "/policies/privacy",
+    "/policies/terms",
+  ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
   }));
 
-  const collectionsPromise = getCollections().then((collections) =>
-    collections.map((collection) => ({
-      url: `${baseUrl}${collection.path}`,
-      lastModified: collection.updatedAt,
-    })),
-  );
-
-  const productsPromise = getProducts({}).then((products) =>
-    products.map((product) => ({
-      url: `${baseUrl}/product/${product.handle}`,
-      lastModified: product.updatedAt,
-    })),
-  );
-
-  const pagesPromise = getPages().then((pages) =>
-    pages.map((page) => ({
-      url: `${baseUrl}/${page.handle}`,
-      lastModified: page.updatedAt,
-    })),
-  );
-
-  let fetchedRoutes: Route[] = [];
+  let fetchedRoutes: { url: string; lastModified: string }[] = [];
 
   try {
-    fetchedRoutes = (
-      await Promise.all([collectionsPromise, productsPromise, pagesPromise])
-    ).flat();
-  } catch (error) {
-    throw JSON.stringify(error, null, 2);
+    const [collections, products, pages] = await Promise.all([
+      getCollections(),
+      getProducts({}),
+      getPages(),
+    ]);
+
+    fetchedRoutes = [
+      ...collections.map((c) => ({ url: `${baseUrl}${c.path}`, lastModified: c.updatedAt })),
+      ...products.map((p) => ({ url: `${baseUrl}/product/${p.handle}`, lastModified: p.updatedAt })),
+      ...pages.map((p) => ({ url: `${baseUrl}/${p.handle}`, lastModified: p.updatedAt })),
+    ];
+  } catch {
+    // Shopify not configured — return static routes only
   }
 
   return [...routesMap, ...fetchedRoutes];

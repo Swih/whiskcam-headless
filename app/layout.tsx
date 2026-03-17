@@ -1,25 +1,45 @@
+import { AnnouncementBar } from "components/layout/announcement-bar";
 import { CartProvider } from "components/cart/cart-context";
+import { CookieConsent } from "components/cookie-consent";
+import { EmailPopup } from "components/email-popup";
 import { Navbar } from "components/layout/navbar";
-import { WelcomeToast } from "components/welcome-toast";
-import { GeistSans } from "geist/font/sans";
 import { getCart } from "lib/shopify";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
 import "./globals.css";
 import { baseUrl } from "lib/utils";
+import { DM_Sans } from "next/font/google";
 
-const { SITE_NAME } = process.env;
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: SITE_NAME!,
-    template: `%s | ${SITE_NAME}`,
+    default: "Whiskcam — Pet Collar Camera | See Their World",
+    template: "%s | Whiskcam",
   },
+  description:
+    "The lightweight pet collar camera that captures your cat or dog's secret adventures. 1080P Full HD, no app required. Free worldwide shipping.",
   robots: {
     follow: true,
     index: true,
   },
+  other: {
+    "geo.region": "GLOBAL",
+    "geo.placename": "Worldwide",
+  },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#1A1A1A",
 };
 
 export default async function RootLayout({
@@ -27,19 +47,25 @@ export default async function RootLayout({
 }: {
   children: ReactNode;
 }) {
-  // Don't await the fetch, pass the Promise to the context provider
   const cart = getCart();
 
   return (
-    <html lang="en" className={GeistSans.variable}>
-      <body className="bg-neutral-50 text-black selection:bg-teal-300 dark:bg-neutral-900 dark:text-white dark:selection:bg-pink-500 dark:selection:text-white">
+    <html lang="en" className={dmSans.variable}>
+      <head>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+      </head>
+      <body className="bg-white font-[family-name:var(--font-dm-sans)] text-wk-black antialiased">
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-wk-amber focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-wk-black">
+          Skip to content
+        </a>
         <CartProvider cartPromise={cart}>
+          <AnnouncementBar />
           <Navbar />
-          <main>
-            {children}
-            <Toaster closeButton />
-            <WelcomeToast />
-          </main>
+          <main id="main-content">{children}</main>
+          <Toaster closeButton />
+          <EmailPopup />
+          <CookieConsent />
         </CartProvider>
       </body>
     </html>

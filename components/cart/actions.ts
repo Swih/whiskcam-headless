@@ -8,12 +8,12 @@ import {
   removeFromCart,
   updateCart,
 } from "lib/shopify";
-import { updateTag } from "next/cache";
+import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export async function addItem(
-  prevState: any,
+  prevState: unknown,
   selectedVariantId: string | undefined
 ) {
   if (!selectedVariantId) {
@@ -22,13 +22,13 @@ export async function addItem(
 
   try {
     await addToCart([{ merchandiseId: selectedVariantId, quantity: 1 }]);
-    updateTag(TAGS.cart);
+    revalidateTag(TAGS.cart, "seconds");
   } catch (e) {
     return "Error adding item to cart";
   }
 }
 
-export async function removeItem(prevState: any, merchandiseId: string) {
+export async function removeItem(prevState: unknown, merchandiseId: string) {
   try {
     const cart = await getCart();
 
@@ -42,7 +42,7 @@ export async function removeItem(prevState: any, merchandiseId: string) {
 
     if (lineItem && lineItem.id) {
       await removeFromCart([lineItem.id]);
-      updateTag(TAGS.cart);
+      revalidateTag(TAGS.cart, "seconds");
     } else {
       return "Item not found in cart";
     }
@@ -52,7 +52,7 @@ export async function removeItem(prevState: any, merchandiseId: string) {
 }
 
 export async function updateItemQuantity(
-  prevState: any,
+  prevState: unknown,
   payload: {
     merchandiseId: string;
     quantity: number;
@@ -84,11 +84,10 @@ export async function updateItemQuantity(
         ]);
       }
     } else if (quantity > 0) {
-      // If the item doesn't exist in the cart and quantity > 0, add it
       await addToCart([{ merchandiseId, quantity }]);
     }
 
-    updateTag(TAGS.cart);
+    revalidateTag(TAGS.cart, "seconds");
   } catch (e) {
     console.error(e);
     return "Error updating item quantity";
@@ -96,11 +95,16 @@ export async function updateItemQuantity(
 }
 
 export async function redirectToCheckout() {
-  let cart = await getCart();
-  redirect(cart!.checkoutUrl);
+  const cart = await getCart();
+  if (cart?.checkoutUrl) {
+    redirect(cart.checkoutUrl);
+  }
+  redirect("/");
 }
 
 export async function createCartAndSetCookie() {
-  let cart = await createCart();
-  (await cookies()).set("cartId", cart.id!);
+  const cart = await createCart();
+  if (cart.id) {
+    (await cookies()).set("cartId", cart.id);
+  }
 }

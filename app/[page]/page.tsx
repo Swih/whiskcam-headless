@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-
 import Prose from "components/prose";
+import Footer from "components/layout/footer";
 import { getPage } from "lib/shopify";
 import { notFound } from "next/navigation";
 
@@ -33,18 +33,20 @@ export default async function Page(props: {
 
   return (
     <>
-      <h1 className="mb-8 text-5xl font-bold">{page.title}</h1>
-      <Prose className="mb-8" html={page.body} />
-      <p className="text-sm italic">
-        {`This document was last updated on ${new Intl.DateTimeFormat(
-          undefined,
-          {
+      <div className="mx-auto max-w-3xl px-4 pt-32 pb-16 md:pt-40">
+        <h1 className="text-4xl font-bold text-wk-black md:text-5xl">
+          {page.title}
+        </h1>
+        <Prose className="mt-8" html={page.body} />
+        <p className="mt-8 text-sm text-neutral-400">
+          {`Last updated on ${new Intl.DateTimeFormat(undefined, {
             year: "numeric",
             month: "long",
             day: "numeric",
-          },
-        ).format(new Date(page.updatedAt))}.`}
-      </p>
+          }).format(new Date(page.updatedAt))}.`}
+        </p>
+      </div>
+      <Footer />
     </>
   );
 }
