@@ -4,9 +4,12 @@ import { HERO_CONTENT } from "lib/content";
 import { Button } from "components/ui/button";
 import { motion } from "framer-motion";
 import { formatPrice } from "lib/format";
+import { useState } from "react";
 import type { Product } from "lib/shopify/types";
 
 export function HeroSection({ product }: { product?: Product }) {
+  const [videoReady, setVideoReady] = useState(false);
+
   const price = product
     ? formatPrice(
         product.priceRange.maxVariantPrice.amount,
@@ -20,15 +23,25 @@ export function HeroSection({ product }: { product?: Product }) {
 
   return (
     <section id="hero" className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden">
-      {/* Video background fullscreen */}
+      {/* Poster image (always visible as base layer) */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={HERO_CONTENT.posterSrc}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+
+      {/* Video background — fades in over poster when ready */}
       <video
         autoPlay
         muted
         loop
         playsInline
-        poster={HERO_CONTENT.posterSrc}
-        preload="metadata"
-        className="absolute inset-0 h-full w-full object-cover"
+        preload="auto"
+        onCanPlayThrough={() => setVideoReady(true)}
+        onPlaying={() => setVideoReady(true)}
+        className="absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out"
+        style={{ opacity: videoReady ? 1 : 0 }}
       >
         <source src={HERO_CONTENT.videoSrc} type="video/mp4" />
       </video>

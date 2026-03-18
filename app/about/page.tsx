@@ -11,14 +11,14 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      {/* Hero band */}
-      <div className="relative flex h-[40vh] min-h-[280px] items-end overflow-hidden bg-wk-dark">
+      {/* Hero band — portrait image, taller to showcase vertical composition */}
+      <div className="relative flex h-[50vh] min-h-[340px] items-end overflow-hidden bg-wk-dark md:h-[55vh]">
         <Image
-          src="/images/lifestyle/wk-cat-3.webp"
+          src="/images/lifestyle/chat-unplash-2.webp"
           alt="Cat exploring outdoors"
           fill
           priority
-          className="object-cover opacity-40"
+          className="object-cover object-top opacity-40"
           sizes="100vw"
         />
         <div className="relative z-10 mx-auto w-full max-w-3xl px-5 pb-10">

@@ -4,6 +4,7 @@ import CartModal from "components/cart/modal";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const NAV_LINKS = [
@@ -21,6 +22,8 @@ interface NavbarProps {
 export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -37,9 +40,14 @@ export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
   const handleNavClick = (path: string) => {
     setMobileOpen(false);
     if (path.startsWith("#")) {
-      const el = document.querySelector(path);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
+      if (pathname !== "/") {
+        // Navigate to homepage with hash — scroll happens after page load
+        router.push("/" + path);
+      } else {
+        const el = document.querySelector(path);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
       }
     }
   };

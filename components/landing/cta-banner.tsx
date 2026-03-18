@@ -17,8 +17,8 @@ export function CtaBanner({ product }: { product?: Product }) {
     <section className="relative overflow-hidden py-24 md:py-32">
       {/* Background */}
       <Image
-        src="/images/lifestyle/wk-cat-3.webp"
-        alt="Black cat with Whiskcam"
+        src="/images/lifestyle/chat-unplash-4.webp"
+        alt="Cat exploring the world with Whiskcam"
         fill
         className="object-cover"
         sizes="100vw"
