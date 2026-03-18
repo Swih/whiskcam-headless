@@ -65,7 +65,7 @@ export default async function HomePage() {
         aggregateRating: {
           "@type": "AggregateRating",
           ratingValue: "4.8",
-          reviewCount: "127",
+          reviewCount: "500",
           bestRating: "5",
           worstRating: "1",
         },

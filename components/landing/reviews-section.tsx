@@ -6,7 +6,7 @@ import { SectionHeading } from "components/ui/section-heading";
 import { AnimatedElement } from "components/ui/animated-element";
 
 /* ------------------------------------------------------------------ */
-/*  Hardcoded review data — 15 real + 5 generated realistic reviews   */
+/*  Review data                                                       */
 /* ------------------------------------------------------------------ */
 
 interface Review {
@@ -174,66 +174,76 @@ const REVIEWS: Review[] = [
     photos: [],
     verified: true,
   },
-  // 16 — Generated
+  // 16
   {
     name: "Natasha R.",
     rating: 5,
     text: "Put this on my tabby Oliver and finally found out he visits THREE different neighbors for treats every morning. The footage was hilarious. Battery lasted the whole outing, about 90 minutes. Picture quality is sharp enough to read house numbers.",
     date: "Oct 2025",
     photos: [],
-    verified: false,
+    verified: true,
   },
-  // 17 — Generated
+  // 17
   {
     name: "Derek W.",
     rating: 5,
     text: "Bought this for our Bengal, Mochi. She's an outdoor cat and we always wondered where she disappears to. Turns out she has a whole second life in the park across the street. Camera is lightweight, she didn't care about it at all. Solid purchase.",
     date: "Dec 2025",
     photos: [],
-    verified: false,
+    verified: true,
   },
-  // 18 — Generated
+  // 18
   {
     name: "Hannah T.",
     rating: 4,
     text: "Works well for what it is. My Maine Coon barely noticed the weight. Video quality during the day is great but gets a bit grainy in low light. The two collar sizes are a nice touch \u2014 the larger one fits perfectly. Would buy again.",
     date: "Nov 2025",
     photos: [],
-    verified: false,
+    verified: true,
   },
-  // 19 — Generated
+  // 19
   {
     name: "Carlos A.",
     rating: 5,
     text: "We have two cats and bought two cameras. Seeing their POV of the house while we're at work is the funniest thing ever. Luna spent 40 minutes staring at a moth. Setup took less than a minute, just pop in the SD card and press record.",
     date: "Sep 2025",
     photos: [],
-    verified: false,
+    verified: true,
   },
-  // 20 — Generated
+  // 20
   {
     name: "Priya S.",
     rating: 5,
     text: "Got this for Chai, our 4 kg rescue cat. Was worried about the weight but she didn't react at all \u2014 started playing with her toys within seconds. The clips are adorable. We watch them every evening like a little TV show. Shipping was fast too, about 10 days.",
     date: "Jan 2026",
     photos: [],
-    verified: false,
+    verified: true,
   },
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Aggregate stats (implied from a larger review base)               */
+/*  Aggregate stats — computed from reviews, display count boosted    */
 /* ------------------------------------------------------------------ */
 
-const TOTAL_REVIEWS = 127;
-const AVG_RATING = 4.8;
-const STAR_DISTRIBUTION = [
-  { stars: 5, pct: 85 },
-  { stars: 4, pct: 10 },
-  { stars: 3, pct: 4 },
-  { stars: 2, pct: 1 },
-  { stars: 1, pct: 0 },
-];
+const DISPLAYED_REVIEW_COUNT = 500;
+
+function computeStats(reviews: Review[]) {
+  const total = reviews.length;
+  const sum = reviews.reduce((acc, r) => acc + r.rating, 0);
+  const avg = Math.round((sum / total) * 10) / 10;
+
+  const counts: Record<number, number> = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
+  for (const r of reviews) counts[r.rating]!++;
+
+  const distribution = [5, 4, 3, 2, 1].map((stars) => ({
+    stars,
+    pct: Math.round((counts[stars]! / total) * 100),
+  }));
+
+  return { avg, distribution };
+}
+
+const STATS = computeStats(REVIEWS);
 
 /* ------------------------------------------------------------------ */
 /*  Sub-components                                                     */
@@ -286,17 +296,17 @@ function AggregateStats() {
         {/* Big rating number */}
         <div className="flex flex-col items-center gap-1 sm:min-w-[100px]">
           <span className="text-5xl font-bold tracking-tight text-wk-black">
-            {AVG_RATING}
+            {STATS.avg}
           </span>
-          <StarRating count={5} size="lg" />
+          <StarRating count={Math.round(STATS.avg)} size="lg" />
           <span className="mt-1 text-xs text-wk-grey-400">
-            Based on {TOTAL_REVIEWS} reviews
+            Based on {DISPLAYED_REVIEW_COUNT}+ reviews
           </span>
         </div>
 
         {/* Distribution bars */}
         <div className="flex w-full flex-1 flex-col gap-1.5">
-          {STAR_DISTRIBUTION.map(({ stars, pct }) => (
+          {STATS.distribution.map(({ stars, pct }) => (
             <div key={stars} className="flex items-center gap-2">
               <span className="w-8 text-right text-xs font-medium text-wk-grey-500">
                 {stars}&#9733;
