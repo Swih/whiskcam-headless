@@ -97,7 +97,17 @@ export async function updateItemQuantity(
 export async function redirectToCheckout() {
   const cart = await getCart();
   if (cart?.checkoutUrl) {
-    redirect(cart.checkoutUrl);
+    // Shopify returns checkout URLs with the custom domain (whiskcam.com),
+    // but checkout must be served by Shopify directly. Replace with myshopify domain.
+    const shopifyDomain = process.env.SHOPIFY_STORE_DOMAIN;
+    let url = cart.checkoutUrl;
+    if (shopifyDomain && !url.includes(".myshopify.com")) {
+      url = url.replace(
+        /https?:\/\/[^/]+/,
+        `https://${shopifyDomain}`
+      );
+    }
+    redirect(url);
   }
   redirect("/");
 }
