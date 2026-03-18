@@ -1,4 +1,5 @@
 import { Analytics } from "components/analytics";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { AnnouncementBar } from "components/layout/announcement-bar";
 import { CartProvider } from "components/cart/cart-context";
 import { CookieConsent } from "components/cookie-consent";
@@ -79,6 +80,7 @@ export default async function RootLayout({
           <EmailPopup />
           <CookieConsent />
           <Analytics />
+          <VercelAnalytics />
         </CartProvider>
       </body>
     </html>
