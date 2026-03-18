@@ -75,7 +75,7 @@ export default async function RootLayout({
         <CartProvider cartPromise={cart}>
           <AnnouncementBar discount={discount} />
           <Navbar savingsPerUnit={savingsPerUnit} currencyCode={currencyCode} />
-          <main id="main-content">{children}</main>
+          <main id="main-content" className="overflow-x-clip">{children}</main>
           <Toaster closeButton />
           <EmailPopup />
           <CookieConsent />

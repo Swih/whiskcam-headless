@@ -221,7 +221,7 @@ export function ProductSection({ product }: { product?: Product }) {
             </div>
 
             {/* Payment logos */}
-            <div className="mt-4 flex items-center justify-center gap-3">
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
               {/* Visa */}
               <svg className="h-5 opacity-40" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="48" height="32" rx="4" fill="#f5f5f5"/>

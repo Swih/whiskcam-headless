@@ -55,11 +55,13 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
   body {
     color: var(--color-wk-black);
     background-color: #ffffff;
+    overflow-x: hidden;
   }
 }
 

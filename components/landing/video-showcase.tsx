@@ -53,7 +53,7 @@ export function VideoShowcase() {
 
         {/* ---- TikTok-style video carousel — CSS infinite scroll ---- */}
         <div
-          className="relative overflow-hidden"
+          className="relative overflow-clip"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
