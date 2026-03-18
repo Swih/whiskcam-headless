@@ -1,9 +1,12 @@
+import { Analytics } from "components/analytics";
 import { AnnouncementBar } from "components/layout/announcement-bar";
 import { CartProvider } from "components/cart/cart-context";
 import { CookieConsent } from "components/cookie-consent";
 import { EmailPopup } from "components/email-popup";
 import { Navbar } from "components/layout/navbar";
-import { getCart } from "lib/shopify";
+import { getCart, getProduct } from "lib/shopify";
+import { computeDiscount, computeSavings } from "lib/format";
+import { PRODUCT_HANDLE } from "lib/content";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
 import "./globals.css";
@@ -48,6 +51,15 @@ export default async function RootLayout({
   children: ReactNode;
 }) {
   const cart = getCart();
+  const product = await getProduct(PRODUCT_HANDLE);
+  const compareAt = product?.variants[0]?.compareAtPrice;
+  const discount = compareAt
+    ? computeDiscount(product!.priceRange.maxVariantPrice.amount, compareAt.amount)
+    : 0;
+  const savingsPerUnit = compareAt
+    ? computeSavings(product!.priceRange.maxVariantPrice.amount, compareAt.amount)
+    : 0;
+  const currencyCode = product?.priceRange.maxVariantPrice.currencyCode || "EUR";
 
   return (
     <html lang="en" className={dmSans.variable}>
@@ -60,12 +72,13 @@ export default async function RootLayout({
           Skip to content
         </a>
         <CartProvider cartPromise={cart}>
-          <AnnouncementBar />
-          <Navbar />
+          <AnnouncementBar discount={discount} />
+          <Navbar savingsPerUnit={savingsPerUnit} currencyCode={currencyCode} />
           <main id="main-content">{children}</main>
           <Toaster closeButton />
           <EmailPopup />
           <CookieConsent />
+          <Analytics />
         </CartProvider>
       </body>
     </html>

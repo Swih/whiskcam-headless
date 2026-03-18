@@ -24,7 +24,14 @@ function CellValue({ value, highlight }: { value: string | boolean; highlight?: 
   );
 }
 
-export function ComparisonTable() {
+export function ComparisonTable({ price }: { price?: string }) {
+  const rows = COMPARISON.map((row) => {
+    if (row.feature === "Price" && price) {
+      return { ...row, whiskcam: price };
+    }
+    return row;
+  });
+
   return (
     <SectionWrapper bg="white">
       <SectionHeading
@@ -38,28 +45,28 @@ export function ComparisonTable() {
           <table className="w-full">
             <thead>
               <tr className="border-b-2 border-wk-grey-200">
-                <th className="px-4 py-4 text-left text-xs font-medium uppercase tracking-wider text-wk-grey-500">
+                <th scope="col" className="px-4 py-4 text-left text-xs font-medium uppercase tracking-wider text-wk-grey-500">
                   Feature
                 </th>
-                <th className="px-4 py-4 text-center">
+                <th scope="col" className="px-4 py-4 text-center">
                   <span className="rounded-full bg-wk-amber/10 px-3 py-1 text-sm font-bold text-wk-amber">
                     Whiskcam
                   </span>
                 </th>
-                <th className="px-4 py-4 text-center text-xs text-wk-grey-400">
+                <th scope="col" className="px-4 py-4 text-center text-xs text-wk-grey-400">
                   Other cameras
                 </th>
               </tr>
             </thead>
             <tbody>
-              {COMPARISON.map((row, i) => (
+              {rows.map((row, i) => (
                 <tr
                   key={row.feature}
                   className={`border-b border-wk-grey-100 ${
                     i % 2 === 0 ? "bg-wk-grey-50" : "bg-white"
                   }`}
                 >
-                  <td className="px-4 py-3.5 text-sm font-medium text-wk-black">
+                  <td scope="row" className="px-4 py-3.5 text-sm font-medium text-wk-black">
                     {row.feature}
                   </td>
                   <td className="px-4 py-3.5 text-center">
@@ -73,6 +80,11 @@ export function ComparisonTable() {
             </tbody>
           </table>
         </div>
+
+        {/* Price anchoring */}
+        <p className="mx-auto mt-6 max-w-md text-center text-sm text-wk-grey-500">
+          Action cameras cost €300+. Whiskcam was built for pets — not your wallet.
+        </p>
       </AnimatedElement>
     </SectionWrapper>
   );

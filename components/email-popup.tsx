@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const DISMISS_KEY = "wk-email-dismissed";
-const EMAIL_KEY = "wk-captured-email";
 const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
 
 export function EmailPopup() {
@@ -15,9 +14,6 @@ export function EmailPopup() {
 
   const shouldSuppress = useCallback(() => {
     if (typeof window === "undefined") return true;
-
-    // Already captured
-    if (localStorage.getItem(EMAIL_KEY)) return true;
 
     // Dismissed recently
     const dismissed = localStorage.getItem(DISMISS_KEY);
@@ -44,12 +40,49 @@ export function EmailPopup() {
   }, []);
 
   const handleSubmit = useCallback(
-    (e: React.FormEvent) => {
+    async (e: React.FormEvent) => {
       e.preventDefault();
       if (!email) return;
-      localStorage.setItem(EMAIL_KEY, email);
+
+      // Subscribe to Klaviyo list via public API
+      const KLAVIYO_COMPANY_ID = process.env.NEXT_PUBLIC_KLAVIYO_COMPANY_ID;
+      if (KLAVIYO_COMPANY_ID) {
+        try {
+          await fetch("https://a.klaviyo.com/client/subscriptions/", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              revision: "2024-10-15",
+            },
+            body: JSON.stringify({
+              data: {
+                type: "subscription",
+                attributes: {
+                  custom_source: "Website Popup",
+                  profile: {
+                    data: {
+                      type: "profile",
+                      attributes: { email },
+                    },
+                  },
+                },
+                relationships: {
+                  list: {
+                    data: {
+                      type: "list",
+                      id: process.env.NEXT_PUBLIC_KLAVIYO_LIST_ID || "",
+                    },
+                  },
+                },
+              },
+            }),
+          });
+        } catch {
+          // Silently fail — don't block UX
+        }
+      }
+
       setSubmitted(true);
-      // Auto-close after showing thank you
       setTimeout(() => setOpen(false), 2500);
     },
     [email],
@@ -136,7 +169,7 @@ export function EmailPopup() {
             </div>
             <h3 className="text-xl font-bold text-wk-black">Thank you!</h3>
             <p className="mt-2 text-sm text-wk-grey-500">
-              Check your inbox! 📩
+              Check your inbox!
             </p>
           </div>
         ) : (

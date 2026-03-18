@@ -109,7 +109,7 @@ export function StickyAtcBar({ price, compareAtPrice, product }: StickyAtcBarPro
               Added!
             </span>
           ) : (
-            "Add to Cart"
+            "Yes, I Want This!"
           )}
         </button>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import { trackAddToCart } from "components/analytics";
 import { addItem } from "components/cart/actions";
 import { Product, ProductVariant } from "lib/shopify/types";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -31,7 +32,7 @@ function SubmitButton({
   if (!selectedVariantId) {
     return (
       <button disabled className={clsx(buttonClasses, disabledClasses)}>
-        Add To Cart
+        Select an Option
       </button>
     );
   }
@@ -53,7 +54,7 @@ function SubmitButton({
           <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
         </svg>
       )}
-      {isPending ? "Adding..." : "Add To Cart"}
+      {isPending ? "Adding..." : "Yes, I Want This!"}
     </button>
   );
 }
@@ -84,6 +85,12 @@ export function AddToCart({ product }: { product: Product }) {
         startTransition(async () => {
           addCartItem(finalVariant, product);
           await addItemAction();
+          trackAddToCart({
+            name: product.title,
+            price: finalVariant.price.amount,
+            currency: finalVariant.price.currencyCode,
+            quantity: 1,
+          });
           router.refresh();
         });
       }}

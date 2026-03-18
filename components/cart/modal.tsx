@@ -14,15 +14,14 @@ import { EditItemQuantityButton } from "./edit-item-quantity-button";
 import OpenCart from "./open-cart";
 
 const FREE_GIFTS = [
-  { name: "32GB MicroSD Card", value: "12.90", image: "/images/product/gift-microsd.webp" },
-  { name: "USB-C Adapter", value: "9.90", image: "/images/product/gift-adapter.webp" },
+  { name: "32GB MicroSD Card", value: "12.90", image: "/images/product/gift-microsd.jpg" },
+  { name: "USB-C Adapter", value: "9.90", image: "/images/product/gift-adapter.jpg" },
 ];
 
-export default function CartModal() {
+export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCode }: { savingsPerUnit?: number; currencyCode?: string }) {
   const { cart, updateCartItem } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const quantityRef = useRef(cart?.totalQuantity);
-  const [reserveTime, setReserveTime] = useState(600); // 10 min
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
 
@@ -45,19 +44,10 @@ export default function CartModal() {
     }
   }, [isOpen, cart?.totalQuantity, quantityRef]);
 
-  // Reservation timer
-  useEffect(() => {
-    if (!isOpen || !cart?.lines.length) return;
-    setReserveTime(600);
-    const id = setInterval(() => {
-      setReserveTime((t) => (t > 0 ? t - 1 : 0));
-    }, 1000);
-    return () => clearInterval(id);
-  }, [isOpen, cart?.lines.length]);
-
-  const timerMin = Math.floor(reserveTime / 60);
-  const timerSec = (reserveTime % 60).toString().padStart(2, "0");
   const hasItems = cart && cart.lines.length > 0;
+  const resolvedCurrency = cart?.cost.totalAmount.currencyCode || propCurrencyCode || "EUR";
+  const currencySymbol = resolvedCurrency === "USD" ? "$" : "€";
+  const totalSavings = savingsPerUnit && cart ? savingsPerUnit * cart.totalQuantity : 0;
 
   return (
     <>
@@ -125,16 +115,6 @@ export default function CartModal() {
                 </div>
               ) : (
                 <>
-                  {/* Reservation timer */}
-                  <div className="flex items-center justify-center gap-1.5 border-b border-wk-grey-100 bg-wk-amber/5 px-4 py-2">
-                    <svg className="h-3.5 w-3.5 text-wk-amber" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-                    </svg>
-                    <p className="text-xs font-medium text-wk-grey-600">
-                      Cart reserved for <span className="font-bold text-wk-amber">{timerMin}:{timerSec}</span>
-                    </p>
-                  </div>
-
                   {/* Free shipping bar */}
                   <div className="border-b border-wk-grey-100 bg-wk-green/5 px-5 py-2.5">
                     <div className="flex items-center gap-2">
@@ -232,7 +212,7 @@ export default function CartModal() {
                             <p className="text-sm font-medium text-wk-black">{gift.name}</p>
                           </div>
                           <div className="flex items-center gap-1.5">
-                            <span className="text-xs text-wk-grey-400 line-through">€{gift.value}</span>
+                            <span className="text-xs text-wk-grey-400 line-through">{currencySymbol}{gift.value}</span>
                             <span className="text-xs font-bold text-wk-green">FREE</span>
                           </div>
                         </div>
@@ -247,7 +227,7 @@ export default function CartModal() {
                           <p className="text-sm font-medium text-wk-black">Free Worldwide Shipping</p>
                         </div>
                         <div className="flex items-center gap-1.5">
-                          <span className="text-xs text-wk-grey-400 line-through">€7.90</span>
+                          <span className="text-xs text-wk-grey-400 line-through">{currencySymbol}7.90</span>
                           <span className="text-xs font-bold text-wk-green">FREE</span>
                         </div>
                       </div>
@@ -257,10 +237,12 @@ export default function CartModal() {
                   {/* Footer — totals + checkout */}
                   <div className="border-t border-wk-grey-100 bg-wk-grey-50 px-5 pb-5 pt-4">
                     {/* Savings */}
-                    <div className="mb-3 flex items-center justify-between rounded-lg bg-wk-green/5 px-3 py-2">
-                      <span className="text-xs font-semibold text-wk-green">You save</span>
-                      <span className="text-sm font-bold text-wk-green">
-                        €{(40.00 * cart.totalQuantity).toFixed(2)}
+                    <div className="mb-3 flex items-center justify-center gap-1.5 rounded-lg bg-wk-green/5 px-3 py-2">
+                      <svg className="h-3.5 w-3.5 text-wk-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="text-xs font-semibold text-wk-green">
+                        You&apos;re saving {currencySymbol}{totalSavings.toFixed(2)} on this order
                       </span>
                     </div>
 
@@ -334,7 +316,7 @@ function CheckoutButton() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
         </svg>
       )}
-      {pending ? "Processing..." : "Proceed to Checkout"}
+      {pending ? "Processing..." : "Complete My Order"}
     </button>
   );
 }

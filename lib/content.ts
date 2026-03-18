@@ -131,6 +131,11 @@ export const COMPARISON = [
 
 export const FAQ_ITEMS = [
   {
+    question: "What if I'm not satisfied?",
+    answer:
+      "We offer a 30-day money-back guarantee, no questions asked. If you or your pet aren't happy with Whiskcam, simply email us at support@whiskcam.com and we'll process a full refund — you don't even need to return the product. We stand behind every Whiskcam because we know you'll love it.",
+  },
+  {
     question: "Is Whiskcam safe for my cat?",
     answer:
       "Absolutely. At just 26g, Whiskcam is lighter than a small bell. It clips securely onto your pet's existing collar with smooth, rounded edges. Most cats forget it's there within minutes. We recommend using a breakaway collar for outdoor cats, and Whiskcam is best for adult cats over 2kg.",
@@ -159,11 +164,6 @@ export const FAQ_ITEMS = [
     question: "How long does shipping take?",
     answer:
       "We ship worldwide for free. Delivery typically takes 7–14 business days depending on your location. You'll receive a tracking number as soon as your Whiskcam ships.",
-  },
-  {
-    question: "What if I'm not satisfied?",
-    answer:
-      "We offer a 30-day money-back guarantee, no questions asked. If you or your pet aren't happy with Whiskcam, just email us at support@whiskcam.com and we'll take care of it.",
   },
   {
     question: "What video format does it record in?",

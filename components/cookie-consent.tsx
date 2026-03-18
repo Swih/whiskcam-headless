@@ -1,35 +1,68 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const CONSENT_KEY = "wk-cookie-consent";
+const CONSENT_VERSION = "1";
+
+interface ConsentData {
+  accepted: boolean;
+  timestamp: string;
+  version: string;
+}
+
+function readConsent(): ConsentData | null {
+  try {
+    const raw = localStorage.getItem(CONSENT_KEY);
+    if (!raw) return null;
+
+    // Backward-compat with old string format ("accepted" / "declined")
+    if (raw === "accepted" || raw === "declined") {
+      return { accepted: raw === "accepted", timestamp: new Date().toISOString(), version: "0" };
+    }
+
+    return JSON.parse(raw) as ConsentData;
+  } catch {
+    return null;
+  }
+}
 
 export function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // Only show if no previous consent decision stored
-    if (!localStorage.getItem(CONSENT_KEY)) {
+    if (!readConsent()) {
       setVisible(true);
     }
   }, []);
 
   const respond = (accepted: boolean) => {
-    localStorage.setItem(CONSENT_KEY, accepted ? "accepted" : "declined");
+    const data: ConsentData = {
+      accepted,
+      timestamp: new Date().toISOString(),
+      version: CONSENT_VERSION,
+    };
+    localStorage.setItem(CONSENT_KEY, JSON.stringify(data));
     setVisible(false);
+    // Notify Analytics component to load scripts
+    window.dispatchEvent(new Event("wk-consent-update"));
   };
 
   if (!visible) return null;
 
   return (
     <div
-      className="fixed bottom-20 left-0 right-0 z-[45] px-4 pb-2 md:bottom-4 md:pb-4"
+      className="fixed bottom-20 left-0 right-0 z-[55] px-4 pb-2 md:bottom-4 md:pb-4"
       role="dialog"
       aria-label="Cookie consent"
     >
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-3 rounded-[var(--radius-card)] border border-wk-grey-200 bg-white/95 px-5 py-4 shadow-lg backdrop-blur-sm sm:flex-row sm:gap-4">
         <p className="flex-1 text-sm leading-relaxed text-wk-grey-600">
-          We use cookies to improve your experience and analyze site traffic.
+          We use cookies to improve your experience and analyze site traffic.{" "}
+          <Link href="/policies/privacy" className="underline underline-offset-2 text-wk-grey-500 hover:text-wk-black transition-colors">
+            Privacy Policy
+          </Link>
         </p>
         <div className="flex shrink-0 gap-2">
           <button

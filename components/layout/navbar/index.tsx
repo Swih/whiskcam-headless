@@ -13,7 +13,12 @@ const NAV_LINKS = [
   { title: "About", path: "/about" },
 ];
 
-export function Navbar() {
+interface NavbarProps {
+  savingsPerUnit?: number;
+  currencyCode?: string;
+}
+
+export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -119,7 +124,7 @@ export function Navbar() {
 
           {/* Cart */}
           <div className={scrolled ? "text-wk-black" : "text-white"}>
-            <CartModal />
+            <CartModal savingsPerUnit={savingsPerUnit} currencyCode={currencyCode} />
           </div>
         </div>
       </nav>

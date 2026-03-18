@@ -1,27 +1,29 @@
 "use client";
 
+import { trackViewContent } from "components/analytics";
 import { SectionWrapper } from "components/ui/section-wrapper";
 import { SectionHeading } from "components/ui/section-heading";
 import { AnimatedElement } from "components/ui/animated-element";
 import { Badge } from "components/ui/badge";
 import { AddToCart } from "components/cart/add-to-cart";
 import { BOX_CONTENTS } from "lib/content";
-import { formatPrice } from "lib/format";
+import { formatPrice, computeDiscount } from "lib/format";
 import Image from "next/image";
 import { useState, useEffect, useCallback, useRef } from "react";
 import type { Product } from "lib/shopify/types";
 
 const FALLBACK_IMAGES = [
-  { src: "/images/product/whiskcam-product-studio.jpg", alt: "Whiskcam camera" },
-  { src: "/images/product/whiskcam-box-contents.jpg", alt: "What's in the box" },
+  { src: "/images/product/whiskcam-product-studio.webp", alt: "Whiskcam camera" },
   { src: "/images/lifestyle/wk-cat-1.jpg", alt: "Cat wearing Whiskcam" },
-  { src: "/images/lifestyle/wk-cat-2.jpg", alt: "Cat exploring with Whiskcam" },
-  { src: "/images/lifestyle/wk-cat-3.webp", alt: "Cat outdoors with Whiskcam" },
+  { src: "/images/product/whiskcam-scale.jpg", alt: "Whiskcam size comparison with euro coin" },
+  { src: "/images/lifestyle/wk-cat-2.jpg", alt: "Black cat with Whiskcam" },
+  { src: "/images/product/whiskcam-box-contents.jpg", alt: "What's in the box" },
+  { src: "/images/lifestyle/wk-cat-outdoor.png", alt: "Whiskcam on grass outdoors" },
 ];
 
 export function ProductSection({ product }: { product?: Product }) {
   const images = product
-    ? product.images.slice(0, 6).map((img) => ({ src: img.url, alt: img.altText }))
+    ? product.images.map((img) => ({ src: img.url, alt: img.altText }))
     : FALLBACK_IMAGES;
 
   const price = product
@@ -30,7 +32,27 @@ export function ProductSection({ product }: { product?: Product }) {
         product.priceRange.maxVariantPrice.currencyCode
       )
     : "€49.90";
+
+  const compareAtPrice = product?.variants[0]?.compareAtPrice;
+  const compareAtPriceFormatted = compareAtPrice
+    ? formatPrice(compareAtPrice.amount, compareAtPrice.currencyCode)
+    : null;
+  const discount = compareAtPrice
+    ? computeDiscount(product!.priceRange.maxVariantPrice.amount, compareAtPrice.amount)
+    : 0;
+
   const currencySymbol = product?.priceRange.maxVariantPrice.currencyCode === "EUR" ? "€" : "$";
+
+  // Track ViewContent when product section mounts
+  useEffect(() => {
+    if (product) {
+      trackViewContent({
+        name: product.title,
+        price: product.priceRange.maxVariantPrice.amount,
+        currency: product.priceRange.maxVariantPrice.currencyCode,
+      });
+    }
+  }, [product]);
 
   return (
     <SectionWrapper bg="white" id="product">
@@ -50,28 +72,32 @@ export function ProductSection({ product }: { product?: Product }) {
         <AnimatedElement animation="fadeUp" delay={0.1}>
           <div className="lg:sticky lg:top-24">
             {/* Badges */}
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap justify-center gap-1.5 lg:justify-start">
               <Badge variant="amber">Best Seller</Badge>
               <Badge variant="outline">1080P Full HD</Badge>
               <Badge variant="outline">No App</Badge>
             </div>
 
             {/* Title */}
-            <h2 className="mt-3 text-xl font-bold tracking-tight text-wk-black sm:text-2xl md:text-3xl">
+            <h2 className="mt-3 text-center text-xl font-bold tracking-tight text-wk-black sm:text-2xl md:text-3xl lg:text-left">
               {product?.title || "Whiskcam Original"}
             </h2>
 
             {/* Price */}
-            <div className="mt-2 flex flex-wrap items-baseline gap-2">
+            <div className="mt-2 flex flex-wrap items-baseline justify-center gap-2 lg:justify-start">
               <span className="text-xl font-bold text-wk-black sm:text-2xl">{price}</span>
-              <span className="text-sm text-wk-grey-400 line-through">{currencySymbol}89.90</span>
-              <span className="rounded-full bg-wk-amber/10 px-2 py-0.5 text-[11px] font-semibold text-wk-amber">
-                -44%
-              </span>
+              {compareAtPriceFormatted && (
+                <span className="text-sm text-wk-grey-400 line-through">{compareAtPriceFormatted}</span>
+              )}
+              {discount > 0 && (
+                <span className="rounded-full bg-wk-amber/10 px-2 py-0.5 text-[11px] font-semibold text-wk-amber">
+                  -{discount}%
+                </span>
+              )}
             </div>
 
             {/* Stars */}
-            <div className="mt-2 flex items-center gap-1.5">
+            <div className="mt-2 flex items-center justify-center gap-1.5 lg:justify-start">
               <div className="flex text-wk-amber">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
@@ -83,7 +109,7 @@ export function ProductSection({ product }: { product?: Product }) {
             </div>
 
             {/* Key benefits */}
-            <ul className="mt-5 space-y-2">
+            <ul className="mt-5 mx-auto max-w-xs space-y-2 lg:mx-0 lg:max-w-none">
               {[
                 "1080P Full HD — 170° wide-angle lens",
                 "Ultra-light 26g — cats forget it's there",
@@ -100,15 +126,15 @@ export function ProductSection({ product }: { product?: Product }) {
             </ul>
 
             {/* Free Gifts */}
-            <div className="mt-6 rounded-xl border border-wk-amber/20 bg-wk-amber/5 p-4">
-              <p className="text-xs uppercase tracking-wide font-bold text-wk-amber">
-                🎁 Free Gifts With Your Order
+            <div className="mt-6 mx-auto max-w-sm rounded-xl border border-wk-amber/20 bg-wk-amber/5 p-4 lg:mx-0 lg:max-w-none">
+              <p className="text-center text-xs uppercase tracking-wide font-bold text-wk-amber lg:text-left">
+                Free Gifts With Your Order
               </p>
               <div className="mt-3 space-y-3">
                 {/* MicroSD */}
                 <div className="flex items-center gap-3">
                   <div className="relative h-12 w-12 flex-none overflow-hidden rounded-lg border border-wk-grey-100 bg-white">
-                    <Image src="/images/product/gift-microsd.webp" alt="32GB MicroSD Card" fill className="object-cover" sizes="48px" />
+                    <Image src="/images/product/gift-microsd.jpg" alt="32GB MicroSD Card" fill className="object-cover" sizes="48px" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-wk-black">32GB MicroSD Card</p>
@@ -122,7 +148,7 @@ export function ProductSection({ product }: { product?: Product }) {
                 {/* Adapter */}
                 <div className="flex items-center gap-3">
                   <div className="relative h-12 w-12 flex-none overflow-hidden rounded-lg border border-wk-grey-100 bg-white">
-                    <Image src="/images/product/gift-adapter.webp" alt="USB-C Adapter" fill className="object-cover" sizes="48px" />
+                    <Image src="/images/product/gift-adapter.jpg" alt="USB-C Adapter" fill className="object-cover" sizes="48px" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-wk-black">USB-C/Lightning Adapter</p>
@@ -153,7 +179,9 @@ export function ProductSection({ product }: { product?: Product }) {
               <div className="mt-3 border-t border-wk-amber/20 pt-3 space-y-1">
                 <div className="flex items-center justify-between text-sm">
                   <span className="font-semibold text-wk-grey-600">Total value</span>
-                  <span className="font-semibold text-wk-grey-600 line-through">{currencySymbol}89.90</span>
+                  <span className="font-semibold text-wk-grey-600 line-through">
+                    {compareAtPriceFormatted || `${currencySymbol}89.90`}
+                  </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-lg font-bold text-wk-black">You pay</span>
@@ -163,7 +191,7 @@ export function ProductSection({ product }: { product?: Product }) {
             </div>
 
             {/* ATC */}
-            <div className="mt-4" id="add-to-cart">
+            <div className="mt-4 mx-auto max-w-sm lg:mx-0 lg:max-w-none" id="add-to-cart">
               {product ? (
                 <AddToCart product={product} />
               ) : (
@@ -174,11 +202,10 @@ export function ProductSection({ product }: { product?: Product }) {
               <p className="mt-2.5 text-center text-xs text-wk-grey-400">
                 Free shipping &middot; 30-day money back
               </p>
-              <ScarcityCounter />
             </div>
 
             {/* Trust badges */}
-            <div className="mt-5 grid grid-cols-3 gap-2 border-t border-wk-grey-100 pt-5">
+            <div className="mt-5 mx-auto max-w-sm grid grid-cols-3 gap-2 border-t border-wk-grey-100 pt-5 lg:mx-0 lg:max-w-none">
               {[
                 { label: "Free Shipping", icon: "M1 3h15v13H1zM16 8h4l3 3v5h-7V8zM5.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM18.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" },
                 { label: "30-Day Return", icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" },
@@ -228,10 +255,15 @@ export function ProductSection({ product }: { product?: Product }) {
                 <path d="M11.8 16.3c0-.4.1-.9.2-1.3v-1.3h-1.7c-.4.7-.6 1.6-.6 2.5s.2 1.8.6 2.5l1.7-1.3c-.2-.4-.2-.7-.2-1.1z" fill="#a3a3a3" opacity=".7"/>
                 <path d="M16.2 11.9c.7 0 1.4.3 1.9.7l1.4-1.4c-.9-.8-2-1.3-3.3-1.3-1.9 0-3.6 1.1-4.5 2.8l1.7 1.3c.4-1.2 1.5-2.1 2.8-2.1z" fill="#b0b0b0" opacity=".7"/>
               </svg>
+              {/* Klarna */}
+              <svg className="h-5 opacity-40" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="32" rx="4" fill="#f5f5f5"/>
+                <path d="M14 10h2.4v12H14V10zm3.6 0c0 2.7-1 5.2-2.8 7.1l5.2 4.9h-3.3l-4.7-4.5v-1h.4c2.7 0 5-2 5.2-4.6V10h0zm4.2 9.8a1.4 1.4 0 100 2.8 1.4 1.4 0 000-2.8zm3-9.8h2.3v12h-2.3V10zm6.7 0h2.3v12h-2.3v-1c-.7.8-1.8 1.2-3 1.2-2.5 0-4.5-2.1-4.5-4.7s2-4.7 4.5-4.7c1.2 0 2.3.5 3 1.2V10zm-2.7 9.5c1.3 0 2.4-1 2.4-2.3s-1.1-2.3-2.4-2.3-2.3 1-2.3 2.3 1 2.3 2.3 2.3z" fill="#6b7280"/>
+              </svg>
             </div>
 
             {/* What's in the box */}
-            <div className="mt-5 rounded-xl border border-wk-grey-200 p-4">
+            <div className="mt-5 mx-auto max-w-sm rounded-xl border border-wk-grey-200 p-4 lg:mx-0 lg:max-w-none">
               <p className="mb-2.5 text-sm font-semibold text-wk-black">What&apos;s in the box</p>
               <ul className="space-y-1.5">
                 {BOX_CONTENTS.map((item) => (
@@ -252,13 +284,24 @@ export function ProductSection({ product }: { product?: Product }) {
   );
 }
 
+type MediaItem = { type: "image"; src: string; alt: string } | { type: "video"; src: string; alt: string };
+
 function ProductGallery({ images }: { images: { src: string; alt: string }[] }) {
+  // Insert unboxing video at position 5 (index 4)
+  const imgMedia = images.map((img) => ({ type: "image" as const, ...img }));
+  const media: MediaItem[] = [
+    ...imgMedia.slice(0, 4),
+    { type: "video", src: "/images/product/unboxing.mp4", alt: "Unboxing Whiskcam" },
+    ...imgMedia.slice(4),
+  ];
+
   const [active, setActive] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const touchStartX = useRef<number | null>(null);
   const mainImageRef = useRef<HTMLDivElement>(null);
 
-  const total = images.length;
+  const total = media.length;
+  const current = media[active];
 
   const goNext = useCallback(() => {
     setActive((prev) => (prev + 1) % total);
@@ -321,31 +364,51 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
 
   return (
     <div>
-      {/* Main image with swipe + click-to-zoom + arrow buttons */}
+      {/* Main media with swipe + click-to-zoom + arrow buttons */}
       <div
         ref={mainImageRef}
-        className="group relative aspect-square cursor-zoom-in overflow-hidden rounded-2xl bg-wk-grey-50"
+        className="group relative aspect-square overflow-hidden rounded-2xl bg-wk-grey-50"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
-        onClick={openLightbox}
+        onClick={current?.type !== "video" ? openLightbox : undefined}
         role="button"
         tabIndex={0}
-        aria-label="Open full-size image"
+        aria-label={current?.type === "video" ? "Play video" : "Open full-size image"}
+        style={{ cursor: current?.type === "video" ? "default" : "zoom-in" }}
         onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
+          if ((e.key === "Enter" || e.key === " ") && current?.type !== "video") {
             e.preventDefault();
             openLightbox();
           }
         }}
       >
-        <Image
-          src={images[active]?.src || ""}
-          alt={images[active]?.alt || ""}
-          fill
-          className="object-cover transition-opacity duration-300"
-          sizes="(min-width: 1024px) 50vw, 100vw"
-          priority
-        />
+        {current?.type === "video" ? (
+          <video
+            key={current.src}
+            src={current.src}
+            poster="/images/product/unboxing-poster.jpg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="h-full w-full object-cover"
+            onClick={(e) => {
+              e.stopPropagation();
+              const v = e.currentTarget;
+              v.muted = false;
+              v.paused ? v.play() : v.pause();
+            }}
+          />
+        ) : (
+          <Image
+            src={current?.src || ""}
+            alt={current?.alt || `Whiskcam Original - Image ${active + 1}`}
+            fill
+            className="object-cover transition-opacity duration-300"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            priority
+          />
+        )}
 
         {/* Left arrow */}
         {total > 1 && (
@@ -383,21 +446,33 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
       {/* Thumbnail strip */}
       {total > 1 && (
         <div className="mt-2.5 flex gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden">
-          {images.map((img, i) => (
+          {media.map((item, i) => (
             <button
-              key={img.src}
+              key={item.src}
               onClick={() => setActive(i)}
               className={`relative h-14 w-14 flex-none overflow-hidden rounded-lg border-2 transition-all duration-200 sm:h-16 sm:w-16 ${
                 i === active ? "border-wk-amber" : "border-transparent hover:border-wk-grey-300"
               }`}
             >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                className="object-cover"
-                sizes="64px"
-              />
+              {item.type === "video" ? (
+                <>
+                  <video src={item.src} poster="/images/product/unboxing-poster.jpg" muted className="h-full w-full object-cover" />
+                  {/* Play icon overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                    <svg className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </>
+              ) : (
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  className="object-cover"
+                  sizes="64px"
+                />
+              )}
             </button>
           ))}
         </div>
@@ -455,21 +530,32 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
             </button>
           )}
 
-          {/* Full-resolution image */}
+          {/* Full-resolution media */}
           <div
             className="relative h-[85vh] w-[90vw] max-w-5xl"
             onClick={(e) => e.stopPropagation()}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           >
-            <Image
-              src={images[active]?.src || ""}
-              alt={images[active]?.alt || ""}
-              fill
-              className="object-contain"
-              sizes="90vw"
-              priority
-            />
+            {media[active]?.type === "video" ? (
+              <video
+                src={media[active]?.src}
+                autoPlay
+                loop
+                playsInline
+                controls
+                className="h-full w-full object-contain"
+              />
+            ) : (
+              <Image
+                src={media[active]?.src || ""}
+                alt={media[active]?.alt || `Whiskcam Original - Image ${active + 1}`}
+                fill
+                className="object-contain"
+                sizes="90vw"
+                priority
+              />
+            )}
           </div>
 
           {/* Image counter */}
@@ -480,42 +566,6 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
           )}
         </div>
       )}
-    </div>
-  );
-}
-
-function ScarcityCounter() {
-  const [count, setCount] = useState(5);
-  const [flash, setFlash] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setFlash(true);
-      setTimeout(() => {
-        setCount(4);
-        setFlash(false);
-      }, 600);
-    }, 30000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  return (
-    <div className="flex items-center justify-center gap-2 mt-3">
-      <span
-        className="inline-block h-2 w-2 rounded-full bg-wk-green"
-        style={{ animation: "scarcity-pulse 2s ease-in-out infinite" }}
-      />
-      <p className="text-sm font-semibold text-wk-green">
-        Free gifts included for the next{" "}
-        <span
-          className={`inline-block transition-colors duration-300 ${
-            flash ? "text-wk-red" : "text-wk-green"
-          }`}
-        >
-          {count}
-        </span>{" "}
-        orders!
-      </p>
     </div>
   );
 }

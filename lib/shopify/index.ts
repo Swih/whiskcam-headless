@@ -198,7 +198,13 @@ const reshapeProduct = (
   return {
     ...rest,
     images: reshapeImages(images, product.title),
-    variants: removeEdgesAndNodes(variants),
+    variants: removeEdgesAndNodes(variants).map((variant) => {
+      const v = variant as typeof variant & { compareAtPriceV2?: { amount: string; currencyCode: string } };
+      return {
+        ...variant,
+        compareAtPrice: v.compareAtPriceV2 ?? undefined,
+      };
+    }),
   };
 };
 

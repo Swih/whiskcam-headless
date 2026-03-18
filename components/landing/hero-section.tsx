@@ -72,7 +72,7 @@ export function HeroSection({ product }: { product?: Product }) {
           className="mt-7 flex flex-col items-center gap-3 sm:mt-8"
         >
           <Button size="lg" onClick={scrollToProduct} className="w-full sm:w-auto">
-            Shop Now — {price}
+            Get Yours — {price}
           </Button>
           <span className="text-xs text-white/50 sm:text-sm">Free worldwide shipping</span>
         </motion.div>

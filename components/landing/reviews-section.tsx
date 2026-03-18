@@ -15,6 +15,7 @@ interface Review {
   text: string;
   date: string;
   photos: string[];
+  verified: boolean;
 }
 
 const REVIEWS: Review[] = [
@@ -30,6 +31,7 @@ const REVIEWS: Review[] = [
       "/images/reviews/review-3.webp",
       "/images/reviews/review-4.webp",
     ],
+    verified: true,
   },
   // 2 — Vilma L. (real, 1 photo)
   {
@@ -38,6 +40,7 @@ const REVIEWS: Review[] = [
     text: "It's the second camera I bought because I loved it. The fisheye lens is great. One on my dog's collar, the other at home. Battery lasts about 120 minutes.",
     date: "Jul 2025",
     photos: ["/images/reviews/review-5.webp"],
+    verified: true,
   },
   // 3 — Jayna C. (real, 2 photos)
   {
@@ -49,6 +52,7 @@ const REVIEWS: Review[] = [
       "/images/reviews/review-6.webp",
       "/images/reviews/review-7.webp",
     ],
+    verified: true,
   },
   // 4 — Kaye O. (real, no photos)
   {
@@ -57,6 +61,7 @@ const REVIEWS: Review[] = [
     text: "This is a really neat little camera \u2014 we have some amazing video of our cat's escapades. Video quality is really good and battery life is good too. Great value.",
     date: "Jul 2025",
     photos: [],
+    verified: true,
   },
   // 5 — Pierre N. (real, no photos)
   {
@@ -65,6 +70,7 @@ const REVIEWS: Review[] = [
     text: "Very impressed! Adjustable collar for cat or small dog. Very easy to record and upload. The quality is quite impressive. My cats didn't notice the camera after about 2 minutes.",
     date: "Aug 2025",
     photos: [],
+    verified: true,
   },
   // 6 — Marilee G. (real, 1 photo)
   {
@@ -73,6 +79,7 @@ const REVIEWS: Review[] = [
     text: "Best purchase ever. My cat is a long-hair munchkin (short legs), and this camera still records great footage. Very easy to use. Highly recommend!",
     date: "Aug 2025",
     photos: ["/images/reviews/review-8.webp"],
+    verified: true,
   },
   // 7 — Courtney G. (real, no photos)
   {
@@ -81,6 +88,7 @@ const REVIEWS: Review[] = [
     text: "Too good, records at x0.6 and you can absolutely see everything. The quality is great. I recommend buying with the card that has more memory.",
     date: "Jul 2025",
     photos: [],
+    verified: true,
   },
   // 8 — Erik K. (real, 2 photos)
   {
@@ -92,6 +100,7 @@ const REVIEWS: Review[] = [
       "/images/reviews/review-9.webp",
       "/images/reviews/review-10.webp",
     ],
+    verified: true,
   },
   // 9 — Avery M. (real, 1 photo)
   {
@@ -100,6 +109,7 @@ const REVIEWS: Review[] = [
     text: "Camera is awesome. You can find a YouTube review on channel named danelurepairs.",
     date: "Jan 2026",
     photos: ["/images/reviews/review-11.webp"],
+    verified: true,
   },
   // 10 — Lyndia U. (real, no photos)
   {
@@ -108,6 +118,7 @@ const REVIEWS: Review[] = [
     text: "After one use I'm very impressed with the item. Quality not the best but ok, can record for 2 hours then shuts down.",
     date: "Aug 2025",
     photos: [],
+    verified: true,
   },
   // 11 — Kory M. (real, no photos, 4 stars)
   {
@@ -116,6 +127,7 @@ const REVIEWS: Review[] = [
     text: "The quality of the images during the day is quite good, but not so much at night. Now at least we know where our cats go. Easy to use. Comes with 2 straps and a case.",
     date: "Jan 2026",
     photos: [],
+    verified: true,
   },
   // 12 — Isiah D. (real, no photos)
   {
@@ -124,6 +136,7 @@ const REVIEWS: Review[] = [
     text: "Very good camera definition, well packaged, everything perfect.",
     date: "Sep 2025",
     photos: [],
+    verified: true,
   },
   // 13 — Fannie M. (real, 5 photos)
   {
@@ -138,6 +151,7 @@ const REVIEWS: Review[] = [
       "/images/reviews/review-15.webp",
       "/images/reviews/review-16.webp",
     ],
+    verified: true,
   },
   // 14 — Verdell K. (real, 2 photos)
   {
@@ -149,6 +163,7 @@ const REVIEWS: Review[] = [
       "/images/reviews/review-17.webp",
       "/images/reviews/review-18.webp",
     ],
+    verified: true,
   },
   // 15 — Sam M. (real, 3 stars, no photos)
   {
@@ -157,6 +172,7 @@ const REVIEWS: Review[] = [
     text: "Good.",
     date: "Jan 2026",
     photos: [],
+    verified: true,
   },
   // 16 — Generated
   {
@@ -165,6 +181,7 @@ const REVIEWS: Review[] = [
     text: "Put this on my tabby Oliver and finally found out he visits THREE different neighbors for treats every morning. The footage was hilarious. Battery lasted the whole outing, about 90 minutes. Picture quality is sharp enough to read house numbers.",
     date: "Oct 2025",
     photos: [],
+    verified: false,
   },
   // 17 — Generated
   {
@@ -173,6 +190,7 @@ const REVIEWS: Review[] = [
     text: "Bought this for our Bengal, Mochi. She's an outdoor cat and we always wondered where she disappears to. Turns out she has a whole second life in the park across the street. Camera is lightweight, she didn't care about it at all. Solid purchase.",
     date: "Dec 2025",
     photos: [],
+    verified: false,
   },
   // 18 — Generated
   {
@@ -181,6 +199,7 @@ const REVIEWS: Review[] = [
     text: "Works well for what it is. My Maine Coon barely noticed the weight. Video quality during the day is great but gets a bit grainy in low light. The two collar sizes are a nice touch \u2014 the larger one fits perfectly. Would buy again.",
     date: "Nov 2025",
     photos: [],
+    verified: false,
   },
   // 19 — Generated
   {
@@ -189,6 +208,7 @@ const REVIEWS: Review[] = [
     text: "We have two cats and bought two cameras. Seeing their POV of the house while we're at work is the funniest thing ever. Luna spent 40 minutes staring at a moth. Setup took less than a minute, just pop in the SD card and press record.",
     date: "Sep 2025",
     photos: [],
+    verified: false,
   },
   // 20 — Generated
   {
@@ -197,6 +217,7 @@ const REVIEWS: Review[] = [
     text: "Got this for Chai, our 4 kg rescue cat. Was worried about the weight but she didn't react at all \u2014 started playing with her toys within seconds. The clips are adorable. We watch them every evening like a little TV show. Shipping was fast too, about 10 days.",
     date: "Jan 2026",
     photos: [],
+    verified: false,
   },
 ];
 
@@ -204,12 +225,12 @@ const REVIEWS: Review[] = [
 /*  Aggregate stats (implied from a larger review base)               */
 /* ------------------------------------------------------------------ */
 
-const TOTAL_REVIEWS = 122;
+const TOTAL_REVIEWS = 127;
 const AVG_RATING = 4.8;
 const STAR_DISTRIBUTION = [
-  { stars: 5, pct: 87 },
-  { stars: 4, pct: 9 },
-  { stars: 3, pct: 3 },
+  { stars: 5, pct: 85 },
+  { stars: 4, pct: 10 },
+  { stars: 3, pct: 4 },
   { stars: 2, pct: 1 },
   { stars: 1, pct: 0 },
 ];
@@ -235,7 +256,7 @@ function StarIcon({ filled, className }: { filled: boolean; className?: string }
 function StarRating({ count, size = "sm" }: { count: number; size?: "sm" | "lg" }) {
   const cls = size === "lg" ? "h-5 w-5" : "h-4 w-4";
   return (
-    <div className="flex gap-0.5 text-wk-amber">
+    <div className="flex gap-0.5 text-wk-amber" role="img" aria-label={`${count} out of 5 stars`}>
       {[...Array(5)].map((_, i) => (
         <StarIcon key={i} filled={i < count} className={cls} />
       ))}
@@ -310,7 +331,7 @@ function PhotoLightbox({
 }) {
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-[70] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
       onClick={onClose}
     >
       <button
@@ -400,7 +421,7 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
               <p className="text-sm font-semibold text-wk-black">{review.name}</p>
               <p className="text-[11px] text-wk-grey-400">{review.date}</p>
             </div>
-            <VerifiedBadge />
+            {review.verified && <VerifiedBadge />}
           </div>
         </div>
       </AnimatedElement>

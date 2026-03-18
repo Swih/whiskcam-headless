@@ -3,6 +3,18 @@
 @plugin "@tailwindcss/container-queries";
 @plugin "@tailwindcss/typography";
 
+/*
+  Z-Index Scale
+  ─────────────────────────────
+  z-10     Carousel fade edges, gallery arrows
+  z-[45]   (unused — freed from cookie consent)
+  z-50     Cart drawer, sticky ATC bar
+  z-[55]   Cookie consent banner
+  z-[60]   Email popup overlay
+  z-[70]   Photo lightbox / product lightbox
+  z-[71]   Lightbox controls (close, arrows, counter)
+*/
+
 @theme {
   /* Brand colors */
   --color-wk-black: #1A1A1A;
@@ -72,6 +84,16 @@ button {
   @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-wk-amber focus-visible:ring-offset-2;
 }
 
+/* Navbar CTA arrow bounce */
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 1.5s ease-in-out infinite;
+}
+
 /* Email popup entrance animation */
 @keyframes popup-in {
   from {
@@ -86,12 +108,6 @@ button {
 
 .animate-popup-in {
   animation: popup-in 0.25s ease-out forwards;
-}
-
-/* Scarcity pulse animation */
-@keyframes scarcity-pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.3; transform: scale(1.3); }
 }
 
 /* Infinite carousel scroll — smooth loop */

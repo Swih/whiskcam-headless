@@ -8,8 +8,6 @@ import { ComparisonTable } from "components/landing/comparison-table";
 import { CtaBanner } from "components/landing/cta-banner";
 import { FaqSection } from "components/landing/faq-section";
 import { ReviewsSection } from "components/landing/reviews-section";
-import { GuaranteeSection } from "components/landing/guarantee-section";
-import { TrustBadges } from "components/landing/trust-badges";
 import Footer from "components/layout/footer";
 import { StickyAtcBar } from "components/ui/sticky-atc-bar";
 import { getProduct } from "lib/shopify";
@@ -51,6 +49,11 @@ export const metadata = {
 export default async function HomePage() {
   const product = await getProduct(PRODUCT_HANDLE);
 
+  const compareAtPrice = product?.variants[0]?.compareAtPrice;
+  const compareAtPriceFormatted = compareAtPrice
+    ? formatPrice(compareAtPrice.amount, compareAtPrice.currencyCode)
+    : undefined;
+
   const productJsonLd = product
     ? {
         "@context": "https://schema.org",
@@ -59,6 +62,13 @@ export default async function HomePage() {
         description: product.description,
         image: product.featuredImage?.url,
         brand: { "@type": "Brand", name: "Whiskcam" },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.8",
+          reviewCount: "127",
+          bestRating: "5",
+          worstRating: "1",
+        },
         offers: {
           "@type": "Offer",
           url: "https://whiskcam.com",
@@ -123,17 +133,15 @@ export default async function HomePage() {
       />
 
       <HeroSection product={product} />
+      <SocialProofBar />
       <VideoShowcase />
       <FeaturesGrid />
+      <ReviewsSection />
       <HowItWorks />
       <ProductSection product={product} />
-      <ReviewsSection />
-      <SocialProofBar />
-      <ComparisonTable />
+      <ComparisonTable price={product ? formatPrice(product.priceRange.maxVariantPrice.amount, product.priceRange.maxVariantPrice.currencyCode) : undefined} />
       <CtaBanner product={product} />
       <FaqSection />
-      <GuaranteeSection />
-      <TrustBadges />
       <Footer />
 
       {/* Mobile sticky ATC bar */}
@@ -143,7 +151,7 @@ export default async function HomePage() {
             product.priceRange.maxVariantPrice.amount,
             product.priceRange.maxVariantPrice.currencyCode
           )}
-          compareAtPrice="€89.90"
+          compareAtPrice={compareAtPriceFormatted}
           product={product}
         />
       )}
