@@ -14,11 +14,11 @@ import type { Product } from "lib/shopify/types";
 
 const FALLBACK_IMAGES = [
   { src: "/images/product/whiskcam-product-studio.webp", alt: "Whiskcam camera" },
-  { src: "/images/lifestyle/wk-cat-1.jpg", alt: "Cat wearing Whiskcam" },
-  { src: "/images/product/whiskcam-scale.jpg", alt: "Whiskcam size comparison with euro coin" },
-  { src: "/images/lifestyle/wk-cat-2.jpg", alt: "Black cat with Whiskcam" },
-  { src: "/images/product/whiskcam-box-contents.jpg", alt: "What's in the box" },
-  { src: "/images/lifestyle/wk-cat-outdoor.png", alt: "Whiskcam on grass outdoors" },
+  { src: "/images/lifestyle/wk-cat-1.webp", alt: "Cat wearing Whiskcam" },
+  { src: "/images/product/whiskcam-scale.webp", alt: "Whiskcam size comparison with euro coin" },
+  { src: "/images/lifestyle/wk-cat-2.webp", alt: "Black cat with Whiskcam" },
+  { src: "/images/product/whiskcam-box-contents.webp", alt: "What's in the box" },
+  { src: "/images/lifestyle/wk-cat-outdoor.webp", alt: "Whiskcam on grass outdoors" },
 ];
 
 export function ProductSection({ product }: { product?: Product }) {
@@ -134,7 +134,7 @@ export function ProductSection({ product }: { product?: Product }) {
                 {/* MicroSD */}
                 <div className="flex items-center gap-3">
                   <div className="relative h-12 w-12 flex-none overflow-hidden rounded-lg border border-wk-grey-100 bg-white">
-                    <Image src="/images/product/gift-microsd.jpg" alt="32GB MicroSD Card" fill className="object-cover" sizes="48px" />
+                    <Image src="/images/product/gift-microsd.webp" alt="32GB MicroSD Card" fill className="object-cover" sizes="48px" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-wk-black">32GB MicroSD Card</p>
@@ -148,7 +148,7 @@ export function ProductSection({ product }: { product?: Product }) {
                 {/* Adapter */}
                 <div className="flex items-center gap-3">
                   <div className="relative h-12 w-12 flex-none overflow-hidden rounded-lg border border-wk-grey-100 bg-white">
-                    <Image src="/images/product/gift-adapter.jpg" alt="USB-C Adapter" fill className="object-cover" sizes="48px" />
+                    <Image src="/images/product/gift-adapter.webp" alt="USB-C Adapter" fill className="object-cover" sizes="48px" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-wk-black">USB-C/Lightning Adapter</p>

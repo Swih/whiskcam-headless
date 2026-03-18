@@ -14,8 +14,8 @@ import { EditItemQuantityButton } from "./edit-item-quantity-button";
 import OpenCart from "./open-cart";
 
 const FREE_GIFTS = [
-  { name: "32GB MicroSD Card", value: "12.90", image: "/images/product/gift-microsd.jpg" },
-  { name: "USB-C Adapter", value: "9.90", image: "/images/product/gift-adapter.jpg" },
+  { name: "32GB MicroSD Card", value: "12.90", image: "/images/product/gift-microsd.webp" },
+  { name: "USB-C Adapter", value: "9.90", image: "/images/product/gift-adapter.webp" },
 ];
 
 export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCode }: { savingsPerUnit?: number; currencyCode?: string }) {
