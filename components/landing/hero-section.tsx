@@ -4,11 +4,23 @@ import { HERO_CONTENT } from "lib/content";
 import { Button } from "components/ui/button";
 import { motion } from "framer-motion";
 import { formatPrice } from "lib/format";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import type { Product } from "lib/shopify/types";
 
 export function HeroSection({ product }: { product?: Product }) {
   const [videoReady, setVideoReady] = useState(false);
+  const videoReadyRef = useRef(false);
+
+  // Fallback: force video visible after 3s if no event fires (e.g. mobile autoplay delay)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!videoReadyRef.current) {
+        videoReadyRef.current = true;
+        setVideoReady(true);
+      }
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const price = product
     ? formatPrice(
@@ -38,8 +50,9 @@ export function HeroSection({ product }: { product?: Product }) {
         loop
         playsInline
         preload="auto"
-        onCanPlayThrough={() => setVideoReady(true)}
-        onPlaying={() => setVideoReady(true)}
+        onCanPlayThrough={() => { videoReadyRef.current = true; setVideoReady(true); }}
+        onPlay={() => { videoReadyRef.current = true; setVideoReady(true); }}
+        onPlaying={() => { videoReadyRef.current = true; setVideoReady(true); }}
         className="absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out"
         style={{ opacity: videoReady ? 1 : 0 }}
       >

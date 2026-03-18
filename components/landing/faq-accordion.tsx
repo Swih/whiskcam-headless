@@ -34,9 +34,16 @@ export function FaqAccordion({ items, className }: FaqAccordionProps) {
                     )}
                   />
                 </DisclosureButton>
-                <DisclosurePanel className="pb-5 text-sm leading-relaxed text-wk-grey-500 md:text-[15px]">
-                  {item.answer}
-                </DisclosurePanel>
+                <div className={clsx(
+                  "grid transition-[grid-template-rows,opacity] duration-300 ease-in-out",
+                  open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                )}>
+                  <div className="overflow-hidden">
+                    <DisclosurePanel static className="pb-5 text-sm leading-relaxed text-wk-grey-500 md:text-[15px]">
+                      {item.answer}
+                    </DisclosurePanel>
+                  </div>
+                </div>
               </>
             )}
           </Disclosure>

@@ -64,7 +64,7 @@ export function ProductSection({ product }: { product?: Product }) {
 
       <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-14">
         {/* Left — Gallery */}
-        <AnimatedElement animation="fadeIn">
+        <AnimatedElement animation="fadeIn" className="min-w-0">
           <ProductGallery images={images} />
         </AnimatedElement>
 
@@ -72,19 +72,19 @@ export function ProductSection({ product }: { product?: Product }) {
         <AnimatedElement animation="fadeUp" delay={0.1}>
           <div className="lg:sticky lg:top-24">
             {/* Badges */}
-            <div className="flex flex-wrap justify-center gap-1.5 lg:justify-start">
+            <div className="flex flex-wrap gap-1.5">
               <Badge variant="amber">Best Seller</Badge>
               <Badge variant="outline">1080P Full HD</Badge>
               <Badge variant="outline">No App</Badge>
             </div>
 
             {/* Title */}
-            <h2 className="mt-3 text-center text-xl font-bold tracking-tight text-wk-black sm:text-2xl md:text-3xl lg:text-left">
+            <h2 className="mt-3 text-xl font-bold tracking-tight text-wk-black sm:text-2xl md:text-3xl">
               {product?.title || "Whiskcam Original"}
             </h2>
 
             {/* Price */}
-            <div className="mt-2 flex flex-wrap items-baseline justify-center gap-2 lg:justify-start">
+            <div className="mt-2 flex flex-wrap items-baseline gap-2">
               <span className="text-xl font-bold text-wk-black sm:text-2xl">{price}</span>
               {compareAtPriceFormatted && (
                 <span className="text-sm text-wk-grey-400 line-through">{compareAtPriceFormatted}</span>
@@ -97,7 +97,7 @@ export function ProductSection({ product }: { product?: Product }) {
             </div>
 
             {/* Stars */}
-            <div className="mt-2 flex items-center justify-center gap-1.5 lg:justify-start">
+            <div className="mt-2 flex items-center gap-1.5">
               <div className="flex text-wk-amber">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
@@ -109,7 +109,7 @@ export function ProductSection({ product }: { product?: Product }) {
             </div>
 
             {/* Key benefits */}
-            <ul className="mt-5 mx-auto max-w-xs space-y-2 lg:mx-0 lg:max-w-none">
+            <ul className="mt-5 space-y-2">
               {[
                 "1080P Full HD — 170° wide-angle lens",
                 "Ultra-light 26g — cats forget it's there",
@@ -126,8 +126,8 @@ export function ProductSection({ product }: { product?: Product }) {
             </ul>
 
             {/* Free Gifts */}
-            <div className="mt-6 mx-auto max-w-sm rounded-xl border border-wk-amber/20 bg-wk-amber/5 p-4 lg:mx-0 lg:max-w-none">
-              <p className="text-center text-xs uppercase tracking-wide font-bold text-wk-amber lg:text-left">
+            <div className="mt-6 rounded-xl border border-wk-amber/20 bg-wk-amber/5 p-4">
+              <p className="text-xs uppercase tracking-wide font-bold text-wk-amber">
                 Free Gifts With Your Order
               </p>
               <div className="mt-3 space-y-3">
@@ -191,7 +191,7 @@ export function ProductSection({ product }: { product?: Product }) {
             </div>
 
             {/* ATC */}
-            <div className="mt-4 mx-auto max-w-sm lg:mx-0 lg:max-w-none" id="add-to-cart">
+            <div className="mt-4" id="add-to-cart">
               {product ? (
                 <AddToCart product={product} />
               ) : (
@@ -199,13 +199,13 @@ export function ProductSection({ product }: { product?: Product }) {
                   Connect Shopify to enable Add to Cart
                 </div>
               )}
-              <p className="mt-2.5 text-center text-xs text-wk-grey-400">
+              <p className="mt-2.5 text-xs text-wk-grey-400">
                 Free shipping &middot; 30-day money back
               </p>
             </div>
 
             {/* Trust badges */}
-            <div className="mt-5 mx-auto max-w-sm grid grid-cols-3 gap-2 border-t border-wk-grey-100 pt-5 lg:mx-0 lg:max-w-none">
+            <div className="mt-5 grid grid-cols-3 gap-2 border-t border-wk-grey-100 pt-5">
               {[
                 { label: "Free Shipping", icon: "M1 3h15v13H1zM16 8h4l3 3v5h-7V8zM5.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM18.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" },
                 { label: "30-Day Return", icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" },
@@ -221,7 +221,7 @@ export function ProductSection({ product }: { product?: Product }) {
             </div>
 
             {/* Payment logos */}
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-4 flex flex-wrap items-center gap-3">
               {/* Visa */}
               <svg className="h-5 opacity-40" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="48" height="32" rx="4" fill="#f5f5f5"/>
@@ -263,7 +263,7 @@ export function ProductSection({ product }: { product?: Product }) {
             </div>
 
             {/* What's in the box */}
-            <div className="mt-5 mx-auto max-w-sm rounded-xl border border-wk-grey-200 p-4 lg:mx-0 lg:max-w-none">
+            <div className="mt-5 rounded-xl border border-wk-grey-200 p-4">
               <p className="mb-2.5 text-sm font-semibold text-wk-black">What&apos;s in the box</p>
               <ul className="space-y-1.5">
                 {BOX_CONTENTS.map((item) => (
@@ -363,7 +363,7 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
   }
 
   return (
-    <div>
+    <div className="w-full overflow-hidden">
       {/* Main media with swipe + click-to-zoom + arrow buttons */}
       <div
         ref={mainImageRef}
@@ -417,7 +417,7 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
               e.stopPropagation();
               goPrev();
             }}
-            className="absolute left-2 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white opacity-0 backdrop-blur-sm transition-opacity duration-200 hover:bg-black/50 group-hover:opacity-100"
+            className="absolute left-2 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white opacity-70 backdrop-blur-sm transition-opacity duration-200 hover:bg-black/50 lg:opacity-0 lg:group-hover:opacity-100"
             aria-label="Previous image"
           >
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -433,7 +433,7 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
               e.stopPropagation();
               goNext();
             }}
-            className="absolute right-2 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white opacity-0 backdrop-blur-sm transition-opacity duration-200 hover:bg-black/50 group-hover:opacity-100"
+            className="absolute right-2 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white opacity-70 backdrop-blur-sm transition-opacity duration-200 hover:bg-black/50 lg:opacity-0 lg:group-hover:opacity-100"
             aria-label="Next image"
           >
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -443,9 +443,30 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
         )}
       </div>
 
-      {/* Thumbnail strip */}
+      {/* Mobile: dots + counter */}
       {total > 1 && (
-        <div className="mt-2.5 flex gap-2 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+        <div className="mt-3 flex items-center justify-between lg:hidden">
+          <div className="flex gap-1.5">
+            {media.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                className={`h-2 rounded-full transition-all duration-200 ${
+                  i === active ? "w-5 bg-wk-amber" : "w-2 bg-wk-grey-300"
+                }`}
+                aria-label={`Go to image ${i + 1}`}
+              />
+            ))}
+          </div>
+          <span className="text-xs font-medium text-wk-grey-400">
+            {active + 1}/{total}
+          </span>
+        </div>
+      )}
+
+      {/* Desktop: thumbnail strip */}
+      {total > 1 && (
+        <div className="mt-2.5 hidden gap-2 overflow-x-auto scrollbar-hide lg:flex">
           {media.map((item, i) => (
             <button
               key={item.src}
