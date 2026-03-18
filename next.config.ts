@@ -16,6 +16,17 @@ const config: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    const shopifyDomain =
+      process.env.SHOPIFY_STORE_DOMAIN || "d1gegp-cw.myshopify.com";
+    return [
+      {
+        // Proxy Shopify checkout URLs to the actual Shopify domain
+        source: "/cart/:path*",
+        destination: `https://${shopifyDomain}/cart/:path*`,
+      },
+    ];
+  },
   async headers() {
     return [
       {
