@@ -256,9 +256,10 @@ export async function addToCart(
   if (!endpoint || !key) return emptyCart;
 
   const cartId = (await cookies()).get("cartId")?.value!;
+  const country = (await cookies()).get("country")?.value;
   const res = await shopifyFetch<ShopifyAddToCartOperation>({
     query: addToCartMutation,
-    variables: { cartId, lines },
+    variables: { cartId, lines, ...(country && { country }) },
   });
 
   if (!res.body.data?.cartLinesAdd?.cart) return emptyCart;
@@ -269,9 +270,10 @@ export async function removeFromCart(lineIds: string[]): Promise<Cart> {
   if (!endpoint || !key) return emptyCart;
 
   const cartId = (await cookies()).get("cartId")?.value!;
+  const country = (await cookies()).get("country")?.value;
   const res = await shopifyFetch<ShopifyRemoveFromCartOperation>({
     query: removeFromCartMutation,
-    variables: { cartId, lineIds },
+    variables: { cartId, lineIds, ...(country && { country }) },
   });
 
   if (!res.body.data?.cartLinesRemove?.cart) return emptyCart;
@@ -284,9 +286,10 @@ export async function updateCart(
   if (!endpoint || !key) return emptyCart;
 
   const cartId = (await cookies()).get("cartId")?.value!;
+  const country = (await cookies()).get("country")?.value;
   const res = await shopifyFetch<ShopifyUpdateCartOperation>({
     query: editCartItemsMutation,
-    variables: { cartId, lines },
+    variables: { cartId, lines, ...(country && { country }) },
   });
 
   if (!res.body.data?.cartLinesUpdate?.cart) return emptyCart;
@@ -308,9 +311,10 @@ export async function getCart(): Promise<Cart | undefined> {
     return undefined;
   }
 
+  const country = (await cookies()).get("country")?.value;
   const res = await shopifyFetch<ShopifyCartOperation>({
     query: getCartQuery,
-    variables: { cartId },
+    variables: { cartId, ...(country && { country }) },
   });
 
   // Old carts becomes `null` when you checkout.

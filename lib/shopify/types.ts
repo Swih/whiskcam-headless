@@ -142,6 +142,7 @@ export type ShopifyCartOperation = {
   };
   variables: {
     cartId: string;
+    country?: string;
   };
 };
 
@@ -165,6 +166,7 @@ export type ShopifyAddToCartOperation = {
       merchandiseId: string;
       quantity: number;
     }[];
+    country?: string;
   };
 };
 
@@ -177,6 +179,7 @@ export type ShopifyRemoveFromCartOperation = {
   variables: {
     cartId: string;
     lineIds: string[];
+    country?: string;
   };
 };
 
@@ -193,6 +196,7 @@ export type ShopifyUpdateCartOperation = {
       merchandiseId: string;
       quantity: number;
     }[];
+    country?: string;
   };
 };
 
