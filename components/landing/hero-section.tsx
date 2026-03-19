@@ -4,6 +4,7 @@ import { HERO_CONTENT } from "lib/content";
 import { Button } from "components/ui/button";
 import { motion } from "framer-motion";
 import { formatPrice } from "lib/format";
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import type { Product } from "lib/shopify/types";
 
@@ -36,11 +37,13 @@ export function HeroSection({ product }: { product?: Product }) {
   return (
     <section id="hero" className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden">
       {/* Poster image (always visible as base layer) */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <Image
         src={HERO_CONTENT.posterSrc}
-        alt=""
-        className="absolute inset-0 h-full w-full object-cover"
+        alt="Cat wearing Whiskcam collar camera, POV footage concept"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
       />
 
       {/* Video background — fades in over poster when ready */}

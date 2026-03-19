@@ -6,11 +6,63 @@ export const metadata: Metadata = {
   title: "About Whiskcam",
   description:
     "The story behind Whiskcam — a pet collar camera born from pure curiosity about what our cats really do.",
+  keywords: ["Whiskcam", "cat collar camera", "pet camera", "cat POV camera", "about"],
+  alternates: {
+    canonical: "https://whiskcam.com/about",
+  },
+  openGraph: {
+    title: "About Whiskcam",
+    description:
+      "The story behind Whiskcam — a pet collar camera born from pure curiosity about what our cats really do.",
+    url: "https://whiskcam.com/about",
+    siteName: "Whiskcam",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "About Whiskcam",
+    description:
+      "The story behind Whiskcam — a pet collar camera born from pure curiosity.",
+  },
+};
+
+const aboutJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  mainEntity: {
+    "@type": "Organization",
+    name: "Whiskcam",
+    url: "https://whiskcam.com",
+    description:
+      "Whiskcam designs lightweight collar cameras for cats, helping owners see the world through their pet's eyes.",
+    foundingDate: "2026",
+    sameAs: [
+      "https://tiktok.com/@whiskcam",
+      "https://instagram.com/whiskcam",
+    ],
+  },
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://whiskcam.com" },
+    { "@type": "ListItem", position: 2, name: "About", item: "https://whiskcam.com/about" },
+  ],
 };
 
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Hero band — portrait image, taller to showcase vertical composition */}
       <div className="relative flex h-[50vh] min-h-[340px] items-end overflow-hidden bg-wk-dark md:h-[55vh]">
         <Image

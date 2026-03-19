@@ -1,15 +1,52 @@
 import Footer from "components/layout/footer";
+import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Shipping Policy",
   description: "Whiskcam shipping information — free worldwide shipping, delivery times, and tracking.",
+  keywords: ["Whiskcam", "shipping policy", "free shipping", "delivery times"],
+  alternates: {
+    canonical: "https://whiskcam.com/policies/shipping",
+  },
+  openGraph: {
+    title: "Shipping Policy — Whiskcam",
+    description: "Free worldwide shipping, delivery times, and tracking information.",
+    url: "https://whiskcam.com/policies/shipping",
+    siteName: "Whiskcam",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Shipping Policy — Whiskcam",
+    description: "Free worldwide shipping, delivery times, and tracking.",
+  },
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://whiskcam.com" },
+    { "@type": "ListItem", position: 2, name: "Shipping Policy", item: "https://whiskcam.com/policies/shipping" },
+  ],
 };
 
 export default function ShippingPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="mx-auto max-w-3xl px-4 pt-32 pb-16 md:pt-40">
+        <nav className="mb-6 text-sm text-neutral-400" aria-label="Breadcrumb">
+          <ol className="flex items-center gap-1.5">
+            <li><Link href="/" className="hover:text-wk-amber">Home</Link></li>
+            <li>/</li>
+            <li className="text-neutral-600">Shipping Policy</li>
+          </ol>
+        </nav>
         <h1 className="text-4xl font-bold text-wk-black">Shipping Policy</h1>
         <div className="prose prose-neutral mt-8 max-w-none">
           <h2>Free Worldwide Shipping</h2>

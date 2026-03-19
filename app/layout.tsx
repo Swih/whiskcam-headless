@@ -29,6 +29,11 @@ export const metadata = {
   },
   description:
     "The lightweight pet collar camera that captures your cat or dog's secret adventures. 1080P Full HD, no app required. Free worldwide shipping.",
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
+  },
+  manifest: "/manifest.json",
   robots: {
     follow: true,
     index: true,

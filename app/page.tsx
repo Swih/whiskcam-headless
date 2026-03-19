@@ -11,7 +11,7 @@ import { ReviewsSection } from "components/landing/reviews-section";
 import Footer from "components/layout/footer";
 import { StickyAtcBar } from "components/ui/sticky-atc-bar";
 import { getProduct } from "lib/shopify";
-import { FAQ_ITEMS, PRODUCT_HANDLE } from "lib/content";
+import { FAQ_ITEMS, PRODUCT_HANDLE, HERO_CONTENT, VIDEOS } from "lib/content";
 import { formatPrice } from "lib/format";
 
 export const metadata = {
@@ -109,11 +109,65 @@ export default async function HomePage() {
     "@type": "Organization",
     name: "Whiskcam",
     url: "https://whiskcam.com",
+    logo: "https://whiskcam.com/images/logos/whiskcam-logo-icon.webp",
+    description:
+      "Whiskcam makes lightweight pet collar cameras that let you see the world from your cat or dog's perspective. 1080P Full HD, no app required.",
+    foundingDate: "2026",
     sameAs: [
       "https://tiktok.com/@whiskcam",
       "https://instagram.com/whiskcam",
     ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: "support@whiskcam.com",
+      contactType: "customer support",
+      availableLanguage: ["English", "French"],
+    },
   };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://whiskcam.com",
+      },
+    ],
+  };
+
+  // VideoObject schema — hero video + showcase videos (AEO: AI models read this)
+  const videoJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: "Whiskcam Cat Collar Camera — See Their World",
+    description:
+      "Watch real POV footage captured by Whiskcam, a lightweight 26g camera designed for cats. 1080P Full HD, 170° wide-angle lens.",
+    thumbnailUrl: `https://whiskcam.com${HERO_CONTENT.posterSrc}`,
+    uploadDate: "2026-03-01",
+    contentUrl: `https://whiskcam.com${HERO_CONTENT.videoSrc}`,
+    embedUrl: "https://whiskcam.com",
+    duration: "PT0M22S",
+  };
+
+  const videoListJsonLd = VIDEOS.slice(0, 3).map((video) => ({
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: `Whiskcam Cat POV — ${video.title}`,
+    description: `Cat point-of-view footage captured with Whiskcam collar camera: ${video.title}.`,
+    thumbnailUrl: `https://whiskcam.com${video.poster}`,
+    uploadDate: "2026-03-01",
+    contentUrl: `https://whiskcam.com${video.src}`,
+    duration: `PT0M${video.duration.split(":")[1]}S`,
+  }));
+
+  // TODO: Add Review schema here when real customer reviews are collected.
+  // The reviews currently displayed on the site are curated/placeholder reviews.
+  // Google penalizes fake structured data — only add Review JSON-LD with genuine,
+  // verified customer reviews. When ready, use this pattern:
+  // { "@type": "Review", "author": { "@type": "Person", "name": "..." }, ... }
 
   return (
     <>
@@ -131,6 +185,21 @@ export default async function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd) }}
+      />
+      {videoListJsonLd.map((v, i) => (
+        <script
+          key={`video-${i}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(v) }}
+        />
+      ))}
 
       <HeroSection product={product} />
       <SocialProofBar />

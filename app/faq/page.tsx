@@ -7,6 +7,24 @@ export const metadata: Metadata = {
   title: "FAQ",
   description:
     "Frequently asked questions about Whiskcam — battery life, safety, shipping, returns, and more.",
+  keywords: ["cat collar camera FAQ", "cat camera safe", "Whiskcam questions", "pet camera help"],
+  alternates: {
+    canonical: "https://whiskcam.com/faq",
+  },
+  openGraph: {
+    title: "FAQ — Whiskcam",
+    description:
+      "Frequently asked questions about Whiskcam — battery life, safety, shipping, returns, and more.",
+    url: "https://whiskcam.com/faq",
+    siteName: "Whiskcam",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "FAQ — Whiskcam",
+    description:
+      "Everything you need to know about Whiskcam. Battery, safety, shipping, returns.",
+  },
 };
 
 const faqJsonLd = {

@@ -1,15 +1,52 @@
 import Footer from "components/layout/footer";
+import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "Whiskcam privacy policy — how we collect, use, and protect your personal information.",
+  keywords: ["Whiskcam", "privacy policy", "data protection", "GDPR"],
+  alternates: {
+    canonical: "https://whiskcam.com/policies/privacy",
+  },
+  openGraph: {
+    title: "Privacy Policy — Whiskcam",
+    description: "How we collect, use, and protect your personal information.",
+    url: "https://whiskcam.com/policies/privacy",
+    siteName: "Whiskcam",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Privacy Policy — Whiskcam",
+    description: "How we collect, use, and protect your personal information.",
+  },
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://whiskcam.com" },
+    { "@type": "ListItem", position: 2, name: "Privacy Policy", item: "https://whiskcam.com/policies/privacy" },
+  ],
 };
 
 export default function PrivacyPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="mx-auto max-w-3xl px-4 pt-32 pb-16 md:pt-40">
+        <nav className="mb-6 text-sm text-neutral-400" aria-label="Breadcrumb">
+          <ol className="flex items-center gap-1.5">
+            <li><Link href="/" className="hover:text-wk-amber">Home</Link></li>
+            <li>/</li>
+            <li className="text-neutral-600">Privacy Policy</li>
+          </ol>
+        </nav>
         <h1 className="text-4xl font-bold text-wk-black">Privacy Policy</h1>
         <p className="mt-4 text-sm text-neutral-500">Last updated: March 2026</p>
         <div className="prose prose-neutral mt-8 max-w-none">

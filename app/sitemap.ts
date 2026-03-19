@@ -1,4 +1,5 @@
 import { getCollections, getPages, getProducts } from "lib/shopify";
+import { BLOG_ARTICLES } from "lib/blog";
 import { baseUrl } from "lib/utils";
 import { MetadataRoute } from "next";
 
@@ -9,6 +10,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "",
     "/about",
     "/faq",
+    "/what-is-whiskcam",
+    "/blog",
     "/policies/shipping",
     "/policies/returns",
     "/policies/privacy",
@@ -16,6 +19,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
+  }));
+
+  // Blog articles
+  const blogRoutes = BLOG_ARTICLES.map((article) => ({
+    url: `${baseUrl}/blog/${article.slug}`,
+    lastModified: article.dateModified,
   }));
 
   let fetchedRoutes: { url: string; lastModified: string }[] = [];
@@ -36,5 +45,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Shopify not configured — return static routes only
   }
 
-  return [...routesMap, ...fetchedRoutes];
+  return [...routesMap, ...blogRoutes, ...fetchedRoutes];
 }

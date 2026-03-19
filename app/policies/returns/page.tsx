@@ -1,15 +1,52 @@
 import Footer from "components/layout/footer";
+import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Return Policy",
   description: "Whiskcam 30-day money-back guarantee. No questions asked.",
+  keywords: ["Whiskcam", "return policy", "refund", "money-back guarantee"],
+  alternates: {
+    canonical: "https://whiskcam.com/policies/returns",
+  },
+  openGraph: {
+    title: "Return Policy — Whiskcam",
+    description: "30-day money-back guarantee. No questions asked.",
+    url: "https://whiskcam.com/policies/returns",
+    siteName: "Whiskcam",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Return Policy — Whiskcam",
+    description: "30-day money-back guarantee. No questions asked.",
+  },
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://whiskcam.com" },
+    { "@type": "ListItem", position: 2, name: "Return Policy", item: "https://whiskcam.com/policies/returns" },
+  ],
 };
 
 export default function ReturnsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="mx-auto max-w-3xl px-4 pt-32 pb-16 md:pt-40">
+        <nav className="mb-6 text-sm text-neutral-400" aria-label="Breadcrumb">
+          <ol className="flex items-center gap-1.5">
+            <li><Link href="/" className="hover:text-wk-amber">Home</Link></li>
+            <li>/</li>
+            <li className="text-neutral-600">Return Policy</li>
+          </ol>
+        </nav>
         <h1 className="text-4xl font-bold text-wk-black">Return &amp; Refund Policy</h1>
         <div className="prose prose-neutral mt-8 max-w-none">
           <h2>30-Day Money-Back Guarantee</h2>

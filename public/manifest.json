@@ -1,0 +1,16 @@
+{
+  "name": "Whiskcam — Cat Collar Camera",
+  "short_name": "Whiskcam",
+  "description": "The lightweight pet collar camera that captures your cat or dog's secret adventures.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1A1A1A",
+  "theme_color": "#F5A623",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    }
+  ]
+}

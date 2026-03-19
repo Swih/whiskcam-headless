@@ -4,6 +4,12 @@ import Link from "next/link";
 const footerLinks = {
   shop: [
     { title: "Whiskcam Original", path: "/#product" },
+    { title: "What Is Whiskcam?", path: "/what-is-whiskcam" },
+  ],
+  learn: [
+    { title: "Best Cat Collar Cameras 2026", path: "/blog/best-cat-collar-cameras-2026" },
+    { title: "Are Cat Cameras Safe?", path: "/blog/are-cat-collar-cameras-safe" },
+    { title: "All Articles", path: "/blog" },
   ],
   support: [
     { title: "FAQ", path: "/#faq" },
@@ -23,7 +29,7 @@ export default function Footer() {
   return (
     <footer className="bg-wk-dark text-white">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-12 md:grid-cols-4">
+        <div className="grid gap-12 md:grid-cols-5">
           {/* Brand */}
           <div>
             <Link href="/">
@@ -73,6 +79,25 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               {footerLinks.shop.map((link) => (
+                <li key={link.title}>
+                  <Link
+                    href={link.path}
+                    className="text-sm text-wk-grey-400 transition-colors hover:text-white"
+                  >
+                    {link.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Learn */}
+          <div>
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.08em] text-wk-grey-500">
+              Learn
+            </h3>
+            <ul className="space-y-3">
+              {footerLinks.learn.map((link) => (
                 <li key={link.title}>
                   <Link
                     href={link.path}

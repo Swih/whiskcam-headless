@@ -26,10 +26,10 @@ const REVIEWS: Review[] = [
     text: "This camera is amazing!!! Best buy ever! The quality of the video is so good. It records for max 1 hour I think. Videos are automatically separated every 5 min. So funny to see what our cat does.",
     date: "Nov 2025",
     photos: [
-      "/images/reviews/review-1.webp",
-      "/images/reviews/review-2.webp",
-      "/images/reviews/review-3.webp",
-      "/images/reviews/review-4.webp",
+      "/images/reviews/customer-review-whiskcam-cat-camera-1.webp",
+      "/images/reviews/customer-review-whiskcam-cat-camera-2.webp",
+      "/images/reviews/customer-review-whiskcam-cat-camera-3.webp",
+      "/images/reviews/customer-review-whiskcam-cat-camera-4.webp",
     ],
     verified: true,
   },
@@ -39,7 +39,7 @@ const REVIEWS: Review[] = [
     rating: 5,
     text: "It's the second camera I bought because I loved it. The fisheye lens is great. One on my dog's collar, the other at home. Battery lasts about 120 minutes.",
     date: "Jul 2025",
-    photos: ["/images/reviews/review-5.webp"],
+    photos: ["/images/reviews/customer-review-whiskcam-cat-camera-5.webp"],
     verified: true,
   },
   // 3 — Jayna C. (real, 2 photos)
@@ -49,8 +49,8 @@ const REVIEWS: Review[] = [
     text: "Everything works well and takes good pictures. The set includes two sizes of collars. The cat plays and is not afraid of the camera.",
     date: "Nov 2025",
     photos: [
-      "/images/reviews/review-6.webp",
-      "/images/reviews/review-7.webp",
+      "/images/reviews/customer-review-whiskcam-cat-camera-6.webp",
+      "/images/reviews/customer-review-whiskcam-cat-camera-7.webp",
     ],
     verified: true,
   },
@@ -78,7 +78,7 @@ const REVIEWS: Review[] = [
     rating: 5,
     text: "Best purchase ever. My cat is a long-hair munchkin (short legs), and this camera still records great footage. Very easy to use. Highly recommend!",
     date: "Aug 2025",
-    photos: ["/images/reviews/review-8.webp"],
+    photos: ["/images/reviews/customer-review-whiskcam-cat-camera-8.webp"],
     verified: true,
   },
   // 7 — Courtney G. (real, no photos)
@@ -97,8 +97,8 @@ const REVIEWS: Review[] = [
     text: "The camera was sent quickly, within two weeks. The camera is good, the quality is excellent. Would definitely recommend.",
     date: "Dec 2025",
     photos: [
-      "/images/reviews/review-9.webp",
-      "/images/reviews/review-10.webp",
+      "/images/reviews/customer-review-whiskcam-cat-camera-9.webp",
+      "/images/reviews/customer-review-whiskcam-cat-camera-10.webp",
     ],
     verified: true,
   },
@@ -108,7 +108,7 @@ const REVIEWS: Review[] = [
     rating: 5,
     text: "Camera is awesome. You can find a YouTube review on channel named danelurepairs.",
     date: "Jan 2026",
-    photos: ["/images/reviews/review-11.webp"],
+    photos: ["/images/reviews/customer-review-whiskcam-cat-camera-11.webp"],
     verified: true,
   },
   // 10 — Lyndia U. (real, no photos)
@@ -145,11 +145,11 @@ const REVIEWS: Review[] = [
     text: "48 minutes long, it weighs well, fits well, only needs adjustment at the neck. Be careful when they drink water because they sink it.",
     date: "Nov 2025",
     photos: [
-      "/images/reviews/review-12.webp",
-      "/images/reviews/review-13.webp",
-      "/images/reviews/review-14.webp",
-      "/images/reviews/review-15.webp",
-      "/images/reviews/review-16.webp",
+      "/images/reviews/customer-review-whiskcam-cat-camera-12.webp",
+      "/images/reviews/customer-review-whiskcam-cat-camera-13.webp",
+      "/images/reviews/customer-review-whiskcam-cat-camera-14.webp",
+      "/images/reviews/customer-review-whiskcam-cat-camera-15.webp",
+      "/images/reviews/customer-review-whiskcam-cat-camera-16.webp",
     ],
     verified: true,
   },
@@ -160,8 +160,8 @@ const REVIEWS: Review[] = [
     text: "The camera is very light. My cat doesn't even notice. I can't say more because the cat has returned without the camera. The neighbors stole it. \ud83d\ude02",
     date: "Feb 2026",
     photos: [
-      "/images/reviews/review-17.webp",
-      "/images/reviews/review-18.webp",
+      "/images/reviews/customer-review-whiskcam-cat-camera-17.webp",
+      "/images/reviews/customer-review-whiskcam-cat-camera-18.webp",
     ],
     verified: true,
   },
@@ -356,7 +356,7 @@ function PhotoLightbox({
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
-        alt="Customer photo"
+        alt="Customer review photo: Whiskcam cat collar camera in use"
         className="max-h-[80vh] max-w-full rounded-lg object-contain shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       />
@@ -416,7 +416,7 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={url}
-                    alt={`Photo by ${review.name}`}
+                    alt={`Whiskcam review photo by ${review.name} — cat collar camera`}
                     className="h-14 w-14 object-cover sm:h-18 sm:w-18"
                     loading="lazy"
                   />
