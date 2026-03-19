@@ -29,6 +29,7 @@ export const metadata = {
   ],
   openGraph: {
     type: "website",
+    url: "https://whiskcam.com",
     title: "Whiskcam — See Their World",
     description:
       "The pet collar camera that reveals your pet's secret life. 1080P Full HD, 170° wide angle, ultra-lightweight.",
