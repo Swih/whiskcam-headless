@@ -13,6 +13,7 @@ import { StickyAtcBar } from "components/ui/sticky-atc-bar";
 import { getProduct } from "lib/shopify";
 import { FAQ_ITEMS, PRODUCT_HANDLE, HERO_CONTENT, VIDEOS } from "lib/content";
 import { formatPrice } from "lib/format";
+import { cookies } from "next/headers";
 
 export const metadata = {
   title: "Whiskcam — Pet Collar Camera | See Their World",
@@ -48,7 +49,8 @@ export const metadata = {
 };
 
 export default async function HomePage() {
-  const product = await getProduct(PRODUCT_HANDLE);
+  const country = (await cookies()).get("country")?.value || "FR";
+  const product = await getProduct(PRODUCT_HANDLE, country);
 
   const compareAtPrice = product?.variants[0]?.compareAtPrice;
   const compareAtPriceFormatted = compareAtPrice

@@ -46,7 +46,7 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
 
   const hasItems = cart && cart.lines.length > 0;
   const resolvedCurrency = cart?.cost.totalAmount.currencyCode || propCurrencyCode || "EUR";
-  const currencySymbol = resolvedCurrency === "USD" ? "$" : "€";
+  const currencySymbol = new Intl.NumberFormat("en", { style: "currency", currency: resolvedCurrency, currencyDisplay: "narrowSymbol" }).format(0).replace(/[\d.,\s]/g, "");
   const totalSavings = savingsPerUnit && cart ? savingsPerUnit * cart.totalQuantity : 0;
 
   return (

@@ -41,7 +41,8 @@ export function ProductSection({ product }: { product?: Product }) {
     ? computeDiscount(product!.priceRange.maxVariantPrice.amount, compareAtPrice.amount)
     : 0;
 
-  const currencySymbol = product?.priceRange.maxVariantPrice.currencyCode === "EUR" ? "€" : "$";
+  const cc = product?.priceRange.maxVariantPrice.currencyCode || "EUR";
+  const currencySymbol = new Intl.NumberFormat("en", { style: "currency", currency: cc, currencyDisplay: "narrowSymbol" }).format(0).replace(/[\d.,\s]/g, "");
 
   // Track ViewContent when product section mounts
   useEffect(() => {

@@ -147,6 +147,10 @@ export type ShopifyCartOperation = {
 
 export type ShopifyCreateCartOperation = {
   data: { cartCreate: { cart: ShopifyCart } };
+  variables: {
+    lineItems?: { merchandiseId: string; quantity: number }[];
+    country?: string;
+  };
 };
 
 export type ShopifyAddToCartOperation = {
@@ -249,6 +253,7 @@ export type ShopifyProductOperation = {
   data: { product: ShopifyProduct };
   variables: {
     handle: string;
+    country?: string;
   };
 };
 

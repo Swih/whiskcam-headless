@@ -236,11 +236,14 @@ const emptyCart: Cart = {
   },
 };
 
-export async function createCart(): Promise<Cart> {
+export async function createCart(country?: string): Promise<Cart> {
   if (!endpoint || !key) return emptyCart;
 
   const res = await shopifyFetch<ShopifyCreateCartOperation>({
     query: createCartMutation,
+    variables: {
+      ...(country && { country }),
+    },
   });
 
   if (!res.body.data?.cartCreate?.cart) return emptyCart;
@@ -470,7 +473,7 @@ export async function getPages(): Promise<Page[]> {
   return removeEdgesAndNodes(res.body.data.pages);
 }
 
-export async function getProduct(handle: string): Promise<Product | undefined> {
+export async function getProduct(handle: string, country?: string): Promise<Product | undefined> {
   "use cache";
   cacheTag(TAGS.products);
   cacheLife("days");
@@ -483,6 +486,7 @@ export async function getProduct(handle: string): Promise<Product | undefined> {
     query: getProductQuery,
     variables: {
       handle,
+      ...(country && { country }),
     },
   });
 

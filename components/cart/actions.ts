@@ -113,7 +113,8 @@ export async function redirectToCheckout() {
 }
 
 export async function createCartAndSetCookie() {
-  const cart = await createCart();
+  const country = (await cookies()).get("country")?.value || "FR";
+  const cart = await createCart(country);
   if (cart.id) {
     (await cookies()).set("cartId", cart.id);
   }

@@ -10,6 +10,7 @@ import { computeDiscount, computeSavings } from "lib/format";
 import { PRODUCT_HANDLE } from "lib/content";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
+import { cookies } from "next/headers";
 import "./globals.css";
 import { baseUrl } from "lib/utils";
 import { DM_Sans } from "next/font/google";
@@ -56,8 +57,9 @@ export default async function RootLayout({
 }: {
   children: ReactNode;
 }) {
+  const country = (await cookies()).get("country")?.value || "FR";
   const cart = getCart();
-  const product = await getProduct(PRODUCT_HANDLE);
+  const product = await getProduct(PRODUCT_HANDLE, country);
   const compareAt = product?.variants[0]?.compareAtPrice;
   const discount = compareAt
     ? computeDiscount(product!.priceRange.maxVariantPrice.amount, compareAt.amount)
