@@ -16,6 +16,15 @@ const config: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/password",
+        destination: "/",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
