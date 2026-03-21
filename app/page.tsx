@@ -65,13 +65,8 @@ export default async function HomePage() {
         description: product.description,
         image: product.featuredImage?.url,
         brand: { "@type": "Brand", name: "Whiskcam" },
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "4.8",
-          reviewCount: "500",
-          bestRating: "5",
-          worstRating: "1",
-        },
+        // aggregateRating removed — no verified customer reviews yet.
+        // Google penalizes fabricated review data. Re-add when real reviews exist.
         offers: {
           "@type": "Offer",
           url: "https://whiskcam.com",

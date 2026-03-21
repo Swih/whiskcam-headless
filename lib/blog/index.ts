@@ -23,8 +23,8 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     title: "Best Cat Collar Cameras 2026: Tested & Compared",
     description:
       "An honest comparison of the best cat collar cameras in 2026, including specs, pricing, pros and cons. Find the right pet POV camera for your cat.",
-    datePublished: "2026-03-19",
-    dateModified: "2026-03-19",
+    datePublished: "2026-03-19T00:00:00Z",
+    dateModified: "2026-03-19T00:00:00Z",
     author: "Whiskcam Team",
     readingTime: "12 min read",
     tags: ["cat collar camera", "comparison", "pet camera", "review"],
@@ -36,8 +36,8 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     title: "Are Cat Collar Cameras Safe? What Vets and Owners Say",
     description:
       "Are collar cameras safe for cats? We cover weight limits, breakaway collars, behavioral signs, and what veterinarians recommend for pet wearable cameras.",
-    datePublished: "2026-03-19",
-    dateModified: "2026-03-19",
+    datePublished: "2026-03-19T00:00:00Z",
+    dateModified: "2026-03-19T00:00:00Z",
     author: "Whiskcam Team",
     readingTime: "8 min read",
     tags: ["cat safety", "collar camera", "veterinary", "pet wearable"],

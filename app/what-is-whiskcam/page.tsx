@@ -72,6 +72,15 @@ export default function WhatIsWhiskcamPage() {
       priceCurrency: "EUR",
       availability: "https://schema.org/InStock",
       url: "https://whiskcam.com",
+      priceValidUntil: "2026-12-31",
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        applicableCountry: "US",
+        returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+        merchantReturnDays: 30,
+        returnMethod: "https://schema.org/ReturnByMail",
+        returnFees: "https://schema.org/FreeReturn",
+      },
       shippingDetails: {
         "@type": "OfferShippingDetails",
         shippingRate: {
@@ -81,16 +90,24 @@ export default function WhatIsWhiskcamPage() {
         },
         shippingDestination: {
           "@type": "DefinedRegion",
-          addressCountry: "WORLDWIDE",
+          addressCountry: "US",
+        },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          handlingTime: {
+            "@type": "QuantitativeValue",
+            minValue: 1,
+            maxValue: 3,
+            unitCode: "DAY",
+          },
+          transitTime: {
+            "@type": "QuantitativeValue",
+            minValue: 5,
+            maxValue: 12,
+            unitCode: "DAY",
+          },
         },
       },
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      reviewCount: "500",
-      bestRating: "5",
-      worstRating: "1",
     },
   };
 
