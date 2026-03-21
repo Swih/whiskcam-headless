@@ -42,7 +42,6 @@ export function ProductSection({ product }: { product?: Product }) {
     : 0;
 
   const cc = product?.priceRange.maxVariantPrice.currencyCode || "EUR";
-  const currencySymbol = new Intl.NumberFormat("en", { style: "currency", currency: cc, currencyDisplay: "narrowSymbol" }).format(0).replace(/[\d.,\s]/g, "");
 
   // Track ViewContent when product section mounts
   useEffect(() => {
@@ -142,7 +141,7 @@ export function ProductSection({ product }: { product?: Product }) {
                     <p className="text-xs text-wk-grey-400">Pre-installed, ready to record</p>
                   </div>
                   <div className="flex flex-col items-end">
-                    <span className="text-xs text-wk-grey-400 line-through">{currencySymbol}12.90</span>
+                    <span className="text-xs text-wk-grey-400 line-through">{formatPrice("12.90", cc)}</span>
                     <span className="text-xs font-bold text-wk-green">FREE</span>
                   </div>
                 </div>
@@ -156,7 +155,7 @@ export function ProductSection({ product }: { product?: Product }) {
                     <p className="text-xs text-wk-grey-400">View footage on your phone</p>
                   </div>
                   <div className="flex flex-col items-end">
-                    <span className="text-xs text-wk-grey-400 line-through">{currencySymbol}9.90</span>
+                    <span className="text-xs text-wk-grey-400 line-through">{formatPrice("9.90", cc)}</span>
                     <span className="text-xs font-bold text-wk-green">FREE</span>
                   </div>
                 </div>
@@ -172,7 +171,7 @@ export function ProductSection({ product }: { product?: Product }) {
                     <p className="text-xs text-wk-grey-400">7-14 business days</p>
                   </div>
                   <div className="flex flex-col items-end">
-                    <span className="text-xs text-wk-grey-400 line-through">{currencySymbol}7.90</span>
+                    <span className="text-xs text-wk-grey-400 line-through">{formatPrice("7.90", cc)}</span>
                     <span className="text-xs font-bold text-wk-green">FREE</span>
                   </div>
                 </div>
@@ -181,7 +180,7 @@ export function ProductSection({ product }: { product?: Product }) {
                 <div className="flex items-center justify-between text-sm">
                   <span className="font-semibold text-wk-grey-600">Total value</span>
                   <span className="font-semibold text-wk-grey-600 line-through">
-                    {compareAtPriceFormatted || `${currencySymbol}89.90`}
+                    {compareAtPriceFormatted || formatPrice("89.90", cc)}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">

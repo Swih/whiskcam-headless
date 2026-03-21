@@ -4,6 +4,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { ShoppingCartIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Price from "components/price";
 import { DEFAULT_OPTION } from "lib/constants";
+import { formatPrice } from "lib/format";
 import Image from "next/image";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
@@ -46,7 +47,6 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
 
   const hasItems = cart && cart.lines.length > 0;
   const resolvedCurrency = cart?.cost.totalAmount.currencyCode || propCurrencyCode || "EUR";
-  const currencySymbol = new Intl.NumberFormat("en", { style: "currency", currency: resolvedCurrency, currencyDisplay: "narrowSymbol" }).format(0).replace(/[\d.,\s]/g, "");
   const totalSavings = savingsPerUnit && cart ? savingsPerUnit * cart.totalQuantity : 0;
 
   return (
@@ -212,7 +212,7 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
                             <p className="text-sm font-medium text-wk-black">{gift.name}</p>
                           </div>
                           <div className="flex items-center gap-1.5">
-                            <span className="text-xs text-wk-grey-400 line-through">{currencySymbol}{gift.value}</span>
+                            <span className="text-xs text-wk-grey-400 line-through">{formatPrice(gift.value, resolvedCurrency)}</span>
                             <span className="text-xs font-bold text-wk-green">FREE</span>
                           </div>
                         </div>
@@ -227,7 +227,7 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
                           <p className="text-sm font-medium text-wk-black">Free Worldwide Shipping</p>
                         </div>
                         <div className="flex items-center gap-1.5">
-                          <span className="text-xs text-wk-grey-400 line-through">{currencySymbol}7.90</span>
+                          <span className="text-xs text-wk-grey-400 line-through">{formatPrice("7.90", resolvedCurrency)}</span>
                           <span className="text-xs font-bold text-wk-green">FREE</span>
                         </div>
                       </div>
@@ -242,7 +242,7 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                       <span className="text-xs font-semibold text-wk-green">
-                        You&apos;re saving {currencySymbol}{totalSavings.toFixed(2)} on this order
+                        You&apos;re saving {formatPrice(totalSavings.toFixed(2), resolvedCurrency)} on this order
                       </span>
                     </div>
 
