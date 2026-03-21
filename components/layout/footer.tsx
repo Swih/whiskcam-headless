@@ -13,6 +13,7 @@ const footerLinks = {
   ],
   support: [
     { title: "FAQ", path: "/#faq" },
+    { title: "Track My Order", path: "/track" },
     { title: "Shipping", path: "/policies/shipping" },
     { title: "Returns", path: "/policies/returns" },
     { title: "Contact", path: "mailto:support@whiskcam.com" },
