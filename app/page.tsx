@@ -81,6 +81,15 @@ export default async function HomePage() {
             ? "https://schema.org/InStock"
             : "https://schema.org/OutOfStock",
           seller: { "@type": "Organization", name: "Whiskcam" },
+          priceValidUntil: "2026-12-31",
+          hasMerchantReturnPolicy: {
+            "@type": "MerchantReturnPolicy",
+            applicableCountry: "US",
+            returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+            merchantReturnDays: 30,
+            returnMethod: "https://schema.org/ReturnByMail",
+            returnFees: "https://schema.org/FreeReturn",
+          },
           shippingDetails: {
             "@type": "OfferShippingDetails",
             shippingRate: {
@@ -88,9 +97,24 @@ export default async function HomePage() {
               value: "0",
               currency: product.priceRange.maxVariantPrice.currencyCode,
             },
+            shippingDestination: {
+              "@type": "DefinedRegion",
+              addressCountry: "US",
+            },
             deliveryTime: {
               "@type": "ShippingDeliveryTime",
-              businessDays: { "@type": "QuantitativeValue", minValue: 7, maxValue: 14 },
+              handlingTime: {
+                "@type": "QuantitativeValue",
+                minValue: 1,
+                maxValue: 3,
+                unitCode: "DAY",
+              },
+              transitTime: {
+                "@type": "QuantitativeValue",
+                minValue: 5,
+                maxValue: 12,
+                unitCode: "DAY",
+              },
             },
           },
         },
@@ -149,7 +173,7 @@ export default async function HomePage() {
     description:
       "Watch real POV footage captured by Whiskcam, a lightweight 26g camera designed for cats. 1080P Full HD, 170° wide-angle lens.",
     thumbnailUrl: `https://whiskcam.com${HERO_CONTENT.posterSrc}`,
-    uploadDate: "2026-03-01",
+    uploadDate: "2026-03-01T00:00:00Z",
     contentUrl: `https://whiskcam.com${HERO_CONTENT.videoSrc}`,
     embedUrl: "https://whiskcam.com",
     duration: "PT0M22S",
@@ -161,7 +185,7 @@ export default async function HomePage() {
     name: `Whiskcam Cat POV — ${video.title}`,
     description: `Cat point-of-view footage captured with Whiskcam collar camera: ${video.title}.`,
     thumbnailUrl: `https://whiskcam.com${video.poster}`,
-    uploadDate: "2026-03-01",
+    uploadDate: "2026-03-01T00:00:00Z",
     contentUrl: `https://whiskcam.com${video.src}`,
     duration: `PT0M${video.duration.split(":")[1]}S`,
   }));
