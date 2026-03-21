@@ -140,10 +140,7 @@ export function ProductSection({ product }: { product?: Product }) {
                     <p className="text-sm font-medium text-wk-black">32GB MicroSD Card</p>
                     <p className="text-xs text-wk-grey-400">Pre-installed, ready to record</p>
                   </div>
-                  <div className="flex flex-col items-end">
-                    <span className="text-xs text-wk-grey-400 line-through">{formatPrice("12.90", cc)}</span>
-                    <span className="text-xs font-bold text-wk-green">FREE</span>
-                  </div>
+                  <span className="text-xs font-bold text-wk-green">FREE</span>
                 </div>
                 {/* Adapter */}
                 <div className="flex items-center gap-3">
@@ -154,10 +151,7 @@ export function ProductSection({ product }: { product?: Product }) {
                     <p className="text-sm font-medium text-wk-black">USB-C/Lightning Adapter</p>
                     <p className="text-xs text-wk-grey-400">View footage on your phone</p>
                   </div>
-                  <div className="flex flex-col items-end">
-                    <span className="text-xs text-wk-grey-400 line-through">{formatPrice("9.90", cc)}</span>
-                    <span className="text-xs font-bold text-wk-green">FREE</span>
-                  </div>
+                  <span className="text-xs font-bold text-wk-green">FREE</span>
                 </div>
                 {/* Shipping */}
                 <div className="flex items-center gap-3">
@@ -170,10 +164,7 @@ export function ProductSection({ product }: { product?: Product }) {
                     <p className="text-sm font-medium text-wk-black">Free Worldwide Shipping</p>
                     <p className="text-xs text-wk-grey-400">7-14 business days</p>
                   </div>
-                  <div className="flex flex-col items-end">
-                    <span className="text-xs text-wk-grey-400 line-through">{formatPrice("7.90", cc)}</span>
-                    <span className="text-xs font-bold text-wk-green">FREE</span>
-                  </div>
+                  <span className="text-xs font-bold text-wk-green">FREE</span>
                 </div>
               </div>
               <div className="mt-3 border-t border-wk-amber/20 pt-3 space-y-1">

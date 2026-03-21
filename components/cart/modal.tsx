@@ -211,10 +211,7 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
                           <div className="flex-1 min-w-0">
                             <p className="text-sm font-medium text-wk-black">{gift.name}</p>
                           </div>
-                          <div className="flex items-center gap-1.5">
-                            <span className="text-xs text-wk-grey-400 line-through">{formatPrice(gift.value, resolvedCurrency)}</span>
-                            <span className="text-xs font-bold text-wk-green">FREE</span>
-                          </div>
+                          <span className="text-xs font-bold text-wk-green">FREE</span>
                         </div>
                       ))}
                       <div className="flex items-center gap-2.5 py-1.5">
@@ -226,10 +223,7 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
                         <div className="flex-1 min-w-0">
                           <p className="text-sm font-medium text-wk-black">Free Worldwide Shipping</p>
                         </div>
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-xs text-wk-grey-400 line-through">{formatPrice("7.90", resolvedCurrency)}</span>
-                          <span className="text-xs font-bold text-wk-green">FREE</span>
-                        </div>
+                        <span className="text-xs font-bold text-wk-green">FREE</span>
                       </div>
                     </div>
                   </div>
