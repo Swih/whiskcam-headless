@@ -46,7 +46,6 @@ export function ProductSection({ product }: { product?: Product }) {
 
   const cc = product?.priceRange.maxVariantPrice.currencyCode || "EUR";
 
-  // Track ViewContent when product section mounts
   useEffect(() => {
     if (product) {
       trackViewContent({
@@ -273,207 +272,301 @@ export function ProductSection({ product }: { product?: Product }) {
   );
 }
 
-type MediaItem = { type: "image"; src: string; alt: string } | { type: "video"; src: string; alt: string };
+// ─── Gallery types ────────────────────────────────────────────────────────────
+
+type MediaItem =
+  | { type: "image"; src: string; alt: string }
+  | { type: "video"; src: string; alt: string; poster: string }
+  | { type: "infographic"; alt: string };
+
+// ─── Features infographic custom slide ───────────────────────────────────────
+
+function FeaturesInfographicSlide() {
+  const specs = [
+    { value: "1080P", label: "Full HD" },
+    { value: "170°", label: "Wide Angle" },
+    { value: "26g", label: "Ultralight" },
+    { value: "90min", label: "Battery" },
+    { value: "No WiFi", label: "Privacy" },
+    { value: "No App", label: "Plug & Play" },
+  ];
+
+  return (
+    <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-[#0f0f1a] via-[#1a1a2e] to-[#16213e] px-6 py-8">
+      <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.25em] text-amber-400">
+        Tech Specs
+      </p>
+      <h3 className="mb-6 text-center text-lg font-black text-white sm:text-2xl">
+        Everything you need.
+        <br />
+        <span className="text-amber-400">Nothing you don&apos;t.</span>
+      </h3>
+
+      <div className="grid w-full max-w-[260px] grid-cols-3 gap-2.5 sm:max-w-xs sm:gap-3">
+        {specs.map((spec) => (
+          <div
+            key={spec.value}
+            className="flex flex-col items-center justify-center rounded-xl bg-white/10 px-2 py-3 ring-1 ring-white/10 backdrop-blur-sm"
+          >
+            <span className="text-sm font-black text-white sm:text-base">{spec.value}</span>
+            <span className="mt-0.5 text-center text-[9px] leading-tight text-white/55 sm:text-[10px]">
+              {spec.label}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <p className="mt-6 text-center text-[11px] text-white/35">
+        No subscription · No cloud · No privacy concerns
+      </p>
+    </div>
+  );
+}
+
+// ─── Infographic thumbnail (desktop strip) ────────────────────────────────────
+
+function InfographicThumbnail() {
+  return (
+    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#0f0f1a] to-[#16213e] p-1.5">
+      <div className="grid w-full grid-cols-2 gap-0.5">
+        {["1080P", "170°", "26g", "No App"].map((v) => (
+          <div
+            key={v}
+            className="flex items-center justify-center rounded-sm bg-white/15 py-1"
+          >
+            <span className="text-[7px] font-bold leading-none text-white">{v}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ─── Product Gallery ──────────────────────────────────────────────────────────
 
 function ProductGallery({ images }: { images: { src: string; alt: string }[] }) {
-  // Insert unboxing video at position 5 (index 4)
+  // Conversion-optimised media sequence:
+  //  [0–1]  First two Shopify images (hero + first lifestyle)
+  //  [2]    Unboxing video — early placement maximises engagement
+  //  [3–4]  Next two Shopify images
+  //  [5]    Features infographic custom slide
+  //  [6+]   Remaining Shopify images (includes box-contents shot)
   const imgMedia = images.map((img) => ({ type: "image" as const, ...img }));
   const media: MediaItem[] = [
-    ...imgMedia.slice(0, 4),
-    { type: "video", src: "/images/product/unboxing.mp4", alt: "Unboxing Whiskcam" },
+    ...imgMedia.slice(0, 2),
+    {
+      type: "video",
+      src: "/images/product/unboxing.mp4",
+      alt: "Unboxing Whiskcam",
+      poster: "/images/product/unboxing-poster.jpg",
+    },
+    ...imgMedia.slice(2, 4),
+    {
+      type: "infographic",
+      alt: "Whiskcam specs: 1080P Full HD, 170° wide angle, 26g ultralight, no WiFi, no app needed",
+    },
     ...imgMedia.slice(4),
   ];
 
   const [active, setActive] = useState(0);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
   const touchStartX = useRef<number | null>(null);
-  const mainImageRef = useRef<HTMLDivElement>(null);
+  const touchStartY = useRef<number | null>(null);
+  const thumbnailStripRef = useRef<HTMLDivElement>(null);
 
   const total = media.length;
   const current = media[active];
 
-  const goNext = useCallback(() => {
-    setActive((prev) => (prev + 1) % total);
-  }, [total]);
+  const goNext = useCallback(() => setActive((p) => (p + 1) % total), [total]);
+  const goPrev = useCallback(() => setActive((p) => (p - 1 + total) % total), [total]);
 
-  const goPrev = useCallback(() => {
-    setActive((prev) => (prev - 1 + total) % total);
-  }, [total]);
-
-  const openLightbox = useCallback(() => setLightboxOpen(true), []);
-  const closeLightbox = useCallback(() => setLightboxOpen(false), []);
-
-  // Keyboard navigation (Escape to close lightbox, arrows to navigate)
+  // Auto-scroll the active thumbnail into view on desktop
   useEffect(() => {
-    function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape" && lightboxOpen) {
-        closeLightbox();
-      }
-      if (e.key === "ArrowRight") {
-        goNext();
-      }
-      if (e.key === "ArrowLeft") {
-        goPrev();
-      }
-    }
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [lightboxOpen, closeLightbox, goNext, goPrev]);
+    const strip = thumbnailStripRef.current;
+    if (!strip) return;
+    const thumb = strip.children[active] as HTMLElement | undefined;
+    thumb?.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
+  }, [active]);
 
-  // Prevent body scroll when lightbox is open
+  // Keyboard navigation
   useEffect(() => {
-    if (lightboxOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") goNext();
+      else if (e.key === "ArrowLeft") goPrev();
     };
-  }, [lightboxOpen]);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [goNext, goPrev]);
 
-  // Touch swipe handlers for main image
+  // Touch swipe — only trigger when gesture is clearly horizontal
   function handleTouchStart(e: React.TouchEvent) {
     touchStartX.current = e.touches[0]?.clientX ?? null;
+    touchStartY.current = e.touches[0]?.clientY ?? null;
   }
 
   function handleTouchEnd(e: React.TouchEvent) {
     if (touchStartX.current === null) return;
     const endX = e.changedTouches[0]?.clientX ?? touchStartX.current;
+    const endY = e.changedTouches[0]?.clientY ?? (touchStartY.current ?? 0);
     const deltaX = endX - touchStartX.current;
-    if (Math.abs(deltaX) > 50) {
-      if (deltaX < 0) {
-        goNext();
-      } else {
-        goPrev();
-      }
+    const deltaY = Math.abs(endY - (touchStartY.current ?? 0));
+    if (Math.abs(deltaX) > deltaY && Math.abs(deltaX) > 50) {
+      deltaX < 0 ? goNext() : goPrev();
     }
     touchStartX.current = null;
+    touchStartY.current = null;
   }
 
+  const mediaKey = (item: MediaItem) =>
+    item.type === "infographic" ? "slide-infographic" : item.src;
+
   return (
-    <div className="w-full overflow-hidden">
-      {/* Main media with swipe + click-to-zoom + arrow buttons */}
+    <div className="w-full select-none">
+      {/* ── Main viewport ─────────────────────────────────────────────────── */}
       <div
-        ref={mainImageRef}
-        className="group relative aspect-square overflow-hidden rounded-2xl bg-wk-grey-50"
+        className={[
+          "group relative aspect-square overflow-hidden rounded-2xl bg-wk-grey-50",
+          current?.type === "image" ? "lg:cursor-zoom-in" : "",
+        ].join(" ")}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
-        onClick={current?.type !== "video" ? openLightbox : undefined}
-        role="button"
-        tabIndex={0}
-        aria-label={current?.type === "video" ? "Play video" : "Open full-size image"}
-        style={{ cursor: current?.type === "video" ? "default" : "zoom-in" }}
-        onKeyDown={(e) => {
-          if ((e.key === "Enter" || e.key === " ") && current?.type !== "video") {
-            e.preventDefault();
-            openLightbox();
-          }
-        }}
+        role="region"
+        aria-label={`Product gallery, slide ${active + 1} of ${total}`}
       >
+        {/* Media */}
         {current?.type === "video" ? (
           <video
             key={current.src}
             src={current.src}
-            poster="/images/product/unboxing-poster.jpg"
+            poster={current.poster}
             autoPlay
             muted
             loop
             playsInline
             className="h-full w-full object-cover"
             onClick={(e) => {
-              e.stopPropagation();
               const v = e.currentTarget;
               v.muted = false;
               v.paused ? v.play() : v.pause();
             }}
           />
+        ) : current?.type === "infographic" ? (
+          <FeaturesInfographicSlide />
         ) : (
           <Image
             src={current?.src || ""}
-            alt={current?.alt || `Whiskcam Original - Image ${active + 1}`}
+            alt={current?.alt || `Whiskcam Original – Image ${active + 1}`}
             fill
-            className="object-cover transition-opacity duration-300"
+            // Desktop hover zoom — CSS scale inside overflow:hidden, no lightbox
+            className="object-cover transition-transform duration-500 ease-out lg:group-hover:scale-110"
             sizes="(min-width: 1024px) 50vw, 100vw"
-            priority
+            priority={active === 0}
           />
         )}
 
-        {/* Left arrow */}
-        {total > 1 && (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              goPrev();
-            }}
-            className="absolute left-2 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white opacity-70 backdrop-blur-sm transition-opacity duration-200 hover:bg-black/50 lg:opacity-0 lg:group-hover:opacity-100"
-            aria-label="Previous image"
-          >
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
+        {/* ── First-slide overlays ─────────────────────────────────────────── */}
+        {active === 0 && (
+          <>
+            {/* Best-Seller badge — top-left */}
+            <div className="pointer-events-none absolute left-3 top-3 z-10">
+              <span className="inline-flex items-center rounded-full bg-wk-amber px-2.5 py-1 text-[11px] font-bold text-white shadow-md ring-1 ring-white/20">
+                Best-Seller
+              </span>
+            </div>
+
+            {/* Social proof pill — bottom-centre */}
+            <div className="pointer-events-none absolute bottom-4 left-1/2 z-10 -translate-x-1/2">
+              <div className="flex items-center gap-1.5 rounded-full bg-black/65 px-3 py-1.5 shadow-lg backdrop-blur-sm">
+                <span className="text-xs text-yellow-400">★★★★★</span>
+                <span className="whitespace-nowrap text-[11px] font-medium text-white">
+                  Loved by 1,200+ pet parents
+                </span>
+              </div>
+            </div>
+          </>
         )}
 
-        {/* Right arrow */}
+        {/* ── Navigation arrows ── */}
         {total > 1 && (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              goNext();
-            }}
-            className="absolute right-2 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white opacity-70 backdrop-blur-sm transition-opacity duration-200 hover:bg-black/50 lg:opacity-0 lg:group-hover:opacity-100"
-            aria-label="Next image"
-          >
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
+          <>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                goPrev();
+              }}
+              className="absolute left-2 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white opacity-70 backdrop-blur-sm transition-all duration-200 hover:bg-black/50 lg:opacity-0 lg:group-hover:opacity-100"
+              aria-label="Previous image"
+            >
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                goNext();
+              }}
+              className="absolute right-2 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white opacity-70 backdrop-blur-sm transition-all duration-200 hover:bg-black/50 lg:opacity-0 lg:group-hover:opacity-100"
+              aria-label="Next image"
+            >
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </>
         )}
       </div>
 
-      {/* Mobile: dots + counter */}
+      {/* ── Mobile: pill-progress dots ─────────────────────────────────────── */}
       {total > 1 && (
-        <div className="mt-3 flex items-center justify-between lg:hidden">
-          <div className="flex gap-1.5">
-            {media.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
-                className={`h-2 rounded-full transition-all duration-200 ${
-                  i === active ? "w-5 bg-wk-amber" : "w-2 bg-wk-grey-300"
-                }`}
-                aria-label={`Go to image ${i + 1}`}
-              />
-            ))}
-          </div>
-          <span className="text-xs font-medium text-wk-grey-400">
-            {active + 1}/{total}
-          </span>
+        <div className="mt-3 flex items-center justify-center gap-1.5 lg:hidden">
+          {media.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className={[
+                "h-2 rounded-full transition-all duration-300",
+                i === active ? "w-6 bg-wk-amber" : "w-2 bg-wk-grey-300",
+              ].join(" ")}
+            />
+          ))}
         </div>
       )}
 
-      {/* Desktop: thumbnail strip */}
+      {/* ── Desktop: scrollable thumbnail strip ───────────────────────────── */}
       {total > 1 && (
-        <div className="mt-2.5 hidden gap-2 overflow-x-auto scrollbar-hide lg:flex">
+        <div
+          ref={thumbnailStripRef}
+          className="mt-3 hidden gap-2 overflow-x-auto scroll-smooth pb-1 scrollbar-hide lg:flex"
+        >
           {media.map((item, i) => (
             <button
-              key={item.src}
+              key={mediaKey(item)}
               onClick={() => setActive(i)}
-              className={`relative h-14 w-14 flex-none overflow-hidden rounded-lg border-2 transition-all duration-200 sm:h-16 sm:w-16 ${
-                i === active ? "border-wk-amber" : "border-transparent hover:border-wk-grey-300"
-              }`}
+              aria-label={`View slide ${i + 1}`}
+              className={[
+                "relative h-16 w-16 flex-none overflow-hidden rounded-lg border-2 transition-all duration-200",
+                i === active
+                  ? "border-wk-amber ring-1 ring-wk-amber/30"
+                  : "border-transparent opacity-60 hover:opacity-100 hover:border-wk-grey-300",
+              ].join(" ")}
             >
               {item.type === "video" ? (
                 <>
-                  <video src={item.src} poster="/images/product/unboxing-poster.jpg" muted className="h-full w-full object-cover" />
-                  {/* Play icon overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-                    <svg className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                  <video
+                    src={item.src}
+                    poster={item.poster}
+                    muted
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/25">
+                    <svg className="h-5 w-5 drop-shadow" viewBox="0 0 24 24" fill="white">
                       <path d="M8 5v14l11-7z" />
                     </svg>
                   </div>
                 </>
+              ) : item.type === "infographic" ? (
+                <InfographicThumbnail />
               ) : (
                 <Image
                   src={item.src}
@@ -481,99 +574,11 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
                   fill
                   className="object-cover"
                   sizes="64px"
+                  loading="lazy"
                 />
               )}
             </button>
           ))}
-        </div>
-      )}
-
-      {/* Lightbox overlay */}
-      {lightboxOpen && (
-        <div
-          className="fixed inset-0 z-[70] flex items-center justify-center bg-black/90 backdrop-blur"
-          onClick={closeLightbox}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Image lightbox"
-        >
-          {/* Close button */}
-          <button
-            onClick={closeLightbox}
-            className="absolute right-4 top-4 z-[71] flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
-            aria-label="Close lightbox"
-          >
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-
-          {/* Lightbox left arrow */}
-          {total > 1 && (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                goPrev();
-              }}
-              className="absolute left-4 top-1/2 z-[71] flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
-              aria-label="Previous image"
-            >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-          )}
-
-          {/* Lightbox right arrow */}
-          {total > 1 && (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                goNext();
-              }}
-              className="absolute right-4 top-1/2 z-[71] flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
-              aria-label="Next image"
-            >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          )}
-
-          {/* Full-resolution media */}
-          <div
-            className="relative h-[85vh] w-[90vw] max-w-5xl"
-            onClick={(e) => e.stopPropagation()}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-          >
-            {media[active]?.type === "video" ? (
-              <video
-                src={media[active]?.src}
-                autoPlay
-                loop
-                playsInline
-                controls
-                className="h-full w-full object-contain"
-              />
-            ) : (
-              <Image
-                src={media[active]?.src || ""}
-                alt={media[active]?.alt || `Whiskcam Original - Image ${active + 1}`}
-                fill
-                className="object-contain"
-                sizes="90vw"
-                priority
-              />
-            )}
-          </div>
-
-          {/* Image counter */}
-          {total > 1 && (
-            <div className="absolute bottom-4 left-1/2 z-[71] -translate-x-1/2 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/80 backdrop-blur-sm">
-              {active + 1} / {total}
-            </div>
-          )}
         </div>
       )}
     </div>
