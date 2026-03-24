@@ -9,7 +9,7 @@ import { AddToCart } from "components/cart/add-to-cart";
 import { formatPrice, computeDiscount } from "lib/format";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useLayoutEffect, useCallback, useRef } from "react";
 import type { Product } from "lib/shopify/types";
 
 const FALLBACK_IMAGES = [
@@ -344,15 +344,20 @@ function InfographicThumbnail() {
 
 // ─── Product Gallery ──────────────────────────────────────────────────────────
 
+// Peek geometry (mobile only):
+//   slideW  = containerWidth - PEEK_PX - GAP_PX
+//   trackX  = -(active × (slideW + GAP_PX))
+// At containerWidth=390: slideW=362, step=370 → 20px of next slide visible ✓
+const PEEK_PX = 20;
+const GAP_PX = 8;
+// Per NNGroup: users stop after 3–4 swipes → cap the sequence at 7 slides.
+const MAX_SLIDES = 7;
+
 function ProductGallery({ images }: { images: { src: string; alt: string }[] }) {
-  // Conversion-optimised media sequence:
-  //  [0–1]  First two Shopify images (hero + first lifestyle)
-  //  [2]    Unboxing video — early placement maximises engagement
-  //  [3–4]  Next two Shopify images
-  //  [5]    Features infographic custom slide
-  //  [6+]   Remaining Shopify images (includes box-contents shot)
   const imgMedia = images.map((img) => ({ type: "image" as const, ...img }));
-  const media: MediaItem[] = [
+
+  // Conversion-optimised media sequence, capped at MAX_SLIDES
+  const allMedia: MediaItem[] = [
     ...imgMedia.slice(0, 2),
     {
       type: "video",
@@ -367,19 +372,57 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
     },
     ...imgMedia.slice(4),
   ];
+  const media = allMedia.slice(0, MAX_SLIDES);
 
+  // ── State & refs ────────────────────────────────────────────────────────────
   const [active, setActive] = useState(0);
+  const [containerWidth, setContainerWidth] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const thumbnailStripRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null);
-  const thumbnailStripRef = useRef<HTMLDivElement>(null);
 
   const total = media.length;
-  const current = media[active];
 
-  const goNext = useCallback(() => setActive((p) => (p + 1) % total), [total]);
-  const goPrev = useCallback(() => setActive((p) => (p - 1 + total) % total), [total]);
+  // ── Detect mobile breakpoint (lg = 1024px) ──────────────────────────────────
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 1023px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
-  // Auto-scroll the active thumbnail into view on desktop
+  // ── Measure container width (useLayoutEffect = no flash) ────────────────────
+  useLayoutEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    setContainerWidth(el.offsetWidth);
+    const ro = new ResizeObserver(() => setContainerWidth(el.offsetWidth));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  // ── Derived geometry ────────────────────────────────────────────────────────
+  // On mobile: each slide is narrower than the container so the next peeks.
+  // On desktop: slide fills the full container width (no peek).
+  const slideW =
+    containerWidth > 0
+      ? isMobile
+        ? containerWidth - PEEK_PX - GAP_PX
+        : containerWidth
+      : 0;
+  const trackX = slideW > 0 ? -(active * (slideW + GAP_PX)) : 0;
+
+  // ── Navigation — clamped (linear, not wrapping) ──────────────────────────────
+  const goNext = useCallback(
+    () => setActive((p) => Math.min(p + 1, total - 1)),
+    [total]
+  );
+  const goPrev = useCallback(() => setActive((p) => Math.max(p - 1, 0)), []);
+
+  // Auto-scroll the active thumbnail into view
   useEffect(() => {
     const strip = thumbnailStripRef.current;
     if (!strip) return;
@@ -397,7 +440,7 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
     return () => window.removeEventListener("keydown", onKey);
   }, [goNext, goPrev]);
 
-  // Touch swipe — only trigger when gesture is clearly horizontal
+  // Touch swipe — only fire when gesture is clearly horizontal
   function handleTouchStart(e: React.TouchEvent) {
     touchStartX.current = e.touches[0]?.clientX ?? null;
     touchStartY.current = e.touches[0]?.clientY ?? null;
@@ -419,62 +462,125 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
   const mediaKey = (item: MediaItem) =>
     item.type === "infographic" ? "slide-infographic" : item.src;
 
+  // Track total width (last slide has no trailing gap)
+  const trackWidth =
+    slideW > 0 ? total * slideW + (total - 1) * GAP_PX : undefined;
+
   return (
     <div className="w-full select-none">
       {/* ── Main viewport ─────────────────────────────────────────────────── */}
       <div
+        ref={containerRef}
         className={[
           "group relative aspect-square overflow-hidden rounded-2xl bg-wk-grey-50",
-          current?.type === "image" ? "lg:cursor-zoom-in" : "",
+          // zoom-on-hover only when the active slide is an image, desktop only
+          media[active]?.type === "image" ? "lg:cursor-zoom-in" : "",
         ].join(" ")}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
         role="region"
         aria-label={`Product gallery, slide ${active + 1} of ${total}`}
       >
-        {/* Media */}
-        {current?.type === "video" ? (
-          <video
-            key={current.src}
-            src={current.src}
-            poster={current.poster}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="h-full w-full object-cover"
-            onClick={(e) => {
-              const v = e.currentTarget;
-              v.muted = false;
-              v.paused ? v.play() : v.pause();
-            }}
-          />
-        ) : current?.type === "infographic" ? (
-          <FeaturesInfographicSlide />
-        ) : (
-          <Image
-            src={current?.src || ""}
-            alt={current?.alt || `Whiskcam Original – Image ${active + 1}`}
-            fill
-            // Desktop hover zoom — CSS scale inside overflow:hidden, no lightbox
-            className="object-cover transition-transform duration-500 ease-out lg:group-hover:scale-110"
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            priority={active === 0}
-          />
+        {/* ── Horizontal sliding track ──────────────────────────────────── */}
+        <div
+          className="absolute top-0 left-0 bottom-0 flex"
+          style={{
+            width: trackWidth ? `${trackWidth}px` : "100%",
+            gap: `${GAP_PX}px`,
+            transform: `translateX(${trackX}px)`,
+            transition: "transform 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+            willChange: "transform",
+          }}
+        >
+          {media.map((item, i) => (
+            <div
+              key={mediaKey(item)}
+              className="relative flex-none overflow-hidden"
+              style={{
+                width: slideW > 0 ? `${slideW}px` : "100%",
+                height: "100%",
+                borderRadius: "1rem",
+              }}
+            >
+              {item.type === "video" ? (
+                <video
+                  src={item.src}
+                  poster={item.poster}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="h-full w-full object-cover"
+                  onClick={(e) => {
+                    const v = e.currentTarget;
+                    v.muted = false;
+                    v.paused ? v.play() : v.pause();
+                  }}
+                />
+              ) : item.type === "infographic" ? (
+                <FeaturesInfographicSlide />
+              ) : (
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  className={[
+                    "object-cover",
+                    // Zoom only on the active image slide, desktop hover
+                    i === active ? "transition-transform duration-500 ease-out lg:group-hover:scale-110" : "",
+                  ].join(" ")}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  priority={i === 0}
+                  loading={i === 0 ? undefined : "lazy"}
+                />
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* ── Instagram Stories-style progress bar (mobile only) ────────── */}
+        {total > 1 && (
+          <div
+            className="pointer-events-none absolute top-0 left-0 right-0 z-20 flex gap-1 px-3 pt-3 pr-12 lg:hidden"
+            aria-hidden="true"
+          >
+            {media.map((_, i) => (
+              <div
+                key={i}
+                className={[
+                  "h-[3px] flex-1 rounded-full transition-colors duration-300",
+                  i < active
+                    ? "bg-white/80"
+                    : i === active
+                    ? "bg-wk-amber"
+                    : "bg-white/25",
+                ].join(" ")}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* ── Slide counter "1 / N" (mobile only, top-right) ─────────────── */}
+        {total > 1 && (
+          <div className="pointer-events-none absolute right-3 top-2.5 z-20 lg:hidden">
+            <span className="rounded-full bg-black/50 px-2 py-0.5 text-[11px] font-medium text-white backdrop-blur-sm">
+              {active + 1}/{total}
+            </span>
+          </div>
         )}
 
         {/* ── First-slide overlays ─────────────────────────────────────────── */}
         {active === 0 && (
           <>
-            {/* Best-Seller badge — top-left */}
-            <div className="pointer-events-none absolute left-3 top-3 z-10">
+            {/* Best-Seller badge — top-left, below story bar on mobile */}
+            <div className="pointer-events-none absolute left-3 z-20 top-8 lg:top-3">
               <span className="inline-flex items-center rounded-full bg-wk-amber px-2.5 py-1 text-[11px] font-bold text-white shadow-md ring-1 ring-white/20">
                 Best-Seller
               </span>
             </div>
 
             {/* Social proof pill — bottom-centre */}
-            <div className="pointer-events-none absolute bottom-4 left-1/2 z-10 -translate-x-1/2">
+            <div className="pointer-events-none absolute bottom-4 left-1/2 z-20 -translate-x-1/2">
               <div className="flex items-center gap-1.5 rounded-full bg-black/65 px-3 py-1.5 shadow-lg backdrop-blur-sm">
                 <span className="text-xs text-yellow-400">★★★★★</span>
                 <span className="whitespace-nowrap text-[11px] font-medium text-white">
@@ -493,7 +599,8 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
                 e.stopPropagation();
                 goPrev();
               }}
-              className="absolute left-2 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white opacity-70 backdrop-blur-sm transition-all duration-200 hover:bg-black/50 lg:opacity-0 lg:group-hover:opacity-100"
+              disabled={active === 0}
+              className="absolute left-2 top-1/2 z-30 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white opacity-70 backdrop-blur-sm transition-all duration-200 hover:bg-black/50 disabled:opacity-20 lg:opacity-0 lg:group-hover:opacity-100"
               aria-label="Previous image"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -505,7 +612,8 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
                 e.stopPropagation();
                 goNext();
               }}
-              className="absolute right-2 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white opacity-70 backdrop-blur-sm transition-all duration-200 hover:bg-black/50 lg:opacity-0 lg:group-hover:opacity-100"
+              disabled={active === total - 1}
+              className="absolute right-2 top-1/2 z-30 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/30 text-white opacity-70 backdrop-blur-sm transition-all duration-200 hover:bg-black/50 disabled:opacity-20 lg:opacity-0 lg:group-hover:opacity-100"
               aria-label="Next image"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -516,28 +624,11 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
         )}
       </div>
 
-      {/* ── Mobile: pill-progress dots ─────────────────────────────────────── */}
-      {total > 1 && (
-        <div className="mt-3 flex items-center justify-center gap-1.5 lg:hidden">
-          {media.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setActive(i)}
-              aria-label={`Go to slide ${i + 1}`}
-              className={[
-                "h-2 rounded-full transition-all duration-300",
-                i === active ? "w-6 bg-wk-amber" : "w-2 bg-wk-grey-300",
-              ].join(" ")}
-            />
-          ))}
-        </div>
-      )}
-
-      {/* ── Desktop: scrollable thumbnail strip ───────────────────────────── */}
+      {/* ── Thumbnail strip (mobile + desktop) ───────────────────────────── */}
       {total > 1 && (
         <div
           ref={thumbnailStripRef}
-          className="mt-3 hidden gap-2 overflow-x-auto scroll-smooth pb-1 scrollbar-hide lg:flex"
+          className="mt-3 flex gap-2 overflow-x-auto scroll-smooth pb-1 scrollbar-hide"
         >
           {media.map((item, i) => (
             <button
