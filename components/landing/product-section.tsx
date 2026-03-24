@@ -6,8 +6,8 @@ import { SectionHeading } from "components/ui/section-heading";
 import { AnimatedElement } from "components/ui/animated-element";
 import { Badge } from "components/ui/badge";
 import { AddToCart } from "components/cart/add-to-cart";
-import { BOX_CONTENTS } from "lib/content";
 import { formatPrice, computeDiscount } from "lib/format";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useState, useEffect, useCallback, useRef } from "react";
 import type { Product } from "lib/shopify/types";
@@ -21,7 +21,10 @@ const FALLBACK_IMAGES = [
   { src: "/images/lifestyle/wk-cat-outdoor.webp", alt: "Whiskcam on grass outdoors" },
 ];
 
+const BOX_COUNT = 6;
+
 export function ProductSection({ product }: { product?: Product }) {
+  const t = useTranslations("product");
   const images = product
     ? product.images.map((img) => ({ src: img.url, alt: img.altText }))
     : FALLBACK_IMAGES;
@@ -57,9 +60,9 @@ export function ProductSection({ product }: { product?: Product }) {
   return (
     <SectionWrapper bg="white" id="product">
       <SectionHeading
-        overline="Shop"
-        title="Whiskcam Original"
-        subtitle="Everything you need to see your pet's secret world."
+        overline={t("overline")}
+        title={t("title")}
+        subtitle={t("subtitle")}
       />
 
       <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-14">
@@ -73,9 +76,9 @@ export function ProductSection({ product }: { product?: Product }) {
           <div className="lg:sticky lg:top-24">
             {/* Badges */}
             <div className="flex flex-wrap gap-1.5">
-              <Badge variant="amber">Best Seller</Badge>
-              <Badge variant="outline">1080P Full HD</Badge>
-              <Badge variant="outline">No App</Badge>
+              <Badge variant="amber">{t("badgeBestSeller")}</Badge>
+              <Badge variant="outline">{t("badge1080p")}</Badge>
+              <Badge variant="outline">{t("badgeNoApp")}</Badge>
             </div>
 
             {/* Title */}
@@ -105,22 +108,17 @@ export function ProductSection({ product }: { product?: Product }) {
                   </svg>
                 ))}
               </div>
-              <span className="text-xs text-wk-grey-500">500+ pet parents</span>
+              <span className="text-xs text-wk-grey-500">{t("reviews")}</span>
             </div>
 
             {/* Key benefits */}
             <ul className="mt-5 space-y-2">
-              {[
-                "1080P Full HD — 170° wide-angle lens",
-                "Ultra-light 26g — cats forget it's there",
-                "No app, no WiFi — press record & go",
-                "90 min battery — USB-C fast charge",
-              ].map((b) => (
-                <li key={b} className="flex items-start gap-2 text-sm text-wk-grey-600">
+              {([0, 1, 2, 3] as const).map((i) => (
+                <li key={i} className="flex items-start gap-2 text-sm text-wk-grey-600">
                   <svg className="mt-0.5 h-4 w-4 flex-none text-wk-amber" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                  <span>{b}</span>
+                  <span>{t(`keyBenefits.${i}`)}</span>
                 </li>
               ))}
             </ul>
@@ -128,7 +126,7 @@ export function ProductSection({ product }: { product?: Product }) {
             {/* Free Gifts */}
             <div className="mt-6 rounded-xl border border-wk-amber/20 bg-wk-amber/5 p-4">
               <p className="text-xs uppercase tracking-wide font-bold text-wk-amber">
-                Free Gifts With Your Order
+                {t("freeGiftsLabel")}
               </p>
               <div className="mt-3 space-y-3">
                 {/* MicroSD */}
@@ -137,10 +135,10 @@ export function ProductSection({ product }: { product?: Product }) {
                     <Image src="/images/product/gift-microsd.webp" alt="32GB MicroSD Card" fill className="object-cover" sizes="48px" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-wk-black">32GB MicroSD Card</p>
-                    <p className="text-xs text-wk-grey-400">Pre-installed, ready to record</p>
+                    <p className="text-sm font-medium text-wk-black">{t("microsdName")}</p>
+                    <p className="text-xs text-wk-grey-400">{t("microsdDetail")}</p>
                   </div>
-                  <span className="text-xs font-bold text-wk-green">FREE</span>
+                  <span className="text-xs font-bold text-wk-green">{t("free")}</span>
                 </div>
                 {/* Adapter */}
                 <div className="flex items-center gap-3">
@@ -148,10 +146,10 @@ export function ProductSection({ product }: { product?: Product }) {
                     <Image src="/images/product/gift-adapter.webp" alt="USB-C Adapter" fill className="object-cover" sizes="48px" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-wk-black">USB-C/Lightning Adapter</p>
-                    <p className="text-xs text-wk-grey-400">View footage on your phone</p>
+                    <p className="text-sm font-medium text-wk-black">{t("adapterName")}</p>
+                    <p className="text-xs text-wk-grey-400">{t("adapterDetail")}</p>
                   </div>
-                  <span className="text-xs font-bold text-wk-green">FREE</span>
+                  <span className="text-xs font-bold text-wk-green">{t("free")}</span>
                 </div>
                 {/* Shipping */}
                 <div className="flex items-center gap-3">
@@ -161,21 +159,21 @@ export function ProductSection({ product }: { product?: Product }) {
                     </svg>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-wk-black">Free Worldwide Shipping</p>
-                    <p className="text-xs text-wk-grey-400">7-14 business days</p>
+                    <p className="text-sm font-medium text-wk-black">{t("shippingName")}</p>
+                    <p className="text-xs text-wk-grey-400">{t("shippingDetail")}</p>
                   </div>
-                  <span className="text-xs font-bold text-wk-green">FREE</span>
+                  <span className="text-xs font-bold text-wk-green">{t("free")}</span>
                 </div>
               </div>
               <div className="mt-3 border-t border-wk-amber/20 pt-3 space-y-1">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="font-semibold text-wk-grey-600">Total value</span>
+                  <span className="font-semibold text-wk-grey-600">{t("totalValue")}</span>
                   <span className="font-semibold text-wk-grey-600 line-through">
                     {compareAtPriceFormatted || formatPrice("89.90", cc)}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-lg font-bold text-wk-black">You pay</span>
+                  <span className="text-lg font-bold text-wk-black">{t("youPay")}</span>
                   <span className="text-lg font-bold text-wk-black">{price}</span>
                 </div>
               </div>
@@ -187,26 +185,26 @@ export function ProductSection({ product }: { product?: Product }) {
                 <AddToCart product={product} />
               ) : (
                 <div className="rounded-[var(--radius-btn)] bg-wk-grey-100 p-4 text-center text-sm text-wk-grey-500">
-                  Connect Shopify to enable Add to Cart
+                  {t("atcFallback")}
                 </div>
               )}
               <p className="mt-2.5 text-xs text-wk-grey-400">
-                Free shipping &middot; 30-day money back
+                {t("freeShippingMoneyBack")}
               </p>
             </div>
 
             {/* Trust badges */}
             <div className="mt-5 grid grid-cols-3 gap-2 border-t border-wk-grey-100 pt-5">
               {[
-                { label: "Free Shipping", icon: "M1 3h15v13H1zM16 8h4l3 3v5h-7V8zM5.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM18.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" },
-                { label: "30-Day Return", icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" },
-                { label: "Secure Pay", icon: "M3 11h18v11H3zM7 11V7a5 5 0 0110 0v4" },
+                { labelKey: "trustShipping" as const, icon: "M1 3h15v13H1zM16 8h4l3 3v5h-7V8zM5.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM18.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" },
+                { labelKey: "trustReturn" as const, icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" },
+                { labelKey: "trustSecure" as const, icon: "M3 11h18v11H3zM7 11V7a5 5 0 0110 0v4" },
               ].map((b) => (
-                <div key={b.label} className="flex flex-col items-center gap-1 text-center">
+                <div key={b.labelKey} className="flex flex-col items-center gap-1 text-center">
                   <svg className="h-4 w-4 text-wk-grey-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d={b.icon} />
                   </svg>
-                  <span className="text-[10px] font-medium text-wk-grey-500 sm:text-xs">{b.label}</span>
+                  <span className="text-[10px] font-medium text-wk-grey-500 sm:text-xs">{t(b.labelKey)}</span>
                 </div>
               ))}
             </div>
@@ -255,14 +253,14 @@ export function ProductSection({ product }: { product?: Product }) {
 
             {/* What's in the box */}
             <div className="mt-5 rounded-xl border border-wk-grey-200 p-4">
-              <p className="mb-2.5 text-sm font-semibold text-wk-black">What&apos;s in the box</p>
+              <p className="mb-2.5 text-sm font-semibold text-wk-black">{t("boxContentsLabel")}</p>
               <ul className="space-y-1.5">
-                {BOX_CONTENTS.map((item) => (
-                  <li key={item.item} className="flex items-start gap-2 text-sm">
+                {Array.from({ length: BOX_COUNT }, (_, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm">
                     <div className="mt-1.5 h-1 w-1 flex-none rounded-full bg-wk-amber" />
                     <div className="min-w-0">
-                      <span className="font-medium text-wk-black">{item.item}</span>
-                      <span className="text-wk-grey-400"> — {item.detail}</span>
+                      <span className="font-medium text-wk-black">{t(`boxContents.${i}.item` as `boxContents.${0 | 1 | 2 | 3 | 4 | 5}.item`)}</span>
+                      <span className="text-wk-grey-400"> — {t(`boxContents.${i}.detail` as `boxContents.${0 | 1 | 2 | 3 | 4 | 5}.detail`)}</span>
                     </div>
                   </li>
                 ))}

@@ -5,6 +5,7 @@ import { SectionHeading } from "components/ui/section-heading";
 import { AnimatedElement } from "components/ui/animated-element";
 import Image from "next/image";
 import { useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 
 /* ------------------------------------------------------------------ */
 /*  SVG icons (inline, no external lib)                               */
@@ -36,6 +37,7 @@ function VerifiedBadge({ className }: { className?: string }) {
 /*  VideoShowcase Section                                             */
 /* ================================================================== */
 export function VideoShowcase() {
+  const t = useTranslations("videoShowcase");
   const [paused, setPaused] = useState(false);
 
   // Duplicate videos for seamless infinite loop
@@ -45,9 +47,9 @@ export function VideoShowcase() {
     <section className="bg-wk-dark py-16 md:py-24" id="footage">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          overline="Real footage"
-          title="What Your Cat Actually Does"
-          subtitle="Unedited clips from cats wearing Whiskcam. Swipe to explore."
+          overline={t("overline")}
+          title={t("title")}
+          subtitle={t("subtitle")}
           light
         />
 
@@ -70,7 +72,13 @@ export function VideoShowcase() {
             }}
           >
             {allVideos.map((video, i) => (
-              <ReelCard key={`${video.src}-${i}`} video={video} />
+              <ReelCard
+                key={`${video.src}-${i}`}
+                video={video}
+                title={t(`videos.${i % VIDEOS.length}` as `videos.${0 | 1 | 2 | 3 | 4 | 5 | 6}`)}
+                playLabel={t("play")}
+                pauseLabel={t("pause")}
+              />
             ))}
           </div>
         </div>
@@ -89,7 +97,7 @@ export function VideoShowcase() {
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 to-transparent p-2.5 pt-8">
                   <p className="text-xs font-medium text-white">
-                    {img.caption}
+                    {t(`povCaptions.${i}` as `povCaptions.${0 | 1 | 2 | 3 | 4 | 5 | 6 | 7}`)}
                   </p>
                 </div>
               </div>
@@ -106,8 +114,14 @@ export function VideoShowcase() {
 /* ================================================================== */
 function ReelCard({
   video,
+  title,
+  playLabel,
+  pauseLabel,
 }: {
-  video: { src: string; title: string; duration: string; poster: string };
+  video: { src: string; duration: string; poster: string };
+  title: string;
+  playLabel: string;
+  pauseLabel: string;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
@@ -126,9 +140,7 @@ function ReelCard({
     <div className="w-52 flex-none md:w-60">
       <div
         role="button"
-        aria-label={
-          playing ? `Pause ${video.title}` : `Play ${video.title}`
-        }
+        aria-label={playing ? `${pauseLabel} ${title}` : `${playLabel} ${title}`}
         tabIndex={0}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
@@ -178,7 +190,7 @@ function ReelCard({
           </div>
           {/* Video title */}
           <p className="mt-0.5 text-[11px] leading-snug text-white/70 drop-shadow-md">
-            {video.title}
+            {title}
           </p>
         </div>
 

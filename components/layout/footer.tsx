@@ -1,31 +1,33 @@
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 
-const footerLinks = {
-  shop: [
-    { title: "Whiskcam Original", path: "/#product" },
-    { title: "What Is Whiskcam?", path: "/what-is-whiskcam" },
-  ],
-  learn: [
-    { title: "Best Cat Collar Cameras 2026", path: "/blog/best-cat-collar-cameras-2026" },
-    { title: "Are Cat Cameras Safe?", path: "/blog/are-cat-collar-cameras-safe" },
-    { title: "All Articles", path: "/blog" },
-  ],
-  support: [
-    { title: "FAQ", path: "/#faq" },
-    { title: "Track My Order", path: "/track" },
-    { title: "Shipping", path: "/policies/shipping" },
-    { title: "Returns", path: "/policies/returns" },
-    { title: "Contact", path: "mailto:support@whiskcam.com" },
-  ],
-  legal: [
-    { title: "Privacy Policy", path: "/policies/privacy" },
-    { title: "Terms of Service", path: "/policies/terms" },
-  ],
-};
-
-export default function Footer() {
+export default async function Footer() {
+  const t = await getTranslations("footer");
   const currentYear = new Date().getFullYear();
+
+  const footerLinks = {
+    shop: [
+      { title: t("links.whiskcamOriginal"), path: "/#product" },
+      { title: t("links.whatIsWhiskcam"), path: "/what-is-whiskcam" },
+    ],
+    learn: [
+      { title: t("links.blogBestCameras"), path: "/blog/best-cat-collar-cameras-2026" },
+      { title: t("links.blogSafe"), path: "/blog/are-cat-collar-cameras-safe" },
+      { title: t("links.allArticles"), path: "/blog" },
+    ],
+    support: [
+      { title: t("links.faq"), path: "/#faq" },
+      { title: t("links.trackOrder"), path: "/track" },
+      { title: t("links.shipping"), path: "/policies/shipping" },
+      { title: t("links.returns"), path: "/policies/returns" },
+      { title: t("links.contact"), path: "mailto:support@whiskcam.com" },
+    ],
+    legal: [
+      { title: t("links.privacy"), path: "/policies/privacy" },
+      { title: t("links.terms"), path: "/policies/terms" },
+    ],
+  };
 
   return (
     <footer className="bg-wk-dark text-white">
@@ -43,8 +45,7 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-wk-grey-500">
-              See their world. The pet collar camera that lets you discover your
-              pet&apos;s secret adventures.
+              {t("tagline")}
             </p>
             {/* Social */}
             <div className="mt-6 flex gap-4">
@@ -76,7 +77,7 @@ export default function Footer() {
           {/* Shop */}
           <div>
             <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.08em] text-wk-grey-500">
-              Shop
+              {t("shopHeading")}
             </h3>
             <ul className="space-y-3">
               {footerLinks.shop.map((link) => (
@@ -95,7 +96,7 @@ export default function Footer() {
           {/* Learn */}
           <div>
             <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.08em] text-wk-grey-500">
-              Learn
+              {t("learnHeading")}
             </h3>
             <ul className="space-y-3">
               {footerLinks.learn.map((link) => (
@@ -114,7 +115,7 @@ export default function Footer() {
           {/* Support */}
           <div>
             <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.08em] text-wk-grey-500">
-              Support
+              {t("supportHeading")}
             </h3>
             <ul className="space-y-3">
               {footerLinks.support.map((link) => (
@@ -133,7 +134,7 @@ export default function Footer() {
           {/* Legal */}
           <div>
             <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.08em] text-wk-grey-500">
-              Legal
+              {t("legalHeading")}
             </h3>
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
@@ -153,10 +154,10 @@ export default function Footer() {
         {/* Trust badges */}
         <div className="mt-12 grid grid-cols-2 gap-6 border-t border-white/10 pt-8 md:grid-cols-4">
           {[
-            { label: "Free Worldwide Shipping", icon: "M1 3h15v13H1zM16 8h4l3 3v5h-7V8zM5.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM18.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" },
-            { label: "30-Day Money Back", icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" },
-            { label: "Secure Checkout", icon: "M3 11h18v11H3zM7 11V7a5 5 0 0110 0v4" },
-            { label: "Pet-Safe Design", icon: "M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" },
+            { label: t("trustShipping"), icon: "M1 3h15v13H1zM16 8h4l3 3v5h-7V8zM5.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM18.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" },
+            { label: t("trustReturns"), icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" },
+            { label: t("trustSecure"), icon: "M3 11h18v11H3zM7 11V7a5 5 0 0110 0v4" },
+            { label: t("trustPetSafe"), icon: "M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" },
           ].map((badge) => (
             <div key={badge.label} className="flex flex-col items-center text-center">
               <svg className="mb-2 h-6 w-6 text-wk-grey-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -192,7 +193,7 @@ export default function Footer() {
           </div>
 
           <p className="text-xs text-wk-grey-600">
-            &copy; {currentYear} Whiskcam. All rights reserved.
+            {t("copyright", { year: currentYear })}
           </p>
         </div>
       </div>

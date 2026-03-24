@@ -6,9 +6,11 @@ import { motion } from "framer-motion";
 import { formatPrice } from "lib/format";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import type { Product } from "lib/shopify/types";
 
 export function HeroSection({ product }: { product?: Product }) {
+  const t = useTranslations("hero");
   const [videoReady, setVideoReady] = useState(false);
   const videoReadyRef = useRef(false);
 
@@ -73,7 +75,7 @@ export function HeroSection({ product }: { product?: Product }) {
           transition={{ duration: 0.4, delay: 0.1 }}
           className="text-[11px] font-semibold uppercase tracking-[0.15em] text-wk-amber sm:text-xs"
         >
-          {HERO_CONTENT.tagline}
+          {t("tagline")}
         </motion.p>
 
         <motion.h1
@@ -82,7 +84,7 @@ export function HeroSection({ product }: { product?: Product }) {
           transition={{ duration: 0.4, delay: 0.2 }}
           className="mt-3 text-[clamp(2rem,8vw,5rem)] font-bold leading-[1.05] tracking-tight text-white sm:mt-4"
         >
-          {HERO_CONTENT.title}
+          {t("title")}
         </motion.h1>
 
         <motion.p
@@ -91,7 +93,7 @@ export function HeroSection({ product }: { product?: Product }) {
           transition={{ duration: 0.4, delay: 0.3 }}
           className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-white/70 sm:mt-5 sm:text-lg"
         >
-          {HERO_CONTENT.subtitle}
+          {t("subtitle")}
         </motion.p>
 
         <motion.div
@@ -101,9 +103,9 @@ export function HeroSection({ product }: { product?: Product }) {
           className="mt-7 flex flex-col items-center gap-3 sm:mt-8"
         >
           <Button size="lg" onClick={scrollToProduct} className="w-full sm:w-auto">
-            Get Yours — {price}
+            {t("ctaButton")} — {price}
           </Button>
-          <span className="text-xs text-white/50 sm:text-sm">Free worldwide shipping</span>
+          <span className="text-xs text-white/50 sm:text-sm">{t("ctaSubtext")}</span>
         </motion.div>
 
         {/* Trust */}
@@ -120,7 +122,7 @@ export function HeroSection({ product }: { product?: Product }) {
               </svg>
             ))}
           </div>
-          <span className="text-xs text-white/50 sm:text-sm">{HERO_CONTENT.trust}</span>
+          <span className="text-xs text-white/50 sm:text-sm">{t("trust")}</span>
         </motion.div>
       </div>
 

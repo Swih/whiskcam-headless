@@ -13,6 +13,7 @@ import { useCart } from "./cart-context";
 import { DeleteItemButton } from "./delete-item-button";
 import { EditItemQuantityButton } from "./edit-item-quantity-button";
 import OpenCart from "./open-cart";
+import { useTranslations } from "next-intl";
 
 const FREE_GIFTS = [
   { name: "32GB MicroSD Card", value: "12.90", image: "/images/product/gift-microsd.webp" },
@@ -20,6 +21,7 @@ const FREE_GIFTS = [
 ];
 
 export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCode }: { savingsPerUnit?: number; currencyCode?: string }) {
+  const t = useTranslations("cart");
   const { cart, updateCartItem } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const quantityRef = useRef(cart?.totalQuantity);
@@ -51,7 +53,7 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
 
   return (
     <>
-      <button aria-label="Open cart" onClick={openCart}>
+      <button aria-label={t("title")} onClick={openCart}>
         <OpenCart quantity={cart?.totalQuantity} />
       </button>
       <Transition show={isOpen}>
@@ -82,7 +84,7 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
               <div className="flex items-center justify-between border-b border-wk-grey-100 px-5 py-4">
                 <div className="flex items-center gap-2">
                   <ShoppingCartIcon className="h-5 w-5 text-wk-black" />
-                  <p className="text-base font-semibold">Your Cart</p>
+                  <p className="text-base font-semibold">{t("title")}</p>
                   {hasItems && (
                     <span className="flex h-5 w-5 items-center justify-center rounded-full bg-wk-black text-[10px] font-bold text-white">
                       {cart.totalQuantity}
@@ -104,13 +106,13 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
                   <div className="flex h-20 w-20 items-center justify-center rounded-full bg-wk-grey-50">
                     <ShoppingCartIcon className="h-10 w-10 text-wk-grey-300" />
                   </div>
-                  <p className="mt-4 text-lg font-semibold">Your cart is empty</p>
-                  <p className="mt-1 text-sm text-wk-grey-500">Add Whiskcam to get started</p>
+                  <p className="mt-4 text-lg font-semibold">{t("empty")}</p>
+                  <p className="mt-1 text-sm text-wk-grey-500">{t("emptySubtext")}</p>
                   <button
                     onClick={closeCart}
                     className="mt-6 rounded-[var(--radius-btn)] bg-wk-black px-8 py-3 text-sm font-semibold text-white transition-all hover:brightness-110 hover:shadow-[0_0_15px_rgba(245,166,35,0.3)]"
                   >
-                    Continue Shopping
+                    {t("startShopping")}
                   </button>
                 </div>
               ) : (
@@ -122,7 +124,7 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                       <p className="text-xs font-semibold text-wk-green">
-                        You qualify for FREE worldwide shipping!
+                        {t("freeShippingBanner")}
                       </p>
                     </div>
                   </div>
@@ -201,7 +203,7 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
                     {/* Free gifts */}
                     <div className="border-t border-wk-grey-100 py-4">
                       <p className="mb-3 text-xs font-bold uppercase tracking-wider text-wk-amber">
-                        🎁 Free gifts included
+                        {t("freeGiftsLabel")}
                       </p>
                       {FREE_GIFTS.map((gift) => (
                         <div key={gift.name} className="flex items-center gap-2.5 py-1.5">
@@ -211,7 +213,7 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
                           <div className="flex-1 min-w-0">
                             <p className="text-sm font-medium text-wk-black">{gift.name}</p>
                           </div>
-                          <span className="text-xs font-bold text-wk-green">FREE</span>
+                          <span className="text-xs font-bold text-wk-green">{t("freeLabel")}</span>
                         </div>
                       ))}
                       <div className="flex items-center gap-2.5 py-1.5">
@@ -221,9 +223,9 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
                           </svg>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-wk-black">Free Worldwide Shipping</p>
+                          <p className="text-sm font-medium text-wk-black">{t("freeWorldwideShipping")}</p>
                         </div>
-                        <span className="text-xs font-bold text-wk-green">FREE</span>
+                        <span className="text-xs font-bold text-wk-green">{t("freeLabel")}</span>
                       </div>
                     </div>
                   </div>
@@ -236,13 +238,13 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                       <span className="text-xs font-semibold text-wk-green">
-                        You&apos;re saving {formatPrice(totalSavings.toFixed(2), resolvedCurrency)} on this order
+                        {t("saving", { amount: formatPrice(totalSavings.toFixed(2), resolvedCurrency) })}
                       </span>
                     </div>
 
                     <div className="space-y-1.5 text-sm">
                       <div className="flex items-center justify-between">
-                        <span className="text-wk-grey-500">Subtotal</span>
+                        <span className="text-wk-grey-500">{t("subtotal")}</span>
                         <Price
                           className="font-medium"
                           amount={cart.cost.subtotalAmount.amount}
@@ -250,13 +252,13 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
                         />
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-wk-grey-500">Shipping</span>
-                        <span className="text-xs font-semibold text-wk-green">FREE</span>
+                        <span className="text-wk-grey-500">{t("shipping")}</span>
+                        <span className="text-xs font-semibold text-wk-green">{t("freeLabel")}</span>
                       </div>
                     </div>
 
                     <div className="mt-3 flex items-center justify-between border-t border-wk-grey-200 pt-3">
-                      <span className="text-base font-bold">Total</span>
+                      <span className="text-base font-bold">{t("total")}</span>
                       <Price
                         className="text-lg font-bold"
                         amount={cart.cost.totalAmount.amount}
@@ -273,11 +275,11 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
                     <div className="mt-3 flex items-center justify-center gap-4 text-[10px] text-wk-grey-400">
                       <span className="flex items-center gap-1">
                         <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        Secure checkout
+                        {t("secureCheckout")}
                       </span>
                       <span className="flex items-center gap-1">
                         <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-                        30-day money back
+                        {t("moneyBack")}
                       </span>
                     </div>
                   </div>
@@ -293,6 +295,7 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
 
 function CheckoutButton() {
   const { pending } = useFormStatus();
+  const t = useTranslations("cart");
 
   return (
     <button
@@ -310,7 +313,7 @@ function CheckoutButton() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
         </svg>
       )}
-      {pending ? "Processing..." : "Complete My Order"}
+      {pending ? t("processing") : t("checkout")}
     </button>
   );
 }

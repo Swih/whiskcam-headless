@@ -98,7 +98,13 @@
     "showPhotos": "Show photos",
     "hidePhotos": "Hide photos",
     "prev": "Previous review",
-    "next": "Next review"
+    "next": "Next review",
+    "basedOn": "Based on {count}+ reviews",
+    "readMore": "Read more",
+    "showLess": "Show less",
+    "showAll": "Show all reviews",
+    "showAllCount": "Show all {count} reviews",
+    "trustFooter": "All reviews are from verified customers. Unedited and unfiltered."
   },
   "howItWorks": {
     "overline": "How it works",
@@ -268,7 +274,9 @@
   "cart": {
     "title": "Your Cart",
     "empty": "Your cart is empty.",
-    "startShopping": "Start shopping",
+    "emptySubtext": "Add Whiskcam to get started",
+    "startShopping": "Continue Shopping",
+    "freeShippingBanner": "You qualify for FREE worldwide shipping!",
     "freeGiftsLabel": "🎁 Free gifts included",
     "freeLabel": "FREE",
     "freeWorldwideShipping": "Free Worldwide Shipping",

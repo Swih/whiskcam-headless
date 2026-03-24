@@ -2,6 +2,7 @@ import { FaqAccordion } from "components/landing/faq-accordion";
 import Footer from "components/layout/footer";
 import { FAQ_ITEMS } from "lib/content";
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
   },
 };
 
+// JSON-LD uses English FAQ_ITEMS (SEO structured data, locale-independent)
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -40,7 +42,16 @@ const faqJsonLd = {
   })),
 };
 
-export default function FaqPage() {
+const FAQ_COUNT = 8;
+
+export default async function FaqPage() {
+  const t = await getTranslations("faq");
+
+  const items = Array.from({ length: FAQ_COUNT }, (_, i) => ({
+    question: t(`items.${i}.question` as `items.${0 | 1 | 2 | 3 | 4 | 5 | 6 | 7}.question`),
+    answer: t(`items.${i}.answer` as `items.${0 | 1 | 2 | 3 | 4 | 5 | 6 | 7}.answer`),
+  }));
+
   return (
     <>
       <script
@@ -49,13 +60,13 @@ export default function FaqPage() {
       />
       <div className="mx-auto max-w-3xl px-4 pt-32 pb-16 md:pt-40">
         <h1 className="text-4xl font-bold text-wk-black md:text-5xl">
-          Frequently Asked Questions
+          {t("pageTitle")}
         </h1>
         <p className="mt-4 text-lg text-neutral-600">
-          Everything you need to know about Whiskcam.
+          {t("pageSubtitle")}
         </p>
         <div className="mt-12">
-          <FaqAccordion items={FAQ_ITEMS} />
+          <FaqAccordion items={items} />
         </div>
       </div>
       <Footer />

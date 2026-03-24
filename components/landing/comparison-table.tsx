@@ -4,6 +4,7 @@ import { COMPARISON } from "lib/content";
 import { SectionWrapper } from "components/ui/section-wrapper";
 import { SectionHeading } from "components/ui/section-heading";
 import { AnimatedElement } from "components/ui/animated-element";
+import { useTranslations } from "next-intl";
 
 function CellValue({ value, highlight }: { value: string | boolean; highlight?: boolean }) {
   if (typeof value === "boolean") {
@@ -25,8 +26,10 @@ function CellValue({ value, highlight }: { value: string | boolean; highlight?: 
 }
 
 export function ComparisonTable({ price }: { price?: string }) {
-  const rows = COMPARISON.map((row) => {
-    if (row.feature === "Price" && price) {
+  const t = useTranslations("comparison");
+
+  const rows = COMPARISON.map((row, i) => {
+    if (i === 0 && price) {
       return { ...row, whiskcam: price };
     }
     return row;
@@ -35,9 +38,9 @@ export function ComparisonTable({ price }: { price?: string }) {
   return (
     <SectionWrapper bg="white">
       <SectionHeading
-        overline="Compare"
-        title="Why Pet Parents Choose Whiskcam"
-        subtitle="See how we stack up against other pet cameras."
+        overline={t("overline")}
+        title={t("title")}
+        subtitle={t("subtitle")}
       />
 
       <AnimatedElement>
@@ -46,7 +49,7 @@ export function ComparisonTable({ price }: { price?: string }) {
             <thead>
               <tr className="border-b-2 border-wk-grey-200">
                 <th scope="col" className="px-4 py-4 text-left text-xs font-medium uppercase tracking-wider text-wk-grey-500">
-                  Feature
+                  {t("featureCol")}
                 </th>
                 <th scope="col" className="px-4 py-4 text-center">
                   <span className="rounded-full bg-wk-amber/10 px-3 py-1 text-sm font-bold text-wk-amber">
@@ -54,20 +57,20 @@ export function ComparisonTable({ price }: { price?: string }) {
                   </span>
                 </th>
                 <th scope="col" className="px-4 py-4 text-center text-xs text-wk-grey-400">
-                  Other cameras
+                  {t("othersCol")}
                 </th>
               </tr>
             </thead>
             <tbody>
               {rows.map((row, i) => (
                 <tr
-                  key={row.feature}
+                  key={i}
                   className={`border-b border-wk-grey-100 ${
                     i % 2 === 0 ? "bg-wk-grey-50" : "bg-white"
                   }`}
                 >
                   <td scope="row" className="px-4 py-3.5 text-sm font-medium text-wk-black">
-                    {row.feature}
+                    {t(`features.${i}` as `features.${0 | 1 | 2 | 3 | 4 | 5 | 6}`)}
                   </td>
                   <td className="px-4 py-3.5 text-center">
                     <CellValue value={row.whiskcam} highlight />
@@ -83,7 +86,7 @@ export function ComparisonTable({ price }: { price?: string }) {
 
         {/* Price anchoring */}
         <p className="mx-auto mt-6 max-w-md text-center text-sm text-wk-grey-500">
-          Action cameras cost €300+. Whiskcam was built for pets — not your wallet.
+          {t("footnote")}
         </p>
       </AnimatedElement>
     </SectionWrapper>

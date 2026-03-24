@@ -4,6 +4,7 @@ import { useState } from "react";
 import { SectionWrapper } from "components/ui/section-wrapper";
 import { SectionHeading } from "components/ui/section-heading";
 import { AnimatedElement } from "components/ui/animated-element";
+import { useTranslations } from "next-intl";
 
 /* ------------------------------------------------------------------ */
 /*  Review data                                                       */
@@ -274,13 +275,26 @@ function StarRating({ count, size = "sm" }: { count: number; size?: "sm" | "lg" 
   );
 }
 
-function VerifiedBadge() {
+function VerifiedBadge({ label }: { label: string }) {
   return (
     <span className="inline-flex items-center gap-1 rounded-full bg-wk-green/5 px-2 py-0.5 text-[10px] font-semibold text-wk-green">
       <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
       </svg>
-      Verified Purchase
+      {label}
+    </span>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Small client-component wrappers needing translations             */
+/* ------------------------------------------------------------------ */
+
+function BasedOnLabel({ count }: { count: number }) {
+  const t = useTranslations("reviews");
+  return (
+    <span className="mt-1 text-xs text-wk-grey-400">
+      {t("basedOn", { count })}
     </span>
   );
 }
@@ -299,9 +313,7 @@ function AggregateStats() {
             {STATS.avg}
           </span>
           <StarRating count={Math.round(STATS.avg)} size="lg" />
-          <span className="mt-1 text-xs text-wk-grey-400">
-            Based on {DISPLAYED_REVIEW_COUNT}+ reviews
-          </span>
+          <BasedOnLabel count={DISPLAYED_REVIEW_COUNT} />
         </div>
 
         {/* Distribution bars */}
@@ -369,6 +381,7 @@ function PhotoLightbox({
 /* ------------------------------------------------------------------ */
 
 function ReviewCard({ review, index }: { review: Review; index: number }) {
+  const t = useTranslations("reviews");
   const [expanded, setExpanded] = useState(false);
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
@@ -400,7 +413,7 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
               onClick={() => setExpanded(!expanded)}
               className="mt-1 self-start text-xs font-medium text-wk-amber transition-colors hover:text-wk-amber-hover"
             >
-              {expanded ? "Show less" : "Read more"}
+              {expanded ? t("showLess") : t("readMore")}
             </button>
           )}
 
@@ -431,7 +444,7 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
               <p className="text-sm font-semibold text-wk-black">{review.name}</p>
               <p className="text-[11px] text-wk-grey-400">{review.date}</p>
             </div>
-            {review.verified && <VerifiedBadge />}
+            {review.verified && <VerifiedBadge label={t("verifiedBuyer")} />}
           </div>
         </div>
       </AnimatedElement>
@@ -447,14 +460,15 @@ const MOBILE_INITIAL = 4;
 const DESKTOP_INITIAL = 6;
 
 export function ReviewsSection() {
+  const t = useTranslations("reviews");
   const [showAll, setShowAll] = useState(false);
 
   return (
     <SectionWrapper bg="warm" id="reviews">
       <SectionHeading
-        overline="Reviews"
-        title="What Pet Parents Say"
-        subtitle="Real reviews from real pet owners who use Whiskcam every day."
+        overline={t("overline")}
+        title={t("title")}
+        subtitle={t("subtitle")}
       />
 
       {/* Aggregate stats */}
@@ -484,9 +498,9 @@ export function ReviewsSection() {
               className="inline-flex items-center gap-2 rounded-full border border-wk-grey-200 bg-white px-6 py-2.5 text-sm font-medium text-wk-black shadow-sm transition-all hover:border-wk-grey-300 hover:shadow-md"
             >
               {/* Mobile label */}
-              <span className="sm:hidden">Show all reviews</span>
+              <span className="sm:hidden">{t("showAll")}</span>
               {/* Desktop label */}
-              <span className="hidden sm:inline">Show all {REVIEWS.length} reviews</span>
+              <span className="hidden sm:inline">{t("showAllCount", { count: REVIEWS.length })}</span>
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
               </svg>
@@ -498,7 +512,7 @@ export function ReviewsSection() {
       {/* Trust footer */}
       <AnimatedElement animation="fadeIn" delay={0.3}>
         <p className="mt-8 text-center text-xs text-wk-grey-400">
-          All reviews are from verified customers. Unedited and unfiltered.
+          {t("trustFooter")}
         </p>
       </AnimatedElement>
     </SectionWrapper>

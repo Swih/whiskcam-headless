@@ -4,6 +4,7 @@ import { FEATURES } from "lib/content";
 import { SectionWrapper } from "components/ui/section-wrapper";
 import { SectionHeading } from "components/ui/section-heading";
 import { AnimatedElement } from "components/ui/animated-element";
+import { useTranslations } from "next-intl";
 
 const iconMap: Record<string, React.ReactNode> = {
   camera: (
@@ -27,26 +28,28 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export function FeaturesGrid() {
+  const t = useTranslations("features");
+
   return (
     <SectionWrapper bg="warm">
       <SectionHeading
-        overline="Features"
-        title="Built for Adventures"
-        subtitle="Everything your pet needs to become a filmmaker."
+        overline={t("overline")}
+        title={t("title")}
+        subtitle={t("subtitle")}
       />
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {FEATURES.map((feature, i) => (
-          <AnimatedElement key={feature.title} delay={i * 0.08}>
+          <AnimatedElement key={feature.icon} delay={i * 0.08}>
             <div className="group rounded-[var(--radius-card)] bg-white p-7 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg">
               <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-wk-amber/10 text-wk-amber transition-colors duration-300 group-hover:bg-wk-amber group-hover:text-wk-black">
                 {iconMap[feature.icon]}
               </div>
               <h3 className="mb-2 text-base font-semibold text-wk-black">
-                {feature.title}
+                {t(`items.${i}.title` as `items.${0 | 1 | 2 | 3 | 4 | 5}.title`)}
               </h3>
               <p className="text-sm leading-relaxed text-wk-grey-500">
-                {feature.description}
+                {t(`items.${i}.description` as `items.${0 | 1 | 2 | 3 | 4 | 5}.description`)}
               </p>
             </div>
           </AnimatedElement>
