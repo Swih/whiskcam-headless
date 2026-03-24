@@ -8,6 +8,8 @@ import { Navbar } from "components/layout/navbar";
 import { getCart, getProduct } from "lib/shopify";
 import { computeDiscount, computeSavings } from "lib/format";
 import { PRODUCT_HANDLE } from "lib/content";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from "next-intl/server";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
 import { cookies } from "next/headers";
@@ -57,6 +59,9 @@ export default async function RootLayout({
 }: {
   children: ReactNode;
 }) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   const country = (await cookies()).get("country")?.value || "FR";
   const cart = getCart();
   const product = await getProduct(PRODUCT_HANDLE, country);
@@ -70,7 +75,7 @@ export default async function RootLayout({
   const currencyCode = product?.priceRange.maxVariantPrice.currencyCode || "EUR";
 
   return (
-    <html lang="en" className={dmSans.variable}>
+    <html lang={locale} className={dmSans.variable}>
       <head>
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -79,16 +84,18 @@ export default async function RootLayout({
         <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-wk-amber focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-wk-black">
           Skip to content
         </a>
-        <CartProvider cartPromise={cart}>
-          <AnnouncementBar discount={discount} />
-          <Navbar savingsPerUnit={savingsPerUnit} currencyCode={currencyCode} />
-          <main id="main-content" className="overflow-x-clip">{children}</main>
-          <Toaster closeButton />
-          <EmailPopup />
-          <CookieConsent />
-          <Analytics />
-          <VercelAnalytics />
-        </CartProvider>
+        <NextIntlClientProvider messages={messages} locale={locale}>
+          <CartProvider cartPromise={cart}>
+            <AnnouncementBar discount={discount} />
+            <Navbar savingsPerUnit={savingsPerUnit} currencyCode={currencyCode} />
+            <main id="main-content" className="overflow-x-clip">{children}</main>
+            <Toaster closeButton />
+            <EmailPopup />
+            <CookieConsent />
+            <Analytics />
+            <VercelAnalytics />
+          </CartProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
