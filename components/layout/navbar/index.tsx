@@ -1,18 +1,13 @@
 "use client";
 
 import CartModal from "components/cart/modal";
+import { LanguageSwitcher } from "components/ui/language-switcher";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-
-const NAV_LINKS = [
-  { title: "Shop", path: "#product" },
-  { title: "Footage", path: "#footage" },
-  { title: "FAQ", path: "#faq" },
-  { title: "About", path: "/about" },
-];
 
 interface NavbarProps {
   savingsPerUnit?: number;
@@ -20,10 +15,18 @@ interface NavbarProps {
 }
 
 export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
+  const t = useTranslations("nav");
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+
+  const NAV_LINKS = [
+    { title: t("shop"), path: "#product" },
+    { title: t("footage"), path: "#footage" },
+    { title: t("faq"), path: "#faq" },
+    { title: t("about"), path: "/about" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -34,14 +37,15 @@ export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
 
   const handleNavClick = (path: string) => {
     setMobileOpen(false);
     if (path.startsWith("#")) {
       if (pathname !== "/") {
-        // Navigate to homepage with hash — scroll happens after page load
         router.push("/" + path);
       } else {
         const el = document.querySelector(path);
@@ -66,7 +70,7 @@ export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
           <button
             className="md:hidden"
             onClick={() => setMobileOpen(true)}
-            aria-label="Open menu"
+            aria-label={t("openMenu")}
           >
             <Bars3Icon
               className={`h-6 w-6 transition-colors ${
@@ -130,9 +134,14 @@ export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
             )}
           </ul>
 
-          {/* Cart */}
-          <div className={scrolled ? "text-wk-black" : "text-white"}>
-            <CartModal savingsPerUnit={savingsPerUnit} currencyCode={currencyCode} />
+          {/* Right side: Language switcher + Cart */}
+          <div className="flex items-center gap-3">
+            <div className="hidden md:block">
+              <LanguageSwitcher variant={scrolled ? "light" : "dark"} />
+            </div>
+            <div className={scrolled ? "text-wk-black" : "text-white"}>
+              <CartModal savingsPerUnit={savingsPerUnit} currencyCode={currencyCode} />
+            </div>
           </div>
         </div>
       </nav>
@@ -149,7 +158,7 @@ export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
                 height={30}
               />
             </Link>
-            <button onClick={() => setMobileOpen(false)} aria-label="Close menu">
+            <button onClick={() => setMobileOpen(false)} aria-label={t("closeMenu")}>
               <XMarkIcon className="h-6 w-6 text-wk-black" />
             </button>
           </div>
@@ -174,6 +183,10 @@ export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
                 </Link>
               )
             )}
+            {/* Mobile language switcher */}
+            <div className="mt-6 flex items-center gap-2 border-b border-wk-grey-100 pb-4">
+              <LanguageSwitcher variant="light" />
+            </div>
           </nav>
         </div>
       )}
