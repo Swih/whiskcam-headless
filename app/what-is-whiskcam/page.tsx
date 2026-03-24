@@ -20,6 +20,7 @@ export const metadata: Metadata = {
       "Whiskcam is a 26 g pet collar camera that records 1080P video from your pet's POV. No app required.",
     siteName: "Whiskcam",
     locale: "en_US",
+    alternateLocale: ["fr_FR"],
   },
   twitter: {
     card: "summary_large_image",
@@ -29,6 +30,11 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://whiskcam.com/what-is-whiskcam",
+    languages: {
+      en: "https://whiskcam.com/what-is-whiskcam",
+      fr: "https://whiskcam.com/what-is-whiskcam",
+      "x-default": "https://whiskcam.com/what-is-whiskcam",
+    },
   },
 };
 

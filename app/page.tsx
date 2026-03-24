@@ -16,7 +16,6 @@ import { formatPrice } from "lib/format";
 import { cookies } from "next/headers";
 
 export const metadata = {
-  title: "Whiskcam — Pet Collar Camera | See Their World",
   description:
     "Ever wonder what your cat does when you leave? Whiskcam is a lightweight 1080P pet collar camera with 170° wide angle. No app, no WiFi. Free worldwide shipping.",
   keywords: [
@@ -36,6 +35,7 @@ export const metadata = {
       "The pet collar camera that reveals your pet's secret life. 1080P Full HD, 170° wide angle, ultra-lightweight.",
     siteName: "Whiskcam",
     locale: "en_US",
+    alternateLocale: ["fr_FR"],
   },
   twitter: {
     card: "summary_large_image",
@@ -45,6 +45,11 @@ export const metadata = {
   },
   alternates: {
     canonical: "https://whiskcam.com",
+    languages: {
+      en: "https://whiskcam.com",
+      fr: "https://whiskcam.com",
+      "x-default": "https://whiskcam.com",
+    },
   },
 };
 
@@ -193,6 +198,13 @@ export default async function HomePage() {
 
   return (
     <>
+      {/* Preload hero poster for LCP */}
+      <link
+        rel="preload"
+        href={HERO_CONTENT.posterSrc}
+        as="image"
+        fetchPriority="high"
+      />
       {productJsonLd && (
         <script
           type="application/ld+json"

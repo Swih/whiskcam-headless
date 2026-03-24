@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   keywords: ["Whiskcam", "return policy", "refund", "money-back guarantee"],
   alternates: {
     canonical: "https://whiskcam.com/policies/returns",
+    languages: {
+      en: "https://whiskcam.com/policies/returns",
+      fr: "https://whiskcam.com/policies/returns",
+      "x-default": "https://whiskcam.com/policies/returns",
+    },
   },
   openGraph: {
     title: "Return Policy — Whiskcam",

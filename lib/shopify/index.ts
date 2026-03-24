@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import {
   HIDDEN_PRODUCT_TAG,
   SHOPIFY_GRAPHQL_API_ENDPOINT,
@@ -562,12 +563,36 @@ export async function revalidate(req: NextRequest): Promise<NextResponse> {
     "products/update",
   ];
   const topic = (await headers()).get("x-shopify-topic") || "unknown";
-  const secret = req.nextUrl.searchParams.get("secret");
   const isCollectionUpdate = collectionWebhooks.includes(topic);
   const isProductUpdate = productWebhooks.includes(topic);
 
-  if (!secret || secret !== process.env.SHOPIFY_REVALIDATION_SECRET) {
-    console.error("Invalid revalidation secret.");
+  // Validate Shopify webhook via HMAC signature — secret never exposed in URL
+  const rawBody = await req.text();
+  const shopifyHmac = req.headers.get("x-shopify-hmac-sha256") ?? "";
+  const secret = process.env.SHOPIFY_REVALIDATION_SECRET;
+
+  if (!secret || !shopifyHmac) {
+    console.error("Invalid Shopify webhook: missing HMAC or secret.");
+    return NextResponse.json({ status: 401 });
+  }
+
+  const computedHmac = crypto
+    .createHmac("sha256", secret)
+    .update(rawBody, "utf8")
+    .digest("base64");
+
+  let hmacValid = false;
+  try {
+    hmacValid = crypto.timingSafeEqual(
+      Buffer.from(shopifyHmac),
+      Buffer.from(computedHmac),
+    );
+  } catch {
+    hmacValid = false;
+  }
+
+  if (!hmacValid) {
+    console.error("Invalid Shopify HMAC signature.");
     return NextResponse.json({ status: 401 });
   }
 

@@ -37,7 +37,7 @@ const config: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://*.clarity.ms https://connect.facebook.net https://analytics.tiktok.com https://*.tiktok.com",
+              "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.clarity.ms https://connect.facebook.net https://analytics.tiktok.com https://*.tiktok.com",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: blob: https://cdn.shopify.com https://www.google-analytics.com https://www.facebook.com https://*.clarity.ms https://analytics.tiktok.com https://*.tiktok.com",
               "font-src 'self' data:",

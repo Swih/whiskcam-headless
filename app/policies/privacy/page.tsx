@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   keywords: ["Whiskcam", "privacy policy", "data protection", "GDPR"],
   alternates: {
     canonical: "https://whiskcam.com/policies/privacy",
+    languages: {
+      en: "https://whiskcam.com/policies/privacy",
+      fr: "https://whiskcam.com/policies/privacy",
+      "x-default": "https://whiskcam.com/policies/privacy",
+    },
   },
   openGraph: {
     title: "Privacy Policy — Whiskcam",

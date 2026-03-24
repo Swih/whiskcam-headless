@@ -42,6 +42,7 @@ export async function generateMetadata({
       authors: [article.author],
       siteName: "Whiskcam",
       locale: "en_US",
+      alternateLocale: ["fr_FR"],
     },
     twitter: {
       card: "summary_large_image",
@@ -50,6 +51,11 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: `https://whiskcam.com/blog/${slug}`,
+      languages: {
+        en: `https://whiskcam.com/blog/${slug}`,
+        fr: `https://whiskcam.com/blog/${slug}`,
+        "x-default": `https://whiskcam.com/blog/${slug}`,
+      },
     },
   };
 }

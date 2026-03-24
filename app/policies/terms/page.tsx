@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   keywords: ["Whiskcam", "terms of service", "terms and conditions"],
   alternates: {
     canonical: "https://whiskcam.com/policies/terms",
+    languages: {
+      en: "https://whiskcam.com/policies/terms",
+      fr: "https://whiskcam.com/policies/terms",
+      "x-default": "https://whiskcam.com/policies/terms",
+    },
   },
   openGraph: {
     title: "Terms of Service — Whiskcam",

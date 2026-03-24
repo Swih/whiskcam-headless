@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   keywords: ["cat collar camera FAQ", "cat camera safe", "Whiskcam questions", "pet camera help"],
   alternates: {
     canonical: "https://whiskcam.com/faq",
+    languages: {
+      en: "https://whiskcam.com/faq",
+      fr: "https://whiskcam.com/faq",
+      "x-default": "https://whiskcam.com/faq",
+    },
   },
   openGraph: {
     title: "FAQ — Whiskcam",

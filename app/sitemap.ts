@@ -3,10 +3,20 @@ import { BLOG_ARTICLES } from "lib/blog";
 import { baseUrl } from "lib/utils";
 import { MetadataRoute } from "next";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
+
+function withHreflang(url: string, lastModified: string) {
+  return {
+    url,
+    lastModified,
+    alternates: {
+      languages: { en: url, fr: url },
+    },
+  };
+}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const routesMap = [
+  const staticRoutes = [
     "",
     "/about",
     "/faq",
@@ -17,18 +27,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/policies/returns",
     "/policies/privacy",
     "/policies/terms",
-  ].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date().toISOString(),
-  }));
+  ].map((route) =>
+    withHreflang(`${baseUrl}${route}`, new Date().toISOString()),
+  );
 
-  // Blog articles
-  const blogRoutes = BLOG_ARTICLES.map((article) => ({
-    url: `${baseUrl}/blog/${article.slug}`,
-    lastModified: article.dateModified,
-  }));
+  const blogRoutes = BLOG_ARTICLES.map((article) =>
+    withHreflang(`${baseUrl}/blog/${article.slug}`, article.dateModified),
+  );
 
-  let fetchedRoutes: { url: string; lastModified: string }[] = [];
+  let fetchedRoutes: ReturnType<typeof withHreflang>[] = [];
 
   try {
     const [collections, products, pages] = await Promise.all([
@@ -38,13 +45,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ]);
 
     fetchedRoutes = [
-      ...collections.map((c) => ({ url: `${baseUrl}${c.path}`, lastModified: c.updatedAt })),
-      ...products.map((p) => ({ url: `${baseUrl}/product/${p.handle}`, lastModified: p.updatedAt })),
-      ...pages.map((p) => ({ url: `${baseUrl}/${p.handle}`, lastModified: p.updatedAt })),
+      ...collections.map((c) => withHreflang(`${baseUrl}${c.path}`, c.updatedAt)),
+      ...products.map((p) => withHreflang(`${baseUrl}/product/${p.handle}`, p.updatedAt)),
+      ...pages.map((p) => withHreflang(`${baseUrl}/${p.handle}`, p.updatedAt)),
     ];
   } catch {
     // Shopify not configured — return static routes only
   }
 
-  return [...routesMap, ...blogRoutes, ...fetchedRoutes];
+  return [...staticRoutes, ...blogRoutes, ...fetchedRoutes];
 }
