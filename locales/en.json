@@ -1,0 +1,306 @@
+{
+  "nav": {
+    "shop": "Shop",
+    "footage": "Footage",
+    "faq": "FAQ",
+    "about": "About",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "openCart": "Open cart"
+  },
+  "announcement": {
+    "savePercent": "{pct}% OFF",
+    "save": "Save {pct}%",
+    "sale": "Sale",
+    "plusFreeShipping": "+ Free Shipping",
+    "plusFreeShipShort": "+ Free Ship.",
+    "ends": "— Ends",
+    "staticWithDiscount": "Save {pct}% — Free shipping worldwide",
+    "staticDefault": "Free shipping worldwide"
+  },
+  "hero": {
+    "tagline": "Pet Collar Camera",
+    "title": "See Their World.",
+    "subtitle": "Ever wonder what your cat does when you leave? Now you'll know.",
+    "trust": "Loved by 500+ pet parents worldwide",
+    "ctaButton": "Get Yours",
+    "ctaSubtext": "Free worldwide shipping"
+  },
+  "stats": {
+    "fullHd": "Full HD",
+    "wideAngle": "Wide Angle",
+    "ultraLight": "Ultra-Light",
+    "batteryLife": "Battery Life"
+  },
+  "videoShowcase": {
+    "overline": "Real footage",
+    "title": "What Your Cat Actually Does",
+    "subtitle": "Unedited clips from cats wearing Whiskcam. Swipe to explore.",
+    "pause": "Pause",
+    "play": "Play",
+    "verifiedOwner": "Verified owner",
+    "videos": {
+      "0": "The Chase",
+      "1": "The Confrontation",
+      "2": "The Encounter",
+      "3": "Hold My Catnip",
+      "4": "Nail Care Session",
+      "5": "Cats Gone Wild",
+      "6": "Ungrounded"
+    },
+    "povCaptions": {
+      "0": "Garden patrol",
+      "1": "Making friends",
+      "2": "Rooftop explorer",
+      "3": "Neighborhood watch",
+      "4": "Sky whiskers",
+      "5": "Hold my catnip",
+      "6": "Nail care session",
+      "7": "Gone wild"
+    }
+  },
+  "features": {
+    "overline": "Features",
+    "title": "Built for Adventures",
+    "subtitle": "Everything your pet needs to become a filmmaker.",
+    "items": {
+      "0": {
+        "title": "1080P Full HD",
+        "description": "Crystal-clear footage of every adventure, whisker to tail."
+      },
+      "1": {
+        "title": "170° Wide Angle",
+        "description": "Fisheye lens captures everything your pet sees — nothing gets missed."
+      },
+      "2": {
+        "title": "Ultra-Lightweight",
+        "description": "At just 26g, your cat won't even notice it's there. Designed for comfort."
+      },
+      "3": {
+        "title": "No App. No WiFi.",
+        "description": "Press record. That's it. No complicated setup, no accounts, no hassle."
+      },
+      "4": {
+        "title": "USB-C Charging",
+        "description": "Quick charge via USB-C. Full battery in under an hour. Ready to go."
+      },
+      "5": {
+        "title": "Safe for Pets",
+        "description": "Clips onto any collar. Compact, smooth edges. Vet-approved design."
+      }
+    }
+  },
+  "reviews": {
+    "overline": "Reviews",
+    "title": "Pet Parents Love It",
+    "subtitle": "Real footage. Real reactions.",
+    "verifiedBuyer": "Verified Buyer",
+    "showPhotos": "Show photos",
+    "hidePhotos": "Hide photos",
+    "prev": "Previous review",
+    "next": "Next review"
+  },
+  "howItWorks": {
+    "overline": "How it works",
+    "title": "Simple as 1, 2, 3",
+    "subtitle": "No tech skills required. If you can press a button, you can use Whiskcam.",
+    "steps": {
+      "0": {
+        "title": "Clip It On",
+        "description": "Attach Whiskcam to your pet's existing collar in seconds. It fits any collar."
+      },
+      "1": {
+        "title": "Press Record",
+        "description": "One button. That's all. No app, no WiFi, no setup. Just press and go."
+      },
+      "2": {
+        "title": "Discover Their World",
+        "description": "Plug the SD card into your phone with the included adapter. Watch, laugh, share."
+      }
+    }
+  },
+  "product": {
+    "overline": "Shop",
+    "title": "Whiskcam Original",
+    "subtitle": "Everything you need to see your pet's secret world.",
+    "badgeBestSeller": "Best Seller",
+    "badge1080p": "1080P Full HD",
+    "badgeNoApp": "No App",
+    "reviews": "500+ pet parents",
+    "keyBenefits": {
+      "0": "1080P Full HD — 170° wide-angle lens",
+      "1": "Ultra-light 26g — cats forget it's there",
+      "2": "No app, no WiFi — press record & go",
+      "3": "90 min battery — USB-C fast charge"
+    },
+    "freeGiftsLabel": "Free Gifts With Your Order",
+    "microsdName": "32GB MicroSD Card",
+    "microsdDetail": "Pre-installed, ready to record",
+    "adapterName": "USB-C/Lightning Adapter",
+    "adapterDetail": "View footage on your phone",
+    "shippingName": "Free Worldwide Shipping",
+    "shippingDetail": "7-14 business days",
+    "free": "FREE",
+    "totalValue": "Total value",
+    "youPay": "You pay",
+    "atcFallback": "Connect Shopify to enable Add to Cart",
+    "freeShippingMoneyBack": "Free shipping · 30-day money back",
+    "trustShipping": "Free Shipping",
+    "trustReturn": "30-Day Return",
+    "trustSecure": "Secure Pay",
+    "boxContentsLabel": "What's in the box",
+    "boxContents": {
+      "0": { "item": "Whiskcam Camera", "detail": "1080P Full HD with 170° lens" },
+      "1": { "item": "32GB MicroSD Card", "detail": "Pre-installed, ready to record" },
+      "2": { "item": "SD Card Adapter", "detail": "USB-C/Lightning — view on your phone" },
+      "3": { "item": "Adjustable Collar", "detail": "Fits cats & dogs of all sizes" },
+      "4": { "item": "USB-C Cable", "detail": "Fast charging, full in under 1 hour" },
+      "5": { "item": "Digital Guide", "detail": "\"How to Capture Your Pet's Secret Life\"" }
+    }
+  },
+  "comparison": {
+    "overline": "Compare",
+    "title": "Why Pet Parents Choose Whiskcam",
+    "subtitle": "See how we stack up against other pet cameras.",
+    "featureCol": "Feature",
+    "othersCol": "Other cameras",
+    "footnote": "Action cameras cost €300+. Whiskcam was built for pets — not your wallet.",
+    "features": {
+      "0": "Price",
+      "1": "Resolution",
+      "2": "SD Card Included",
+      "3": "Phone Adapter Included",
+      "4": "No App Required",
+      "5": "Free Shipping",
+      "6": "30-Day Money Back"
+    },
+    "othersResolution": "720P–1080P"
+  },
+  "cta": {
+    "overline": "Ready?",
+    "title": "Ready to See Their World?",
+    "subtitle": "Join thousands of pet parents who discovered their pet's secret life.",
+    "button": "Shop Now",
+    "footnote": "Free shipping worldwide · 30-day money-back guarantee"
+  },
+  "faq": {
+    "overline": "FAQ",
+    "title": "Frequently Asked Questions",
+    "subtitle": "Got questions? We've got answers.",
+    "pageTitle": "Frequently Asked Questions",
+    "pageSubtitle": "Everything you need to know about Whiskcam.",
+    "items": {
+      "0": {
+        "question": "What if I'm not satisfied?",
+        "answer": "We offer a 30-day money-back guarantee, no questions asked. If you or your pet aren't happy with Whiskcam, simply email us at support@whiskcam.com and we'll process a full refund — you don't even need to return the product. We stand behind every Whiskcam because we know you'll love it."
+      },
+      "1": {
+        "question": "Is Whiskcam safe for my cat?",
+        "answer": "Absolutely. At just 26g, Whiskcam is lighter than a small bell. It clips securely onto your pet's existing collar with smooth, rounded edges. Most cats forget it's there within minutes. We recommend using a breakaway collar for outdoor cats, and Whiskcam is best for adult cats over 2kg."
+      },
+      "2": {
+        "question": "How long does the battery last?",
+        "answer": "Whiskcam records up to 90 minutes of Full HD video on a single charge. That's perfect for capturing morning explorations and evening patrols — the most exciting moments of your pet's secret life. A full charge takes under an hour via USB-C."
+      },
+      "3": {
+        "question": "Do I need to download an app?",
+        "answer": "No app, no WiFi, no accounts. Just press the record button on the camera. When your pet comes home, pop out the SD card, plug it into your phone using the included adapter, and enjoy the footage. It's that simple."
+      },
+      "4": {
+        "question": "How do I watch the videos on my phone?",
+        "answer": "Every Whiskcam comes with a MicroSD-to-USB-C/Lightning adapter. Plug it into your phone and view the videos directly in your gallery app. You can also plug the SD card into any computer with a card reader."
+      },
+      "5": {
+        "question": "Will it fit my pet's collar?",
+        "answer": "Whiskcam comes with its own adjustable collar, but it also clips onto any existing collar your pet already wears. Works for cats and dogs of all sizes."
+      },
+      "6": {
+        "question": "How long does shipping take?",
+        "answer": "We ship worldwide for free. Delivery typically takes 7–14 business days depending on your location. You'll receive a tracking number as soon as your Whiskcam ships."
+      },
+      "7": {
+        "question": "What video format does it record in?",
+        "answer": "Whiskcam records in AVI format at 1080P Full HD. The files play on any device — phone, tablet, or computer. You can easily convert or share them on TikTok, Instagram, or YouTube."
+      }
+    }
+  },
+  "footer": {
+    "tagline": "See their world. The pet collar camera that lets you discover your pet's secret adventures.",
+    "shopHeading": "Shop",
+    "learnHeading": "Learn",
+    "supportHeading": "Support",
+    "legalHeading": "Legal",
+    "links": {
+      "whiskcamOriginal": "Whiskcam Original",
+      "whatIsWhiskcam": "What Is Whiskcam?",
+      "blogBestCameras": "Best Cat Collar Cameras 2026",
+      "blogSafe": "Are Cat Cameras Safe?",
+      "allArticles": "All Articles",
+      "faq": "FAQ",
+      "trackOrder": "Track My Order",
+      "shipping": "Shipping",
+      "returns": "Returns",
+      "contact": "Contact",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "trustShipping": "Free Worldwide Shipping",
+    "trustReturns": "30-Day Money Back",
+    "trustSecure": "Secure Checkout",
+    "trustPetSafe": "Pet-Safe Design",
+    "copyright": "© {year} Whiskcam. All rights reserved."
+  },
+  "cookie": {
+    "message": "We use cookies to improve your experience and analyze site traffic.",
+    "privacyLink": "Privacy Policy",
+    "decline": "Decline",
+    "accept": "Accept"
+  },
+  "emailPopup": {
+    "title": "Get Your Free Pet Photography Guide",
+    "subtitle": "Learn the best tips to capture your pet's secret adventures. Join 500+ pet parents.",
+    "placeholder": "your@email.com",
+    "submit": "Get the Free Guide",
+    "dismiss": "No thanks",
+    "successTitle": "Thank you!",
+    "successSubtitle": "Check your inbox!"
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty.",
+    "startShopping": "Start shopping",
+    "freeGiftsLabel": "🎁 Free gifts included",
+    "freeLabel": "FREE",
+    "freeWorldwideShipping": "Free Worldwide Shipping",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "total": "Total",
+    "checkout": "Complete My Order",
+    "processing": "Processing...",
+    "secureCheckout": "Secure checkout",
+    "moneyBack": "30-day money back",
+    "saving": "You're saving {amount} on this order"
+  },
+  "stickyAtc": {
+    "productName": "Whiskcam Original",
+    "addToCart": "Yes, I Want This!",
+    "adding": "Adding...",
+    "added": "Added!"
+  },
+  "about": {
+    "overline": "Our Story",
+    "title": "Born from Curiosity",
+    "opening": "It started with a simple question: What does my cat actually do all day?",
+    "p1": "We'd come home to knocked-over plants, mysterious scratches on the furniture, and a cat that looked suspiciously innocent. We had to know.",
+    "p2": "So we strapped a tiny camera to our cat's collar and pressed record. What we saw blew our minds — garden patrols, rooftop adventures, secret meetings with the neighbor's cat. A whole world we never knew existed.",
+    "p3": "That's when Whiskcam was born. We wanted every pet parent to experience that same joy — to see the world through their pet's eyes.",
+    "p4": "We designed it to be dead simple. No app. No WiFi. No complicated setup. Just clip it on, press record, and let your pet do the rest.",
+    "closing": "See their world. You won't believe what you've been missing.",
+    "backToShop": "Back to shop"
+  },
+  "langSwitcher": {
+    "label": "Language",
+    "en": "EN",
+    "fr": "FR"
+  }
+}
