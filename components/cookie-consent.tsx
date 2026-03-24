@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 const CONSENT_KEY = "wk-cookie-consent";
@@ -29,6 +30,7 @@ function readConsent(): ConsentData | null {
 }
 
 export function CookieConsent() {
+  const t = useTranslations("cookie");
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -59,9 +61,9 @@ export function CookieConsent() {
     >
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-3 rounded-[var(--radius-card)] border border-wk-grey-200 bg-white/95 px-5 py-4 shadow-lg backdrop-blur-sm sm:flex-row sm:gap-4">
         <p className="flex-1 text-sm leading-relaxed text-wk-grey-600">
-          We use cookies to improve your experience and analyze site traffic.{" "}
+          {t("message")}{" "}
           <Link href="/policies/privacy" className="underline underline-offset-2 text-wk-grey-500 hover:text-wk-black transition-colors">
-            Privacy Policy
+            {t("privacyLink")}
           </Link>
         </p>
         <div className="flex shrink-0 gap-2">
@@ -69,13 +71,13 @@ export function CookieConsent() {
             onClick={() => respond(false)}
             className="rounded-[var(--radius-btn)] border border-wk-grey-300 px-5 py-2 text-sm font-medium text-wk-grey-600 transition-all duration-200 hover:border-wk-black hover:text-wk-black"
           >
-            Decline
+            {t("decline")}
           </button>
           <button
             onClick={() => respond(true)}
             className="rounded-[var(--radius-btn)] bg-wk-black px-5 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-wk-black/90 hover:shadow-md active:scale-[0.98]"
           >
-            Accept
+            {t("accept")}
           </button>
         </div>
       </div>

@@ -1,11 +1,13 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 
 const DISMISS_KEY = "wk-email-dismissed";
 const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
 
 export function EmailPopup() {
+  const t = useTranslations("emailPopup");
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [email, setEmail] = useState("");
@@ -167,18 +169,18 @@ export function EmailPopup() {
                 <polyline points="20 6 9 17 4 12" />
               </svg>
             </div>
-            <h3 className="text-xl font-bold text-wk-black">Thank you!</h3>
+            <h3 className="text-xl font-bold text-wk-black">{t("successTitle")}</h3>
             <p className="mt-2 text-sm text-wk-grey-500">
-              Check your inbox!
+              {t("successSubtitle")}
             </p>
           </div>
         ) : (
           <>
             <h2 className="pr-6 text-2xl font-bold leading-tight text-wk-black">
-              Get Your Free Pet Photography Guide
+              {t("title")}
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-wk-grey-500">
-              Learn the best tips to capture your pet&apos;s secret adventures. Join 500+ pet parents.
+              {t("subtitle")}
             </p>
 
             <form onSubmit={handleSubmit} className="mt-6 space-y-3">
@@ -187,14 +189,14 @@ export function EmailPopup() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
+                placeholder={t("placeholder")}
                 className="w-full rounded-[var(--radius-btn)] border border-wk-grey-300 px-4 py-3 text-sm text-wk-black outline-none transition-colors placeholder:text-wk-grey-400 focus:border-wk-amber focus:ring-2 focus:ring-wk-amber/30"
               />
               <button
                 type="submit"
                 className="w-full rounded-[var(--radius-btn)] bg-wk-black px-7 py-3.5 text-[15px] font-semibold tracking-wide text-white shadow-sm transition-all duration-200 ease-out hover:shadow-[0_0_16px_rgba(251,191,36,0.4)] hover:shadow-md active:scale-[0.98]"
               >
-                Get the Free Guide
+                {t("submit")}
               </button>
             </form>
 
@@ -202,7 +204,7 @@ export function EmailPopup() {
               onClick={dismiss}
               className="mx-auto mt-4 block text-xs text-wk-grey-400 transition-colors hover:text-wk-grey-600"
             >
-              No thanks
+              {t("dismiss")}
             </button>
           </>
         )}

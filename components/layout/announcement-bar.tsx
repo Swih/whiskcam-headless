@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { computeDiscount } from "lib/format";
+import { useTranslations } from "next-intl";
 
 const PROMO_COOKIE = "wk_promo_end";
 const PROMO_DURATION_MS = 72 * 60 * 60 * 1000; // 72 hours
@@ -31,6 +31,7 @@ interface AnnouncementBarProps {
 }
 
 export function AnnouncementBar({ discount }: AnnouncementBarProps) {
+  const t = useTranslations("announcement");
   const [time, setTime] = useState<{ h: string; m: string; s: string } | null>(null);
   const [expired, setExpired] = useState(false);
 
@@ -66,11 +67,11 @@ export function AnnouncementBar({ discount }: AnnouncementBarProps) {
           <p className="whitespace-nowrap text-[10px] font-medium text-white/90 sm:text-xs">
             {pct ? (
               <>
-                <span className="font-semibold text-wk-amber">Save {pct}%</span>
-                {" "}— Free shipping worldwide
+                <span className="font-semibold text-wk-amber">{t("save", { pct })}</span>
+                {" "}— {t("staticDefault")}
               </>
             ) : (
-              <>Free shipping worldwide</>
+              <>{t("staticDefault")}</>
             )}
           </p>
         ) : (
@@ -79,18 +80,18 @@ export function AnnouncementBar({ discount }: AnnouncementBarProps) {
             <p className="whitespace-nowrap text-[10px] font-medium text-white/90 sm:text-xs">
               {pct ? (
                 <>
-                  <span className="font-semibold text-wk-amber">{pct}% OFF</span>
-                  <span className="hidden sm:inline"> + Free Shipping</span>
-                  <span className="sm:hidden"> + Free Ship.</span>
+                  <span className="font-semibold text-wk-amber">{t("savePercent", { pct })}</span>
+                  <span className="hidden sm:inline"> {t("plusFreeShipping")}</span>
+                  <span className="sm:hidden"> {t("plusFreeShipShort")}</span>
                 </>
               ) : (
                 <>
-                  <span className="font-semibold text-wk-amber">Sale</span>
-                  <span className="hidden sm:inline"> + Free Shipping</span>
-                  <span className="sm:hidden"> + Free Ship.</span>
+                  <span className="font-semibold text-wk-amber">{t("sale")}</span>
+                  <span className="hidden sm:inline"> {t("plusFreeShipping")}</span>
+                  <span className="sm:hidden"> {t("plusFreeShipShort")}</span>
                 </>
               )}
-              {" "}— Ends
+              {" "}{t("ends")}
             </p>
             <div className="flex items-center gap-px">
               <span className="rounded bg-white/10 px-1 py-0.5 font-mono text-[10px] font-semibold text-white sm:px-1.5 sm:text-xs">{time.h}</span>
