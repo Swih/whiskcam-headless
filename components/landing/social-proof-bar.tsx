@@ -6,8 +6,8 @@ import { useTranslations } from "next-intl";
 const STAT_ITEMS = [
   { value: "1080P", labelKey: "fullHd" },
   { value: "170°", labelKey: "wideAngle" },
-  { value: "26g", labelKey: "ultraLight" },
-  { value: "90min", labelKey: "batteryLife" },
+  { value: "24g", labelKey: "ultraLight" },
+  { value: "3h+", labelKey: "batteryLife" },
 ] as const;
 
 export function SocialProofBar() {

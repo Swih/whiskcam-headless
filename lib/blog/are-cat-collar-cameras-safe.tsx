@@ -65,7 +65,7 @@ export default function AreCatCollarCamerasSafe() {
       <p>
         As you can see, even the lightest adult cat (2 kg) has a safe limit of 60 g at the
         conservative 3% threshold. The heaviest collar cameras on the market (around 40 g) are well
-        below this limit. A 26 g camera like the Whiskcam represents just 1.3% of a 2 kg cat&apos;s
+        below this limit. A 24 g camera like the Whiskcam represents just 1.3% of a 2 kg cat&apos;s
         body weight.
       </p>
 
@@ -148,7 +148,7 @@ export default function AreCatCollarCamerasSafe() {
         <li>Start with supervised outdoor sessions before letting your cat roam freely</li>
         <li>Check that the camera mount is tight and won&apos;t snag on branches</li>
         <li>Don&apos;t use the camera in rain or wet conditions unless it&apos;s waterproof</li>
-        <li>Keep sessions to 60-90 minutes — don&apos;t rely on your cat to &quot;come home&quot; when the battery dies</li>
+        <li>Even with 3+ hours of battery, check on your cat regularly — don&apos;t rely on them to &quot;come home&quot; when the battery dies</li>
       </ul>
 
       {/* ---- Age and Size ---- */}
@@ -263,7 +263,7 @@ export default function AreCatCollarCamerasSafe() {
       <p>
         If you&apos;re looking for a collar camera, check our{" "}
         <a href="/blog/best-cat-collar-cameras-2026">comparison of the best cat collar cameras in 2026</a>.
-        Or learn more about the <a href="/what-is-whiskcam">Whiskcam Original</a>, our 26 g collar
+        Or learn more about the <a href="/what-is-whiskcam">Whiskcam Original</a>, our 24 g collar
         camera designed for cats.
       </p>
     </article>

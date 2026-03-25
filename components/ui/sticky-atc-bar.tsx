@@ -92,7 +92,7 @@ export function StickyAtcBar({ price, compareAtPrice, product }: StickyAtcBarPro
           className={`flex-none rounded-[var(--radius-btn)] px-5 py-2.5 text-sm font-semibold transition-all duration-200 active:scale-[0.97] ${
             added
               ? "bg-wk-green text-white"
-              : "bg-wk-black text-white hover:brightness-110 hover:shadow-[0_0_15px_rgba(245,166,35,0.3)]"
+              : "bg-wk-amber text-wk-black hover:bg-wk-amber-hover hover:shadow-[0_0_15px_rgba(245,166,35,0.4)]"
           }`}
         >
           {isPending ? (

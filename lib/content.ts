@@ -12,8 +12,8 @@ export const HERO_CONTENT = {
 export const STATS = [
   { value: "1080P" },
   { value: "170°" },
-  { value: "26g" },
-  { value: "90min" },
+  { value: "24g" },
+  { value: "3h+" },
 ];
 
 export const FEATURES = [
@@ -51,12 +51,12 @@ export const FAQ_ITEMS = [
   {
     question: "Is Whiskcam safe for my cat?",
     answer:
-      "Absolutely. At just 26g, Whiskcam is lighter than a small bell. It clips securely onto your pet's existing collar with smooth, rounded edges. Most cats forget it's there within minutes. We recommend using a breakaway collar for outdoor cats, and Whiskcam is best for adult cats over 2kg.",
+      "Absolutely. At just 24g, Whiskcam is lighter than a small bell. It clips securely onto your pet's existing collar with smooth, rounded edges. Even small cats won't notice it. We recommend using a breakaway collar for outdoor cats.",
   },
   {
     question: "How long does the battery last?",
     answer:
-      "Whiskcam records up to 90 minutes of Full HD video on a single charge. That's perfect for capturing morning explorations and evening patrols — the most exciting moments of your pet's secret life. A full charge takes under an hour via USB-C.",
+      "Whiskcam records over 3 hours of Full HD video on a full charge — enough for a whole day of adventures. A full charge takes under an hour via USB-C.",
   },
   {
     question: "Do I need to download an app?",

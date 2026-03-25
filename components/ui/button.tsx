@@ -12,9 +12,9 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-wk-black text-white hover:brightness-110 hover:shadow-[0_0_20px_rgba(245,166,35,0.3)] active:scale-[0.98] shadow-sm transition-all duration-200",
+    "bg-wk-amber text-wk-black hover:bg-wk-amber-hover hover:shadow-[0_0_20px_rgba(245,166,35,0.4)] active:scale-[0.98] shadow-sm transition-all duration-200",
   secondary:
-    "bg-wk-amber text-wk-black hover:bg-wk-amber-hover active:scale-[0.98] shadow-sm hover:shadow-md",
+    "bg-wk-black text-white hover:brightness-110 hover:shadow-[0_0_20px_rgba(245,166,35,0.3)] active:scale-[0.98] shadow-sm hover:shadow-md",
   ghost:
     "bg-transparent border border-wk-grey-300 text-wk-black hover:border-wk-black hover:bg-wk-grey-50",
 };

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     type: "article",
     title: "What Is Whiskcam?",
     description:
-      "Whiskcam is a 26 g pet collar camera that records 1080P video from your pet's POV. No app required.",
+      "Whiskcam is a 24 g pet collar camera that records 1080P video from your pet's POV. No app required.",
     siteName: "Whiskcam",
     locale: "en_US",
     alternateLocale: ["fr_FR"],
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "What Is Whiskcam?",
     description:
-      "A 26 g collar camera for cats and dogs. 1080P Full HD, no app needed.",
+      "A 24 g collar camera for cats and dogs. 1080P Full HD, no app needed.",
   },
   alternates: {
     canonical: "https://whiskcam.com/what-is-whiskcam",
@@ -64,7 +64,7 @@ export default function WhatIsWhiskcamPage() {
       {
         "@type": "PropertyValue",
         name: "Battery Life",
-        value: "90 minutes",
+        value: "3+ hours",
       },
       {
         "@type": "PropertyValue",
@@ -191,7 +191,7 @@ export default function WhatIsWhiskcamPage() {
               <tbody>
                 <tr>
                   <td><strong>Weight</strong></td>
-                  <td>26 grams</td>
+                  <td>24 grams</td>
                 </tr>
                 <tr>
                   <td><strong>Video Resolution</strong></td>
@@ -203,7 +203,7 @@ export default function WhatIsWhiskcamPage() {
                 </tr>
                 <tr>
                   <td><strong>Battery Life</strong></td>
-                  <td>Up to 90 minutes</td>
+                  <td>3+ hours</td>
                 </tr>
                 <tr>
                   <td><strong>Storage</strong></td>
@@ -250,8 +250,7 @@ export default function WhatIsWhiskcamPage() {
             <li>Anyone who&apos;s ever wondered &quot;what does my cat actually do all day?&quot;</li>
           </ul>
           <p>
-            At 26 g, it&apos;s safe for adult cats weighing 2 kg and above (following the
-            veterinary guideline of &lt;3-5% body weight). For more on safety, see our guide on{" "}
+            At 24 g, it&apos;s safe for cats of all sizes — even small breeds. For more on safety, see our guide on{" "}
             <a href="/blog/are-cat-collar-cameras-safe">cat collar camera safety</a>.
           </p>
 
@@ -265,7 +264,7 @@ export default function WhatIsWhiskcamPage() {
             .
           </p>
           <p>
-            Key differences: Whiskcam is lighter (26 g vs 38 g), cheaper (&euro;49.90 vs ~$85-90
+            Key differences: Whiskcam is lighter (24 g vs 38 g), cheaper (&euro;49.90 vs ~$85-90
             with accessories), and includes everything in the box. Mr Petcam has been around longer
             and has more user reviews.
           </p>

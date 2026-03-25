@@ -195,8 +195,8 @@ const REVIEWS: Review[] = [
   {
     name: "Natasha R.",
     rating: 5,
-    text: "Put this on my tabby Oliver and finally found out he visits THREE different neighbors for treats every morning. The footage was hilarious. Battery lasted the whole outing, about 90 minutes. Picture quality is sharp enough to read house numbers.",
-    textFr: "J'ai mis ça sur mon tabby Oliver et j'ai enfin découvert qu'il va chez TROIS voisins différents chercher des friandises chaque matin. Les images étaient hilarantes. La batterie a tenu toute la sortie, environ 90 minutes. La qualité est assez nette pour lire les numéros de maison.",
+    text: "Put this on my tabby Oliver and finally found out he visits THREE different neighbors for treats every morning. The footage was hilarious. Battery lasted the whole outing, over 3 hours. Picture quality is sharp enough to read house numbers.",
+    textFr: "J'ai mis ça sur mon tabby Oliver et j'ai enfin découvert qu'il va chez TROIS voisins différents chercher des friandises chaque matin. Les images étaient hilarantes. La batterie a tenu toute la sortie, plus de 3 heures. La qualité est assez nette pour lire les numéros de maison.",
     date: "Oct 2025",
     photos: [],
     verified: true,

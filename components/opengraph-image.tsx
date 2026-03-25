@@ -129,7 +129,7 @@ export default async function OpengraphImage(
                 fontWeight: 700,
               }}
             >
-              26g Ultra-Light
+              24g Ultra-Light
             </div>
             <div
               style={{

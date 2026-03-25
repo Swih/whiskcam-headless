@@ -8,7 +8,7 @@ export default function BestCatCollarCameras2026() {
       {/* ---- Intro — 40-60 words, answer-first (this is what AI extracts) ---- */}
       <p className="lead">
         The best cat collar camera in 2026 depends on your cat&apos;s size and your budget.
-        For cats under 6 kg, the <strong>Whiskcam Original</strong> (26 g, &euro;49.90) offers the best
+        For cats under 6 kg, the <strong>Whiskcam Original</strong> (24 g, &euro;49.90) offers the best
         weight-to-quality ratio. For larger cats or dogs, the <strong>Mr Petcam</strong> (38 g, ~$70)
         is a solid alternative. Both record in 1080P with no app required.
       </p>
@@ -113,9 +113,9 @@ export default function BestCatCollarCameras2026() {
           <tbody>
             <tr>
               <td><strong>Whiskcam Original</strong></td>
-              <td>26 g</td>
+              <td>24 g</td>
               <td>1080P</td>
-              <td>90 min</td>
+              <td>3+ hours</td>
               <td>No</td>
               <td>Yes (32 GB)</td>
               <td>&euro;49.90</td>
@@ -124,7 +124,7 @@ export default function BestCatCollarCameras2026() {
               <td>Mr Petcam</td>
               <td>~38 g</td>
               <td>1080P</td>
-              <td>~90 min</td>
+              <td>~3 hours</td>
               <td>No</td>
               <td>No</td>
               <td>~$70</td>
@@ -163,14 +163,14 @@ export default function BestCatCollarCameras2026() {
       {/* ---- Whiskcam Review ---- */}
       <h2>Whiskcam Original Review</h2>
       <p>
-        The Whiskcam Original is a 26 g collar camera that records in 1080P Full HD with a 170&deg;
+        The Whiskcam Original is a 24 g collar camera that records in 1080P Full HD with a 170&deg;
         wide-angle lens. It&apos;s designed specifically for cats and small dogs, and it comes with
         everything you need in the box: camera, 32 GB MicroSD card, USB-C/Lightning phone adapter,
         adjustable collar, and USB-C charging cable.
       </p>
       <h3>Pros</h3>
       <ul>
-        <li>Lightest dedicated collar camera at 26 g — most cats don&apos;t notice it</li>
+        <li>Lightest dedicated collar camera at 24 g — most cats don&apos;t notice it</li>
         <li>170&deg; wide-angle lens captures a natural field of view</li>
         <li>No app, no WiFi, no setup — true one-button operation</li>
         <li>32 GB SD card and phone adapter included (saves $15-20 vs competitors)</li>
@@ -180,7 +180,7 @@ export default function BestCatCollarCameras2026() {
       </ul>
       <h3>Cons</h3>
       <ul>
-        <li>90-minute battery life — not enough for all-day recording</li>
+        <li>3+ hour battery life — great for full-day adventures</li>
         <li>No live streaming (it&apos;s offline only)</li>
         <li>AVI video format — may need converting for some editing apps</li>
         <li>New brand — fewer user reviews compared to established competitors</li>

@@ -171,7 +171,7 @@ export default async function HomePage() {
     "@type": "VideoObject",
     name: "Whiskcam Cat Collar Camera — See Their World",
     description:
-      "Watch real POV footage captured by Whiskcam, a lightweight 26g camera designed for cats. 1080P Full HD, 170° wide-angle lens.",
+      "Watch real POV footage captured by Whiskcam, a lightweight 24g camera designed for cats. 1080P Full HD, 170° wide-angle lens.",
     thumbnailUrl: `https://whiskcam.com${HERO_CONTENT.posterSrc}`,
     uploadDate: "2026-03-01T00:00:00Z",
     contentUrl: `https://whiskcam.com${HERO_CONTENT.videoSrc}`,

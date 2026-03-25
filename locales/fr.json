@@ -73,8 +73,8 @@
         "description": "Tout ce que voit votre animal, vous le verrez aussi. L'objectif fisheye ne rate rien."
       },
       "2": {
-        "title": "Ultra-léger — 26g",
-        "description": "Plus léger qu'une clochette. Votre chat l'oublie en quelques minutes."
+        "title": "Ultra-léger — 24g",
+        "description": "Plus léger qu'une clochette. Même les petits chats ne le sentent pas."
       },
       "3": {
         "title": "Sans appli. Sans WiFi.",
@@ -136,9 +136,9 @@
     "reviews": "500+ propriétaires satisfaits",
     "keyBenefits": {
       "0": "Full HD 1080P — objectif grand angle 170°",
-      "1": "26g ultra-léger — votre chat ne le sent pas",
+      "1": "24g ultra-léger — même les petits chats ne le sentent pas",
       "2": "Sans appli, sans WiFi — un clic et ça filme",
-      "3": "90 min d'autonomie — rechargé en moins d'1h"
+      "3": "Plus de 3h d'autonomie — rechargé en moins d'1h"
     },
     "freeGiftsLabel": "Offerts avec votre commande",
     "microsdName": "Carte MicroSD 32 Go",
@@ -203,11 +203,11 @@
       },
       "1": {
         "question": "C'est vraiment sûr pour mon chat ?",
-        "answer": "26g — plus léger qu'une petite clochette. Le Whiskcam se clipse au collier existant avec des bords arrondis et lisses. La plupart des chats l'oublient en quelques minutes. On recommande un collier détachable pour les chats d'extérieur. Convient aux chats adultes de plus de 2 kg."
+        "answer": "24g — plus léger qu'une petite clochette. Le Whiskcam se clipse au collier existant avec des bords arrondis et lisses. La plupart des chats l'oublient en quelques minutes. Convient même aux petits gabarits. On recommande un collier détachable pour les chats d'extérieur."
       },
       "2": {
         "question": "Combien de temps dure la batterie ?",
-        "answer": "Jusqu'à 90 minutes en Full HD — largement assez pour capturer les patrouilles du matin et les escapades du soir. Rechargé en moins d'une heure via USB-C."
+        "answer": "Plus de 3 heures en Full HD sur une charge complète — largement assez pour capturer toute une journée d'aventures. Rechargé en moins d'une heure via USB-C."
       },
       "3": {
         "question": "Il faut une appli ?",
@@ -294,7 +294,9 @@
     "productName": "Whiskcam Original",
     "addToCart": "Je le veux !",
     "adding": "Ajout...",
-    "added": "Ajouté !"
+    "added": "Ajouté !",
+    "outOfStock": "Rupture de stock",
+    "selectOption": "Sélectionnez une option"
   },
   "about": {
     "overline": "Notre histoire",

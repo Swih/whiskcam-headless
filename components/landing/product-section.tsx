@@ -285,8 +285,8 @@ function FeaturesInfographicSlide() {
   const specs = [
     { value: "1080P", label: "Full HD" },
     { value: "170°", label: "Wide Angle" },
-    { value: "26g", label: "Ultralight" },
-    { value: "90min", label: "Battery" },
+    { value: "24g", label: "Ultralight" },
+    { value: "3h+", label: "Battery" },
     { value: "No WiFi", label: "Privacy" },
     { value: "No App", label: "Plug & Play" },
   ];
@@ -329,7 +329,7 @@ function InfographicThumbnail() {
   return (
     <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#0f0f1a] to-[#16213e] p-1.5">
       <div className="grid w-full grid-cols-2 gap-0.5">
-        {["1080P", "170°", "26g", "No App"].map((v) => (
+        {["1080P", "170°", "24g", "No App"].map((v) => (
           <div
             key={v}
             className="flex items-center justify-center rounded-sm bg-white/15 py-1"
@@ -368,7 +368,7 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
     ...imgMedia.slice(2, 4),
     {
       type: "infographic",
-      alt: "Whiskcam specs: 1080P Full HD, 170° wide angle, 26g ultralight, no WiFi, no app needed",
+      alt: "Whiskcam specs: 1080P Full HD, 170° wide angle, 24g ultralight, no WiFi, no app needed",
     },
     ...imgMedia.slice(4),
   ];

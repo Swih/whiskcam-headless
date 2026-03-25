@@ -314,7 +314,7 @@ export default async function BlogArticlePage({
         <div className="mt-16 rounded-2xl bg-wk-dark p-8 text-center md:p-12">
           <h2 className="text-2xl font-bold text-white">Ready to see their world?</h2>
           <p className="mt-3 text-neutral-400">
-            The Whiskcam Original — 26 g, 1080P, no app needed. Free worldwide shipping.
+            The Whiskcam Original — 24 g, 1080P, no app needed. Free worldwide shipping.
           </p>
           <Link
             href="/#product"

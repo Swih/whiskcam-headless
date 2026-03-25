@@ -73,8 +73,8 @@
         "description": "Everything your pet sees, you'll see too. The fisheye lens misses nothing."
       },
       "2": {
-        "title": "Ultra-Light — 26g",
-        "description": "Lighter than a small bell. Your cat forgets it's there within minutes."
+        "title": "Ultra-Light — 24g",
+        "description": "Lighter than a small bell. Even small cats won't feel it."
       },
       "3": {
         "title": "No App. No WiFi.",
@@ -136,9 +136,9 @@
     "reviews": "500+ happy pet parents",
     "keyBenefits": {
       "0": "Full HD 1080P — 170° wide-angle lens",
-      "1": "26g ultra-light — your cat won't feel it",
+      "1": "24g ultra-light — even small cats won't feel it",
       "2": "No app, no WiFi — one click and it films",
-      "3": "90 min battery — recharged in under 1h"
+      "3": "3h+ battery life — recharged in under 1h"
     },
     "freeGiftsLabel": "Free Gifts With Your Order",
     "microsdName": "32GB MicroSD Card",
@@ -203,11 +203,11 @@
       },
       "1": {
         "question": "Is Whiskcam safe for my cat?",
-        "answer": "Absolutely. At just 26g, Whiskcam is lighter than a small bell. It clips securely onto your pet's existing collar with smooth, rounded edges. Most cats forget it's there within minutes. We recommend using a breakaway collar for outdoor cats, and Whiskcam is best for adult cats over 2kg."
+        "answer": "Absolutely. At just 24g, Whiskcam is lighter than a small bell. It clips securely onto your pet's existing collar with smooth, rounded edges. Even small cats won't notice it. We recommend using a breakaway collar for outdoor cats."
       },
       "2": {
         "question": "How long does the battery last?",
-        "answer": "Whiskcam records up to 90 minutes of Full HD video on a single charge. That's perfect for capturing morning explorations and evening patrols — the most exciting moments of your pet's secret life. A full charge takes under an hour via USB-C."
+        "answer": "Whiskcam records over 3 hours of Full HD video on a full charge — enough for a whole day of adventures. A full charge takes under an hour via USB-C."
       },
       "3": {
         "question": "Do I need to download an app?",
@@ -294,7 +294,9 @@
     "productName": "Whiskcam Original",
     "addToCart": "Yes, I Want This!",
     "adding": "Adding...",
-    "added": "Added!"
+    "added": "Added!",
+    "outOfStock": "Out of Stock",
+    "selectOption": "Select an Option"
   },
   "about": {
     "overline": "Our Story",

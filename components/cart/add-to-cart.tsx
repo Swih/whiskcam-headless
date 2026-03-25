@@ -6,6 +6,7 @@ import { addItem } from "components/cart/actions";
 import { Product, ProductVariant } from "lib/shopify/types";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useActionState, useTransition } from "react";
+import { useTranslations } from "next-intl";
 import { useCart } from "./cart-context";
 
 function SubmitButton({
@@ -17,14 +18,15 @@ function SubmitButton({
   selectedVariantId: string | undefined;
   isPending: boolean;
 }) {
+  const t = useTranslations("stickyAtc");
   const buttonClasses =
-    "flex w-full items-center justify-center gap-2 rounded-[var(--radius-btn)] bg-wk-black px-6 py-4 text-[15px] font-semibold tracking-wide text-white shadow-sm transition-all duration-200 ease-out hover:brightness-110 hover:shadow-[0_0_20px_rgba(245,166,35,0.3)] active:scale-[0.98]";
+    "flex w-full items-center justify-center gap-2 rounded-[var(--radius-btn)] bg-wk-amber px-6 py-4 text-[15px] font-semibold tracking-wide text-wk-black shadow-sm transition-all duration-200 ease-out hover:bg-wk-amber-hover hover:shadow-[0_0_20px_rgba(245,166,35,0.4)] active:scale-[0.98]";
   const disabledClasses = "cursor-not-allowed opacity-60 hover:opacity-60 hover:shadow-none";
 
   if (!availableForSale) {
     return (
       <button disabled className={clsx(buttonClasses, disabledClasses)}>
-        Out Of Stock
+        {t("outOfStock")}
       </button>
     );
   }
@@ -32,7 +34,7 @@ function SubmitButton({
   if (!selectedVariantId) {
     return (
       <button disabled className={clsx(buttonClasses, disabledClasses)}>
-        Select an Option
+        {t("selectOption")}
       </button>
     );
   }
@@ -54,7 +56,7 @@ function SubmitButton({
           <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
         </svg>
       )}
-      {isPending ? "Adding..." : "Yes, I Want This!"}
+      {isPending ? t("adding") : t("addToCart")}
     </button>
   );
 }
