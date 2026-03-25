@@ -32,10 +32,6 @@ export function HeroSection({ product }: { product?: Product }) {
       )
     : "€49.90";
 
-  const scrollToProduct = () => {
-    document.getElementById("product")?.scrollIntoView({ behavior: "instant" });
-  };
-
   return (
     <section id="hero" className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden">
       {/* Poster image (always visible as base layer) */}
@@ -103,7 +99,7 @@ export function HeroSection({ product }: { product?: Product }) {
           transition={{ duration: 0.4, delay: 0.4 }}
           className="mt-7 flex flex-col items-center gap-3 sm:mt-8"
         >
-          <Button size="lg" onClick={scrollToProduct} className="w-full sm:w-auto">
+          <Button size="lg" className="w-full sm:w-auto">
             {t("ctaButton")} — {price}
           </Button>
           <span className="text-xs text-white/50 sm:text-sm">{t("ctaSubtext")}</span>

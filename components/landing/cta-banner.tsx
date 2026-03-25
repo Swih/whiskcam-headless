@@ -42,7 +42,7 @@ export function CtaBanner({ product }: { product?: Product }) {
             {t("subtitle")}
           </p>
           <div className="mt-8">
-            <Button size="lg" className="w-full sm:w-auto" onClick={() => document.getElementById('product')?.scrollIntoView({ behavior: 'smooth' })}>
+            <Button size="lg" className="w-full sm:w-auto">
               {t("button")} — {price}
             </Button>
           </div>

@@ -83,26 +83,43 @@ export function VideoShowcase() {
           </div>
         </div>
 
-        {/* ---- POV stills grid ---- */}
-        <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
-          {POV_IMAGES.map((img, i) => (
-            <AnimatedElement key={img.src} delay={i * 0.05} animation="scale">
-              <div className="group relative aspect-square overflow-hidden rounded-xl">
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-                  sizes="(min-width: 768px) 25vw, 50vw"
-                />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 to-transparent p-2.5 pt-8">
+        {/* ---- POV stills carousel — scrolls opposite direction to videos ---- */}
+        <div className="relative mt-12 overflow-clip">
+          {/* Left fade */}
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-12 bg-gradient-to-r from-wk-dark to-transparent sm:w-20" />
+          {/* Right fade */}
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-12 bg-gradient-to-l from-wk-dark to-transparent sm:w-20" />
+
+          <div
+            className={`flex gap-3 ${paused ? "[animation-play-state:paused]" : ""}`}
+            style={{
+              animation: "carousel-scroll-reverse 60s linear infinite",
+              width: "max-content",
+            }}
+          >
+            {[...POV_IMAGES, ...POV_IMAGES].map((img, i) => (
+              <div
+                key={`${img.src}-${i}`}
+                className="group relative w-52 flex-none overflow-hidden rounded-xl sm:w-64"
+              >
+                <div className="aspect-[16/10]">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                    sizes="260px"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 to-transparent p-2.5 pt-6">
                   <p className="text-xs font-medium text-white">
-                    {t(`povCaptions.${i}` as `povCaptions.${0 | 1 | 2 | 3 | 4 | 5 | 6 | 7}`)}
+                    {t(`povCaptions.${i % POV_IMAGES.length}` as `povCaptions.${0 | 1 | 2 | 3 | 4 | 5 | 6 | 7}`)}
                   </p>
                 </div>
               </div>
-            </AnimatedElement>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

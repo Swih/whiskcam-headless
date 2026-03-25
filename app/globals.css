@@ -118,6 +118,12 @@ button {
   100% { transform: translateX(-50%); }
 }
 
+/* Reverse carousel scroll — opposite direction */
+@keyframes carousel-scroll-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
 /* Hide scrollbar for horizontal scroll containers */
 .scrollbar-hide {
   -ms-overflow-style: none;
