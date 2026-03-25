@@ -13,7 +13,7 @@ export const STATS = [
   { value: "1080P" },
   { value: "170°" },
   { value: "24g" },
-  { value: "3h+" },
+  { value: "2h" },
 ];
 
 export const FEATURES = [
@@ -56,7 +56,7 @@ export const FAQ_ITEMS = [
   {
     question: "How long does the battery last?",
     answer:
-      "Whiskcam records over 3 hours of Full HD video on a full charge — enough for a whole day of adventures. A full charge takes under an hour via USB-C.",
+      "Whiskcam records up to 2 hours of Full HD video on a full charge — perfect for capturing morning patrols and evening adventures. A full charge takes under an hour via USB-C.",
   },
   {
     question: "Do I need to download an app?",

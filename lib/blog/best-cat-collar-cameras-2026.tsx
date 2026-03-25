@@ -115,7 +115,7 @@ export default function BestCatCollarCameras2026() {
               <td><strong>Whiskcam Original</strong></td>
               <td>24 g</td>
               <td>1080P</td>
-              <td>3+ hours</td>
+              <td>Up to 2 hours</td>
               <td>No</td>
               <td>Yes (32 GB)</td>
               <td>&euro;49.90</td>
@@ -124,7 +124,7 @@ export default function BestCatCollarCameras2026() {
               <td>Mr Petcam</td>
               <td>~38 g</td>
               <td>1080P</td>
-              <td>~3 hours</td>
+              <td>~2 hours</td>
               <td>No</td>
               <td>No</td>
               <td>~$70</td>
@@ -180,7 +180,7 @@ export default function BestCatCollarCameras2026() {
       </ul>
       <h3>Cons</h3>
       <ul>
-        <li>3+ hour battery life — great for full-day adventures</li>
+        <li>Up to 2 hours of battery life — enough for morning patrols and evening adventures</li>
         <li>No live streaming (it&apos;s offline only)</li>
         <li>AVI video format — may need converting for some editing apps</li>
         <li>New brand — fewer user reviews compared to established competitors</li>

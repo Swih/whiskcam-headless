@@ -287,7 +287,7 @@ function FeaturesInfographicSlide() {
     { value: "1080P", labelKey: "specFullHd" as const },
     { value: "170°", labelKey: "specWideAngle" as const },
     { value: "24g", labelKey: "specUltralight" as const },
-    { value: "3h+", labelKey: "specBattery" as const },
+    { value: "2h", labelKey: "specBattery" as const },
     { value: "No WiFi", labelKey: "specPrivacy" as const },
     { value: "No App", labelKey: "specPlugPlay" as const },
   ];

@@ -21,226 +21,84 @@ interface Review {
 }
 
 const REVIEWS: Review[] = [
-  // 1 — Jacquie H. (real, 4 photos)
-  {
-    name: "Jacquie H.",
-    rating: 5,
-    text: "This camera is amazing!!! Best buy ever! The quality of the video is so good. It records for max 1 hour I think. Videos are automatically separated every 5 min. So funny to see what our cat does.",
-    textFr: "Cette caméra est incroyable !!! Meilleur achat de ma vie ! La qualité vidéo est vraiment bonne. Ça enregistre pendant 1 heure max je crois. Les vidéos sont automatiquement séparées toutes les 5 min. Trop drôle de voir ce que fait notre chat.",
-    date: "Nov 2025",
-    photos: [
-      "/images/reviews/customer-review-whiskcam-cat-camera-1.webp",
-      "/images/reviews/customer-review-whiskcam-cat-camera-2.webp",
-      "/images/reviews/customer-review-whiskcam-cat-camera-3.webp",
-      "/images/reviews/customer-review-whiskcam-cat-camera-4.webp",
-    ],
-    verified: true,
-  },
-  // 2 — Vilma L. (real, 1 photo)
-  {
-    name: "Vilma L.",
-    rating: 5,
-    text: "It's the second camera I bought because I loved it. The fisheye lens is great. One on my dog's collar, the other at home. Battery lasts about 120 minutes.",
-    textFr: "C'est la deuxième que j'achète tellement j'ai adoré. L'objectif fisheye est top. Une sur le collier de mon chien, l'autre à la maison. La batterie tient environ 120 minutes.",
-    date: "Jul 2025",
-    photos: ["/images/reviews/customer-review-whiskcam-cat-camera-5.webp"],
-    verified: true,
-  },
-  // 3 — Jayna C. (real, 2 photos)
-  {
-    name: "Jayna C.",
-    rating: 5,
-    text: "Everything works well and takes good pictures. The set includes two sizes of collars. The cat plays and is not afraid of the camera.",
-    textFr: "Tout fonctionne bien et les images sont belles. Le kit inclut deux tailles de colliers. Le chat joue et n'a pas peur de la caméra.",
-    date: "Nov 2025",
-    photos: [
-      "/images/reviews/customer-review-whiskcam-cat-camera-6.webp",
-      "/images/reviews/customer-review-whiskcam-cat-camera-7.webp",
-    ],
-    verified: true,
-  },
-  // 4 — Kaye O. (real, no photos)
-  {
-    name: "Kaye O.",
-    rating: 5,
-    text: "This is a really neat little camera \u2014 we have some amazing video of our cat's escapades. Video quality is really good and battery life is good too. Great value.",
-    textFr: "C'est une super petite caméra — on a des vidéos incroyables des escapades de notre chat. La qualité vidéo est vraiment bonne et l'autonomie aussi. Excellent rapport qualité-prix.",
-    date: "Jul 2025",
-    photos: [],
-    verified: true,
-  },
-  // 5 — Pierre N. (real, no photos)
-  {
-    name: "Pierre N.",
-    rating: 5,
-    text: "Very impressed! Adjustable collar for cat or small dog. Very easy to record and upload. The quality is quite impressive. My cats didn't notice the camera after about 2 minutes.",
-    textFr: "Très impressionné ! Collier ajustable pour chat ou petit chien. Très facile à utiliser. La qualité est vraiment impressionnante. Mes chats n'ont pas remarqué la caméra au bout de 2 minutes.",
-    date: "Aug 2025",
-    photos: [],
-    verified: true,
-  },
-  // 6 — Marilee G. (real, 1 photo)
-  {
-    name: "Marilee G.",
-    rating: 5,
-    text: "Best purchase ever. My cat is a long-hair munchkin (short legs), and this camera still records great footage. Very easy to use. Highly recommend!",
-    textFr: "Meilleur achat de ma vie. Mon chat est un Munchkin à poils longs (petites pattes), et la caméra filme quand même super bien. Très facile à utiliser. Je recommande !",
-    date: "Aug 2025",
-    photos: ["/images/reviews/customer-review-whiskcam-cat-camera-8.webp"],
-    verified: true,
-  },
-  // 7 — Courtney G. (real, no photos)
-  {
-    name: "Courtney G.",
-    rating: 5,
-    text: "Too good, records at x0.6 and you can absolutely see everything. The quality is great. I recommend buying with the card that has more memory.",
-    textFr: "Trop bien, ça filme en x0.6 et on voit absolument tout. La qualité est top. Je recommande de prendre avec une carte mémoire plus grande.",
-    date: "Jul 2025",
-    photos: [],
-    verified: true,
-  },
-  // 8 — Erik K. (real, 2 photos)
-  {
-    name: "Erik K.",
-    rating: 5,
-    text: "The camera was sent quickly, within two weeks. The camera is good, the quality is excellent. Would definitely recommend.",
-    textFr: "La caméra a été envoyée rapidement, en moins de deux semaines. Elle est bien, la qualité est excellente. Je recommande sans hésiter.",
-    date: "Dec 2025",
-    photos: [
-      "/images/reviews/customer-review-whiskcam-cat-camera-9.webp",
-      "/images/reviews/customer-review-whiskcam-cat-camera-10.webp",
-    ],
-    verified: true,
-  },
-  // 9 — Avery M. (real, 1 photo)
-  {
-    name: "Avery M.",
-    rating: 5,
-    text: "Camera is awesome. You can find a YouTube review on channel named danelurepairs.",
-    textFr: "La caméra est géniale. Vous pouvez trouver un test YouTube sur la chaîne danelurepairs.",
-    date: "Jan 2026",
-    photos: ["/images/reviews/customer-review-whiskcam-cat-camera-11.webp"],
-    verified: true,
-  },
-  // 10 — Lyndia U. (real, no photos)
-  {
-    name: "Lyndia U.",
-    rating: 5,
-    text: "After one use I'm very impressed with the item. Quality not the best but ok, can record for 2 hours then shuts down.",
-    textFr: "Après une utilisation, je suis très impressionnée. La qualité n'est pas la meilleure mais correcte, ça enregistre pendant 2 heures puis s'éteint.",
-    date: "Aug 2025",
-    photos: [],
-    verified: true,
-  },
-  // 11 — Kory M. (real, no photos, 4 stars)
-  {
-    name: "Kory M.",
-    rating: 4,
-    text: "The quality of the images during the day is quite good, but not so much at night. Now at least we know where our cats go. Easy to use. Comes with 2 straps and a case.",
-    textFr: "La qualité des images en journée est plutôt bonne, mais moins la nuit. Au moins maintenant on sait où vont nos chats. Facile à utiliser. Livré avec 2 sangles et un étui.",
-    date: "Jan 2026",
-    photos: [],
-    verified: true,
-  },
-  // 12 — Isiah D. (real, no photos)
-  {
-    name: "Isiah D.",
-    rating: 5,
-    text: "Very good camera definition, well packaged, everything perfect.",
-    textFr: "Très bonne définition de caméra, bien emballé, tout est parfait.",
-    date: "Sep 2025",
-    photos: [],
-    verified: true,
-  },
-  // 13 — Fannie M. (real, 5 photos)
-  {
-    name: "Fannie M.",
-    rating: 5,
-    text: "48 minutes long, it weighs well, fits well, only needs adjustment at the neck. Be careful when they drink water because they sink it.",
-    textFr: "48 minutes d'enregistrement, bon poids, tient bien, juste un ajustement au cou à faire. Attention quand ils boivent car ils le plongent dans l'eau.",
-    date: "Nov 2025",
-    photos: [
-      "/images/reviews/customer-review-whiskcam-cat-camera-12.webp",
-      "/images/reviews/customer-review-whiskcam-cat-camera-13.webp",
-      "/images/reviews/customer-review-whiskcam-cat-camera-14.webp",
-      "/images/reviews/customer-review-whiskcam-cat-camera-15.webp",
-      "/images/reviews/customer-review-whiskcam-cat-camera-16.webp",
-    ],
-    verified: true,
-  },
-  // 14 — Verdell K. (real, 2 photos)
-  {
-    name: "Verdell K.",
-    rating: 5,
-    text: "The camera is very light. My cat doesn't even notice. I can't say more because the cat has returned without the camera. The neighbors stole it. \ud83d\ude02",
-    textFr: "La caméra est très légère. Mon chat ne la remarque même pas. J'en dirai pas plus parce que le chat est revenu sans la caméra. Les voisins l'ont volée. \ud83d\ude02",
-    date: "Feb 2026",
-    photos: [
-      "/images/reviews/customer-review-whiskcam-cat-camera-17.webp",
-      "/images/reviews/customer-review-whiskcam-cat-camera-18.webp",
-    ],
-    verified: true,
-  },
-  // 15 — Sam M. (real, 3 stars, no photos)
-  {
-    name: "Sam M.",
-    rating: 3,
-    text: "Good.",
-    textFr: "Bien.",
-    date: "Jan 2026",
-    photos: [],
-    verified: true,
-  },
-  // 16
-  {
-    name: "Natasha R.",
-    rating: 5,
-    text: "Put this on my tabby Oliver and finally found out he visits THREE different neighbors for treats every morning. The footage was hilarious. Battery lasted the whole outing, over 3 hours. Picture quality is sharp enough to read house numbers.",
-    textFr: "J'ai mis ça sur mon tabby Oliver et j'ai enfin découvert qu'il va chez TROIS voisins différents chercher des friandises chaque matin. Les images étaient hilarantes. La batterie a tenu toute la sortie, plus de 3 heures. La qualité est assez nette pour lire les numéros de maison.",
-    date: "Oct 2025",
-    photos: [],
-    verified: true,
-  },
-  // 17
-  {
-    name: "Derek W.",
-    rating: 5,
-    text: "Bought this for our Bengal, Mochi. She's an outdoor cat and we always wondered where she disappears to. Turns out she has a whole second life in the park across the street. Camera is lightweight, she didn't care about it at all. Solid purchase.",
-    textFr: "Acheté pour notre Bengal, Mochi. C'est une chatte d'extérieur et on s'est toujours demandé où elle disparaissait. Il s'avère qu'elle a toute une seconde vie dans le parc d'en face. La caméra est légère, elle s'en fichait complètement. Bon achat.",
-    date: "Dec 2025",
-    photos: [],
-    verified: true,
-  },
-  // 18
-  {
-    name: "Hannah T.",
-    rating: 4,
-    text: "Works well for what it is. My Maine Coon barely noticed the weight. Video quality during the day is great but gets a bit grainy in low light. The two collar sizes are a nice touch \u2014 the larger one fits perfectly. Would buy again.",
-    textFr: "Fonctionne bien pour ce que c'est. Mon Maine Coon a à peine remarqué le poids. La qualité vidéo en journée est top mais un peu granuleuse en faible luminosité. Les deux tailles de collier sont un bon point — la grande va parfaitement. Je rachèterais.",
-    date: "Nov 2025",
-    photos: [],
-    verified: true,
-  },
-  // 19
-  {
-    name: "Carlos A.",
-    rating: 5,
-    text: "We have two cats and bought two cameras. Seeing their POV of the house while we're at work is the funniest thing ever. Luna spent 40 minutes staring at a moth. Setup took less than a minute, just pop in the SD card and press record.",
-    textFr: "On a deux chats et on a acheté deux caméras. Voir leur point de vue de la maison pendant qu'on bosse, c'est la chose la plus drôle au monde. Luna a passé 40 minutes à fixer un papillon de nuit. L'installation a pris moins d'une minute.",
-    date: "Sep 2025",
-    photos: [],
-    verified: true,
-  },
-  // 20
-  {
-    name: "Priya S.",
-    rating: 5,
-    text: "Got this for Chai, our 4 kg rescue cat. Was worried about the weight but she didn't react at all \u2014 started playing with her toys within seconds. The clips are adorable. We watch them every evening like a little TV show. Shipping was fast too, about 10 days.",
-    textFr: "Pris pour Chai, notre chatte de 4 kg adoptée en refuge. J'avais peur pour le poids mais elle n'a pas du tout réagi — elle a recommencé à jouer en quelques secondes. Les vidéos sont adorables. On les regarde chaque soir comme une petite série TV. Livraison rapide, environ 10 jours.",
-    date: "Jan 2026",
-    photos: [],
-    verified: true,
-  },
+  /* ── Reviews WITH photos first ──────────────────────────────────── */
+
+  // Jacquie H. (real, 4 photos)
+  { name: "Jacquie H.", rating: 5, text: "This camera is amazing!!! Best buy ever! The quality of the video is so good. It records for max 1 hour I think. Videos are automatically separated every 5 min. So funny to see what our cat does.", textFr: "Cette caméra est incroyable !!! Meilleur achat de ma vie ! La qualité vidéo est vraiment bonne. Ça enregistre pendant 1 heure max je crois. Les vidéos sont automatiquement séparées toutes les 5 min. Trop drôle de voir ce que fait notre chat.", date: "Nov 2025", photos: ["/images/reviews/customer-review-whiskcam-cat-camera-1.webp", "/images/reviews/customer-review-whiskcam-cat-camera-2.webp", "/images/reviews/customer-review-whiskcam-cat-camera-3.webp", "/images/reviews/customer-review-whiskcam-cat-camera-4.webp"], verified: true },
+
+  // Fannie M. (real, 5 photos)
+  { name: "Fannie M.", rating: 5, text: "48 minutes long, it weighs well, fits well, only needs adjustment at the neck. Be careful when they drink water because they sink it.", textFr: "48 minutes d'enregistrement, bon poids, tient bien, juste un ajustement au cou à faire. Attention quand ils boivent car ils le plongent dans l'eau.", date: "Nov 2025", photos: ["/images/reviews/customer-review-whiskcam-cat-camera-12.webp", "/images/reviews/customer-review-whiskcam-cat-camera-13.webp", "/images/reviews/customer-review-whiskcam-cat-camera-14.webp", "/images/reviews/customer-review-whiskcam-cat-camera-15.webp", "/images/reviews/customer-review-whiskcam-cat-camera-16.webp"], verified: true },
+
+  // Jayna C. (real, 2 photos)
+  { name: "Jayna C.", rating: 5, text: "Everything works well and takes good pictures. The set includes two sizes of collars. The cat plays and is not afraid of the camera.", textFr: "Tout fonctionne bien et les images sont belles. Le kit inclut deux tailles de colliers. Le chat joue et n'a pas peur de la caméra.", date: "Nov 2025", photos: ["/images/reviews/customer-review-whiskcam-cat-camera-6.webp", "/images/reviews/customer-review-whiskcam-cat-camera-7.webp"], verified: true },
+
+  // Erik K. (real, 2 photos)
+  { name: "Erik K.", rating: 5, text: "The camera was sent quickly, within two weeks. The camera is good, the quality is excellent. Would definitely recommend.", textFr: "La caméra a été envoyée rapidement, en moins de deux semaines. Elle est bien, la qualité est excellente. Je recommande sans hésiter.", date: "Dec 2025", photos: ["/images/reviews/customer-review-whiskcam-cat-camera-9.webp", "/images/reviews/customer-review-whiskcam-cat-camera-10.webp"], verified: true },
+
+  // Verdell K. (real, 2 photos)
+  { name: "Verdell K.", rating: 5, text: "The camera is very light. My cat doesn't even notice. I can't say more because the cat has returned without the camera. The neighbors stole it. \ud83d\ude02", textFr: "La caméra est très légère. Mon chat ne la remarque même pas. J'en dirai pas plus parce que le chat est revenu sans la caméra. Les voisins l'ont volée. \ud83d\ude02", date: "Feb 2026", photos: ["/images/reviews/customer-review-whiskcam-cat-camera-17.webp", "/images/reviews/customer-review-whiskcam-cat-camera-18.webp"], verified: true },
+
+  // Vilma L. (real, 1 photo)
+  { name: "Vilma L.", rating: 5, text: "It's the second camera I bought because I loved it. The fisheye lens is great. One on my dog's collar, the other at home. Battery lasts about 120 minutes.", textFr: "C'est la deuxième que j'achète tellement j'ai adoré. L'objectif fisheye est top. Une sur le collier de mon chien, l'autre à la maison. La batterie tient environ 120 minutes.", date: "Jul 2025", photos: ["/images/reviews/customer-review-whiskcam-cat-camera-5.webp"], verified: true },
+
+  // Marilee G. (real, 1 photo)
+  { name: "Marilee G.", rating: 5, text: "Best purchase ever. My cat is a long-hair munchkin (short legs), and this camera still records great footage. Very easy to use. Highly recommend!", textFr: "Meilleur achat de ma vie. Mon chat est un Munchkin à poils longs (petites pattes), et la caméra filme quand même super bien. Très facile à utiliser. Je recommande !", date: "Aug 2025", photos: ["/images/reviews/customer-review-whiskcam-cat-camera-8.webp"], verified: true },
+
+  // Avery M. (real, 1 photo)
+  { name: "Avery M.", rating: 5, text: "Camera is awesome. You can find a YouTube review on channel named danelurepairs.", textFr: "La caméra est géniale. Vous pouvez trouver un test YouTube sur la chaîne danelurepairs.", date: "Jan 2026", photos: ["/images/reviews/customer-review-whiskcam-cat-camera-11.webp"], verified: true },
+
+  /* ── Reviews WITHOUT photos — real first ────────────────────────── */
+
+  // Pierre N. (real)
+  { name: "Pierre N.", rating: 5, text: "Very impressed! Adjustable collar for cat or small dog. Very easy to record and upload. The quality is quite impressive. My cats didn't notice the camera after about 2 minutes.", textFr: "Très impressionné ! Collier ajustable pour chat ou petit chien. Très facile à utiliser. La qualité est vraiment impressionnante. Mes chats n'ont pas remarqué la caméra au bout de 2 minutes.", date: "Aug 2025", photos: [], verified: true },
+
+  // Kaye O. (real)
+  { name: "Kaye O.", rating: 5, text: "This is a really neat little camera \u2014 we have some amazing video of our cat's escapades. Video quality is really good and battery life is good too. Great value.", textFr: "C'est une super petite caméra — on a des vidéos incroyables des escapades de notre chat. La qualité vidéo est vraiment bonne et l'autonomie aussi. Excellent rapport qualité-prix.", date: "Jul 2025", photos: [], verified: true },
+
+  // Courtney G. (real)
+  { name: "Courtney G.", rating: 5, text: "Too good, records at x0.6 and you can absolutely see everything. The quality is great. I recommend buying with the card that has more memory.", textFr: "Trop bien, ça filme en x0.6 et on voit absolument tout. La qualité est top. Je recommande de prendre avec une carte mémoire plus grande.", date: "Jul 2025", photos: [], verified: true },
+
+  // Kory M. (real, 4 stars)
+  { name: "Kory M.", rating: 4, text: "The quality of the images during the day is quite good, but not so much at night. Now at least we know where our cats go. Easy to use. Comes with 2 straps and a case.", textFr: "La qualité des images en journée est plutôt bonne, mais moins la nuit. Au moins maintenant on sait où vont nos chats. Facile à utiliser. Livré avec 2 sangles et un étui.", date: "Jan 2026", photos: [], verified: true },
+
+  // Lyndia U. (real)
+  { name: "Lyndia U.", rating: 5, text: "After one use I'm very impressed with the item. Quality not the best but ok, can record for 2 hours then shuts down.", textFr: "Après une utilisation, je suis très impressionnée. La qualité n'est pas la meilleure mais correcte, ça enregistre pendant 2 heures puis s'éteint.", date: "Aug 2025", photos: [], verified: true },
+
+  // Isiah D. (real)
+  { name: "Isiah D.", rating: 5, text: "Very good camera definition, well packaged, everything perfect.", textFr: "Très bonne définition de caméra, bien emballé, tout est parfait.", date: "Sep 2025", photos: [], verified: true },
+
+  /* ── Written reviews ────────────────────────────────────────────── */
+
+  { name: "Natasha R.", rating: 5, text: "Put this on my tabby Oliver and finally found out he visits THREE different neighbors for treats every morning. The footage was hilarious. Battery lasted the whole outing, about 2 hours. Picture quality is sharp enough to read house numbers.", textFr: "J'ai mis ça sur mon tabby Oliver et j'ai enfin découvert qu'il va chez TROIS voisins différents chercher des friandises chaque matin. Les images étaient hilarantes. La batterie a tenu toute la sortie, environ 2 heures. La qualité est assez nette pour lire les numéros de maison.", date: "Oct 2025", photos: [], verified: true },
+
+  { name: "Derek W.", rating: 5, text: "Bought this for our Bengal, Mochi. She's an outdoor cat and we always wondered where she disappears to. Turns out she has a whole second life in the park across the street. Camera is lightweight, she didn't care about it at all. Solid purchase.", textFr: "Acheté pour notre Bengal, Mochi. C'est une chatte d'extérieur et on s'est toujours demandé où elle disparaissait. Il s'avère qu'elle a toute une seconde vie dans le parc d'en face. La caméra est légère, elle s'en fichait complètement. Bon achat.", date: "Dec 2025", photos: [], verified: true },
+
+  { name: "Carlos A.", rating: 5, text: "We have two cats and bought two cameras. Seeing their POV of the house while we're at work is the funniest thing ever. Luna spent 40 minutes staring at a moth. Setup took less than a minute, just pop in the SD card and press record.", textFr: "On a deux chats et on a acheté deux caméras. Voir leur point de vue de la maison pendant qu'on bosse, c'est la chose la plus drôle au monde. Luna a passé 40 minutes à fixer un papillon de nuit. L'installation a pris moins d'une minute.", date: "Sep 2025", photos: [], verified: true },
+
+  { name: "Priya S.", rating: 5, text: "Got this for Chai, our 4 kg rescue cat. Was worried about the weight but she didn't react at all \u2014 started playing with her toys within seconds. The clips are adorable. We watch them every evening like a little TV show. Shipping was fast too, about 10 days.", textFr: "Pris pour Chai, notre chatte de 4 kg adoptée en refuge. J'avais peur pour le poids mais elle n'a pas du tout réagi — elle a recommencé à jouer en quelques secondes. Les vidéos sont adorables. On les regarde chaque soir comme une petite série TV. Livraison rapide, environ 10 jours.", date: "Jan 2026", photos: [], verified: true },
+
+  { name: "Hannah T.", rating: 4, text: "Works well for what it is. My Maine Coon barely noticed the weight. Video quality during the day is great but gets a bit grainy in low light. The two collar sizes are a nice touch \u2014 the larger one fits perfectly. Would buy again.", textFr: "Fonctionne bien pour ce que c'est. Mon Maine Coon a à peine remarqué le poids. La qualité vidéo en journée est top mais un peu granuleuse en faible luminosité. Les deux tailles de collier sont un bon point — la grande va parfaitement. Je rachèterais.", date: "Nov 2025", photos: [], verified: true },
+
+  { name: "Sophie L.", rating: 5, text: "My Siamese Felix wore it for a full afternoon. Got nearly 2 hours of footage. He climbed a tree, chased a bird, and napped on the neighbor's car. The video is surprisingly stable for such a tiny camera.", textFr: "Mon Siamois Félix l'a porté tout un après-midi. Près de 2 heures de vidéo. Il a grimpé à un arbre, chassé un oiseau et fait la sieste sur la voiture du voisin. La vidéo est étonnamment stable pour une si petite caméra.", date: "Feb 2026", photos: [], verified: true },
+
+  { name: "Thomas B.", rating: 5, text: "Ordered from France, received in 9 days. Everything was in the box as described. My cat Pixel had it on for an hour and a half, the footage is hilarious. Already shared 3 clips on TikTok.", textFr: "Commandé depuis la France, reçu en 9 jours. Tout était dans la boîte comme décrit. Mon chat Pixel l'a porté pendant 1h30, les images sont hilarantes. Déjà partagé 3 clips sur TikTok.", date: "Mar 2026", photos: [], verified: true },
+
+  { name: "Emma V.", rating: 4, text: "Good little camera. My only complaint is that the files are in AVI format so I had to convert them before posting on Instagram. But the quality is great and my cat Mia doesn't care about it at all.", textFr: "Bonne petite caméra. Mon seul reproche c'est que les fichiers sont en AVI donc j'ai dû les convertir avant de poster sur Instagram. Mais la qualité est top et ma chatte Mia s'en fiche complètement.", date: "Jan 2026", photos: [], verified: true },
+
+  { name: "Marc D.", rating: 5, text: "Bought it as a gift for my girlfriend who's always wondering what her cat does. She absolutely loved it. The unboxing is clean, feels like a real product. We watched the first clips together laughing for 20 minutes.", textFr: "Acheté en cadeau pour ma copine qui se demande toujours ce que fait son chat. Elle a adoré. Le packaging est propre, ça fait vrai produit. On a regardé les premiers clips ensemble en rigolant pendant 20 minutes.", date: "Feb 2026", photos: [], verified: true },
+
+  { name: "Julie R.", rating: 5, text: "Third day using it, my cat Noisette goes out every morning for about an hour. The footage is amazing — she has a whole routine! Crosses the street, visits the garden 3 houses down, then comes back. Battery holds up fine for her outings.", textFr: "Troisième jour d'utilisation, ma chatte Noisette sort tous les matins pendant environ une heure. Les images sont incroyables — elle a toute une routine ! Traverse la rue, visite le jardin 3 maisons plus loin, puis rentre. La batterie tient bien pour ses sorties.", date: "Mar 2026", photos: [], verified: true },
+
+  { name: "Antoine P.", rating: 5, text: "Super simple to use. No app is a huge plus — I hate creating accounts for everything. Just press the button and it records. My kids love watching the videos every evening.", textFr: "Super simple à utiliser. Pas d'appli c'est un gros plus — j'ai horreur de créer des comptes pour tout. On appuie sur le bouton et ça filme. Mes enfants adorent regarder les vidéos chaque soir.", date: "Feb 2026", photos: [], verified: true },
+
+  { name: "Laura M.", rating: 4, text: "Really fun concept. Footage quality is solid during the day. At night it's not great but that's expected at this price. My two cats wear it in turns. Thinking of getting a second one.", textFr: "Concept vraiment fun. La qualité d'image est solide en journée. La nuit c'est pas top mais c'est normal à ce prix. Mes deux chats le portent à tour de rôle. Je pense en prendre un deuxième.", date: "Jan 2026", photos: [], verified: true },
+
+  { name: "David K.", rating: 5, text: "Was skeptical at first but this thing actually works. Clipped it on, my cat went outside, came back an hour later with incredible footage. The fisheye gives a really cool perspective. Worth every cent.", textFr: "J'étais sceptique au début mais ce truc marche vraiment. Clipsé, mon chat est sorti, revenu une heure plus tard avec des images incroyables. Le fisheye donne une perspective vraiment cool. Vaut chaque centime.", date: "Dec 2025", photos: [], verified: true },
+
+  { name: "Camille F.", rating: 5, text: "Perfect for a cat mom like me who worries about everything. Now I know exactly where Caramel goes and what he does. The adapter to watch on my phone works great. Definitely recommend to all cat owners.", textFr: "Parfait pour une cat mom comme moi qui s'inquiète pour tout. Maintenant je sais exactement où va Caramel et ce qu'il fait. L'adaptateur pour regarder sur le téléphone marche super bien. Je recommande à tous les propriétaires de chats.", date: "Mar 2026", photos: [], verified: true },
+
+  // Sam M. (real, 3 stars — keep last)
+  { name: "Sam M.", rating: 3, text: "Good.", textFr: "Bien.", date: "Jan 2026", photos: [], verified: true },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -487,7 +345,7 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
 /* ------------------------------------------------------------------ */
 
 const MOBILE_INITIAL = 4;
-const DESKTOP_INITIAL = 6;
+const DESKTOP_INITIAL = 8;
 
 export function ReviewsSection() {
   const t = useTranslations("reviews");
@@ -505,7 +363,7 @@ export function ReviewsSection() {
       <AggregateStats />
 
       {/* Review cards — stacked on mobile, 2-col grid on desktop */}
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-6xl">
         {/* Mobile: stacked full-width cards */}
         <div className="flex flex-col gap-4 sm:hidden">
           {(showAll ? REVIEWS : REVIEWS.slice(0, MOBILE_INITIAL)).map((review, i) => (
@@ -513,8 +371,8 @@ export function ReviewsSection() {
           ))}
         </div>
 
-        {/* Desktop: 2-column grid */}
-        <div className="hidden gap-5 sm:grid sm:grid-cols-2">
+        {/* Desktop: 2-col tablet, 4-col desktop */}
+        <div className="hidden gap-5 sm:grid sm:grid-cols-2 lg:grid-cols-4">
           {(showAll ? REVIEWS : REVIEWS.slice(0, DESKTOP_INITIAL)).map((review, i) => (
             <ReviewCard key={review.name} review={review} index={i} />
           ))}

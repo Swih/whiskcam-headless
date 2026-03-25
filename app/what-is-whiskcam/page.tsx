@@ -64,7 +64,7 @@ export default function WhatIsWhiskcamPage() {
       {
         "@type": "PropertyValue",
         name: "Battery Life",
-        value: "3+ hours",
+        value: "Up to 2 hours",
       },
       {
         "@type": "PropertyValue",
@@ -203,7 +203,7 @@ export default function WhatIsWhiskcamPage() {
                 </tr>
                 <tr>
                   <td><strong>Battery Life</strong></td>
-                  <td>3+ hours</td>
+                  <td>Up to 2 hours</td>
                 </tr>
                 <tr>
                   <td><strong>Storage</strong></td>

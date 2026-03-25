@@ -148,7 +148,7 @@ export default function AreCatCollarCamerasSafe() {
         <li>Start with supervised outdoor sessions before letting your cat roam freely</li>
         <li>Check that the camera mount is tight and won&apos;t snag on branches</li>
         <li>Don&apos;t use the camera in rain or wet conditions unless it&apos;s waterproof</li>
-        <li>Even with 3+ hours of battery, check on your cat regularly — don&apos;t rely on them to &quot;come home&quot; when the battery dies</li>
+        <li>Even with up to 2 hours of battery, check on your cat regularly — don&apos;t rely on them to &quot;come home&quot; when the battery dies</li>
       </ul>
 
       {/* ---- Age and Size ---- */}
