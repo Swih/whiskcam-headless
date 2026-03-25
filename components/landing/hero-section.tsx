@@ -33,7 +33,7 @@ export function HeroSection({ product }: { product?: Product }) {
     : "€49.90";
 
   const scrollToProduct = () => {
-    document.getElementById("product")?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("product")?.scrollIntoView({ behavior: "instant" });
   };
 
   return (

@@ -407,15 +407,9 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
   }, []);
 
   // ── Derived geometry ────────────────────────────────────────────────────────
-  // On mobile: each slide is narrower than the container so the next peeks.
-  // On desktop: slide fills the full container width (no peek).
-  const slideW =
-    containerWidth > 0
-      ? isMobile
-        ? containerWidth - PEEK_PX - GAP_PX
-        : containerWidth
-      : 0;
-  const trackX = slideW > 0 ? -(active * (slideW + GAP_PX)) : 0;
+  // Full-width slides on all viewports (no peek effect).
+  const slideW = containerWidth > 0 ? containerWidth : 0;
+  const trackX = slideW > 0 ? -(active * slideW) : 0;
 
   // ── Navigation — clamped (linear, not wrapping) ──────────────────────────────
   const goNext = useCallback(
@@ -464,9 +458,8 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
   const mediaKey = (item: MediaItem) =>
     item.type === "infographic" ? "slide-infographic" : item.src;
 
-  // Track total width (last slide has no trailing gap)
-  const trackWidth =
-    slideW > 0 ? total * slideW + (total - 1) * GAP_PX : undefined;
+  // Track total width
+  const trackWidth = slideW > 0 ? total * slideW : undefined;
 
   return (
     <div className="w-full select-none">
@@ -488,7 +481,6 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
           className="absolute top-0 left-0 bottom-0 flex"
           style={{
             width: trackWidth ? `${trackWidth}px` : "100%",
-            gap: `${GAP_PX}px`,
             transform: `translateX(${trackX}px)`,
             transition: "transform 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
             willChange: "transform",
