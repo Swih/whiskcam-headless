@@ -99,7 +99,7 @@ export function HeroSection({ product }: { product?: Product }) {
           transition={{ duration: 0.4, delay: 0.4 }}
           className="mt-7 flex flex-col items-center gap-3 sm:mt-8"
         >
-          <Button size="lg" className="w-full sm:w-auto">
+          <Button size="lg" className="w-full sm:w-auto" onClick={() => document.getElementById("product")?.scrollIntoView({ behavior: "smooth" })}>
             {t("ctaButton")} — {price}
           </Button>
           <span className="text-xs text-white/50 sm:text-sm">{t("ctaSubtext")}</span>
