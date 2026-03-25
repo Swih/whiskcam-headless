@@ -280,7 +280,7 @@ export default function WhatIsWhiskcamPage() {
         {/* CTA */}
         <div className="mt-12 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
           <Link
-            href="/"
+            href="/#product"
             className="rounded-full bg-wk-amber px-8 py-3 text-sm font-semibold text-wk-dark transition-colors hover:bg-wk-amber-hover"
           >
             Shop Whiskcam — &euro;49.90

@@ -22,7 +22,7 @@ export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
   const router = useRouter();
 
   const NAV_LINKS = [
-    { title: t("shop"), path: "/" },
+    { title: t("shop"), path: "#product" },
     { title: t("footage"), path: "#footage" },
     { title: t("faq"), path: "#faq" },
     { title: t("about"), path: "/about" },
