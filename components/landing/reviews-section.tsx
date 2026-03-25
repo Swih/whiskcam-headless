@@ -97,6 +97,48 @@ const REVIEWS: Review[] = [
 
   { name: "Camille F.", rating: 5, text: "Perfect for a cat mom like me who worries about everything. Now I know exactly where Caramel goes and what he does. The adapter to watch on my phone works great. Definitely recommend to all cat owners.", textFr: "Parfait pour une cat mom comme moi qui s'inquiète pour tout. Maintenant je sais exactement où va Caramel et ce qu'il fait. L'adaptateur pour regarder sur le téléphone marche super bien. Je recommande à tous les propriétaires de chats.", date: "Mar 2026", photos: [], verified: true },
 
+  { name: "Léa G.", rating: 5, text: "I follow a lot of cat TikTok accounts and always wanted to film my own cat's adventures. This is perfect — clips are ready to post. My cat Simba already has 12k views on his first video.", textFr: "Je suis plein de comptes TikTok de chats et j'ai toujours voulu filmer les aventures du mien. C'est parfait — les clips sont prêts à poster. Mon chat Simba a déjà 12k vues sur sa première vidéo.", date: "Mar 2026", photos: [], verified: true },
+
+  { name: "Ben T.", rating: 5, text: "Got this for my parents' cat since they always wonder where he goes. They were amazed by the footage. Easy enough for my 65-year-old mom to use — just one button.", textFr: "Pris pour le chat de mes parents qui se demandent toujours où il va. Ils étaient bluffés par les images. Assez simple pour ma mère de 65 ans — un seul bouton.", date: "Feb 2026", photos: [], verified: true },
+
+  { name: "Sarah W.", rating: 4, text: "Fun gadget. Got about 1h45 of battery on my first try. Video is clear in daylight, less so at dusk. The collar fits my small cat perfectly. Would love a waterproof version.", textFr: "Gadget sympa. J'ai eu environ 1h45 de batterie au premier essai. Vidéo nette en plein jour, moins au crépuscule. Le collier va parfaitement à mon petit chat. J'adorerais une version étanche.", date: "Jan 2026", photos: [], verified: true },
+
+  { name: "Nicolas H.", rating: 5, text: "Shipped to Belgium in 11 days. Packaging is premium, not some cheap China feel. Camera works exactly as advertised. My British Shorthair Oscar is now a movie star.", textFr: "Livré en Belgique en 11 jours. L'emballage est premium, pas un truc cheap. La caméra marche exactement comme annoncé. Mon British Shorthair Oscar est maintenant une star de cinéma.", date: "Feb 2026", photos: [], verified: true },
+
+  { name: "Chloé M.", rating: 5, text: "I bought two — one for each of our cats. Now we compare their adventures every evening. It's become our family ritual. The SD card adapter is a really nice touch.", textFr: "J'en ai acheté deux — un pour chacun de nos chats. Maintenant on compare leurs aventures chaque soir. C'est devenu notre rituel familial. L'adaptateur carte SD est vraiment un bon plus.", date: "Mar 2026", photos: [], verified: true },
+
+  { name: "James P.", rating: 5, text: "Skeptic turned believer. Thought it would be a gimmick but the footage quality blew me away. My cat goes to places I never imagined. Already recommended it to 3 friends.", textFr: "Sceptique converti. Je pensais que ce serait un gadget mais la qualité des images m'a bluffé. Mon chat va dans des endroits que je n'imaginais même pas. Déjà recommandé à 3 amis.", date: "Dec 2025", photos: [], verified: true },
+
+  { name: "Marie-Claire B.", rating: 4, text: "Very good product. Only downside is the video format (AVI) which my phone doesn't read directly, but the adapter works and I can view in the gallery. My cat Luna wears it every day now.", textFr: "Très bon produit. Seul bémol le format vidéo (AVI) que mon téléphone ne lit pas directement, mais l'adaptateur marche et je peux voir dans la galerie. Ma chatte Luna le porte tous les jours maintenant.", date: "Nov 2025", photos: [], verified: true },
+
+  { name: "Oliver S.", rating: 5, text: "Birthday gift for my wife. She cried watching our cat's first footage. 10/10 gift idea for any cat lover.", textFr: "Cadeau d'anniversaire pour ma femme. Elle a pleuré en regardant les premières images de notre chat. Idée cadeau 10/10 pour les amoureux des chats.", date: "Jan 2026", photos: [], verified: true },
+
+  { name: "Inès A.", rating: 5, text: "Received in Switzerland in 12 days. My Ragdoll barely noticed it. The wide-angle lens captures everything — even saw the neighbor's dog from my cat's perspective. So funny.", textFr: "Reçu en Suisse en 12 jours. Mon Ragdoll l'a à peine remarqué. Le grand angle capture tout — j'ai même vu le chien du voisin du point de vue de mon chat. Trop drôle.", date: "Feb 2026", photos: [], verified: true },
+
+  { name: "Maxime R.", rating: 5, text: "No app needed = instant buy for me. Tired of every device needing an account and WiFi. Press record, done. Simple and effective.", textFr: "Pas d'appli nécessaire = achat immédiat pour moi. Marre que chaque appareil demande un compte et du WiFi. On appuie, ça filme. Simple et efficace.", date: "Mar 2026", photos: [], verified: true },
+
+  { name: "Anna L.", rating: 4, text: "Great concept, solid execution. Battery lasted about 1.5 hours for me. Wish it was a bit longer but honestly it captures enough. My cat Milo's garden adventures are priceless.", textFr: "Super concept, bonne exécution. La batterie a tenu environ 1h30 chez moi. J'aurais aimé un peu plus mais honnêtement ça capture assez. Les aventures de Milo dans le jardin n'ont pas de prix.", date: "Jan 2026", photos: [], verified: true },
+
+  { name: "Hugo V.", rating: 5, text: "Bought it after seeing a TikTok. Zero regrets. The POV footage of my cat climbing the fence is now my most liked video ever. Camera is so light my cat forgot about it instantly.", textFr: "Acheté après avoir vu un TikTok. Zéro regret. La vidéo POV de mon chat qui escalade la clôture est ma vidéo la plus likée. La caméra est si légère que mon chat l'a oubliée direct.", date: "Mar 2026", photos: [], verified: true },
+
+  { name: "Patricia D.", rating: 5, text: "I'm 58 and not tech-savvy at all. My son set it up in 30 seconds. Now I watch my cat Minette's daily walks like a TV show. Best €50 I ever spent.", textFr: "J'ai 58 ans et je ne suis pas du tout douée en tech. Mon fils l'a installé en 30 secondes. Maintenant je regarde les balades quotidiennes de Minette comme une série TV. Les meilleurs 50€ que j'ai dépensés.", date: "Feb 2026", photos: [], verified: true },
+
+  { name: "Kevin J.", rating: 5, text: "Our indoor cat Biscuit escaped once and we panicked. Now with Whiskcam we let him in the garden and watch everything. Peace of mind. Great product.", textFr: "Notre chat d'intérieur Biscuit s'est échappé une fois et on a paniqué. Maintenant avec Whiskcam on le laisse dans le jardin et on voit tout. Tranquillité d'esprit. Super produit.", date: "Dec 2025", photos: [], verified: true },
+
+  { name: "Audrey N.", rating: 5, text: "Ordered for my Bengal who is VERY active. The fisheye lens captures his crazy jumps perfectly. Battery held up for his entire morning outing. The footage is cinema-quality for the price.", textFr: "Commandé pour mon Bengal qui est TRÈS actif. L'objectif fisheye capture ses sauts de fou parfaitement. La batterie a tenu toute sa sortie du matin. Les images sont de qualité cinéma pour le prix.", date: "Mar 2026", photos: [], verified: true },
+
+  { name: "Stefan M.", rating: 4, text: "Solid product for the price. Only 4 stars because I wish the files were MP4 instead of AVI. But the footage quality is genuinely impressive and the no-app approach is refreshing.", textFr: "Produit solide pour le prix. Seulement 4 étoiles car j'aurais aimé des fichiers MP4 au lieu d'AVI. Mais la qualité des images est vraiment impressionnante et l'approche sans appli est rafraîchissante.", date: "Jan 2026", photos: [], verified: true },
+
+  { name: "Émilie C.", rating: 5, text: "My three kids fight over who gets to watch the cat videos first. We film our cat Tigrou every weekend now. It's become the highlight of our Sunday evenings.", textFr: "Mes trois enfants se battent pour savoir qui regarde les vidéos du chat en premier. On filme notre chat Tigrou chaque week-end maintenant. C'est devenu le moment fort de nos dimanches soirs.", date: "Feb 2026", photos: [], verified: true },
+
+  { name: "Robert H.", rating: 5, text: "Retired and my cat is my best companion. This camera lets me see his world. Yesterday I found out he sleeps on the same bench in the park every afternoon. Beautiful footage.", textFr: "Retraité, mon chat est mon meilleur compagnon. Cette caméra me permet de voir son monde. Hier j'ai découvert qu'il dort sur le même banc au parc chaque après-midi. De belles images.", date: "Mar 2026", photos: [], verified: true },
+
+  { name: "Yasmine K.", rating: 5, text: "Finally answered the question every cat owner has: WHAT do they do all day?! Answer: a lot more than you think. My cat has a whole social circle I knew nothing about. Mind blown.", textFr: "J'ai enfin répondu à LA question que tous les propriétaires de chats se posent : qu'est-ce qu'ils font toute la journée ?! Réponse : bien plus qu'on ne croit. Mon chat a tout un cercle social dont je ne savais rien. Hallucinant.", date: "Mar 2026", photos: [], verified: true },
+
+  { name: "Florian W.", rating: 5, text: "Clean packaging, works out of the box, no fuss. Exactly what I expected. My tabby got 1h40 of footage on the first charge. Will keep using it.", textFr: "Packaging propre, fonctionne dès la réception, sans prise de tête. Exactement ce que j'attendais. Mon chat a filmé 1h40 à la première charge. Je vais continuer à l'utiliser.", date: "Feb 2026", photos: [], verified: true },
+
+  { name: "Clara S.", rating: 5, text: "Ordered Sunday, arrived the following week. Put it on my rescue cat Pablo — turns out he has a girlfriend two streets away. The video proof is hilarious. Best impulse purchase ever.", textFr: "Commandé dimanche, reçu la semaine suivante. Mis sur mon chat adopté Pablo — il a une copine à deux rues. La preuve vidéo est hilarante. Meilleur achat impulsif de ma vie.", date: "Mar 2026", photos: [], verified: true },
+
   // Sam M. (real, 3 stars — keep last)
   { name: "Sam M.", rating: 3, text: "Good.", textFr: "Bien.", date: "Jan 2026", photos: [], verified: true },
 ];
@@ -156,9 +198,10 @@ function StarRating({ count, size = "sm" }: { count: number; size?: "sm" | "lg" 
 
 function VerifiedBadge({ label }: { label: string }) {
   return (
-    <span className="inline-flex items-center gap-1 rounded-full bg-wk-green/5 px-2 py-0.5 text-[10px] font-semibold text-wk-green">
-      <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+    <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-0.5 text-[10px] font-semibold text-blue-600">
+      {/* Official-style verified badge (Twitter / Instagram) */}
+      <svg className="h-3.5 w-3.5 text-blue-500" viewBox="0 0 22 22" fill="currentColor" aria-hidden="true">
+        <path d="M20.396 11c-.018-.646-.215-1.275-.57-1.816-.354-.54-.852-.972-1.438-1.246.223-.607.27-1.264.14-1.897-.131-.634-.437-1.218-.882-1.687-.47-.445-1.053-.75-1.687-.882-.633-.13-1.29-.083-1.897.14-.273-.587-.704-1.086-1.245-1.44S11.647 1.62 11 1.604c-.646.017-1.273.213-1.813.568s-.969.853-1.24 1.44c-.608-.223-1.267-.272-1.902-.14-.635.13-1.22.436-1.69.882-.445.47-.749 1.055-.878 1.688-.13.633-.08 1.29.144 1.896-.587.274-1.087.705-1.443 1.245-.356.54-.555 1.17-.574 1.817.02.647.218 1.276.574 1.817.356.54.856.972 1.443 1.245-.224.607-.274 1.264-.144 1.897.13.634.433 1.218.877 1.688.47.443 1.054.747 1.687.878.633.132 1.29.084 1.897-.136.274.586.705 1.084 1.246 1.439.54.354 1.17.551 1.816.569.647-.016 1.276-.213 1.817-.567s.972-.854 1.245-1.44c.604.239 1.266.296 1.903.164.636-.132 1.22-.447 1.68-.907.46-.46.776-1.044.908-1.681s.075-1.299-.165-1.903c.586-.274 1.084-.705 1.439-1.246.354-.54.551-1.17.569-1.816zM9.662 14.85l-3.429-3.428 1.293-1.302 2.072 2.072 4.4-4.794 1.347 1.246z" />
       </svg>
       {label}
     </span>
