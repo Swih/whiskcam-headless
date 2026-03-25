@@ -46,12 +46,15 @@ export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
     setMobileOpen(false);
     if (path.startsWith("#")) {
       if (pathname !== "/") {
-        router.push("/" + path);
+        // Navigate to homepage first, then scroll after load
+        router.push("/");
+        // Small delay to let the page load before scrolling
+        setTimeout(() => {
+          document.querySelector(path)?.scrollIntoView({ behavior: "smooth" });
+        }, 500);
       } else {
-        const el = document.querySelector(path);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth" });
-        }
+        // Already on homepage — scroll without changing URL hash
+        document.querySelector(path)?.scrollIntoView({ behavior: "smooth" });
       }
     }
   };
