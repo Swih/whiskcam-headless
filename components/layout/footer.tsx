@@ -8,7 +8,7 @@ export default async function Footer() {
 
   const footerLinks = {
     shop: [
-      { title: t("links.whiskcamOriginal"), path: "/#product" },
+      { title: t("links.whiskcamOriginal"), path: "/" },
       { title: t("links.whatIsWhiskcam"), path: "/what-is-whiskcam" },
     ],
     learn: [

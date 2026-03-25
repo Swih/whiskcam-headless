@@ -317,7 +317,7 @@ export default async function BlogArticlePage({
             The Whiskcam Original — 24 g, 1080P, no app needed. Free worldwide shipping.
           </p>
           <Link
-            href="/#product"
+            href="/"
             className="mt-6 inline-block rounded-full bg-wk-amber px-8 py-3 text-sm font-semibold text-wk-dark transition-colors hover:bg-wk-amber-hover"
           >
             Shop Whiskcam — &euro;49.90
