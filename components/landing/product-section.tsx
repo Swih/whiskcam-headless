@@ -282,24 +282,25 @@ type MediaItem =
 // ─── Features infographic custom slide ───────────────────────────────────────
 
 function FeaturesInfographicSlide() {
+  const t = useTranslations("product");
   const specs = [
-    { value: "1080P", label: "Full HD" },
-    { value: "170°", label: "Wide Angle" },
-    { value: "24g", label: "Ultralight" },
-    { value: "3h+", label: "Battery" },
-    { value: "No WiFi", label: "Privacy" },
-    { value: "No App", label: "Plug & Play" },
+    { value: "1080P", labelKey: "specFullHd" as const },
+    { value: "170°", labelKey: "specWideAngle" as const },
+    { value: "24g", labelKey: "specUltralight" as const },
+    { value: "3h+", labelKey: "specBattery" as const },
+    { value: "No WiFi", labelKey: "specPrivacy" as const },
+    { value: "No App", labelKey: "specPlugPlay" as const },
   ];
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-[#0f0f1a] via-[#1a1a2e] to-[#16213e] px-6 py-8">
       <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.25em] text-amber-400">
-        Tech Specs
+        {t("infographicOverline")}
       </p>
       <h3 className="mb-6 text-center text-lg font-black text-white sm:text-2xl">
-        Everything you need.
+        {t("infographicTitle")}
         <br />
-        <span className="text-amber-400">Nothing you don&apos;t.</span>
+        <span className="text-amber-400">{t("infographicHighlight")}</span>
       </h3>
 
       <div className="grid w-full max-w-[260px] grid-cols-3 gap-2.5 sm:max-w-xs sm:gap-3">
@@ -310,14 +311,14 @@ function FeaturesInfographicSlide() {
           >
             <span className="text-sm font-black text-white sm:text-base">{spec.value}</span>
             <span className="mt-0.5 text-center text-[9px] leading-tight text-white/55 sm:text-[10px]">
-              {spec.label}
+              {t(spec.labelKey)}
             </span>
           </div>
         ))}
       </div>
 
       <p className="mt-6 text-center text-[11px] text-white/35">
-        No subscription · No cloud · No privacy concerns
+        {t("infographicFooter")}
       </p>
     </div>
   );
@@ -354,6 +355,7 @@ const GAP_PX = 8;
 const MAX_SLIDES = 7;
 
 function ProductGallery({ images }: { images: { src: string; alt: string }[] }) {
+  const t = useTranslations("product");
   const imgMedia = images.map((img) => ({ type: "image" as const, ...img }));
 
   // Conversion-optimised media sequence, capped at MAX_SLIDES
@@ -575,7 +577,7 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
             {/* Best-Seller badge — top-left, below story bar on mobile */}
             <div className="pointer-events-none absolute left-3 z-20 top-8 lg:top-3">
               <span className="inline-flex items-center rounded-full bg-wk-amber px-2.5 py-1 text-[11px] font-bold text-white shadow-md ring-1 ring-white/20">
-                Best-Seller
+                {t("galleryBadge")}
               </span>
             </div>
 
@@ -584,7 +586,7 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
               <div className="flex items-center gap-1.5 rounded-full bg-black/65 px-3 py-1.5 shadow-lg backdrop-blur-sm">
                 <span className="text-xs text-yellow-400">★★★★★</span>
                 <span className="whitespace-nowrap text-[11px] font-medium text-white">
-                  Loved by 500+ pet parents
+                  {t("gallerySocialProof")}
                 </span>
               </div>
             </div>
