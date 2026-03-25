@@ -35,6 +35,7 @@ export function Button({
 }: ButtonProps) {
   return (
     <button
+      type="button"
       className={clsx(
         "inline-flex items-center justify-center font-semibold tracking-wide",
         "rounded-[var(--radius-btn)]",
