@@ -83,7 +83,7 @@ export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
           </button>
 
           {/* Logo — wordmark on desktop, icon on mobile */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
             {/* Mobile: icon only */}
             <Image
               src="/images/logos/whiskcam-logo-icon.webp"
@@ -153,7 +153,7 @@ export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
       {mobileOpen && (
         <div className="fixed inset-0 z-[60] bg-white">
           <div className="flex items-center justify-between px-4 py-3">
-            <Link href="/" onClick={() => setMobileOpen(false)}>
+            <Link href="/" onClick={() => { setMobileOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
               <Image
                 src="/images/logos/whiskcam-logo-wordmark.webp"
                 alt="Whiskcam"

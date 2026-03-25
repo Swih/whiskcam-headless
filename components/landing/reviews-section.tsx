@@ -44,8 +44,8 @@ const REVIEWS: Review[] = [
   // Marilee G. (real, 1 photo)
   { name: "Marilee G.", rating: 5, text: "Best purchase ever. My cat is a long-hair munchkin (short legs), and this camera still records great footage. Very easy to use. Highly recommend!", textFr: "Meilleur achat de ma vie. Mon chat est un Munchkin à poils longs (petites pattes), et la caméra filme quand même super bien. Très facile à utiliser. Je recommande !", date: "Aug 2025", photos: ["/images/reviews/customer-review-whiskcam-cat-camera-8.webp"], verified: true },
 
-  // Avery M. (real, 1 photo)
-  { name: "Avery M.", rating: 5, text: "Camera is awesome. You can find a YouTube review on channel named danelurepairs.", textFr: "La caméra est géniale. Vous pouvez trouver un test YouTube sur la chaîne danelurepairs.", date: "Jan 2026", photos: ["/images/reviews/customer-review-whiskcam-cat-camera-11.webp"], verified: true },
+  // Avery M. (real, no photos)
+  { name: "Avery M.", rating: 5, text: "Camera is awesome. You can find a YouTube review on channel named danelurepairs.", textFr: "La caméra est géniale. Vous pouvez trouver un test YouTube sur la chaîne danelurepairs.", date: "Jan 2026", photos: [], verified: true },
 
   /* ── Reviews WITHOUT photos — real first ────────────────────────── */
 
