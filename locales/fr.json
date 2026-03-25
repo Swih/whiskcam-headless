@@ -15,8 +15,8 @@
     "plusFreeShipping": "+ Livraison offerte",
     "plusFreeShipShort": "+ Livraison",
     "ends": "— Se termine",
-    "staticWithDiscount": "Économisez {pct}% — Livraison gratuite mondiale",
-    "staticDefault": "Livraison gratuite dans le monde entier"
+    "staticWithDiscount": "Économisez {pct}% — Livraison offerte en France, Belgique, Suisse et Europe",
+    "staticDefault": "Livraison offerte — France, Belgique, Suisse et Europe"
   },
   "hero": {
     "tagline": "La mini-caméra de collier",
@@ -24,7 +24,7 @@
     "subtitle": "Votre chat mène une double vie quand vous partez. Cette mini-caméra de collier la filme en Full HD — sans appli, sans WiFi.",
     "trust": "Adopté par plus de 500 propriétaires d'animaux",
     "ctaButton": "Je le veux",
-    "ctaSubtext": "Livraison offerte dans le monde entier"
+    "ctaSubtext": "Livraison offerte — France, Belgique, Suisse et Europe"
   },
   "stats": {
     "fullHd": "Full HD",
@@ -145,13 +145,13 @@
     "microsdDetail": "Pré-installée, prête à filmer",
     "adapterName": "Adaptateur USB-C/Lightning",
     "adapterDetail": "Visionnez direct sur votre téléphone",
-    "shippingName": "Livraison gratuite mondiale",
+    "shippingName": "Livraison offerte en Europe",
     "shippingDetail": "7 à 14 jours ouvrés",
     "free": "OFFERT",
     "totalValue": "Valeur totale",
     "youPay": "Vous payez",
     "atcFallback": "Connectez Shopify pour activer l'ajout au panier",
-    "freeShippingMoneyBack": "Livraison gratuite · Remboursement 30 jours",
+    "freeShippingMoneyBack": "Livraison offerte · Remboursement 30 jours",
     "trustShipping": "Livraison offerte",
     "trustReturn": "Retour 30 jours",
     "trustSecure": "Paiement sécurisé",
@@ -223,7 +223,7 @@
       },
       "6": {
         "question": "Quand est-ce que je le reçois ?",
-        "answer": "Livraison gratuite dans le monde entier. Comptez 7 à 14 jours ouvrés selon votre localisation. Un numéro de suivi vous est envoyé dès l'expédition."
+        "answer": "Livraison offerte en France, Belgique, Suisse et dans toute l'Europe. Comptez 7 à 14 jours ouvrés selon votre localisation. Un numéro de suivi vous est envoyé dès l'expédition."
       },
       "7": {
         "question": "Quel format vidéo ?",
@@ -251,7 +251,7 @@
       "privacy": "Politique de confidentialité",
       "terms": "Conditions d'utilisation"
     },
-    "trustShipping": "Livraison mondiale gratuite",
+    "trustShipping": "Livraison offerte en Europe",
     "trustReturns": "Remboursement 30 jours",
     "trustSecure": "Paiement sécurisé",
     "trustPetSafe": "Sûr pour les animaux",
@@ -277,10 +277,10 @@
     "empty": "Votre panier est vide.",
     "emptySubtext": "Ajoutez Whiskcam pour commencer",
     "startShopping": "Continuer mes achats",
-    "freeShippingBanner": "Vous bénéficiez de la livraison gratuite mondiale !",
+    "freeShippingBanner": "Livraison offerte — France, Belgique, Suisse et Europe !",
     "freeGiftsLabel": "🎁 Cadeaux inclus",
     "freeLabel": "OFFERT",
-    "freeWorldwideShipping": "Livraison gratuite mondiale",
+    "freeWorldwideShipping": "Livraison offerte en Europe",
     "subtotal": "Sous-total",
     "shipping": "Livraison",
     "total": "Total",
