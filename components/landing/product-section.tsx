@@ -418,8 +418,13 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
   );
   const goPrev = useCallback(() => setActive((p) => Math.max(p - 1, 0)), []);
 
-  // Auto-scroll the active thumbnail into view
+  // Auto-scroll the active thumbnail into view (skip initial render)
+  const isFirstRender = useRef(true);
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     const strip = thumbnailStripRef.current;
     if (!strip) return;
     const thumb = strip.children[active] as HTMLElement | undefined;
