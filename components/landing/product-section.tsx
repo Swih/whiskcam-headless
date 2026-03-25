@@ -584,7 +584,7 @@ function ProductGallery({ images }: { images: { src: string; alt: string }[] }) 
               <div className="flex items-center gap-1.5 rounded-full bg-black/65 px-3 py-1.5 shadow-lg backdrop-blur-sm">
                 <span className="text-xs text-yellow-400">★★★★★</span>
                 <span className="whitespace-nowrap text-[11px] font-medium text-white">
-                  Loved by 1,200+ pet parents
+                  Loved by 500+ pet parents
                 </span>
               </div>
             </div>

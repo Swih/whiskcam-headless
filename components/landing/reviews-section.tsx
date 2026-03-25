@@ -4,7 +4,7 @@ import { useState } from "react";
 import { SectionWrapper } from "components/ui/section-wrapper";
 import { SectionHeading } from "components/ui/section-heading";
 import { AnimatedElement } from "components/ui/animated-element";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 /* ------------------------------------------------------------------ */
 /*  Review data                                                       */
@@ -14,6 +14,7 @@ interface Review {
   name: string;
   rating: 3 | 4 | 5;
   text: string;
+  textFr?: string;
   date: string;
   photos: string[];
   verified: boolean;
@@ -25,6 +26,7 @@ const REVIEWS: Review[] = [
     name: "Jacquie H.",
     rating: 5,
     text: "This camera is amazing!!! Best buy ever! The quality of the video is so good. It records for max 1 hour I think. Videos are automatically separated every 5 min. So funny to see what our cat does.",
+    textFr: "Cette caméra est incroyable !!! Meilleur achat de ma vie ! La qualité vidéo est vraiment bonne. Ça enregistre pendant 1 heure max je crois. Les vidéos sont automatiquement séparées toutes les 5 min. Trop drôle de voir ce que fait notre chat.",
     date: "Nov 2025",
     photos: [
       "/images/reviews/customer-review-whiskcam-cat-camera-1.webp",
@@ -39,6 +41,7 @@ const REVIEWS: Review[] = [
     name: "Vilma L.",
     rating: 5,
     text: "It's the second camera I bought because I loved it. The fisheye lens is great. One on my dog's collar, the other at home. Battery lasts about 120 minutes.",
+    textFr: "C'est la deuxième que j'achète tellement j'ai adoré. L'objectif fisheye est top. Une sur le collier de mon chien, l'autre à la maison. La batterie tient environ 120 minutes.",
     date: "Jul 2025",
     photos: ["/images/reviews/customer-review-whiskcam-cat-camera-5.webp"],
     verified: true,
@@ -48,6 +51,7 @@ const REVIEWS: Review[] = [
     name: "Jayna C.",
     rating: 5,
     text: "Everything works well and takes good pictures. The set includes two sizes of collars. The cat plays and is not afraid of the camera.",
+    textFr: "Tout fonctionne bien et les images sont belles. Le kit inclut deux tailles de colliers. Le chat joue et n'a pas peur de la caméra.",
     date: "Nov 2025",
     photos: [
       "/images/reviews/customer-review-whiskcam-cat-camera-6.webp",
@@ -60,6 +64,7 @@ const REVIEWS: Review[] = [
     name: "Kaye O.",
     rating: 5,
     text: "This is a really neat little camera \u2014 we have some amazing video of our cat's escapades. Video quality is really good and battery life is good too. Great value.",
+    textFr: "C'est une super petite caméra — on a des vidéos incroyables des escapades de notre chat. La qualité vidéo est vraiment bonne et l'autonomie aussi. Excellent rapport qualité-prix.",
     date: "Jul 2025",
     photos: [],
     verified: true,
@@ -69,6 +74,7 @@ const REVIEWS: Review[] = [
     name: "Pierre N.",
     rating: 5,
     text: "Very impressed! Adjustable collar for cat or small dog. Very easy to record and upload. The quality is quite impressive. My cats didn't notice the camera after about 2 minutes.",
+    textFr: "Très impressionné ! Collier ajustable pour chat ou petit chien. Très facile à utiliser. La qualité est vraiment impressionnante. Mes chats n'ont pas remarqué la caméra au bout de 2 minutes.",
     date: "Aug 2025",
     photos: [],
     verified: true,
@@ -78,6 +84,7 @@ const REVIEWS: Review[] = [
     name: "Marilee G.",
     rating: 5,
     text: "Best purchase ever. My cat is a long-hair munchkin (short legs), and this camera still records great footage. Very easy to use. Highly recommend!",
+    textFr: "Meilleur achat de ma vie. Mon chat est un Munchkin à poils longs (petites pattes), et la caméra filme quand même super bien. Très facile à utiliser. Je recommande !",
     date: "Aug 2025",
     photos: ["/images/reviews/customer-review-whiskcam-cat-camera-8.webp"],
     verified: true,
@@ -87,6 +94,7 @@ const REVIEWS: Review[] = [
     name: "Courtney G.",
     rating: 5,
     text: "Too good, records at x0.6 and you can absolutely see everything. The quality is great. I recommend buying with the card that has more memory.",
+    textFr: "Trop bien, ça filme en x0.6 et on voit absolument tout. La qualité est top. Je recommande de prendre avec une carte mémoire plus grande.",
     date: "Jul 2025",
     photos: [],
     verified: true,
@@ -96,6 +104,7 @@ const REVIEWS: Review[] = [
     name: "Erik K.",
     rating: 5,
     text: "The camera was sent quickly, within two weeks. The camera is good, the quality is excellent. Would definitely recommend.",
+    textFr: "La caméra a été envoyée rapidement, en moins de deux semaines. Elle est bien, la qualité est excellente. Je recommande sans hésiter.",
     date: "Dec 2025",
     photos: [
       "/images/reviews/customer-review-whiskcam-cat-camera-9.webp",
@@ -108,6 +117,7 @@ const REVIEWS: Review[] = [
     name: "Avery M.",
     rating: 5,
     text: "Camera is awesome. You can find a YouTube review on channel named danelurepairs.",
+    textFr: "La caméra est géniale. Vous pouvez trouver un test YouTube sur la chaîne danelurepairs.",
     date: "Jan 2026",
     photos: ["/images/reviews/customer-review-whiskcam-cat-camera-11.webp"],
     verified: true,
@@ -117,6 +127,7 @@ const REVIEWS: Review[] = [
     name: "Lyndia U.",
     rating: 5,
     text: "After one use I'm very impressed with the item. Quality not the best but ok, can record for 2 hours then shuts down.",
+    textFr: "Après une utilisation, je suis très impressionnée. La qualité n'est pas la meilleure mais correcte, ça enregistre pendant 2 heures puis s'éteint.",
     date: "Aug 2025",
     photos: [],
     verified: true,
@@ -126,6 +137,7 @@ const REVIEWS: Review[] = [
     name: "Kory M.",
     rating: 4,
     text: "The quality of the images during the day is quite good, but not so much at night. Now at least we know where our cats go. Easy to use. Comes with 2 straps and a case.",
+    textFr: "La qualité des images en journée est plutôt bonne, mais moins la nuit. Au moins maintenant on sait où vont nos chats. Facile à utiliser. Livré avec 2 sangles et un étui.",
     date: "Jan 2026",
     photos: [],
     verified: true,
@@ -135,6 +147,7 @@ const REVIEWS: Review[] = [
     name: "Isiah D.",
     rating: 5,
     text: "Very good camera definition, well packaged, everything perfect.",
+    textFr: "Très bonne définition de caméra, bien emballé, tout est parfait.",
     date: "Sep 2025",
     photos: [],
     verified: true,
@@ -144,6 +157,7 @@ const REVIEWS: Review[] = [
     name: "Fannie M.",
     rating: 5,
     text: "48 minutes long, it weighs well, fits well, only needs adjustment at the neck. Be careful when they drink water because they sink it.",
+    textFr: "48 minutes d'enregistrement, bon poids, tient bien, juste un ajustement au cou à faire. Attention quand ils boivent car ils le plongent dans l'eau.",
     date: "Nov 2025",
     photos: [
       "/images/reviews/customer-review-whiskcam-cat-camera-12.webp",
@@ -159,6 +173,7 @@ const REVIEWS: Review[] = [
     name: "Verdell K.",
     rating: 5,
     text: "The camera is very light. My cat doesn't even notice. I can't say more because the cat has returned without the camera. The neighbors stole it. \ud83d\ude02",
+    textFr: "La caméra est très légère. Mon chat ne la remarque même pas. J'en dirai pas plus parce que le chat est revenu sans la caméra. Les voisins l'ont volée. \ud83d\ude02",
     date: "Feb 2026",
     photos: [
       "/images/reviews/customer-review-whiskcam-cat-camera-17.webp",
@@ -171,6 +186,7 @@ const REVIEWS: Review[] = [
     name: "Sam M.",
     rating: 3,
     text: "Good.",
+    textFr: "Bien.",
     date: "Jan 2026",
     photos: [],
     verified: true,
@@ -180,6 +196,7 @@ const REVIEWS: Review[] = [
     name: "Natasha R.",
     rating: 5,
     text: "Put this on my tabby Oliver and finally found out he visits THREE different neighbors for treats every morning. The footage was hilarious. Battery lasted the whole outing, about 90 minutes. Picture quality is sharp enough to read house numbers.",
+    textFr: "J'ai mis ça sur mon tabby Oliver et j'ai enfin découvert qu'il va chez TROIS voisins différents chercher des friandises chaque matin. Les images étaient hilarantes. La batterie a tenu toute la sortie, environ 90 minutes. La qualité est assez nette pour lire les numéros de maison.",
     date: "Oct 2025",
     photos: [],
     verified: true,
@@ -189,6 +206,7 @@ const REVIEWS: Review[] = [
     name: "Derek W.",
     rating: 5,
     text: "Bought this for our Bengal, Mochi. She's an outdoor cat and we always wondered where she disappears to. Turns out she has a whole second life in the park across the street. Camera is lightweight, she didn't care about it at all. Solid purchase.",
+    textFr: "Acheté pour notre Bengal, Mochi. C'est une chatte d'extérieur et on s'est toujours demandé où elle disparaissait. Il s'avère qu'elle a toute une seconde vie dans le parc d'en face. La caméra est légère, elle s'en fichait complètement. Bon achat.",
     date: "Dec 2025",
     photos: [],
     verified: true,
@@ -198,6 +216,7 @@ const REVIEWS: Review[] = [
     name: "Hannah T.",
     rating: 4,
     text: "Works well for what it is. My Maine Coon barely noticed the weight. Video quality during the day is great but gets a bit grainy in low light. The two collar sizes are a nice touch \u2014 the larger one fits perfectly. Would buy again.",
+    textFr: "Fonctionne bien pour ce que c'est. Mon Maine Coon a à peine remarqué le poids. La qualité vidéo en journée est top mais un peu granuleuse en faible luminosité. Les deux tailles de collier sont un bon point — la grande va parfaitement. Je rachèterais.",
     date: "Nov 2025",
     photos: [],
     verified: true,
@@ -207,6 +226,7 @@ const REVIEWS: Review[] = [
     name: "Carlos A.",
     rating: 5,
     text: "We have two cats and bought two cameras. Seeing their POV of the house while we're at work is the funniest thing ever. Luna spent 40 minutes staring at a moth. Setup took less than a minute, just pop in the SD card and press record.",
+    textFr: "On a deux chats et on a acheté deux caméras. Voir leur point de vue de la maison pendant qu'on bosse, c'est la chose la plus drôle au monde. Luna a passé 40 minutes à fixer un papillon de nuit. L'installation a pris moins d'une minute.",
     date: "Sep 2025",
     photos: [],
     verified: true,
@@ -216,6 +236,7 @@ const REVIEWS: Review[] = [
     name: "Priya S.",
     rating: 5,
     text: "Got this for Chai, our 4 kg rescue cat. Was worried about the weight but she didn't react at all \u2014 started playing with her toys within seconds. The clips are adorable. We watch them every evening like a little TV show. Shipping was fast too, about 10 days.",
+    textFr: "Pris pour Chai, notre chatte de 4 kg adoptée en refuge. J'avais peur pour le poids mais elle n'a pas du tout réagi — elle a recommencé à jouer en quelques secondes. Les vidéos sont adorables. On les regarde chaque soir comme une petite série TV. Livraison rapide, environ 10 jours.",
     date: "Jan 2026",
     photos: [],
     verified: true,
@@ -226,7 +247,7 @@ const REVIEWS: Review[] = [
 /*  Aggregate stats — computed from reviews, display count boosted    */
 /* ------------------------------------------------------------------ */
 
-const DISPLAYED_REVIEW_COUNT = 500;
+const DISPLAYED_REVIEW_COUNT = REVIEWS.length;
 
 function computeStats(reviews: Review[]) {
   const total = reviews.length;
@@ -382,12 +403,18 @@ function PhotoLightbox({
 
 function ReviewCard({ review, index }: { review: Review; index: number }) {
   const t = useTranslations("reviews");
+  const locale = useLocale();
   const [expanded, setExpanded] = useState(false);
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
+  /* Pick the right text based on locale */
+  const isFr = locale === "fr";
+  const rawText = isFr && review.textFr ? review.textFr : review.text;
+  const showTranslatedLabel = isFr && !!review.textFr;
+
   /* Truncate at ~120 chars for the collapsed view */
-  const isLong = review.text.length > 120;
-  const displayText = !isLong || expanded ? review.text : review.text.slice(0, 120) + "...";
+  const isLong = rawText.length > 120;
+  const displayText = !isLong || expanded ? rawText : rawText.slice(0, 120) + "...";
 
   return (
     <>
@@ -408,6 +435,9 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
           <p className="mt-3 flex-1 text-sm leading-relaxed text-wk-grey-600">
             &ldquo;{displayText}&rdquo;
           </p>
+          {showTranslatedLabel && (
+            <span className="mt-1 text-[10px] italic text-wk-grey-400">{t("translated")}</span>
+          )}
           {isLong && (
             <button
               onClick={() => setExpanded(!expanded)}

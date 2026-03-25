@@ -19,12 +19,12 @@
     "staticDefault": "Livraison gratuite dans le monde entier"
   },
   "hero": {
-    "tagline": "Caméra pour collier d'animaux",
-    "title": "Voyez leur monde.",
-    "subtitle": "Vous vous demandez ce que fait votre chat quand vous partez ? Maintenant vous saurez.",
-    "trust": "Adoré par plus de 500 propriétaires d'animaux",
-    "ctaButton": "Commander",
-    "ctaSubtext": "Livraison gratuite mondiale"
+    "tagline": "La mini-caméra de collier",
+    "title": "Découvrez leur vie secrète.",
+    "subtitle": "Votre chat mène une double vie quand vous partez. Cette mini-caméra de collier la filme en Full HD — sans appli, sans WiFi.",
+    "trust": "Adopté par plus de 500 propriétaires d'animaux",
+    "ctaButton": "Je le veux",
+    "ctaSubtext": "Livraison offerte dans le monde entier"
   },
   "stats": {
     "fullHd": "Full HD",
@@ -33,9 +33,9 @@
     "batteryLife": "Autonomie"
   },
   "videoShowcase": {
-    "overline": "Vraies vidéos",
+    "overline": "Images réelles",
     "title": "Ce que votre chat fait vraiment",
-    "subtitle": "Clips non montés de chats portant le Whiskcam. Faites défiler pour explorer.",
+    "subtitle": "Des images brutes filmées par de vrais chats avec Whiskcam. Préparez-vous à être surpris.",
     "pause": "Pause",
     "play": "Lecture",
     "verifiedOwner": "Propriétaire vérifié",
@@ -60,90 +60,91 @@
     }
   },
   "features": {
-    "overline": "Fonctionnalités",
-    "title": "Conçu pour les aventures",
-    "subtitle": "Tout ce dont votre animal a besoin pour devenir réalisateur.",
+    "overline": "Pourquoi Whiskcam",
+    "title": "Chaque détail pensé pour ne rien rater",
+    "subtitle": "Pas de gadget inutile. Juste l'essentiel pour capturer ce que vous n'avez jamais vu.",
     "items": {
       "0": {
         "title": "1080P Full HD",
-        "description": "Des images cristallines de chaque aventure, des moustaches à la queue."
+        "description": "Chaque moustache, chaque détail. Des vidéos si nettes que vous aurez l'impression d'y être."
       },
       "1": {
         "title": "170° Grand angle",
-        "description": "L'objectif fisheye capture tout ce que voit votre animal — rien n'échappe."
+        "description": "Tout ce que voit votre animal, vous le verrez aussi. L'objectif fisheye ne rate rien."
       },
       "2": {
-        "title": "Ultra-léger",
-        "description": "À seulement 26g, votre chat ne le remarquera même pas. Conçu pour le confort."
+        "title": "Ultra-léger — 26g",
+        "description": "Plus léger qu'une clochette. Votre chat l'oublie en quelques minutes."
       },
       "3": {
         "title": "Sans appli. Sans WiFi.",
-        "description": "Appuyez sur enregistrer. C'est tout. Pas de configuration, pas de compte, pas de prise de tête."
+        "description": "Un bouton. Un clic. C'est tout. Zéro configuration, zéro prise de tête."
       },
       "4": {
         "title": "Charge USB-C",
-        "description": "Charge rapide via USB-C. Batterie complète en moins d'une heure. Prêt à partir."
+        "description": "Rechargé en moins d'une heure. Prêt pour la prochaine aventure."
       },
       "5": {
         "title": "Sûr pour les animaux",
-        "description": "Se fixe à n'importe quel collier. Compact, bords lisses. Design approuvé par les vétérinaires."
+        "description": "Bords arrondis, clip universel, design validé par des vétérinaires. Votre chat ne risque rien."
       }
     }
   },
   "reviews": {
     "overline": "Avis clients",
-    "title": "Les propriétaires d'animaux adorent",
-    "subtitle": "Vraies vidéos. Vraies réactions.",
+    "title": "Ce qu'en disent les propriétaires",
+    "subtitle": "Des avis vrais, de vrais propriétaires.",
     "verifiedBuyer": "Acheteur vérifié",
     "showPhotos": "Voir les photos",
     "hidePhotos": "Masquer les photos",
     "prev": "Avis précédent",
     "next": "Avis suivant",
-    "basedOn": "Plus de {count} avis",
+    "basedOn": "{count}+ avis vérifiés",
     "readMore": "Lire plus",
     "showLess": "Voir moins",
     "showAll": "Voir tous les avis",
     "showAllCount": "Voir les {count} avis",
-    "trustFooter": "Tous les avis proviennent de clients vérifiés. Non modifiés et non filtrés."
+    "translated": "traduit",
+    "trustFooter": "Tous les avis proviennent de clients vérifiés Whiskcam."
   },
   "howItWorks": {
     "overline": "Comment ça marche",
     "title": "Simple comme 1, 2, 3",
-    "subtitle": "Aucune compétence technique requise. Si vous pouvez appuyer sur un bouton, vous pouvez utiliser Whiskcam.",
+    "subtitle": "Si vous savez appuyer sur un bouton, vous savez utiliser Whiskcam.",
     "steps": {
       "0": {
-        "title": "Fixez-le",
-        "description": "Attachez le Whiskcam au collier de votre animal en quelques secondes. Il s'adapte à n'importe quel collier."
+        "title": "Clipsez",
+        "description": "Fixez Whiskcam au collier en 2 secondes. Compatible avec tous les colliers."
       },
       "1": {
-        "title": "Appuyez sur Enregistrer",
-        "description": "Un seul bouton. C'est tout. Sans appli, sans WiFi, sans configuration. Appuyez et c'est parti."
+        "title": "Enregistrez",
+        "description": "Un seul bouton. Pas d'appli, pas de WiFi. Appuyez et laissez votre chat vivre sa vie."
       },
       "2": {
-        "title": "Découvrez leur monde",
-        "description": "Branchez la carte SD sur votre téléphone avec l'adaptateur inclus. Regardez, riez, partagez."
+        "title": "Découvrez",
+        "description": "Branchez la carte SD sur votre téléphone. Regardez, riez, partagez."
       }
     }
   },
   "product": {
     "overline": "Boutique",
     "title": "Whiskcam Original",
-    "subtitle": "Tout ce qu'il faut pour découvrir le monde secret de votre animal.",
+    "subtitle": "Tout inclus. Prêt à filmer dès la réception.",
     "badgeBestSeller": "Meilleure vente",
     "badge1080p": "1080P Full HD",
     "badgeNoApp": "Sans appli",
-    "reviews": "500+ propriétaires d'animaux",
+    "reviews": "500+ propriétaires satisfaits",
     "keyBenefits": {
-      "0": "1080P Full HD — objectif grand angle 170°",
-      "1": "Ultra-léger 26g — les chats ne le remarquent pas",
-      "2": "Sans appli, sans WiFi — appuyez et enregistrez",
-      "3": "90 min de batterie — charge rapide USB-C"
+      "0": "Full HD 1080P — objectif grand angle 170°",
+      "1": "26g ultra-léger — votre chat ne le sent pas",
+      "2": "Sans appli, sans WiFi — un clic et ça filme",
+      "3": "90 min d'autonomie — rechargé en moins d'1h"
     },
-    "freeGiftsLabel": "Cadeaux offerts avec votre commande",
+    "freeGiftsLabel": "Offerts avec votre commande",
     "microsdName": "Carte MicroSD 32 Go",
-    "microsdDetail": "Pré-installée, prête à l'enregistrement",
+    "microsdDetail": "Pré-installée, prête à filmer",
     "adapterName": "Adaptateur USB-C/Lightning",
-    "adapterDetail": "Visionnez vos vidéos sur votre téléphone",
+    "adapterDetail": "Visionnez direct sur votre téléphone",
     "shippingName": "Livraison gratuite mondiale",
     "shippingDetail": "7 à 14 jours ouvrés",
     "free": "OFFERT",
@@ -166,8 +167,8 @@
   },
   "comparison": {
     "overline": "Comparaison",
-    "title": "Pourquoi les propriétaires choisissent Whiskcam",
-    "subtitle": "Voyez comment nous nous comparons aux autres caméras pour animaux.",
+    "title": "Pourquoi choisir Whiskcam",
+    "subtitle": "Face aux autres caméras pour animaux, la différence est claire.",
     "featureCol": "Fonctionnalité",
     "othersCol": "Autres caméras",
     "footnote": "Les caméras d'action coûtent 300€+. Whiskcam a été conçu pour les animaux — pas pour votre portefeuille.",
@@ -184,54 +185,54 @@
   },
   "cta": {
     "overline": "Prêt ?",
-    "title": "Prêt à voir leur monde ?",
-    "subtitle": "Rejoignez des milliers de propriétaires qui ont découvert la vie secrète de leur animal.",
-    "button": "Commander maintenant",
-    "footnote": "Livraison gratuite mondiale · Remboursement garanti 30 jours"
+    "title": "Ne ratez plus une seule aventure.",
+    "subtitle": "Chaque jour, votre animal vit des moments que vous ne verrez jamais — sauf si vous passez à l'action.",
+    "button": "Je le veux",
+    "footnote": "Livraison offerte · Satisfait ou remboursé 30 jours"
   },
   "faq": {
     "overline": "FAQ",
-    "title": "Questions fréquentes",
-    "subtitle": "Des questions ? Nous avons les réponses.",
+    "title": "Vos questions, nos réponses",
+    "subtitle": "Tout ce que vous devez savoir avant de commander.",
     "pageTitle": "Questions fréquentes",
     "pageSubtitle": "Tout ce que vous devez savoir sur Whiskcam.",
     "items": {
       "0": {
-        "question": "Et si je ne suis pas satisfait ?",
-        "answer": "Nous offrons une garantie satisfait ou remboursé de 30 jours, sans poser de questions. Si vous ou votre animal n'êtes pas contents du Whiskcam, envoyez-nous simplement un email à support@whiskcam.com et nous procéderons au remboursement complet — vous n'avez même pas besoin de retourner le produit. Nous sommes fiers de chaque Whiskcam car nous savons que vous l'adorerez."
+        "question": "Et si ça ne me plaît pas ?",
+        "answer": "Satisfait ou remboursé pendant 30 jours, sans condition. Envoyez un email à support@whiskcam.com et on vous rembourse intégralement — sans même avoir à retourner le produit. On prend le risque à votre place."
       },
       "1": {
-        "question": "Le Whiskcam est-il sûr pour mon chat ?",
-        "answer": "Absolument. À seulement 26g, le Whiskcam est plus léger qu'une petite clochette. Il se fixe solidement au collier existant de votre animal avec des bords lisses et arrondis. La plupart des chats l'oublient en quelques minutes. Nous recommandons d'utiliser un collier détachable pour les chats qui sortent, et le Whiskcam convient aux chats adultes de plus de 2 kg."
+        "question": "C'est vraiment sûr pour mon chat ?",
+        "answer": "26g — plus léger qu'une petite clochette. Le Whiskcam se clipse au collier existant avec des bords arrondis et lisses. La plupart des chats l'oublient en quelques minutes. On recommande un collier détachable pour les chats d'extérieur. Convient aux chats adultes de plus de 2 kg."
       },
       "2": {
-        "question": "Quelle est l'autonomie de la batterie ?",
-        "answer": "Le Whiskcam enregistre jusqu'à 90 minutes de vidéo Full HD sur une seule charge. C'est parfait pour capturer les explorations matinales et les patrouilles du soir — les moments les plus passionnants de la vie secrète de votre animal. Une charge complète prend moins d'une heure via USB-C."
+        "question": "Combien de temps dure la batterie ?",
+        "answer": "Jusqu'à 90 minutes en Full HD — largement assez pour capturer les patrouilles du matin et les escapades du soir. Rechargé en moins d'une heure via USB-C."
       },
       "3": {
-        "question": "Dois-je télécharger une application ?",
-        "answer": "Pas d'application, pas de WiFi, pas de compte. Appuyez simplement sur le bouton d'enregistrement de la caméra. Quand votre animal rentre, retirez la carte SD, branchez-la sur votre téléphone avec l'adaptateur inclus, et profitez des images. C'est aussi simple que ça."
+        "question": "Il faut une appli ?",
+        "answer": "Non. Pas d'appli, pas de WiFi, pas de compte à créer. Appuyez sur le bouton, laissez votre chat vivre sa vie. Quand il rentre, branchez la carte SD sur votre téléphone avec l'adaptateur inclus. C'est tout."
       },
       "4": {
-        "question": "Comment voir les vidéos sur mon téléphone ?",
-        "answer": "Chaque Whiskcam est livré avec un adaptateur MicroSD vers USB-C/Lightning. Branchez-le sur votre téléphone et visionnez les vidéos directement dans votre galerie photo. Vous pouvez aussi brancher la carte SD sur n'importe quel ordinateur équipé d'un lecteur de carte."
+        "question": "Comment je regarde les vidéos ?",
+        "answer": "Un adaptateur MicroSD vers USB-C/Lightning est inclus. Branchez-le sur votre téléphone et les vidéos apparaissent dans votre galerie. Ça marche aussi sur ordinateur avec un lecteur de carte."
       },
       "5": {
-        "question": "S'adapte-t-il au collier de mon animal ?",
-        "answer": "Le Whiskcam est livré avec son propre collier réglable, mais il se fixe aussi sur n'importe quel collier existant. Convient aux chats et chiens de toutes tailles."
+        "question": "Ça s'adapte à n'importe quel collier ?",
+        "answer": "Oui. Un collier réglable est inclus, mais le Whiskcam se fixe aussi sur n'importe quel collier existant. Compatible chats et chiens, toutes tailles."
       },
       "6": {
-        "question": "Combien de temps prend la livraison ?",
-        "answer": "Nous livrons dans le monde entier gratuitement. La livraison prend généralement 7 à 14 jours ouvrés selon votre localisation. Vous recevrez un numéro de suivi dès que votre Whiskcam sera expédié."
+        "question": "Quand est-ce que je le reçois ?",
+        "answer": "Livraison gratuite dans le monde entier. Comptez 7 à 14 jours ouvrés selon votre localisation. Un numéro de suivi vous est envoyé dès l'expédition."
       },
       "7": {
-        "question": "Quel format vidéo enregistre-t-il ?",
-        "answer": "Le Whiskcam enregistre en format AVI à 1080P Full HD. Les fichiers se lisent sur n'importe quel appareil — téléphone, tablette ou ordinateur. Vous pouvez facilement les convertir ou les partager sur TikTok, Instagram ou YouTube."
+        "question": "Quel format vidéo ?",
+        "answer": "AVI en 1080P Full HD. Lisible sur tous les appareils — téléphone, tablette, ordinateur. Facile à partager sur TikTok, Instagram ou YouTube."
       }
     }
   },
   "footer": {
-    "tagline": "Voyez leur monde. La caméra pour collier qui vous permet de découvrir les aventures secrètes de votre animal.",
+    "tagline": "Découvrez leur vie secrète. La mini-caméra de collier qui filme les aventures de votre animal en Full HD.",
     "shopHeading": "Boutique",
     "learnHeading": "Apprendre",
     "supportHeading": "Assistance",
@@ -263,10 +264,10 @@
     "accept": "Accepter"
   },
   "emailPopup": {
-    "title": "Obtenez votre guide photo gratuit",
-    "subtitle": "Découvrez les meilleures astuces pour capturer les aventures secrètes de votre animal. Rejoignez 500+ propriétaires.",
+    "title": "Le guide gratuit des propriétaires curieux",
+    "subtitle": "7 astuces pour filmer les aventures de votre animal comme un pro. Rejoignez 500+ propriétaires.",
     "placeholder": "votre@email.com",
-    "submit": "Obtenir le guide gratuit",
+    "submit": "Recevoir le guide",
     "dismiss": "Non merci",
     "successTitle": "Merci !",
     "successSubtitle": "Vérifiez votre boîte mail !"
@@ -298,12 +299,12 @@
   "about": {
     "overline": "Notre histoire",
     "title": "Née de la curiosité",
-    "opening": "Tout a commencé par une simple question : Qu'est-ce que mon chat fait vraiment toute la journée ?",
-    "p1": "On rentrait chez nous pour trouver des plantes renversées, des égratignures mystérieuses sur les meubles, et un chat qui avait l'air suspicieusement innocent. Il fallait savoir.",
-    "p2": "Alors on a fixé une minuscule caméra au collier de notre chat et on a appuyé sur enregistrer. Ce qu'on a vu nous a soufflé — des patrouilles dans le jardin, des aventures sur les toits, des réunions secrètes avec le chat du voisin. Tout un monde qu'on ignorait.",
-    "p3": "C'est là qu'est né Whiskcam. Nous voulions que chaque propriétaire d'animal vive cette même joie — voir le monde à travers les yeux de son animal.",
-    "p4": "Nous l'avons conçu pour être ultra simple. Pas d'appli. Pas de WiFi. Pas de configuration compliquée. Fixez-le, appuyez sur enregistrer, et laissez votre animal faire le reste.",
-    "closing": "Voyez leur monde. Vous n'en reviendrez pas de ce que vous avez manqué.",
+    "opening": "Tout a commencé par une question toute simple : mais qu'est-ce que mon chat fait vraiment quand je ne suis pas là ?",
+    "p1": "Des plantes renversées, des griffures mystérieuses sur le canapé, et un chat avec un air suspicieusement innocent. Il fallait savoir.",
+    "p2": "On a fixé une mini-caméra au collier et on a appuyé sur enregistrer. Ce qu'on a découvert nous a scotchés — des patrouilles dans le jardin, des aventures sur les toits, des rendez-vous secrets avec le chat du voisin. Tout un monde qu'on ignorait.",
+    "p3": "C'est comme ça que Whiskcam est né. On voulait que chaque propriétaire d'animal puisse vivre ça — voir le monde à travers les yeux de son animal.",
+    "p4": "On l'a conçu pour être ultra simple. Pas d'appli. Pas de WiFi. Pas de prise de tête. Clipsez, enregistrez, découvrez.",
+    "closing": "Leur vie secrète n'attend que vous.",
     "backToShop": "Retour à la boutique"
   },
   "langSwitcher": {

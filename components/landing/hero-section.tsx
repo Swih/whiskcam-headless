@@ -48,17 +48,18 @@ export function HeroSection({ product }: { product?: Product }) {
         className="object-cover"
       />
 
-      {/* Video background — fades in over poster when ready */}
+      {/* Video background — poster matches first frame so transition is seamless */}
       <video
         autoPlay
         muted
         loop
         playsInline
         preload="auto"
+        poster={HERO_CONTENT.posterSrc}
         onCanPlayThrough={() => { videoReadyRef.current = true; setVideoReady(true); }}
         onPlay={() => { videoReadyRef.current = true; setVideoReady(true); }}
         onPlaying={() => { videoReadyRef.current = true; setVideoReady(true); }}
-        className="absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out"
+        className="absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ease-in-out"
         style={{ opacity: videoReady ? 1 : 0 }}
       >
         <source src={HERO_CONTENT.videoSrc} type="video/mp4" />

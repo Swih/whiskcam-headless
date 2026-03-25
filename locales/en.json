@@ -19,11 +19,11 @@
     "staticDefault": "Free shipping worldwide"
   },
   "hero": {
-    "tagline": "Pet Collar Camera",
-    "title": "See Their World.",
-    "subtitle": "Ever wonder what your cat does when you leave? Now you'll know.",
+    "tagline": "The Pet Collar Camera",
+    "title": "See Their Secret Life.",
+    "subtitle": "Your cat lives a double life when you leave. This tiny collar camera captures it in Full HD — no app, no WiFi.",
     "trust": "Loved by 500+ pet parents worldwide",
-    "ctaButton": "Get Yours",
+    "ctaButton": "I Want This",
     "ctaSubtext": "Free worldwide shipping"
   },
   "stats": {
@@ -35,7 +35,7 @@
   "videoShowcase": {
     "overline": "Real footage",
     "title": "What Your Cat Actually Does",
-    "subtitle": "Unedited clips from cats wearing Whiskcam. Swipe to explore.",
+    "subtitle": "Raw clips filmed by real cats wearing Whiskcam. Prepare to be surprised.",
     "pause": "Pause",
     "play": "Play",
     "verifiedOwner": "Verified owner",
@@ -60,84 +60,85 @@
     }
   },
   "features": {
-    "overline": "Features",
-    "title": "Built for Adventures",
-    "subtitle": "Everything your pet needs to become a filmmaker.",
+    "overline": "Why Whiskcam",
+    "title": "Every Detail Designed to Capture the Unseen",
+    "subtitle": "No gimmicks. Just the essentials to see what you've been missing.",
     "items": {
       "0": {
         "title": "1080P Full HD",
-        "description": "Crystal-clear footage of every adventure, whisker to tail."
+        "description": "Every whisker, every detail. Footage so sharp you'll feel like you were there."
       },
       "1": {
         "title": "170° Wide Angle",
-        "description": "Fisheye lens captures everything your pet sees — nothing gets missed."
+        "description": "Everything your pet sees, you'll see too. The fisheye lens misses nothing."
       },
       "2": {
-        "title": "Ultra-Lightweight",
-        "description": "At just 26g, your cat won't even notice it's there. Designed for comfort."
+        "title": "Ultra-Light — 26g",
+        "description": "Lighter than a small bell. Your cat forgets it's there within minutes."
       },
       "3": {
         "title": "No App. No WiFi.",
-        "description": "Press record. That's it. No complicated setup, no accounts, no hassle."
+        "description": "One button. One click. That's it. Zero setup, zero hassle."
       },
       "4": {
         "title": "USB-C Charging",
-        "description": "Quick charge via USB-C. Full battery in under an hour. Ready to go."
+        "description": "Fully charged in under an hour. Ready for the next adventure."
       },
       "5": {
         "title": "Safe for Pets",
-        "description": "Clips onto any collar. Compact, smooth edges. Vet-approved design."
+        "description": "Smooth edges, universal clip, vet-approved design. Your pet is safe."
       }
     }
   },
   "reviews": {
     "overline": "Reviews",
-    "title": "Pet Parents Love It",
+    "title": "What Pet Parents Are Saying",
     "subtitle": "Real footage. Real reactions.",
     "verifiedBuyer": "Verified Buyer",
     "showPhotos": "Show photos",
     "hidePhotos": "Hide photos",
     "prev": "Previous review",
     "next": "Next review",
-    "basedOn": "Based on {count}+ reviews",
+    "basedOn": "{count}+ verified reviews",
     "readMore": "Read more",
     "showLess": "Show less",
     "showAll": "Show all reviews",
     "showAllCount": "Show all {count} reviews",
-    "trustFooter": "All reviews are from verified customers. Unedited and unfiltered."
+    "translated": "",
+    "trustFooter": "All reviews are from verified Whiskcam customers."
   },
   "howItWorks": {
     "overline": "How it works",
     "title": "Simple as 1, 2, 3",
-    "subtitle": "No tech skills required. If you can press a button, you can use Whiskcam.",
+    "subtitle": "If you can press a button, you can use Whiskcam.",
     "steps": {
       "0": {
         "title": "Clip It On",
-        "description": "Attach Whiskcam to your pet's existing collar in seconds. It fits any collar."
+        "description": "Attach Whiskcam to any collar in 2 seconds. Fits all sizes."
       },
       "1": {
         "title": "Press Record",
-        "description": "One button. That's all. No app, no WiFi, no setup. Just press and go."
+        "description": "One button. No app, no WiFi. Press and let your cat live their life."
       },
       "2": {
-        "title": "Discover Their World",
-        "description": "Plug the SD card into your phone with the included adapter. Watch, laugh, share."
+        "title": "Discover",
+        "description": "Plug the SD card into your phone. Watch, laugh, share."
       }
     }
   },
   "product": {
     "overline": "Shop",
     "title": "Whiskcam Original",
-    "subtitle": "Everything you need to see your pet's secret world.",
+    "subtitle": "Everything included. Ready to film out of the box.",
     "badgeBestSeller": "Best Seller",
     "badge1080p": "1080P Full HD",
     "badgeNoApp": "No App",
-    "reviews": "500+ pet parents",
+    "reviews": "500+ happy pet parents",
     "keyBenefits": {
-      "0": "1080P Full HD — 170° wide-angle lens",
-      "1": "Ultra-light 26g — cats forget it's there",
-      "2": "No app, no WiFi — press record & go",
-      "3": "90 min battery — USB-C fast charge"
+      "0": "Full HD 1080P — 170° wide-angle lens",
+      "1": "26g ultra-light — your cat won't feel it",
+      "2": "No app, no WiFi — one click and it films",
+      "3": "90 min battery — recharged in under 1h"
     },
     "freeGiftsLabel": "Free Gifts With Your Order",
     "microsdName": "32GB MicroSD Card",
@@ -184,9 +185,9 @@
   },
   "cta": {
     "overline": "Ready?",
-    "title": "Ready to See Their World?",
-    "subtitle": "Join thousands of pet parents who discovered their pet's secret life.",
-    "button": "Shop Now",
+    "title": "Don't Miss Another Adventure.",
+    "subtitle": "Every day, your pet lives moments you'll never see — unless you act now.",
+    "button": "I Want This",
     "footnote": "Free shipping worldwide · 30-day money-back guarantee"
   },
   "faq": {
@@ -231,7 +232,7 @@
     }
   },
   "footer": {
-    "tagline": "See their world. The pet collar camera that lets you discover your pet's secret adventures.",
+    "tagline": "See their secret life. The tiny collar camera that captures your pet's adventures in Full HD.",
     "shopHeading": "Shop",
     "learnHeading": "Learn",
     "supportHeading": "Support",

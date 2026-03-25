@@ -6,7 +6,7 @@
 
 export const HERO_CONTENT = {
   videoSrc: "/videos/wk-video-encounter.mp4",
-  posterSrc: "/images/hero/whiskcam-hero.webp",
+  posterSrc: "/images/hero/whiskcam-hero-video-frame.webp",
 };
 
 export const STATS = [
