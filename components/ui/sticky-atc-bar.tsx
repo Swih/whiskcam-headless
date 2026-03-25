@@ -22,35 +22,37 @@ export function StickyAtcBar({ price, compareAtPrice, product }: StickyAtcBarPro
   const router = useRouter();
 
   useEffect(() => {
-    const atcEl = document.getElementById("add-to-cart");
     const heroEl = document.getElementById("hero");
-    if (!atcEl) return;
+    const productEl = document.getElementById("product");
+    if (!heroEl || !productEl) return;
 
     let pastHero = false;
-    let pastAtc = false;
+    let productVisible = false;
 
     const heroObserver = new IntersectionObserver(
       ([entry]) => {
         pastHero = !entry!.isIntersecting;
-        setVisible(pastHero && pastAtc);
+        setVisible(pastHero && !productVisible);
       },
       { threshold: 0 }
     );
 
-    const atcObserver = new IntersectionObserver(
+    // Hide the sticky bar when the product section is on screen,
+    // with 80px margin above and below so it hides a bit early / reappears a bit late
+    const productObserver = new IntersectionObserver(
       ([entry]) => {
-        pastAtc = !entry!.isIntersecting;
-        setVisible(pastHero && pastAtc);
+        productVisible = entry!.isIntersecting;
+        setVisible(pastHero && !productVisible);
       },
-      { threshold: 0 }
+      { threshold: 0, rootMargin: "80px 0px 80px 0px" }
     );
 
-    if (heroEl) heroObserver.observe(heroEl);
-    atcObserver.observe(atcEl);
+    heroObserver.observe(heroEl);
+    productObserver.observe(productEl);
 
     return () => {
       heroObserver.disconnect();
-      atcObserver.disconnect();
+      productObserver.disconnect();
     };
   }, []);
 
