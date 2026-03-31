@@ -238,10 +238,10 @@ export default async function HomePage() {
       <HeroSection product={product} />
       <SocialProofBar />
       <VideoShowcase />
-      <FeaturesGrid />
-      <ReviewsSection />
-      <HowItWorks />
       <ProductSection product={product} />
+      <ReviewsSection />
+      <FeaturesGrid />
+      <HowItWorks />
       <ComparisonTable price={product ? formatPrice(product.priceRange.maxVariantPrice.amount, product.priceRange.maxVariantPrice.currencyCode) : undefined} />
       <CtaBanner product={product} />
       <FaqSection />

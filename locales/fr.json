@@ -19,23 +19,28 @@
     "staticDefault": "Livraison offerte — France, Belgique, Suisse et Europe"
   },
   "hero": {
-    "tagline": "Le collier-caméra",
-    "title": "Découvrez leur vie secrète.",
-    "subtitle": "Votre chat a une double vie. Whiskcam la filme en Full HD — sans appli, sans WiFi.",
-    "trust": "Adopté par plus de 500 propriétaires d'animaux",
-    "ctaButton": "Je le veux",
-    "ctaSubtext": "Livraison offerte — France, Belgique, Suisse et Europe"
+    "tagline": "La caméra-collier pour chats",
+    "title": "Votre chat a une vie secrète.",
+    "subtitle": "Whiskcam la capture depuis son collier — Full HD, sans appli, sans WiFi.",
+    "trust": "Plus de 500 propriétaires conquis",
+    "ctaButton": "Je prends le mien",
+    "ctaSubtext": "Livraison offerte · Offre en cours",
+    "urgencyBadge": "Stock limité"
   },
   "stats": {
     "fullHd": "Full HD",
     "wideAngle": "Grand angle",
     "ultraLight": "Ultra-léger",
-    "batteryLife": "Autonomie"
+    "batteryLife": "Autonomie",
+    "trustReviews": "500+ avis vérifiés",
+    "trustReturn": "Remboursé 30 jours",
+    "trustShipping": "Livraison offerte",
+    "trustSecure": "Paiement sécurisé"
   },
   "videoShowcase": {
-    "overline": "Images réelles",
-    "title": "Ce que votre chat fait vraiment",
-    "subtitle": "Des images brutes filmées par de vrais chats avec Whiskcam. Préparez-vous à être surpris.",
+    "overline": "Filmé par de vrais chats",
+    "title": "Ce que votre chat fait quand vous n'êtes pas là",
+    "subtitle": "Clips bruts, aucune mise en scène. Ce sont vos voisins, vos jardins, vos canapés — vus depuis un collier.",
     "pause": "Pause",
     "play": "Lecture",
     "verifiedOwner": "Propriétaire vérifié",
@@ -60,9 +65,9 @@
     }
   },
   "features": {
-    "overline": "Pourquoi Whiskcam",
-    "title": "Chaque détail pensé pour ne rien rater",
-    "subtitle": "Pas de gadget inutile. Juste l'essentiel pour capturer ce que vous n'avez jamais vu.",
+    "overline": "Ce qui fait la différence",
+    "title": "Conçu pour ne rien rater. Jamais.",
+    "subtitle": "Pas de gadget inutile — juste l'essentiel pour voir ce que vous avez toujours raté.",
     "items": {
       "0": {
         "title": "1080P Full HD",
@@ -70,30 +75,30 @@
       },
       "1": {
         "title": "170° Grand angle",
-        "description": "Tout ce que voit votre animal, vous le verrez aussi. L'objectif fisheye ne rate rien."
+        "description": "Votre chat regarde à gauche, à droite, derrière lui. L'objectif fisheye capte tout ce qu'il voit."
       },
       "2": {
         "title": "Ultra-léger — 24g",
-        "description": "Plus léger qu'une clochette. Même les petits chats ne le sentent pas."
+        "description": "Plus léger qu'une clochette. Même les petits chats oublient qu'ils le portent."
       },
       "3": {
         "title": "Sans appli. Sans WiFi.",
-        "description": "Un bouton. Un clic. C'est tout. Zéro configuration, zéro prise de tête."
+        "description": "Un bouton. Un clic. C'est tout. Pas de compte, pas de mot de passe, pas de prise de tête."
       },
       "4": {
         "title": "Charge USB-C",
-        "description": "Rechargé en moins d'une heure. Prêt pour la prochaine aventure."
+        "description": "Rechargé en moins d'une heure via USB-C. Prêt pour la prochaine escapade."
       },
       "5": {
-        "title": "Sûr pour les animaux",
-        "description": "Bords arrondis, clip universel, design pratique et optimal. Votre chat ne risque rien."
+        "title": "Conçu pour les animaux",
+        "description": "Bords arrondis, clip universel. Votre chat oubliera qu'il le porte — en moins de 2 minutes."
       }
     }
   },
   "reviews": {
     "overline": "Avis clients",
-    "title": "Ce qu'en disent les propriétaires",
-    "subtitle": "Des avis vrais, de vrais propriétaires.",
+    "title": "Ce qu'ils ont découvert grâce à Whiskcam",
+    "subtitle": "Des vraies personnes, de vrais chats, de vraies surprises.",
     "verifiedBuyer": "Acheteur vérifié",
     "showPhotos": "Voir les photos",
     "hidePhotos": "Masquer les photos",
@@ -109,7 +114,7 @@
   },
   "howItWorks": {
     "overline": "Comment ça marche",
-    "title": "Simple comme 1, 2, 3",
+    "title": "Prêt en 30 secondes. Sérieusement.",
     "subtitle": "Si vous savez appuyer sur un bouton, vous savez utiliser Whiskcam.",
     "steps": {
       "0": {
@@ -179,11 +184,11 @@
   },
   "comparison": {
     "overline": "Comparaison",
-    "title": "Pourquoi choisir Whiskcam",
-    "subtitle": "Face aux autres caméras pour animaux, la différence est claire.",
+    "title": "Pourquoi des milliers de propriétaires choisissent Whiskcam",
+    "subtitle": "Plus légère, plus simple, moins chère. Conçue pour les animaux.",
     "featureCol": "Fonctionnalité",
     "othersCol": "Autres caméras",
-    "footnote": "Les caméras d'action coûtent 300€+. Whiskcam a été conçu pour les animaux — pas pour votre portefeuille.",
+    "footnote": "Les caméras d'action coûtent 300€+. Whiskcam a été pensé pour les chats — pas pour les sportifs.",
     "features": {
       "0": "Prix",
       "1": "Résolution",
@@ -196,16 +201,16 @@
     "othersResolution": "720P–1080P"
   },
   "cta": {
-    "overline": "Prêt ?",
-    "title": "Ne ratez plus une seule aventure.",
-    "subtitle": "Chaque jour, votre animal vit des moments que vous ne verrez jamais — sauf si vous passez à l'action.",
-    "button": "Je le veux",
+    "overline": "Et maintenant ?",
+    "title": "En ce moment, votre chat est quelque part. Vous voulez savoir où ?",
+    "subtitle": "Whiskcam filme tout en Full HD depuis son collier. Commandez aujourd'hui, découvrez demain.",
+    "button": "Je prends le mien",
     "footnote": "Livraison offerte · Satisfait ou remboursé 30 jours"
   },
   "faq": {
     "overline": "FAQ",
-    "title": "Vos questions, nos réponses",
-    "subtitle": "Tout ce que vous devez savoir avant de commander.",
+    "title": "On a réponse à tout",
+    "subtitle": "Les vraies questions qu'on nous pose.",
     "pageTitle": "Questions fréquentes",
     "pageSubtitle": "Tout ce que vous devez savoir sur Whiskcam.",
     "items": {
@@ -304,7 +309,7 @@
   },
   "stickyAtc": {
     "productName": "Whiskcam Original",
-    "addToCart": "Je le veux !",
+    "addToCart": "Je prends le mien !",
     "adding": "Ajout...",
     "added": "Ajouté !",
     "outOfStock": "Rupture de stock",

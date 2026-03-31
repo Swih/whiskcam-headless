@@ -22,20 +22,25 @@
     "tagline": "The Pet Collar Camera",
     "title": "See Their Secret Life.",
     "subtitle": "Your cat has a secret life. Whiskcam films it in Full HD — no app, no WiFi.",
-    "trust": "Loved by 500+ pet parents worldwide",
+    "trust": "500+ verified pet parents",
     "ctaButton": "I Want This",
-    "ctaSubtext": "Free worldwide shipping"
+    "ctaSubtext": "Free worldwide shipping · Limited-time offer",
+    "urgencyBadge": "Limited stock"
   },
   "stats": {
     "fullHd": "Full HD",
     "wideAngle": "Wide Angle",
     "ultraLight": "Ultra-Light",
-    "batteryLife": "Battery Life"
+    "batteryLife": "Battery Life",
+    "trustReviews": "500+ verified reviews",
+    "trustReturn": "30-day money-back",
+    "trustShipping": "Free worldwide shipping",
+    "trustSecure": "Secure payment"
   },
   "videoShowcase": {
-    "overline": "Real footage",
-    "title": "What Your Cat Actually Does",
-    "subtitle": "Raw clips filmed by real cats wearing Whiskcam. Prepare to be surprised.",
+    "overline": "Filmed by real cats",
+    "title": "What Your Cat Does When You're Not Home",
+    "subtitle": "Unedited clips. No staging. Your neighbors, your garden, your couch — from a collar.",
     "pause": "Pause",
     "play": "Play",
     "verifiedOwner": "Verified owner",
@@ -60,8 +65,8 @@
     }
   },
   "features": {
-    "overline": "Why Whiskcam",
-    "title": "Every Detail Designed to Capture the Unseen",
+    "overline": "What makes it different",
+    "title": "Designed to Miss Nothing. Ever.",
     "subtitle": "No gimmicks. Just the essentials to see what you've been missing.",
     "items": {
       "0": {
@@ -92,8 +97,8 @@
   },
   "reviews": {
     "overline": "Reviews",
-    "title": "What Pet Parents Are Saying",
-    "subtitle": "Real footage. Real reactions.",
+    "title": "What They Discovered With Whiskcam",
+    "subtitle": "Real owners. Real cats. Real surprises.",
     "verifiedBuyer": "Verified Buyer",
     "showPhotos": "Show photos",
     "hidePhotos": "Hide photos",
@@ -196,9 +201,9 @@
     "othersResolution": "720P–1080P"
   },
   "cta": {
-    "overline": "Ready?",
-    "title": "Don't Miss Another Adventure.",
-    "subtitle": "Every day, your pet lives moments you'll never see — unless you act now.",
+    "overline": "Right now,",
+    "title": "Your cat is somewhere. Don't you want to know where?",
+    "subtitle": "Whiskcam films everything in Full HD from their collar. Order today, discover tomorrow.",
     "button": "I Want This",
     "footnote": "Free shipping worldwide · 30-day money-back guarantee"
   },
