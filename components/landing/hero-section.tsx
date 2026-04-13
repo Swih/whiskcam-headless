@@ -145,7 +145,7 @@ export function HeroSection({ product }: { product?: Product }) {
                 src="/images/product/whiskcam-product-studio.webp"
                 alt="Whiskcam collar camera"
                 fill
-                className="object-cover scale-[1.35]"
+                className="object-cover scale-[1.2]"
                 priority
               />
             </div>
