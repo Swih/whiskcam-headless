@@ -140,13 +140,12 @@ export function HeroSection({ product }: { product?: Product }) {
             transition={{ duration: 0.6, delay: 0.35 }}
             className="hidden lg:flex lg:w-[420px] lg:shrink-0 lg:items-center lg:justify-center"
           >
-            <div className="relative">
+            <div className="relative h-[340px] w-[340px] overflow-hidden rounded-full bg-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
               <Image
                 src="/images/product/whiskcam-product-studio.webp"
                 alt="Whiskcam collar camera"
-                width={380}
-                height={380}
-                className="drop-shadow-[0_20px_60px_rgba(0,0,0,0.7)]"
+                fill
+                className="object-cover"
                 priority
               />
             </div>
