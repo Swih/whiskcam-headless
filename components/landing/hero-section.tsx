@@ -133,14 +133,14 @@ export function HeroSection({ product }: { product?: Product }) {
             </motion.div>
           </div>
 
-          {/* Right column — product shot (desktop only) */}
+          {/* Right column — product shot (all screens) */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-            className="hidden lg:flex lg:w-[420px] lg:shrink-0 lg:items-center lg:justify-center"
+            initial={{ opacity: 0, y: 12, x: 0 }}
+            animate={{ opacity: 1, y: 0, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-6 flex justify-center lg:mt-0 lg:w-[420px] lg:shrink-0 lg:items-center lg:justify-center"
           >
-            <div className="relative h-[300px] w-[300px] overflow-hidden rounded-full bg-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
+            <div className="relative h-[150px] w-[150px] overflow-hidden rounded-full bg-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.5)] sm:h-[200px] sm:w-[200px] lg:h-[300px] lg:w-[300px]">
               <Image
                 src="/images/product/whiskcam-product-studio.webp"
                 alt="Whiskcam collar camera"

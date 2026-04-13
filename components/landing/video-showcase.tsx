@@ -3,6 +3,7 @@
 import { VIDEOS, POV_IMAGES } from "lib/content";
 import { SectionHeading } from "components/ui/section-heading";
 import { AnimatedElement } from "components/ui/animated-element";
+import { Button } from "components/ui/button";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
@@ -121,6 +122,19 @@ export function VideoShowcase() {
             ))}
           </div>
         </div>
+
+        {/* CTA — capitalize on emotional peak */}
+        <AnimatedElement>
+          <div className="mt-12 text-center">
+            <Button
+              size="lg"
+              className="w-full sm:w-auto"
+              onClick={() => document.getElementById("product")?.scrollIntoView({ behavior: "smooth" })}
+            >
+              {t("ctaButton")}
+            </Button>
+          </div>
+        </AnimatedElement>
       </div>
     </section>
   );
