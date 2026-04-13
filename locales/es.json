@@ -1,0 +1,336 @@
+{
+  "nav": {
+    "shop": "Tienda",
+    "footage": "Videos",
+    "faq": "Preguntas",
+    "about": "Nosotros",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Cerrar menu",
+    "openCart": "Ver carrito"
+  },
+  "announcement": {
+    "savePercent": "{pct}% DTO.",
+    "save": "Ahorra {pct}%",
+    "sale": "Oferta",
+    "plusFreeShipping": "+ Envio gratis",
+    "plusFreeShipShort": "+ Envio gratis",
+    "ends": "— Termina",
+    "staticWithDiscount": "Ahorra {pct}% — Envio gratis a toda Europa",
+    "staticDefault": "Envio gratis a toda Europa"
+  },
+  "hero": {
+    "tagline": "La camara de collar para mascotas",
+    "title": "Tu gato tiene una vida secreta.",
+    "subtitle": "Whiskcam la graba en Full HD desde su collar. Sin apps, sin WiFi. Solo dale al boton y descubre todo.",
+    "trust": "500+ familias con mascotas felices",
+    "ctaButton": "Lo quiero",
+    "ctaSubtext": "Envio gratis en Europa · Oferta por tiempo limitado",
+    "urgencyBadge": "Ultimas unidades"
+  },
+  "stats": {
+    "fullHd": "Full HD",
+    "wideAngle": "Gran Angular",
+    "ultraLight": "Ultraligera",
+    "batteryLife": "Autonomia",
+    "trustReviews": "500+ opiniones verificadas",
+    "trustReturn": "30 dias para devolver",
+    "trustShipping": "Envio gratis a toda Europa",
+    "trustSecure": "Pago 100% seguro"
+  },
+  "videoShowcase": {
+    "overline": "Grabado por gatos reales. Sin filtros.",
+    "title": "Lo que hace tu gato cuando no estas en casa",
+    "subtitle": "Clips sin editar. Sin montajes. Tus vecinos, tu jardin, tu sofa — todo visto desde un collar.",
+    "pause": "Pausar",
+    "play": "Reproducir",
+    "verifiedOwner": "Compra verificada",
+    "videos": {
+      "0": "La Persecucion",
+      "1": "El Enfrentamiento",
+      "2": "El Encuentro",
+      "3": "Aguantame la hierba gatera",
+      "4": "Sesion de manicura",
+      "5": "Gatos sin control",
+      "6": "Sin limites"
+    },
+    "povCaptions": {
+      "0": "Patrulla del jardin",
+      "1": "Haciendo amigos",
+      "2": "Explorador de tejados",
+      "3": "Vigilancia del barrio",
+      "4": "Bigotes al viento",
+      "5": "Aguantame la hierba gatera",
+      "6": "Sesion de manicura",
+      "7": "Sin control"
+    },
+    "ctaButton": "Filmar sus aventuras"
+  },
+  "features": {
+    "overline": "Que la hace diferente",
+    "title": "Disenada para no perderse nada. Nada.",
+    "subtitle": "Sin tonterias. Solo lo esencial para ver lo que te has estado perdiendo.",
+    "items": {
+      "0": {
+        "title": "1080P Full HD",
+        "description": "Cada bigote, cada detalle. Imagen tan nitida que sentiras que estabas ahi."
+      },
+      "1": {
+        "title": "170° Gran Angular",
+        "description": "Todo lo que tu mascota ve, tu tambien lo ves. La lente ojo de pez no se pierde nada."
+      },
+      "2": {
+        "title": "Ultraligera — 24g",
+        "description": "Pesa menos que un cascabel. Ni los gatos mas pequenos la notan."
+      },
+      "3": {
+        "title": "Sin app. Sin WiFi.",
+        "description": "Un boton. Un clic. Listo. Cero configuracion, cero complicaciones."
+      },
+      "4": {
+        "title": "Carga USB-C",
+        "description": "Cargada al 100% en menos de una hora. Lista para la siguiente aventura."
+      },
+      "5": {
+        "title": "Segura para mascotas",
+        "description": "Bordes redondeados, clip universal, disenada para su comodidad. Tu mascota esta segura."
+      }
+    }
+  },
+  "reviews": {
+    "overline": "Opiniones",
+    "title": "Lo que descubrieron con Whiskcam",
+    "subtitle": "Duenos reales. Gatos reales. Sorpresas reales.",
+    "verifiedBuyer": "Compra verificada",
+    "showPhotos": "Ver fotos",
+    "hidePhotos": "Ocultar fotos",
+    "prev": "Opinion anterior",
+    "next": "Siguiente opinion",
+    "basedOn": "{count}+ opiniones verificadas",
+    "readMore": "Leer mas",
+    "showLess": "Ver menos",
+    "showAll": "Ver todas las opiniones",
+    "showAllCount": "Ver las {count} opiniones",
+    "translated": "",
+    "trustFooter": "Todas las opiniones son de clientes verificados de Whiskcam."
+  },
+  "howItWorks": {
+    "overline": "Como funciona",
+    "title": "Tan facil como 1, 2, 3",
+    "subtitle": "Si sabes pulsar un boton, sabes usar Whiskcam.",
+    "steps": {
+      "0": {
+        "title": "Enganchala",
+        "description": "Sujeta Whiskcam a cualquier collar en 2 segundos. Vale para todos los tamanos."
+      },
+      "1": {
+        "title": "Dale al boton",
+        "description": "Un boton. Sin app, sin WiFi. Pulsa y deja que tu gato viva su vida."
+      },
+      "2": {
+        "title": "Descubre",
+        "description": "Mete la tarjeta SD en tu movil. Mira, rie, comparte."
+      }
+    }
+  },
+  "product": {
+    "overline": "Tienda",
+    "title": "Whiskcam Original",
+    "subtitle": "Todo incluido. Lista para grabar nada mas abrir la caja.",
+    "badgeBestSeller": "Mas vendida",
+    "badge1080p": "1080P Full HD",
+    "badgeNoApp": "Sin App",
+    "reviews": "500+ familias con mascotas felices",
+    "keyBenefits": {
+      "0": "Full HD 1080P — lente gran angular de 170°",
+      "1": "24g ultraligera — ni los gatos pequenos la notan",
+      "2": "Sin app, sin WiFi — un clic y graba",
+      "3": "Hasta 2h de bateria — cargada en menos de 1h"
+    },
+    "freeGiftsLabel": "Regalos gratis con tu pedido",
+    "microsdName": "Tarjeta MicroSD de 32GB",
+    "microsdDetail": "Preinstalada, lista para grabar",
+    "adapterName": "Adaptador USB-C/Lightning",
+    "adapterDetail": "Ve los videos en tu movil",
+    "shippingName": "Envio gratis en toda Europa",
+    "shippingDetail": "7-14 dias laborables",
+    "free": "GRATIS",
+    "totalValue": "Valor total",
+    "youPay": "Tu pagas",
+    "atcFallback": "Conecta Shopify para activar Anadir al carrito",
+    "freeShippingMoneyBack": "Envio gratis · 30 dias para devolver",
+    "trustShipping": "Envio gratis",
+    "trustReturn": "30 dias devolucion",
+    "trustSecure": "Pago seguro",
+    "infographicOverline": "Especificaciones",
+    "infographicTitle": "Todo lo que necesitas.",
+    "infographicHighlight": "Nada que no necesites.",
+    "infographicFooter": "Sin suscripcion · Sin nube · Sin problemas de privacidad",
+    "specFullHd": "Full HD",
+    "specWideAngle": "Gran Angular",
+    "specUltralight": "Ultraligera",
+    "specBattery": "Bateria",
+    "specPrivacy": "Privacidad",
+    "specPlugPlay": "Plug & Play",
+    "galleryBadge": "Mas vendida",
+    "gallerySocialProof": "Elegida por 500+ familias con mascotas",
+    "boxContentsLabel": "Que incluye la caja",
+    "boxContents": {
+      "0": { "item": "Camara Whiskcam", "detail": "1080P Full HD con lente de 170°" },
+      "1": { "item": "Tarjeta MicroSD de 32GB", "detail": "Preinstalada, lista para grabar" },
+      "2": { "item": "Adaptador de tarjeta SD", "detail": "USB-C/Lightning — ve los videos en tu movil" },
+      "3": { "item": "Collar ajustable", "detail": "Para gatos y perros de todos los tamanos" },
+      "4": { "item": "Cable USB-C", "detail": "Carga rapida, llena en menos de 1 hora" },
+      "5": { "item": "Guia digital", "detail": "\"Como capturar la vida secreta de tu mascota\"" }
+    }
+  },
+  "comparison": {
+    "overline": "Compara",
+    "title": "Por que las familias eligen Whiskcam",
+    "subtitle": "Mira como quedamos frente a otras camaras para mascotas.",
+    "featureCol": "Caracteristica",
+    "othersCol": "Otras camaras",
+    "footnote": "Las camaras de accion cuestan mas de 300 euros. Whiskcam se diseno para mascotas, no para vaciar tu cartera.",
+    "features": {
+      "0": "Precio",
+      "1": "Resolucion",
+      "2": "Tarjeta SD incluida",
+      "3": "Adaptador para movil incluido",
+      "4": "Sin app necesaria",
+      "5": "Envio gratis",
+      "6": "30 dias de devolucion"
+    },
+    "othersResolution": "720P–1080P"
+  },
+  "cta": {
+    "overline": "Ahora mismo,",
+    "title": "Tu gato esta en algun lugar. No quieres saber donde?",
+    "subtitle": "Whiskcam graba todo en Full HD desde su collar. Pidela hoy, descubre manana.",
+    "button": "Lo quiero",
+    "footnote": "Envio gratis en Europa · Devolucion garantizada en 30 dias"
+  },
+  "faq": {
+    "overline": "Preguntas",
+    "title": "Preguntas frecuentes",
+    "subtitle": "Tienes dudas? Aqui van las respuestas.",
+    "pageTitle": "Preguntas frecuentes",
+    "pageSubtitle": "Todo lo que necesitas saber sobre Whiskcam.",
+    "items": {
+      "0": {
+        "question": "Y si no me convence?",
+        "answer": "Tranqui, tienes 30 dias para devolverla sin preguntas. Si tu o tu mascota no estais contentos con Whiskcam, escribenos a support@whiskcam.com y te devolvemos todo el dinero — ni siquiera tienes que devolver el producto. Estamos tan seguros de que te va a encantar que asumimos ese riesgo."
+      },
+      "1": {
+        "question": "Es segura para mi gato?",
+        "answer": "Totalmente. Whiskcam pesa solo 24g, menos que un cascabel pequeno. Se engancha al collar de tu mascota con un clip de bordes redondeados. Ni los gatos mas pequenos la notan. Eso si, si tu gato sale a la calle, te recomendamos usar un collar de seguridad con apertura rapida."
+      },
+      "2": {
+        "question": "Cuanto dura la bateria?",
+        "answer": "Whiskcam graba hasta 2 horas de video en Full HD con una carga completa — mas que suficiente para capturar la patrulla matutina y las aventuras de la tarde. Se carga al 100% en menos de una hora por USB-C."
+      },
+      "3": {
+        "question": "Necesito descargar alguna app?",
+        "answer": "Nada de apps, nada de WiFi, nada de cuentas. Solo pulsa el boton de grabar en la camara. Cuando tu gato vuelva a casa, saca la tarjeta SD, conectala a tu movil con el adaptador incluido y disfruta de los videos. Asi de simple."
+      },
+      "4": {
+        "question": "Como veo los videos en el movil?",
+        "answer": "Cada Whiskcam viene con un adaptador MicroSD a USB-C/Lightning. Lo conectas a tu movil y ves los videos directamente en tu galeria. Tambien puedes meter la tarjeta SD en cualquier ordenador con lector de tarjetas."
+      },
+      "5": {
+        "question": "Le vale al collar de mi mascota?",
+        "answer": "Whiskcam viene con su propio collar ajustable, pero tambien se engancha a cualquier collar que tu mascota ya use. Sirve para gatos y perros de todos los tamanos."
+      },
+      "6": {
+        "question": "Cuanto tarda el envio?",
+        "answer": "Enviamos gratis a toda Europa. El envio suele tardar entre 7 y 14 dias laborables dependiendo de donde estes. Recibiras un numero de seguimiento en cuanto tu Whiskcam salga de camino."
+      },
+      "7": {
+        "question": "En que formato graba los videos?",
+        "answer": "Whiskcam graba en formato AVI a 1080P Full HD. Los archivos se reproducen en cualquier dispositivo: movil, tablet u ordenador. Y puedes compartirlos facilmente en TikTok, Instagram o YouTube."
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Descubre su vida secreta. La mini camara de collar que graba las aventuras de tu mascota en Full HD.",
+    "shopHeading": "Tienda",
+    "learnHeading": "Descubre",
+    "supportHeading": "Ayuda",
+    "legalHeading": "Legal",
+    "links": {
+      "whiskcamOriginal": "Whiskcam Original",
+      "whatIsWhiskcam": "Que es Whiskcam?",
+      "blogBestCameras": "Mejores camaras de collar para gatos 2026",
+      "blogSafe": "Son seguras las camaras para gatos?",
+      "allArticles": "Todos los articulos",
+      "faq": "Preguntas frecuentes",
+      "trackOrder": "Rastrear mi pedido",
+      "shipping": "Envios",
+      "returns": "Devoluciones",
+      "contact": "Contacto",
+      "privacy": "Politica de privacidad",
+      "terms": "Terminos y condiciones"
+    },
+    "trustShipping": "Envio gratis en toda Europa",
+    "trustReturns": "Devolucion en 30 dias",
+    "trustSecure": "Pago 100% seguro",
+    "trustPetSafe": "Segura para mascotas",
+    "copyright": "© {year} Whiskcam. Todos los derechos reservados."
+  },
+  "cookie": {
+    "message": "Usamos cookies para mejorar tu experiencia y analizar el trafico del sitio.",
+    "privacyLink": "Politica de privacidad",
+    "decline": "Rechazar",
+    "accept": "Aceptar"
+  },
+  "emailPopup": {
+    "title": "Consigue tu guia gratuita de fotografia de mascotas",
+    "subtitle": "Los mejores trucos para capturar las aventuras secretas de tu mascota. Unete a 500+ familias.",
+    "placeholder": "tu@email.com",
+    "submit": "Quiero la guia gratis",
+    "dismiss": "No, gracias",
+    "successTitle": "Genial!",
+    "successSubtitle": "Revisa tu bandeja de entrada!"
+  },
+  "cart": {
+    "title": "Tu carrito",
+    "empty": "Tu carrito esta vacio.",
+    "emptySubtext": "Anade Whiskcam para empezar",
+    "startShopping": "Seguir comprando",
+    "freeShippingBanner": "Tienes envio GRATIS a toda Europa!",
+    "freeGiftsLabel": "Regalos gratis incluidos",
+    "freeLabel": "GRATIS",
+    "freeWorldwideShipping": "Envio gratis a toda Europa",
+    "subtotal": "Subtotal",
+    "shipping": "Envio",
+    "total": "Total",
+    "checkout": "Completar mi pedido",
+    "processing": "Procesando...",
+    "secureCheckout": "Pago seguro",
+    "moneyBack": "30 dias para devolver",
+    "saving": "Te ahorras {amount} en este pedido"
+  },
+  "stickyAtc": {
+    "productName": "Whiskcam Original",
+    "addToCart": "Lo quiero!",
+    "adding": "Anadiendo...",
+    "added": "Anadido!",
+    "outOfStock": "Agotado",
+    "selectOption": "Elige una opcion"
+  },
+  "about": {
+    "overline": "Nuestra historia",
+    "title": "Nacio de la curiosidad",
+    "opening": "Todo empezo con una pregunta muy simple: Que hace mi gato todo el dia?",
+    "p1": "Llegabamos a casa y nos encontrabamos plantas tiradas, aranazos misteriosos en los muebles y un gato con cara de no haber roto un plato en su vida. Teniamos que saberlo.",
+    "p2": "Asi que le pusimos una mini camara en el collar y le dimos a grabar. Lo que vimos nos dejo con la boca abierta: patrullas por el jardin, aventuras por los tejados, reuniones secretas con el gato del vecino. Todo un mundo que no sabiamos que existia.",
+    "p3": "Ahi nacio Whiskcam. Queriamos que todos los que tienen mascota pudieran vivir eso mismo: ver el mundo a traves de los ojos de su companero peludo.",
+    "p4": "La disenamos para que fuera facilisima de usar. Sin app. Sin WiFi. Sin configuraciones raras. Solo enganchala, dale al boton y deja que tu mascota haga el resto.",
+    "closing": "Descubre su mundo. No te vas a creer lo que te estabas perdiendo.",
+    "backToShop": "Volver a la tienda"
+  },
+  "langSwitcher": {
+    "label": "Idioma",
+    "en": "EN",
+    "fr": "FR",
+    "es": "ES"
+  }
+}

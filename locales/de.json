@@ -1,0 +1,336 @@
+{
+  "nav": {
+    "shop": "Shop",
+    "footage": "Aufnahmen",
+    "faq": "FAQ",
+    "about": "Über uns",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "openCart": "Warenkorb öffnen"
+  },
+  "announcement": {
+    "savePercent": "{pct}% RABATT",
+    "save": "{pct}% sparen",
+    "sale": "Aktion",
+    "plusFreeShipping": "+ Kostenloser Versand",
+    "plusFreeShipShort": "+ Gratis Versand",
+    "ends": "— Endet",
+    "staticWithDiscount": "{pct}% sparen — Kostenloser Versand in ganz Europa",
+    "staticDefault": "Kostenloser Versand in ganz Europa"
+  },
+  "hero": {
+    "tagline": "Die Haustier-Kamerahalsband",
+    "title": "Deine Katze hat ein Doppelleben.",
+    "subtitle": "Was macht deine Katze, wenn du nicht da bist? Whiskcam filmt es in Full HD — ohne App, ohne WLAN.",
+    "trust": "Über 500 begeisterte Tierbesitzer",
+    "ctaButton": "Ich will das sehen",
+    "ctaSubtext": "Kostenloser Versand in Europa · Limitiertes Angebot",
+    "urgencyBadge": "Nur noch wenige verfügbar"
+  },
+  "stats": {
+    "fullHd": "Full HD",
+    "wideAngle": "Weitwinkel",
+    "ultraLight": "Federleicht",
+    "batteryLife": "Akkulaufzeit",
+    "trustReviews": "500+ verifizierte Bewertungen",
+    "trustReturn": "30 Tage Geld zurück",
+    "trustShipping": "Kostenloser Versand in Europa",
+    "trustSecure": "Sichere Bezahlung"
+  },
+  "videoShowcase": {
+    "overline": "Gefilmt von echten Katzen",
+    "title": "Was deine Katze macht, wenn du nicht hinschaust",
+    "subtitle": "Echte Aufnahmen. Kein Fake. Dein Garten, deine Nachbarn, dein Sofa — aus der Perspektive deiner Katze.",
+    "pause": "Pause",
+    "play": "Abspielen",
+    "verifiedOwner": "Verifizierter Besitzer",
+    "videos": {
+      "0": "Die Verfolgungsjagd",
+      "1": "Die Konfrontation",
+      "2": "Die Begegnung",
+      "3": "Halt mein Leckerli",
+      "4": "Krallenpflege",
+      "5": "Katzen drehen auf",
+      "6": "Freigang ohne Erlaubnis"
+    },
+    "povCaptions": {
+      "0": "Gartenpatrouille",
+      "1": "Neue Freunde finden",
+      "2": "Dachentdecker",
+      "3": "Nachbarschaftswache",
+      "4": "Auf dem Dach der Welt",
+      "5": "Halt mein Leckerli",
+      "6": "Krallenpflege deluxe",
+      "7": "Katzen drehen auf"
+    },
+    "ctaButton": "Abenteuer deiner Katze filmen"
+  },
+  "features": {
+    "overline": "Was Whiskcam besonders macht",
+    "title": "Entwickelt, um nichts zu verpassen. Gar nichts.",
+    "subtitle": "Kein Schnickschnack. Nur das, was zählt — damit du siehst, was du bisher verpasst hast.",
+    "items": {
+      "0": {
+        "title": "1080P Full HD",
+        "description": "Jedes Schnurrhaar, jedes Detail. So gestochen scharf, als wärst du selbst dabei gewesen."
+      },
+      "1": {
+        "title": "170° Weitwinkel",
+        "description": "Alles, was dein Tier sieht, siehst du auch. Die Fisheye-Linse verpasst nichts."
+      },
+      "2": {
+        "title": "Federleicht — nur 24g",
+        "description": "Leichter als ein Glöckchen am Halsband. Selbst kleine Katzen merken nichts davon."
+      },
+      "3": {
+        "title": "Keine App. Kein WLAN.",
+        "description": "Ein Knopf. Ein Klick. Fertig. Null Einrichtung, null Stress."
+      },
+      "4": {
+        "title": "USB-C Laden",
+        "description": "In unter einer Stunde voll geladen. Bereit fürs nächste Abenteuer."
+      },
+      "5": {
+        "title": "Sicher für Haustiere",
+        "description": "Abgerundete Kanten, universelle Befestigung, designt für Komfort. Dein Tier ist safe."
+      }
+    }
+  },
+  "reviews": {
+    "overline": "Bewertungen",
+    "title": "Was Whiskcam-Besitzer entdeckt haben",
+    "subtitle": "Echte Besitzer. Echte Katzen. Echte Überraschungen.",
+    "verifiedBuyer": "Verifizierter Käufer",
+    "showPhotos": "Fotos anzeigen",
+    "hidePhotos": "Fotos ausblenden",
+    "prev": "Vorherige Bewertung",
+    "next": "Nächste Bewertung",
+    "basedOn": "{count}+ verifizierte Bewertungen",
+    "readMore": "Weiterlesen",
+    "showLess": "Weniger anzeigen",
+    "showAll": "Alle Bewertungen anzeigen",
+    "showAllCount": "Alle {count} Bewertungen anzeigen",
+    "translated": "",
+    "trustFooter": "Alle Bewertungen stammen von verifizierten Whiskcam-Kunden."
+  },
+  "howItWorks": {
+    "overline": "So funktioniert's",
+    "title": "Einfach wie 1, 2, 3",
+    "subtitle": "Wenn du einen Knopf drücken kannst, kannst du Whiskcam bedienen.",
+    "steps": {
+      "0": {
+        "title": "Dranklicken",
+        "description": "Befestige Whiskcam in 2 Sekunden an jedem Halsband. Passt an alle Größen."
+      },
+      "1": {
+        "title": "Aufnahme starten",
+        "description": "Ein Knopf. Keine App, kein WLAN. Drücken und deine Katze losziehen lassen."
+      },
+      "2": {
+        "title": "Staunen",
+        "description": "SD-Karte ins Handy stecken. Anschauen, lachen, teilen."
+      }
+    }
+  },
+  "product": {
+    "overline": "Shop",
+    "title": "Whiskcam Original",
+    "subtitle": "Alles dabei. Sofort startklar, direkt aus der Box.",
+    "badgeBestSeller": "Bestseller",
+    "badge1080p": "1080P Full HD",
+    "badgeNoApp": "Keine App",
+    "reviews": "500+ begeisterte Tierbesitzer",
+    "keyBenefits": {
+      "0": "Full HD 1080P — 170° Weitwinkel-Objektiv",
+      "1": "24g federleicht — selbst kleine Katzen merken nichts",
+      "2": "Keine App, kein WLAN — ein Klick und es filmt",
+      "3": "Bis zu 2 Stunden Akku — in unter 1 Stunde geladen"
+    },
+    "freeGiftsLabel": "Gratis Geschenke zu deiner Bestellung",
+    "microsdName": "32GB MicroSD-Karte",
+    "microsdDetail": "Vorinstalliert, sofort aufnahmebereit",
+    "adapterName": "USB-C/Lightning Adapter",
+    "adapterDetail": "Videos direkt auf deinem Handy ansehen",
+    "shippingName": "Kostenloser Versand in Europa",
+    "shippingDetail": "7–14 Werktage",
+    "free": "GRATIS",
+    "totalValue": "Gesamtwert",
+    "youPay": "Du zahlst",
+    "atcFallback": "Shopify verbinden, um den Warenkorb zu aktivieren",
+    "freeShippingMoneyBack": "Kostenloser Versand · 30 Tage Geld zurück",
+    "trustShipping": "Gratis Versand",
+    "trustReturn": "30 Tage Rückgabe",
+    "trustSecure": "Sicher bezahlen",
+    "infographicOverline": "Technische Daten",
+    "infographicTitle": "Alles, was du brauchst.",
+    "infographicHighlight": "Nichts, was du nicht brauchst.",
+    "infographicFooter": "Kein Abo · Keine Cloud · Keine Datenschutzsorgen",
+    "specFullHd": "Full HD",
+    "specWideAngle": "Weitwinkel",
+    "specUltralight": "Federleicht",
+    "specBattery": "Akku",
+    "specPrivacy": "Datenschutz",
+    "specPlugPlay": "Plug & Play",
+    "galleryBadge": "Bestseller",
+    "gallerySocialProof": "Beliebt bei über 500 Tierbesitzern",
+    "boxContentsLabel": "Das ist alles drin",
+    "boxContents": {
+      "0": { "item": "Whiskcam Kamera", "detail": "1080P Full HD mit 170° Objektiv" },
+      "1": { "item": "32GB MicroSD-Karte", "detail": "Vorinstalliert, sofort aufnahmebereit" },
+      "2": { "item": "SD-Karten-Adapter", "detail": "USB-C/Lightning — Videos direkt am Handy" },
+      "3": { "item": "Verstellbares Halsband", "detail": "Passt für Katzen & Hunde aller Größen" },
+      "4": { "item": "USB-C Kabel", "detail": "Schnellladen, voll in unter 1 Stunde" },
+      "5": { "item": "Digitaler Guide", "detail": "\"So filmst du das geheime Leben deines Tieres\"" }
+    }
+  },
+  "comparison": {
+    "overline": "Vergleich",
+    "title": "Warum Tierbesitzer Whiskcam wählen",
+    "subtitle": "So schneidet Whiskcam im Vergleich zu anderen Tierkameras ab.",
+    "featureCol": "Eigenschaft",
+    "othersCol": "Andere Kameras",
+    "footnote": "Action-Kameras kosten über 300 €. Whiskcam wurde für Haustiere gebaut — nicht für deinen Geldbeutel.",
+    "features": {
+      "0": "Preis",
+      "1": "Auflösung",
+      "2": "SD-Karte inklusive",
+      "3": "Handy-Adapter inklusive",
+      "4": "Keine App nötig",
+      "5": "Kostenloser Versand",
+      "6": "30 Tage Geld zurück"
+    },
+    "othersResolution": "720P–1080P"
+  },
+  "cta": {
+    "overline": "Gerade jetzt",
+    "title": "ist deine Katze irgendwo unterwegs. Willst du wissen, wo?",
+    "subtitle": "Whiskcam filmt alles in Full HD direkt vom Halsband. Heute bestellen, morgen staunen.",
+    "button": "Jetzt bestellen",
+    "footnote": "Kostenloser Versand in Europa · 30 Tage Geld-zurück-Garantie"
+  },
+  "faq": {
+    "overline": "FAQ",
+    "title": "Häufig gestellte Fragen",
+    "subtitle": "Fragen? Wir haben Antworten.",
+    "pageTitle": "Häufig gestellte Fragen",
+    "pageSubtitle": "Alles, was du über Whiskcam wissen musst.",
+    "items": {
+      "0": {
+        "question": "Was, wenn ich nicht zufrieden bin?",
+        "answer": "Du hast 30 Tage Zeit, Whiskcam in Ruhe auszuprobieren. Wenn du oder dein Tier nicht happy seid, schreib uns einfach eine Mail an support@whiskcam.com — wir erstatten dir den vollen Kaufpreis, ohne Wenn und Aber. Du musst das Produkt nicht mal zurückschicken. Wir stehen hinter jedem Whiskcam, weil wir wissen, dass du es lieben wirst."
+      },
+      "1": {
+        "question": "Ist Whiskcam sicher für meine Katze?",
+        "answer": "Auf jeden Fall. Mit nur 24 Gramm ist Whiskcam leichter als ein kleines Glöckchen. Die Kamera wird einfach am vorhandenen Halsband befestigt — abgerundete Kanten sorgen dafür, dass nichts scheuert oder stört. Selbst kleine Katzen merken davon gar nichts. Für Freigänger empfehlen wir ein Sicherheitshalsband mit Sollbruchstelle."
+      },
+      "2": {
+        "question": "Wie lange hält der Akku?",
+        "answer": "Whiskcam nimmt bis zu 2 Stunden Full-HD-Video auf — perfekt für die Morgenpatrouille und das Abendabenteuer. Über USB-C ist die Kamera in unter einer Stunde wieder voll geladen."
+      },
+      "3": {
+        "question": "Brauche ich eine App dafür?",
+        "answer": "Nö. Keine App, kein WLAN, kein Konto. Einfach den Aufnahme-Knopf drücken. Wenn dein Tier nach Hause kommt, SD-Karte raus, mit dem mitgelieferten Adapter ins Handy stecken und die Aufnahmen genießen. Einfacher geht's nicht."
+      },
+      "4": {
+        "question": "Wie schaue ich mir die Videos auf dem Handy an?",
+        "answer": "Bei jedem Whiskcam ist ein MicroSD-auf-USB-C/Lightning-Adapter dabei. Einfach ins Handy stecken und die Videos direkt in deiner Galerie-App anschauen. Alternativ kannst du die SD-Karte auch in jeden Computer mit Kartenleser einlegen."
+      },
+      "5": {
+        "question": "Passt Whiskcam an das Halsband meines Tieres?",
+        "answer": "Whiskcam kommt mit einem eigenen verstellbaren Halsband, lässt sich aber auch an jedes vorhandene Halsband clippen. Funktioniert bei Katzen und Hunden aller Größen."
+      },
+      "6": {
+        "question": "Wie lange dauert der Versand?",
+        "answer": "Wir versenden kostenlos in ganz Europa. Die Lieferung dauert in der Regel 7–14 Werktage, je nach Standort. Sobald dein Whiskcam auf dem Weg ist, bekommst du eine Sendungsverfolgungsnummer."
+      },
+      "7": {
+        "question": "In welchem Format nimmt Whiskcam auf?",
+        "answer": "Whiskcam nimmt im AVI-Format in 1080P Full HD auf. Die Dateien laufen auf jedem Gerät — Handy, Tablet oder Computer. Du kannst sie ganz einfach für TikTok, Instagram oder YouTube teilen oder umwandeln."
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Entdecke ihr geheimes Leben. Die kleine Halsbandkamera, die die Abenteuer deines Tieres in Full HD festhält.",
+    "shopHeading": "Shop",
+    "learnHeading": "Wissenswertes",
+    "supportHeading": "Hilfe",
+    "legalHeading": "Rechtliches",
+    "links": {
+      "whiskcamOriginal": "Whiskcam Original",
+      "whatIsWhiskcam": "Was ist Whiskcam?",
+      "blogBestCameras": "Die besten Katzen-Halsbandkameras 2026",
+      "blogSafe": "Sind Katzenkameras sicher?",
+      "allArticles": "Alle Artikel",
+      "faq": "FAQ",
+      "trackOrder": "Bestellung verfolgen",
+      "shipping": "Versand",
+      "returns": "Rückgabe",
+      "contact": "Kontakt",
+      "privacy": "Datenschutz",
+      "terms": "AGB"
+    },
+    "trustShipping": "Kostenloser Versand in Europa",
+    "trustReturns": "30 Tage Geld zurück",
+    "trustSecure": "Sicherer Checkout",
+    "trustPetSafe": "Tiersicheres Design",
+    "copyright": "© {year} Whiskcam. Alle Rechte vorbehalten."
+  },
+  "cookie": {
+    "message": "Wir verwenden Cookies, um dein Erlebnis zu verbessern und den Website-Traffic zu analysieren.",
+    "privacyLink": "Datenschutz",
+    "decline": "Ablehnen",
+    "accept": "Akzeptieren"
+  },
+  "emailPopup": {
+    "title": "Hol dir den kostenlosen Foto-Guide für Tierbesitzer",
+    "subtitle": "Die besten Tipps, um die geheimen Abenteuer deines Tieres festzuhalten. Schon über 500 Tierbesitzer dabei.",
+    "placeholder": "deine@email.de",
+    "submit": "Gratis Guide sichern",
+    "dismiss": "Nein, danke",
+    "successTitle": "Danke!",
+    "successSubtitle": "Check deinen Posteingang!"
+  },
+  "cart": {
+    "title": "Dein Warenkorb",
+    "empty": "Dein Warenkorb ist leer.",
+    "emptySubtext": "Leg Whiskcam in den Warenkorb und los geht's",
+    "startShopping": "Weiter einkaufen",
+    "freeShippingBanner": "Du bekommst KOSTENLOSEN Versand in ganz Europa!",
+    "freeGiftsLabel": "🎁 Gratis Geschenke inklusive",
+    "freeLabel": "GRATIS",
+    "freeWorldwideShipping": "Kostenloser Versand in Europa",
+    "subtotal": "Zwischensumme",
+    "shipping": "Versand",
+    "total": "Gesamt",
+    "checkout": "Jetzt bestellen",
+    "processing": "Wird verarbeitet...",
+    "secureCheckout": "Sicherer Checkout",
+    "moneyBack": "30 Tage Geld zurück",
+    "saving": "Du sparst {amount} bei dieser Bestellung"
+  },
+  "stickyAtc": {
+    "productName": "Whiskcam Original",
+    "addToCart": "Meins sichern!",
+    "adding": "Wird hinzugefügt...",
+    "added": "Drin!",
+    "outOfStock": "Ausverkauft",
+    "selectOption": "Option wählen"
+  },
+  "about": {
+    "overline": "Unsere Geschichte",
+    "title": "Aus Neugier geboren",
+    "opening": "Alles begann mit einer einfachen Frage: Was macht meine Katze eigentlich den ganzen Tag?",
+    "p1": "Wir kamen nach Hause zu umgekippten Blumentöpfen, mysteriösen Kratzern an den Möbeln und einer Katze, die verdächtig unschuldig dreinschaute. Wir mussten es wissen.",
+    "p2": "Also haben wir eine winzige Kamera am Halsband unserer Katze befestigt und auf Aufnahme gedrückt. Was wir gesehen haben, hat uns umgehauen — Gartenpatrouillen, Dachabenteuer, Geheimtreffen mit der Nachbarskatze. Eine ganze Welt, von der wir nichts wussten.",
+    "p3": "So wurde Whiskcam geboren. Wir wollten, dass jeder Tierbesitzer das erleben kann — die Welt durch die Augen seines Tieres zu sehen.",
+    "p4": "Wir haben Whiskcam so einfach wie möglich gemacht. Keine App. Kein WLAN. Kein kompliziertes Setup. Einfach anklicken, aufnehmen und dein Tier den Rest machen lassen.",
+    "closing": "Sieh ihre Welt. Du wirst nicht glauben, was du bisher verpasst hast.",
+    "backToShop": "Zurück zum Shop"
+  },
+  "langSwitcher": {
+    "label": "Sprache",
+    "en": "EN",
+    "fr": "FR",
+    "de": "DE"
+  }
+}

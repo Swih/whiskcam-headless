@@ -330,6 +330,8 @@
   "langSwitcher": {
     "label": "Language",
     "en": "EN",
-    "fr": "FR"
+    "fr": "FR",
+    "de": "DE",
+    "es": "ES"
   }
 }
