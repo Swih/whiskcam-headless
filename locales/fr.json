@@ -208,6 +208,21 @@
     "button": "Je prends le mien",
     "footnote": "Livraison offerte · Satisfait ou remboursé 30 jours"
   },
+  "duoPack": {
+    "badge": "Économisez 20 €",
+    "overline": "Plusieurs animaux ?",
+    "title": "Deux Whiskcams. Un foyer. Zéro attente.",
+    "subtitle": "Si vous avez plusieurs chats — ou un chat et un petit chien — le Duo Pack vous fait économiser 20 € et évite d'attendre qu'une caméra se recharge pendant que l'autre part à l'aventure.",
+    "price": "79,90 €",
+    "compareAtPrice": "99,80 €",
+    "savings": "-20 %",
+    "benefits": {
+      "0": "Deux caméras, deux aventures, en même temps",
+      "1": "Livraison mondiale offerte incluse",
+      "2": "Garantie 30 jours sur les deux unités"
+    },
+    "cta": "Découvrir le Duo Pack"
+  },
   "peaceOfMind": {
     "overline": "Sérénité",
     "title": "Ce que les autres marques évitent de dire",

@@ -208,6 +208,21 @@
     "button": "I Want This",
     "footnote": "Free shipping worldwide · 30-day money-back guarantee"
   },
+  "duoPack": {
+    "badge": "Save €20",
+    "overline": "Multi-pet household?",
+    "title": "Two Whiskcams. One household. Endless POV.",
+    "subtitle": "If you have more than one cat — or a cat and a small dog — the Duo Pack saves you €20 and means never waiting for one camera to finish charging before the other explores.",
+    "price": "€79.90",
+    "compareAtPrice": "€99.80",
+    "savings": "-20%",
+    "benefits": {
+      "0": "Two cameras, two adventures, at the same time",
+      "1": "Free worldwide shipping included",
+      "2": "Same 30-day money-back guarantee on both"
+    },
+    "cta": "Shop the Duo Pack"
+  },
   "peaceOfMind": {
     "overline": "Peace of mind",
     "title": "The parts most brands skip",

@@ -208,6 +208,21 @@
     "button": "Jetzt bestellen",
     "footnote": "Kostenloser Versand in Europa · 30 Tage Geld-zurück-Garantie"
   },
+  "duoPack": {
+    "badge": "20 € sparen",
+    "overline": "Mehr als ein Haustier?",
+    "title": "Zwei Whiskcams. Ein Zuhause. Endlose POV.",
+    "subtitle": "Wenn du mehrere Katzen hast — oder eine Katze und einen kleinen Hund — sparst du mit dem Duo-Paket 20 € und musst nie warten, bis eine Kamera geladen ist, bevor die andere losziehen kann.",
+    "price": "79,90 €",
+    "compareAtPrice": "99,80 €",
+    "savings": "-20 %",
+    "benefits": {
+      "0": "Zwei Kameras, zwei Abenteuer, gleichzeitig",
+      "1": "Kostenloser weltweiter Versand inklusive",
+      "2": "30 Tage Geld-zurück-Garantie auf beide"
+    },
+    "cta": "Duo-Paket entdecken"
+  },
   "peaceOfMind": {
     "overline": "Sicherheit",
     "title": "Was andere Marken weglassen",

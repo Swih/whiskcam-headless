@@ -8,6 +8,7 @@ import { ComparisonTable } from "components/landing/comparison-table";
 import { CtaBanner } from "components/landing/cta-banner";
 import { FromTheBlog } from "components/landing/from-the-blog";
 import { PeaceOfMind } from "components/landing/peace-of-mind";
+import { DuoPackCallout } from "components/landing/duo-pack-callout";
 import { FaqSection } from "components/landing/faq-section";
 import { ReviewsSection } from "components/landing/reviews-section";
 import Footer from "components/layout/footer";
@@ -294,6 +295,7 @@ export default async function HomePage({
       <VideoShowcase />
       <ProductSection product={product} />
       <ReviewsSection />
+      <DuoPackCallout />
       <FeaturesGrid />
       <HowItWorks />
       <ComparisonTable price={product ? formatPrice(product.priceRange.maxVariantPrice.amount, product.priceRange.maxVariantPrice.currencyCode) : undefined} />
