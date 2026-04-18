@@ -108,3 +108,4 @@ export const VIDEOS = [
 ];
 
 export const PRODUCT_HANDLE = "whiskcam-original";
+export const DUO_PRODUCT_HANDLE = "whiskcam-duo-pack-2-cameras";

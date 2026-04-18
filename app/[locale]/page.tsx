@@ -14,7 +14,7 @@ import { ReviewsSection } from "components/landing/reviews-section";
 import Footer from "components/layout/footer";
 import { StickyAtcBar } from "components/ui/sticky-atc-bar";
 import { getProduct } from "lib/shopify";
-import { FAQ_ITEMS, PRODUCT_HANDLE, HERO_CONTENT, VIDEOS } from "lib/content";
+import { FAQ_ITEMS, PRODUCT_HANDLE, DUO_PRODUCT_HANDLE, HERO_CONTENT, VIDEOS } from "lib/content";
 import { formatPrice } from "lib/format";
 import { cookies } from "next/headers";
 import { setRequestLocale } from "next-intl/server";
@@ -91,7 +91,10 @@ export default async function HomePage({
   setRequestLocale(locale);
 
   const country = (await cookies()).get("country")?.value || "FR";
-  const product = await getProduct(PRODUCT_HANDLE, country);
+  const [product, duoProduct] = await Promise.all([
+    getProduct(PRODUCT_HANDLE, country),
+    getProduct(DUO_PRODUCT_HANDLE, country),
+  ]);
 
   const compareAtPrice = product?.variants[0]?.compareAtPrice;
   const compareAtPriceFormatted = compareAtPrice
@@ -295,7 +298,7 @@ export default async function HomePage({
       <VideoShowcase />
       <ProductSection product={product} />
       <ReviewsSection />
-      <DuoPackCallout />
+      <DuoPackCallout duoProduct={duoProduct} />
       <FeaturesGrid />
       <HowItWorks />
       <ComparisonTable price={product ? formatPrice(product.priceRange.maxVariantPrice.amount, product.priceRange.maxVariantPrice.currencyCode) : undefined} />

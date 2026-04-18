@@ -2,15 +2,53 @@
 
 import { SectionWrapper } from "components/ui/section-wrapper";
 import { AnimatedElement } from "components/ui/animated-element";
+import { AddToCart } from "components/cart/add-to-cart";
+import { formatPrice } from "lib/format";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import type { Product } from "lib/shopify/types";
 
-// Multi-pet upsell. Positioned after social proof (ReviewsSection) where
-// real multi-cat testimonials establish the use case. The CTA scrolls back
-// up to the variant selector in ProductSection — the Duo variant is
-// expected to exist on the Shopify product as an explicit option.
-export function DuoPackCallout() {
+interface DuoPackCalloutProps {
+  // The duo product is fetched server-side from Shopify by handle
+  // (`whiskcam-duo-pack-2-cameras`). When present, this component renders
+  // a real add-to-cart button that uses the existing cart context.
+  // When absent (product hidden / unpublished / handle renamed), the
+  // component falls back to a scroll-to-#product CTA so the landing
+  // never ships with a broken button.
+  duoProduct?: Product;
+}
+
+// Multi-pet upsell. Placed after ReviewsSection where Vilma L.'s "second
+// camera" testimonial establishes multi-cat social proof. Uses the Shopify
+// duo product's real image when available (Shopify CDN) and falls back to
+// the studio shot otherwise.
+export function DuoPackCallout({ duoProduct }: DuoPackCalloutProps) {
   const t = useTranslations("duoPack");
+
+  // Prefer real Shopify price when product is loaded — this keeps the UI
+  // honest if the founder changes pricing in Shopify without redeploying.
+  const realPrice = duoProduct
+    ? formatPrice(
+        duoProduct.priceRange.maxVariantPrice.amount,
+        duoProduct.priceRange.maxVariantPrice.currencyCode,
+      )
+    : null;
+
+  const compareAt = duoProduct?.variants[0]?.compareAtPrice;
+  const realCompareAt = compareAt
+    ? formatPrice(compareAt.amount, compareAt.currencyCode)
+    : null;
+
+  const displayPrice = realPrice ?? t("price");
+  const displayCompareAt = realCompareAt ?? t("compareAtPrice");
+
+  // Use the duo product's hero image from Shopify if available.
+  const imageSrc =
+    duoProduct?.featuredImage?.url ??
+    "/images/product/whiskcam-product-studio.webp";
+  const imageAlt =
+    duoProduct?.featuredImage?.altText ||
+    "Two Whiskcam collar cameras — duo pack for multi-cat households";
 
   return (
     <SectionWrapper bg="warm">
@@ -19,13 +57,13 @@ export function DuoPackCallout() {
           {/* Visual */}
           <AnimatedElement animation="fadeIn" className="relative min-h-[260px] md:min-h-[320px]">
             <Image
-              src="/images/product/whiskcam-product-studio.webp"
-              alt="Two Whiskcam collar cameras — duo pack for multi-cat households"
+              src={imageSrc}
+              alt={imageAlt}
               fill
               className="object-cover"
               sizes="(min-width: 768px) 50vw, 100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-black/10 to-transparent" />
             <div className="absolute left-5 top-5 inline-flex items-center gap-1.5 rounded-full bg-wk-amber px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-wk-dark">
               {t("badge")}
             </div>
@@ -44,8 +82,8 @@ export function DuoPackCallout() {
             </p>
 
             <div className="mt-5 flex items-baseline gap-3">
-              <span className="text-3xl font-bold text-white">{t("price")}</span>
-              <span className="text-base text-white/40 line-through">{t("compareAtPrice")}</span>
+              <span className="text-3xl font-bold text-white">{displayPrice}</span>
+              <span className="text-base text-white/40 line-through">{displayCompareAt}</span>
               <span className="rounded-full bg-wk-amber/20 px-2 py-0.5 text-xs font-semibold text-wk-amber">
                 {t("savings")}
               </span>
@@ -66,19 +104,29 @@ export function DuoPackCallout() {
               ))}
             </ul>
 
-            <a
-              href="#product"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById("product")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-wk-amber px-6 py-3 text-sm font-semibold text-wk-dark transition-colors hover:bg-wk-amber-hover"
-            >
-              {t("cta")}
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
+            <div className="mt-6">
+              {duoProduct ? (
+                // Real Shopify-backed button — adds the duo product to the cart
+                // drawer and tracks analytics, identical flow to the main CTA.
+                <AddToCart product={duoProduct} />
+              ) : (
+                // Fallback when the duo product isn't reachable. Scrolls back
+                // to the solo product section so the CTA never dead-ends.
+                <a
+                  href="#product"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById("product")?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-[var(--radius-btn)] bg-wk-amber px-6 py-3.5 text-sm font-semibold text-wk-dark transition-colors hover:bg-wk-amber-hover"
+                >
+                  {t("cta")}
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              )}
+            </div>
           </AnimatedElement>
         </div>
       </div>
