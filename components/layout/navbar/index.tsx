@@ -20,6 +20,17 @@ export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
   const pathname = usePathname();
   const router = useRouter();
 
+  // Pages that render a dark hero directly behind the navbar. The transparent
+  // navbar with white text is only safe on these pages. Everywhere else the
+  // body background is white, so the navbar must render with a light bg and
+  // dark text from the start — otherwise the navbar becomes invisible at the
+  // top of the page (white text on white body).
+  const isDarkHeroPage = pathname === "/" || pathname === "/about";
+
+  // Visual state: use the "light surface / dark text" look any time either
+  // the user has scrolled OR the current page doesn't have a dark hero.
+  const lightSurface = scrolled || !isDarkHeroPage;
+
   const NAV_LINKS = [
     { title: t("shop"), path: "#product" },
     { title: t("footage"), path: "#footage" },
@@ -62,7 +73,7 @@ export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
     <>
       <nav
         className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
+          lightSurface
             ? "top-0 bg-white/90 shadow-sm backdrop-blur-xl"
             : "top-9 bg-transparent"
         }`}
@@ -76,7 +87,7 @@ export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
           >
             <Bars3Icon
               className={`h-6 w-6 transition-colors ${
-                scrolled ? "text-wk-black" : "text-white"
+                lightSurface ? "text-wk-black" : "text-white"
               }`}
             />
           </button>
@@ -98,7 +109,7 @@ export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
               width={140}
               height={32}
               className={`hidden sm:block transition-all ${
-                scrolled ? "" : "brightness-0 invert"
+                lightSurface ? "" : "brightness-0 invert"
               }`}
             />
           </Link>
@@ -111,7 +122,7 @@ export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
                   <button
                     onClick={() => handleNavClick(link.path)}
                     className={`text-sm font-medium transition-colors ${
-                      scrolled
+                      lightSurface
                         ? "text-wk-grey-600 hover:text-wk-black"
                         : "text-white/70 hover:text-white"
                     }`}
@@ -124,7 +135,7 @@ export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
                   <Link
                     href={link.path}
                     className={`text-sm font-medium transition-colors ${
-                      scrolled
+                      lightSurface
                         ? "text-wk-grey-600 hover:text-wk-black"
                         : "text-white/70 hover:text-white"
                     }`}
@@ -139,9 +150,9 @@ export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
           {/* Right side: Language switcher + Cart */}
           <div className="flex items-center gap-3">
             <div className="hidden md:block">
-              <LanguageSwitcher variant={scrolled ? "light" : "dark"} />
+              <LanguageSwitcher variant={lightSurface ? "light" : "dark"} />
             </div>
-            <div className={scrolled ? "text-wk-black" : "text-white"}>
+            <div className={lightSurface ? "text-wk-black" : "text-white"}>
               <CartModal savingsPerUnit={savingsPerUnit} currencyCode={currencyCode} />
             </div>
           </div>
