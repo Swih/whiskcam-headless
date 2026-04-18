@@ -49,9 +49,9 @@ export const FAQ_ITEMS = [
       "We offer a 30-day money-back guarantee, no questions asked. If you or your pet aren't happy with Whiskcam, simply email us at support@whiskcam.com and we'll process a full refund — you don't even need to return the product. We stand behind every Whiskcam because we know you'll love it.",
   },
   {
-    question: "Is Whiskcam safe for my cat?",
+    question: "Is Whiskcam safe for my cat or small dog?",
     answer:
-      "Absolutely. At just 24g, Whiskcam is lighter than a small bell. It clips securely onto your pet's existing collar with smooth, rounded edges. Even small cats won't notice it. We recommend using a breakaway collar for outdoor cats.",
+      "Whiskcam is safe for adult cats and small dogs under 10 kg (Chihuahua, Yorkshire, Pomeranian, Dachshund, Cavalier King Charles, and similar breeds). At just 24g — lighter than a small bell — it clips securely onto any existing collar with smooth, rounded edges. Even small cats barely notice it. We recommend a breakaway collar for outdoor pets.",
   },
   {
     question: "How long does the battery last?",
@@ -71,7 +71,7 @@ export const FAQ_ITEMS = [
   {
     question: "Will it fit my pet's collar?",
     answer:
-      "Whiskcam comes with its own adjustable collar, but it also clips onto any existing collar your pet already wears. Works for cats and dogs of all sizes.",
+      "Whiskcam comes with an adjustable 39 cm breakaway collar and also clips onto any existing collar. It fits all cats and small dogs under 10 kg (Chihuahua, Yorkshire, Pomeranian, Dachshund, Cavalier King Charles, and similar breeds). For larger dogs we recommend a dedicated pet action camera mount.",
   },
   {
     question: "How long does shipping take?",

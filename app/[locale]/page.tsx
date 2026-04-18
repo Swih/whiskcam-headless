@@ -7,6 +7,7 @@ import { SocialProofBar } from "components/landing/social-proof-bar";
 import { ComparisonTable } from "components/landing/comparison-table";
 import { CtaBanner } from "components/landing/cta-banner";
 import { FromTheBlog } from "components/landing/from-the-blog";
+import { PeaceOfMind } from "components/landing/peace-of-mind";
 import { FaqSection } from "components/landing/faq-section";
 import { ReviewsSection } from "components/landing/reviews-section";
 import Footer from "components/layout/footer";
@@ -296,6 +297,7 @@ export default async function HomePage({
       <FeaturesGrid />
       <HowItWorks />
       <ComparisonTable price={product ? formatPrice(product.priceRange.maxVariantPrice.amount, product.priceRange.maxVariantPrice.currencyCode) : undefined} />
+      <PeaceOfMind />
       <CtaBanner product={product} />
       <FromTheBlog />
       <FaqSection />

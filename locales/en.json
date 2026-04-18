@@ -21,10 +21,10 @@
   "hero": {
     "tagline": "The Pet Collar Camera",
     "title": "See Their Secret Life.",
-    "subtitle": "Your cat has a secret life. Whiskcam films it in Full HD — no app, no WiFi.",
+    "subtitle": "See through their eyes. Full HD POV footage from a 24g collar camera — for cats and small dogs under 10 kg. No app, no WiFi, no subscription.",
     "trust": "500+ verified pet parents",
     "ctaButton": "I Want This",
-    "ctaSubtext": "Free worldwide shipping · Limited-time offer",
+    "ctaSubtext": "Free worldwide shipping · Plays on iPhone & Android · 30-day money-back",
     "urgencyBadge": "Limited stock"
   },
   "stats": {
@@ -208,6 +208,26 @@
     "button": "I Want This",
     "footnote": "Free shipping worldwide · 30-day money-back guarantee"
   },
+  "peaceOfMind": {
+    "overline": "Peace of mind",
+    "title": "The parts most brands skip",
+    "subtitle": "Honest answers to the questions you actually worry about before buying a pet accessory.",
+    "items": {
+      "refuses": {
+        "title": "If your cat refuses it",
+        "description": "Some cats never adapt to wearing anything on their collar. That's real. If Whiskcam isn't for yours, return it within 30 days — we refund you fully and you keep the setup guide."
+      },
+      "lost": {
+        "title": "If you lose or break it",
+        "description": "At €49.90 we built Whiskcam to be replaceable, not precious. Lose it outdoors or drop it? Email us — we offer a discounted replacement for existing customers."
+      },
+      "help": {
+        "title": "If you don't know how to start",
+        "description": "A digital setup guide ships with every order. For anything the guide doesn't cover, email us — a real person reads and replies within 24 hours."
+      }
+    },
+    "footnote": "Questions before buying?"
+  },
   "faq": {
     "overline": "FAQ",
     "title": "Frequently Asked Questions",
@@ -220,8 +240,8 @@
         "answer": "We offer a 30-day money-back guarantee, no questions asked. If you or your pet aren't happy with Whiskcam, simply email us at support@whiskcam.com and we'll process a full refund — you don't even need to return the product. We stand behind every Whiskcam because we know you'll love it."
       },
       "1": {
-        "question": "Is Whiskcam safe for my cat?",
-        "answer": "Absolutely. At just 24g, Whiskcam is lighter than a small bell. It clips securely onto your pet's existing collar with smooth, rounded edges. Even small cats won't notice it. We recommend using a breakaway collar for outdoor cats."
+        "question": "Is Whiskcam safe for my cat or small dog?",
+        "answer": "Whiskcam is safe for adult cats and small dogs under 10 kg (Chihuahua, Yorkshire, Pomeranian, Dachshund, Cavalier King Charles, and similar breeds). At just 24g — lighter than a small bell — it clips securely onto any existing collar with smooth, rounded edges. Even small cats barely notice it. We recommend a breakaway collar for outdoor pets."
       },
       "2": {
         "question": "How long does the battery last?",
@@ -237,7 +257,7 @@
       },
       "5": {
         "question": "Will it fit my pet's collar?",
-        "answer": "Whiskcam comes with its own adjustable collar, but it also clips onto any existing collar your pet already wears. Works for cats and dogs of all sizes."
+        "answer": "Whiskcam comes with an adjustable 39 cm breakaway collar and also clips onto any existing collar. It fits all cats and small dogs under 10 kg (Chihuahua, Yorkshire, Pomeranian, Dachshund, Cavalier King Charles, and similar breeds). For larger dogs we recommend a dedicated pet action camera mount."
       },
       "6": {
         "question": "How long does shipping take?",

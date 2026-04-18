@@ -21,10 +21,10 @@
   "hero": {
     "tagline": "Die Haustier-Kamerahalsband",
     "title": "Deine Katze hat ein Doppelleben.",
-    "subtitle": "Was macht deine Katze, wenn du nicht da bist? Whiskcam filmt es in Full HD — ohne App, ohne WLAN.",
+    "subtitle": "Sieh die Welt durch ihre Augen. Full HD POV-Aufnahmen aus einer 24g Halsbandkamera — für Katzen und kleine Hunde unter 10 kg. Ohne App, ohne WLAN, ohne Abo.",
     "trust": "Über 500 begeisterte Tierbesitzer",
     "ctaButton": "Ich will das sehen",
-    "ctaSubtext": "Kostenloser Versand in Europa · Limitiertes Angebot",
+    "ctaSubtext": "Kostenloser Versand weltweit · iPhone & Android kompatibel · 30 Tage Geld-zurück",
     "urgencyBadge": "Nur noch wenige verfügbar"
   },
   "stats": {
@@ -207,6 +207,26 @@
     "subtitle": "Whiskcam filmt alles in Full HD direkt vom Halsband. Heute bestellen, morgen staunen.",
     "button": "Jetzt bestellen",
     "footnote": "Kostenloser Versand in Europa · 30 Tage Geld-zurück-Garantie"
+  },
+  "peaceOfMind": {
+    "overline": "Sicherheit",
+    "title": "Was andere Marken weglassen",
+    "subtitle": "Ehrliche Antworten auf die Fragen, die du dir vor dem Kauf eines Haustierzubehörs wirklich stellst.",
+    "items": {
+      "refuses": {
+        "title": "Wenn deine Katze sie ablehnt",
+        "description": "Manche Katzen gewöhnen sich nie daran, etwas am Halsband zu tragen. Das ist normal. Falls Whiskcam nicht zu deiner Katze passt, Rückgabe innerhalb von 30 Tagen — volle Rückerstattung und du behältst den Setup-Guide."
+      },
+      "lost": {
+        "title": "Wenn du sie verlierst oder kaputt machst",
+        "description": "Bei €49,90 haben wir Whiskcam replaceable gebaut, nicht kostbar. Draußen verloren oder fallen gelassen? Schreib uns — wir bieten bestehenden Kunden eine zweite Einheit zum reduzierten Preis an."
+      },
+      "help": {
+        "title": "Wenn du nicht weißt, wie du anfangen sollst",
+        "description": "Ein digitaler Setup-Guide ist in jeder Bestellung enthalten. Für alles, was der Guide nicht abdeckt, schreib uns — eine echte Person liest und antwortet innerhalb von 24 Stunden."
+      }
+    },
+    "footnote": "Fragen vor dem Kauf?"
   },
   "faq": {
     "overline": "FAQ",

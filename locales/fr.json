@@ -21,10 +21,10 @@
   "hero": {
     "tagline": "La caméra-collier pour chats",
     "title": "Votre chat a une vie secrète.",
-    "subtitle": "Whiskcam la capture depuis son collier — Full HD, sans appli, sans WiFi.",
+    "subtitle": "Voyez par ses yeux. Des séquences POV Full HD depuis un collier de 24g — pour chats et petits chiens de moins de 10 kg. Sans appli, sans WiFi, sans abonnement.",
     "trust": "Plus de 500 propriétaires conquis",
     "ctaButton": "Je prends le mien",
-    "ctaSubtext": "Livraison offerte · Offre en cours",
+    "ctaSubtext": "Livraison offerte · Compatible iPhone & Android · Remboursé 30 jours",
     "urgencyBadge": "Stock limité"
   },
   "stats": {
@@ -208,6 +208,26 @@
     "button": "Je prends le mien",
     "footnote": "Livraison offerte · Satisfait ou remboursé 30 jours"
   },
+  "peaceOfMind": {
+    "overline": "Sérénité",
+    "title": "Ce que les autres marques évitent de dire",
+    "subtitle": "Les vraies questions qu'on se pose avant d'acheter un accessoire pour son animal.",
+    "items": {
+      "refuses": {
+        "title": "Si votre chat refuse",
+        "description": "Certains chats n'acceptent jamais de porter quelque chose au cou. C'est normal. Si Whiskcam n'est pas pour le vôtre, retour sous 30 jours — on rembourse intégralement et vous gardez le guide."
+      },
+      "lost": {
+        "title": "Si vous la perdez ou la cassez",
+        "description": "À €49.90, on a conçu Whiskcam pour être remplaçable, pas précieuse. Perdue dehors ou cassée ? Écrivez-nous — on propose une deuxième unité à prix réduit pour les clients existants."
+      },
+      "help": {
+        "title": "Si vous ne savez pas par où commencer",
+        "description": "Un guide digital est inclus dans chaque commande. Pour ce que le guide ne couvre pas, écrivez-nous — une vraie personne répond sous 24 heures."
+      }
+    },
+    "footnote": "Des questions avant d'acheter ?"
+  },
   "faq": {
     "overline": "FAQ",
     "title": "On a réponse à tout",
@@ -220,8 +240,8 @@
         "answer": "Satisfait ou remboursé pendant 30 jours, sans condition. Envoyez un email à support@whiskcam.com et on vous rembourse intégralement — sans même avoir à retourner le produit. On prend le risque à votre place."
       },
       "1": {
-        "question": "C'est vraiment sûr pour mon chat ?",
-        "answer": "24g — plus léger qu'une petite clochette. Le Whiskcam se clipse au collier existant avec des bords arrondis et lisses. La plupart des chats l'oublient en quelques minutes. Convient même aux petits gabarits. On recommande un collier détachable pour les chats d'extérieur."
+        "question": "C'est vraiment sûr pour mon chat ou petit chien ?",
+        "answer": "Whiskcam est sûr pour chats adultes et petits chiens de moins de 10 kg (Chihuahua, Yorkshire, Poméranien, Teckel, Cavalier King Charles et races similaires). À seulement 24g — plus léger qu'une petite clochette — il se clipse au collier existant avec des bords arrondis et lisses. La plupart des chats l'oublient en quelques minutes. On recommande un collier détachable pour l'extérieur."
       },
       "2": {
         "question": "Combien de temps dure la batterie ?",
@@ -237,7 +257,7 @@
       },
       "5": {
         "question": "Ça s'adapte à n'importe quel collier ?",
-        "answer": "Oui. Un collier réglable est inclus, mais le Whiskcam se fixe aussi sur n'importe quel collier existant. Compatible chats et chiens, toutes tailles."
+        "answer": "Whiskcam est livré avec un collier détachable réglable de 39 cm et se clipse aussi sur n'importe quel collier existant. Il convient à tous les chats et aux petits chiens de moins de 10 kg (Chihuahua, Yorkshire, Poméranien, Teckel, Cavalier King Charles et similaires). Pour les plus grands chiens, on recommande un support de caméra d'action dédié."
       },
       "6": {
         "question": "Quand est-ce que je le reçois ?",

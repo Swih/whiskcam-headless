@@ -21,10 +21,10 @@
   "hero": {
     "tagline": "La cámara de collar para mascotas",
     "title": "Tu gato tiene una vida secreta.",
-    "subtitle": "Whiskcam la graba en Full HD desde su collar. Sin apps, sin WiFi. Solo dale al botón y descubre todo.",
+    "subtitle": "Mira por sus ojos. Imágenes POV Full HD desde un collar de 24g — para gatos y perros pequeños de menos de 10 kg. Sin app, sin WiFi, sin suscripción.",
     "trust": "500+ familias con mascotas felices",
     "ctaButton": "Lo quiero",
-    "ctaSubtext": "Envío gratis en Europa · Oferta por tiempo limitado",
+    "ctaSubtext": "Envío gratis mundial · Compatible con iPhone y Android · Garantía 30 días",
     "urgencyBadge": "Últimas unidades"
   },
   "stats": {
@@ -207,6 +207,26 @@
     "subtitle": "Whiskcam graba todo en Full HD desde su collar. Pídela hoy, descubre mañana.",
     "button": "Lo quiero",
     "footnote": "Envío gratis en Europa · Devolución garantizada en 30 días"
+  },
+  "peaceOfMind": {
+    "overline": "Tranquilidad",
+    "title": "Lo que otras marcas evitan decir",
+    "subtitle": "Respuestas honestas a las preguntas que realmente te haces antes de comprar un accesorio para tu mascota.",
+    "items": {
+      "refuses": {
+        "title": "Si tu gato se niega",
+        "description": "Algunos gatos nunca se adaptan a llevar algo en el collar. Es normal. Si Whiskcam no es para el tuyo, devolución en 30 días — te reembolsamos y te quedas con la guía."
+      },
+      "lost": {
+        "title": "Si la pierdes o la rompes",
+        "description": "A €49,90 construimos Whiskcam para ser reemplazable, no preciosa. ¿Perdida fuera o rota? Escríbenos — ofrecemos una segunda unidad con descuento para clientes existentes."
+      },
+      "help": {
+        "title": "Si no sabes por dónde empezar",
+        "description": "Una guía digital viene con cada pedido. Para lo que la guía no cubra, escríbenos — una persona real lee y responde en menos de 24 horas."
+      }
+    },
+    "footnote": "¿Dudas antes de comprar?"
   },
   "faq": {
     "overline": "Preguntas",
