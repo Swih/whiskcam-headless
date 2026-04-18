@@ -38,6 +38,15 @@ const articleComponents: Record<string, React.ComponentType> = {
   "cat-collar-camera-vs-gps-tracker-2026": dynamic(
     () => import("lib/blog/cat-collar-camera-vs-gps-tracker-2026"),
   ),
+  "my-cat-found-the-camera-what-to-do": dynamic(
+    () => import("lib/blog/my-cat-found-the-camera-what-to-do"),
+  ),
+  "best-cat-collar-camera-for-maine-coon": dynamic(
+    () => import("lib/blog/best-cat-collar-camera-for-maine-coon"),
+  ),
+  "where-does-my-outdoor-cat-actually-go": dynamic(
+    () => import("lib/blog/where-does-my-outdoor-cat-actually-go"),
+  ),
 };
 
 export async function generateStaticParams() {
@@ -431,6 +440,78 @@ export default async function BlogArticlePage({
         question: "Can I track my cat without a subscription?",
         answer:
           "Yes, with trade-offs. Eureka Marco Polo uses radio signals instead of LTE, so no monthly fee — but range is capped at around 3 km in clear line of sight and much less in dense urban or wooded areas. For true unlimited-range tracking, an LTE tracker and subscription are the only real option in 2026.",
+      },
+    );
+  }
+  if (slug === "my-cat-found-the-camera-what-to-do") {
+    faqItems.push(
+      {
+        question: "Why does my cat attack the pet camera?",
+        answer:
+          "It's almost always curiosity, not aggression. Your cat detects a small object that emits a faint whine, sometimes moves on its own, and gives off a low-level heat signature — every one of those triggers an investigative swat. Ears forward and a relaxed tail mean exploration. The behavior typically fades within one to three weeks of habituation.",
+      },
+      {
+        question: "Can my cat hear the pet camera when I can't?",
+        answer:
+          "Yes. Most consumer pet cameras emit a high-frequency whine in the 15-22 kHz range from their power supply and internal components. Human hearing typically stops around 16-17 kHz. Cat hearing extends to roughly 65 kHz. From their ears, the camera is quietly chirping all day — one of the main reasons cats notice a camera you thought was silent.",
+      },
+      {
+        question: "Should I hide my pet camera from my cat?",
+        answer:
+          "No. Hiding it extends the discovery phase — cats are systematically curious about concealed objects in their territory, so a hidden camera becomes a higher-priority investigation target, not a lower one. Leave it visible, let them inspect fully on day one, and let habituation run. Ignored visibility beats imperfect concealment.",
+      },
+      {
+        question: "Do collar cameras have the same discovery problem?",
+        answer:
+          "No. A collar camera is worn by the cat, which means there is no external object in the room to discover, swat, or avoid. Once the cat has habituated to the collar itself — usually a few days — the camera stops registering as a separate thing. Households with an anti-camera cat often switch to collar cameras for exactly this reason.",
+      },
+    );
+  }
+  if (slug === "best-cat-collar-camera-for-maine-coon") {
+    faqItems.push(
+      {
+        question: "How much should a Maine Coon's collar weigh?",
+        answer:
+          "Total collar setup (collar, tag, camera, tracker) should stay under 3% of healthy body weight for all-day wear. A 7 kg Maine Coon can safely carry up to 210 g combined. A 10 kg male can carry up to 300 g. Most real-world setups with a nylon collar, AirTag, and a 26 g camera total about 47 g — under 0.7% of body weight.",
+      },
+      {
+        question: "Will my Maine Coon's fur block the camera lens?",
+        answer:
+          "It can. The neck ruff on an adult Maine Coon is 2-6 cm long and sits exactly where the camera mounts. If footage shows a soft fringe of out-of-focus hair at the top of the frame, either tighten the collar to the snug end of the two-finger fit range, or switch to a mount that extends 1-2 cm forward. Regular grooming of the ruff also reduces the issue.",
+      },
+      {
+        question: "Can a Maine Coon wear a GoPro?",
+        answer:
+          "Physically yes. A 120 g GoPro is 1.7% of a 7 kg Maine Coon, within the 3% daily weight threshold. But it's overkill and uncomfortable. The bulk slows the cat down and GoPro mount systems are designed for humans and dogs, not cat collars. A dedicated lightweight collar camera is the better tool.",
+      },
+      {
+        question: "What size collar does a Maine Coon need?",
+        answer:
+          "Adult males need a 32-40 cm adjustable collar. Adult females need 26-32 cm. Measure actual neck circumference with a soft tape under the fur, not over it — Maine Coon fur makes collars look loose when they are correctly snug. A proper fit allows two fingers between strap and skin, measured at the skin not the fur surface.",
+      },
+    );
+  }
+  if (slug === "where-does-my-outdoor-cat-actually-go") {
+    faqItems.push(
+      {
+        question: "How far do outdoor cats typically roam?",
+        answer:
+          "Median daily range across the major GPS studies sits between 40 and 200 m from home, with most cats keeping roughly 80% of their outdoor time inside a 100 m radius. Intact males roam 2-3x further than females, and suburban cats range further than urban ones. Ranges over 500 m are uncommon.",
+      },
+      {
+        question: "Where does my cat go at night?",
+        answer:
+          "If your cat comes home to sleep, almost nowhere — most indoor-nighters are inactive from roughly 22:00 to 04:00. Cats that stay outside overnight often cover their widest ground between 03:00 and 05:00, with the most frequent activity being social encounters with other neighborhood cats on shared walls, paths, and garden boundaries.",
+      },
+      {
+        question: "Should I keep my cat indoors to limit roaming?",
+        answer:
+          "That's a personal decision with legitimate arguments on both sides. Indoor-only cats live longer on average and face fewer road, predator, and fight risks. Outdoor access provides mental stimulation hard to replicate indoors. A middle-ground option — catio, harness walks, or supervised garden — preserves most enrichment without the risk.",
+      },
+      {
+        question: "Can I know where my cat goes without a GPS?",
+        answer:
+          "Partially, yes. A collar camera gives rich behavioral context and identifiable landmarks, even without exact coordinates. Combined with neighborhood observation — asking neighbors, checking common cat corridors like fence tops and hedges — you can usually reconstruct the rough territory in a couple of weeks without paying for GPS subscriptions.",
       },
     );
   }

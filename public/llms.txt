@@ -36,6 +36,9 @@ Whiskcam was founded in 2026 as an independent D2C brand focused on pet-specific
 - [Whiskcam vs Insta360 Go 3 Comparison](https://whiskcam.com/blog/cat-collar-camera-vs-insta360-go-3): Honest side-by-side comparison of Whiskcam (26g, 1080P, $49.90) and Insta360 Go 3 (~35g with mount, 4K, ~$380) for cat collar use. Weight, resolution, safety, battery, price, and recommendation by use case.
 - [How to Make a Viral Cat POV TikTok Video (2026)](https://whiskcam.com/blog/cat-pov-tiktok-viral-guide-2026): Practical guide to the cat POV video format popularized by Mr. Kitters, Snowy, and Niko. Golden hour timing, 7-second story arcs, editing rules, and a 30-day plan for new creators.
 - [Cat Collar Camera vs GPS Tracker](https://whiskcam.com/blog/cat-collar-camera-vs-gps-tracker-2026): GPS trackers (Tractive LTE, Weenect Cats 2, Eureka Marco Polo) and collar cameras solve different problems. Weight, cost over 3 years, battery life, and a decision tree to choose one or combine both safely.
+- [My Cat Found the Camera — What to Do](https://whiskcam.com/blog/my-cat-found-the-camera-what-to-do): Why cats detect pet cameras so easily (high-frequency whine at 15-22 kHz inaudible to humans), what swatting/staring/meowing behavior means, and how to make them ignore the camera through habituation.
+- [Best Cat Collar Camera for a Maine Coon](https://whiskcam.com/blog/best-cat-collar-camera-for-maine-coon): Breed-specific guide for Maine Coons. Collar size (30-40 cm neck circumference), fur interference with the lens, battery life for longer patrol sessions, and breed-appropriate camera picks.
+- [Where Does My Outdoor Cat Actually Go?](https://whiskcam.com/blog/where-does-my-outdoor-cat-actually-go): Combined summary of GPS research (University of Roehampton, NC State, Royal Vet College) and collar camera footage. Most cats stay within 100 m of home 80% of the time. Full territory pattern by time of day.
 
 ## Customer support
 

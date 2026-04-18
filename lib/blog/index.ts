@@ -148,6 +148,45 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     image: "/images/lifestyle/wk-cat-outdoor.webp",
     imageAlt: "Outdoor cat wearing a collar camera exploring the garden",
   },
+  {
+    slug: "my-cat-found-the-camera-what-to-do",
+    title: "My Cat Found the Camera — What It Means and What to Do",
+    description:
+      "Your cat swatting, staring, or meowing at the pet camera isn't aggression. Here's what the behavior means and how to handle it calmly.",
+    datePublished: "2026-06-13T00:00:00Z",
+    dateModified: "2026-06-13T00:00:00Z",
+    author: "Whiskcam Team",
+    readingTime: "8 min read",
+    tags: ["cat behavior", "pet camera", "cat psychology", "habituation"],
+    image: "/images/lifestyle/wk-cat-1.webp",
+    imageAlt: "Curious cat investigating a small indoor pet camera on a shelf",
+  },
+  {
+    slug: "best-cat-collar-camera-for-maine-coon",
+    title: "Best Cat Collar Camera for a Maine Coon: Size, Weight, and Fur Considerations",
+    description:
+      "Maine Coons need different collar cameras than average cats. Guide covers collar size (30-40 cm), fur interference, battery life, and breed-specific picks.",
+    datePublished: "2026-06-20T00:00:00Z",
+    dateModified: "2026-06-20T00:00:00Z",
+    author: "Whiskcam Team",
+    readingTime: "7 min read",
+    tags: ["maine coon", "cat collar camera", "large cat breeds", "buying guide"],
+    image: "/images/lifestyle/wk-cat-outdoor.webp",
+    imageAlt: "Large long-haired cat outdoors wearing a collar camera",
+  },
+  {
+    slug: "where-does-my-outdoor-cat-actually-go",
+    title: "Where Does My Outdoor Cat Actually Go? What GPS and Camera Studies Reveal",
+    description:
+      "GPS research says outdoor cats spend 80% of their time within 100 m of home. What multi-university data and collar cameras reveal about cat territory.",
+    datePublished: "2026-06-27T00:00:00Z",
+    dateModified: "2026-06-27T00:00:00Z",
+    author: "Whiskcam Team",
+    readingTime: "9 min read",
+    tags: ["outdoor cats", "cat behavior", "GPS tracking", "cat territory"],
+    image: "/images/lifestyle/wk-cat-outdoor.webp",
+    imageAlt: "Outdoor cat walking along a garden wall at dusk",
+  },
 ];
 
 export function getArticle(slug: string): BlogArticle | undefined {
