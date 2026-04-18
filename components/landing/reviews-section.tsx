@@ -373,7 +373,7 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
           <div className="mt-4 flex items-center justify-between border-t border-wk-grey-100 pt-3">
             <div>
               <p className="text-sm font-semibold text-wk-black">{review.name}</p>
-              <p className="text-[11px] text-wk-grey-400">{review.date}</p>
+              <p className="text-xs text-wk-grey-400">{review.date}</p>
             </div>
             {review.verified && <VerifiedBadge label={t("verifiedBuyer")} />}
           </div>

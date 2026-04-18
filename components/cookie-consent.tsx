@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
+import { Link } from "../i18n/navigation";
 
 const CONSENT_KEY = "wk-cookie-consent";
 const CONSENT_VERSION = "1";

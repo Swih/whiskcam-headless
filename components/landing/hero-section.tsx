@@ -74,7 +74,7 @@ export function HeroSection({ product }: { product?: Product }) {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.1 }}
-              className="text-[11px] font-semibold uppercase tracking-[0.15em] text-wk-amber sm:text-xs"
+              className="text-xs font-semibold uppercase tracking-[0.15em] text-wk-amber"
             >
               {t("tagline")}
             </motion.p>
@@ -104,7 +104,7 @@ export function HeroSection({ product }: { product?: Product }) {
               className="mt-7 flex flex-col items-center gap-3 sm:mt-8 lg:items-start"
             >
               {/* Urgency badge */}
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-red-500/40 bg-red-500/10 px-3 py-1 text-[11px] font-semibold text-red-400">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-red-500/40 bg-red-500/10 px-3 py-1 text-xs font-semibold text-red-400">
                 <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-red-400" />
                 {t("urgencyBadge")}
               </span>

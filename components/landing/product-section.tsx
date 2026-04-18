@@ -92,7 +92,7 @@ export function ProductSection({ product }: { product?: Product }) {
                 <span className="text-sm text-wk-grey-400 line-through">{compareAtPriceFormatted}</span>
               )}
               {discount > 0 && (
-                <span className="rounded-full bg-wk-amber/10 px-2 py-0.5 text-[11px] font-semibold text-wk-amber">
+                <span className="rounded-full bg-wk-amber/10 px-2 py-0.5 text-xs font-semibold text-wk-amber">
                   -{discount}%
                 </span>
               )}

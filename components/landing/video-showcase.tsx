@@ -220,7 +220,7 @@ function ReelCard({
             <VerifiedBadge className="h-3.5 w-3.5" />
           </div>
           {/* Video title */}
-          <p className="mt-0.5 text-[11px] leading-snug text-white/70 drop-shadow-md">
+          <p className="mt-0.5 text-xs leading-snug text-white/70 drop-shadow-md">
             {title}
           </p>
         </div>

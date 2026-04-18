@@ -1,68 +1,46 @@
-import { NextRequest, NextResponse } from "next/server";
+import createMiddleware from "next-intl/middleware";
+import { routing } from "./i18n/routing";
+import { NextRequest } from "next/server";
 
-/**
- * Francophone countries — visitors from these get French by default.
- */
 const FRENCH_COUNTRIES = new Set([
-  "FR", "BE", "CH", "LU", "MC", // Western Europe
+  "FR", "BE", "CH", "LU", "MC",
   "CI", "SN", "ML", "BF", "GN", "TG", "BJ", "GA", "CG", "CM", "MG",
   "CD", "NE", "TD", "CF", "GQ", "RW", "BI", "DJ", "KM", "MU", "SC",
 ]);
 
-/**
- * Detect locale from:
- * 1. Explicit user preference cookie (wk-locale) — highest priority
- * 2. Country header (Vercel geo) — francophone countries → fr
- * 3. Accept-Language header
- * 4. Default → en
- */
-function detectLocale(request: NextRequest, country: string): string {
-  const explicit = request.cookies.get("wk-locale")?.value;
-  if (explicit === "fr" || explicit === "en") return explicit;
+const GERMAN_COUNTRIES = new Set(["DE", "AT"]);
+const SPANISH_COUNTRIES = new Set([
+  "ES", "MX", "AR", "CO", "CL", "PE", "EC", "GT", "CU", "BO",
+  "DO", "HN", "PY", "SV", "NI", "CR", "PA", "UY", "VE",
+]);
 
-  if (FRENCH_COUNTRIES.has(country)) return "fr";
+const intlMiddleware = createMiddleware(routing);
 
-  const acceptLang = request.headers.get("accept-language") ?? "";
-  if (acceptLang.toLowerCase().startsWith("fr")) return "fr";
-
-  return "en";
-}
-
-/**
- * Detect visitor country from Vercel geo headers and store in cookie.
- * Shopify Storefront API uses this via @inContext(country:) to return
- * localized prices (USD for US, GBP for UK, EUR for EU, etc.)
- *
- * Also detects locale and auto-sets wk-locale cookie on first visit.
- */
 export function middleware(request: NextRequest) {
-  const country =
-    request.headers.get("x-vercel-ip-country") ??
-    "FR"; // Default to France (primary market)
+  const country = request.headers.get("x-vercel-ip-country") ?? "FR";
 
-  const locale = detectLocale(request, country);
+  // Auto-detect locale from country on first visit (no NEXT_LOCALE cookie yet)
+  const hasLocaleCookie = request.cookies.has("NEXT_LOCALE");
+  if (!hasLocaleCookie) {
+    let detectedLocale = "en";
+    if (FRENCH_COUNTRIES.has(country)) detectedLocale = "fr";
+    else if (GERMAN_COUNTRIES.has(country)) detectedLocale = "de";
+    else if (SPANISH_COUNTRIES.has(country)) detectedLocale = "es";
 
-  const response = NextResponse.next();
+    // Set cookie so next-intl middleware picks it up
+    request.cookies.set("NEXT_LOCALE", detectedLocale);
+  }
 
-  // Set country cookie if changed
+  const response = intlMiddleware(request);
+
+  // Set country cookie for Shopify @inContext pricing
   const currentCountry = request.cookies.get("country")?.value;
   if (currentCountry !== country) {
     response.cookies.set("country", country, {
       httpOnly: false,
       secure: true,
       sameSite: "lax",
-      maxAge: 60 * 60 * 24, // 1 day
-    });
-  }
-
-  // Auto-set locale cookie on first visit (only if not already explicitly set by user)
-  const currentLocale = request.cookies.get("wk-locale")?.value;
-  if (!currentLocale) {
-    response.cookies.set("wk-locale", locale, {
-      httpOnly: false,
-      secure: true,
-      sameSite: "lax",
-      maxAge: 60 * 60 * 24 * 365, // 1 year
+      maxAge: 86400,
     });
   }
 
@@ -70,6 +48,7 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Run on all pages except static assets and API routes
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|icon.png|apple-icon|manifest.json|images|videos|.*\\.txt$).*)"],
+  matcher: [
+    "/((?!_next/static|_next/image|favicon.ico|icon.png|apple-icon|manifest.json|images|videos|api|.*\\.txt$).*)",
+  ],
 };

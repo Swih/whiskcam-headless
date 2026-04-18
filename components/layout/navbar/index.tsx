@@ -3,9 +3,8 @@
 import CartModal from "components/cart/modal";
 import { LanguageSwitcher } from "components/ui/language-switcher";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { Link, usePathname, useRouter } from "../../../i18n/navigation";
 import { useTranslations } from "next-intl";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 

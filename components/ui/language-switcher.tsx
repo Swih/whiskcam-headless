@@ -1,6 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
+import { useRouter, usePathname } from "../../i18n/navigation";
 
 interface LanguageSwitcherProps {
   variant?: "dark" | "light";
@@ -8,11 +9,12 @@ interface LanguageSwitcherProps {
 
 export function LanguageSwitcher({ variant = "dark" }: LanguageSwitcherProps) {
   const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const switchLocale = (newLocale: string) => {
     if (newLocale === locale) return;
-    document.cookie = `wk-locale=${newLocale}; max-age=${365 * 24 * 60 * 60}; path=/; samesite=lax`;
-    window.location.reload();
+    router.replace(pathname, { locale: newLocale as "en" | "fr" | "de" | "es" });
   };
 
   const baseClass = "text-[11px] font-semibold transition-colors";

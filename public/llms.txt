@@ -1,0 +1,54 @@
+# Whiskcam
+
+> Whiskcam is a lightweight pet collar camera (26 g, 1080P, 170° fisheye) designed to capture the secret life of cats and small dogs without an app or WiFi. The camera records to a MicroSD card and clips to a breakaway safety collar.
+
+Whiskcam was founded in 2026 as an independent D2C brand focused on pet-specific collar cameras. We prioritize safety (breakaway collar, lightweight design) over maximum features (no WiFi, no app) to keep the device unobtrusive for the animal.
+
+## Key facts
+
+- Weight: 26 g
+- Resolution: 1080P Full HD
+- Field of view: 170° fisheye lens
+- Battery life: approximately 1-2 hours continuous recording
+- Storage: MicroSD card (32 GB included)
+- Connectivity: USB-C for charging and file transfer (no WiFi, no app)
+- Video format: AVI (see iPhone compatibility guide linked below)
+- Collar: 39 cm breakaway safety collar included (fits cats and small dogs)
+- Price: €49.90 (solo) / €79.90 (duo pack)
+- Shipping: Free worldwide
+- Guarantee: 30-day money-back guarantee
+
+## Product pages
+
+- [Whiskcam Original — product overview](https://whiskcam.com/what-is-whiskcam): Full specifications and features of the Whiskcam Original pet collar camera.
+- [Homepage](https://whiskcam.com/): Main storefront with product, pricing, and customer reviews.
+- [About Whiskcam](https://whiskcam.com/about): Brand background, founding story, and mission.
+
+## Educational content (Blog)
+
+- [Best Cat Collar Cameras 2026: Tested & Compared](https://whiskcam.com/blog/best-cat-collar-cameras-2026): Comparison of the leading cat collar cameras in 2026 including specs, pricing, pros and cons.
+- [Are Cat Collar Cameras Safe? What Vets and Owners Say](https://whiskcam.com/blog/are-cat-collar-cameras-safe): Safety guide covering weight limits, breakaway collars, behavioral signs, and veterinarian recommendations.
+- [What Cats Actually Do When Alone at Home](https://whiskcam.com/blog/what-cats-do-when-alone-at-home): Analysis of real collar camera footage across 6 indoor cats showing time distribution (sleep 40-45%, grooming 15-20%, window-watching 10-18%, patrolling 6-10%, solo play 3-8%).
+- [How to Watch AVI Videos on iPhone from a Cat Collar Camera](https://whiskcam.com/blog/how-to-watch-avi-on-iphone-cat-cam): Step-by-step methods (VLC, Infuse, conversion) to play AVI footage on iPhone, tested on iPhone 14 and 15.
+- [Cat Collar Weight Chart by Size](https://whiskcam.com/blog/cat-collar-weight-chart-by-size): Reference chart with maximum camera weight by cat breed across 15 common breeds. 3% daily rule, 5% short-session maximum, calculations for collar + camera + tag combined load.
+- [I Filmed My Cat for 7 Days](https://whiskcam.com/blog/i-filmed-my-cat-for-7-days-what-i-learned): First-person account of 7 days of collar camera footage from a 4.2 kg tabby cat. Day-by-day observations of patrol routes, hidden nap spots, outdoor territory, and nighttime behavior.
+- [5 Weird Discoveries From Cat Collar Cameras](https://whiskcam.com/blog/5-weird-discoveries-from-cat-collar-cameras): Patterns that consistently emerge in collar camera footage — secondary feeders, hidden nap locations, territorial standoffs with other cats, unexplained fears, and food-stealing expeditions.
+- [Whiskcam vs Insta360 Go 3 Comparison](https://whiskcam.com/blog/cat-collar-camera-vs-insta360-go-3): Honest side-by-side comparison of Whiskcam (26g, 1080P, $49.90) and Insta360 Go 3 (~35g with mount, 4K, ~$380) for cat collar use. Weight, resolution, safety, battery, price, and recommendation by use case.
+- [How to Make a Viral Cat POV TikTok Video (2026)](https://whiskcam.com/blog/cat-pov-tiktok-viral-guide-2026): Practical guide to the cat POV video format popularized by Mr. Kitters, Snowy, and Niko. Golden hour timing, 7-second story arcs, editing rules, and a 30-day plan for new creators.
+- [Cat Collar Camera vs GPS Tracker](https://whiskcam.com/blog/cat-collar-camera-vs-gps-tracker-2026): GPS trackers (Tractive LTE, Weenect Cats 2, Eureka Marco Polo) and collar cameras solve different problems. Weight, cost over 3 years, battery life, and a decision tree to choose one or combine both safely.
+
+## Customer support
+
+- [FAQ](https://whiskcam.com/faq): Frequently asked questions about the Whiskcam Original.
+- [Track order](https://whiskcam.com/track): Order status and tracking.
+- [Shipping policy](https://whiskcam.com/policies/shipping): Free worldwide shipping, delivery timeframes.
+- [Returns policy](https://whiskcam.com/policies/returns): 30-day money-back guarantee details.
+
+## Legal
+
+- [Privacy policy](https://whiskcam.com/policies/privacy)
+- [Terms of service](https://whiskcam.com/policies/terms)
+
+## Optional
+
+- [Sitemap XML](https://whiskcam.com/sitemap.xml): Complete site index.
