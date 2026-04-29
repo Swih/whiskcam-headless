@@ -168,7 +168,7 @@ export function ProductSection({ product }: { product?: Product }) {
                 <div className="flex items-center justify-between text-sm">
                   <span className="font-semibold text-wk-grey-600">{t("totalValue")}</span>
                   <span className="font-semibold text-wk-grey-600 line-through">
-                    {compareAtPriceFormatted || formatPrice("89.90", cc)}
+                    {compareAtPriceFormatted || formatPrice("109.00", cc)}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
