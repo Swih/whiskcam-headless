@@ -8,7 +8,7 @@ export default function CatCollarCameraVsInsta360Go3() {
       {/* ---- Answer-first intro (50-60 words) ---- */}
       <p className="lead">
         <strong>Insta360 Go 3</strong> is the premium choice — 4K, WiFi, waterproof, around $380.
-        Whiskcam is the pet-specific choice — 26 g, 1080P, $49.90, no app, with a breakaway safety
+        Whiskcam is the pet-specific choice — 26 g, 1080P, €79, no app, with a breakaway safety
         collar included. For most cat owners, the honest answer depends on two questions: your
         cat&apos;s size and whether you want to shoot content seriously or just see what your cat does.
       </p>
@@ -21,7 +21,7 @@ export default function CatCollarCameraVsInsta360Go3() {
         in the right place.
       </p>
       <p>
-        This article is written by the Whiskcam team. We make a $49.90 pet-specific collar camera, so
+        This article is written by the Whiskcam team. We make a €79 pet-specific collar camera, so
         we have a bias — we&apos;ll flag it where it matters. But the goal here is factual: where the
         Insta360 Go 3 wins, where Whiskcam wins, and which one fits your situation. We are not going
         to pretend a 1080P pet camera beats a 4K action camera on video quality. It doesn&apos;t.
@@ -108,7 +108,7 @@ export default function CatCollarCameraVsInsta360Go3() {
             <tr>
               <td>Price (USD)</td>
               <td>~$380 (64 GB)</td>
-              <td>$49.90</td>
+              <td>€79</td>
               <td>Whiskcam</td>
             </tr>
             <tr>
@@ -275,9 +275,9 @@ export default function CatCollarCameraVsInsta360Go3() {
         cost: roughly <strong>$405-475</strong>.
       </p>
       <p>
-        Whiskcam is $49.90 all-in. The box includes the camera, a 32 GB MicroSD card, the 39 cm
+        Whiskcam is €79 all-in. The box includes the camera, a 32 GB MicroSD card, the 39 cm
         breakaway collar, a USB-C charging cable, a USB-C-to-Lightning phone adapter for transferring
-        footage, and a PDF quick-start guide. Total entry cost: <strong>$49.90</strong>.
+        footage, and a PDF quick-start guide. Total entry cost: <strong>€79</strong>.
       </p>
       <p>
         That&apos;s an 8-9x price gap. The honest read: Insta360 Go 3 earns its price if you&apos;re

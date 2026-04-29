@@ -22,17 +22,17 @@
     "tagline": "La caméra-collier pour chats",
     "title": "Votre chat a une vie secrète.",
     "subtitle": "Voyez par ses yeux. Des séquences POV Full HD depuis un collier de 24g — pour chats et petits chiens de moins de 10 kg. Sans appli, sans WiFi, sans abonnement.",
-    "trust": "Plus de 500 propriétaires conquis",
+    "trust": "Adoptée par les premiers propriétaires Whiskcam",
     "ctaButton": "Je prends le mien",
     "ctaSubtext": "Livraison offerte · Compatible iPhone & Android · Remboursé 30 jours",
-    "urgencyBadge": "Stock limité"
+    "urgencyBadge": "Expédié dans le monde entier"
   },
   "stats": {
     "fullHd": "Full HD",
     "wideAngle": "Grand angle",
     "ultraLight": "Ultra-léger",
     "batteryLife": "Autonomie",
-    "trustReviews": "500+ avis vérifiés",
+    "trustReviews": "Notée 4,8/5 par les premiers clients",
     "trustReturn": "Remboursé 30 jours",
     "trustShipping": "Livraison offerte",
     "trustSecure": "Paiement sécurisé"
@@ -105,13 +105,13 @@
     "hidePhotos": "Masquer les photos",
     "prev": "Avis précédent",
     "next": "Avis suivant",
-    "basedOn": "{count}+ avis vérifiés",
+    "basedOn": "Sur la base de {count} avis",
     "readMore": "Lire plus",
     "showLess": "Voir moins",
     "showAll": "Voir tous les avis",
     "showAllCount": "Voir les {count} avis",
     "translated": "traduit",
-    "trustFooter": "Tous les avis proviennent de clients vérifiés Whiskcam."
+    "trustFooter": "Avis d'acheteurs vérifiés de la caméra Whiskcam. Nous ajoutons les retours de nos propres clients au fur et à mesure des livraisons."
   },
   "howItWorks": {
     "overline": "Comment ça marche",
@@ -139,7 +139,7 @@
     "badgeBestSeller": "Meilleure vente",
     "badge1080p": "1080P Full HD",
     "badgeNoApp": "Sans appli",
-    "reviews": "500+ propriétaires satisfaits",
+    "reviews": "Adoptée par les premiers propriétaires",
     "keyBenefits": {
       "0": "Full HD 1080P — objectif grand angle 170°",
       "1": "24g ultra-léger — même les petits chats ne le sentent pas",
@@ -172,7 +172,7 @@
     "specPrivacy": "Vie privée",
     "specPlugPlay": "Plug & Play",
     "galleryBadge": "Meilleure vente",
-    "gallerySocialProof": "Adopté par 500+ propriétaires",
+    "gallerySocialProof": "Adoptée par les premiers propriétaires",
     "boxContentsLabel": "Contenu de la boîte",
     "boxContents": {
       "0": { "item": "Caméra Whiskcam", "detail": "1080P Full HD avec objectif 170°" },
@@ -234,7 +234,7 @@
       },
       "lost": {
         "title": "Si vous la perdez ou la cassez",
-        "description": "À €49.90, on a conçu Whiskcam pour être remplaçable, pas précieuse. Perdue dehors ou cassée ? Écrivez-nous — on propose une deuxième unité à prix réduit pour les clients existants."
+        "description": "On a conçu Whiskcam pour être remplaçable, pas précieuse. Perdue dehors ou cassée ? Écrivez-nous — on propose une deuxième unité à prix réduit pour les clients existants."
       },
       "help": {
         "title": "Si vous ne savez pas par où commencer",
@@ -318,7 +318,7 @@
   },
   "emailPopup": {
     "title": "Le guide gratuit des propriétaires curieux",
-    "subtitle": "7 astuces pour filmer les aventures de votre animal comme un pro. Rejoignez 500+ propriétaires.",
+    "subtitle": "7 astuces pour filmer les aventures de votre animal comme un pro. Rejoignez la communauté Whiskcam.",
     "placeholder": "votre@email.com",
     "submit": "Recevoir le guide",
     "dismiss": "Non merci",

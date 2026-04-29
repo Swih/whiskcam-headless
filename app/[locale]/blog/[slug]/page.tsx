@@ -4,6 +4,7 @@ import { Link } from "i18n/navigation";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { setRequestLocale } from "next-intl/server";
 
 // Article content components — lazy loaded per slug
@@ -61,6 +62,9 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const article = getArticle(slug);
   if (!article) return {};
+  const articleImage = article.image
+    ? `https://whiskcam.com${article.image}`
+    : "https://whiskcam.com/images/logos/whiskcam-logo-icon.webp";
 
   return {
     title: article.title,
@@ -77,11 +81,20 @@ export async function generateMetadata({
       siteName: "Whiskcam",
       locale: "en_US",
       alternateLocale: ["fr_FR"],
+      images: [
+        {
+          url: articleImage,
+          width: 1536,
+          height: 864,
+          alt: article.imageAlt ?? article.title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: article.title,
       description: article.description,
+      images: [articleImage],
     },
     alternates: {
       canonical: `https://whiskcam.com/${locale}/blog/${slug}`,
@@ -331,7 +344,8 @@ export default async function BlogArticlePage({
           "Barely. About 20 minutes of mild irritation on the first day — a couple of scratches, one head-shake — then she ignored it. By day 3 she didn't react at all when the camera was clipped on. A cat already used to a breakaway collar adapts much faster than one that has never worn anything around the neck.",
       },
       {
-        question: "What battery life did you actually get from a cat collar camera?",
+        question:
+          "What battery life did you actually get from a cat collar camera?",
         answer:
           "About 90-120 minutes per session in practice, slightly less than the manufacturer spec. Cold weather shortens it further. The camera warms up slightly during long recordings, which is normal. Plan for roughly two hours per full charge in real-world use.",
       },
@@ -355,12 +369,14 @@ export default async function BlogArticlePage({
           "Most don't. Informal surveys of collar camera footage in dense urban and suburban neighborhoods suggest 20-25% of outdoor cats have a consistent secondary feeder or resting spot. Rural cats with more spread-out human populations are less likely to develop this pattern. Indoor-only cats don't have one at all.",
       },
       {
-        question: "Is it ethical to film a cat going into a neighbor's property?",
+        question:
+          "Is it ethical to film a cat going into a neighbor's property?",
         answer:
           "Video recording in publicly visible spaces is generally legal in most jurisdictions. Audio recording rules are stricter and vary by country. If your cat regularly enters a neighbor's enclosed space, the respectful move is to mention it before reviewing extended footage. Most people find it funny rather than invasive.",
       },
       {
-        question: "How often should I review cat camera footage to spot patterns?",
+        question:
+          "How often should I review cat camera footage to spot patterns?",
         answer:
           "Once a week is plenty. Patterns show up quickly because cats are deeply routine-driven — same nap spots, same walking routes, same social encounters at similar times. Daily review produces fatigue without extra insight. A weekly hour at 4x playback speed catches almost everything.",
       },
@@ -604,6 +620,19 @@ export default async function BlogArticlePage({
           </div>
         </header>
 
+        {article.image && (
+          <div className="relative mb-12 aspect-[16/9] overflow-hidden rounded-2xl bg-neutral-100">
+            <Image
+              src={article.image}
+              alt={article.imageAlt ?? article.title}
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="object-cover"
+            />
+          </div>
+        )}
+
         {/* Article Body */}
         <div className="prose prose-neutral max-w-none prose-headings:text-wk-black prose-h2:mt-10 prose-h2:text-2xl prose-h3:mt-6 prose-h3:text-lg prose-a:text-wk-amber prose-a:no-underline hover:prose-a:underline prose-strong:text-wk-black prose-table:text-sm prose-th:bg-neutral-50 prose-th:px-4 prose-th:py-2.5 prose-td:px-4 prose-td:py-2.5 prose-td:border-t prose-img:rounded-xl">
           <ArticleContent />
@@ -620,11 +649,12 @@ export default async function BlogArticlePage({
                 Written by the Whiskcam Team
               </p>
               <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-                We&apos;re an independent two-person team building cat collar cameras
-                since 2026. Every article we publish is based on tested Whiskcam units,
-                footage reviewed from our own cats and early beta users, and cross-checked
-                against published veterinary and feline-behavior sources. If something
-                here is wrong, we want to know —{" "}
+                We&apos;re an independent two-person team building cat collar
+                cameras since 2026. Every article we publish is based on tested
+                Whiskcam units, footage reviewed from our own cats and early
+                beta users, and cross-checked against published veterinary and
+                feline-behavior sources. If something here is wrong, we want to
+                know —{" "}
                 <a
                   href="mailto:support@whiskcam.com"
                   className="font-medium text-wk-amber hover:underline"
@@ -649,22 +679,27 @@ export default async function BlogArticlePage({
 
         {/* CTA */}
         <div className="mt-16 rounded-2xl bg-wk-dark p-8 text-center md:p-12">
-          <h2 className="text-2xl font-bold text-white">Ready to see their world?</h2>
+          <h2 className="text-2xl font-bold text-white">
+            Ready to see their world?
+          </h2>
           <p className="mt-3 text-neutral-400">
-            The Whiskcam Original — 24 g, 1080P, no app needed. Free worldwide shipping.
+            The Whiskcam Original — 24 g, 1080P, no app needed. Free worldwide
+            shipping.
           </p>
           <Link
             href="/#product"
             className="mt-6 inline-block rounded-full bg-wk-amber px-8 py-3 text-sm font-semibold text-wk-dark transition-colors hover:bg-wk-amber-hover"
           >
-            Shop Whiskcam — &euro;49.90
+            Shop Whiskcam — &euro;79
           </Link>
         </div>
 
         {/* Related Articles */}
         {related.length > 0 && (
           <div className="mt-16">
-            <h2 className="text-xl font-bold text-wk-black">Related Articles</h2>
+            <h2 className="text-xl font-bold text-wk-black">
+              Related Articles
+            </h2>
             <div className="mt-6 grid gap-6 md:grid-cols-2">
               {related.map((a) => (
                 <Link

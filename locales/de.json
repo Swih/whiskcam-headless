@@ -22,17 +22,17 @@
     "tagline": "Die Haustier-Kamerahalsband",
     "title": "Deine Katze hat ein Doppelleben.",
     "subtitle": "Sieh die Welt durch ihre Augen. Full HD POV-Aufnahmen aus einer 24g Halsbandkamera — für Katzen und kleine Hunde unter 10 kg. Ohne App, ohne WLAN, ohne Abo.",
-    "trust": "Über 500 begeisterte Tierbesitzer",
+    "trust": "Geliebt von den ersten Whiskcam-Besitzern",
     "ctaButton": "Ich will das sehen",
     "ctaSubtext": "Kostenloser Versand weltweit · iPhone & Android kompatibel · 30 Tage Geld-zurück",
-    "urgencyBadge": "Nur noch wenige verfügbar"
+    "urgencyBadge": "Versand weltweit"
   },
   "stats": {
     "fullHd": "Full HD",
     "wideAngle": "Weitwinkel",
     "ultraLight": "Federleicht",
     "batteryLife": "Akkulaufzeit",
-    "trustReviews": "500+ verifizierte Bewertungen",
+    "trustReviews": "4,8/5 von ersten Besitzern",
     "trustReturn": "30 Tage Geld zurück",
     "trustShipping": "Kostenloser Versand in Europa",
     "trustSecure": "Sichere Bezahlung"
@@ -105,13 +105,13 @@
     "hidePhotos": "Fotos ausblenden",
     "prev": "Vorherige Bewertung",
     "next": "Nächste Bewertung",
-    "basedOn": "{count}+ verifizierte Bewertungen",
+    "basedOn": "Basierend auf {count} Bewertungen",
     "readMore": "Weiterlesen",
     "showLess": "Weniger anzeigen",
     "showAll": "Alle Bewertungen anzeigen",
     "showAllCount": "Alle {count} Bewertungen anzeigen",
     "translated": "",
-    "trustFooter": "Alle Bewertungen stammen von verifizierten Whiskcam-Kunden."
+    "trustFooter": "Bewertungen stammen von verifizierten Käufern der Whiskcam-Kamera. Wir ergänzen Feedback unserer Kunden, sobald die Whiskcam-Bestellungen ausgeliefert sind."
   },
   "howItWorks": {
     "overline": "So funktioniert's",
@@ -139,7 +139,7 @@
     "badgeBestSeller": "Bestseller",
     "badge1080p": "1080P Full HD",
     "badgeNoApp": "Keine App",
-    "reviews": "500+ begeisterte Tierbesitzer",
+    "reviews": "Geliebt von den ersten Besitzern",
     "keyBenefits": {
       "0": "Full HD 1080P — 170° Weitwinkel-Objektiv",
       "1": "24g federleicht — selbst kleine Katzen merken nichts",
@@ -172,7 +172,7 @@
     "specPrivacy": "Datenschutz",
     "specPlugPlay": "Plug & Play",
     "galleryBadge": "Bestseller",
-    "gallerySocialProof": "Beliebt bei über 500 Tierbesitzern",
+    "gallerySocialProof": "Geliebt von den ersten Besitzern",
     "boxContentsLabel": "Das ist alles drin",
     "boxContents": {
       "0": { "item": "Whiskcam Kamera", "detail": "1080P Full HD mit 170° Objektiv" },
@@ -234,7 +234,7 @@
       },
       "lost": {
         "title": "Wenn du sie verlierst oder kaputt machst",
-        "description": "Bei €49,90 haben wir Whiskcam replaceable gebaut, nicht kostbar. Draußen verloren oder fallen gelassen? Schreib uns — wir bieten bestehenden Kunden eine zweite Einheit zum reduzierten Preis an."
+        "description": "Wir haben Whiskcam ersetzbar gebaut, nicht kostbar. Draußen verloren oder fallen gelassen? Schreib uns — wir bieten bestehenden Kunden eine zweite Einheit zum reduzierten Preis an."
       },
       "help": {
         "title": "Wenn du nicht weißt, wie du anfangen sollst",
@@ -318,7 +318,7 @@
   },
   "emailPopup": {
     "title": "Hol dir den kostenlosen Foto-Guide für Tierbesitzer",
-    "subtitle": "Die besten Tipps, um die geheimen Abenteuer deines Tieres festzuhalten. Schon über 500 Tierbesitzer dabei.",
+    "subtitle": "Die besten Tipps, um die geheimen Abenteuer deines Tieres festzuhalten. Werde Teil der Whiskcam-Community.",
     "placeholder": "deine@email.de",
     "submit": "Gratis Guide sichern",
     "dismiss": "Nein, danke",

@@ -88,7 +88,7 @@ export default async function WhatIsWhiskcamPage({
     ],
     offers: {
       "@type": "Offer",
-      price: "49.90",
+      price: "79.00",
       priceCurrency: "EUR",
       availability: "https://schema.org/InStock",
       url: "https://whiskcam.com",
@@ -184,8 +184,8 @@ export default async function WhatIsWhiskcamPage({
           <p className="lead text-lg">
             Whiskcam is a <strong>26-gram pet collar camera</strong> that records 1080P Full HD video
             from your cat or dog&apos;s point of view. It clips onto any collar, requires no app or
-            WiFi, and comes with a 32 GB MicroSD card and phone adapter. It costs &euro;49.90 with
-            free worldwide shipping.
+            WiFi, and ships as a complete kit (camera + 32 GB MicroSD + phone adapter + collar +
+            cable + digital guide) for &euro;79 with free worldwide shipping.
           </p>
 
           <h2>How It Works</h2>
@@ -278,14 +278,15 @@ export default async function WhatIsWhiskcamPage({
             .
           </p>
           <p>
-            Key differences: Whiskcam is lighter (24 g vs 38 g), cheaper (&euro;49.90 vs ~$85-90
-            with accessories), and includes everything in the box. Mr Petcam has been around longer
-            and has more user reviews.
+            Key differences: Whiskcam is lighter (24 g vs 38 g) and ships as a complete kit at
+            &euro;79 (camera + 32 GB SD + phone adapter + collar + cable + guide). Mr Petcam ships
+            the camera alone at $70, so once you add a card and an adapter you&apos;re in the same
+            range. Mr Petcam has been around longer and has more user reviews.
           </p>
 
           <h2>Pricing & Shipping</h2>
           <p>
-            Whiskcam costs <strong>&euro;49.90</strong> with <strong>free worldwide shipping</strong>.
+            Whiskcam costs <strong>&euro;79</strong> for the complete kit, with <strong>free worldwide shipping</strong>.
             Delivery takes 7-14 business days. There&apos;s a 30-day money-back guarantee — if
             you&apos;re not happy, email support@whiskcam.com for a full refund.
           </p>
@@ -297,7 +298,7 @@ export default async function WhatIsWhiskcamPage({
             href="/#product"
             className="rounded-full bg-wk-amber px-8 py-3 text-sm font-semibold text-wk-dark transition-colors hover:bg-wk-amber-hover"
           >
-            Shop Whiskcam — &euro;49.90
+            Shop Whiskcam — &euro;79
           </Link>
           <Link
             href="/blog/best-cat-collar-cameras-2026"

@@ -148,7 +148,7 @@ export default function BestCatCollarCameraForMaineCoon() {
       {/* ---- Our pick ---- */}
       <h2>Our Pick for Maine Coon Owners</h2>
 
-      <h3>Budget choice: Whiskcam Original ($49.90)</h3>
+      <h3>Pet-specific choice: Whiskcam Original (&euro;79 complete kit)</h3>
       <p>
         The 26 g weight is functionally irrelevant on a 7 kg+ cat (0.37% of body weight). The
         included 39 cm breakaway collar sits at the upper end of the Maine Coon range — fine

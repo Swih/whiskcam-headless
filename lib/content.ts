@@ -32,7 +32,7 @@ export const HOW_IT_WORKS = [
 ];
 
 export const COMPARISON = [
-  { whiskcam: "€49.90", others: "€59–99" },
+  { whiskcam: "€79", others: "€59–99" },
   { whiskcam: "1080P Full HD", others: "720P–1080P" },
   { whiskcam: true, others: false },
   { whiskcam: true, others: false },

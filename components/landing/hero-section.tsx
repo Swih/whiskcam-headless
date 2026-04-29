@@ -30,7 +30,7 @@ export function HeroSection({ product }: { product?: Product }) {
         product.priceRange.maxVariantPrice.amount,
         product.priceRange.maxVariantPrice.currencyCode
       )
-    : "€49.90";
+    : "€79";
 
   return (
     <section id="hero" className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden">
@@ -103,9 +103,9 @@ export function HeroSection({ product }: { product?: Product }) {
               transition={{ duration: 0.4, delay: 0.4 }}
               className="mt-7 flex flex-col items-center gap-3 sm:mt-8 lg:items-start"
             >
-              {/* Urgency badge */}
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-red-500/40 bg-red-500/10 px-3 py-1 text-xs font-semibold text-red-400">
-                <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-red-400" />
+              {/* Status pill — honest "now shipping" signal, no fake urgency */}
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-wk-amber/40 bg-wk-amber/10 px-3 py-1 text-xs font-semibold text-wk-amber">
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-wk-amber" />
                 {t("urgencyBadge")}
               </span>
 

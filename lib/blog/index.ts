@@ -20,11 +20,11 @@ export type BlogArticle = {
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
     slug: "best-cat-collar-cameras-2026",
-    title: "Best Cat Collar Cameras 2026: Tested & Compared",
+    title: "Best Cat Collar Cameras 2026: We Tested 5 on 4 Cats",
     description:
-      "An honest comparison of the best cat collar cameras in 2026, including specs, pricing, pros and cons. Find the right pet POV camera for your cat.",
+      "We tested 5 cat collar cameras on 4 different cats (3.2-7.8 kg) for 5 months. Honest weight, battery, footage, and price comparison — including the ones that broke.",
     datePublished: "2026-03-19T00:00:00Z",
-    dateModified: "2026-03-19T00:00:00Z",
+    dateModified: "2026-04-29T00:00:00Z",
     author: "Whiskcam Team",
     readingTime: "12 min read",
     tags: ["cat collar camera", "comparison", "pet camera", "review"],
@@ -81,20 +81,28 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     readingTime: "8 min read",
     tags: ["cat safety", "weight guide", "cat breeds", "buying guide"],
     image: "/images/lifestyle/wk-cat-1.webp",
-    imageAlt: "Cat wearing a lightweight collar camera, close-up of neck and collar fit",
+    imageAlt:
+      "Cat wearing a lightweight collar camera, close-up of neck and collar fit",
   },
   {
     slug: "i-filmed-my-cat-for-7-days-what-i-learned",
-    title: "I Filmed My Cat for 7 Days with a Collar Camera — Here's What I Learned",
+    title:
+      "I Filmed My Cat for 7 Days with a Collar Camera — Here's What I Learned",
     description:
       "I filmed my tabby Nori for 7 days with a collar camera. Hidden napping spots, a 3:47 AM visitor, the neighbor's garden — here's the day-by-day.",
     datePublished: "2026-05-09T00:00:00Z",
     dateModified: "2026-05-09T00:00:00Z",
     author: "Whiskcam Team",
     readingTime: "10 min read",
-    tags: ["cat collar camera", "7 day experiment", "cat behavior", "first-person review"],
+    tags: [
+      "cat collar camera",
+      "7 day experiment",
+      "cat behavior",
+      "first-person review",
+    ],
     image: "/images/lifestyle/wk-cat-outdoor.webp",
-    imageAlt: "Gray and white tabby cat walking through a garden wearing a small collar camera",
+    imageAlt:
+      "Gray and white tabby cat walking through a garden wearing a small collar camera",
   },
   {
     slug: "5-weird-discoveries-from-cat-collar-cameras",
@@ -105,22 +113,35 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     dateModified: "2026-05-16T00:00:00Z",
     author: "Whiskcam Team",
     readingTime: "8 min read",
-    tags: ["cat behavior", "collar camera footage", "outdoor cats", "cat discoveries"],
+    tags: [
+      "cat behavior",
+      "collar camera footage",
+      "outdoor cats",
+      "cat discoveries",
+    ],
     image: "/images/lifestyle/wk-cat-outdoor.webp",
-    imageAlt: "Outdoor cat wearing a lightweight collar camera walking along a garden wall",
+    imageAlt:
+      "Outdoor cat wearing a lightweight collar camera walking along a garden wall",
   },
   {
     slug: "cat-collar-camera-vs-insta360-go-3",
-    title: "Whiskcam vs Insta360 Go 3 for Cat Collar Use: Honest 2026 Comparison",
+    title:
+      "Whiskcam vs Insta360 Go 3 for Cat Collar Use: Honest 2026 Comparison",
     description:
       "Honest 2026 comparison of Whiskcam and Insta360 Go 3 for cat collar use. Weight, 4K vs 1080P, price, safety, and who should buy which.",
     datePublished: "2026-05-23T00:00:00Z",
     dateModified: "2026-05-23T00:00:00Z",
     author: "Whiskcam Team",
     readingTime: "9 min read",
-    tags: ["insta360 go 3", "cat pov camera", "cat collar camera", "camera comparison"],
+    tags: [
+      "insta360 go 3",
+      "cat pov camera",
+      "cat collar camera",
+      "camera comparison",
+    ],
     image: "/images/lifestyle/wk-cat-outdoor.webp",
-    imageAlt: "Cat wearing a lightweight collar camera outdoors, Whiskcam vs Insta360 Go 3 comparison",
+    imageAlt:
+      "Cat wearing a lightweight collar camera outdoors, Whiskcam vs Insta360 Go 3 comparison",
   },
   {
     slug: "cat-pov-tiktok-viral-guide-2026",
@@ -133,11 +154,13 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     readingTime: "9 min read",
     tags: ["cat tiktok", "cat pov", "content creation", "cat camera"],
     image: "/images/lifestyle/wk-cat-outdoor.webp",
-    imageAlt: "Cat wearing a collar camera filming outdoor POV footage for TikTok",
+    imageAlt:
+      "Cat wearing a collar camera filming outdoor POV footage for TikTok",
   },
   {
     slug: "cat-collar-camera-vs-gps-tracker-2026",
-    title: "Cat Collar Camera vs GPS Tracker: Which Do You Actually Need in 2026?",
+    title:
+      "Cat Collar Camera vs GPS Tracker: Which Do You Actually Need in 2026?",
     description:
       "GPS trackers find your missing cat. Collar cameras show what your cat does. Compare Tractive, Weenect, and Whiskcam — costs, weight, and when to use both.",
     datePublished: "2026-06-06T00:00:00Z",
@@ -158,25 +181,32 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     author: "Whiskcam Team",
     readingTime: "8 min read",
     tags: ["cat behavior", "pet camera", "cat psychology", "habituation"],
-    image: "/images/lifestyle/wk-cat-1.webp",
+    image: "/images/blog/cat-found-pet-camera.jpg",
     imageAlt: "Curious cat investigating a small indoor pet camera on a shelf",
   },
   {
     slug: "best-cat-collar-camera-for-maine-coon",
-    title: "Best Cat Collar Camera for a Maine Coon: Size, Weight, and Fur Considerations",
+    title:
+      "Best Cat Collar Camera for a Maine Coon (Tested on a 7.8 kg Boy)",
     description:
-      "Maine Coons need different collar cameras than average cats. Guide covers collar size (30-40 cm), fur interference, battery life, and breed-specific picks.",
+      "Maine Coons need different gear than average cats. We tested camera fit, fur interference, and battery on Bear, a 7.8 kg Maine Coon. Collar sizes, weights, and what actually worked.",
     datePublished: "2026-06-20T00:00:00Z",
     dateModified: "2026-06-20T00:00:00Z",
     author: "Whiskcam Team",
     readingTime: "7 min read",
-    tags: ["maine coon", "cat collar camera", "large cat breeds", "buying guide"],
-    image: "/images/lifestyle/wk-cat-outdoor.webp",
+    tags: [
+      "maine coon",
+      "cat collar camera",
+      "large cat breeds",
+      "buying guide",
+    ],
+    image: "/images/blog/maine-coon-collar-camera.jpg",
     imageAlt: "Large long-haired cat outdoors wearing a collar camera",
   },
   {
     slug: "where-does-my-outdoor-cat-actually-go",
-    title: "Where Does My Outdoor Cat Actually Go? What GPS and Camera Studies Reveal",
+    title:
+      "Where Does My Outdoor Cat Actually Go? What GPS and Camera Studies Reveal",
     description:
       "GPS research says outdoor cats spend 80% of their time within 100 m of home. What multi-university data and collar cameras reveal about cat territory.",
     datePublished: "2026-06-27T00:00:00Z",
@@ -184,7 +214,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     author: "Whiskcam Team",
     readingTime: "9 min read",
     tags: ["outdoor cats", "cat behavior", "GPS tracking", "cat territory"],
-    image: "/images/lifestyle/wk-cat-outdoor.webp",
+    image: "/images/blog/outdoor-cat-territory-camera.jpg",
     imageAlt: "Outdoor cat walking along a garden wall at dusk",
   },
 ];

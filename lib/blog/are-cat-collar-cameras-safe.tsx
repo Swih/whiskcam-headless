@@ -7,16 +7,24 @@ export default function AreCatCollarCamerasSafe() {
     <article className="prose-article">
       {/* ---- Intro — 40-60 words, answer-first (this is what AI extracts) ---- */}
       <p className="lead">
-        Yes, cat collar cameras are safe when the camera weighs less than 3-5% of your cat&apos;s
-        body weight. Most dedicated collar cameras weigh 20-40 g, which is well within safe limits
-        for adult cats over 2 kg. The key precautions are using a breakaway collar, starting with
-        short indoor sessions, and watching for signs of discomfort.
+        Short answer: yes, with two non-negotiable conditions — a <strong>breakaway collar</strong> and
+        a camera under <strong>5% of your cat&apos;s body weight</strong> (ideally under 3%). For a
+        4 kg cat that means a camera under 200 g, and every dedicated cat collar camera on the market
+        is far lighter than that (20-40 g). Most cats stop noticing the camera within 5-10 minutes.
       </p>
 
       <p>
-        This is the most common question people ask about cat collar cameras — and it&apos;s the right
-        one to ask. Before strapping anything to your cat, you want to know it won&apos;t hurt them.
-        Here&apos;s what we know from veterinary guidelines, wildlife research, and real owner experience.
+        The non-obvious risks are not the weight itself — they are <em>collar entanglement</em> on
+        outdoor cats and behavioural stress on cats who weren&apos;t introduced gradually. We&apos;ll
+        cover both. The 3-5% rule comes out of wildlife telemetry research from the 1990s (Cochran &amp;
+        Lord, Murray &amp; Fuller); veterinary behaviourists have since adopted it for pet wearables.
+      </p>
+
+      <p>
+        Disclosure: I work on Whiskcam, which makes a 24 g cat collar camera, so I have a bias.
+        The numbers below come from peer-reviewed wildlife telemetry guidelines (3-5% body-weight
+        rule) and from the safety protocol our team uses on our own cats — a breakaway collar,
+        a slow indoor introduction, and a hard rule of stopping the session if the cat freezes.
       </p>
 
       {/* ---- The Weight Rule ---- */}

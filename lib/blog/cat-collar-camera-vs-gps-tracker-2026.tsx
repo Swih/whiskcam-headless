@@ -124,8 +124,8 @@ export default function CatCollarCameraVsGpsTracker2026() {
         </li>
       </ul>
       <p>
-        <strong>Real costs in 2026:</strong> dedicated cat cameras run $50-90 one-time (Whiskcam
-        at &euro;49.90, Mr Petcam around $70). Action cameras like the Insta360 GO 3S reach $240+.
+        <strong>Real costs in 2026:</strong> dedicated cat cameras run &euro;50-90 one-time (Whiskcam
+        at &euro;79 for the complete kit, Mr Petcam around $70 for the camera alone). Action cameras like the Insta360 GO 3S reach $240+.
         Premium options with app ecosystems can push past $450. None of them require a subscription.
       </p>
       <p>
@@ -276,8 +276,9 @@ export default function CatCollarCameraVsGpsTracker2026() {
           On the Premium tier at $10/month that climbs to about $410.
         </li>
         <li>
-          <strong>Whiskcam, 3 years:</strong> &euro;49.90 one-time. Even if you lose or damage the
-          first unit and buy a second, you&apos;re capped at around $100. No monthly.
+          <strong>Whiskcam, 3 years:</strong> &euro;79 one-time for the complete kit. Even if you
+          lose or damage the first unit and buy a second at the existing-customer rate, you stay
+          well under &euro;160 over three years. No monthly.
         </li>
         <li>
           <strong>Insta360 GO 3S, 3 years:</strong> $240-450 one-time depending on kit. Higher sticker,

@@ -15,7 +15,7 @@ export function CtaBanner({ product }: { product?: Product }) {
         product.priceRange.maxVariantPrice.amount,
         product.priceRange.maxVariantPrice.currencyCode
       )
-    : "€49.90";
+    : "€79";
 
   return (
     <section className="relative overflow-hidden py-24 md:py-32">

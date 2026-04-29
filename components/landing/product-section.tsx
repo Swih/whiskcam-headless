@@ -34,7 +34,7 @@ export function ProductSection({ product }: { product?: Product }) {
         product.priceRange.maxVariantPrice.amount,
         product.priceRange.maxVariantPrice.currencyCode
       )
-    : "€49.90";
+    : "€79";
 
   const compareAtPrice = product?.variants[0]?.compareAtPrice;
   const compareAtPriceFormatted = compareAtPrice

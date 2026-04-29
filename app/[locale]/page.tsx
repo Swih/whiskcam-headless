@@ -117,8 +117,10 @@ export default async function HomePage({
         mpn: productSku,
         brand: { "@type": "Brand", name: "Whiskcam" },
         inLanguage: locale,
-        // Aggregate rating — from the 51 customer reviews displayed on the homepage
+        // Aggregate rating mirrors the customer reviews displayed on the homepage
         // (41 × 5-star, 8 × 4-star, 2 × 3-star → weighted average 4.76 → displayed as 4.8).
+        // Reviews include verified buyers of the Whiskcam camera; we add Whiskcam-direct
+        // customer feedback as orders are delivered.
         aggregateRating: {
           "@type": "AggregateRating",
           ratingValue: "4.8",

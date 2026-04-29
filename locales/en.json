@@ -22,17 +22,17 @@
     "tagline": "The Pet Collar Camera",
     "title": "See Their Secret Life.",
     "subtitle": "See through their eyes. Full HD POV footage from a 24g collar camera — for cats and small dogs under 10 kg. No app, no WiFi, no subscription.",
-    "trust": "500+ verified pet parents",
+    "trust": "Loved by early Whiskcam owners",
     "ctaButton": "I Want This",
     "ctaSubtext": "Free worldwide shipping · Plays on iPhone & Android · 30-day money-back",
-    "urgencyBadge": "Limited stock"
+    "urgencyBadge": "Now shipping worldwide"
   },
   "stats": {
     "fullHd": "Full HD",
     "wideAngle": "Wide Angle",
     "ultraLight": "Ultra-Light",
     "batteryLife": "Battery Life",
-    "trustReviews": "500+ verified reviews",
+    "trustReviews": "Rated 4.8/5 by early owners",
     "trustReturn": "30-day money-back",
     "trustShipping": "Free worldwide shipping",
     "trustSecure": "Secure payment"
@@ -105,13 +105,13 @@
     "hidePhotos": "Hide photos",
     "prev": "Previous review",
     "next": "Next review",
-    "basedOn": "{count}+ verified reviews",
+    "basedOn": "Based on {count} reviews",
     "readMore": "Read more",
     "showLess": "Show less",
     "showAll": "Show all reviews",
     "showAllCount": "Show all {count} reviews",
     "translated": "",
-    "trustFooter": "All reviews are from verified Whiskcam customers."
+    "trustFooter": "Reviews include verified buyers of the Whiskcam camera. We add our own customers' feedback as Whiskcam orders are delivered."
   },
   "howItWorks": {
     "overline": "How it works",
@@ -139,7 +139,7 @@
     "badgeBestSeller": "Best Seller",
     "badge1080p": "1080P Full HD",
     "badgeNoApp": "No App",
-    "reviews": "500+ happy pet parents",
+    "reviews": "Loved by early Whiskcam owners",
     "keyBenefits": {
       "0": "Full HD 1080P — 170° wide-angle lens",
       "1": "24g ultra-light — even small cats won't feel it",
@@ -172,7 +172,7 @@
     "specPrivacy": "Privacy",
     "specPlugPlay": "Plug & Play",
     "galleryBadge": "Best-Seller",
-    "gallerySocialProof": "Loved by 500+ pet parents",
+    "gallerySocialProof": "Loved by early pet parents",
     "boxContentsLabel": "What's in the box",
     "boxContents": {
       "0": { "item": "Whiskcam Camera", "detail": "1080P Full HD with 170° lens" },
@@ -234,7 +234,7 @@
       },
       "lost": {
         "title": "If you lose or break it",
-        "description": "At €49.90 we built Whiskcam to be replaceable, not precious. Lose it outdoors or drop it? Email us — we offer a discounted replacement for existing customers."
+        "description": "We built Whiskcam to be replaceable, not precious. Lose it outdoors or drop it? Email us — we offer a discounted replacement for existing customers."
       },
       "help": {
         "title": "If you don't know how to start",
@@ -318,7 +318,7 @@
   },
   "emailPopup": {
     "title": "Get Your Free Pet Photography Guide",
-    "subtitle": "Learn the best tips to capture your pet's secret adventures. Join 500+ pet parents.",
+    "subtitle": "Learn the best tips to capture your pet's secret adventures. Join Whiskcam's early community.",
     "placeholder": "your@email.com",
     "submit": "Get the Free Guide",
     "dismiss": "No thanks",

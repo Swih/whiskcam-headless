@@ -175,7 +175,7 @@ export default async function OpengraphImage(
               borderRadius: "50px",
             }}
           >
-            Free Shipping — €49.90
+            Free Shipping — €79 Complete Kit
           </div>
         </div>
       </div>

@@ -22,17 +22,17 @@
     "tagline": "La cámara de collar para mascotas",
     "title": "Tu gato tiene una vida secreta.",
     "subtitle": "Mira por sus ojos. Imágenes POV Full HD desde un collar de 24g — para gatos y perros pequeños de menos de 10 kg. Sin app, sin WiFi, sin suscripción.",
-    "trust": "500+ familias con mascotas felices",
+    "trust": "Adoptada por las primeras familias Whiskcam",
     "ctaButton": "Lo quiero",
     "ctaSubtext": "Envío gratis mundial · Compatible con iPhone y Android · Garantía 30 días",
-    "urgencyBadge": "Últimas unidades"
+    "urgencyBadge": "Envíos a todo el mundo"
   },
   "stats": {
     "fullHd": "Full HD",
     "wideAngle": "Gran Angular",
     "ultraLight": "Ultraligera",
     "batteryLife": "Autonomía",
-    "trustReviews": "500+ opiniones verificadas",
+    "trustReviews": "Valorada 4,8/5 por los primeros clientes",
     "trustReturn": "30 días para devolver",
     "trustShipping": "Envío gratis a toda Europa",
     "trustSecure": "Pago 100% seguro"
@@ -105,13 +105,13 @@
     "hidePhotos": "Ocultar fotos",
     "prev": "Opinión anterior",
     "next": "Siguiente opinión",
-    "basedOn": "{count}+ opiniones verificadas",
+    "basedOn": "Según {count} opiniones",
     "readMore": "Leer más",
     "showLess": "Ver menos",
     "showAll": "Ver todas las opiniones",
     "showAllCount": "Ver las {count} opiniones",
     "translated": "",
-    "trustFooter": "Todas las opiniones son de clientes verificados de Whiskcam."
+    "trustFooter": "Las opiniones provienen de compradores verificados de la cámara Whiskcam. Añadimos los comentarios de nuestros propios clientes a medida que se entregan los pedidos."
   },
   "howItWorks": {
     "overline": "Cómo funciona",
@@ -139,7 +139,7 @@
     "badgeBestSeller": "Más vendida",
     "badge1080p": "1080P Full HD",
     "badgeNoApp": "Sin App",
-    "reviews": "500+ familias con mascotas felices",
+    "reviews": "Adoptada por las primeras familias",
     "keyBenefits": {
       "0": "Full HD 1080P — lente gran angular de 170°",
       "1": "24g ultraligera — ni los gatos pequeños la notan",
@@ -172,7 +172,7 @@
     "specPrivacy": "Privacidad",
     "specPlugPlay": "Plug & Play",
     "galleryBadge": "Más vendida",
-    "gallerySocialProof": "Elegida por 500+ familias con mascotas",
+    "gallerySocialProof": "Elegida por las primeras familias",
     "boxContentsLabel": "Qué incluye la caja",
     "boxContents": {
       "0": { "item": "Cámara Whiskcam", "detail": "1080P Full HD con lente de 170°" },
@@ -234,7 +234,7 @@
       },
       "lost": {
         "title": "Si la pierdes o la rompes",
-        "description": "A €49,90 construimos Whiskcam para ser reemplazable, no preciosa. ¿Perdida fuera o rota? Escríbenos — ofrecemos una segunda unidad con descuento para clientes existentes."
+        "description": "Construimos Whiskcam para ser reemplazable, no preciosa. ¿Perdida fuera o rota? Escríbenos — ofrecemos una segunda unidad con descuento para clientes existentes."
       },
       "help": {
         "title": "Si no sabes por dónde empezar",
@@ -318,7 +318,7 @@
   },
   "emailPopup": {
     "title": "Consigue tu guía gratuita de fotografía de mascotas",
-    "subtitle": "Los mejores trucos para capturar las aventuras secretas de tu mascota. Únete a 500+ familias.",
+    "subtitle": "Los mejores trucos para capturar las aventuras secretas de tu mascota. Únete a la comunidad Whiskcam.",
     "placeholder": "tu@email.com",
     "submit": "Quiero la guía gratis",
     "dismiss": "No, gracias",
