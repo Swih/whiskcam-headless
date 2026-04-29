@@ -28,8 +28,8 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     author: "Whiskcam Team",
     readingTime: "12 min read",
     tags: ["cat collar camera", "comparison", "pet camera", "review"],
-    image: "/images/lifestyle/wk-cat-outdoor.webp",
-    imageAlt: "Cat wearing a collar camera exploring outdoors",
+    image: "/images/blog/outdoor-cat-territory-camera.jpg",
+    imageAlt: "Cat wearing a small collar camera exploring outdoors",
   },
   {
     slug: "are-cat-collar-cameras-safe",
@@ -41,8 +41,8 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     author: "Whiskcam Team",
     readingTime: "8 min read",
     tags: ["cat safety", "collar camera", "veterinary", "pet wearable"],
-    image: "/images/lifestyle/wk-cat-1.webp",
-    imageAlt: "Cat comfortably wearing a lightweight collar camera",
+    image: "/images/blog/cat-found-pet-camera.jpg",
+    imageAlt: "Cat investigating a small collar camera up close",
   },
   {
     slug: "what-cats-do-when-alone-at-home",
@@ -54,8 +54,8 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     author: "Whiskcam Team",
     readingTime: "10 min read",
     tags: ["cat behavior", "home alone", "cat enrichment", "cat camera"],
-    image: "/images/lifestyle/wk-cat-1.webp",
-    imageAlt: "Cat resting near a sunny window at home",
+    image: "/images/blog/maine-coon-collar-camera.jpg",
+    imageAlt: "Cat at home wearing a small collar camera",
   },
   {
     slug: "how-to-watch-avi-on-iphone-cat-cam",
@@ -67,8 +67,8 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     author: "Whiskcam Team",
     readingTime: "7 min read",
     tags: ["iphone", "avi", "cat camera", "how to"],
-    image: "/images/product/wk-product-1.webp",
-    imageAlt: "iPhone displaying cat collar camera footage",
+    image: "/images/blog/outdoor-cat-territory-camera.jpg",
+    imageAlt: "Cat collar camera footage from an outdoor adventure",
   },
   {
     slug: "cat-collar-weight-chart-by-size",
@@ -80,9 +80,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     author: "Whiskcam Team",
     readingTime: "8 min read",
     tags: ["cat safety", "weight guide", "cat breeds", "buying guide"],
-    image: "/images/lifestyle/wk-cat-1.webp",
+    image: "/images/blog/cat-found-pet-camera.jpg",
     imageAlt:
-      "Cat wearing a lightweight collar camera, close-up of neck and collar fit",
+      "Cat with a small collar camera, close-up of fit and weight",
   },
   {
     slug: "i-filmed-my-cat-for-7-days-what-i-learned",
@@ -100,9 +100,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       "cat behavior",
       "first-person review",
     ],
-    image: "/images/lifestyle/wk-cat-outdoor.webp",
+    image: "/images/blog/maine-coon-collar-camera.jpg",
     imageAlt:
-      "Gray and white tabby cat walking through a garden wearing a small collar camera",
+      "Tabby cat in the garden wearing a small collar camera",
   },
   {
     slug: "5-weird-discoveries-from-cat-collar-cameras",
@@ -119,9 +119,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       "outdoor cats",
       "cat discoveries",
     ],
-    image: "/images/lifestyle/wk-cat-outdoor.webp",
+    image: "/images/blog/outdoor-cat-territory-camera.jpg",
     imageAlt:
-      "Outdoor cat wearing a lightweight collar camera walking along a garden wall",
+      "Outdoor cat wearing a small collar camera walking along a garden wall",
   },
   {
     slug: "cat-collar-camera-vs-insta360-go-3",
@@ -139,9 +139,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       "cat collar camera",
       "camera comparison",
     ],
-    image: "/images/lifestyle/wk-cat-outdoor.webp",
+    image: "/images/blog/cat-found-pet-camera.jpg",
     imageAlt:
-      "Cat wearing a lightweight collar camera outdoors, Whiskcam vs Insta360 Go 3 comparison",
+      "Cat with a small collar camera, Whiskcam vs Insta360 Go 3 comparison",
   },
   {
     slug: "cat-pov-tiktok-viral-guide-2026",
@@ -153,9 +153,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     author: "Whiskcam Team",
     readingTime: "9 min read",
     tags: ["cat tiktok", "cat pov", "content creation", "cat camera"],
-    image: "/images/lifestyle/wk-cat-outdoor.webp",
+    image: "/images/blog/maine-coon-collar-camera.jpg",
     imageAlt:
-      "Cat wearing a collar camera filming outdoor POV footage for TikTok",
+      "Cat wearing a collar camera, POV footage ready for TikTok",
   },
   {
     slug: "cat-collar-camera-vs-gps-tracker-2026",
@@ -168,8 +168,8 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     author: "Whiskcam Team",
     readingTime: "9 min read",
     tags: ["cat gps tracker", "cat collar camera", "tractive", "cat safety"],
-    image: "/images/lifestyle/wk-cat-outdoor.webp",
-    imageAlt: "Outdoor cat wearing a collar camera exploring the garden",
+    image: "/images/blog/outdoor-cat-territory-camera.jpg",
+    imageAlt: "Outdoor cat wearing a small collar camera exploring the garden",
   },
   {
     slug: "my-cat-found-the-camera-what-to-do",
