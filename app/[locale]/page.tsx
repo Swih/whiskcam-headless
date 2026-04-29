@@ -103,8 +103,19 @@ export default async function HomePage({
 
   const pageUrl = locale === "en" ? baseUrl : `${baseUrl}/${locale}`;
 
-  // SKU — prefer real variant SKU from Shopify, fall back to stable identifier.
-  const productSku = product?.variants[0]?.sku || product?.handle || "whiskcam-original";
+  // SKU — Shopify variant SKUs were imported from AliExpress with option-encoded
+  // garbage like "14:193#X6 Collar pet camera;200000828:201335941#with 32GB",
+  // which Google Merchant Listings validation rejects (invalid chars, too long).
+  // Sanitize: keep only alphanumeric + dash/underscore, truncate to 50 chars,
+  // fall back to a clean handle-based identifier if the result is unusable.
+  const rawSku = product?.variants[0]?.sku ?? "";
+  const sanitizedSku = rawSku
+    .replace(/[^A-Za-z0-9_-]/g, "")
+    .slice(0, 50);
+  const productSku =
+    sanitizedSku.length >= 3 && sanitizedSku.length <= 50
+      ? sanitizedSku
+      : "WHISKCAM-ORIGINAL";
 
   const productJsonLd = product
     ? {
