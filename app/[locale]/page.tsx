@@ -96,10 +96,10 @@ export default async function HomePage({
     getProduct(DUO_PRODUCT_HANDLE, country),
   ]);
 
-  const compareAtPrice = product?.variants[0]?.compareAtPrice;
-  const compareAtPriceFormatted = compareAtPrice
-    ? formatPrice(compareAtPrice.amount, compareAtPrice.currencyCode)
-    : undefined;
+  // Hard-coded marketing anchor — keeps the strikethrough on €109 regardless
+  // of any compare-at value left on the Shopify variant.
+  const cc = product?.priceRange.maxVariantPrice.currencyCode || "EUR";
+  const compareAtPriceFormatted = formatPrice("109.00", cc);
 
   const pageUrl = locale === "en" ? baseUrl : `${baseUrl}/${locale}`;
 

@@ -34,13 +34,11 @@ export function DuoPackCallout({ duoProduct }: DuoPackCalloutProps) {
       )
     : null;
 
-  const compareAt = duoProduct?.variants[0]?.compareAtPrice;
-  const realCompareAt = compareAt
-    ? formatPrice(compareAt.amount, compareAt.currencyCode)
-    : null;
-
+  // Compare-at is intentionally pulled from locale (not from Shopify).
+  // The anchor (€218 ≈ 2× single's €109) is a marketing decision that
+  // should live in copy, not in the product variant.
   const displayPrice = realPrice ?? t("price");
-  const displayCompareAt = realCompareAt ?? t("compareAtPrice");
+  const displayCompareAt = t("compareAtPrice");
 
   // Use the duo product's hero image from Shopify if available.
   const imageSrc =

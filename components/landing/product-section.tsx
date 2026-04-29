@@ -36,15 +36,14 @@ export function ProductSection({ product }: { product?: Product }) {
       )
     : "€79";
 
-  const compareAtPrice = product?.variants[0]?.compareAtPrice;
-  const compareAtPriceFormatted = compareAtPrice
-    ? formatPrice(compareAtPrice.amount, compareAtPrice.currencyCode)
-    : null;
-  const discount = compareAtPrice
-    ? computeDiscount(product!.priceRange.maxVariantPrice.amount, compareAtPrice.amount)
-    : 0;
-
+  // Hard-coded compare-at anchor — keeps the strikethrough independent of
+  // whatever value Shopify happens to carry on the variant. €109 is the
+  // marketing anchor for the €79 complete kit (≈ -27%).
   const cc = product?.priceRange.maxVariantPrice.currencyCode || "EUR";
+  const HARDCODED_COMPARE_AT = "109.00";
+  const currentPriceAmount = product?.priceRange.maxVariantPrice.amount || "79.00";
+  const compareAtPriceFormatted = formatPrice(HARDCODED_COMPARE_AT, cc);
+  const discount = computeDiscount(currentPriceAmount, HARDCODED_COMPARE_AT);
 
   useEffect(() => {
     if (product) {
@@ -168,7 +167,7 @@ export function ProductSection({ product }: { product?: Product }) {
                 <div className="flex items-center justify-between text-sm">
                   <span className="font-semibold text-wk-grey-600">{t("totalValue")}</span>
                   <span className="font-semibold text-wk-grey-600 line-through">
-                    {compareAtPriceFormatted || formatPrice("109.00", cc)}
+                    {compareAtPriceFormatted}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
