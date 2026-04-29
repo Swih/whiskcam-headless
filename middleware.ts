@@ -49,6 +49,10 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|icon.png|apple-icon|manifest.json|images|videos|api|.*\\.txt$).*)",
+    // Exclude static assets, API routes, and SEO/discovery files (robots.txt,
+    // sitemap.xml, OpenGraph images) so they aren't locale-redirected. A 307
+    // on /sitemap.xml broke Googlebot crawling — every bot was forced to a
+    // /<locale>/sitemap.xml URL that does not exist as a route.
+    "/((?!_next/static|_next/image|favicon.ico|icon.png|apple-icon|manifest.json|images|videos|api|opengraph-image|sitemap\\.xml$|.*\\.txt$|.*\\.xml$).*)",
   ],
 };
