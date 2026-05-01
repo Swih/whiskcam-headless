@@ -127,16 +127,19 @@ export function ProductSection({ product }: { product?: Product }) {
                 {t("freeGiftsLabel")}
               </p>
               <div className="mt-3 space-y-3">
-                {/* MicroSD */}
-                <div className="flex items-center gap-3">
-                  <div className="relative h-12 w-12 flex-none overflow-hidden rounded-lg border border-wk-grey-100 bg-white">
+                {/* MicroSD — temporarily out of stock as a free gift while we
+                    restock. Kept in the list so customers see the kit context. */}
+                <div className="flex items-center gap-3 opacity-60">
+                  <div className="relative h-12 w-12 flex-none overflow-hidden rounded-lg border border-wk-grey-100 bg-white grayscale">
                     <Image src="/images/product/gift-microsd.webp" alt="32GB MicroSD Card" fill className="object-cover" sizes="48px" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-wk-black">{t("microsdName")}</p>
+                    <p className="text-sm font-medium text-wk-black line-through">{t("microsdName")}</p>
                     <p className="text-xs text-wk-grey-400">{t("microsdDetail")}</p>
                   </div>
-                  <span className="text-xs font-bold text-wk-green">{t("free")}</span>
+                  <span className="rounded-full bg-wk-grey-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-wk-grey-500">
+                    {t("outOfStock")}
+                  </span>
                 </div>
                 {/* Adapter */}
                 <div className="flex items-center gap-3">

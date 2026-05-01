@@ -16,8 +16,8 @@ import OpenCart from "./open-cart";
 import { useTranslations } from "next-intl";
 
 const FREE_GIFTS = [
-  { name: "32GB MicroSD Card", value: "12.90", image: "/images/product/gift-microsd.webp" },
-  { name: "USB-C Adapter", value: "9.90", image: "/images/product/gift-adapter.webp" },
+  { name: "32GB MicroSD Card", value: "12.90", image: "/images/product/gift-microsd.webp", outOfStock: true },
+  { name: "USB-C Adapter", value: "9.90", image: "/images/product/gift-adapter.webp", outOfStock: false },
 ];
 
 export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCode }: { savingsPerUnit?: number; currencyCode?: string }) {
@@ -206,14 +206,29 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
                         {t("freeGiftsLabel")}
                       </p>
                       {FREE_GIFTS.map((gift) => (
-                        <div key={gift.name} className="flex items-center gap-2.5 py-1.5">
-                          <div className="relative h-10 w-10 flex-none overflow-hidden rounded-lg border border-wk-grey-100 bg-white">
+                        <div
+                          key={gift.name}
+                          className={`flex items-center gap-2.5 py-1.5 ${gift.outOfStock ? "opacity-60" : ""}`}
+                        >
+                          <div
+                            className={`relative h-10 w-10 flex-none overflow-hidden rounded-lg border border-wk-grey-100 bg-white ${gift.outOfStock ? "grayscale" : ""}`}
+                          >
                             <Image src={gift.image} alt={gift.name} fill className="object-cover" sizes="40px" />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="text-sm font-medium text-wk-black">{gift.name}</p>
+                            <p
+                              className={`text-sm font-medium text-wk-black ${gift.outOfStock ? "line-through" : ""}`}
+                            >
+                              {gift.name}
+                            </p>
                           </div>
-                          <span className="text-xs font-bold text-wk-green">{t("freeLabel")}</span>
+                          {gift.outOfStock ? (
+                            <span className="rounded-full bg-wk-grey-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-wk-grey-500">
+                              {t("outOfStockLabel")}
+                            </span>
+                          ) : (
+                            <span className="text-xs font-bold text-wk-green">{t("freeLabel")}</span>
+                          )}
                         </div>
                       ))}
                       <div className="flex items-center gap-2.5 py-1.5">
