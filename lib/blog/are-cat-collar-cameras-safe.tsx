@@ -2,6 +2,8 @@
 // Article: Are Cat Collar Cameras Safe? — Answer-First AEO Format
 // =============================================================================
 
+import { CollarWeightCalculator } from "components/blog/collar-weight-calculator";
+
 export default function AreCatCollarCamerasSafe() {
   return (
     <article className="prose-article">
@@ -76,6 +78,8 @@ export default function AreCatCollarCamerasSafe() {
         below this limit. A 24 g camera like the <a href="/what-is-whiskcam">Whiskcam</a> represents just 1.3% of a 2 kg cat&apos;s
         body weight.
       </p>
+
+      <CollarWeightCalculator />
 
       <p>
         <strong>Important:</strong> This guideline applies to adult cats. Do not put a collar camera

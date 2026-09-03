@@ -12,6 +12,9 @@ import { baseUrl } from "lib/utils";
 
 // Article content components — lazy loaded per slug
 const articleComponents: Record<string, React.ComponentType> = {
+  "mr-petcam-vs-whiskcam": dynamic(
+    () => import("lib/blog/mr-petcam-vs-whiskcam"),
+  ),
   "best-cat-collar-cameras-2026": dynamic(
     () => import("lib/blog/best-cat-collar-cameras-2026"),
   ),
@@ -199,6 +202,35 @@ export default async function BlogArticlePage({
 
   // JSON-LD: FAQPage (for articles with FAQ sections)
   const faqItems: { question: string; answer: string }[] = [];
+  if (slug === "mr-petcam-vs-whiskcam") {
+    faqItems.push(
+      {
+        question: "Is Mr Petcam better than Whiskcam?",
+        answer:
+          "For cats over about 6 kg, or if you already own a MicroSD card and value a longer brand track record, Mr Petcam is a reasonable choice. For cats under 6 kg the weight difference decides it: Whiskcam is 24 g against roughly 38 g.",
+      },
+      {
+        question: "How much does Mr Petcam cost in total?",
+        answer:
+          "The camera lists around $70, but the MicroSD card and phone adapter are sold separately and add roughly $15-20, bringing the realistic total to about $85-90.",
+      },
+      {
+        question: "Do Mr Petcam or Whiskcam stream live or use an app?",
+        answer:
+          "Neither. Both record to a MicroSD card you retrieve afterwards. No WiFi, no live streaming, no app — a WiFi radio adds weight and heat to something worn on an animal's neck.",
+      },
+      {
+        question: "Do either have night vision?",
+        answer:
+          "No. Both are daylight cameras and footage degrades noticeably in low light.",
+      },
+      {
+        question: "Can I put either on a dog?",
+        answer:
+          "Both work on small dogs under about 10 kg. For a larger dog use a dedicated action camera harness mount rather than a collar clip.",
+      },
+    );
+  }
   if (slug === "best-cat-collar-cameras-2026") {
     faqItems.push(
       {
@@ -524,6 +556,36 @@ export default async function BlogArticlePage({
         }
       : null;
 
+  const itemListJsonLd =
+    slug === "best-cat-collar-cameras-2026"
+      ? {
+          "@type": "ItemList",
+          "@id": `${canonical}#comparison`,
+          name: "Best cat collar cameras, ranked",
+          itemListOrder: "https://schema.org/ItemListOrderDescending",
+          numberOfItems: 5,
+          itemListElement: [
+            { name: "Whiskcam Original", weight: "24 g", price: "€79" },
+            { name: "Mr Petcam", weight: "38 g", price: "$70" },
+            { name: "Insta360 GO 3S", weight: "39.1 g", price: "$240" },
+            { name: "Generic Amazon collar cameras", weight: "25-45 g", price: "$20-45" },
+            { name: "GoPro Hero with mount", weight: "154 g", price: "$350" },
+          ].map((item, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            item: {
+              "@type": "Product",
+              name: item.name,
+              category: "Pet Cameras",
+              additionalProperty: [
+                { "@type": "PropertyValue", name: "Weight", value: item.weight },
+                { "@type": "PropertyValue", name: "Typical price", value: item.price },
+              ],
+            },
+          })),
+        }
+      : null;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -533,6 +595,7 @@ export default async function BlogArticlePage({
       breadcrumbJsonLd,
       ...(howToJsonLd ? [howToJsonLd] : []),
       ...(faqJsonLd ? [faqJsonLd] : []),
+      ...(itemListJsonLd ? [itemListJsonLd] : []),
     ],
   };
 
@@ -580,7 +643,7 @@ export default async function BlogArticlePage({
           <h1 className="mt-4 text-3xl font-bold leading-tight text-wk-black md:text-4xl lg:text-[42px]">
             {article.title}
           </h1>
-          <div className="mt-4 flex items-center gap-3 text-sm text-neutral-400">
+          <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-neutral-400">
             <span>By {article.author}</span>
             <span>&middot;</span>
             <time dateTime={article.datePublished}>
@@ -590,6 +653,24 @@ export default async function BlogArticlePage({
                 day: "numeric",
               })}
             </time>
+            {/* Freshness belongs in the byline, not only in the footer. On a
+                "best X 2026" query the update date is half the reason to click. */}
+            {article.dateModified !== article.datePublished && (
+              <>
+                <span>&middot;</span>
+                <time
+                  dateTime={article.dateModified}
+                  className="font-medium text-wk-amber"
+                >
+                  Updated{" "}
+                  {new Date(article.dateModified).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </time>
+              </>
+            )}
             <span>&middot;</span>
             <span>{article.readingTime}</span>
           </div>

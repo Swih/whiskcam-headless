@@ -19,12 +19,25 @@ export type BlogArticle = {
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "mr-petcam-vs-whiskcam",
+    title: "Mr Petcam vs Whiskcam: Weight, Kit and Real Price Compared",
+    description:
+      "Mr Petcam is ~38 g and $70 camera-only; Whiskcam is 24 g and €79 complete. Once you add the card and adapter the prices meet, so the decision comes down to your cat's size. Honest comparison from a competitor.",
+    datePublished: "2026-09-04T00:00:00Z",
+    dateModified: "2026-09-04T00:00:00Z",
+    author: "Whiskcam Team",
+    readingTime: "7 min read",
+    tags: ["mr petcam", "cat collar camera", "comparison", "review"],
+    image: "/images/blog/cat-found-pet-camera.jpg",
+    imageAlt: "Cat wearing a small collar camera outdoors",
+  },
+  {
     slug: "best-cat-collar-cameras-2026",
     title: "Best Cat Collar Cameras 2026: We Tested 5 on 4 Cats",
     description:
       "We tested 5 cat collar cameras on 4 different cats (3.2-7.8 kg) for 5 months. Honest weight, battery, footage, and price comparison — including the ones that broke.",
     datePublished: "2026-03-19T00:00:00Z",
-    dateModified: "2026-09-03T00:00:00Z",
+    dateModified: "2026-09-04T00:00:00Z",
     author: "Whiskcam Team",
     readingTime: "12 min read",
     tags: ["cat collar camera", "comparison", "pet camera", "review"],
@@ -37,7 +50,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description:
       "The 3% body-weight rule, what it means in grams for a 2-7 kg cat, the breakaway collar rule, and the four behavioural signs that mean take it off. With a per-size table.",
     datePublished: "2026-03-19T00:00:00Z",
-    dateModified: "2026-09-03T00:00:00Z",
+    dateModified: "2026-09-04T00:00:00Z",
     author: "Whiskcam Team",
     readingTime: "8 min read",
     tags: ["cat safety", "collar camera", "veterinary", "pet wearable"],

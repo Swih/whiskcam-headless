@@ -28,6 +28,50 @@ export default function BestCatCollarCameras2026() {
         bias kicks in. The numbers are the numbers either way.
       </p>
 
+      {/*
+        Methodology, surfaced. The details below were already stated in this article's
+        prose but buried three paragraphs deep, where neither a skim-reader nor an AI
+        extractor picks them up. On a "best X" query in 2026 the testing basis is the
+        one thing a summary of the specs cannot replace, so it belongs above the fold.
+      */}
+      <div className="not-prose my-8 rounded-xl border border-neutral-200 bg-wk-warm p-6">
+        <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-wk-amber">
+          How we tested
+        </div>
+        <dl className="grid gap-x-8 gap-y-3 text-sm sm:grid-cols-2">
+          <div>
+            <dt className="font-semibold text-wk-black">Period</dt>
+            <dd className="text-neutral-600">October 2025 – March 2026, five months</dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-wk-black">Cats</dt>
+            <dd className="text-neutral-600">
+              Four, 3.2–7.8 kg: Nori (tabby), Mochi (Bengal), Pablo (rescue), Bear (Maine Coon)
+            </dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-wk-black">Spend</dt>
+            <dd className="text-neutral-600">
+              ~&euro;240 on cameras, several of which arrived broken or failed within one outing
+            </dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-wk-black">What we measured</dt>
+            <dd className="text-neutral-600">
+              Weight on the collar, how long the cat kept moving, battery to shutdown,
+              daylight and low-light footage, what was in the box
+            </dd>
+          </div>
+        </dl>
+        <p className="mt-4 border-t border-neutral-200 pt-3 text-xs leading-relaxed text-neutral-500">
+          <strong className="text-neutral-600">Scope, honestly:</strong> we tested hands-on
+          every camera we could actually obtain. Models we could not buy — noted as such in
+          each section — are assessed from manufacturer specifications and user reviews, not
+          from our own use. We publish this on whiskcam.com and we make one of the cameras
+          compared. Spot an error? support@whiskcam.com.
+        </p>
+      </div>
+
       {/* ---- What Is a Cat Collar Camera? ---- */}
       <h2>What Is a Cat Collar Camera?</h2>
       <p>
@@ -237,6 +281,11 @@ export default function BestCatCollarCameras2026() {
         <strong>Best for:</strong> Owners of medium to large cats (5 kg+) or small dogs who prefer
         a more established brand. The higher weight is less of an issue on larger animals.
       </p>
+      <p>
+        We put the two head to head in more detail — weight, what is actually in each box, and
+        the real total once you add the card Mr Petcam does not include — in{" "}
+        <a href="/blog/mr-petcam-vs-whiskcam">Mr Petcam vs Whiskcam</a>.
+      </p>
 
       {/* ---- Other Options ---- */}
       <h2>Insta360 GO 3S as a Cat Camera</h2>
@@ -266,6 +315,90 @@ export default function BestCatCollarCameras2026() {
         smallest GoPro is too heavy for cats. Some people mount them on large dog harnesses, but
         for cats, it&apos;s not a practical option. The camera would affect your cat&apos;s movement,
         balance, and comfort.
+      </p>
+
+      {/*
+        Buying-modifier sections. Search Console shows this site already ranking
+        4th to 8th on each of these phrasings with a 0% click-through rate — the
+        page surfaces, but nothing in it visibly answers the modifier, so the
+        searcher has no reason to pick it over the AI summary above it.
+      */}
+
+      {/* ---- Breakaway ---- */}
+      <h2>Best Breakaway Cat Collar Camera</h2>
+      <p>
+        If your cat goes outdoors, the breakaway buckle matters more than any spec on the
+        comparison table. Collar entanglement — on a fence, a branch, a gate latch — is the
+        failure mode that actually injures cats, and a few grams either way is irrelevant next
+        to it. A breakaway collar pops open under sustained pull and lets the cat walk away.
+      </p>
+      <p>
+        Two things to check before buying. First, the camera must clip to the collar rather than
+        being built into it: if the buckle releases, you want the cat free, and the camera
+        detaching with the collar is the correct outcome. Second, the release tension has to be
+        matched to your cat&apos;s weight — a buckle stiff enough to hold a 7 kg Maine Coon will
+        not release for a 3 kg rescue.
+      </p>
+      <p>
+        The Whiskcam ships with a 39 cm adjustable breakaway collar and also clips onto a collar
+        you already trust, which is usually the better option — a collar your cat already wears
+        without fighting it is worth more than a new one. Mr Petcam and the Amazon clones ship
+        camera-only, so the breakaway decision is yours to make separately. Our full safety guide
+        covers introduction and warning signs:{" "}
+        <a href="/blog/are-cat-collar-cameras-safe">are cat collar cameras safe</a>.
+      </p>
+
+      {/* ---- Lightest ---- */}
+      <h2>The Lightest Cat Collar Camera</h2>
+      <p>
+        Of the cameras in the table above, the Whiskcam Original at 24 g is the lightest — Mr
+        Petcam is around 38 g, the Insta360 GO 3S is 39.1 g with its mount, and a GoPro Hero is
+        154 g. That ordering held in our testing, and the behavioural difference is not subtle.
+      </p>
+      <p>
+        Across the four cats, anything over roughly 35 g bought us about 90 seconds of movement
+        before the cat sat down and refused to continue. Under 30 g they carried on as normal.
+        That is the whole argument for weight: not comfort in the abstract, but whether you get
+        footage of a cat doing cat things or footage of a cat sulking on a doorstep. Use the
+        calculator in the{" "}
+        <a href="/blog/are-cat-collar-cameras-safe">safety guide</a> to check the limit for your
+        own cat&apos;s weight.
+      </p>
+
+      {/* ---- Camera + tracker ---- */}
+      <h2>Cat Collar Camera and GPS Tracker Together</h2>
+      <p>
+        These solve different problems and no single device does both well. A camera tells you
+        what your cat did; a GPS tracker tells you where your cat is right now. If your cat is
+        genuinely at risk of going missing, buy the tracker first — a camera is no help in a
+        search.
+      </p>
+      <p>
+        Running both is possible but the combined load is what matters, not each device on its
+        own. A 24 g camera plus a 25-35 g LTE tracker plus the collar itself lands near 70 g,
+        which is over the conservative 3% limit for any cat under about 2.5 kg. For most adult
+        cats it is fine; for a small cat, alternate them rather than stacking. The full breakdown,
+        including three-year running costs, is here:{" "}
+        <a href="/blog/cat-collar-camera-vs-gps-tracker-2026">
+          cat collar camera vs GPS tracker
+        </a>
+        .
+      </p>
+
+      {/* ---- UK / international ---- */}
+      <h2>Buying a Cat Collar Camera in the UK and Elsewhere</h2>
+      <p>
+        Availability is the practical constraint outside the US. Mr Petcam ships from the US and
+        prices in dollars, so UK and EU buyers should expect customs handling on top of the
+        listed price. The Amazon clones are the easiest to get locally and the least reliable —
+        that is precisely how we lost most of the &euro;240.
+      </p>
+      <p>
+        The Whiskcam ships free worldwide in 7–14 business days with a 30-day money-back
+        guarantee, priced in euros and converted at checkout. Whichever you choose, check the
+        return path before you order: a camera your cat rejects in the first ten minutes is a
+        common outcome, and it is the return policy rather than the spec sheet that decides
+        whether that costs you anything.
       </p>
 
       {/* ---- How to Set Up ---- */}
@@ -360,10 +493,15 @@ export default function BestCatCollarCameras2026() {
       {/* ---- Methodology ---- */}
       <h2>How We Compared These Cameras</h2>
       <p>
-        We compared cameras based on publicly available specifications, user reviews, and our own
-        experience with the Whiskcam. We did not test every camera hands-on. Where possible, we
-        verified specs against manufacturer claims and cross-referenced user feedback from Amazon,
-        Reddit, and pet forums.
+        The testing basis is summarised at the top of this article: four cats between 3.2 kg and
+        7.8 kg, October 2025 to March 2026. Cameras we could buy went on a real collar on a real
+        cat, and we recorded weight on the collar, how long the cat kept moving before giving up,
+        battery life to shutdown, and footage quality in daylight and low light.
+      </p>
+      <p>
+        For models we could not obtain, we worked from manufacturer specifications and
+        cross-referenced user feedback from Amazon, Reddit and pet forums. Those sections say so
+        explicitly — we don&apos;t present desk research as hands-on testing.
       </p>
       <p>
         <strong>Transparency note:</strong> This article is published on whiskcam.com. We make the
