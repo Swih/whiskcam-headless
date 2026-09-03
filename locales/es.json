@@ -6,7 +6,8 @@
     "about": "Nosotros",
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
-    "openCart": "Ver carrito"
+    "openCart": "Ver carrito",
+    "guides": "Guías"
   },
   "announcement": {
     "savePercent": "{pct}% DTO.",
@@ -19,7 +20,7 @@
     "staticDefault": "Envío gratis a toda Europa"
   },
   "hero": {
-    "tagline": "La cámara de collar para mascotas",
+    "tagline": "La Cámara de Collar para Gatos",
     "title": "Tu gato tiene una vida secreta.",
     "subtitle": "Mira por sus ojos. Imágenes POV Full HD desde un collar de 24g — para gatos y perros pequeños de menos de 10 kg. Sin app, sin WiFi, sin suscripción.",
     "trust": "Adoptada por las primeras familias Whiskcam",
@@ -176,12 +177,30 @@
     "gallerySocialProof": "Elegida por las primeras familias",
     "boxContentsLabel": "Qué incluye la caja",
     "boxContents": {
-      "0": { "item": "Cámara Whiskcam", "detail": "1080P Full HD con lente de 170°" },
-      "1": { "item": "Tarjeta MicroSD de 32GB", "detail": "Preinstalada, lista para grabar" },
-      "2": { "item": "Adaptador de tarjeta SD", "detail": "USB-C/Lightning — ve los vídeos en tu móvil" },
-      "3": { "item": "Collar ajustable", "detail": "Para gatos y perros de todos los tamaños" },
-      "4": { "item": "Cable USB-C", "detail": "Carga rápida, llena en menos de 1 hora" },
-      "5": { "item": "Guía digital", "detail": "\"Cómo capturar la vida secreta de tu mascota\"" }
+      "0": {
+        "item": "Cámara Whiskcam",
+        "detail": "1080P Full HD con lente de 170°"
+      },
+      "1": {
+        "item": "Tarjeta MicroSD de 32GB",
+        "detail": "Preinstalada, lista para grabar"
+      },
+      "2": {
+        "item": "Adaptador de tarjeta SD",
+        "detail": "USB-C/Lightning — ve los vídeos en tu móvil"
+      },
+      "3": {
+        "item": "Collar ajustable",
+        "detail": "Para gatos y perros de todos los tamaños"
+      },
+      "4": {
+        "item": "Cable USB-C",
+        "detail": "Carga rápida, llena en menos de 1 hora"
+      },
+      "5": {
+        "item": "Guía digital",
+        "detail": "\"Cómo capturar la vida secreta de tu mascota\""
+      }
     }
   },
   "comparison": {

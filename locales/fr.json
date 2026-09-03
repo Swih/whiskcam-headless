@@ -6,7 +6,8 @@
     "about": "À propos",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
-    "openCart": "Ouvrir le panier"
+    "openCart": "Ouvrir le panier",
+    "guides": "Guides"
   },
   "announcement": {
     "savePercent": "{pct}% DE RÉDUCTION",
@@ -19,7 +20,7 @@
     "staticDefault": "Livraison offerte — France, Belgique, Suisse et Europe"
   },
   "hero": {
-    "tagline": "La caméra-collier pour chats",
+    "tagline": "La Caméra Collier pour Chat",
     "title": "Votre chat a une vie secrète.",
     "subtitle": "Voyez par ses yeux. Des séquences POV Full HD depuis un collier de 24g — pour chats et petits chiens de moins de 10 kg. Sans appli, sans WiFi, sans abonnement.",
     "trust": "Adoptée par les premiers propriétaires Whiskcam",
@@ -176,12 +177,30 @@
     "gallerySocialProof": "Adoptée par les premiers propriétaires",
     "boxContentsLabel": "Contenu de la boîte",
     "boxContents": {
-      "0": { "item": "Caméra Whiskcam", "detail": "1080P Full HD avec objectif 170°" },
-      "1": { "item": "Carte MicroSD 32 Go", "detail": "Pré-installée, prête à l'enregistrement" },
-      "2": { "item": "Adaptateur carte SD", "detail": "USB-C/Lightning — visionnez sur votre téléphone" },
-      "3": { "item": "Collier réglable", "detail": "S'adapte aux chats et chiens de toutes tailles" },
-      "4": { "item": "Câble USB-C", "detail": "Charge rapide, complète en moins d'1 heure" },
-      "5": { "item": "Guide numérique", "detail": "\"Comment capturer la vie secrète de votre animal\"" }
+      "0": {
+        "item": "Caméra Whiskcam",
+        "detail": "1080P Full HD avec objectif 170°"
+      },
+      "1": {
+        "item": "Carte MicroSD 32 Go",
+        "detail": "Pré-installée, prête à l'enregistrement"
+      },
+      "2": {
+        "item": "Adaptateur carte SD",
+        "detail": "USB-C/Lightning — visionnez sur votre téléphone"
+      },
+      "3": {
+        "item": "Collier réglable",
+        "detail": "S'adapte aux chats et chiens de toutes tailles"
+      },
+      "4": {
+        "item": "Câble USB-C",
+        "detail": "Charge rapide, complète en moins d'1 heure"
+      },
+      "5": {
+        "item": "Guide numérique",
+        "detail": "\"Comment capturer la vie secrète de votre animal\""
+      }
     }
   },
   "comparison": {

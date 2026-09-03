@@ -6,7 +6,8 @@
     "about": "About",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "openCart": "Open cart"
+    "openCart": "Open cart",
+    "guides": "Guides"
   },
   "announcement": {
     "savePercent": "{pct}% OFF",
@@ -19,7 +20,7 @@
     "staticDefault": "Free shipping worldwide"
   },
   "hero": {
-    "tagline": "The Pet Collar Camera",
+    "tagline": "The Cat Collar Camera",
     "title": "See Their Secret Life.",
     "subtitle": "See through their eyes. Full HD POV footage from a 24g collar camera — for cats and small dogs under 10 kg. No app, no WiFi, no subscription.",
     "trust": "Loved by early Whiskcam owners",
@@ -176,12 +177,30 @@
     "gallerySocialProof": "Loved by early pet parents",
     "boxContentsLabel": "What's in the box",
     "boxContents": {
-      "0": { "item": "Whiskcam Camera", "detail": "1080P Full HD with 170° lens" },
-      "1": { "item": "32GB MicroSD Card", "detail": "Pre-installed, ready to record" },
-      "2": { "item": "SD Card Adapter", "detail": "USB-C/Lightning — view on your phone" },
-      "3": { "item": "Adjustable Collar", "detail": "Fits cats & dogs of all sizes" },
-      "4": { "item": "USB-C Cable", "detail": "Fast charging, full in under 1 hour" },
-      "5": { "item": "Digital Guide", "detail": "\"How to Capture Your Pet's Secret Life\"" }
+      "0": {
+        "item": "Whiskcam Camera",
+        "detail": "1080P Full HD with 170° lens"
+      },
+      "1": {
+        "item": "32GB MicroSD Card",
+        "detail": "Pre-installed, ready to record"
+      },
+      "2": {
+        "item": "SD Card Adapter",
+        "detail": "USB-C/Lightning — view on your phone"
+      },
+      "3": {
+        "item": "Adjustable Collar",
+        "detail": "Fits cats & dogs of all sizes"
+      },
+      "4": {
+        "item": "USB-C Cable",
+        "detail": "Fast charging, full in under 1 hour"
+      },
+      "5": {
+        "item": "Digital Guide",
+        "detail": "\"How to Capture Your Pet's Secret Life\""
+      }
     }
   },
   "comparison": {

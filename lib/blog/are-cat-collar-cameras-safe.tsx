@@ -73,7 +73,7 @@ export default function AreCatCollarCamerasSafe() {
       <p>
         As you can see, even the lightest adult cat (2 kg) has a safe limit of 60 g at the
         conservative 3% threshold. The heaviest collar cameras on the market (around 40 g) are well
-        below this limit. A 24 g camera like the Whiskcam represents just 1.3% of a 2 kg cat&apos;s
+        below this limit. A 24 g camera like the <a href="/what-is-whiskcam">Whiskcam</a> represents just 1.3% of a 2 kg cat&apos;s
         body weight.
       </p>
 

@@ -114,7 +114,11 @@ export default function BestCatCollarCameras2026() {
           </thead>
           <tbody>
             <tr>
-              <td><strong>Whiskcam Original</strong></td>
+              <td>
+                <strong>
+                  <a href="/what-is-whiskcam">Whiskcam Original</a>
+                </strong>
+              </td>
               <td>24 g</td>
               <td>1080P</td>
               <td>Up to 2 hours</td>
@@ -180,6 +184,13 @@ export default function BestCatCollarCameras2026() {
         <li>Free worldwide shipping, 30-day money-back guarantee</li>
         <li>&euro;79 covers the full kit (camera + 32 GB SD + phone adapter + collar + cable + guide) — most rivals charge à la carte</li>
       </ul>
+      <p>
+        Worried about the weight on a small cat? We worked through the veterinary
+        guidance in{" "}
+        <a href="/blog/are-cat-collar-cameras-safe">are cat collar cameras safe</a>, and
+        there is a per-breed breakdown in the{" "}
+        <a href="/blog/cat-collar-weight-chart-by-size">cat collar weight chart</a>.
+      </p>
       <h3>Cons</h3>
       <ul>
         <li>Up to 2 hours of battery life — enough for morning patrols and evening adventures</li>
@@ -192,6 +203,12 @@ export default function BestCatCollarCameras2026() {
         <strong>Best for:</strong> Cat owners who want simple, lightweight, affordable footage of
         their cat&apos;s outdoor adventures. If your cat weighs under 6 kg and you just want to see
         what they do, the Whiskcam delivers without overcomplicating things.
+      </p>
+      <p>
+        Full specification sheet on the{" "}
+        <a href="/what-is-whiskcam">Whiskcam Original page</a>, or{" "}
+        <a href="/#product">order the complete kit for &euro;79</a> with free worldwide
+        shipping and a 30-day money-back guarantee. Disclosure: we make this one.
       </p>
 
       {/* ---- Mr Petcam Review ---- */}

@@ -6,6 +6,9 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { setRequestLocale } from "next-intl/server";
+import { alternatesFor } from "lib/seo";
+import { ORG_ID, WEBSITE_ID, organizationSchema, websiteSchema } from "lib/schema";
+import { baseUrl } from "lib/utils";
 
 // Article content components — lazy loaded per slug
 const articleComponents: Record<string, React.ComponentType> = {
@@ -80,7 +83,6 @@ export async function generateMetadata({
       authors: [article.author],
       siteName: "Whiskcam",
       locale: "en_US",
-      alternateLocale: ["fr_FR"],
       images: [
         {
           url: articleImage,
@@ -96,14 +98,7 @@ export async function generateMetadata({
       description: article.description,
       images: [articleImage],
     },
-    alternates: {
-      canonical: `https://whiskcam.com/${locale}/blog/${slug}`,
-      languages: {
-        en: `https://whiskcam.com/en/blog/${slug}`,
-        fr: `https://whiskcam.com/fr/blog/${slug}`,
-        "x-default": `https://whiskcam.com/en/blog/${slug}`,
-      },
-    },
+    alternates: alternatesFor(`/blog/${slug}`, locale),
   };
 }
 
@@ -123,60 +118,43 @@ export default async function BlogArticlePage({
   // Related articles (exclude current)
   const related = BLOG_ARTICLES.filter((a) => a.slug !== slug);
 
-  // JSON-LD: Article
+  const canonical = alternatesFor(`/blog/${slug}`, locale).canonical;
+  const articleImage = article.image
+    ? `${baseUrl}${article.image}`
+    : `${baseUrl}/images/logos/whiskcam-logo-icon.webp`;
+
+  // JSON-LD: Article, wired into the site-wide entity graph so the publisher
+  // resolves to the same Organization the homepage declares rather than a
+  // look-alike copy per article.
   const articleJsonLd = {
-    "@context": "https://schema.org",
     "@type": "Article",
+    "@id": `${canonical}#article`,
     headline: article.title,
     description: article.description,
     datePublished: article.datePublished,
     dateModified: article.dateModified,
-    author: {
-      "@type": "Organization",
-      name: "Whiskcam",
-      url: "https://whiskcam.com",
+    inLanguage: "en",
+    keywords: article.tags.join(", "),
+    author: { "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
+    isPartOf: { "@id": WEBSITE_ID },
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
+    image: {
+      "@type": "ImageObject",
+      url: articleImage,
+      width: 1536,
+      height: 864,
     },
-    publisher: {
-      "@type": "Organization",
-      name: "Whiskcam",
-      url: "https://whiskcam.com",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://whiskcam.com/images/logos/whiskcam-logo-icon.webp",
-      },
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `https://whiskcam.com/blog/${slug}`,
-    },
-    image: article.image
-      ? `https://whiskcam.com${article.image}`
-      : "https://whiskcam.com/images/logos/whiskcam-logo-icon.webp",
   };
 
   // JSON-LD: BreadcrumbList
   const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${canonical}#breadcrumb`,
     itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://whiskcam.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Blog",
-        item: "https://whiskcam.com/blog",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: article.title,
-        item: `https://whiskcam.com/blog/${slug}`,
-      },
+      { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${baseUrl}/blog` },
+      { "@type": "ListItem", position: 3, name: article.title, item: canonical },
     ],
   };
 
@@ -184,8 +162,8 @@ export default async function BlogArticlePage({
   const howToJsonLd =
     slug === "best-cat-collar-cameras-2026"
       ? {
-          "@context": "https://schema.org",
           "@type": "HowTo",
+          "@id": `${canonical}#howto`,
           name: "How to Set Up a Cat Collar Camera",
           description:
             "Step-by-step guide to setting up a collar camera on your cat for the first time.",
@@ -535,8 +513,9 @@ export default async function BlogArticlePage({
   const faqJsonLd =
     faqItems.length > 0
       ? {
-          "@context": "https://schema.org",
           "@type": "FAQPage",
+          "@id": `${canonical}#faq`,
+          inLanguage: "en",
           mainEntity: faqItems.map((item) => ({
             "@type": "Question",
             name: item.question,
@@ -545,32 +524,28 @@ export default async function BlogArticlePage({
         }
       : null;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      organizationSchema(),
+      websiteSchema(),
+      articleJsonLd,
+      breadcrumbJsonLd,
+      ...(howToJsonLd ? [howToJsonLd] : []),
+      ...(faqJsonLd ? [faqJsonLd] : []),
+    ],
+  };
+
   return (
     <>
       {/* Structured Data */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      {howToJsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
-        />
-      )}
-      {faqJsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-        />
-      )}
 
       {/* Article */}
-      <div className="mx-auto max-w-3xl px-5 pt-32 pb-16 md:pt-40">
+      <div lang="en" className="mx-auto max-w-3xl px-5 pt-32 pb-16 md:pt-40">
         {/* Breadcrumb */}
         <nav className="mb-8 text-sm text-neutral-400" aria-label="Breadcrumb">
           <ol className="flex items-center gap-1.5">

@@ -1,7 +1,7 @@
 import Footer from "components/layout/footer";
 import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { baseUrl } from "lib/utils";
+import { alternatesFor } from "lib/seo";
 
 export async function generateMetadata({
   params,
@@ -9,22 +9,13 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const canonical = locale === "en" ? `${baseUrl}/about` : `${baseUrl}/${locale}/about`;
+  const canonical = alternatesFor("/about", locale).canonical;
 
   return {
     title: "About Whiskcam — The Story Behind Our Pet Collar Camera",
     description:
       "The story behind Whiskcam — a pet collar camera born from pure curiosity about what our cats really do when we're not around.",
-    alternates: {
-      canonical,
-      languages: {
-        en: `${baseUrl}/about`,
-        fr: `${baseUrl}/fr/about`,
-        de: `${baseUrl}/de/about`,
-        es: `${baseUrl}/es/about`,
-        "x-default": `${baseUrl}/about`,
-      },
-    },
+    alternates: alternatesFor("/about", locale),
     openGraph: {
       title: "About Whiskcam — The Story Behind Our Pet Collar Camera",
       description:

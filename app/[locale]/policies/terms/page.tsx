@@ -2,6 +2,7 @@ import Footer from "components/layout/footer";
 import { Link } from "i18n/navigation";
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
+import { alternatesFor } from "lib/seo";
 
 export async function generateMetadata({
   params,
@@ -13,18 +14,11 @@ export async function generateMetadata({
     title: "Terms of Service",
     description: "Whiskcam terms of service — the rules that govern your use of our website and products.",
     keywords: ["Whiskcam", "terms of service", "terms and conditions"],
-    alternates: {
-      canonical: `https://whiskcam.com/${locale}/policies/terms`,
-      languages: {
-        en: "https://whiskcam.com/en/policies/terms",
-        fr: "https://whiskcam.com/fr/policies/terms",
-        "x-default": "https://whiskcam.com/en/policies/terms",
-      },
-    },
+    alternates: alternatesFor("/policies/terms", locale),
     openGraph: {
       title: "Terms of Service — Whiskcam",
       description: "The rules that govern your use of our website and products.",
-      url: `https://whiskcam.com/${locale}/policies/terms`,
+      url: alternatesFor("/policies/terms", locale).canonical,
       siteName: "Whiskcam",
       type: "website",
     },
@@ -49,7 +43,7 @@ export default async function TermsPage({
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://whiskcam.com" },
-      { "@type": "ListItem", position: 2, name: "Terms of Service", item: `https://whiskcam.com/${locale}/policies/terms` },
+      { "@type": "ListItem", position: 2, name: "Terms of Service", item: alternatesFor("/policies/terms", locale).canonical },
     ],
   };
   return (

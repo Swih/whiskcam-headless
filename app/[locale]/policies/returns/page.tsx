@@ -2,6 +2,7 @@ import Footer from "components/layout/footer";
 import { Link } from "i18n/navigation";
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
+import { alternatesFor } from "lib/seo";
 
 export async function generateMetadata({
   params,
@@ -13,18 +14,11 @@ export async function generateMetadata({
     title: "Return Policy",
     description: "Whiskcam 30-day money-back guarantee. No questions asked.",
     keywords: ["Whiskcam", "return policy", "refund", "money-back guarantee"],
-    alternates: {
-      canonical: `https://whiskcam.com/${locale}/policies/returns`,
-      languages: {
-        en: "https://whiskcam.com/en/policies/returns",
-        fr: "https://whiskcam.com/fr/policies/returns",
-        "x-default": "https://whiskcam.com/en/policies/returns",
-      },
-    },
+    alternates: alternatesFor("/policies/returns", locale),
     openGraph: {
       title: "Return Policy — Whiskcam",
       description: "30-day money-back guarantee. No questions asked.",
-      url: `https://whiskcam.com/${locale}/policies/returns`,
+      url: alternatesFor("/policies/returns", locale).canonical,
       siteName: "Whiskcam",
       type: "website",
     },
@@ -49,7 +43,7 @@ export default async function ReturnsPage({
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://whiskcam.com" },
-      { "@type": "ListItem", position: 2, name: "Return Policy", item: `https://whiskcam.com/${locale}/policies/returns` },
+      { "@type": "ListItem", position: 2, name: "Return Policy", item: alternatesFor("/policies/returns", locale).canonical },
     ],
   };
   return (

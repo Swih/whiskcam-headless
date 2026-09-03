@@ -9,6 +9,49 @@ export const HERO_CONTENT = {
   posterSrc: "/images/hero/whiskcam-hero-video-frame.webp",
 };
 
+// -----------------------------------------------------------------------------
+// PRODUCT_FACTS — the single source of truth for every published specification.
+//
+// These numbers are quoted in JSON-LD, in public/llms.txt (generated from here
+// by app/llms.txt/route.ts), in the locale files and in the blog articles. They
+// used to be retyped in each place and had drifted apart: llms.txt still
+// advertised the pre-repositioning €49.90 price and a 26 g weight while the rest
+// of the site said €79 and 24 g. Change a value here first, then grep for the
+// old one — the locale JSON and the article bodies are still hand-written prose.
+// -----------------------------------------------------------------------------
+export const PRODUCT_FACTS = {
+  name: "Whiskcam Original",
+  weightGrams: 24,
+  resolution: "1080P Full HD",
+  fieldOfViewDegrees: 170,
+  batteryHours: 2,
+  chargeTimeHours: 1,
+  storageGb: 32,
+  collarCm: 39,
+  videoFormat: "AVI",
+  charging: "USB-C",
+  requiresApp: false,
+  requiresWifi: false,
+  price: "79.00",
+  compareAtPrice: "109.00",
+  duoPrice: "129.00",
+  duoCompareAtPrice: "218.00",
+  currency: "EUR",
+  returnDays: 30,
+  shippingDaysMin: 7,
+  shippingDaysMax: 14,
+  /** Stable product identifier. Never derive this from the Shopify variant SKU:
+   *  those were imported from AliExpress and still carry the supplier's encoded
+   *  option string, which would otherwise be published in `sku`/`mpn`. */
+  sku: "WHISKCAM-ORIGINAL",
+} as const;
+
+/** Countries the free-shipping offer and the return policy actually cover. */
+export const SHIPPING_COUNTRIES = [
+  "US", "CA", "GB", "IE", "FR", "DE", "AT", "CH", "BE", "NL", "LU",
+  "ES", "PT", "IT", "SE", "NO", "DK", "FI", "PL", "CZ", "AU", "NZ",
+] as const;
+
 export const STATS = [
   { value: "1080P" },
   { value: "170°" },

@@ -21,7 +21,13 @@ function hasConsent(): boolean {
   }
 }
 
-export function Analytics() {
+/**
+ * @param checkoutDomain the *.myshopify.com host the cart redirects to. Checkout
+ *   is served from a different origin than the storefront, so without GA4
+ *   cross-domain linking the session breaks at the payment step and every order
+ *   is attributed to whiskcam.com as a referral instead of to organic or TikTok.
+ */
+export function Analytics({ checkoutDomain }: { checkoutDomain?: string }) {
   const [consent, setConsent] = useState(false);
 
   useEffect(() => {
@@ -75,7 +81,12 @@ export function Analytics() {
           gtag('js', new Date());
           gtag('config', '${GA_ID}', {
             page_path: window.location.pathname,
-            anonymize_ip: true
+            anonymize_ip: true${
+              checkoutDomain
+                ? `,
+            linker: { domains: ['${checkoutDomain}'], accept_incoming: true }`
+                : ""
+            }
           });
         `}
       </Script>
@@ -191,5 +202,43 @@ export function trackAddToCart(product: { name: string; price: string; currency:
     value: parseFloat(product.price),
     currency: product.currency,
     quantity: product.quantity,
+  });
+}
+
+/**
+ * Fired the moment the buyer leaves for Shopify's hosted checkout.
+ *
+ * Without this the funnel went view_item -> add_to_cart -> (nothing) -> purchase
+ * on a different domain, so cart abandonment was unmeasurable and the TikTok
+ * campaigns had no InitiateCheckout signal to optimise against.
+ */
+export function trackBeginCheckout(cart: {
+  value: string;
+  currency: string;
+  items: { name: string; price: string; quantity: number }[];
+}) {
+  const value = parseFloat(cart.value);
+
+  window.gtag?.("event", "begin_checkout", {
+    currency: cart.currency,
+    value,
+    items: cart.items.map((i) => ({
+      item_name: i.name,
+      price: parseFloat(i.price),
+      quantity: i.quantity,
+    })),
+  });
+
+  window.fbq?.("track", "InitiateCheckout", {
+    content_type: "product",
+    value,
+    currency: cart.currency,
+    num_items: cart.items.reduce((n, i) => n + i.quantity, 0),
+  });
+
+  window.ttq?.track("InitiateCheckout", {
+    content_type: "product",
+    value,
+    currency: cart.currency,
   });
 }

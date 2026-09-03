@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
+import { alternatesFor } from "lib/seo";
 
 export async function generateMetadata({
   params,
@@ -11,13 +12,11 @@ export async function generateMetadata({
     title: "Track My Order",
     description:
       "Track your Whiskcam order in real-time. Enter your tracking number to see delivery status and estimated arrival.",
-    alternates: {
-      canonical: `https://whiskcam.com/${locale}/track`,
-    },
+    alternates: alternatesFor("/track", locale),
     openGraph: {
       title: "Track My Order — Whiskcam",
       description: "Track your Whiskcam delivery in real-time.",
-      url: `https://whiskcam.com/${locale}/track`,
+      url: alternatesFor("/track", locale).canonical,
       siteName: "Whiskcam",
       type: "website",
     },

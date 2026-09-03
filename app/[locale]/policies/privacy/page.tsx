@@ -2,6 +2,7 @@ import Footer from "components/layout/footer";
 import { Link } from "i18n/navigation";
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
+import { alternatesFor } from "lib/seo";
 
 export async function generateMetadata({
   params,
@@ -13,18 +14,11 @@ export async function generateMetadata({
     title: "Privacy Policy",
     description: "Whiskcam privacy policy — how we collect, use, and protect your personal information.",
     keywords: ["Whiskcam", "privacy policy", "data protection", "GDPR"],
-    alternates: {
-      canonical: `https://whiskcam.com/${locale}/policies/privacy`,
-      languages: {
-        en: "https://whiskcam.com/en/policies/privacy",
-        fr: "https://whiskcam.com/fr/policies/privacy",
-        "x-default": "https://whiskcam.com/en/policies/privacy",
-      },
-    },
+    alternates: alternatesFor("/policies/privacy", locale),
     openGraph: {
       title: "Privacy Policy — Whiskcam",
       description: "How we collect, use, and protect your personal information.",
-      url: `https://whiskcam.com/${locale}/policies/privacy`,
+      url: alternatesFor("/policies/privacy", locale).canonical,
       siteName: "Whiskcam",
       type: "website",
     },
@@ -49,7 +43,7 @@ export default async function PrivacyPage({
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://whiskcam.com" },
-      { "@type": "ListItem", position: 2, name: "Privacy Policy", item: `https://whiskcam.com/${locale}/policies/privacy` },
+      { "@type": "ListItem", position: 2, name: "Privacy Policy", item: alternatesFor("/policies/privacy", locale).canonical },
     ],
   };
   return (

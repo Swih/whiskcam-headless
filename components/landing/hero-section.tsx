@@ -2,7 +2,6 @@
 
 import { HERO_CONTENT } from "lib/content";
 import { Button } from "components/ui/button";
-import { motion } from "framer-motion";
 import { formatPrice } from "lib/format";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
@@ -50,7 +49,7 @@ export function HeroSection({ product }: { product?: Product }) {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="none"
         poster={HERO_CONTENT.posterSrc}
         onCanPlayThrough={() => { videoReadyRef.current = true; setVideoReady(true); }}
         onPlay={() => { videoReadyRef.current = true; setVideoReady(true); }}
@@ -70,39 +69,20 @@ export function HeroSection({ product }: { product?: Product }) {
 
           {/* Left column — text */}
           <div className="flex-1 text-center lg:text-left">
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="text-xs font-semibold uppercase tracking-[0.15em] text-wk-amber"
-            >
-              {t("tagline")}
-            </motion.p>
+            <h1 className="hero-rise hero-rise-1">
+              <span className="block text-xs font-semibold uppercase tracking-[0.15em] text-wk-amber">
+                {t("tagline")}
+              </span>
+              <span className="mt-3 block text-[clamp(2rem,8vw,4.5rem)] font-bold leading-[1.05] tracking-tight text-white sm:mt-4">
+                {t("title")}
+              </span>
+            </h1>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.2 }}
-              className="mt-3 text-[clamp(2rem,8vw,4.5rem)] font-bold leading-[1.05] tracking-tight text-white sm:mt-4"
-            >
-              {t("title")}
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.3 }}
-              className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-white/70 sm:mt-5 sm:text-lg lg:mx-0"
-            >
+            <p className="hero-rise hero-rise-3 mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-white/70 sm:mt-5 sm:text-lg lg:mx-0">
               {t("subtitle")}
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.4 }}
-              className="mt-7 flex flex-col items-center gap-3 sm:mt-8 lg:items-start"
-            >
+            <div className="hero-rise hero-rise-4 mt-7 flex flex-col items-center gap-3 sm:mt-8 lg:items-start">
               {/* Status pill — honest "now shipping" signal, no fake urgency */}
               <span className="inline-flex items-center gap-1.5 rounded-full border border-wk-amber/40 bg-wk-amber/10 px-3 py-1 text-xs font-semibold text-wk-amber">
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-wk-amber" />
@@ -113,15 +93,10 @@ export function HeroSection({ product }: { product?: Product }) {
                 {t("ctaButton")} — {price}
               </Button>
               <span className="text-xs text-white/50 sm:text-sm">{t("ctaSubtext")}</span>
-            </motion.div>
+            </div>
 
             {/* Trust */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.55 }}
-              className="mt-5 flex items-center justify-center gap-2 sm:mt-6 lg:justify-start"
-            >
+            <div className="hero-rise hero-rise-5 mt-5 flex items-center justify-center gap-2 sm:mt-6 lg:justify-start">
               <div className="flex text-wk-amber">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="h-3 w-3 sm:h-3.5 sm:w-3.5" fill="currentColor" viewBox="0 0 20 20">
@@ -130,16 +105,11 @@ export function HeroSection({ product }: { product?: Product }) {
                 ))}
               </div>
               <span className="text-xs text-white/50 sm:text-sm">{t("trust")}</span>
-            </motion.div>
+            </div>
           </div>
 
           {/* Right column — product shot (all screens) */}
-          <motion.div
-            initial={{ opacity: 0, y: 12, x: 0 }}
-            animate={{ opacity: 1, y: 0, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-6 flex justify-center lg:mt-0 lg:w-[420px] lg:shrink-0 lg:items-center lg:justify-center"
-          >
+          <div className="hero-rise hero-rise-6 mt-6 flex justify-center lg:mt-0 lg:w-[420px] lg:shrink-0 lg:items-center lg:justify-center">
             <div className="relative h-[150px] w-[150px] overflow-hidden rounded-full bg-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.5)] sm:h-[200px] sm:w-[200px] lg:h-[300px] lg:w-[300px]">
               <Image
                 src="/images/product/whiskcam-product-studio.webp"
@@ -149,26 +119,20 @@ export function HeroSection({ product }: { product?: Product }) {
                 priority
               />
             </div>
-          </motion.div>
+          </div>
 
         </div>
       </div>
 
       {/* Scroll indicator — hidden on small mobile */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
+      <div
+        aria-hidden="true"
         className="absolute bottom-4 left-1/2 hidden -translate-x-1/2 sm:block"
       >
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="h-9 w-5 rounded-full border-2 border-white/20 p-1"
-        >
+        <div className="animate-scroll-hint h-9 w-5 rounded-full border-2 border-white/20 p-1">
           <div className="mx-auto h-1.5 w-0.5 rounded-full bg-white/40" />
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

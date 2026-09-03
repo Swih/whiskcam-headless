@@ -9,6 +9,7 @@ import Image from "next/image";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { createCartAndSetCookie, redirectToCheckout } from "./actions";
+import { trackBeginCheckout } from "components/analytics";
 import { useCart } from "./cart-context";
 import { DeleteItemButton } from "./delete-item-button";
 import { EditItemQuantityButton } from "./edit-item-quantity-button";
@@ -282,7 +283,21 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
                     </div>
 
                     {/* Checkout button */}
-                    <form action={redirectToCheckout} className="mt-4">
+                    <form
+                      action={redirectToCheckout}
+                      className="mt-4"
+                      onSubmit={() =>
+                        trackBeginCheckout({
+                          value: cart.cost.totalAmount.amount,
+                          currency: cart.cost.totalAmount.currencyCode,
+                          items: cart.lines.map((line) => ({
+                            name: line.merchandise.product.title,
+                            price: line.cost.totalAmount.amount,
+                            quantity: line.quantity,
+                          })),
+                        })
+                      }
+                    >
                       <CheckoutButton />
                     </form>
 

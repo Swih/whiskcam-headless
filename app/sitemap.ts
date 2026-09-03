@@ -1,75 +1,82 @@
 import { BLOG_ARTICLES } from "lib/blog";
-import { baseUrl } from "lib/utils";
+import { LOCALES, localizedUrl, sitemapLanguagesFor } from "lib/seo";
 import { MetadataRoute } from "next";
 
 export const revalidate = 3600;
 
-const locales = ["en", "fr", "de", "es"] as const;
+type Route = {
+  path: string;
+  priority: number;
+  changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
+  lastModified?: string;
+};
 
-// Routes explicitly excluded from the sitemap (noindex'd pages, redirects, thin pages, auth'd pages).
-// Keeping these out avoids GSC "page redirected" / "crawled not indexed" alerts.
-const EXCLUDED_SHOPIFY_PAGE_HANDLES = new Set<string>([
-  // Pages that are better served from static routes with full canonical/hreflang support.
-  // Shopify-managed CMS pages are accessed via `/[page]` but lack canonicals, which
-  // creates duplicate-content signals. List them here if they exist in the Shopify store.
-]);
+// Static routes. Priorities reflect importance (homepage > pillar > blog > policies).
+// `/track` is noindex at the page level and `/product/[handle]` 308-redirects to `/`,
+// so neither belongs here.
+const STATIC_ROUTES: Route[] = [
+  { path: "", priority: 1.0, changeFrequency: "weekly" },
+  { path: "/what-is-whiskcam", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/blog", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/about", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/faq", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/policies/shipping", priority: 0.4, changeFrequency: "yearly" },
+  { path: "/policies/returns", priority: 0.4, changeFrequency: "yearly" },
+  { path: "/policies/privacy", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/policies/terms", priority: 0.3, changeFrequency: "yearly" },
+];
 
-function localizedUrl(path: string, locale: string): string {
-  if (locale === "en") return `${baseUrl}${path}`;
-  return `${baseUrl}/${locale}${path}`;
-}
-
-function withHreflang(
-  path: string,
-  lastModified: string,
-  priority: number,
-  changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"],
-) {
-  const languages: Record<string, string> = {};
-  for (const locale of locales) {
-    languages[locale] = localizedUrl(path, locale);
-  }
-  languages["x-default"] = localizedUrl(path, "en");
-
-  return {
-    url: localizedUrl(path, "en"),
-    lastModified,
-    changeFrequency,
-    priority,
-    alternates: { languages },
+/**
+ * Emit sitemap entries for one route.
+ *
+ * A translated route gets one entry per locale, each carrying the full reciprocal
+ * hreflang cluster — that is what Google asks for and it is what the page's own
+ * `alternates` now declares too.
+ *
+ * An English-only route gets a single unprefixed entry with no alternates. The
+ * `/de`, `/es` and `/fr` copies still resolve (they are not redirected, so no
+ * existing inbound link breaks) but they canonicalise back here instead of being
+ * advertised as translations that do not exist.
+ */
+function entriesFor(route: Route, lastModified: string): MetadataRoute.Sitemap {
+  const languages = sitemapLanguagesFor(route.path);
+  const base = {
+    lastModified: route.lastModified ?? lastModified,
+    changeFrequency: route.changeFrequency,
+    priority: route.priority,
   };
+
+  if (!languages) {
+    return [{ url: localizedUrl(route.path, "en"), ...base }];
+  }
+
+  return LOCALES.map((locale) => ({
+    url: localizedUrl(route.path, locale),
+    ...base,
+    alternates: { languages },
+  }));
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date().toISOString();
 
-  // Static routes — priorities reflect importance (homepage > blog > policies).
-  // `/track` is noindex'd at the page level and is therefore NOT listed here.
-  // `/product/[handle]` is a 301 redirect to `/` and is therefore NOT listed here.
-  const staticRoutes: MetadataRoute.Sitemap = [
-    { path: "", priority: 1.0, changeFrequency: "weekly" as const },
-    { path: "/what-is-whiskcam", priority: 0.9, changeFrequency: "monthly" as const },
-    { path: "/blog", priority: 0.8, changeFrequency: "weekly" as const },
-    { path: "/about", priority: 0.6, changeFrequency: "monthly" as const },
-    { path: "/faq", priority: 0.6, changeFrequency: "monthly" as const },
-    { path: "/policies/shipping", priority: 0.4, changeFrequency: "yearly" as const },
-    { path: "/policies/returns", priority: 0.4, changeFrequency: "yearly" as const },
-    { path: "/policies/privacy", priority: 0.3, changeFrequency: "yearly" as const },
-    { path: "/policies/terms", priority: 0.3, changeFrequency: "yearly" as const },
-  ].map((r) => withHreflang(r.path, now, r.priority, r.changeFrequency));
+  const staticEntries = STATIC_ROUTES.flatMap((route) => entriesFor(route, now));
 
-  const blogRoutes = BLOG_ARTICLES.map((article) =>
-    withHreflang(`/blog/${article.slug}`, article.dateModified, 0.7, "monthly"),
+  // Blog articles are English-only components, so each ships one canonical URL.
+  const blogEntries = BLOG_ARTICLES.flatMap((article) =>
+    entriesFor(
+      {
+        path: `/blog/${article.slug}`,
+        priority: 0.7,
+        changeFrequency: "monthly",
+        lastModified: article.dateModified,
+      },
+      now,
+    ),
   );
 
-  // NOTE: Shopify dynamic routes (collections, products, CMS pages) are intentionally
-  // NOT listed in the sitemap for the following reasons:
-  //   - /product/[handle] issues a 301 redirect to "/" (single-product storefront design)
-  //   - /[page] Shopify CMS routes currently lack canonical + hreflang metadata
-  //   - /collections/* are not a front-of-house route on this single-product store
-  // Re-add them here only if their respective route handlers gain proper canonicals
-  // and their content is unique enough to be indexed.
-  void EXCLUDED_SHOPIFY_PAGE_HANDLES;
-
-  return [...staticRoutes, ...blogRoutes];
+  // Shopify dynamic routes stay out on purpose: `/product/[handle]` 308-redirects
+  // to `/`, there are no collection pages on a single-product store, and the
+  // `/[page]` CMS route renders content this repo does not control.
+  return [...staticEntries, ...blogEntries];
 }

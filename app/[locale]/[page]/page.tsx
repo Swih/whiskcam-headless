@@ -4,21 +4,12 @@ import Footer from "components/layout/footer";
 import { getPage } from "lib/shopify";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import { baseUrl } from "lib/utils";
+import { alternatesFor } from "lib/seo";
 
 function buildPageAlternates(locale: string, handle: string) {
-  const canonical =
-    locale === "en" ? `${baseUrl}/${handle}` : `${baseUrl}/${locale}/${handle}`;
-  return {
-    canonical,
-    languages: {
-      en: `${baseUrl}/${handle}`,
-      fr: `${baseUrl}/fr/${handle}`,
-      de: `${baseUrl}/de/${handle}`,
-      es: `${baseUrl}/es/${handle}`,
-      "x-default": `${baseUrl}/${handle}`,
-    },
-  };
+  // Shopify CMS pages exist in a single language, so every locale-prefixed copy
+  // canonicalises to the unprefixed one rather than claiming to be a translation.
+  return alternatesFor(`/${handle}`, locale);
 }
 
 export async function generateMetadata(props: {

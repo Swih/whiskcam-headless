@@ -6,7 +6,8 @@
     "about": "Über uns",
     "openMenu": "Menü öffnen",
     "closeMenu": "Menü schließen",
-    "openCart": "Warenkorb öffnen"
+    "openCart": "Warenkorb öffnen",
+    "guides": "Ratgeber"
   },
   "announcement": {
     "savePercent": "{pct}% RABATT",
@@ -19,7 +20,7 @@
     "staticDefault": "Kostenloser Versand in ganz Europa"
   },
   "hero": {
-    "tagline": "Die Haustier-Kamerahalsband",
+    "tagline": "Die Halsbandkamera für Katzen",
     "title": "Deine Katze hat ein Doppelleben.",
     "subtitle": "Sieh die Welt durch ihre Augen. Full HD POV-Aufnahmen aus einer 24g Halsbandkamera — für Katzen und kleine Hunde unter 10 kg. Ohne App, ohne WLAN, ohne Abo.",
     "trust": "Geliebt von den ersten Whiskcam-Besitzern",
@@ -176,12 +177,30 @@
     "gallerySocialProof": "Geliebt von den ersten Besitzern",
     "boxContentsLabel": "Das ist alles drin",
     "boxContents": {
-      "0": { "item": "Whiskcam Kamera", "detail": "1080P Full HD mit 170° Objektiv" },
-      "1": { "item": "32GB MicroSD-Karte", "detail": "Vorinstalliert, sofort aufnahmebereit" },
-      "2": { "item": "SD-Karten-Adapter", "detail": "USB-C/Lightning — Videos direkt am Handy" },
-      "3": { "item": "Verstellbares Halsband", "detail": "Passt für Katzen & Hunde aller Größen" },
-      "4": { "item": "USB-C Kabel", "detail": "Schnellladen, voll in unter 1 Stunde" },
-      "5": { "item": "Digitaler Guide", "detail": "\"So filmst du das geheime Leben deines Tieres\"" }
+      "0": {
+        "item": "Whiskcam Kamera",
+        "detail": "1080P Full HD mit 170° Objektiv"
+      },
+      "1": {
+        "item": "32GB MicroSD-Karte",
+        "detail": "Vorinstalliert, sofort aufnahmebereit"
+      },
+      "2": {
+        "item": "SD-Karten-Adapter",
+        "detail": "USB-C/Lightning — Videos direkt am Handy"
+      },
+      "3": {
+        "item": "Verstellbares Halsband",
+        "detail": "Passt für Katzen & Hunde aller Größen"
+      },
+      "4": {
+        "item": "USB-C Kabel",
+        "detail": "Schnellladen, voll in unter 1 Stunde"
+      },
+      "5": {
+        "item": "Digitaler Guide",
+        "detail": "\"So filmst du das geheime Leben deines Tieres\""
+      }
     }
   },
   "comparison": {

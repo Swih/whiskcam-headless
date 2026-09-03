@@ -148,3 +148,45 @@ button {
   background: var(--color-wk-grey-300);
   border-radius: 3px;
 }
+
+/* ---------------------------------------------------------------------------
+   Hero entrance.
+
+   The hero used framer-motion with `initial={{ opacity: 0 }}`, which serialises
+   into the server-rendered HTML as style="opacity:0" — so the H1, the LCP
+   candidate, shipped invisible and only appeared after hydration. These
+   keyframes animate the same way but leave the resting state visible, so the
+   first paint (and any crawler that does not run JS) gets readable text.
+   `animation-fill-mode` is deliberately not `backwards`.
+--------------------------------------------------------------------------- */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-rise {
+  animation: hero-rise 0.4s ease-out both;
+}
+
+.hero-rise-1 { animation-delay: 0.10s; }
+.hero-rise-2 { animation-delay: 0.20s; }
+.hero-rise-3 { animation-delay: 0.30s; }
+.hero-rise-4 { animation-delay: 0.40s; }
+.hero-rise-5 { animation-delay: 0.55s; }
+.hero-rise-6 { animation-delay: 0.50s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise { animation: none; opacity: 1; transform: none; }
+}
+
+/* Hero scroll indicator — was two nested framer-motion nodes, which pulled the
+   whole animation library into the above-the-fold client bundle for a purely
+   decorative arrow. */
+@keyframes scroll-hint {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(6px); }
+}
+
+.animate-scroll-hint {
+  animation: scroll-hint 2s ease-in-out infinite;
+}

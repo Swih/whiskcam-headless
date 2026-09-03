@@ -2,6 +2,18 @@ import Footer from "components/layout/footer";
 import { Link } from "i18n/navigation";
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
+import { alternatesFor } from "lib/seo";
+import { PRODUCT_FACTS } from "lib/content";
+import {
+  ORG_ID,
+  PRODUCT_ID,
+  WEBSITE_ID,
+  offerSchema,
+  organizationSchema,
+  productProperties,
+  websiteSchema,
+} from "lib/schema";
+import { baseUrl } from "lib/utils";
 
 export async function generateMetadata({
   params,
@@ -12,7 +24,7 @@ export async function generateMetadata({
   return {
     title: "What Is Whiskcam? — Pet Collar Camera",
     description:
-      "Whiskcam is a 26-gram pet collar camera that records 1080P Full HD video from your cat or dog's perspective. No app, no WiFi. Free worldwide shipping.",
+      "Whiskcam is a 24 g pet collar camera that records 1080P Full HD video from your cat or dog's perspective. No app, no WiFi. Free worldwide shipping.",
     keywords: [
       "whiskcam",
       "what is whiskcam",
@@ -35,14 +47,7 @@ export async function generateMetadata({
       description:
         "A 24 g collar camera for cats and dogs. 1080P Full HD, no app needed.",
     },
-    alternates: {
-      canonical: `https://whiskcam.com/${locale}/what-is-whiskcam`,
-      languages: {
-        en: "https://whiskcam.com/en/what-is-whiskcam",
-        fr: "https://whiskcam.com/fr/what-is-whiskcam",
-        "x-default": "https://whiskcam.com/en/what-is-whiskcam",
-      },
-    },
+    alternates: alternatesFor("/what-is-whiskcam", locale),
   };
 }
 
@@ -53,99 +58,58 @@ export default async function WhatIsWhiskcamPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  // JSON-LD: Product + Organization entity
-  const productJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: "Whiskcam Original",
-    description:
-      "A 26-gram pet collar camera that records 1080P Full HD video with a 170° wide-angle lens. Clips onto any collar. No app, no WiFi required. Includes 32 GB MicroSD card and phone adapter.",
-    brand: { "@type": "Brand", name: "Whiskcam" },
-    image: "https://whiskcam.com/images/product/whiskcam-product-studio.webp",
-    url: "https://whiskcam.com",
-    weight: { "@type": "QuantitativeValue", value: "26", unitCode: "GRM" },
-    additionalProperty: [
-      {
-        "@type": "PropertyValue",
-        name: "Resolution",
-        value: "1080P Full HD",
-      },
-      {
-        "@type": "PropertyValue",
-        name: "Field of View",
-        value: "170 degrees",
-      },
-      {
-        "@type": "PropertyValue",
-        name: "Battery Life",
-        value: "Up to 2 hours",
-      },
-      {
-        "@type": "PropertyValue",
-        name: "Storage",
-        value: "32 GB MicroSD (included)",
-      },
-    ],
-    offers: {
-      "@type": "Offer",
-      price: "79.00",
-      priceCurrency: "EUR",
-      availability: "https://schema.org/InStock",
-      url: "https://whiskcam.com",
-      priceValidUntil: "2026-12-31",
-      hasMerchantReturnPolicy: {
-        "@type": "MerchantReturnPolicy",
-        applicableCountry: "US",
-        returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
-        merchantReturnDays: 30,
-        returnMethod: "https://schema.org/ReturnByMail",
-        returnFees: "https://schema.org/FreeReturn",
-      },
-      shippingDetails: {
-        "@type": "OfferShippingDetails",
-        shippingRate: {
-          "@type": "MonetaryAmount",
-          value: "0",
-          currency: "EUR",
-        },
-        shippingDestination: {
-          "@type": "DefinedRegion",
-          addressCountry: "US",
-        },
-        deliveryTime: {
-          "@type": "ShippingDeliveryTime",
-          handlingTime: {
-            "@type": "QuantitativeValue",
-            minValue: 1,
-            maxValue: 3,
-            unitCode: "DAY",
-          },
-          transitTime: {
-            "@type": "QuantitativeValue",
-            minValue: 5,
-            maxValue: 12,
-            unitCode: "DAY",
-          },
-        },
-      },
-    },
-  };
+  // Structured data. This page used to declare a *second*, unlinked Product with
+  // its own hardcoded price, weight and US-only shipping policy — a near-duplicate
+  // of the homepage's. It now references the same @id, so there is one Whiskcam
+  // product entity across the site, and the specs come from PRODUCT_FACTS.
+  const canonical = alternatesFor("/what-is-whiskcam", locale).canonical;
+  const f = PRODUCT_FACTS;
 
-  const breadcrumbJsonLd = {
+  const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
+    "@graph": [
+      organizationSchema(),
+      websiteSchema(),
       {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://whiskcam.com",
+        "@type": "Product",
+        "@id": PRODUCT_ID,
+        name: f.name,
+        description: `A ${f.weightGrams} g pet collar camera that records ${f.resolution} video with a ${f.fieldOfViewDegrees}° wide-angle lens. Clips onto any collar. No app, no WiFi required. Includes a ${f.storageGb} GB MicroSD card and a phone adapter.`,
+        brand: { "@id": ORG_ID },
+        manufacturer: { "@id": ORG_ID },
+        category: "Pet Cameras",
+        image: `${baseUrl}/images/product/whiskcam-product-studio.webp`,
+        url: baseUrl,
+        weight: {
+          "@type": "QuantitativeValue",
+          value: String(f.weightGrams),
+          unitCode: "GRM",
+        },
+        additionalProperty: productProperties(),
+        offers: offerSchema({
+          price: f.price,
+          currency: f.currency,
+          url: baseUrl,
+          inStock: true,
+        }),
       },
       {
-        "@type": "ListItem",
-        position: 2,
-        name: "What Is Whiskcam",
-        item: "https://whiskcam.com/what-is-whiskcam",
+        "@type": "WebPage",
+        "@id": canonical,
+        url: canonical,
+        name: "What Is Whiskcam?",
+        inLanguage: "en",
+        isPartOf: { "@id": WEBSITE_ID },
+        about: { "@id": PRODUCT_ID },
+        publisher: { "@id": ORG_ID },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${canonical}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+          { "@type": "ListItem", position: 2, name: "What Is Whiskcam", item: canonical },
+        ],
       },
     ],
   };
@@ -154,14 +118,10 @@ export default async function WhatIsWhiskcamPage({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="mx-auto max-w-3xl px-5 pt-32 pb-16 md:pt-40">
+      <div lang="en" className="mx-auto max-w-3xl px-5 pt-32 pb-16 md:pt-40">
         {/* Breadcrumb */}
         <nav className="mb-8 text-sm text-neutral-400" aria-label="Breadcrumb">
           <ol className="flex items-center gap-1.5">
@@ -182,7 +142,7 @@ export default async function WhatIsWhiskcamPage({
         <div className="prose prose-neutral mt-8 max-w-none prose-headings:text-wk-black prose-a:text-wk-amber prose-a:no-underline hover:prose-a:underline prose-strong:text-wk-black prose-table:text-sm prose-th:bg-neutral-50 prose-th:px-4 prose-th:py-2.5 prose-td:px-4 prose-td:py-2.5 prose-td:border-t">
           {/* Answer-first intro — 40-60 words for AI extraction */}
           <p className="lead text-lg">
-            Whiskcam is a <strong>26-gram pet collar camera</strong> that records 1080P Full HD video
+            Whiskcam is a <strong>24 g pet collar camera</strong> that records 1080P Full HD video
             from your cat or dog&apos;s point of view. It clips onto any collar, requires no app or
             WiFi, and ships as a complete kit (camera + 32 GB MicroSD + phone adapter + collar +
             cable + digital guide) for &euro;79 with free worldwide shipping.

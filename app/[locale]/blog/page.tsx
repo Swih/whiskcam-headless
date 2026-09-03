@@ -4,6 +4,7 @@ import { Link } from "i18n/navigation";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
+import { alternatesFor } from "lib/seo";
 
 export async function generateMetadata({
   params,
@@ -12,35 +13,28 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return {
-    title: "Blog",
+    title: "Cat Collar Camera Guides: Safety, Weight Limits & Comparisons",
     description:
-      "Guides, comparisons, and tips about cat collar cameras, pet safety, and capturing your pet's secret adventures.",
+      "13 tested guides on cat collar cameras: which models we tried, safe weight limits by cat size, playing AVI footage on an iPhone, and what the footage actually shows.",
     keywords: [
       "cat collar camera",
       "pet camera guide",
       "cat camera comparison",
       "Whiskcam blog",
     ],
-    alternates: {
-      canonical: `https://whiskcam.com/${locale}/blog`,
-      languages: {
-        en: "https://whiskcam.com/en/blog",
-        fr: "https://whiskcam.com/fr/blog",
-        "x-default": "https://whiskcam.com/en/blog",
-      },
-    },
+    alternates: alternatesFor("/blog", locale),
     openGraph: {
-      title: "Blog — Whiskcam",
+      title: "Cat Collar Camera Guides — Whiskcam",
       description:
-        "Guides, comparisons, and tips about cat collar cameras, pet safety, and capturing your pet's secret adventures.",
-      url: `https://whiskcam.com/${locale}/blog`,
+        "13 tested guides on cat collar cameras: models compared, safe weight limits by cat size, and what collar footage actually reveals.",
+      url: alternatesFor("/blog", locale).canonical,
       siteName: "Whiskcam",
       type: "website",
     },
     twitter: {
       card: "summary",
-      title: "Blog — Whiskcam",
-      description: "Guides and comparisons about cat collar cameras.",
+      title: "Cat Collar Camera Guides — Whiskcam",
+      description: "13 tested guides: models compared, safe weight limits, and what the footage shows.",
     },
   };
 }
@@ -78,7 +72,7 @@ export default async function BlogIndex({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      <div className="mx-auto max-w-4xl px-5 pt-32 pb-16 md:pt-40">
+      <div lang="en" className="mx-auto max-w-4xl px-5 pt-32 pb-16 md:pt-40">
         <h1 className="text-4xl font-bold text-wk-black md:text-5xl">Blog</h1>
         <p className="mt-4 text-lg text-neutral-600">
           Guides, comparisons, and everything you need to know about cat collar

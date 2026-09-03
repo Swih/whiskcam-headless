@@ -2,6 +2,7 @@ import Footer from "components/layout/footer";
 import { Link } from "i18n/navigation";
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
+import { alternatesFor } from "lib/seo";
 
 export async function generateMetadata({
   params,
@@ -13,18 +14,11 @@ export async function generateMetadata({
     title: "Shipping Policy",
     description: "Whiskcam shipping information — free worldwide shipping, delivery times, and tracking.",
     keywords: ["Whiskcam", "shipping policy", "free shipping", "delivery times"],
-    alternates: {
-      canonical: `https://whiskcam.com/${locale}/policies/shipping`,
-      languages: {
-        en: "https://whiskcam.com/en/policies/shipping",
-        fr: "https://whiskcam.com/fr/policies/shipping",
-        "x-default": "https://whiskcam.com/en/policies/shipping",
-      },
-    },
+    alternates: alternatesFor("/policies/shipping", locale),
     openGraph: {
       title: "Shipping Policy — Whiskcam",
       description: "Free worldwide shipping, delivery times, and tracking information.",
-      url: `https://whiskcam.com/${locale}/policies/shipping`,
+      url: alternatesFor("/policies/shipping", locale).canonical,
       siteName: "Whiskcam",
       type: "website",
     },
@@ -49,7 +43,7 @@ export default async function ShippingPage({
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://whiskcam.com" },
-      { "@type": "ListItem", position: 2, name: "Shipping Policy", item: `https://whiskcam.com/${locale}/policies/shipping` },
+      { "@type": "ListItem", position: 2, name: "Shipping Policy", item: alternatesFor("/policies/shipping", locale).canonical },
     ],
   };
   return (

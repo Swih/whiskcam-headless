@@ -34,6 +34,7 @@ export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
   const NAV_LINKS = [
     { title: t("shop"), path: "#product" },
     { title: t("footage"), path: "#footage" },
+    { title: t("guides"), path: "/blog" },
     { title: t("faq"), path: "#faq" },
     { title: t("about"), path: "/about" },
   ];

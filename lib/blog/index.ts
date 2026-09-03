@@ -24,7 +24,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description:
       "We tested 5 cat collar cameras on 4 different cats (3.2-7.8 kg) for 5 months. Honest weight, battery, footage, and price comparison — including the ones that broke.",
     datePublished: "2026-03-19T00:00:00Z",
-    dateModified: "2026-04-29T00:00:00Z",
+    dateModified: "2026-09-03T00:00:00Z",
     author: "Whiskcam Team",
     readingTime: "12 min read",
     tags: ["cat collar camera", "comparison", "pet camera", "review"],
@@ -33,11 +33,11 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   },
   {
     slug: "are-cat-collar-cameras-safe",
-    title: "Are Cat Collar Cameras Safe? What Vets and Owners Say",
+    title: "Are Cat Collar Cameras Safe? Weight Limits by Cat Size",
     description:
-      "Are collar cameras safe for cats? We cover weight limits, breakaway collars, behavioral signs, and what veterinarians recommend for pet wearable cameras.",
+      "The 3% body-weight rule, what it means in grams for a 2-7 kg cat, the breakaway collar rule, and the four behavioural signs that mean take it off. With a per-size table.",
     datePublished: "2026-03-19T00:00:00Z",
-    dateModified: "2026-03-19T00:00:00Z",
+    dateModified: "2026-09-03T00:00:00Z",
     author: "Whiskcam Team",
     readingTime: "8 min read",
     tags: ["cat safety", "collar camera", "veterinary", "pet wearable"],

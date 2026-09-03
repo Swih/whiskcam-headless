@@ -18,6 +18,7 @@ import { notFound } from "next/navigation";
 import { routing } from "../../i18n/routing";
 import "../globals.css";
 import { baseUrl } from "lib/utils";
+import { alternatesFor } from "lib/seo";
 import { DM_Sans } from "next/font/google";
 
 const dmSans = DM_Sans({
@@ -68,17 +69,7 @@ export async function generateMetadata({
       follow: true,
       index: true,
     },
-    alternates: {
-      canonical:
-        locale === "en" ? baseUrl : `${baseUrl}/${locale}`,
-      languages: {
-        en: baseUrl,
-        fr: `${baseUrl}/fr`,
-        de: `${baseUrl}/de`,
-        es: `${baseUrl}/es`,
-        "x-default": baseUrl,
-      },
-    },
+    alternates: alternatesFor("", locale),
   };
 }
 
@@ -132,7 +123,7 @@ export default async function LocaleLayout({
             <Toaster closeButton />
             <EmailPopup />
             <CookieConsent />
-            <Analytics />
+            <Analytics checkoutDomain={process.env.SHOPIFY_STORE_DOMAIN} />
             <VercelAnalytics />
           </CartProvider>
         </NextIntlClientProvider>
