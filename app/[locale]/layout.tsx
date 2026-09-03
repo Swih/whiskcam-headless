@@ -123,7 +123,11 @@ export default async function LocaleLayout({
             <Toaster closeButton />
             <EmailPopup />
             <CookieConsent />
-            <Analytics checkoutDomain={process.env.SHOPIFY_STORE_DOMAIN} />
+            <Analytics
+              checkoutDomain={
+                process.env.SHOPIFY_CHECKOUT_DOMAIN || process.env.SHOPIFY_STORE_DOMAIN
+              }
+            />
             <VercelAnalytics />
           </CartProvider>
         </NextIntlClientProvider>

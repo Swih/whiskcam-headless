@@ -1,6 +1,7 @@
 "use server";
 
 import { TAGS } from "lib/constants";
+import { baseUrl } from "lib/utils";
 import {
   addToCart,
   createCart,
@@ -97,15 +98,21 @@ export async function updateItemQuantity(
 export async function redirectToCheckout() {
   const cart = await getCart();
   if (cart?.checkoutUrl) {
-    // Shopify returns checkout URLs with the custom domain (whiskcam.com),
-    // but checkout must be served by Shopify directly. Replace with myshopify domain.
-    const shopifyDomain = process.env.SHOPIFY_STORE_DOMAIN;
+    // Shopify builds the checkout URL on its own primary domain. Send the buyer
+    // straight there — with one exception: if it comes back on the storefront
+    // host, that host is served by Vercel and would 404, so it has to be swapped
+    // for a host Shopify actually answers on.
+    //
+    // The previous test was `!url.includes(".myshopify.com")`, which turns into a
+    // trap the moment checkout moves to a branded subdomain: a URL on
+    // checkout.whiskcam.com would be rewritten straight back to *.myshopify.com,
+    // silently undoing the move. Comparing against the storefront host instead is
+    // correct whether checkout lives on myshopify.com or on our own subdomain.
+    const checkoutHost =
+      process.env.SHOPIFY_CHECKOUT_DOMAIN || process.env.SHOPIFY_STORE_DOMAIN;
     let url = cart.checkoutUrl;
-    if (shopifyDomain && !url.includes(".myshopify.com")) {
-      url = url.replace(
-        /https?:\/\/[^/]+/,
-        `https://${shopifyDomain}`
-      );
+    if (checkoutHost && new URL(url).hostname === new URL(baseUrl).hostname) {
+      url = url.replace(/https?:\/\/[^/]+/, `https://${checkoutHost}`);
     }
     redirect(url);
   }
