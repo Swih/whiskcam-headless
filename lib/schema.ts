@@ -19,14 +19,6 @@ export const PRODUCT_ID = `${baseUrl}/#product`;
 
 const f = PRODUCT_FACTS;
 
-/** One year out, recomputed at render time. A hardcoded date silently expires
- *  and Google then reports the offer as stale. */
-export function priceValidUntil(): string {
-  const d = new Date();
-  d.setFullYear(d.getFullYear() + 1);
-  return d.toISOString().slice(0, 10);
-}
-
 export function organizationSchema() {
   return {
     "@type": "Organization",
@@ -117,8 +109,7 @@ export function productProperties() {
     { "@type": "PropertyValue", name: "Weight", value: `${f.weightGrams} g` },
     { "@type": "PropertyValue", name: "Resolution", value: f.resolution },
     { "@type": "PropertyValue", name: "Field of View", value: `${f.fieldOfViewDegrees} degrees` },
-    { "@type": "PropertyValue", name: "Battery Life", value: `Up to ${f.batteryHours} hours` },
-    { "@type": "PropertyValue", name: "Storage", value: `${f.storageGb} GB MicroSD (included)` },
+    { "@type": "PropertyValue", name: "Storage", value: `${f.storageGb} GB MicroSD (${f.storageIncluded ? "included" : "required separately; not included"})` },
     { "@type": "PropertyValue", name: "Charging", value: `${f.charging}, full charge under ${f.chargeTimeHours} hour` },
     { "@type": "PropertyValue", name: "Video Format", value: f.videoFormat },
     { "@type": "PropertyValue", name: "App Required", value: "No" },
@@ -142,7 +133,6 @@ export function offerSchema(opts: {
       : "https://schema.org/OutOfStock",
     itemCondition: "https://schema.org/NewCondition",
     seller: { "@id": ORG_ID },
-    priceValidUntil: priceValidUntil(),
     hasMerchantReturnPolicy: merchantReturnPolicy(),
     shippingDetails: offerShippingDetails(opts.currency),
   };

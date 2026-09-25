@@ -5,7 +5,7 @@ import { trackAddToCart } from "components/analytics";
 import { addItem } from "components/cart/actions";
 import { Product, ProductVariant } from "lib/shopify/types";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useActionState, useTransition } from "react";
+import { useState, useTransition } from "react";
 import { useTranslations } from "next-intl";
 import { useCart } from "./cart-context";
 
@@ -66,7 +66,8 @@ export function AddToCart({ product }: { product: Product }) {
   const { addCartItem } = useCart();
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [message, formAction] = useActionState(addItem, null);
+  const [message, setMessage] = useState<string | null>(null);
+  const t = useTranslations("stickyAtc");
   const [isPending, startTransition] = useTransition();
 
   const variant = variants.find((variant: ProductVariant) =>
@@ -76,7 +77,6 @@ export function AddToCart({ product }: { product: Product }) {
   );
   const defaultVariantId = variants.length === 1 ? variants[0]?.id : undefined;
   const selectedVariantId = variant?.id || defaultVariantId;
-  const addItemAction = formAction.bind(null, selectedVariantId);
   const finalVariant = variants.find(
     (variant) => variant.id === selectedVariantId,
   )!;
@@ -85,8 +85,15 @@ export function AddToCart({ product }: { product: Product }) {
     <form
       action={() => {
         startTransition(async () => {
+          if (!finalVariant || !selectedVariantId) return;
+          setMessage(null);
+          const error = await addItem(null, selectedVariantId);
+          if (error) {
+            setMessage(t("addError"));
+            router.refresh();
+            return;
+          }
           addCartItem(finalVariant, product);
-          await addItemAction();
           trackAddToCart({
             name: product.title,
             price: finalVariant.price.amount,
@@ -102,7 +109,7 @@ export function AddToCart({ product }: { product: Product }) {
         selectedVariantId={selectedVariantId}
         isPending={isPending}
       />
-      <p aria-live="polite" className="sr-only" role="status">
+      <p aria-live="polite" className="mt-2 text-sm text-red-700" role="status">
         {message}
       </p>
     </form>

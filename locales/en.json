@@ -16,8 +16,8 @@
     "plusFreeShipping": "+ Free Shipping",
     "plusFreeShipShort": "+ Free Ship.",
     "ends": "— Ends",
-    "staticWithDiscount": "Save {pct}% — Free shipping worldwide",
-    "staticDefault": "Free shipping worldwide"
+    "staticWithDiscount": "Free shipping to supported destinations",
+    "staticDefault": "Free shipping · Selected countries"
   },
   "hero": {
     "tagline": "The Cat Collar Camera",
@@ -25,17 +25,17 @@
     "subtitle": "See through their eyes. Full HD POV footage from a 24g collar camera — for cats and small dogs under 10 kg. No app, no WiFi, no subscription.",
     "trust": "Loved by early Whiskcam owners",
     "ctaButton": "I Want This",
-    "ctaSubtext": "Free worldwide shipping · Plays on iPhone & Android · 30-day money-back",
-    "urgencyBadge": "Now shipping worldwide"
+    "ctaSubtext": "Free shipping · Selected countries · 30-day money-back",
+    "urgencyBadge": "Free shipping · Selected countries"
   },
   "stats": {
     "fullHd": "Full HD",
     "wideAngle": "Wide Angle",
     "ultraLight": "Ultra-Light",
-    "batteryLife": "Battery Life",
+    "batteryLife": "Rechargeable",
     "trustReviews": "Rated 4.8/5 by early owners",
     "trustReturn": "30-day money-back",
-    "trustShipping": "Free worldwide shipping",
+    "trustShipping": "Free shipping to supported destinations",
     "trustSecure": "Secure payment"
   },
   "videoShowcase": {
@@ -81,7 +81,7 @@
       },
       "2": {
         "title": "Ultra-Light — 24g",
-        "description": "Lighter than a small bell. Even small cats won't feel it."
+        "description": "24 g camera body. Check the complete mounted weight and your pet’s comfort."
       },
       "3": {
         "title": "No App. No WiFi.",
@@ -89,11 +89,11 @@
       },
       "4": {
         "title": "USB-C Charging",
-        "description": "Fully charged in under an hour. Ready for the next adventure."
+        "description": "Recharge via USB-C. Remove the camera from your pet before charging."
       },
       "5": {
-        "title": "Safe for Pets",
-        "description": "Smooth edges, universal clip, designed for comfort. Your pet is safe."
+        "title": "Check the Fit",
+        "description": "Rounded edges and a collar clip. Check the mount and keep the collar release clear."
       }
     }
   },
@@ -121,7 +121,7 @@
     "steps": {
       "0": {
         "title": "Clip It On",
-        "description": "Attach Whiskcam to any collar in 2 seconds. Fits all sizes."
+        "description": "Attach to a compatible collar without obstructing its release. Check the fit before use."
       },
       "1": {
         "title": "Press Record",
@@ -136,30 +136,30 @@
   "product": {
     "overline": "Shop",
     "title": "Whiskcam Original",
-    "subtitle": "Everything included. Ready to film out of the box.",
+    "subtitle": "Camera, phone adapter, collar, charging cable and guide included.",
     "badgeBestSeller": "Best Seller",
     "badge1080p": "1080P Full HD",
     "badgeNoApp": "No App",
     "reviews": "Loved by early Whiskcam owners",
     "keyBenefits": {
       "0": "Full HD 1080P — 170° wide-angle lens",
-      "1": "24g ultra-light — even small cats won't feel it",
+      "1": "24 g camera body — check fit and total mounted weight",
       "2": "No app, no WiFi — one click and it films",
-      "3": "Up to 2h battery life — recharged in under 1h"
+      "3": "USB-C rechargeable — charge before your pet’s outing"
     },
     "freeGiftsLabel": "Free Gifts With Your Order",
     "microsdName": "32GB MicroSD Card",
-    "microsdDetail": "Pre-installed, ready to record",
+    "microsdDetail": "MicroSD card not included: the 32GB card is currently unavailable. A separate compatible MicroSD card is required to record.",
     "adapterName": "USB-C/Lightning Adapter",
     "adapterDetail": "View footage on your phone",
-    "shippingName": "Free Worldwide Shipping",
-    "shippingDetail": "7-14 business days",
+    "shippingName": "Free shipping to supported destinations",
+    "shippingDetail": "Check delivery to your country",
     "free": "FREE",
     "outOfStock": "OUT OF STOCK",
     "totalValue": "Total value",
     "youPay": "You pay",
-    "atcFallback": "Connect Shopify to enable Add to Cart",
-    "freeShippingMoneyBack": "Free shipping · 30-day money back",
+    "atcFallback": "Ordering is temporarily unavailable. Please try again shortly.",
+    "freeShippingMoneyBack": "Free shipping · Selected countries · 30-day money-back",
     "trustShipping": "Free Shipping",
     "trustReturn": "30-Day Return",
     "trustSecure": "Secure Pay",
@@ -170,7 +170,7 @@
     "specFullHd": "Full HD",
     "specWideAngle": "Wide Angle",
     "specUltralight": "Ultralight",
-    "specBattery": "Battery",
+    "specBattery": "Rechargeable",
     "specPrivacy": "Privacy",
     "specPlugPlay": "Plug & Play",
     "galleryBadge": "Best-Seller",
@@ -183,7 +183,7 @@
       },
       "1": {
         "item": "32GB MicroSD Card",
-        "detail": "Pre-installed, ready to record"
+        "detail": "MicroSD card not included: the 32GB card is currently unavailable. A separate compatible MicroSD card is required to record."
       },
       "2": {
         "item": "SD Card Adapter",
@@ -195,13 +195,14 @@
       },
       "4": {
         "item": "USB-C Cable",
-        "detail": "Fast charging, full in under 1 hour"
+        "detail": "USB-C charging"
       },
       "5": {
         "item": "Digital Guide",
         "detail": "\"How to Capture Your Pet's Secret Life\""
       }
-    }
+    },
+    "storageNotice": "MicroSD card not included: the 32GB card is currently unavailable. A separate compatible MicroSD card is required to record."
   },
   "comparison": {
     "overline": "Compare",
@@ -223,25 +224,27 @@
   },
   "cta": {
     "overline": "Right now,",
-    "title": "Your cat is somewhere. Don't you want to know where?",
-    "subtitle": "Whiskcam films everything in Full HD from their collar. Order today, discover tomorrow.",
+    "title": "Discover your cat’s adventures through their eyes.",
+    "subtitle": "Record Full HD footage on their collar, then watch it when they return. No GPS or live viewing.",
     "button": "I Want This",
-    "footnote": "Free shipping worldwide · 30-day money-back guarantee"
+    "footnote": "Free shipping to supported destinations"
   },
   "duoPack": {
-    "badge": "Save €20",
+    "badge": "For two pets",
     "overline": "Multi-pet household?",
     "title": "Two Whiskcams. One household. Endless POV.",
-    "subtitle": "If you have more than one cat — or a cat and a small dog — the Duo Pack saves you €20 and means never waiting for one camera to finish charging before the other explores.",
+    "subtitle": "Two cameras to capture both pets’ adventures.",
     "price": "€129",
     "compareAtPrice": "€218",
     "savings": "-41%",
     "benefits": {
       "0": "Two cameras, two adventures, at the same time",
-      "1": "Free worldwide shipping included",
+      "1": "Free shipping to supported destinations",
       "2": "Same 30-day money-back guarantee on both"
     },
-    "cta": "Shop the Duo Pack"
+    "cta": "Shop the Duo Pack",
+    "saveAmount": "Save {amount}",
+    "versusTwoSingles": "vs buying two individually"
   },
   "peaceOfMind": {
     "overline": "Peace of mind",
@@ -276,31 +279,31 @@
       },
       "1": {
         "question": "Is Whiskcam safe for my cat or small dog?",
-        "answer": "Whiskcam is safe for adult cats and small dogs under 10 kg (Chihuahua, Yorkshire, Pomeranian, Dachshund, Cavalier King Charles, and similar breeds). At just 24g — lighter than a small bell — it clips securely onto any existing collar with smooth, rounded edges. Even small cats barely notice it. We recommend a breakaway collar for outdoor pets."
+        "answer": "Suitability depends on your pet, collar fit and the complete mounted setup. The camera weighs 24 g; add the collar, mount and tags to assess total weight. Use a quick-release collar for a cat and start with a brief supervised trial. Remove the equipment if it changes movement or causes distress. Ask your vet about individual suitability."
       },
       "2": {
         "question": "How long does the battery last?",
-        "answer": "Whiskcam records up to 2 hours of Full HD video on a full charge — perfect for capturing morning patrols and evening adventures. A full charge takes under an hour via USB-C."
+        "answer": "Runtime varies with recording conditions. We are verifying continuous recording time before publishing a specific duration. Charge via USB-C before use."
       },
       "3": {
         "question": "Do I need to download an app?",
-        "answer": "No app, no WiFi, no accounts. Just press the record button on the camera. When your pet comes home, pop out the SD card, plug it into your phone using the included adapter, and enjoy the footage. It's that simple."
+        "answer": "No app, no WiFi, no accounts. Just press the record button on the camera. When your pet comes home, pop out the SD card, plug it into your phone using the included adapter, and enjoy the footage. It's that simple. MicroSD card not included: the 32GB card is currently unavailable. A separate compatible MicroSD card is required to record."
       },
       "4": {
         "question": "How do I watch the videos on my phone?",
-        "answer": "Every Whiskcam comes with a MicroSD-to-USB-C/Lightning adapter. Plug it into your phone and view the videos directly in your gallery app. You can also plug the SD card into any computer with a card reader."
+        "answer": "Use the included adapter to open the MicroSD card on your phone, or use a card reader on a computer. AVI playback depends on your device: an AVI-compatible player such as VLC or a video conversion may be needed, especially on iPhone."
       },
       "5": {
         "question": "Will it fit my pet's collar?",
-        "answer": "Whiskcam comes with an adjustable 39 cm breakaway collar and also clips onto any existing collar. It fits all cats and small dogs under 10 kg (Chihuahua, Yorkshire, Pomeranian, Dachshund, Cavalier King Charles, and similar breeds). For larger dogs we recommend a dedicated pet action camera mount."
+        "answer": "The kit lists an adjustable 39 cm collar. Measure your pet and follow the collar’s fitting instructions; a stated length does not guarantee fit. Check compatibility with the camera clip and keep the release unobstructed."
       },
       "6": {
         "question": "How long does shipping take?",
-        "answer": "We ship worldwide for free. Delivery typically takes 7–14 business days depending on your location. You'll receive a tracking number as soon as your Whiskcam ships."
+        "answer": "Shipping is free to our 17 supported destinations. US and UK: 7–12 business days; supported European destinations: 8–14; Canada and Australia: 10–14; New Zealand: 10–18. These are estimates. Check the delivery destinations before ordering."
       },
       "7": {
         "question": "What video format does it record in?",
-        "answer": "Whiskcam records in AVI format at 1080P Full HD. The files play on any device — phone, tablet, or computer. You can easily convert or share them on TikTok, Instagram, or YouTube."
+        "answer": "Whiskcam records AVI video in 1080P Full HD. Some phones require a compatible player or conversion to MP4 before viewing or sharing."
       }
     }
   },
@@ -324,7 +327,7 @@
       "privacy": "Privacy Policy",
       "terms": "Terms of Service"
     },
-    "trustShipping": "Free Worldwide Shipping",
+    "trustShipping": "Free shipping to supported destinations",
     "trustReturns": "30-Day Money Back",
     "trustSecure": "Secure Checkout",
     "trustPetSafe": "Pet-Safe Design",
@@ -350,19 +353,24 @@
     "empty": "Your cart is empty.",
     "emptySubtext": "Add Whiskcam to get started",
     "startShopping": "Continue Shopping",
-    "freeShippingBanner": "You qualify for FREE worldwide shipping!",
+    "freeShippingBanner": "Free shipping to supported destinations",
     "freeGiftsLabel": "🎁 Free gifts included",
     "freeLabel": "FREE",
     "outOfStockLabel": "OUT OF STOCK",
-    "freeWorldwideShipping": "Free Worldwide Shipping",
+    "freeWorldwideShipping": "Free shipping to supported destinations",
     "subtotal": "Subtotal",
     "shipping": "Shipping",
     "total": "Total",
-    "checkout": "Complete My Order",
+    "checkout": "Continue to secure checkout",
     "processing": "Processing...",
     "secureCheckout": "Secure checkout",
     "moneyBack": "30-day money back",
-    "saving": "You're saving {amount} on this order"
+    "saving": "You're saving {amount} on this order",
+    "deliveryEstimate": "Free shipping · Selected countries",
+    "close": "Close cart",
+    "duoName": "Whiskcam Duo Pack — 2 cameras",
+    "cardNotIncluded": "MicroSD not included",
+    "includedAdapter": "Phone adapter included with your camera"
   },
   "stickyAtc": {
     "productName": "Whiskcam Original",
@@ -370,7 +378,8 @@
     "adding": "Adding...",
     "added": "Added!",
     "outOfStock": "Out of Stock",
-    "selectOption": "Select an Option"
+    "selectOption": "Select an Option",
+    "addError": "We could not add this item. Please try again."
   },
   "about": {
     "overline": "Our Story",
@@ -389,5 +398,23 @@
     "fr": "FR",
     "de": "DE",
     "es": "ES"
+  },
+  "delivery": {
+    "shipping": "Free shipping to supported destinations",
+    "short": "Free shipping · Selected countries",
+    "check": "Check delivery to your country",
+    "select": "Country / region",
+    "available": "Free shipping · {min}–{max} business days (estimated)",
+    "unavailable": "We do not currently ship to this destination.",
+    "destinations": "View all delivery destinations",
+    "other": "Another country",
+    "battery": "USB-C rechargeable — charge before your pet’s outing",
+    "batteryAnswer": "Runtime varies with recording conditions. We are verifying continuous recording time before publishing a specific duration. Charge via USB-C before use.",
+    "charge": "USB-C charging",
+    "batteryLabel": "Rechargeable",
+    "faqShipping": "Shipping is free to our 17 supported destinations. US and UK: 7–12 business days; supported European destinations: 8–14; Canada and Australia: 10–14; New Zealand: 10–18. These are estimates. Check the delivery destinations before ordering.",
+    "countries": "We currently deliver to the countries listed below. Other destinations, including Germany, Italy and Switzerland, are not available.",
+    "note": "Delivery estimates are not guaranteed arrival dates. Any import duties are separate from shipping; contact us if you need clarification.",
+    "error": "We could not add this item. Please try again."
   }
 }

@@ -1,14 +1,23 @@
-import { getArticle, getAllSlugs, BLOG_ARTICLES } from "lib/blog";
+import { getArticle, getAllSlugs, getRelatedArticles } from "lib/blog";
 import Footer from "components/layout/footer";
 import { Link } from "i18n/navigation";
+import CanonicalLink from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { setRequestLocale } from "next-intl/server";
 import { alternatesFor } from "lib/seo";
-import { ORG_ID, WEBSITE_ID, organizationSchema, websiteSchema } from "lib/schema";
+import {
+  ORG_ID,
+  WEBSITE_ID,
+  organizationSchema,
+  websiteSchema,
+} from "lib/schema";
 import { baseUrl } from "lib/utils";
+import { CAMERA_OPTIONS, COMPARISON_FAQS } from "lib/blog/comparison-facts";
+import { BlogProductLink } from "components/blog/product-link";
+import { SAFETY_FAQS, WEIGHT_FAQS } from "lib/blog/safety-facts";
 
 // Article content components — lazy loaded per slug
 const articleComponents: Record<string, React.ComponentType> = {
@@ -79,6 +88,7 @@ export async function generateMetadata({
     authors: [{ name: article.author }],
     openGraph: {
       type: "article",
+      url: alternatesFor(`/blog/${slug}`, locale).canonical,
       title: article.title,
       description: article.description,
       publishedTime: article.datePublished,
@@ -119,7 +129,7 @@ export default async function BlogArticlePage({
   if (!ArticleContent) notFound();
 
   // Related articles (exclude current)
-  const related = BLOG_ARTICLES.filter((a) => a.slug !== slug);
+  const related = getRelatedArticles(slug);
 
   const canonical = alternatesFor(`/blog/${slug}`, locale).canonical;
   const articleImage = article.image
@@ -156,124 +166,27 @@ export default async function BlogArticlePage({
     "@id": `${canonical}#breadcrumb`,
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
-      { "@type": "ListItem", position: 2, name: "Blog", item: `${baseUrl}/blog` },
-      { "@type": "ListItem", position: 3, name: article.title, item: canonical },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: `${baseUrl}/blog`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: article.title,
+        item: canonical,
+      },
     ],
   };
 
-  // JSON-LD: HowTo (only for the comparatif article)
-  const howToJsonLd =
-    slug === "best-cat-collar-cameras-2026"
-      ? {
-          "@type": "HowTo",
-          "@id": `${canonical}#howto`,
-          name: "How to Set Up a Cat Collar Camera",
-          description:
-            "Step-by-step guide to setting up a collar camera on your cat for the first time.",
-          step: [
-            {
-              "@type": "HowToStep",
-              name: "Charge the camera",
-              text: "Charge the camera fully using the included USB-C cable. Most cameras charge in under 1 hour.",
-            },
-            {
-              "@type": "HowToStep",
-              name: "Insert the MicroSD card",
-              text: "Insert the MicroSD card if not pre-installed. Format it first on your computer if it's new.",
-            },
-            {
-              "@type": "HowToStep",
-              name: "Attach to collar",
-              text: "Attach the camera to your cat's collar. Use a breakaway collar for outdoor cats.",
-            },
-            {
-              "@type": "HowToStep",
-              name: "Test indoors",
-              text: "Let your cat wear it inside for 15-30 minutes. Watch for signs of discomfort.",
-            },
-            {
-              "@type": "HowToStep",
-              name: "Record",
-              text: "Press record and let your cat explore. When they return, remove the SD card and view the footage.",
-            },
-          ],
-        }
-      : null;
-
-  // JSON-LD: FAQPage (for articles with FAQ sections)
-  const faqItems: { question: string; answer: string }[] = [];
-  if (slug === "mr-petcam-vs-whiskcam") {
-    faqItems.push(
-      {
-        question: "Is Mr Petcam better than Whiskcam?",
-        answer:
-          "For cats over about 6 kg, or if you already own a MicroSD card and value a longer brand track record, Mr Petcam is a reasonable choice. For cats under 6 kg the weight difference decides it: Whiskcam is 24 g against roughly 38 g.",
-      },
-      {
-        question: "How much does Mr Petcam cost in total?",
-        answer:
-          "The camera lists around $70, but the MicroSD card and phone adapter are sold separately and add roughly $15-20, bringing the realistic total to about $85-90.",
-      },
-      {
-        question: "Do Mr Petcam or Whiskcam stream live or use an app?",
-        answer:
-          "Neither. Both record to a MicroSD card you retrieve afterwards. No WiFi, no live streaming, no app — a WiFi radio adds weight and heat to something worn on an animal's neck.",
-      },
-      {
-        question: "Do either have night vision?",
-        answer:
-          "No. Both are daylight cameras and footage degrades noticeably in low light.",
-      },
-      {
-        question: "Can I put either on a dog?",
-        answer:
-          "Both work on small dogs under about 10 kg. For a larger dog use a dedicated action camera harness mount rather than a collar clip.",
-      },
-    );
-  }
-  if (slug === "best-cat-collar-cameras-2026") {
-    faqItems.push(
-      {
-        question: "How heavy should a cat collar camera be?",
-        answer:
-          "Under 30 g is ideal for most cats. The veterinary guideline is that wearables should weigh less than 3-5% of body weight. For a 4 kg cat, that's a maximum of 120-200 g.",
-      },
-      {
-        question: "Do cat collar cameras have WiFi or live streaming?",
-        answer:
-          "Most dedicated collar cameras do not have WiFi or live streaming. They record to an SD card that you retrieve later, which keeps them lighter and simpler.",
-      },
-      {
-        question: "Cat collar camera vs GoPro — which is better for cats?",
-        answer:
-          "A dedicated collar camera. A GoPro weighs 154 g vs 26-38 g for collar cameras, costs $350+ vs $50-70, and the video quality difference is irrelevant on social media.",
-      },
-      {
-        question: "How much storage do I need for a cat collar camera?",
-        answer:
-          "At 1080P, most collar cameras use approximately 1-2 GB per 10 minutes. A 32 GB card gives you roughly 3-5 hours of footage.",
-      },
-    );
-  }
-  if (slug === "are-cat-collar-cameras-safe") {
-    faqItems.push(
-      {
-        question: "Can a collar camera hurt my cat's neck?",
-        answer:
-          "Not if the camera is under 40 g and the collar fits properly. The collar should allow two fingers between it and your cat's neck.",
-      },
-      {
-        question: "Can the camera overheat on my cat?",
-        answer:
-          "Dedicated collar cameras are designed for the heat generated during recording. They don't get hot enough to burn. Always remove for charging.",
-      },
-      {
-        question: "Is it legal to record with a cat collar camera?",
-        answer:
-          "In most countries, recording video in public spaces is legal. Audio recording laws vary. Since collar cameras capture outdoor adventures, this is rarely an issue.",
-      },
-    );
-  }
+  // The two updated comparisons share exactly the visible FAQ text.
+  const faqItems: { question: string; answer: string }[] =
+    slug in COMPARISON_FAQS
+      ? [...COMPARISON_FAQS[slug as keyof typeof COMPARISON_FAQS]]
+      : [];
+  if (slug === "are-cat-collar-cameras-safe") faqItems.push(...SAFETY_FAQS);
   if (slug === "what-cats-do-when-alone-at-home") {
     faqItems.push(
       {
@@ -298,79 +211,7 @@ export default async function BlogArticlePage({
       },
     );
   }
-  if (slug === "how-to-watch-avi-on-iphone-cat-cam") {
-    faqItems.push(
-      {
-        question: "Why won't my iPhone play AVI files from a cat camera?",
-        answer:
-          "iOS Photos only supports MOV, MP4 (H.264/HEVC), and M4V. AVI is a legacy container format Apple has never added native support for. You need a third-party app like VLC or a converter.",
-      },
-      {
-        question: "What is the fastest way to watch cat camera AVI on iPhone?",
-        answer:
-          "Install VLC for Mobile (free). Plug the SD card via USB-C or Lightning reader, open Files, tap the AVI, share to VLC. Playback is instant without conversion.",
-      },
-      {
-        question: "How do I post cat camera footage to TikTok from iPhone?",
-        answer:
-          "TikTok requires MP4. Play the AVI in VLC, use Share → Save to Photos (VLC converts automatically). Takes 20-30 seconds per 2-minute clip on a modern iPhone. Then upload to TikTok normally.",
-      },
-      {
-        question: "Do all cat collar cameras use AVI?",
-        answer:
-          "No. Lower-cost cameras default to AVI for battery efficiency. Premium and newer models increasingly default to MP4. Check the camera's specs — MJPEG or AVI output both indicate AVI files.",
-      },
-    );
-  }
-  if (slug === "cat-collar-weight-chart-by-size") {
-    faqItems.push(
-      {
-        question: "How heavy can a cat collar be?",
-        answer:
-          "A cat collar plus any attached device should weigh less than 3% of the cat's healthy body weight for daily use, and 5% maximum for short sessions. For a 4 kg adult cat, that's 120 g maximum all-day (60 g ideal). Most collar cameras weigh 20-40 g, leaving headroom for the collar and tags.",
-      },
-      {
-        question: "What is the maximum collar weight for a small cat?",
-        answer:
-          "For a 3 kg small adult cat, the 3% daily limit is 90 g total, and the 5% short-session limit is 150 g. A 26 g camera plus a 10 g nylon breakaway collar comes to 36 g — 1.2% of body weight. Avoid stacking heavy accessories past 90 g combined.",
-      },
-      {
-        question: "Is 40 grams too heavy for a cat?",
-        answer:
-          "No, not for a healthy adult cat over roughly 2.5 kg. 40 g on a 3 kg cat is 1.33% of body weight, well under the 3% daily threshold. For cats under 2.5 kg or kittens, stick to cameras under 30 g and keep sessions short. Always include the collar weight in your total.",
-      },
-      {
-        question: "Can kittens wear collar cameras?",
-        answer:
-          "Not safely under 2 kg or under 6 months old. Kittens are still developing their cervical spine and neck muscles, and even a light 26 g camera represents a disproportionate load on a growing skeleton. Wait until the kitten is at least 6 months old and reliably over 2 kg.",
-      },
-    );
-  }
-  if (slug === "i-filmed-my-cat-for-7-days-what-i-learned") {
-    faqItems.push(
-      {
-        question: "Did the camera bother your cat?",
-        answer:
-          "Barely. About 20 minutes of mild irritation on the first day — a couple of scratches, one head-shake — then she ignored it. By day 3 she didn't react at all when the camera was clipped on. A cat already used to a breakaway collar adapts much faster than one that has never worn anything around the neck.",
-      },
-      {
-        question:
-          "What battery life did you actually get from a cat collar camera?",
-        answer:
-          "About 90-120 minutes per session in practice, slightly less than the manufacturer spec. Cold weather shortens it further. The camera warms up slightly during long recordings, which is normal. Plan for roughly two hours per full charge in real-world use.",
-      },
-      {
-        question: "Can you use a collar camera at night?",
-        answer:
-          "Daylight-first cameras without true night vision produce grainy but workable footage in rooms with ambient light from streetlamps or a hallway. Fully pitch-dark rooms are essentially unusable. If night footage matters, buy a model with an actual infrared sensor, not a standard daytime camera.",
-      },
-      {
-        question: "Is a 7-day experiment enough to learn your cat's routine?",
-        answer:
-          "Seven days is enough to spot the main recurring patterns — sleep spots, favorite routes, social encounters. Rare behaviors (monthly patterns, weather-dependent routines) need longer. For most owners, one week of recording gives 90% of the interesting insights that a month would.",
-      },
-    );
-  }
+  if (slug === "cat-collar-weight-chart-by-size") faqItems.push(...WEIGHT_FAQS);
   if (slug === "5-weird-discoveries-from-cat-collar-cameras") {
     faqItems.push(
       {
@@ -394,30 +235,6 @@ export default async function BlogArticlePage({
         question: "Can short recording sessions reveal cat behavior patterns?",
         answer:
           "Not reliably. Most interesting patterns need at least 3-4 hours of continuous recording to become visible. Short 20-minute sessions catch isolated moments, not patterns. Consistency over weeks beats individual clip length, which beats resolution — in that order of importance.",
-      },
-    );
-  }
-  if (slug === "cat-collar-camera-vs-insta360-go-3") {
-    faqItems.push(
-      {
-        question: "Can the Insta360 Go 3 be used on a cat collar safely?",
-        answer:
-          "Yes, on cats over roughly 4 kg, with two caveats. Use a breakaway cat collar with a magnetic-pendant attachment, or a harness like the Furee. The pod alone is around 35 g; with any mount, total load lands at 39-42 g. That is safe for a 4-5 kg cat but closer to the margin for smaller cats.",
-      },
-      {
-        question: "Is 4K worth it for cat videos?",
-        answer:
-          "For TikTok, Reels, and Shorts, no — the platforms compress and often cap mobile playback at 720P, so the 4K detail does not reach the viewer. For YouTube long-form, aggressive cropping, or archival footage, yes. Most casual cat owners will not benefit from 4K. Dedicated content creators will.",
-      },
-      {
-        question: "Which camera does Mr Kitters use?",
-        answer:
-          "Mr. Kitters The Cat uses the Insta360 Go 3 mounted on a Furee cat harness. This is public information from his own content — no sponsorship implied. The harness mount spreads the ~40 g load across the chest rather than concentrating it at the neck, which matters over long recording sessions.",
-      },
-      {
-        question: "Why is Whiskcam so much cheaper than Insta360?",
-        answer:
-          "Different specs and different markets. Whiskcam is 1080P, no electronic stabilization, no app, no WiFi, and limited waterproofing. Built for a single use case — a cat's collar — which strips out hardware that doesn't serve that case. The 8x price gap reflects real hardware differences, not branding.",
       },
     );
   }
@@ -445,30 +262,6 @@ export default async function BlogArticlePage({
       },
     );
   }
-  if (slug === "cat-collar-camera-vs-gps-tracker-2026") {
-    faqItems.push(
-      {
-        question: "Can a GPS tracker replace a cat collar camera?",
-        answer:
-          "No. They solve different problems. A GPS tracker shows a moving dot on a map — where your cat is, not what your cat is doing. A collar camera shows video footage of your cat's activities but has no location data and no live feed. Choosing depends on whether you want to find your cat or understand your cat.",
-      },
-      {
-        question: "What's the best GPS tracker for cats in 2026?",
-        answer:
-          "For most owners, Tractive GPS Cat LTE is the default pick — 25 g, LTE-based with effectively unlimited range where there's cell coverage, mature app. Weenect Cats 2 is a close alternative, especially in Europe. Eureka Marco Polo is the best no-subscription option but radio range is capped at 3 km line-of-sight.",
-      },
-      {
-        question: "Does Whiskcam have GPS?",
-        answer:
-          "No. Whiskcam is a recording-only device — 1080P video to an SD card, no location tracking, no cellular chip, no live streaming. Adding GPS would roughly double the weight and require a subscription, which defeats the lightweight, one-time-purchase design. For location, pair Whiskcam with a dedicated GPS tracker.",
-      },
-      {
-        question: "Can I track my cat without a subscription?",
-        answer:
-          "Yes, with trade-offs. Eureka Marco Polo uses radio signals instead of LTE, so no monthly fee — but range is capped at around 3 km in clear line of sight and much less in dense urban or wooded areas. For true unlimited-range tracking, an LTE tracker and subscription are the only real option in 2026.",
-      },
-    );
-  }
   if (slug === "my-cat-found-the-camera-what-to-do") {
     faqItems.push(
       {
@@ -490,30 +283,6 @@ export default async function BlogArticlePage({
         question: "Do collar cameras have the same discovery problem?",
         answer:
           "No. A collar camera is worn by the cat, which means there is no external object in the room to discover, swat, or avoid. Once the cat has habituated to the collar itself — usually a few days — the camera stops registering as a separate thing. Households with an anti-camera cat often switch to collar cameras for exactly this reason.",
-      },
-    );
-  }
-  if (slug === "best-cat-collar-camera-for-maine-coon") {
-    faqItems.push(
-      {
-        question: "How much should a Maine Coon's collar weigh?",
-        answer:
-          "Total collar setup (collar, tag, camera, tracker) should stay under 3% of healthy body weight for all-day wear. A 7 kg Maine Coon can safely carry up to 210 g combined. A 10 kg male can carry up to 300 g. Most real-world setups with a nylon collar, AirTag, and a 26 g camera total about 47 g — under 0.7% of body weight.",
-      },
-      {
-        question: "Will my Maine Coon's fur block the camera lens?",
-        answer:
-          "It can. The neck ruff on an adult Maine Coon is 2-6 cm long and sits exactly where the camera mounts. If footage shows a soft fringe of out-of-focus hair at the top of the frame, either tighten the collar to the snug end of the two-finger fit range, or switch to a mount that extends 1-2 cm forward. Regular grooming of the ruff also reduces the issue.",
-      },
-      {
-        question: "Can a Maine Coon wear a GoPro?",
-        answer:
-          "Physically yes. A 120 g GoPro is 1.7% of a 7 kg Maine Coon, within the 3% daily weight threshold. But it's overkill and uncomfortable. The bulk slows the cat down and GoPro mount systems are designed for humans and dogs, not cat collars. A dedicated lightweight collar camera is the better tool.",
-      },
-      {
-        question: "What size collar does a Maine Coon need?",
-        answer:
-          "Adult males need a 32-40 cm adjustable collar. Adult females need 26-32 cm. Measure actual neck circumference with a soft tape under the fur, not over it — Maine Coon fur makes collars look loose when they are correctly snug. A proper fit allows two fingers between strap and skin, measured at the skin not the fur surface.",
       },
     );
   }
@@ -561,27 +330,14 @@ export default async function BlogArticlePage({
       ? {
           "@type": "ItemList",
           "@id": `${canonical}#comparison`,
-          name: "Best cat collar cameras, ranked",
-          itemListOrder: "https://schema.org/ItemListOrderDescending",
-          numberOfItems: 5,
-          itemListElement: [
-            { name: "Whiskcam Original", weight: "24 g", price: "€79" },
-            { name: "Mr Petcam", weight: "38 g", price: "$70" },
-            { name: "Insta360 GO 3S", weight: "39.1 g", price: "$240" },
-            { name: "Generic Amazon collar cameras", weight: "25-45 g", price: "$20-45" },
-            { name: "GoPro Hero with mount", weight: "154 g", price: "$350" },
-          ].map((item, i) => ({
+          name: "Cat collar camera options compared",
+          itemListOrder: "https://schema.org/ItemListUnordered",
+          numberOfItems: CAMERA_OPTIONS.length,
+          itemListElement: CAMERA_OPTIONS.map(({ name, anchor }, i) => ({
             "@type": "ListItem",
             position: i + 1,
-            item: {
-              "@type": "Product",
-              name: item.name,
-              category: "Pet Cameras",
-              additionalProperty: [
-                { "@type": "PropertyValue", name: "Weight", value: item.weight },
-                { "@type": "PropertyValue", name: "Typical price", value: item.price },
-              ],
-            },
+            name,
+            url: `${canonical}#${anchor}`,
           })),
         }
       : null;
@@ -593,7 +349,6 @@ export default async function BlogArticlePage({
       websiteSchema(),
       articleJsonLd,
       breadcrumbJsonLd,
-      ...(howToJsonLd ? [howToJsonLd] : []),
       ...(faqJsonLd ? [faqJsonLd] : []),
       ...(itemListJsonLd ? [itemListJsonLd] : []),
     ],
@@ -619,9 +374,9 @@ export default async function BlogArticlePage({
             </li>
             <li>/</li>
             <li>
-              <Link href="/blog" className="hover:text-wk-amber">
+              <CanonicalLink href="/blog" className="hover:text-wk-amber">
                 Blog
-              </Link>
+              </CanonicalLink>
             </li>
             <li>/</li>
             <li className="text-neutral-600">{article.title}</li>
@@ -690,7 +445,7 @@ export default async function BlogArticlePage({
         )}
 
         {/* Article Body */}
-        <div className="prose prose-neutral max-w-none prose-headings:text-wk-black prose-h2:mt-10 prose-h2:text-2xl prose-h3:mt-6 prose-h3:text-lg prose-a:text-wk-amber prose-a:no-underline hover:prose-a:underline prose-strong:text-wk-black prose-table:text-sm prose-th:bg-neutral-50 prose-th:px-4 prose-th:py-2.5 prose-td:px-4 prose-td:py-2.5 prose-td:border-t prose-img:rounded-xl">
+        <div className="prose prose-neutral max-w-none prose-headings:scroll-mt-28 prose-headings:text-wk-black prose-h2:mt-10 prose-h2:text-2xl prose-h3:mt-6 prose-h3:text-lg prose-a:text-wk-amber prose-a:no-underline hover:prose-a:underline prose-strong:text-wk-black prose-table:text-sm prose-th:bg-neutral-50 prose-th:px-4 prose-th:py-2.5 prose-td:px-4 prose-td:py-2.5 prose-td:border-t prose-img:rounded-xl">
           <ArticleContent />
         </div>
 
@@ -705,12 +460,11 @@ export default async function BlogArticlePage({
                 Written by the Whiskcam Team
               </p>
               <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-                We&apos;re an independent two-person team building cat collar
-                cameras since 2026. Every article we publish is based on tested
-                Whiskcam units, footage reviewed from our own cats and early
-                beta users, and cross-checked against published veterinary and
-                feline-behavior sources. If something here is wrong, we want to
-                know —{" "}
+                We publish guides about choosing and using collar cameras.
+                Whiskcam sells a camera featured in our comparisons;
+                manufacturer specifications and any documented hands-on
+                observations should be read separately. For product questions or
+                corrections, contact{" "}
                 <a
                   href="mailto:support@whiskcam.com"
                   className="font-medium text-wk-amber hover:underline"
@@ -739,26 +493,25 @@ export default async function BlogArticlePage({
             Ready to see their world?
           </h2>
           <p className="mt-3 text-neutral-400">
-            The Whiskcam Original — 24 g, 1080P, no app needed. Free worldwide
-            shipping.
+            Offline 1080P video with a phone adapter. MicroSD required
+            separately. Check the current kit, price and delivery options.
           </p>
-          <Link
-            href="/#product"
-            className="mt-6 inline-block rounded-full bg-wk-amber px-8 py-3 text-sm font-semibold text-wk-dark transition-colors hover:bg-wk-amber-hover"
-          >
-            Shop Whiskcam — &euro;79
-          </Link>
+          <div className="mt-6">
+            <BlogProductLink slug={slug} placement="article-footer">
+              View Whiskcam kit and current price
+            </BlogProductLink>
+          </div>
         </div>
 
         {/* Related Articles */}
         {related.length > 0 && (
-          <div className="mt-16">
+          <section className="mt-16" aria-label="Related articles">
             <h2 className="text-xl font-bold text-wk-black">
               Related Articles
             </h2>
             <div className="mt-6 grid gap-6 md:grid-cols-2">
               {related.map((a) => (
-                <Link
+                <CanonicalLink
                   key={a.slug}
                   href={`/blog/${a.slug}`}
                   className="group rounded-xl border border-neutral-200 p-5 transition-all hover:border-wk-amber"
@@ -769,10 +522,10 @@ export default async function BlogArticlePage({
                   <p className="mt-2 text-sm text-neutral-500 line-clamp-2">
                     {a.description}
                   </p>
-                </Link>
+                </CanonicalLink>
               ))}
             </div>
-          </div>
+          </section>
         )}
       </div>
 

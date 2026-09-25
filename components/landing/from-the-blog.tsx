@@ -1,23 +1,24 @@
 import Image from "next/image";
 import { BLOG_ARTICLES } from "lib/blog";
-import { Link } from "i18n/navigation";
+import Link from "next/link";
 import { SectionWrapper } from "components/ui/section-wrapper";
 import { SectionHeading } from "components/ui/section-heading";
 
 export function FromTheBlog() {
-  const latestArticles = [...BLOG_ARTICLES]
-    .sort(
-      (a, b) =>
-        new Date(b.datePublished).getTime() -
-        new Date(a.datePublished).getTime()
-    )
-    .slice(0, 3);
+  const featuredSlugs = [
+    "best-cat-collar-cameras-2026",
+    "are-cat-collar-cameras-safe",
+    "how-to-watch-avi-on-iphone-cat-cam",
+  ];
+  const latestArticles = featuredSlugs.flatMap((slug) =>
+    BLOG_ARTICLES.filter((article) => article.slug === slug),
+  );
 
   return (
     <SectionWrapper bg="warm">
       <SectionHeading
         title="From the Blog"
-        subtitle="Guides and research on cat collar cameras, safety, and pet behavior"
+        subtitle="Buying, fit and phone-playback guides for cat collar cameras"
       />
 
       <div className="grid gap-6 md:grid-cols-3">
@@ -56,8 +57,8 @@ export function FromTheBlog() {
               <div className="mt-4 flex items-center gap-3 text-xs text-neutral-400">
                 <span>{article.readingTime}</span>
                 <span>&middot;</span>
-                <time dateTime={article.datePublished}>
-                  {new Date(article.datePublished).toLocaleDateString("en-US", {
+                <time dateTime={article.dateModified}>
+                  {new Date(article.dateModified).toLocaleDateString("en-US", {
                     year: "numeric",
                     month: "short",
                     day: "numeric",

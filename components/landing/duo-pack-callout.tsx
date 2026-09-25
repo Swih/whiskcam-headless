@@ -2,6 +2,7 @@
 
 import { SectionWrapper } from "components/ui/section-wrapper";
 import { AnimatedElement } from "components/ui/animated-element";
+import { StorageNotice } from "./storage-notice";
 import { AddToCart } from "components/cart/add-to-cart";
 import { formatPrice } from "lib/format";
 import { useTranslations } from "next-intl";
@@ -16,13 +17,14 @@ interface DuoPackCalloutProps {
   // component falls back to a scroll-to-#product CTA so the landing
   // never ships with a broken button.
   duoProduct?: Product;
+  singleProduct?: Product;
 }
 
 // Multi-pet upsell. Placed after ReviewsSection where Vilma L.'s "second
 // camera" testimonial establishes multi-cat social proof. Uses the Shopify
 // duo product's real image when available (Shopify CDN) and falls back to
 // the studio shot otherwise.
-export function DuoPackCallout({ duoProduct }: DuoPackCalloutProps) {
+export function DuoPackCallout({ duoProduct, singleProduct }: DuoPackCalloutProps) {
   const t = useTranslations("duoPack");
 
   // Prefer real Shopify price when product is loaded — this keeps the UI
@@ -34,11 +36,14 @@ export function DuoPackCallout({ duoProduct }: DuoPackCalloutProps) {
       )
     : null;
 
-  // Compare-at is intentionally pulled from locale (not from Shopify).
-  // The anchor (€218 ≈ 2× single's €109) is a marketing decision that
-  // should live in copy, not in the product variant.
   const displayPrice = realPrice ?? t("price");
-  const displayCompareAt = t("compareAtPrice");
+  const duoMoney = duoProduct?.priceRange.maxVariantPrice;
+  const singleMoney = singleProduct?.priceRange.maxVariantPrice;
+  const twoSingles = singleMoney && duoMoney?.currencyCode === singleMoney.currencyCode
+    ? Number(singleMoney.amount) * 2 : 0;
+  const savings = duoMoney ? Math.max(0, twoSingles - Number(duoMoney.amount)) : 0;
+  const savingLabel = duoMoney && savings > 0
+    ? t("saveAmount", { amount: formatPrice(savings.toFixed(2), duoMoney.currencyCode) }) : null;
 
   // Use the duo product's hero image from Shopify if available.
   const imageSrc =
@@ -79,12 +84,12 @@ export function DuoPackCallout({ duoProduct }: DuoPackCalloutProps) {
               {t("subtitle")}
             </p>
 
-            <div className="mt-5 flex items-baseline gap-3">
+            <div className="mt-5 flex flex-wrap items-baseline gap-3">
               <span className="text-3xl font-bold text-white">{displayPrice}</span>
-              <span className="text-base text-white/40 line-through">{displayCompareAt}</span>
-              <span className="rounded-full bg-wk-amber/20 px-2 py-0.5 text-xs font-semibold text-wk-amber">
-                {t("savings")}
-              </span>
+              {savingLabel && <span className="text-base text-white/60">{t("versusTwoSingles")}</span>}
+              {savingLabel && <span className="rounded-full bg-wk-amber/20 px-2 py-0.5 text-xs font-semibold text-wk-amber">
+                {savingLabel}
+              </span>}
             </div>
 
             <ul className="mt-5 space-y-2">
@@ -102,6 +107,7 @@ export function DuoPackCallout({ duoProduct }: DuoPackCalloutProps) {
               ))}
             </ul>
 
+            <StorageNotice />
             <div className="mt-6">
               {duoProduct ? (
                 // Real Shopify-backed button — adds the duo product to the cart

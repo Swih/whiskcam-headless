@@ -2,7 +2,7 @@
 // Blog — Article registry & types
 // =============================================================================
 
-import { ReactNode } from "react";
+import { COMPARISON_REVIEWED } from "./comparison-facts";
 
 export type BlogArticle = {
   slug: string;
@@ -20,11 +20,11 @@ export type BlogArticle = {
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
     slug: "mr-petcam-vs-whiskcam",
-    title: "Mr Petcam vs Whiskcam: Weight, Kit and Real Price Compared",
+    title: "Mr Petcam HD vs Whiskcam: Weight, Storage & Night Vision",
     description:
-      "Mr Petcam is ~38 g and $70 camera-only; Whiskcam is 24 g and €79 complete. Once you add the card and adapter the prices meet, so the decision comes down to your cat's size. Honest comparison from a competitor.",
+      "Compare Mr Petcam HD and Whiskcam: listed weight, night vision, included storage and phone playback. Manufacturer sources and each kit's limitations explained.",
     datePublished: "2026-09-04T00:00:00Z",
-    dateModified: "2026-09-04T00:00:00Z",
+    dateModified: COMPARISON_REVIEWED,
     author: "Whiskcam Team",
     readingTime: "7 min read",
     tags: ["mr petcam", "cat collar camera", "comparison", "review"],
@@ -33,26 +33,26 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   },
   {
     slug: "best-cat-collar-cameras-2026",
-    title: "Best Cat Collar Cameras 2026: We Tested 5 on 4 Cats",
+    title: "Best Cat Collar Cameras 2026: Weight, Features & Kit Guide",
     description:
-      "We tested 5 cat collar cameras on 4 different cats (3.2-7.8 kg) for 5 months. Honest weight, battery, footage, and price comparison — including the ones that broke.",
+      "Compare cat collar cameras by weight, storage, night vision and phone playback. Whiskcam, Mr Petcam HD and Insta360 GO 3S, with sources and buying trade-offs.",
     datePublished: "2026-03-19T00:00:00Z",
-    dateModified: "2026-09-04T00:00:00Z",
+    dateModified: COMPARISON_REVIEWED,
     author: "Whiskcam Team",
-    readingTime: "12 min read",
+    readingTime: "8 min read",
     tags: ["cat collar camera", "comparison", "pet camera", "review"],
     image: "/images/blog/outdoor-cat-territory-camera.jpg",
     imageAlt: "Cat wearing a small collar camera exploring outdoors",
   },
   {
     slug: "are-cat-collar-cameras-safe",
-    title: "Are Cat Collar Cameras Safe? Weight Limits by Cat Size",
+    title: "Are Cat Collar Cameras Safe? Fit, Weight & Warning Signs",
     description:
-      "The 3% body-weight rule, what it means in grams for a 2-7 kg cat, the breakaway collar rule, and the four behavioural signs that mean take it off. With a per-size table.",
+      "Check collar-camera fit, total mounted weight and signs to stop a trial. Quick-release collar guidance, a load calculator and practical first-use checks.",
     datePublished: "2026-03-19T00:00:00Z",
-    dateModified: "2026-09-04T00:00:00Z",
+    dateModified: "2026-09-25T00:00:00Z",
     author: "Whiskcam Team",
-    readingTime: "8 min read",
+    readingTime: "6 min read",
     tags: ["cat safety", "collar camera", "veterinary", "pet wearable"],
     image: "/images/blog/cat-found-pet-camera.jpg",
     imageAlt: "Cat investigating a small collar camera up close",
@@ -72,50 +72,47 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   },
   {
     slug: "how-to-watch-avi-on-iphone-cat-cam",
-    title: "How to Watch AVI Videos on iPhone from a Cat Collar Camera",
+    title: "How to Watch Cat Camera AVI Files on iPhone: A Practical Guide",
     description:
-      "iPhones don't play AVI natively. Here are the three working methods (VLC, Infuse, conversion) tested on iPhone 14 and 15 — plus which SD readers actually work.",
+      "Find your camera files in iPhone Files, try compatible playback, and convert a copy for editing. Reader checks and troubleshooting with Apple and VideoLAN sources.",
     datePublished: "2026-04-25T00:00:00Z",
-    dateModified: "2026-04-25T00:00:00Z",
+    dateModified: "2026-09-25T00:00:00Z",
     author: "Whiskcam Team",
-    readingTime: "7 min read",
+    readingTime: "5 min read",
     tags: ["iphone", "avi", "cat camera", "how to"],
     image: "/images/blog/outdoor-cat-territory-camera.jpg",
     imageAlt: "Cat collar camera footage from an outdoor adventure",
   },
   {
     slug: "cat-collar-weight-chart-by-size",
-    title: "Cat Collar Weight Chart: Maximum Camera Weight by Cat Size (2026)",
+    title: "Cat Collar Weight Chart & Camera Load Calculator",
     description:
-      "The 3% rule, weight limits by breed, and how to calculate total collar load for your cat. Safe camera weight chart for 15 common cat breeds.",
+      "Calculate total collar, camera and accessory weight in kg or lb. Worked examples explain the percentage of body weight without promising a universal safe limit.",
     datePublished: "2026-05-02T00:00:00Z",
-    dateModified: "2026-05-02T00:00:00Z",
+    dateModified: "2026-09-25T00:00:00Z",
     author: "Whiskcam Team",
-    readingTime: "8 min read",
+    readingTime: "5 min read",
     tags: ["cat safety", "weight guide", "cat breeds", "buying guide"],
     image: "/images/blog/cat-found-pet-camera.jpg",
-    imageAlt:
-      "Cat with a small collar camera, close-up of fit and weight",
+    imageAlt: "Cat with a small collar camera, close-up of fit and weight",
   },
   {
     slug: "i-filmed-my-cat-for-7-days-what-i-learned",
-    title:
-      "I Filmed My Cat for 7 Days with a Collar Camera — Here's What I Learned",
+    title: "A 7-Day Cat Camera Diary: Recording Plan & Observation Template",
     description:
-      "I filmed my tabby Nori for 7 days with a collar camera. Hidden napping spots, a 3:47 AM visitor, the neighbor's garden — here's the day-by-day.",
+      "Plan short observations with a cat camera: fit checks, playback, a seven-day diary and a recording log. A practical template, not a claimed product trial.",
     datePublished: "2026-05-09T00:00:00Z",
-    dateModified: "2026-05-09T00:00:00Z",
+    dateModified: "2026-09-25T00:00:00Z",
     author: "Whiskcam Team",
-    readingTime: "10 min read",
+    readingTime: "5 min read",
     tags: [
       "cat collar camera",
       "7 day experiment",
       "cat behavior",
-      "first-person review",
+      "observation template",
     ],
     image: "/images/blog/maine-coon-collar-camera.jpg",
-    imageAlt:
-      "Tabby cat in the garden wearing a small collar camera",
+    imageAlt: "Tabby cat in the garden wearing a small collar camera",
   },
   {
     slug: "5-weird-discoveries-from-cat-collar-cameras",
@@ -141,11 +138,11 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     title:
       "Whiskcam vs Insta360 Go 3 for Cat Collar Use: Honest 2026 Comparison",
     description:
-      "Honest 2026 comparison of Whiskcam and Insta360 Go 3 for cat collar use. Weight, 4K vs 1080P, price, safety, and who should buy which.",
+      "Compare Whiskcam and Insta360 GO 3: 24 g vs 35.5 g camera bodies, 1080P vs 2.7K, storage, mounting and phone workflow. Manufacturer sources and trade-offs.",
     datePublished: "2026-05-23T00:00:00Z",
-    dateModified: "2026-05-23T00:00:00Z",
+    dateModified: "2026-09-25T00:00:00Z",
     author: "Whiskcam Team",
-    readingTime: "9 min read",
+    readingTime: "5 min read",
     tags: [
       "insta360 go 3",
       "cat pov camera",
@@ -167,8 +164,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     readingTime: "9 min read",
     tags: ["cat tiktok", "cat pov", "content creation", "cat camera"],
     image: "/images/blog/maine-coon-collar-camera.jpg",
-    imageAlt:
-      "Cat wearing a collar camera, POV footage ready for TikTok",
+    imageAlt: "Cat wearing a collar camera, POV footage ready for TikTok",
   },
   {
     slug: "cat-collar-camera-vs-gps-tracker-2026",
@@ -177,7 +173,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description:
       "GPS trackers find your missing cat. Collar cameras show what your cat does. Compare Tractive, Weenect, and Whiskcam — costs, weight, and when to use both.",
     datePublished: "2026-06-06T00:00:00Z",
-    dateModified: "2026-06-06T00:00:00Z",
+    dateModified: "2026-09-25T00:00:00Z",
     author: "Whiskcam Team",
     readingTime: "9 min read",
     tags: ["cat gps tracker", "cat collar camera", "tractive", "cat safety"],
@@ -199,14 +195,13 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   },
   {
     slug: "best-cat-collar-camera-for-maine-coon",
-    title:
-      "Best Cat Collar Camera for a Maine Coon (Tested on a 7.8 kg Boy)",
+    title: "Cat Collar Cameras for Maine Coons: Fit, Fur & Buying Guide",
     description:
-      "Maine Coons need different gear than average cats. We tested camera fit, fur interference, and battery on Bear, a 7.8 kg Maine Coon. Collar sizes, weights, and what actually worked.",
+      "Choose a camera for your Maine Coon by measured fit, lens clearance and total collar load. Practical checks, recording trade-offs and signs to stop a trial.",
     datePublished: "2026-06-20T00:00:00Z",
-    dateModified: "2026-06-20T00:00:00Z",
+    dateModified: "2026-09-25T00:00:00Z",
     author: "Whiskcam Team",
-    readingTime: "7 min read",
+    readingTime: "5 min read",
     tags: [
       "maine coon",
       "cat collar camera",
@@ -238,4 +233,36 @@ export function getArticle(slug: string): BlogArticle | undefined {
 
 export function getAllSlugs(): string[] {
   return BLOG_ARTICLES.map((a) => a.slug);
+}
+
+// Prefer useful next steps rather than linking every article below every page.
+const RELATED_ARTICLES: Record<string, string[]> = {
+  "best-cat-collar-cameras-2026": [
+    "mr-petcam-vs-whiskcam",
+    "cat-collar-camera-vs-gps-tracker-2026",
+    "cat-pov-tiktok-viral-guide-2026",
+  ],
+  "mr-petcam-vs-whiskcam": [
+    "best-cat-collar-cameras-2026",
+    "cat-collar-camera-vs-gps-tracker-2026",
+    "how-to-watch-avi-on-iphone-cat-cam",
+  ],
+  "cat-pov-tiktok-viral-guide-2026": [
+    "best-cat-collar-cameras-2026",
+    "how-to-watch-avi-on-iphone-cat-cam",
+    "my-cat-found-the-camera-what-to-do",
+  ],
+};
+
+export function getRelatedArticles(slug: string, limit = 3): BlogArticle[] {
+  const article = getArticle(slug);
+  if (!article) return [];
+  const preferred = RELATED_ARTICLES[slug] ?? [];
+  const score = (candidate: BlogArticle) =>
+    preferred.includes(candidate.slug)
+      ? 100 - preferred.indexOf(candidate.slug)
+      : candidate.tags.filter((tag) => article.tags.includes(tag)).length;
+  return BLOG_ARTICLES.filter((candidate) => candidate.slug !== slug)
+    .sort((a, b) => score(b) - score(a))
+    .slice(0, limit);
 }

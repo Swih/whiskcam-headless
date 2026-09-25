@@ -1,8 +1,7 @@
 import { ReadonlyURLSearchParams } from "next/navigation";
 
-export const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : "http://localhost:3000";
+// Public entity/canonical URLs must never depend on a preview deployment host.
+export const baseUrl = "https://whiskcam.com";
 
 export const createUrl = (
   pathname: string,

@@ -17,7 +17,7 @@
     "plusFreeShipShort": "+ Gratis Versand",
     "ends": "— Endet",
     "staticWithDiscount": "{pct}% sparen — Kostenloser Versand in ganz Europa",
-    "staticDefault": "Kostenloser Versand in ganz Europa"
+    "staticDefault": "Kostenloser Versand · Ausgewählte Länder"
   },
   "hero": {
     "tagline": "Die Halsbandkamera für Katzen",
@@ -25,17 +25,17 @@
     "subtitle": "Sieh die Welt durch ihre Augen. Full HD POV-Aufnahmen aus einer 24g Halsbandkamera — für Katzen und kleine Hunde unter 10 kg. Ohne App, ohne WLAN, ohne Abo.",
     "trust": "Geliebt von den ersten Whiskcam-Besitzern",
     "ctaButton": "Ich will das sehen",
-    "ctaSubtext": "Kostenloser Versand weltweit · iPhone & Android kompatibel · 30 Tage Geld-zurück",
-    "urgencyBadge": "Versand weltweit"
+    "ctaSubtext": "Kostenloser Versand · Ausgewählte Länder · 30 Tage Geld zurück",
+    "urgencyBadge": "Kostenloser Versand · Ausgewählte Länder"
   },
   "stats": {
     "fullHd": "Full HD",
     "wideAngle": "Weitwinkel",
     "ultraLight": "Federleicht",
-    "batteryLife": "Akkulaufzeit",
+    "batteryLife": "Wiederaufladbar",
     "trustReviews": "4,8/5 von ersten Besitzern",
     "trustReturn": "30 Tage Geld zurück",
-    "trustShipping": "Kostenloser Versand in Europa",
+    "trustShipping": "Kostenloser Versand in unterstützte Länder",
     "trustSecure": "Sichere Bezahlung"
   },
   "videoShowcase": {
@@ -81,7 +81,7 @@
       },
       "2": {
         "title": "Federleicht — nur 24g",
-        "description": "Leichter als ein Glöckchen am Halsband. Selbst kleine Katzen merken nichts davon."
+        "description": "Kameragehäuse mit 24 g. Prüfe das Gesamtgewicht und den Komfort deines Tieres."
       },
       "3": {
         "title": "Keine App. Kein WLAN.",
@@ -89,11 +89,11 @@
       },
       "4": {
         "title": "USB-C Laden",
-        "description": "In unter einer Stunde voll geladen. Bereit fürs nächste Abenteuer."
+        "description": "Aufladen über USB-C. Nimm die Kamera vor dem Laden vom Tier ab."
       },
       "5": {
-        "title": "Sicher für Haustiere",
-        "description": "Abgerundete Kanten, universelle Befestigung, designt für Komfort. Dein Tier ist safe."
+        "title": "Passform prüfen",
+        "description": "Abgerundete Kanten und Halsbandclip. Prüfe die Befestigung und halte den Sicherheitsverschluss frei."
       }
     }
   },
@@ -121,7 +121,7 @@
     "steps": {
       "0": {
         "title": "Dranklicken",
-        "description": "Befestige Whiskcam in 2 Sekunden an jedem Halsband. Passt an alle Größen."
+        "description": "An einem passenden Halsband befestigen, ohne den Sicherheitsverschluss zu blockieren. Vor Gebrauch die Passform prüfen."
       },
       "1": {
         "title": "Aufnahme starten",
@@ -136,30 +136,30 @@
   "product": {
     "overline": "Shop",
     "title": "Whiskcam Original",
-    "subtitle": "Alles dabei. Sofort startklar, direkt aus der Box.",
+    "subtitle": "Kamera, Smartphone-Adapter, Halsband, Ladekabel und Anleitung enthalten.",
     "badgeBestSeller": "Bestseller",
     "badge1080p": "1080P Full HD",
     "badgeNoApp": "Keine App",
     "reviews": "Geliebt von den ersten Besitzern",
     "keyBenefits": {
       "0": "Full HD 1080P — 170° Weitwinkel-Objektiv",
-      "1": "24g federleicht — selbst kleine Katzen merken nichts",
+      "1": "24 g Kameragehäuse — Passform und Gesamtgewicht prüfen",
       "2": "Keine App, kein WLAN — ein Klick und es filmt",
-      "3": "Bis zu 2 Stunden Akku — in unter 1 Stunde geladen"
+      "3": "Per USB-C aufladbar — vor dem Ausflug aufladen"
     },
     "freeGiftsLabel": "Gratis Geschenke zu deiner Bestellung",
     "microsdName": "32GB MicroSD-Karte",
-    "microsdDetail": "Vorinstalliert, sofort aufnahmebereit",
+    "microsdDetail": "MicroSD-Karte nicht enthalten: Die 32-GB-Karte ist derzeit nicht verfügbar. Zum Aufnehmen benötigst du eine separate kompatible MicroSD-Karte.",
     "adapterName": "USB-C/Lightning Adapter",
     "adapterDetail": "Videos direkt auf deinem Handy ansehen",
-    "shippingName": "Kostenloser Versand in Europa",
-    "shippingDetail": "7–14 Werktage",
+    "shippingName": "Kostenloser Versand in unterstützte Länder",
+    "shippingDetail": "Lieferung in dein Land prüfen",
     "free": "GRATIS",
     "outOfStock": "AUSVERKAUFT",
     "totalValue": "Gesamtwert",
     "youPay": "Du zahlst",
-    "atcFallback": "Shopify verbinden, um den Warenkorb zu aktivieren",
-    "freeShippingMoneyBack": "Kostenloser Versand · 30 Tage Geld zurück",
+    "atcFallback": "Bestellungen sind vorübergehend nicht möglich. Bitte versuche es gleich erneut.",
+    "freeShippingMoneyBack": "Kostenloser Versand · Ausgewählte Länder · 30 Tage Geld zurück",
     "trustShipping": "Gratis Versand",
     "trustReturn": "30 Tage Rückgabe",
     "trustSecure": "Sicher bezahlen",
@@ -170,7 +170,7 @@
     "specFullHd": "Full HD",
     "specWideAngle": "Weitwinkel",
     "specUltralight": "Federleicht",
-    "specBattery": "Akku",
+    "specBattery": "Wiederaufladbar",
     "specPrivacy": "Datenschutz",
     "specPlugPlay": "Plug & Play",
     "galleryBadge": "Bestseller",
@@ -183,7 +183,7 @@
       },
       "1": {
         "item": "32GB MicroSD-Karte",
-        "detail": "Vorinstalliert, sofort aufnahmebereit"
+        "detail": "MicroSD-Karte nicht enthalten: Die 32-GB-Karte ist derzeit nicht verfügbar. Zum Aufnehmen benötigst du eine separate kompatible MicroSD-Karte."
       },
       "2": {
         "item": "SD-Karten-Adapter",
@@ -195,13 +195,14 @@
       },
       "4": {
         "item": "USB-C Kabel",
-        "detail": "Schnellladen, voll in unter 1 Stunde"
+        "detail": "USB-C-Ladung"
       },
       "5": {
         "item": "Digitaler Guide",
         "detail": "\"So filmst du das geheime Leben deines Tieres\""
       }
-    }
+    },
+    "storageNotice": "MicroSD-Karte nicht enthalten: Die 32-GB-Karte ist derzeit nicht verfügbar. Zum Aufnehmen benötigst du eine separate kompatible MicroSD-Karte."
   },
   "comparison": {
     "overline": "Vergleich",
@@ -223,25 +224,27 @@
   },
   "cta": {
     "overline": "Gerade jetzt",
-    "title": "ist deine Katze irgendwo unterwegs. Willst du wissen, wo?",
-    "subtitle": "Whiskcam filmt alles in Full HD direkt vom Halsband. Heute bestellen, morgen staunen.",
+    "title": "Entdecke die Abenteuer deiner Katze aus ihrer Perspektive.",
+    "subtitle": "Nimm Full-HD-Videos am Halsband auf und sieh sie dir nach der Rückkehr an. Kein GPS und keine Live-Übertragung.",
     "button": "Jetzt bestellen",
-    "footnote": "Kostenloser Versand in Europa · 30 Tage Geld-zurück-Garantie"
+    "footnote": "Kostenloser Versand in unterstützte Länder"
   },
   "duoPack": {
-    "badge": "20 € sparen",
+    "badge": "Für zwei Haustiere",
     "overline": "Mehr als ein Haustier?",
     "title": "Zwei Whiskcams. Ein Zuhause. Endlose POV.",
-    "subtitle": "Wenn du mehrere Katzen hast — oder eine Katze und einen kleinen Hund — sparst du mit dem Duo-Paket 20 € und musst nie warten, bis eine Kamera geladen ist, bevor die andere losziehen kann.",
+    "subtitle": "Zwei Kameras für die Abenteuer deiner beiden Haustiere.",
     "price": "129 €",
     "compareAtPrice": "218 €",
     "savings": "-41 %",
     "benefits": {
       "0": "Zwei Kameras, zwei Abenteuer, gleichzeitig",
-      "1": "Kostenloser weltweiter Versand inklusive",
+      "1": "Kostenloser Versand in unterstützte Länder",
       "2": "30 Tage Geld-zurück-Garantie auf beide"
     },
-    "cta": "Duo-Paket entdecken"
+    "cta": "Duo-Paket entdecken",
+    "saveAmount": "{amount} sparen",
+    "versusTwoSingles": "gegenüber zwei Einzelkäufen"
   },
   "peaceOfMind": {
     "overline": "Sicherheit",
@@ -276,31 +279,31 @@
       },
       "1": {
         "question": "Ist Whiskcam sicher für meine Katze?",
-        "answer": "Auf jeden Fall. Mit nur 24 Gramm ist Whiskcam leichter als ein kleines Glöckchen. Die Kamera wird einfach am vorhandenen Halsband befestigt — abgerundete Kanten sorgen dafür, dass nichts scheuert oder stört. Selbst kleine Katzen merken davon gar nichts. Für Freigänger empfehlen wir ein Sicherheitshalsband mit Sollbruchstelle."
+        "answer": "Die Eignung hängt von deinem Tier, der Passform und der gesamten Ausrüstung ab. Die Kamera wiegt 24 g; Halsband, Halterung und Anhänger kommen hinzu. Verwende bei Katzen ein Halsband mit Sicherheitsverschluss und beginne mit einem kurzen beaufsichtigten Versuch. Entferne die Ausrüstung bei veränderter Bewegung oder Stress. Frage deinen Tierarzt nach der individuellen Eignung."
       },
       "2": {
         "question": "Wie lange hält der Akku?",
-        "answer": "Whiskcam nimmt bis zu 2 Stunden Full-HD-Video auf — perfekt für die Morgenpatrouille und das Abendabenteuer. Über USB-C ist die Kamera in unter einer Stunde wieder voll geladen."
+        "answer": "Die Laufzeit hängt von den Aufnahmebedingungen ab. Wir prüfen die kontinuierliche Aufnahmezeit, bevor wir eine genaue Dauer veröffentlichen. Vor Gebrauch per USB-C laden."
       },
       "3": {
         "question": "Brauche ich eine App dafür?",
-        "answer": "Nö. Keine App, kein WLAN, kein Konto. Einfach den Aufnahme-Knopf drücken. Wenn dein Tier nach Hause kommt, SD-Karte raus, mit dem mitgelieferten Adapter ins Handy stecken und die Aufnahmen genießen. Einfacher geht's nicht."
+        "answer": "Nö. Keine App, kein WLAN, kein Konto. Einfach den Aufnahme-Knopf drücken. Wenn dein Tier nach Hause kommt, SD-Karte raus, mit dem mitgelieferten Adapter ins Handy stecken und die Aufnahmen genießen. Einfacher geht's nicht. MicroSD-Karte nicht enthalten: Die 32-GB-Karte ist derzeit nicht verfügbar. Zum Aufnehmen benötigst du eine separate kompatible MicroSD-Karte."
       },
       "4": {
         "question": "Wie schaue ich mir die Videos auf dem Handy an?",
-        "answer": "Bei jedem Whiskcam ist ein MicroSD-auf-USB-C/Lightning-Adapter dabei. Einfach ins Handy stecken und die Videos direkt in deiner Galerie-App anschauen. Alternativ kannst du die SD-Karte auch in jeden Computer mit Kartenleser einlegen."
+        "answer": "Öffne die MicroSD-Karte mit dem mitgelieferten Adapter auf deinem Smartphone oder mit einem Kartenleser am Computer. Je nach Gerät brauchst du für AVI einen kompatiblen Player wie VLC oder eine Videokonvertierung, besonders auf dem iPhone."
       },
       "5": {
         "question": "Passt Whiskcam an das Halsband meines Tieres?",
-        "answer": "Whiskcam kommt mit einem eigenen verstellbaren Halsband, lässt sich aber auch an jedes vorhandene Halsband clippen. Funktioniert bei Katzen und Hunden aller Größen."
+        "answer": "Das Set nennt ein verstellbares Halsband mit 39 cm Länge. Miss dein Tier und beachte die Anleitung; die Länge allein garantiert keine passende Größe. Prüfe die Kompatibilität des Clips und halte den Sicherheitsverschluss frei."
       },
       "6": {
         "question": "Wie lange dauert der Versand?",
-        "answer": "Wir versenden kostenlos in ganz Europa. Die Lieferung dauert in der Regel 7–14 Werktage, je nach Standort. Sobald dein Whiskcam auf dem Weg ist, bekommst du eine Sendungsverfolgungsnummer."
+        "answer": "Kostenloser Versand in 17 unterstützte Länder. USA und Großbritannien: 7–12 Werktage; unterstützte europäische Länder: 8–14; Kanada und Australien: 10–14; Neuseeland: 10–18. Geschätzte Zeiten. Bitte Lieferländer vor der Bestellung prüfen."
       },
       "7": {
         "question": "In welchem Format nimmt Whiskcam auf?",
-        "answer": "Whiskcam nimmt im AVI-Format in 1080P Full HD auf. Die Dateien laufen auf jedem Gerät — Handy, Tablet oder Computer. Du kannst sie ganz einfach für TikTok, Instagram oder YouTube teilen oder umwandeln."
+        "answer": "Whiskcam zeichnet AVI-Videos in 1080P Full HD auf. Manche Smartphones benötigen einen kompatiblen Player oder eine Umwandlung in MP4 zum Ansehen oder Teilen."
       }
     }
   },
@@ -324,7 +327,7 @@
       "privacy": "Datenschutz",
       "terms": "AGB"
     },
-    "trustShipping": "Kostenloser Versand in Europa",
+    "trustShipping": "Kostenloser Versand in unterstützte Länder",
     "trustReturns": "30 Tage Geld zurück",
     "trustSecure": "Sicherer Checkout",
     "trustPetSafe": "Tiersicheres Design",
@@ -354,15 +357,20 @@
     "freeGiftsLabel": "🎁 Gratis Geschenke inklusive",
     "freeLabel": "GRATIS",
     "outOfStockLabel": "AUSVERKAUFT",
-    "freeWorldwideShipping": "Kostenloser Versand in Europa",
+    "freeWorldwideShipping": "Kostenloser Versand in unterstützte Länder",
     "subtotal": "Zwischensumme",
     "shipping": "Versand",
     "total": "Gesamt",
-    "checkout": "Jetzt bestellen",
+    "checkout": "Weiter zur sicheren Kasse",
     "processing": "Wird verarbeitet...",
     "secureCheckout": "Sicherer Checkout",
     "moneyBack": "30 Tage Geld zurück",
-    "saving": "Du sparst {amount} bei dieser Bestellung"
+    "saving": "Du sparst {amount} bei dieser Bestellung",
+    "deliveryEstimate": "Kostenloser Versand · Ausgewählte Länder",
+    "close": "Warenkorb schließen",
+    "duoName": "Whiskcam Duo-Paket — 2 Kameras",
+    "cardNotIncluded": "MicroSD-Karte nicht enthalten",
+    "includedAdapter": "Smartphone-Adapter im Kamera-Paket enthalten"
   },
   "stickyAtc": {
     "productName": "Whiskcam Original",
@@ -370,7 +378,8 @@
     "adding": "Wird hinzugefügt...",
     "added": "Drin!",
     "outOfStock": "Ausverkauft",
-    "selectOption": "Option wählen"
+    "selectOption": "Option wählen",
+    "addError": "Der Artikel konnte nicht hinzugefügt werden. Bitte erneut versuchen."
   },
   "about": {
     "overline": "Unsere Geschichte",
@@ -389,5 +398,23 @@
     "fr": "FR",
     "de": "DE",
     "es": "ES"
+  },
+  "delivery": {
+    "shipping": "Kostenloser Versand in unterstützte Länder",
+    "short": "Kostenloser Versand · Ausgewählte Länder",
+    "check": "Lieferung in dein Land prüfen",
+    "select": "Land / Region",
+    "available": "Kostenloser Versand · voraussichtlich {min}–{max} Werktage",
+    "unavailable": "An dieses Ziel liefern wir derzeit nicht.",
+    "destinations": "Alle Lieferländer ansehen",
+    "other": "Ein anderes Land",
+    "battery": "Per USB-C aufladbar — vor dem Ausflug aufladen",
+    "batteryAnswer": "Die Laufzeit hängt von den Aufnahmebedingungen ab. Wir prüfen die kontinuierliche Aufnahmezeit, bevor wir eine genaue Dauer veröffentlichen. Vor Gebrauch per USB-C laden.",
+    "charge": "USB-C-Ladung",
+    "batteryLabel": "Wiederaufladbar",
+    "faqShipping": "Kostenloser Versand in 17 unterstützte Länder. USA und Großbritannien: 7–12 Werktage; unterstützte europäische Länder: 8–14; Kanada und Australien: 10–14; Neuseeland: 10–18. Geschätzte Zeiten. Bitte Lieferländer vor der Bestellung prüfen.",
+    "countries": "Wir liefern derzeit in die unten aufgeführten Länder. Andere Ziele, darunter Deutschland, Italien und die Schweiz, sind nicht verfügbar.",
+    "note": "Lieferzeiten sind Schätzungen. Mögliche Einfuhrabgaben sind nicht mit Versandkosten gleichzusetzen. Bei Fragen kontaktiere uns.",
+    "error": "Der Artikel konnte nicht hinzugefügt werden. Bitte erneut versuchen."
   }
 }

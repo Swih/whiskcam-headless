@@ -14,7 +14,7 @@ import { ReviewsSection } from "components/landing/reviews-section";
 import Footer from "components/layout/footer";
 import { StickyAtcBar } from "components/ui/sticky-atc-bar";
 import { getProduct } from "lib/shopify";
-import { FAQ_ITEMS, PRODUCT_HANDLE, DUO_PRODUCT_HANDLE, HERO_CONTENT, VIDEOS, PRODUCT_FACTS } from "lib/content";
+import { PRODUCT_HANDLE, DUO_PRODUCT_HANDLE, HERO_CONTENT, VIDEOS, PRODUCT_FACTS } from "lib/content";
 import {
   ORG_ID,
   PRODUCT_ID,
@@ -27,27 +27,27 @@ import {
 import { alternatesFor } from "lib/seo";
 import { formatPrice } from "lib/format";
 import { cookies } from "next/headers";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { baseUrl } from "lib/utils";
 
 const ogData: Record<string, { title: string; description: string; locale: string }> = {
   en: {
-    title: "Whiskcam — See Their World",
+    title: "Whiskcam | 1080P Cat Collar Camera, No WiFi",
     description: "The pet collar camera that reveals your pet's secret life. 1080P Full HD, 170° wide angle, ultra-lightweight.",
     locale: "en_US",
   },
   fr: {
-    title: "Whiskcam — Découvrez Leur Monde Secret",
-    description: "La caméra de collar qui révèle la vie secrète de votre animal. 1080P Full HD, 170° grand angle, ultra-légère.",
+    title: "Whiskcam | Caméra collier pour chat 1080P",
+    description: "La caméra de collier qui révèle la vie secrète de votre animal. 1080P Full HD, 170° grand angle, ultra-légère.",
     locale: "fr_FR",
   },
   de: {
-    title: "Whiskcam — Entdecke Ihre Geheime Welt",
+    title: "Whiskcam | 1080P Halsbandkamera für Katzen",
     description: "Die Halsbandkamera, die das geheime Leben deines Haustieres enthüllt. 1080P Full HD, 170° Weitwinkel, ultraleicht.",
     locale: "de_DE",
   },
   es: {
-    title: "Whiskcam — Descubre Su Mundo Secreto",
+    title: "Whiskcam | Cámara de collar para gatos 1080P",
     description: "La cámara de collar que revela la vida secreta de tu mascota. 1080P Full HD, 170° gran angular, ultraligera.",
     locale: "es_ES",
   },
@@ -63,6 +63,7 @@ export async function generateMetadata({
   const pageUrl = locale === "en" ? baseUrl : `${baseUrl}/${locale}`;
 
   return {
+    title: { absolute: og.title },
     description: og.description,
     alternates: alternatesFor("", locale),
     keywords: [
@@ -100,6 +101,8 @@ export default async function HomePage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const productText = await getTranslations({ locale, namespace: "product" });
+  const faqText = await getTranslations({ locale, namespace: "faq" });
 
   const country = (await cookies()).get("country")?.value || "FR";
   const [product, duoProduct] = await Promise.all([
@@ -107,10 +110,11 @@ export default async function HomePage({
     getProduct(DUO_PRODUCT_HANDLE, country),
   ]);
 
-  // Hard-coded marketing anchor — keeps the strikethrough on €109 regardless
-  // of any compare-at value left on the Shopify variant.
   const cc = product?.priceRange.maxVariantPrice.currencyCode || "EUR";
-  const compareAtPriceFormatted = formatPrice("109.00", cc);
+  const compareAt = product?.variants[0]?.compareAtPrice;
+  const compareAtPriceFormatted = compareAt?.currencyCode === cc &&
+    Number(compareAt.amount) > Number(product?.priceRange.maxVariantPrice.amount)
+    ? formatPrice(compareAt.amount, cc) : undefined;
 
   const pageUrl = locale === "en" ? baseUrl : `${baseUrl}/${locale}`;
 
@@ -132,8 +136,8 @@ export default async function HomePage({
     ? {
         "@type": "Product",
         "@id": PRODUCT_ID,
-        name: product.title,
-        description: product.description,
+        name: productText("title"),
+        description: `${productText("subtitle")} ${productText("keyBenefits.0")} ${productText("storageNotice")}`,
         image: product.featuredImage?.url,
         sku: productSku,
         mpn: productSku,
@@ -146,17 +150,8 @@ export default async function HomePage({
           unitCode: "GRM",
         },
         additionalProperty: productProperties(),
-        // Aggregate rating mirrors the customer reviews displayed on the homepage
-        // (41 x 5-star, 8 x 4-star, 2 x 3-star -> weighted average 4.76 -> shown as 4.8).
-        // The review corpus mixes Whiskcam buyers with feedback carried over from the
-        // supplier listing; see the disclosure under the reviews section.
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "4.8",
-          reviewCount: "51",
-          bestRating: "5",
-          worstRating: "1",
-        },
+        // Offers establish product eligibility. Add ratings only after the
+        // mixed supplier/store review corpus has verified provenance.
         offers: offerSchema({
           price: product.priceRange.maxVariantPrice.amount,
           currency: product.priceRange.maxVariantPrice.currencyCode,
@@ -171,10 +166,10 @@ export default async function HomePage({
     "@id": pageUrl + "#faq",
     inLanguage: locale,
     isPartOf: { "@id": WEBSITE_ID },
-    mainEntity: FAQ_ITEMS.map((item) => ({
+    mainEntity: ([0, 1, 2, 3, 4, 5, 6, 7] as const).map((i) => ({
       "@type": "Question",
-      name: item.question,
-      acceptedAnswer: { "@type": "Answer", text: item.answer },
+      name: faqText(`items.${i}.question`),
+      acceptedAnswer: { "@type": "Answer", text: faqText(`items.${i}.answer`) },
     })),
   };
 
@@ -262,7 +257,7 @@ export default async function HomePage({
       <VideoShowcase />
       <ProductSection product={product} />
       <ReviewsSection />
-      <DuoPackCallout duoProduct={duoProduct} />
+      <DuoPackCallout duoProduct={duoProduct} singleProduct={product} />
       <FeaturesGrid />
       <HowItWorks />
       <ComparisonTable price={product ? formatPrice(product.priceRange.maxVariantPrice.amount, product.priceRange.maxVariantPrice.currencyCode) : undefined} />

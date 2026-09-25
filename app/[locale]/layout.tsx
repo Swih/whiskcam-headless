@@ -3,10 +3,9 @@ import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { AnnouncementBar } from "components/layout/announcement-bar";
 import { CartProvider } from "components/cart/cart-context";
 import { CookieConsent } from "components/cookie-consent";
-import { EmailPopup } from "components/email-popup";
 import { Navbar } from "components/layout/navbar";
 import { getCart, getProduct } from "lib/shopify";
-import { computeDiscount, computeSavings } from "lib/format";
+import { computeSavings } from "lib/format";
 import { PRODUCT_HANDLE } from "lib/content";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
@@ -41,13 +40,13 @@ export async function generateMetadata({
 
   const titles: Record<string, string> = {
     en: "Whiskcam — Pet Collar Camera | See Their World",
-    fr: "Whiskcam — Caméra Collar pour Animaux | Découvrez Leur Monde",
+    fr: "Whiskcam — Caméra collier pour Animaux | Découvrez Leur Monde",
     de: "Whiskcam — Halsband-Kamera für Haustiere | Entdecke Ihre Welt",
     es: "Whiskcam — Cámara de Collar para Mascotas | Descubre Su Mundo",
   };
 
   const descriptions: Record<string, string> = {
-    en: "The lightweight pet collar camera that captures your cat or dog's secret adventures. 1080P Full HD, no app required. Free worldwide shipping.",
+    en: "The lightweight pet collar camera that captures your cat or dog's secret adventures. 1080P Full HD, no app required. free shipping to supported destinations.",
     fr: "La caméra de collar ultra-légère qui capture les aventures secrètes de votre chat ou chien. 1080P Full HD, sans application. Livraison gratuite.",
     de: "Die leichte Halsbandkamera, die die geheimen Abenteuer deiner Katze oder deines Hundes filmt. 1080P Full HD, keine App nötig. Kostenloser Versand.",
     es: "La cámara de collar ultraligera que graba las aventuras secretas de tu gato o perro. 1080P Full HD, sin app. Envío gratis.",
@@ -97,9 +96,6 @@ export default async function LocaleLayout({
   const cart = getCart();
   const product = await getProduct(PRODUCT_HANDLE, country);
   const compareAt = product?.variants[0]?.compareAtPrice;
-  const discount = compareAt
-    ? computeDiscount(product!.priceRange.maxVariantPrice.amount, compareAt.amount)
-    : 0;
   const savingsPerUnit = compareAt
     ? computeSavings(product!.priceRange.maxVariantPrice.amount, compareAt.amount)
     : 0;
@@ -117,11 +113,10 @@ export default async function LocaleLayout({
         </a>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <CartProvider cartPromise={cart}>
-            <AnnouncementBar discount={discount} />
+            <AnnouncementBar />
             <Navbar savingsPerUnit={savingsPerUnit} currencyCode={currencyCode} />
             <main id="main-content" className="overflow-x-clip">{children}</main>
             <Toaster closeButton />
-            <EmailPopup />
             <CookieConsent />
             <Analytics
               checkoutDomain={

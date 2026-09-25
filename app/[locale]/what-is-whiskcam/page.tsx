@@ -24,7 +24,7 @@ export async function generateMetadata({
   return {
     title: "What Is Whiskcam? — Pet Collar Camera",
     description:
-      "Whiskcam is a 24 g pet collar camera that records 1080P Full HD video from your cat or dog's perspective. No app, no WiFi. Free worldwide shipping.",
+      "Whiskcam is a 24 g pet collar camera that records 1080P Full HD video from your cat or dog's perspective. No app, no WiFi. free shipping to supported destinations.",
     keywords: [
       "whiskcam",
       "what is whiskcam",
@@ -74,7 +74,7 @@ export default async function WhatIsWhiskcamPage({
         "@type": "Product",
         "@id": PRODUCT_ID,
         name: f.name,
-        description: `A ${f.weightGrams} g pet collar camera that records ${f.resolution} video with a ${f.fieldOfViewDegrees}° wide-angle lens. Clips onto any collar. No app, no WiFi required. Includes a ${f.storageGb} GB MicroSD card and a phone adapter.`,
+        description: `A ${f.weightGrams} g pet collar camera that records ${f.resolution} video with a ${f.fieldOfViewDegrees}° wide-angle lens. Clips onto any collar. No app, no WiFi required. Includes a phone adapter. A compatible MicroSD card is required separately; the ${f.storageGb} GB card is currently unavailable and not included.`,
         brand: { "@id": ORG_ID },
         manufacturer: { "@id": ORG_ID },
         category: "Pet Cameras",
@@ -108,7 +108,12 @@ export default async function WhatIsWhiskcamPage({
         "@id": `${canonical}#breadcrumb`,
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
-          { "@type": "ListItem", position: 2, name: "What Is Whiskcam", item: canonical },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "What Is Whiskcam",
+            item: canonical,
+          },
         ],
       },
     ],
@@ -142,21 +147,35 @@ export default async function WhatIsWhiskcamPage({
         <div className="prose prose-neutral mt-8 max-w-none prose-headings:text-wk-black prose-a:text-wk-amber prose-a:no-underline hover:prose-a:underline prose-strong:text-wk-black prose-table:text-sm prose-th:bg-neutral-50 prose-th:px-4 prose-th:py-2.5 prose-td:px-4 prose-td:py-2.5 prose-td:border-t">
           {/* Answer-first intro — 40-60 words for AI extraction */}
           <p className="lead text-lg">
-            Whiskcam is a <strong>24 g pet collar camera</strong> that records 1080P Full HD video
-            from your cat or dog&apos;s point of view. It clips onto any collar, requires no app or
-            WiFi, and ships as a complete kit (camera + 32 GB MicroSD + phone adapter + collar +
-            cable + digital guide) for &euro;79 with free worldwide shipping.
+            Whiskcam is a <strong>24 g pet collar camera</strong> that records
+            1080P Full HD video from your cat or dog&apos;s point of view. It
+            clips onto any collar, requires no app or WiFi, and ships with a
+            phone adapter, collar, cable and digital guide for &euro;79 with
+            free shipping to supported destinations. The 32 GB MicroSD card is
+            currently unavailable and is not included. A separate compatible
+            MicroSD card is required to record.
           </p>
 
           <h2>How It Works</h2>
           <p>
-            Whiskcam is designed to be as simple as possible. There are no apps to download, no
-            WiFi to connect, and no accounts to create. Here&apos;s the entire process:
+            Whiskcam is designed to be as simple as possible. There are no apps
+            to download, no WiFi to connect, and no accounts to create.
+            Here&apos;s the entire process:
           </p>
           <ol>
-            <li><strong>Clip it on</strong> — Attach Whiskcam to your pet&apos;s existing collar. It also comes with its own adjustable collar.</li>
-            <li><strong>Press record</strong> — One button starts recording. That&apos;s it.</li>
-            <li><strong>Watch the footage</strong> — When your pet comes home, pop out the MicroSD card and plug it into your phone using the included adapter.</li>
+            <li>
+              <strong>Clip it on</strong> — Attach Whiskcam to your pet&apos;s
+              existing collar. It also comes with its own adjustable collar.
+            </li>
+            <li>
+              <strong>Press record</strong> — One button starts recording.
+              That&apos;s it.
+            </li>
+            <li>
+              <strong>Watch the footage</strong> — When your pet comes home, pop
+              out the MicroSD card and plug it into your phone using the
+              included adapter.
+            </li>
           </ol>
 
           <h2>Specifications</h2>
@@ -164,39 +183,60 @@ export default async function WhatIsWhiskcamPage({
             <table>
               <tbody>
                 <tr>
-                  <td><strong>Weight</strong></td>
+                  <td>
+                    <strong>Weight</strong>
+                  </td>
                   <td>24 grams</td>
                 </tr>
                 <tr>
-                  <td><strong>Video Resolution</strong></td>
+                  <td>
+                    <strong>Video Resolution</strong>
+                  </td>
                   <td>1080P Full HD</td>
                 </tr>
                 <tr>
-                  <td><strong>Lens</strong></td>
+                  <td>
+                    <strong>Lens</strong>
+                  </td>
                   <td>170&deg; wide angle</td>
                 </tr>
                 <tr>
-                  <td><strong>Battery Life</strong></td>
-                  <td>Up to 2 hours</td>
+                  <td>
+                    <strong>Battery Life</strong>
+                  </td>
+                  <td>Rechargeable via USB-C; runtime varies</td>
                 </tr>
                 <tr>
-                  <td><strong>Storage</strong></td>
-                  <td>32 GB MicroSD card (included, pre-installed)</td>
+                  <td>
+                    <strong>Storage</strong>
+                  </td>
+                  <td>
+                    32 GB MicroSD card required separately; currently
+                    unavailable and not included
+                  </td>
                 </tr>
                 <tr>
-                  <td><strong>Charging</strong></td>
+                  <td>
+                    <strong>Charging</strong>
+                  </td>
                   <td>USB-C, full charge in under 1 hour</td>
                 </tr>
                 <tr>
-                  <td><strong>Video Format</strong></td>
+                  <td>
+                    <strong>Video Format</strong>
+                  </td>
                   <td>AVI</td>
                 </tr>
                 <tr>
-                  <td><strong>App Required</strong></td>
+                  <td>
+                    <strong>App Required</strong>
+                  </td>
                   <td>No</td>
                 </tr>
                 <tr>
-                  <td><strong>WiFi Required</strong></td>
+                  <td>
+                    <strong>WiFi Required</strong>
+                  </td>
                   <td>No</td>
                 </tr>
               </tbody>
@@ -206,49 +246,71 @@ export default async function WhatIsWhiskcamPage({
           <h2>What&apos;s in the Box</h2>
           <ul>
             <li>Whiskcam camera (1080P Full HD, 170&deg; lens)</li>
-            <li>32 GB MicroSD card (pre-installed)</li>
             <li>MicroSD-to-USB-C/Lightning phone adapter</li>
             <li>Adjustable pet collar</li>
             <li>USB-C charging cable</li>
-            <li>Digital guide: &quot;How to Capture Your Pet&apos;s Secret Life&quot;</li>
+            <li>
+              Digital guide: &quot;How to Capture Your Pet&apos;s Secret
+              Life&quot;
+            </li>
           </ul>
 
           <h2>Who Is Whiskcam For?</h2>
           <p>
-            Whiskcam is designed for <strong>cat and small dog owners</strong> who want to see what
-            their pet does when they&apos;re not watching. It&apos;s particularly popular with:
+            Whiskcam is designed for <strong>cat and small dog owners</strong>{" "}
+            who want to see what their pet does when they&apos;re not watching.
+            It&apos;s particularly popular with:
           </p>
           <ul>
-            <li>Outdoor cat owners curious about their cat&apos;s territory and adventures</li>
-            <li>Pet parents who want entertaining POV footage for TikTok, Instagram, or YouTube</li>
-            <li>Anyone who&apos;s ever wondered &quot;what does my cat actually do all day?&quot;</li>
+            <li>
+              Outdoor cat owners curious about their cat&apos;s territory and
+              adventures
+            </li>
+            <li>
+              Pet parents who want entertaining POV footage for TikTok,
+              Instagram, or YouTube
+            </li>
+            <li>
+              Anyone who&apos;s ever wondered &quot;what does my cat actually do
+              all day?&quot;
+            </li>
           </ul>
           <p>
-            At 24 g, it&apos;s safe for cats of all sizes — even small breeds. For more on safety, see our guide on{" "}
-            <a href="/blog/are-cat-collar-cameras-safe">cat collar camera safety</a>.
+            A camera&apos;s weight alone does not establish suitability for
+            every cat. Check the complete mount and quick-release collar, start
+            with a short supervised trial and ask your vet about your cat&apos;s
+            individual needs.
           </p>
 
           <h2>Whiskcam vs Competitors</h2>
           <p>
-            The main alternative is the Mr Petcam (~38 g, ~$70, SD card not included). For a full
-            breakdown, see our{" "}
+            Mr Petcam HD currently advertises a 16 g camera, infrared LEDs and a
+            16 GB MicroSD card in its package. These are manufacturer claims,
+            checked September 25, 2026. For sources and trade-offs, see our{" "}
             <a href="/blog/best-cat-collar-cameras-2026">
               comparison of the best cat collar cameras in 2026
             </a>
             .
           </p>
           <p>
-            Key differences: Whiskcam is lighter (24 g vs 38 g) and ships as a complete kit at
-            &euro;79 (camera + 32 GB SD + phone adapter + collar + cable + guide). Mr Petcam ships
-            the camera alone at $70, so once you add a card and an adapter you&apos;re in the same
-            range. Mr Petcam has been around longer and has more user reviews.
+            Whiskcam includes a phone adapter and collar, but requires a
+            separate MicroSD card and has no night vision. Compare each complete
+            bundle, current checkout price and phone compatibility. Whiskcam is
+            not lighter on the published camera-body weights. See the{" "}
+            <a href="/blog/mr-petcam-vs-whiskcam">
+              Mr Petcam HD versus Whiskcam comparison
+            </a>
+            .
           </p>
 
           <h2>Pricing & Shipping</h2>
           <p>
-            Whiskcam costs <strong>&euro;79</strong> for the complete kit, with <strong>free worldwide shipping</strong>.
-            Delivery takes 7-14 business days. There&apos;s a 30-day money-back guarantee — if
-            you&apos;re not happy, email support@whiskcam.com for a full refund.
+            Whiskcam costs <strong>&euro;79</strong> for the camera kit (MicroSD
+            not included), with{" "}
+            <strong>free shipping to supported destinations</strong>. Delivery
+            takes 7-14 business days. There&apos;s a 30-day money-back guarantee
+            — if you&apos;re not happy, email support@whiskcam.com for a full
+            refund.
           </p>
         </div>
 

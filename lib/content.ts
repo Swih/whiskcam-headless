@@ -24,9 +24,10 @@ export const PRODUCT_FACTS = {
   weightGrams: 24,
   resolution: "1080P Full HD",
   fieldOfViewDegrees: 170,
-  batteryHours: 2,
+  batteryRuntimeVerified: false,
   chargeTimeHours: 1,
   storageGb: 32,
+  storageIncluded: false,
   collarCm: 39,
   videoFormat: "AVI",
   charging: "USB-C",
@@ -47,16 +48,13 @@ export const PRODUCT_FACTS = {
 } as const;
 
 /** Countries the free-shipping offer and the return policy actually cover. */
-export const SHIPPING_COUNTRIES = [
-  "US", "CA", "GB", "IE", "FR", "DE", "AT", "CH", "BE", "NL", "LU",
-  "ES", "PT", "IT", "SE", "NO", "DK", "FI", "PL", "CZ", "AU", "NZ",
-] as const;
+export const SHIPPING_COUNTRIES = ["US", "CA", "GB", "IE", "FR", "BE", "NL", "LU", "MT", "ES", "PT", "NO", "DK", "FI", "PL", "AU", "NZ"] as const;
 
 export const STATS = [
   { value: "1080P" },
   { value: "170°" },
   { value: "24g" },
-  { value: "2h" },
+  { value: "USB-C" },
 ];
 
 export const FEATURES = [
@@ -77,7 +75,7 @@ export const HOW_IT_WORKS = [
 export const COMPARISON = [
   { whiskcam: "€79", others: "€70–380" },
   { whiskcam: "1080P Full HD", others: "720P–1080P" },
-  { whiskcam: true, others: false },
+  { whiskcam: PRODUCT_FACTS.storageIncluded, others: false },
   { whiskcam: true, others: false },
   { whiskcam: true, others: false },
   { whiskcam: true, others: false },
@@ -94,12 +92,12 @@ export const FAQ_ITEMS = [
   {
     question: "Is Whiskcam safe for my cat or small dog?",
     answer:
-      "Whiskcam is safe for adult cats and small dogs under 10 kg (Chihuahua, Yorkshire, Pomeranian, Dachshund, Cavalier King Charles, and similar breeds). At just 24g — lighter than a small bell — it clips securely onto any existing collar with smooth, rounded edges. Even small cats barely notice it. We recommend a breakaway collar for outdoor pets.",
+      "Suitability depends on your pet, collar fit and the complete mounted setup. The camera weighs 24 g; add the collar, mount and tags to assess total weight. Use a quick-release collar for a cat and start with a brief supervised trial. Remove the equipment if it changes movement or causes distress. Ask your vet about individual suitability.",
   },
   {
     question: "How long does the battery last?",
     answer:
-      "Whiskcam records up to 2 hours of Full HD video on a full charge — perfect for capturing morning patrols and evening adventures. A full charge takes under an hour via USB-C.",
+      "Runtime depends on recording conditions. Charge via USB-C before use; a verified continuous-recording duration is not yet available.",
   },
   {
     question: "Do I need to download an app?",
@@ -114,17 +112,17 @@ export const FAQ_ITEMS = [
   {
     question: "Will it fit my pet's collar?",
     answer:
-      "Whiskcam comes with an adjustable 39 cm breakaway collar and also clips onto any existing collar. It fits all cats and small dogs under 10 kg (Chihuahua, Yorkshire, Pomeranian, Dachshund, Cavalier King Charles, and similar breeds). For larger dogs we recommend a dedicated pet action camera mount.",
+      "The kit lists an adjustable 39 cm collar. Measure your pet and follow the collar’s fitting instructions; a stated length does not guarantee fit. Check compatibility with the camera clip and keep the release unobstructed.",
   },
   {
     question: "How long does shipping take?",
     answer:
-      "We ship worldwide for free. Delivery typically takes 7–14 business days depending on your location. You'll receive a tracking number as soon as your Whiskcam ships.",
+      "Shipping is free to supported destinations only. Delivery estimates range from 7 to 18 business days by destination; see the shipping policy. You'll receive a tracking number as soon as your Whiskcam ships.",
   },
   {
     question: "What video format does it record in?",
     answer:
-      "Whiskcam records in AVI format at 1080P Full HD. The files play on any device — phone, tablet, or computer. You can easily convert or share them on TikTok, Instagram, or YouTube.",
+      "Whiskcam records AVI video in 1080P Full HD. Some devices require a compatible player or conversion before viewing, editing or sharing.",
   },
 ];
 

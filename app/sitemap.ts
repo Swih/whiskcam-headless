@@ -38,10 +38,10 @@ const STATIC_ROUTES: Route[] = [
  * existing inbound link breaks) but they canonicalise back here instead of being
  * advertised as translations that do not exist.
  */
-function entriesFor(route: Route, lastModified: string): MetadataRoute.Sitemap {
+function entriesFor(route: Route): MetadataRoute.Sitemap {
   const languages = sitemapLanguagesFor(route.path);
   const base = {
-    lastModified: route.lastModified ?? lastModified,
+    ...(route.lastModified ? { lastModified: route.lastModified } : {}),
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   };
@@ -58,21 +58,17 @@ function entriesFor(route: Route, lastModified: string): MetadataRoute.Sitemap {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const now = new Date().toISOString();
-
-  const staticEntries = STATIC_ROUTES.flatMap((route) => entriesFor(route, now));
+  // Omit unknown modification dates instead of claiming every page changed today.
+  const staticEntries = STATIC_ROUTES.flatMap((route) => entriesFor(route));
 
   // Blog articles are English-only components, so each ships one canonical URL.
   const blogEntries = BLOG_ARTICLES.flatMap((article) =>
-    entriesFor(
-      {
-        path: `/blog/${article.slug}`,
-        priority: 0.7,
-        changeFrequency: "monthly",
-        lastModified: article.dateModified,
-      },
-      now,
-    ),
+    entriesFor({
+      path: `/blog/${article.slug}`,
+      priority: 0.7,
+      changeFrequency: "monthly",
+      lastModified: article.dateModified,
+    }),
   );
 
   // Shopify dynamic routes stay out on purpose: `/product/[handle]` 308-redirects

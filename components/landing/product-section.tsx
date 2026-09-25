@@ -1,5 +1,8 @@
 "use client";
 
+import { PRODUCT_FACTS } from "lib/content";
+import { DeliveryInfo } from "components/delivery-info";
+import { StorageNotice } from "./storage-notice";
 import { trackViewContent } from "components/analytics";
 import { SectionWrapper } from "components/ui/section-wrapper";
 import { SectionHeading } from "components/ui/section-heading";
@@ -21,13 +24,17 @@ const FALLBACK_IMAGES = [
   { src: "/images/lifestyle/wk-cat-outdoor.webp", alt: "Whiskcam on grass outdoors" },
 ];
 
-const BOX_COUNT = 6;
+const BOX_IDS = [0, 1, 2, 3, 4, 5] as const;
 
 export function ProductSection({ product }: { product?: Product }) {
   const t = useTranslations("product");
   const images = product
-    ? product.images.map((img) => ({ src: img.url, alt: img.altText }))
-    : FALLBACK_IMAGES;
+    ? product.images
+        .filter((img) => PRODUCT_FACTS.storageIncluded || !/32gbMicroSD|whatsinthebox/i.test(img.url))
+        .map((img) => ({ src: img.url, alt: img.altText }))
+    : FALLBACK_IMAGES.filter((img) => PRODUCT_FACTS.storageIncluded || !img.src.includes("box-contents"));
+
+  images.push({ src: "/images/product/whiskcam-kit-en.png", alt: "Whiskcam kit contents: MicroSD card not included" });
 
   const price = product
     ? formatPrice(
@@ -36,14 +43,13 @@ export function ProductSection({ product }: { product?: Product }) {
       )
     : "€79";
 
-  // Hard-coded compare-at anchor — keeps the strikethrough independent of
-  // whatever value Shopify happens to carry on the variant. €109 is the
-  // marketing anchor for the €79 complete kit (≈ -27%).
   const cc = product?.priceRange.maxVariantPrice.currencyCode || "EUR";
-  const HARDCODED_COMPARE_AT = "109.00";
   const currentPriceAmount = product?.priceRange.maxVariantPrice.amount || "79.00";
-  const compareAtPriceFormatted = formatPrice(HARDCODED_COMPARE_AT, cc);
-  const discount = computeDiscount(currentPriceAmount, HARDCODED_COMPARE_AT);
+  const compareAt = product?.variants[0]?.compareAtPrice;
+  const discount = compareAt?.currencyCode === cc
+    ? computeDiscount(currentPriceAmount, compareAt.amount) : 0;
+  const compareAtPriceFormatted = discount > 0 && compareAt
+    ? formatPrice(compareAt.amount, cc) : undefined;
 
   useEffect(() => {
     if (product) {
@@ -81,7 +87,7 @@ export function ProductSection({ product }: { product?: Product }) {
 
             {/* Title */}
             <h2 className="mt-3 text-xl font-bold tracking-tight text-wk-black sm:text-2xl md:text-3xl">
-              {product?.title || "Whiskcam Original"}
+              {t("title")}
             </h2>
 
             {/* Price */}
@@ -127,20 +133,6 @@ export function ProductSection({ product }: { product?: Product }) {
                 {t("freeGiftsLabel")}
               </p>
               <div className="mt-3 space-y-3">
-                {/* MicroSD — temporarily out of stock as a free gift while we
-                    restock. Kept in the list so customers see the kit context. */}
-                <div className="flex items-center gap-3 opacity-60">
-                  <div className="relative h-12 w-12 flex-none overflow-hidden rounded-lg border border-wk-grey-100 bg-white grayscale">
-                    <Image src="/images/product/gift-microsd.webp" alt="32GB MicroSD Card" fill className="object-cover" sizes="48px" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-wk-black line-through">{t("microsdName")}</p>
-                    <p className="text-xs text-wk-grey-400">{t("microsdDetail")}</p>
-                  </div>
-                  <span className="rounded-full bg-wk-grey-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-wk-grey-500">
-                    {t("outOfStock")}
-                  </span>
-                </div>
                 {/* Adapter */}
                 <div className="flex items-center gap-3">
                   <div className="relative h-12 w-12 flex-none overflow-hidden rounded-lg border border-wk-grey-100 bg-white">
@@ -167,18 +159,21 @@ export function ProductSection({ product }: { product?: Product }) {
                 </div>
               </div>
               <div className="mt-3 border-t border-wk-amber/20 pt-3 space-y-1">
-                <div className="flex items-center justify-between text-sm">
+                {compareAtPriceFormatted && <div className="flex items-center justify-between text-sm">
                   <span className="font-semibold text-wk-grey-600">{t("totalValue")}</span>
                   <span className="font-semibold text-wk-grey-600 line-through">
                     {compareAtPriceFormatted}
                   </span>
-                </div>
+                </div>}
                 <div className="flex items-center justify-between">
                   <span className="text-lg font-bold text-wk-black">{t("youPay")}</span>
                   <span className="text-lg font-bold text-wk-black">{price}</span>
                 </div>
               </div>
             </div>
+
+            <StorageNotice />
+            <DeliveryInfo />
 
             {/* ATC */}
             <div className="mt-4" id="add-to-cart">
@@ -256,7 +251,7 @@ export function ProductSection({ product }: { product?: Product }) {
             <div className="mt-5 rounded-xl border border-wk-grey-200 p-4">
               <p className="mb-2.5 text-sm font-semibold text-wk-black">{t("boxContentsLabel")}</p>
               <ul className="space-y-1.5">
-                {Array.from({ length: BOX_COUNT }, (_, i) => (
+                {BOX_IDS.filter((i) => i !== 1 || PRODUCT_FACTS.storageIncluded).map((i) => (
                   <li key={i} className="flex items-start gap-2 text-sm">
                     <div className="mt-1.5 h-1 w-1 flex-none rounded-full bg-wk-amber" />
                     <div className="min-w-0">
@@ -289,7 +284,7 @@ function FeaturesInfographicSlide() {
     { value: "1080P", labelKey: "specFullHd" as const },
     { value: "170°", labelKey: "specWideAngle" as const },
     { value: "24g", labelKey: "specUltralight" as const },
-    { value: "2h", labelKey: "specBattery" as const },
+    { value: "USB-C", labelKey: "specBattery" as const },
     { value: "No WiFi", labelKey: "specPrivacy" as const },
     { value: "No App", labelKey: "specPlugPlay" as const },
   ];

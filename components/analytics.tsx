@@ -9,7 +9,7 @@ const TIKTOK_PIXEL_ID = "D6TF923C77U1ODGOMAU0";
 const CONSENT_KEY = "wk-cookie-consent";
 
 /** Check if user accepted cookies */
-function hasConsent(): boolean {
+export function hasConsent(): boolean {
   try {
     const raw = localStorage.getItem(CONSENT_KEY);
     if (!raw) return false;
@@ -149,7 +149,10 @@ declare global {
   }
 }
 
-export function trackEvent(eventName: string, params?: Record<string, unknown>) {
+export function trackEvent(
+  eventName: string,
+  params?: Record<string, unknown>,
+) {
   // GA4
   window.gtag?.("event", eventName, params);
   // Meta Pixel (when added)
@@ -158,7 +161,11 @@ export function trackEvent(eventName: string, params?: Record<string, unknown>) 
   window.ttq?.track(eventName, params);
 }
 
-export function trackViewContent(product: { name: string; price: string; currency: string }) {
+export function trackViewContent(product: {
+  name: string;
+  price: string;
+  currency: string;
+}) {
   // GA4
   window.gtag?.("event", "view_item", {
     currency: product.currency,
@@ -181,12 +188,23 @@ export function trackViewContent(product: { name: string; price: string; currenc
   });
 }
 
-export function trackAddToCart(product: { name: string; price: string; currency: string; quantity: number }) {
+export function trackAddToCart(product: {
+  name: string;
+  price: string;
+  currency: string;
+  quantity: number;
+}) {
   // GA4
   window.gtag?.("event", "add_to_cart", {
     currency: product.currency,
     value: parseFloat(product.price) * product.quantity,
-    items: [{ item_name: product.name, price: parseFloat(product.price), quantity: product.quantity }],
+    items: [
+      {
+        item_name: product.name,
+        price: parseFloat(product.price),
+        quantity: product.quantity,
+      },
+    ],
   });
   // Meta
   window.fbq?.("track", "AddToCart", {

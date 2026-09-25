@@ -16,8 +16,8 @@
     "plusFreeShipping": "+ Envío gratis",
     "plusFreeShipShort": "+ Envío gratis",
     "ends": "— Termina",
-    "staticWithDiscount": "Ahorra {pct}% — Envío gratis a toda Europa",
-    "staticDefault": "Envío gratis a toda Europa"
+    "staticWithDiscount": "Envío gratis a los destinos disponibles",
+    "staticDefault": "Envío gratis · Países seleccionados"
   },
   "hero": {
     "tagline": "La Cámara de Collar para Gatos",
@@ -25,17 +25,17 @@
     "subtitle": "Mira por sus ojos. Imágenes POV Full HD desde un collar de 24g — para gatos y perros pequeños de menos de 10 kg. Sin app, sin WiFi, sin suscripción.",
     "trust": "Adoptada por las primeras familias Whiskcam",
     "ctaButton": "Lo quiero",
-    "ctaSubtext": "Envío gratis mundial · Compatible con iPhone y Android · Garantía 30 días",
-    "urgencyBadge": "Envíos a todo el mundo"
+    "ctaSubtext": "Envío gratis · Países seleccionados · 30 días para devolver",
+    "urgencyBadge": "Envío gratis · Países seleccionados"
   },
   "stats": {
     "fullHd": "Full HD",
     "wideAngle": "Gran Angular",
     "ultraLight": "Ultraligera",
-    "batteryLife": "Autonomía",
+    "batteryLife": "Recargable",
     "trustReviews": "Valorada 4,8/5 por los primeros clientes",
     "trustReturn": "30 días para devolver",
-    "trustShipping": "Envío gratis a toda Europa",
+    "trustShipping": "Envío gratis a los destinos disponibles",
     "trustSecure": "Pago 100% seguro"
   },
   "videoShowcase": {
@@ -81,7 +81,7 @@
       },
       "2": {
         "title": "Ultraligera — 24g",
-        "description": "Pesa menos que un cascabel. Ni los gatos más pequeños la notan."
+        "description": "Cuerpo de cámara de 24 g. Comprueba el peso total y la comodidad de tu mascota."
       },
       "3": {
         "title": "Sin app. Sin WiFi.",
@@ -89,11 +89,11 @@
       },
       "4": {
         "title": "Carga USB-C",
-        "description": "Cargada al 100% en menos de una hora. Lista para la siguiente aventura."
+        "description": "Carga por USB-C. Retira la cámara de tu mascota antes de cargarla."
       },
       "5": {
-        "title": "Segura para mascotas",
-        "description": "Bordes redondeados, clip universal, diseñada para su comodidad. Tu mascota está segura."
+        "title": "Comprueba el ajuste",
+        "description": "Bordes redondeados y clip para collar. Comprueba la fijación sin bloquear el cierre de seguridad."
       }
     }
   },
@@ -121,7 +121,7 @@
     "steps": {
       "0": {
         "title": "Engánchala",
-        "description": "Sujeta Whiskcam a cualquier collar en 2 segundos. Vale para todos los tamaños."
+        "description": "Fíjala a un collar compatible sin bloquear su cierre de seguridad. Comprueba el ajuste antes de usarla."
       },
       "1": {
         "title": "Dale al botón",
@@ -136,30 +136,30 @@
   "product": {
     "overline": "Tienda",
     "title": "Whiskcam Original",
-    "subtitle": "Todo incluido. Lista para grabar nada más abrir la caja.",
+    "subtitle": "Incluye cámara, adaptador para teléfono, collar, cable de carga y guía.",
     "badgeBestSeller": "Más vendida",
     "badge1080p": "1080P Full HD",
     "badgeNoApp": "Sin App",
     "reviews": "Adoptada por las primeras familias",
     "keyBenefits": {
       "0": "Full HD 1080P — lente gran angular de 170°",
-      "1": "24g ultraligera — ni los gatos pequeños la notan",
+      "1": "Cámara de 24 g — comprueba el ajuste y el peso total",
       "2": "Sin app, sin WiFi — un clic y graba",
-      "3": "Hasta 2h de batería — cargada en menos de 1h"
+      "3": "Recargable por USB-C — carga antes de la salida"
     },
     "freeGiftsLabel": "Regalos gratis con tu pedido",
     "microsdName": "Tarjeta MicroSD de 32GB",
-    "microsdDetail": "Preinstalada, lista para grabar",
+    "microsdDetail": "Tarjeta MicroSD no incluida: la tarjeta de 32 GB no está disponible actualmente. Necesitas una tarjeta MicroSD compatible por separado para grabar.",
     "adapterName": "Adaptador USB-C/Lightning",
     "adapterDetail": "Ve los vídeos en tu móvil",
-    "shippingName": "Envío gratis en toda Europa",
-    "shippingDetail": "7-14 días laborables",
+    "shippingName": "Envío gratis a los destinos disponibles",
+    "shippingDetail": "Comprobar el envío a tu país",
     "free": "GRATIS",
     "outOfStock": "AGOTADO",
     "totalValue": "Valor total",
     "youPay": "Tú pagas",
-    "atcFallback": "Conecta Shopify para activar Añadir al carrito",
-    "freeShippingMoneyBack": "Envío gratis · 30 días para devolver",
+    "atcFallback": "Los pedidos no están disponibles temporalmente. Inténtalo de nuevo en unos instantes.",
+    "freeShippingMoneyBack": "Envío gratis · Países seleccionados · 30 días para devolver",
     "trustShipping": "Envío gratis",
     "trustReturn": "30 días devolución",
     "trustSecure": "Pago seguro",
@@ -170,7 +170,7 @@
     "specFullHd": "Full HD",
     "specWideAngle": "Gran Angular",
     "specUltralight": "Ultraligera",
-    "specBattery": "Batería",
+    "specBattery": "Recargable",
     "specPrivacy": "Privacidad",
     "specPlugPlay": "Plug & Play",
     "galleryBadge": "Más vendida",
@@ -183,7 +183,7 @@
       },
       "1": {
         "item": "Tarjeta MicroSD de 32GB",
-        "detail": "Preinstalada, lista para grabar"
+        "detail": "Tarjeta MicroSD no incluida: la tarjeta de 32 GB no está disponible actualmente. Necesitas una tarjeta MicroSD compatible por separado para grabar."
       },
       "2": {
         "item": "Adaptador de tarjeta SD",
@@ -195,13 +195,14 @@
       },
       "4": {
         "item": "Cable USB-C",
-        "detail": "Carga rápida, llena en menos de 1 hora"
+        "detail": "Carga USB-C"
       },
       "5": {
         "item": "Guía digital",
         "detail": "\"Cómo capturar la vida secreta de tu mascota\""
       }
-    }
+    },
+    "storageNotice": "Tarjeta MicroSD no incluida: la tarjeta de 32 GB no está disponible actualmente. Necesitas una tarjeta MicroSD compatible por separado para grabar."
   },
   "comparison": {
     "overline": "Compara",
@@ -223,25 +224,27 @@
   },
   "cta": {
     "overline": "Ahora mismo,",
-    "title": "Tu gato está en algún lugar. ¿No quieres saber dónde?",
-    "subtitle": "Whiskcam graba todo en Full HD desde su collar. Pídela hoy, descubre mañana.",
+    "title": "Descubre las aventuras de tu gato a través de sus ojos.",
+    "subtitle": "Graba en Full HD desde su collar y mira las imágenes cuando vuelva. Sin GPS ni vídeo en directo.",
     "button": "Lo quiero",
     "footnote": "Envío gratis en Europa · Devolución garantizada en 30 días"
   },
   "duoPack": {
-    "badge": "Ahorra 20 €",
+    "badge": "Para dos mascotas",
     "overline": "¿Varios animales?",
     "title": "Dos Whiskcams. Un hogar. POV sin fin.",
-    "subtitle": "Si tienes más de un gato — o un gato y un perro pequeño — el Pack Duo ahorra 20 € y evita esperar a que una cámara se cargue mientras la otra sale de aventura.",
+    "subtitle": "Dos cámaras para descubrir las aventuras de tus dos compañeros.",
     "price": "129 €",
     "compareAtPrice": "218 €",
     "savings": "-41 %",
     "benefits": {
       "0": "Dos cámaras, dos aventuras, al mismo tiempo",
-      "1": "Envío gratis mundial incluido",
+      "1": "Envío gratis a los destinos disponibles",
       "2": "Garantía 30 días en ambas unidades"
     },
-    "cta": "Ver el Pack Duo"
+    "cta": "Ver el Pack Duo",
+    "saveAmount": "Ahorra {amount}",
+    "versusTwoSingles": "frente a dos compras por separado"
   },
   "peaceOfMind": {
     "overline": "Tranquilidad",
@@ -276,31 +279,31 @@
       },
       "1": {
         "question": "¿Es segura para mi gato?",
-        "answer": "Totalmente. Whiskcam pesa solo 24g, menos que un cascabel pequeño. Se engancha al collar de tu mascota con un clip de bordes redondeados. Ni los gatos más pequeños la notan. Eso sí, si tu gato sale a la calle, te recomendamos usar un collar de seguridad con apertura rápida."
+        "answer": "La idoneidad depende de tu mascota, del ajuste y del conjunto completo. La cámara pesa 24 g; añade el collar, la fijación y las placas al peso total. En gatos, utiliza un collar de apertura rápida y empieza con una prueba breve supervisada. Retira el equipo si altera sus movimientos o provoca malestar. Consulta a tu veterinario sobre la idoneidad para tu mascota."
       },
       "2": {
         "question": "¿Cuánto dura la batería?",
-        "answer": "Whiskcam graba hasta 2 horas de vídeo en Full HD con una carga completa — más que suficiente para capturar la patrulla matutina y las aventuras de la tarde. Se carga al 100% en menos de una hora por USB-C."
+        "answer": "La autonomía depende de las condiciones de grabación. Estamos verificando la duración continua antes de publicar una cifra concreta. Carga por USB-C antes de usarla."
       },
       "3": {
         "question": "¿Necesito descargar alguna app?",
-        "answer": "Nada de apps, nada de WiFi, nada de cuentas. Solo pulsa el botón de grabar en la cámara. Cuando tu gato vuelva a casa, saca la tarjeta SD, conéctala a tu móvil con el adaptador incluido y disfruta de los vídeos. Así de simple."
+        "answer": "Nada de apps, nada de WiFi, nada de cuentas. Solo pulsa el botón de grabar en la cámara. Cuando tu gato vuelva a casa, saca la tarjeta SD, conéctala a tu móvil con el adaptador incluido y disfruta de los vídeos. Así de simple. Tarjeta MicroSD no incluida: la tarjeta de 32 GB no está disponible actualmente. Necesitas una tarjeta MicroSD compatible por separado para grabar."
       },
       "4": {
         "question": "¿Cómo veo los vídeos en el móvil?",
-        "answer": "Cada Whiskcam viene con un adaptador MicroSD a USB-C/Lightning. Lo conectas a tu móvil y ves los vídeos directamente en tu galería. También puedes meter la tarjeta SD en cualquier ordenador con lector de tarjetas."
+        "answer": "Abre la tarjeta MicroSD en tu teléfono con el adaptador incluido o en un ordenador con un lector de tarjetas. Según el dispositivo, AVI puede requerir un reproductor compatible como VLC o una conversión de vídeo, especialmente en iPhone."
       },
       "5": {
         "question": "¿Le vale al collar de mi mascota?",
-        "answer": "Whiskcam viene con su propio collar ajustable, pero también se engancha a cualquier collar que tu mascota ya use. Sirve para gatos y perros de todos los tamaños."
+        "answer": "El kit indica un collar ajustable de 39 cm. Mide a tu mascota y sigue las instrucciones: esa longitud no garantiza un ajuste adecuado. Comprueba la compatibilidad del clip y deja libre el cierre de seguridad."
       },
       "6": {
         "question": "¿Cuánto tarda el envío?",
-        "answer": "Enviamos gratis a toda Europa. El envío suele tardar entre 7 y 14 días laborables dependiendo de dónde estés. Recibirás un número de seguimiento en cuanto tu Whiskcam salga de camino."
+        "answer": "Envío gratis a 17 destinos disponibles. EE. UU. y Reino Unido: 7–12 días laborables; países europeos disponibles: 8–14; Canadá y Australia: 10–14; Nueva Zelanda: 10–18. Plazos estimados. Comprueba los destinos antes de comprar."
       },
       "7": {
         "question": "¿En qué formato graba los vídeos?",
-        "answer": "Whiskcam graba en formato AVI a 1080P Full HD. Los archivos se reproducen en cualquier dispositivo: móvil, tablet u ordenador. Y puedes compartirlos fácilmente en TikTok, Instagram o YouTube."
+        "answer": "Whiskcam graba vídeos AVI en 1080P Full HD. Algunos teléfonos necesitan un reproductor compatible o convertir a MP4 para ver o compartir los vídeos."
       }
     }
   },
@@ -350,19 +353,24 @@
     "empty": "Tu carrito está vacío.",
     "emptySubtext": "Añade Whiskcam para empezar",
     "startShopping": "Seguir comprando",
-    "freeShippingBanner": "¡Tienes envío GRATIS a toda Europa!",
+    "freeShippingBanner": "Envío gratis a los destinos disponibles",
     "freeGiftsLabel": "Regalos gratis incluidos",
     "freeLabel": "GRATIS",
     "outOfStockLabel": "AGOTADO",
-    "freeWorldwideShipping": "Envío gratis a toda Europa",
+    "freeWorldwideShipping": "Envío gratis a los destinos disponibles",
     "subtotal": "Subtotal",
     "shipping": "Envío",
     "total": "Total",
-    "checkout": "Completar mi pedido",
+    "checkout": "Continuar al pago seguro",
     "processing": "Procesando...",
     "secureCheckout": "Pago seguro",
     "moneyBack": "30 días para devolver",
-    "saving": "Te ahorras {amount} en este pedido"
+    "saving": "Te ahorras {amount} en este pedido",
+    "deliveryEstimate": "Envío gratis · Países seleccionados",
+    "close": "Cerrar el carrito",
+    "duoName": "Whiskcam Pack Duo — 2 cámaras",
+    "cardNotIncluded": "Tarjeta MicroSD no incluida",
+    "includedAdapter": "Adaptador para teléfono incluido con la cámara"
   },
   "stickyAtc": {
     "productName": "Whiskcam Original",
@@ -370,7 +378,8 @@
     "adding": "Añadiendo...",
     "added": "¡Añadido!",
     "outOfStock": "Agotado",
-    "selectOption": "Elige una opción"
+    "selectOption": "Elige una opción",
+    "addError": "No se pudo añadir este artículo. Inténtalo de nuevo."
   },
   "about": {
     "overline": "Nuestra historia",
@@ -389,5 +398,23 @@
     "fr": "FR",
     "de": "DE",
     "es": "ES"
+  },
+  "delivery": {
+    "shipping": "Envío gratis a los destinos disponibles",
+    "short": "Envío gratis · Países seleccionados",
+    "check": "Comprobar el envío a tu país",
+    "select": "País / región",
+    "available": "Envío gratis · {min}–{max} días laborables estimados",
+    "unavailable": "Actualmente no enviamos a este destino.",
+    "destinations": "Ver todos los destinos disponibles",
+    "other": "Otro país",
+    "battery": "Recargable por USB-C — carga antes de la salida",
+    "batteryAnswer": "La autonomía depende de las condiciones de grabación. Estamos verificando la duración continua antes de publicar una cifra concreta. Carga por USB-C antes de usarla.",
+    "charge": "Carga USB-C",
+    "batteryLabel": "Recargable",
+    "faqShipping": "Envío gratis a 17 destinos disponibles. EE. UU. y Reino Unido: 7–12 días laborables; países europeos disponibles: 8–14; Canadá y Australia: 10–14; Nueva Zelanda: 10–18. Plazos estimados. Comprueba los destinos antes de comprar.",
+    "countries": "Actualmente enviamos a los países indicados abajo. Otros destinos, incluidos Alemania, Italia y Suiza, no están disponibles.",
+    "note": "Los plazos son estimados. Los posibles impuestos de importación son distintos de los gastos de envío. Contáctanos si necesitas aclaraciones.",
+    "error": "No se pudo añadir este artículo. Inténtalo de nuevo."
   }
 }

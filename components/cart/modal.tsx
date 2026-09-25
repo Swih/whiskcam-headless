@@ -3,6 +3,9 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { ShoppingCartIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Price from "components/price";
+import { PRODUCT_HANDLE, DUO_PRODUCT_HANDLE } from "lib/content";
+import { DeliveryInfo } from "components/delivery-info";
+import { StorageNotice } from "components/landing/storage-notice";
 import { DEFAULT_OPTION } from "lib/constants";
 import { formatPrice } from "lib/format";
 import Image from "next/image";
@@ -15,11 +18,6 @@ import { DeleteItemButton } from "./delete-item-button";
 import { EditItemQuantityButton } from "./edit-item-quantity-button";
 import OpenCart from "./open-cart";
 import { useTranslations } from "next-intl";
-
-const FREE_GIFTS = [
-  { name: "32GB MicroSD Card", value: "12.90", image: "/images/product/gift-microsd.webp", outOfStock: true },
-  { name: "USB-C Adapter", value: "9.90", image: "/images/product/gift-adapter.webp", outOfStock: false },
-];
 
 export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCode }: { savingsPerUnit?: number; currencyCode?: string }) {
   const t = useTranslations("cart");
@@ -50,7 +48,9 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
 
   const hasItems = cart && cart.lines.length > 0;
   const resolvedCurrency = cart?.cost.totalAmount.currencyCode || propCurrencyCode || "EUR";
-  const totalSavings = savingsPerUnit && cart ? savingsPerUnit * cart.totalQuantity : 0;
+  const totalSavings = savingsPerUnit && cart
+    ? savingsPerUnit * cart.lines.filter((line) => line.merchandise.product.handle === PRODUCT_HANDLE).reduce((sum, line) => sum + line.quantity, 0)
+    : 0;
 
   return (
     <>
@@ -85,7 +85,7 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
               <div className="flex items-center justify-between border-b border-wk-grey-100 px-5 py-4">
                 <div className="flex items-center gap-2">
                   <ShoppingCartIcon className="h-5 w-5 text-wk-black" />
-                  <p className="text-base font-semibold">{t("title")}</p>
+                  <Dialog.Title className="text-base font-semibold">{t("title")}</Dialog.Title>
                   {hasItems && (
                     <span className="flex h-5 w-5 items-center justify-center rounded-full bg-wk-black text-[10px] font-bold text-white">
                       {cart.totalQuantity}
@@ -93,7 +93,7 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
                   )}
                 </div>
                 <button
-                  aria-label="Close cart"
+                  aria-label={t("close")}
                   onClick={closeCart}
                   className="flex h-8 w-8 items-center justify-center rounded-full transition-colors hover:bg-wk-grey-100"
                 >
@@ -155,11 +155,15 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
                               <div className="flex flex-1 flex-col justify-between">
                                 <div>
                                   <p className="text-sm font-semibold leading-tight">
-                                    {item.merchandise.product.title}
+                                    {item.merchandise.product.handle === PRODUCT_HANDLE
+                                      ? "Whiskcam Original"
+                                      : item.merchandise.product.handle === DUO_PRODUCT_HANDLE
+                                        ? t("duoName") : item.merchandise.product.title}
                                   </p>
                                   {item.merchandise.title !== DEFAULT_OPTION && (
                                     <p className="mt-0.5 text-xs text-wk-grey-500">
-                                      {item.merchandise.title}
+                                      {item.merchandise.title.includes("MicroSD not included")
+                                        ? t("cardNotIncluded") : item.merchandise.title}
                                     </p>
                                   )}
                                 </div>
@@ -201,62 +205,23 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
                         ))}
                     </ul>
 
-                    {/* Free gifts */}
-                    <div className="border-t border-wk-grey-100 py-4">
-                      <p className="mb-3 text-xs font-bold uppercase tracking-wider text-wk-amber">
-                        {t("freeGiftsLabel")}
-                      </p>
-                      {FREE_GIFTS.map((gift) => (
-                        <div
-                          key={gift.name}
-                          className={`flex items-center gap-2.5 py-1.5 ${gift.outOfStock ? "opacity-60" : ""}`}
-                        >
-                          <div
-                            className={`relative h-10 w-10 flex-none overflow-hidden rounded-lg border border-wk-grey-100 bg-white ${gift.outOfStock ? "grayscale" : ""}`}
-                          >
-                            <Image src={gift.image} alt={gift.name} fill className="object-cover" sizes="40px" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <p
-                              className={`text-sm font-medium text-wk-black ${gift.outOfStock ? "line-through" : ""}`}
-                            >
-                              {gift.name}
-                            </p>
-                          </div>
-                          {gift.outOfStock ? (
-                            <span className="rounded-full bg-wk-grey-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-wk-grey-500">
-                              {t("outOfStockLabel")}
-                            </span>
-                          ) : (
-                            <span className="text-xs font-bold text-wk-green">{t("freeLabel")}</span>
-                          )}
-                        </div>
-                      ))}
-                      <div className="flex items-center gap-2.5 py-1.5">
-                        <div className="flex h-10 w-10 flex-none items-center justify-center rounded-lg border border-wk-grey-100 bg-white">
-                          <svg className="h-4 w-4 text-wk-grey-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                            <rect x="1" y="3" width="15" height="13" /><polygon points="16 8 20 8 23 11 23 16 16 16 16 8" /><circle cx="5.5" cy="18.5" r="2.5" /><circle cx="18.5" cy="18.5" r="2.5" />
-                          </svg>
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-wk-black">{t("freeWorldwideShipping")}</p>
-                        </div>
-                        <span className="text-xs font-bold text-wk-green">{t("freeLabel")}</span>
-                      </div>
+                    <div className="flex items-center gap-3 border-t border-wk-grey-100 py-4">
+                      <Image src="/images/product/gift-adapter.webp" alt={t("includedAdapter")} width={40} height={40} className="rounded-lg" />
+                      <p className="text-sm text-wk-grey-600">{t("includedAdapter")}</p>
                     </div>
                   </div>
 
                   {/* Footer — totals + checkout */}
                   <div className="border-t border-wk-grey-100 bg-wk-grey-50 px-5 pb-5 pt-4">
                     {/* Savings */}
-                    <div className="mb-3 flex items-center justify-center gap-1.5 rounded-lg bg-wk-green/5 px-3 py-2">
+                    {totalSavings > 0 && <div className="mb-3 flex items-center justify-center gap-1.5 rounded-lg bg-wk-green/5 px-3 py-2">
                       <svg className="h-3.5 w-3.5 text-wk-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                       <span className="text-xs font-semibold text-wk-green">
                         {t("saving", { amount: formatPrice(totalSavings.toFixed(2), resolvedCurrency) })}
                       </span>
-                    </div>
+                    </div>}
 
                     <div className="space-y-1.5 text-sm">
                       <div className="flex items-center justify-between">
@@ -282,6 +247,9 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
                       />
                     </div>
 
+                    <StorageNotice />
+                    <DeliveryInfo compact />
+
                     {/* Checkout button */}
                     <form
                       action={redirectToCheckout}
@@ -292,7 +260,7 @@ export default function CartModal({ savingsPerUnit, currencyCode: propCurrencyCo
                           currency: cart.cost.totalAmount.currencyCode,
                           items: cart.lines.map((line) => ({
                             name: line.merchandise.product.title,
-                            price: line.cost.totalAmount.amount,
+                            price: (Number(line.cost.totalAmount.amount) / line.quantity).toFixed(2),
                             quantity: line.quantity,
                           })),
                         })

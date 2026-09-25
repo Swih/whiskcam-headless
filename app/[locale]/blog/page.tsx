@@ -1,6 +1,6 @@
 import { BLOG_ARTICLES } from "lib/blog";
 import Footer from "components/layout/footer";
-import { Link } from "i18n/navigation";
+import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
@@ -13,9 +13,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return {
-    title: "Cat Collar Camera Guides: Safety, Weight Limits & Comparisons",
+    title: "Cat Collar Camera Guides: Comparisons, Setup & POV Video",
     description:
-      "13 tested guides on cat collar cameras: which models we tried, safe weight limits by cat size, playing AVI footage on an iPhone, and what the footage actually shows.",
+      "Compare cat collar cameras, check kit contents and learn how to record and play POV footage. Buying guides and practical help from Whiskcam.",
     keywords: [
       "cat collar camera",
       "pet camera guide",
@@ -26,7 +26,7 @@ export async function generateMetadata({
     openGraph: {
       title: "Cat Collar Camera Guides — Whiskcam",
       description:
-        "13 tested guides on cat collar cameras: models compared, safe weight limits by cat size, and what collar footage actually reveals.",
+        "Cat collar camera comparisons, recording guides and phone-playback help from Whiskcam.",
       url: alternatesFor("/blog", locale).canonical,
       siteName: "Whiskcam",
       type: "website",
@@ -34,7 +34,8 @@ export async function generateMetadata({
     twitter: {
       card: "summary",
       title: "Cat Collar Camera Guides — Whiskcam",
-      description: "13 tested guides: models compared, safe weight limits, and what the footage shows.",
+      description:
+        "Compare cameras, check kit contents and learn how to record and play cat POV footage.",
     },
   };
 }
@@ -73,12 +74,37 @@ export default async function BlogIndex({
       />
 
       <div lang="en" className="mx-auto max-w-4xl px-5 pt-32 pb-16 md:pt-40">
-        <h1 className="text-4xl font-bold text-wk-black md:text-5xl">Blog</h1>
+        <h1 className="text-4xl font-bold text-wk-black md:text-5xl">
+          Cat collar camera guides
+        </h1>
         <p className="mt-4 text-lg text-neutral-600">
           Guides, comparisons, and everything you need to know about cat collar
           cameras.
         </p>
 
+        <nav
+          aria-label="Start with your question"
+          className="mt-8 flex flex-wrap gap-3 text-sm"
+        >
+          <Link
+            href="/blog/best-cat-collar-cameras-2026"
+            className="rounded-lg border border-neutral-200 px-4 py-3"
+          >
+            Compare collar cameras
+          </Link>
+          <Link
+            href="/blog/cat-collar-camera-vs-gps-tracker-2026"
+            className="rounded-lg border border-neutral-200 px-4 py-3"
+          >
+            Camera or GPS tracker?
+          </Link>
+          <Link
+            href="/blog/cat-pov-tiktok-viral-guide-2026"
+            className="rounded-lg border border-neutral-200 px-4 py-3"
+          >
+            Create cat POV videos
+          </Link>
+        </nav>
         <div className="mt-12 grid gap-8 md:grid-cols-2">
           {BLOG_ARTICLES.map((article) => (
             <Link

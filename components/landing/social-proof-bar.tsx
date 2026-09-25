@@ -7,7 +7,7 @@ const STAT_ITEMS = [
   { value: "1080P", labelKey: "fullHd" },
   { value: "170°", labelKey: "wideAngle" },
   { value: "24g", labelKey: "ultraLight" },
-  { value: "2h", labelKey: "batteryLife" },
+  { value: "USB-C", labelKey: "batteryLife" },
 ] as const;
 
 const TRUST_ITEMS = [

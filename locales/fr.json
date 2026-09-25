@@ -16,8 +16,8 @@
     "plusFreeShipping": "+ Livraison offerte",
     "plusFreeShipShort": "+ Livraison",
     "ends": "— Se termine",
-    "staticWithDiscount": "Économisez {pct}% — Livraison offerte en France, Belgique, Suisse et Europe",
-    "staticDefault": "Livraison offerte — France, Belgique, Suisse et Europe"
+    "staticWithDiscount": "Livraison offerte vers les destinations desservies",
+    "staticDefault": "Livraison offerte · Pays sélectionnés"
   },
   "hero": {
     "tagline": "La Caméra Collier pour Chat",
@@ -25,14 +25,14 @@
     "subtitle": "Voyez par ses yeux. Des séquences POV Full HD depuis un collier de 24g — pour chats et petits chiens de moins de 10 kg. Sans appli, sans WiFi, sans abonnement.",
     "trust": "Adoptée par les premiers propriétaires Whiskcam",
     "ctaButton": "Je prends le mien",
-    "ctaSubtext": "Livraison offerte · Compatible iPhone & Android · Remboursé 30 jours",
-    "urgencyBadge": "Expédié dans le monde entier"
+    "ctaSubtext": "Livraison offerte · Pays sélectionnés · Remboursé 30 jours",
+    "urgencyBadge": "Livraison offerte · Pays sélectionnés"
   },
   "stats": {
     "fullHd": "Full HD",
     "wideAngle": "Grand angle",
     "ultraLight": "Ultra-léger",
-    "batteryLife": "Autonomie",
+    "batteryLife": "Rechargeable",
     "trustReviews": "Notée 4,8/5 par les premiers clients",
     "trustReturn": "Remboursé 30 jours",
     "trustShipping": "Livraison offerte",
@@ -81,7 +81,7 @@
       },
       "2": {
         "title": "Ultra-léger — 24g",
-        "description": "Plus léger qu'une clochette. Même les petits chats oublient qu'ils le portent."
+        "description": "Caméra de 24 g. Vérifiez le poids total avec le collier et le confort de votre animal."
       },
       "3": {
         "title": "Sans appli. Sans WiFi.",
@@ -89,11 +89,11 @@
       },
       "4": {
         "title": "Charge USB-C",
-        "description": "Rechargé en moins d'une heure via USB-C. Prêt pour la prochaine escapade."
+        "description": "Recharge par USB-C. Retirez la caméra de votre animal avant de la charger."
       },
       "5": {
-        "title": "Conçu pour les animaux",
-        "description": "Bords arrondis, clip universel. Votre chat oubliera qu'il le porte — en moins de 2 minutes."
+        "title": "Vérifiez l’ajustement",
+        "description": "Bords arrondis et clip pour collier. Vérifiez la fixation sans bloquer l’ouverture de sécurité."
       }
     }
   },
@@ -121,7 +121,7 @@
     "steps": {
       "0": {
         "title": "Clipsez",
-        "description": "Fixez Whiskcam au collier en 2 secondes. Compatible avec tous les colliers."
+        "description": "Fixez-la à un collier compatible sans bloquer son ouverture. Vérifiez l’ajustement avant utilisation."
       },
       "1": {
         "title": "Enregistrez",
@@ -136,30 +136,30 @@
   "product": {
     "overline": "Boutique",
     "title": "Whiskcam Original",
-    "subtitle": "Tout inclus. Prêt à filmer dès la réception.",
+    "subtitle": "Caméra, adaptateur téléphone, collier, câble de charge et guide inclus.",
     "badgeBestSeller": "Meilleure vente",
     "badge1080p": "1080P Full HD",
     "badgeNoApp": "Sans appli",
     "reviews": "Adoptée par les premiers propriétaires",
     "keyBenefits": {
       "0": "Full HD 1080P — objectif grand angle 170°",
-      "1": "24g ultra-léger — même les petits chats ne le sentent pas",
+      "1": "Caméra de 24 g — vérifiez l’ajustement et le poids total",
       "2": "Sans appli, sans WiFi — un clic et ça filme",
-      "3": "Jusqu'à 2h d'autonomie — rechargé en moins d'1h"
+      "3": "Rechargeable par USB-C — chargez avant la sortie"
     },
     "freeGiftsLabel": "Offerts avec votre commande",
     "microsdName": "Carte MicroSD 32 Go",
-    "microsdDetail": "Pré-installée, prête à filmer",
+    "microsdDetail": "Carte MicroSD non incluse : la carte 32 Go est actuellement indisponible. Prévoyez une carte MicroSD compatible pour enregistrer.",
     "adapterName": "Adaptateur USB-C/Lightning",
     "adapterDetail": "Visionnez direct sur votre téléphone",
-    "shippingName": "Livraison offerte en Europe",
-    "shippingDetail": "7 à 14 jours ouvrés",
+    "shippingName": "Livraison offerte vers les destinations desservies",
+    "shippingDetail": "Vérifier la livraison dans votre pays",
     "free": "OFFERT",
     "outOfStock": "RUPTURE",
     "totalValue": "Valeur totale",
     "youPay": "Vous payez",
-    "atcFallback": "Connectez Shopify pour activer l'ajout au panier",
-    "freeShippingMoneyBack": "Livraison offerte · Remboursement 30 jours",
+    "atcFallback": "La commande est temporairement indisponible. Réessayez dans quelques instants.",
+    "freeShippingMoneyBack": "Livraison offerte · Pays sélectionnés · Remboursé 30 jours",
     "trustShipping": "Livraison offerte",
     "trustReturn": "Retour 30 jours",
     "trustSecure": "Paiement sécurisé",
@@ -170,7 +170,7 @@
     "specFullHd": "Full HD",
     "specWideAngle": "Grand angle",
     "specUltralight": "Ultra-léger",
-    "specBattery": "Autonomie",
+    "specBattery": "Rechargeable",
     "specPrivacy": "Vie privée",
     "specPlugPlay": "Plug & Play",
     "galleryBadge": "Meilleure vente",
@@ -183,7 +183,7 @@
       },
       "1": {
         "item": "Carte MicroSD 32 Go",
-        "detail": "Pré-installée, prête à l'enregistrement"
+        "detail": "Carte MicroSD non incluse : la carte 32 Go est actuellement indisponible. Prévoyez une carte MicroSD compatible pour enregistrer."
       },
       "2": {
         "item": "Adaptateur carte SD",
@@ -195,17 +195,18 @@
       },
       "4": {
         "item": "Câble USB-C",
-        "detail": "Charge rapide, complète en moins d'1 heure"
+        "detail": "Recharge USB-C"
       },
       "5": {
         "item": "Guide numérique",
         "detail": "\"Comment capturer la vie secrète de votre animal\""
       }
-    }
+    },
+    "storageNotice": "Carte MicroSD non incluse : la carte 32 Go est actuellement indisponible. Prévoyez une carte MicroSD compatible pour enregistrer."
   },
   "comparison": {
     "overline": "Comparaison",
-    "title": "Pourquoi des milliers de propriétaires choisissent Whiskcam",
+    "title": "Pourquoi choisir Whiskcam ?",
     "subtitle": "Plus légère, plus simple, moins chère. Conçue pour les animaux.",
     "featureCol": "Fonctionnalité",
     "othersCol": "Autres caméras",
@@ -223,25 +224,27 @@
   },
   "cta": {
     "overline": "Et maintenant ?",
-    "title": "En ce moment, votre chat est quelque part. Vous voulez savoir où ?",
-    "subtitle": "Whiskcam filme tout en Full HD depuis son collier. Commandez aujourd'hui, découvrez demain.",
+    "title": "Découvrez les aventures de votre chat à travers ses yeux.",
+    "subtitle": "Filmez en Full HD depuis son collier, puis regardez les images à son retour. Sans GPS ni visionnage en direct.",
     "button": "Je prends le mien",
     "footnote": "Livraison offerte · Satisfait ou remboursé 30 jours"
   },
   "duoPack": {
-    "badge": "Économisez 20 €",
+    "badge": "Pour deux animaux",
     "overline": "Plusieurs animaux ?",
     "title": "Deux Whiskcams. Un foyer. Zéro attente.",
-    "subtitle": "Si vous avez plusieurs chats — ou un chat et un petit chien — le Duo Pack vous fait économiser 20 € et évite d'attendre qu'une caméra se recharge pendant que l'autre part à l'aventure.",
+    "subtitle": "Deux caméras pour découvrir les aventures de vos deux compagnons.",
     "price": "129 €",
     "compareAtPrice": "218 €",
     "savings": "-41 %",
     "benefits": {
       "0": "Deux caméras, deux aventures, en même temps",
-      "1": "Livraison mondiale offerte incluse",
+      "1": "Livraison offerte vers les destinations desservies",
       "2": "Garantie 30 jours sur les deux unités"
     },
-    "cta": "Découvrir le Duo Pack"
+    "cta": "Découvrir le Duo Pack",
+    "saveAmount": "Économisez {amount}",
+    "versusTwoSingles": "par rapport à deux achats séparés"
   },
   "peaceOfMind": {
     "overline": "Sérénité",
@@ -276,31 +279,31 @@
       },
       "1": {
         "question": "C'est vraiment sûr pour mon chat ou petit chien ?",
-        "answer": "Whiskcam est sûr pour chats adultes et petits chiens de moins de 10 kg (Chihuahua, Yorkshire, Poméranien, Teckel, Cavalier King Charles et races similaires). À seulement 24g — plus léger qu'une petite clochette — il se clipse au collier existant avec des bords arrondis et lisses. La plupart des chats l'oublient en quelques minutes. On recommande un collier détachable pour l'extérieur."
+        "answer": "L’adaptation dépend de votre animal, du collier et de l’ensemble porté. La caméra pèse 24 g ; ajoutez le collier, la fixation et les médailles au poids total. Pour un chat, utilisez un collier à ouverture rapide et commencez par un bref essai surveillé. Retirez le matériel s’il gêne ses mouvements ou provoque de la détresse. Demandez conseil à votre vétérinaire pour votre animal."
       },
       "2": {
         "question": "Combien de temps dure la batterie ?",
-        "answer": "Jusqu'à 2 heures en Full HD sur une charge complète — largement assez pour capturer les patrouilles du matin et les escapades du soir. Rechargé en moins d'une heure via USB-C."
+        "answer": "L’autonomie varie selon les conditions d’enregistrement. Nous vérifions la durée continue avant de publier un chiffre précis. Rechargez par USB-C avant utilisation."
       },
       "3": {
         "question": "Il faut une appli ?",
-        "answer": "Non. Pas d'appli, pas de WiFi, pas de compte à créer. Appuyez sur le bouton, laissez votre chat vivre sa vie. Quand il rentre, branchez la carte SD sur votre téléphone avec l'adaptateur inclus. C'est tout."
+        "answer": "Non. Pas d'appli, pas de WiFi, pas de compte à créer. Appuyez sur le bouton, laissez votre chat vivre sa vie. Quand il rentre, branchez la carte SD sur votre téléphone avec l'adaptateur inclus. C'est tout. Carte MicroSD non incluse : la carte 32 Go est actuellement indisponible. Prévoyez une carte MicroSD compatible pour enregistrer."
       },
       "4": {
         "question": "Comment je regarde les vidéos ?",
-        "answer": "Un adaptateur MicroSD vers USB-C/Lightning est inclus. Branchez-le sur votre téléphone et les vidéos apparaissent dans votre galerie. Ça marche aussi sur ordinateur avec un lecteur de carte."
+        "answer": "Ouvrez la carte MicroSD sur votre téléphone avec l’adaptateur inclus, ou sur ordinateur avec un lecteur de carte. La lecture des fichiers AVI dépend de votre appareil : un lecteur compatible comme VLC ou une conversion vidéo peut être nécessaire, notamment sur iPhone."
       },
       "5": {
         "question": "Ça s'adapte à n'importe quel collier ?",
-        "answer": "Whiskcam est livré avec un collier détachable réglable de 39 cm et se clipse aussi sur n'importe quel collier existant. Il convient à tous les chats et aux petits chiens de moins de 10 kg (Chihuahua, Yorkshire, Poméranien, Teckel, Cavalier King Charles et similaires). Pour les plus grands chiens, on recommande un support de caméra d'action dédié."
+        "answer": "Le kit indique un collier réglable de 39 cm. Mesurez votre animal et suivez les instructions du collier : cette longueur ne garantit pas qu’il convienne. Vérifiez la compatibilité du clip et laissez l’ouverture de sécurité dégagée."
       },
       "6": {
         "question": "Quand est-ce que je le reçois ?",
-        "answer": "Livraison offerte en France, Belgique, Suisse et dans toute l'Europe. Comptez 7 à 14 jours ouvrés selon votre localisation. Un numéro de suivi vous est envoyé dès l'expédition."
+        "answer": "Livraison offerte vers nos 17 destinations desservies. États-Unis et Royaume-Uni : 7–12 jours ouvrés ; pays européens desservis : 8–14 ; Canada et Australie : 10–14 ; Nouvelle-Zélande : 10–18. Délais estimatifs. Vérifiez les destinations avant de commander."
       },
       "7": {
         "question": "Quel format vidéo ?",
-        "answer": "AVI en 1080P Full HD. Lisible sur tous les appareils — téléphone, tablette, ordinateur. Facile à partager sur TikTok, Instagram ou YouTube."
+        "answer": "Whiskcam enregistre en AVI, en 1080P Full HD. Certains téléphones nécessitent un lecteur compatible ou une conversion en MP4 pour lire ou partager les vidéos."
       }
     }
   },
@@ -324,7 +327,7 @@
       "privacy": "Politique de confidentialité",
       "terms": "Conditions d'utilisation"
     },
-    "trustShipping": "Livraison offerte en Europe",
+    "trustShipping": "Livraison offerte vers les destinations desservies",
     "trustReturns": "Remboursement 30 jours",
     "trustSecure": "Paiement sécurisé",
     "trustPetSafe": "Sûr pour les animaux",
@@ -350,19 +353,24 @@
     "empty": "Votre panier est vide.",
     "emptySubtext": "Ajoutez Whiskcam pour commencer",
     "startShopping": "Continuer mes achats",
-    "freeShippingBanner": "Livraison offerte — France, Belgique, Suisse et Europe !",
+    "freeShippingBanner": "Livraison offerte vers les destinations desservies",
     "freeGiftsLabel": "🎁 Cadeaux inclus",
     "freeLabel": "OFFERT",
     "outOfStockLabel": "RUPTURE",
-    "freeWorldwideShipping": "Livraison offerte en Europe",
+    "freeWorldwideShipping": "Livraison offerte vers les destinations desservies",
     "subtotal": "Sous-total",
     "shipping": "Livraison",
     "total": "Total",
-    "checkout": "Finaliser ma commande",
+    "checkout": "Passer au paiement sécurisé",
     "processing": "Traitement en cours...",
     "secureCheckout": "Paiement sécurisé",
     "moneyBack": "Remboursement 30 jours",
-    "saving": "Vous économisez {amount} sur cette commande"
+    "saving": "Vous économisez {amount} sur cette commande",
+    "deliveryEstimate": "Livraison offerte · Pays sélectionnés",
+    "close": "Fermer le panier",
+    "duoName": "Whiskcam Duo Pack — 2 caméras",
+    "cardNotIncluded": "Carte MicroSD non incluse",
+    "includedAdapter": "Adaptateur téléphone inclus avec votre caméra"
   },
   "stickyAtc": {
     "productName": "Whiskcam Original",
@@ -370,7 +378,8 @@
     "adding": "Ajout...",
     "added": "Ajouté !",
     "outOfStock": "Rupture de stock",
-    "selectOption": "Sélectionnez une option"
+    "selectOption": "Sélectionnez une option",
+    "addError": "Impossible d’ajouter cet article. Veuillez réessayer."
   },
   "about": {
     "overline": "Notre histoire",
@@ -389,5 +398,23 @@
     "fr": "FR",
     "de": "DE",
     "es": "ES"
+  },
+  "delivery": {
+    "shipping": "Livraison offerte vers les destinations desservies",
+    "short": "Livraison offerte · Pays sélectionnés",
+    "check": "Vérifier la livraison dans votre pays",
+    "select": "Pays / région",
+    "available": "Livraison offerte · {min}–{max} jours ouvrés estimés",
+    "unavailable": "Nous ne livrons pas cette destination actuellement.",
+    "destinations": "Voir toutes les destinations desservies",
+    "other": "Un autre pays",
+    "battery": "Rechargeable par USB-C — chargez avant la sortie",
+    "batteryAnswer": "L’autonomie varie selon les conditions d’enregistrement. Nous vérifions la durée continue avant de publier un chiffre précis. Rechargez par USB-C avant utilisation.",
+    "charge": "Recharge USB-C",
+    "batteryLabel": "Rechargeable",
+    "faqShipping": "Livraison offerte vers nos 17 destinations desservies. États-Unis et Royaume-Uni : 7–12 jours ouvrés ; pays européens desservis : 8–14 ; Canada et Australie : 10–14 ; Nouvelle-Zélande : 10–18. Délais estimatifs. Vérifiez les destinations avant de commander.",
+    "countries": "Nous livrons actuellement les pays ci-dessous. Les autres destinations, notamment l’Allemagne, l’Italie et la Suisse, ne sont pas disponibles.",
+    "note": "Les délais sont estimatifs. Les éventuels droits d’importation sont distincts des frais de livraison ; contactez-nous pour toute précision.",
+    "error": "Impossible d’ajouter cet article. Veuillez réessayer."
   }
 }
