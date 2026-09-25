@@ -100,7 +100,7 @@
   "reviews": {
     "overline": "Bewertungen",
     "title": "Was Whiskcam-Besitzer entdeckt haben",
-    "subtitle": "Echte Besitzer. Echte Katzen. Echte Überraschungen.",
+    "subtitle": "Historische Bewertungen dieses Kameramodells. Keine verifizierten Käufe bei Whiskcam.",
     "verifiedBuyer": "Verifizierter Käufer",
     "showPhotos": "Fotos anzeigen",
     "hidePhotos": "Fotos ausblenden",
@@ -112,7 +112,7 @@
     "showAll": "Alle Bewertungen anzeigen",
     "showAllCount": "Alle {count} Bewertungen anzeigen",
     "translated": "",
-    "trustFooter": "Bewertungen stammen von verifizierten Käufern der Whiskcam-Kamera. Wir ergänzen Feedback unserer Kunden, sobald die Whiskcam-Bestellungen ausgeliefert sind."
+    "trustFooter": "Diese historischen Bewertungen betreffen dieses Kameramodell und sind keine verifizierten Whiskcam-Käufe. Whiskcam hat ihre ursprüngliche Quelle nicht unabhängig überprüft."
   },
   "howItWorks": {
     "overline": "So funktioniert's",
@@ -191,7 +191,7 @@
       },
       "3": {
         "item": "Verstellbares Halsband",
-        "detail": "Passt für Katzen & Hunde aller Größen"
+        "detail": "Verstellbar; Maße und Sicherheitsverschluss prüfen"
       },
       "4": {
         "item": "USB-C Kabel",
@@ -202,7 +202,7 @@
         "detail": "\"So filmst du das geheime Leben deines Tieres\""
       }
     },
-    "storageNotice": "MicroSD-Karte nicht enthalten: Die 32-GB-Karte ist derzeit nicht verfügbar. Zum Aufnehmen benötigst du eine separate kompatible MicroSD-Karte."
+    "storageNotice": "MicroSD-Karte separat erhältlich. Für die erste Aufnahme brauchst du eine kompatible MicroSD-Karte."
   },
   "comparison": {
     "overline": "Vergleich",
@@ -275,7 +275,7 @@
     "items": {
       "0": {
         "question": "Was, wenn ich nicht zufrieden bin?",
-        "answer": "Du hast 30 Tage Zeit, Whiskcam in Ruhe auszuprobieren. Wenn du oder dein Tier nicht happy seid, schreib uns einfach eine Mail an support@whiskcam.com — wir erstatten dir den vollen Kaufpreis, ohne Wenn und Aber. Du musst das Produkt nicht mal zurückschicken. Wir stehen hinter jedem Whiskcam, weil wir wissen, dass du es lieben wirst."
+        "answer": "Du hast ab Lieferung 30 Tage Zeit, eine Erstattung anzufordern. Schreibe mit deiner Bestellnummer an support@whiskcam.com. In den meisten Fällen ist keine Rücksendung nötig. Details findest du in unserer Rückgaberichtlinie."
       },
       "1": {
         "question": "Ist Whiskcam sicher für meine Katze?",
@@ -287,7 +287,7 @@
       },
       "3": {
         "question": "Brauche ich eine App dafür?",
-        "answer": "Nö. Keine App, kein WLAN, kein Konto. Einfach den Aufnahme-Knopf drücken. Wenn dein Tier nach Hause kommt, SD-Karte raus, mit dem mitgelieferten Adapter ins Handy stecken und die Aufnahmen genießen. Einfacher geht's nicht. MicroSD-Karte nicht enthalten: Die 32-GB-Karte ist derzeit nicht verfügbar. Zum Aufnehmen benötigst du eine separate kompatible MicroSD-Karte."
+        "answer": "Zum Aufnehmen sind weder Konto noch WLAN nötig. Setze eine kompatible MicroSD-Karte ein (separat erhältlich) und drücke die Aufnahmetaste. Lies die Karte mit dem mitgelieferten Adapter oder einem kompatiblen Lesegerät aus. Für AVI-Dateien kann auf dem Handy ein kompatibler Videoplayer nötig sein."
       },
       "4": {
         "question": "Wie schaue ich mir die Videos auf dem Handy an?",
@@ -330,7 +330,7 @@
     "trustShipping": "Kostenloser Versand in unterstützte Länder",
     "trustReturns": "30 Tage Geld zurück",
     "trustSecure": "Sicherer Checkout",
-    "trustPetSafe": "Tiersicheres Design",
+    "trustPetSafe": "Hinweise zur Passform",
     "copyright": "© {year} Whiskcam. Alle Rechte vorbehalten."
   },
   "cookie": {
@@ -374,7 +374,7 @@
   },
   "stickyAtc": {
     "productName": "Whiskcam Original",
-    "addToCart": "Meins sichern!",
+    "addToCart": "In den Warenkorb",
     "adding": "Wird hinzugefügt...",
     "added": "Drin!",
     "outOfStock": "Ausverkauft",
@@ -415,6 +415,100 @@
     "faqShipping": "Kostenloser Versand in 17 unterstützte Länder. USA und Großbritannien: 7–12 Werktage; unterstützte europäische Länder: 8–14; Kanada und Australien: 10–14; Neuseeland: 10–18. Geschätzte Zeiten. Bitte Lieferländer vor der Bestellung prüfen.",
     "countries": "Wir liefern derzeit in die unten aufgeführten Länder. Andere Ziele, darunter Deutschland, Italien und die Schweiz, sind nicht verfügbar.",
     "note": "Lieferzeiten sind Schätzungen. Mögliche Einfuhrabgaben sind nicht mit Versandkosten gleichzusetzen. Bei Fragen kontaktiere uns.",
-    "error": "Der Artikel konnte nicht hinzugefügt werden. Bitte erneut versuchen."
+    "error": "Der Artikel konnte nicht hinzugefügt werden. Bitte erneut versuchen.",
+    "chooseCountry": "Land auswählen",
+    "businessDays": "Werktage, geschätzt"
+  },
+  "v2": {
+    "eyebrow": "DIE HALSBANDKAMERA FÜR KATZEN",
+    "headline": "Ihre Welt.",
+    "headlineAccent": "Ein Stück näher.",
+    "intro": "Die Gartenrunde. Unerwartete Begegnungen. Filme aus der Perspektive deiner Katze in 1080P und entdecke ihre Geschichte, wenn sie zurückkommt.",
+    "choose": "Mein Set wählen",
+    "watch": "22 Sekunden ansehen",
+    "noSubscription": "Ohne Abo",
+    "readReviews": "Bewertungen lesen",
+    "heroVideo": "Video aus Katzensicht: Die Begegnung",
+    "filmCaption": "Derselbe Garten. Eine ganz andere Perspektive.",
+    "cameraNote": "24-g-Kamera · 1080P · Offline-Aufnahme",
+    "promiseRecord": "Ohne WLAN aufnehmen",
+    "promiseWatch": "Nach der Rückkehr ansehen",
+    "promiseKeep": "Lieblingsmomente behalten",
+    "offerEyebrow": "KLEINE KAMERA. NEUE PERSPEKTIVE.",
+    "offerTitle": "Das ist Whiskcam Original.",
+    "offerIntro": "Offline-Videos, ein Smartphone-Adapter und ein neuer Blick auf den Tag deiner Katze.",
+    "choosePack": "Wähle dein Set",
+    "singleName": "Original",
+    "singleDescription": "1 Kamera · für ein Tier",
+    "duoName": "Duo",
+    "duoDescription": "2 Kameras · für zwei Tiere",
+    "save": "{amount} weniger als 2 Original",
+    "unavailable": "Derzeit nicht verfügbar",
+    "storageTitle": "MicroSD-Karte separat erhältlich.",
+    "storageBody": "Für die erste Aufnahme brauchst du eine kompatible MicroSD-Karte.",
+    "add": "In den Warenkorb — {price}",
+    "addShort": "In den Warenkorb",
+    "adding": "Wird hinzugefügt…",
+    "cartError": "Das Set konnte nicht hinzugefügt werden. Bitte versuche es erneut. Es wurde nichts abgebucht.",
+    "secure": "Sicherer Shopify-Checkout",
+    "returns": "30-Tage-Erstattungsrichtlinie",
+    "includedTitle": "Was ist im Set enthalten?",
+    "singleIncluded": "1 Kamera, Smartphone-Adapter, verstellbares Halsband, USB-C-Ladekabel und digitale Anleitung.",
+    "duoIncluded": "Das Duo enthält zwei Kameras. Das Zubehör ist auf dem Set-Bild zu sehen; MicroSD-Karten sind nicht enthalten.",
+    "beforeTitle": "Funktioniert es mit meinem Smartphone?",
+    "beforeBody": "Ein USB-C/Lightning-Adapter ist enthalten. Prüfe den Smartphone-Anschluss. AVI-Dateien können VLC oder eine Konvertierung vor dem Bearbeiten benötigen.",
+    "phoneGuide": "Anleitung zur Smartphone-Wiedergabe",
+    "galleryLabel": "Produktfotos",
+    "gallery": {
+      "0": "Whiskcam-Kamera und Halsband im Studio",
+      "1": "Kamera neben einer Ein-Euro-Münze als Größenvergleich",
+      "2": "Kundenfoto: Kamera und Halterung in der Hand",
+      "3": "Lieferumfang — MicroSD nicht enthalten"
+    },
+    "galleryShort": {
+      "0": "Kamera",
+      "1": "Größe",
+      "2": "In der Hand",
+      "3": "Das Set"
+    },
+    "footageEyebrow": "AUF DER ANDEREN SEITE DES HALSBANDS",
+    "footageTitle": "Kleine Kamera. Große kleine Abenteuer.",
+    "footageIntro": "Sieh dir die Clips und Details an und entscheide, ob du diese Perspektive aufnehmen möchtest.",
+    "films": {
+      "0": "Die Verfolgung",
+      "1": "Eine unerwartete Begegnung",
+      "2": "Den Garten neu entdecken"
+    },
+    "howEyebrow": "VOM HALSBAND ZUR ERINNERUNG",
+    "howTitle": "Etwas Vorbereitung. Eine neue Geschichte.",
+    "howIntro": "Mache den ersten Versuch zu Hause und beaufsichtige deine Katze.",
+    "steps": {
+      "0": {
+        "title": "Den Sitz prüfen.",
+        "body": "Prüfe Gesamtgewicht und Sitz. Verwende für Katzen ein Halsband mit Sicherheitsverschluss, dessen Mechanismus frei bleibt.",
+        "link": "Anleitung zu Sitz und Komfort"
+      },
+      "1": {
+        "title": "Eine Testaufnahme machen.",
+        "body": "Lade die Kamera abseits deines Tieres, setze eine kompatible Karte ein und mache vor dem ersten Ausflug eine kurze Aufnahme.",
+        "link": "Die Kamera kennenlernen"
+      },
+      "2": {
+        "title": "Die Aufnahmen entdecken.",
+        "body": "Übertrage AVI-Dateien mit einem kompatiblen Lesegerät. Teste die Wiedergabe vor dem Bearbeiten oder Teilen.",
+        "link": "Auf dem iPhone ansehen"
+      }
+    },
+    "limitsTitle": "Die passende Kamera für den passenden Moment.",
+    "limitsBody": "Whiskcam zeichnet für die spätere Wiedergabe auf. Sie ist kein GPS-Tracker, keine Live- oder Nachtsichtkamera. Die durchgehende Akkulaufzeit wird noch geprüft.",
+    "helpEyebrow": "NOCH EINE FRAGE VOR DEM ABENTEUER?",
+    "helpTitle": "Wir helfen dir bei der Auswahl.",
+    "helpBody": "Frage uns vor der Bestellung zum Set, deinem Smartphone oder zur Lieferung.",
+    "guidesTitle": "Gut informiert entscheiden",
+    "guideCompare": "Halsbandkameras vergleichen",
+    "guideFit": "Sitz und Komfort prüfen",
+    "guideDelivery": "Lieferung in dein Land",
+    "purchaseLabel": "Dein ausgewähltes Set",
+    "change": "Set ändern"
   }
 }

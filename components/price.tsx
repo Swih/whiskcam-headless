@@ -1,3 +1,5 @@
+import { useLocale } from "next-intl";
+
 const Price = ({
   amount,
   className,
@@ -6,14 +8,17 @@ const Price = ({
   amount: string;
   className?: string;
   currencyCode: string;
-} & React.ComponentProps<"p">) => (
-  <p suppressHydrationWarning={true} className={className}>
-    {`${new Intl.NumberFormat(undefined, {
-      style: "currency",
-      currency: currencyCode,
-      currencyDisplay: "narrowSymbol",
-    }).format(parseFloat(amount))}`}
-  </p>
-);
+} & React.ComponentProps<"p">) => {
+  const locale = useLocale();
+  return (
+    <p className={className}>
+      {`${new Intl.NumberFormat(locale, {
+        style: "currency",
+        currency: currencyCode,
+        currencyDisplay: "narrowSymbol",
+      }).format(parseFloat(amount))}`}
+    </p>
+  );
+};
 
 export default Price;

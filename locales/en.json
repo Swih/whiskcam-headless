@@ -100,7 +100,7 @@
   "reviews": {
     "overline": "Reviews",
     "title": "What They Discovered With Whiskcam",
-    "subtitle": "Real owners. Real cats. Real surprises.",
+    "subtitle": "Historical reviews of this camera model. These are not verified purchases from Whiskcam.",
     "verifiedBuyer": "Verified Buyer",
     "showPhotos": "Show photos",
     "hidePhotos": "Hide photos",
@@ -112,7 +112,7 @@
     "showAll": "Show all reviews",
     "showAllCount": "Show all {count} reviews",
     "translated": "",
-    "trustFooter": "Reviews include verified buyers of the Whiskcam camera. We add our own customers' feedback as Whiskcam orders are delivered."
+    "trustFooter": "These historical reviews concern this camera model and are not verified Whiskcam purchases. Their original source has not been independently verified by Whiskcam."
   },
   "howItWorks": {
     "overline": "How it works",
@@ -191,7 +191,7 @@
       },
       "3": {
         "item": "Adjustable Collar",
-        "detail": "Fits cats & dogs of all sizes"
+        "detail": "Adjustable; check your pet’s measurements and the release"
       },
       "4": {
         "item": "USB-C Cable",
@@ -202,7 +202,7 @@
         "detail": "\"How to Capture Your Pet's Secret Life\""
       }
     },
-    "storageNotice": "MicroSD card not included: the 32GB card is currently unavailable. A separate compatible MicroSD card is required to record."
+    "storageNotice": "MicroSD card sold separately. Add a compatible MicroSD card before your first recording."
   },
   "comparison": {
     "overline": "Compare",
@@ -275,7 +275,7 @@
     "items": {
       "0": {
         "question": "What if I'm not satisfied?",
-        "answer": "We offer a 30-day money-back guarantee, no questions asked. If you or your pet aren't happy with Whiskcam, simply email us at support@whiskcam.com and we'll process a full refund — you don't even need to return the product. We stand behind every Whiskcam because we know you'll love it."
+        "answer": "You have 30 days from delivery to request a refund. Email support@whiskcam.com with your order number. In most cases, no product return is needed. See our return policy for the full process."
       },
       "1": {
         "question": "Is Whiskcam safe for my cat or small dog?",
@@ -287,7 +287,7 @@
       },
       "3": {
         "question": "Do I need to download an app?",
-        "answer": "No app, no WiFi, no accounts. Just press the record button on the camera. When your pet comes home, pop out the SD card, plug it into your phone using the included adapter, and enjoy the footage. It's that simple. MicroSD card not included: the 32GB card is currently unavailable. A separate compatible MicroSD card is required to record."
+        "answer": "No account or WiFi is needed to record. Insert a compatible MicroSD card (sold separately) and press the record button. Read the card using the included adapter or a compatible reader. Playing AVI files may require a compatible video player on your phone."
       },
       "4": {
         "question": "How do I watch the videos on my phone?",
@@ -330,7 +330,7 @@
     "trustShipping": "Free shipping to supported destinations",
     "trustReturns": "30-Day Money Back",
     "trustSecure": "Secure Checkout",
-    "trustPetSafe": "Pet-Safe Design",
+    "trustPetSafe": "Fit guidance available",
     "copyright": "© {year} Whiskcam. All rights reserved."
   },
   "cookie": {
@@ -374,7 +374,7 @@
   },
   "stickyAtc": {
     "productName": "Whiskcam Original",
-    "addToCart": "Yes, I Want This!",
+    "addToCart": "Add to bag",
     "adding": "Adding...",
     "added": "Added!",
     "outOfStock": "Out of Stock",
@@ -415,6 +415,100 @@
     "faqShipping": "Shipping is free to our 17 supported destinations. US and UK: 7–12 business days; supported European destinations: 8–14; Canada and Australia: 10–14; New Zealand: 10–18. These are estimates. Check the delivery destinations before ordering.",
     "countries": "We currently deliver to the countries listed below. Other destinations, including Germany, Italy and Switzerland, are not available.",
     "note": "Delivery estimates are not guaranteed arrival dates. Any import duties are separate from shipping; contact us if you need clarification.",
-    "error": "We could not add this item. Please try again."
+    "error": "We could not add this item. Please try again.",
+    "chooseCountry": "Choose your country",
+    "businessDays": "business days, estimated"
+  },
+  "v2": {
+    "eyebrow": "THE CAT COLLAR CAMERA",
+    "headline": "Their world.",
+    "headlineAccent": "A little closer.",
+    "intro": "The garden patrols. The unexpected friendships. Capture your cat’s point of view in 1080P, then discover the story when they come home.",
+    "choose": "Choose my kit",
+    "watch": "Watch 22 seconds",
+    "noSubscription": "No subscription",
+    "readReviews": "Read the reviews",
+    "heroVideo": "Cat POV video: The Encounter",
+    "filmCaption": "A familiar garden. A completely different perspective.",
+    "cameraNote": "24 g camera · 1080P · Offline recording",
+    "promiseRecord": "Record without WiFi",
+    "promiseWatch": "Watch when they return",
+    "promiseKeep": "Keep your favourite moments",
+    "offerEyebrow": "A LITTLE CAMERA. A NEW PERSPECTIVE.",
+    "offerTitle": "Meet Whiskcam Original.",
+    "offerIntro": "Offline video, a phone adapter and a simple way to see the part of their day you miss.",
+    "choosePack": "Choose your kit",
+    "singleName": "Original",
+    "singleDescription": "1 camera · for one pet",
+    "duoName": "Duo",
+    "duoDescription": "2 cameras · for two pets",
+    "save": "Save {amount} vs 2 Originals",
+    "unavailable": "Currently unavailable",
+    "storageTitle": "MicroSD card sold separately.",
+    "storageBody": "Add a compatible MicroSD card before your first recording.",
+    "add": "Add to bag — {price}",
+    "addShort": "Add to bag",
+    "adding": "Adding…",
+    "cartError": "We couldn’t add this kit. Please try again. No payment has been taken.",
+    "secure": "Secure Shopify checkout",
+    "returns": "30-day refund policy",
+    "includedTitle": "What’s in the kit?",
+    "singleIncluded": "1 camera, phone adapter, adjustable collar, USB-C charging cable and digital setup guide.",
+    "duoIncluded": "The Duo includes two cameras. See the kit image for accessories; MicroSD cards are not included.",
+    "beforeTitle": "Will it work with my phone?",
+    "beforeBody": "A USB-C/Lightning adapter is included. Check your phone connector. AVI files may need VLC or conversion before editing.",
+    "phoneGuide": "Read the phone playback guide",
+    "galleryLabel": "Product photos",
+    "gallery": {
+      "0": "Whiskcam camera and collar, studio view",
+      "1": "Camera next to a one-euro coin for scale",
+      "2": "Customer photo: camera and mount in hand",
+      "3": "Kit contents — MicroSD not included"
+    },
+    "galleryShort": {
+      "0": "Camera",
+      "1": "Size",
+      "2": "In hand",
+      "3": "The kit"
+    },
+    "footageEyebrow": "FROM THEIR SIDE OF THE COLLAR",
+    "footageTitle": "Small camera. Big little adventures.",
+    "footageIntro": "Watch the clips, look at the detail, and decide if this is the point of view you want to capture.",
+    "films": {
+      "0": "The chase",
+      "1": "An unexpected meeting",
+      "2": "The garden, rediscovered"
+    },
+    "howEyebrow": "FROM COLLAR TO CAMERA ROLL",
+    "howTitle": "A little preparation. A new story.",
+    "howIntro": "Try your first recording at home, with your cat supervised.",
+    "steps": {
+      "0": {
+        "title": "Get the fit right.",
+        "body": "Check the complete weight and fit. Use a quick-release collar for a cat and leave the release unobstructed.",
+        "link": "Fit & comfort guide"
+      },
+      "1": {
+        "title": "Record a short test.",
+        "body": "Charge the camera off your pet, insert compatible storage and make a short test before the first outing.",
+        "link": "Explore the camera"
+      },
+      "2": {
+        "title": "Discover their footage.",
+        "body": "Transfer AVI files with a compatible reader. Test playback on your phone before editing or sharing.",
+        "link": "Watch on iPhone"
+      }
+    },
+    "limitsTitle": "The right camera for the right moment.",
+    "limitsBody": "Whiskcam records for playback later. It is not a GPS tracker, live camera or night-vision device. Continuous battery runtime is still being verified.",
+    "helpEyebrow": "A QUESTION BEFORE THE ADVENTURE?",
+    "helpTitle": "We’re here to help you choose.",
+    "helpBody": "Ask us about the kit, your phone or delivery before you order.",
+    "guidesTitle": "A little reading before you decide",
+    "guideCompare": "Compare collar cameras",
+    "guideFit": "Check fit and comfort",
+    "guideDelivery": "Delivery to your country",
+    "purchaseLabel": "Your selected kit",
+    "change": "Change kit"
   }
 }

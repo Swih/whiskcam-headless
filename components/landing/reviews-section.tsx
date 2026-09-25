@@ -10,7 +10,7 @@ import { useTranslations, useLocale } from "next-intl";
 /*  Review data                                                       */
 /* ------------------------------------------------------------------ */
 
-interface Review {
+export interface Review {
   name: string;
   rating: 3 | 4 | 5;
   text: string;
@@ -143,11 +143,25 @@ const REVIEWS: Review[] = [
   { name: "Sam M.", rating: 3, text: "Good.", textFr: "Bien.", date: "Jan 2026", photos: [], verified: true },
 ];
 
+/**
+ * Reviews marked "real" above: buyers of the same camera model on another
+ * store before the Whiskcam launch. The "Written reviews" block is not
+ * attributable to buyers and must not be shown as customer reviews.
+ */
+const BUYER_REVIEW_NAMES = new Set([
+  "Jacquie H.", "Fannie M.", "Jayna C.", "Erik K.", "Verdell K.",
+  "Vilma L.", "Marilee G.", "Avery M.", "Pierre N.", "Kaye O.",
+  "Courtney G.", "Kory M.", "Lyndia U.", "Isiah D.", "Sam M.",
+]);
+export const BUYER_REVIEWS = REVIEWS.filter((r) =>
+  BUYER_REVIEW_NAMES.has(r.name),
+);
+
 /* ------------------------------------------------------------------ */
-/*  Aggregate stats — computed from reviews, display count boosted    */
+/*  Aggregate stats — computed only from the displayed historical reviews    */
 /* ------------------------------------------------------------------ */
 
-const DISPLAYED_REVIEW_COUNT = REVIEWS.length;
+const DISPLAYED_REVIEW_COUNT = BUYER_REVIEWS.length;
 
 function computeStats(reviews: Review[]) {
   const total = reviews.length;
@@ -165,7 +179,7 @@ function computeStats(reviews: Review[]) {
   return { avg, distribution };
 }
 
-const STATS = computeStats(REVIEWS);
+const STATS = computeStats(BUYER_REVIEWS);
 
 /* ------------------------------------------------------------------ */
 /*  Sub-components                                                     */
@@ -375,7 +389,7 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
               <p className="text-sm font-semibold text-wk-black">{review.name}</p>
               <p className="text-xs text-wk-grey-400">{review.date}</p>
             </div>
-            {review.verified && <VerifiedBadge label={t("verifiedBuyer")} />}
+
           </div>
         </div>
       </AnimatedElement>
@@ -390,13 +404,18 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
 const MOBILE_INITIAL = 4;
 const DESKTOP_INITIAL = 8;
 
-export function ReviewsSection() {
+export function ReviewsSection({ compact = false }: { compact?: boolean }) {
   const t = useTranslations("reviews");
   const [showAll, setShowAll] = useState(false);
 
   return (
-    <SectionWrapper bg="warm" id="reviews">
+    <SectionWrapper
+      bg="warm"
+      id="reviews"
+      className={compact ? "!py-12 md:!py-16" : undefined}
+    >
       <SectionHeading
+        centered={!compact}
         overline={t("overline")}
         title={t("title")}
         subtitle={t("subtitle")}
@@ -409,14 +428,22 @@ export function ReviewsSection() {
       <div className="mx-auto max-w-6xl">
         {/* Mobile: stacked full-width cards */}
         <div className="flex flex-col gap-4 sm:hidden">
-          {(showAll ? REVIEWS : REVIEWS.slice(0, MOBILE_INITIAL)).map((review, i) => (
+          {(showAll
+            ? BUYER_REVIEWS
+            : BUYER_REVIEWS.slice(0, compact ? 2 : MOBILE_INITIAL)
+          ).map((review, i) => (
             <ReviewCard key={review.name} review={review} index={i} />
           ))}
         </div>
 
         {/* Desktop: 2-col tablet, 4-col desktop */}
-        <div className="hidden gap-5 sm:grid sm:grid-cols-2 lg:grid-cols-4">
-          {(showAll ? REVIEWS : REVIEWS.slice(0, DESKTOP_INITIAL)).map((review, i) => (
+        <div
+          className={`hidden gap-5 sm:grid sm:grid-cols-2 ${compact ? "lg:grid-cols-3" : "lg:grid-cols-4"}`}
+        >
+          {(showAll
+            ? BUYER_REVIEWS
+            : BUYER_REVIEWS.slice(0, compact ? 3 : DESKTOP_INITIAL)
+          ).map((review, i) => (
             <ReviewCard key={review.name} review={review} index={i} />
           ))}
         </div>
@@ -431,9 +458,21 @@ export function ReviewsSection() {
               {/* Mobile label */}
               <span className="sm:hidden">{t("showAll")}</span>
               {/* Desktop label */}
-              <span className="hidden sm:inline">{t("showAllCount", { count: REVIEWS.length })}</span>
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              <span className="hidden sm:inline">
+                {t("showAllCount", { count: BUYER_REVIEWS.length })}
+              </span>
+              <svg
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </button>
           </div>

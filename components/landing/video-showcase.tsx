@@ -215,7 +215,7 @@ function ReelCard({
           {/* Username + verified */}
           <div className="flex items-center gap-1">
             <span className="text-xs font-bold text-white drop-shadow-md">
-              @whiskcam
+              @whiskcam0
             </span>
             <VerifiedBadge className="h-3.5 w-3.5" />
           </div>

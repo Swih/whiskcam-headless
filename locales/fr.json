@@ -100,7 +100,7 @@
   "reviews": {
     "overline": "Avis clients",
     "title": "Ce qu'ils ont découvert grâce à Whiskcam",
-    "subtitle": "Des vraies personnes, de vrais chats, de vraies surprises.",
+    "subtitle": "Avis historiques sur ce modèle de caméra. Il ne s’agit pas d’achats vérifiés chez Whiskcam.",
     "verifiedBuyer": "Acheteur vérifié",
     "showPhotos": "Voir les photos",
     "hidePhotos": "Masquer les photos",
@@ -112,7 +112,7 @@
     "showAll": "Voir tous les avis",
     "showAllCount": "Voir les {count} avis",
     "translated": "traduit",
-    "trustFooter": "Avis d'acheteurs vérifiés de la caméra Whiskcam. Nous ajoutons les retours de nos propres clients au fur et à mesure des livraisons."
+    "trustFooter": "Ces avis historiques concernent ce modèle de caméra et ne sont pas des achats vérifiés chez Whiskcam. Leur source d’origine n’a pas été vérifiée indépendamment par Whiskcam."
   },
   "howItWorks": {
     "overline": "Comment ça marche",
@@ -191,7 +191,7 @@
       },
       "3": {
         "item": "Collier réglable",
-        "detail": "S'adapte aux chats et chiens de toutes tailles"
+        "detail": "Réglable ; vérifiez les mesures et l’ouverture de sécurité"
       },
       "4": {
         "item": "Câble USB-C",
@@ -202,7 +202,7 @@
         "detail": "\"Comment capturer la vie secrète de votre animal\""
       }
     },
-    "storageNotice": "Carte MicroSD non incluse : la carte 32 Go est actuellement indisponible. Prévoyez une carte MicroSD compatible pour enregistrer."
+    "storageNotice": "Carte MicroSD vendue séparément. Prévoyez une carte MicroSD compatible avant le premier enregistrement."
   },
   "comparison": {
     "overline": "Comparaison",
@@ -275,7 +275,7 @@
     "items": {
       "0": {
         "question": "Et si ça ne me plaît pas ?",
-        "answer": "Satisfait ou remboursé pendant 30 jours, sans condition. Envoyez un email à support@whiskcam.com et on vous rembourse intégralement — sans même avoir à retourner le produit. On prend le risque à votre place."
+        "answer": "Vous avez 30 jours après livraison pour demander un remboursement. Écrivez à support@whiskcam.com avec votre numéro de commande. Dans la plupart des cas, le retour du produit n’est pas nécessaire. Consultez notre politique de retours."
       },
       "1": {
         "question": "C'est vraiment sûr pour mon chat ou petit chien ?",
@@ -287,7 +287,7 @@
       },
       "3": {
         "question": "Il faut une appli ?",
-        "answer": "Non. Pas d'appli, pas de WiFi, pas de compte à créer. Appuyez sur le bouton, laissez votre chat vivre sa vie. Quand il rentre, branchez la carte SD sur votre téléphone avec l'adaptateur inclus. C'est tout. Carte MicroSD non incluse : la carte 32 Go est actuellement indisponible. Prévoyez une carte MicroSD compatible pour enregistrer."
+        "answer": "Aucun compte ni WiFi n’est nécessaire pour filmer. Insérez une carte MicroSD compatible (vendue séparément), puis appuyez sur le bouton. Lisez la carte avec l’adaptateur inclus ou un lecteur compatible. Un lecteur vidéo compatible peut être nécessaire pour lire les fichiers AVI sur votre téléphone."
       },
       "4": {
         "question": "Comment je regarde les vidéos ?",
@@ -330,7 +330,7 @@
     "trustShipping": "Livraison offerte vers les destinations desservies",
     "trustReturns": "Remboursement 30 jours",
     "trustSecure": "Paiement sécurisé",
-    "trustPetSafe": "Sûr pour les animaux",
+    "trustPetSafe": "Conseils d’ajustement",
     "copyright": "© {year} Whiskcam. Tous droits réservés."
   },
   "cookie": {
@@ -374,7 +374,7 @@
   },
   "stickyAtc": {
     "productName": "Whiskcam Original",
-    "addToCart": "Je prends le mien !",
+    "addToCart": "Ajouter au panier",
     "adding": "Ajout...",
     "added": "Ajouté !",
     "outOfStock": "Rupture de stock",
@@ -415,6 +415,100 @@
     "faqShipping": "Livraison offerte vers nos 17 destinations desservies. États-Unis et Royaume-Uni : 7–12 jours ouvrés ; pays européens desservis : 8–14 ; Canada et Australie : 10–14 ; Nouvelle-Zélande : 10–18. Délais estimatifs. Vérifiez les destinations avant de commander.",
     "countries": "Nous livrons actuellement les pays ci-dessous. Les autres destinations, notamment l’Allemagne, l’Italie et la Suisse, ne sont pas disponibles.",
     "note": "Les délais sont estimatifs. Les éventuels droits d’importation sont distincts des frais de livraison ; contactez-nous pour toute précision.",
-    "error": "Impossible d’ajouter cet article. Veuillez réessayer."
+    "error": "Impossible d’ajouter cet article. Veuillez réessayer.",
+    "chooseCountry": "Choisissez votre pays",
+    "businessDays": "jours ouvrés estimés"
+  },
+  "v2": {
+    "eyebrow": "LA CAMÉRA COLLIER POUR CHAT",
+    "headline": "Leur monde.",
+    "headlineAccent": "D’un peu plus près.",
+    "intro": "Les rondes au jardin. Les rencontres imprévues. Filmez le point de vue de votre chat en 1080P, puis découvrez son histoire à son retour.",
+    "choose": "Choisir mon kit",
+    "watch": "Voir 22 secondes",
+    "noSubscription": "Sans abonnement",
+    "readReviews": "Lire les avis",
+    "heroVideo": "Vidéo du point de vue d’un chat : La Rencontre",
+    "filmCaption": "Le même jardin. Une tout autre perspective.",
+    "cameraNote": "Caméra de 24 g · 1080P · Sans WiFi",
+    "promiseRecord": "Filmez sans WiFi",
+    "promiseWatch": "Regardez à son retour",
+    "promiseKeep": "Gardez vos moments préférés",
+    "offerEyebrow": "PETITE CAMÉRA. NOUVEAU POINT DE VUE.",
+    "offerTitle": "Voici Whiskcam Original.",
+    "offerIntro": "Des vidéos hors ligne, un adaptateur téléphone et une autre façon de découvrir sa journée.",
+    "choosePack": "Choisissez votre kit",
+    "singleName": "Original",
+    "singleDescription": "1 caméra · pour un animal",
+    "duoName": "Duo",
+    "duoDescription": "2 caméras · pour deux animaux",
+    "save": "{amount} de moins que 2 Original",
+    "unavailable": "Indisponible actuellement",
+    "storageTitle": "Carte MicroSD vendue séparément.",
+    "storageBody": "Prévoyez une carte MicroSD compatible avant le premier enregistrement.",
+    "add": "Ajouter au panier — {price}",
+    "addShort": "Ajouter au panier",
+    "adding": "Ajout…",
+    "cartError": "Le kit n’a pas pu être ajouté. Réessayez ; aucun paiement n’a été débité.",
+    "secure": "Paiement sécurisé Shopify",
+    "returns": "Politique de remboursement de 30 jours",
+    "includedTitle": "Que contient le kit ?",
+    "singleIncluded": "1 caméra, adaptateur téléphone, collier réglable, câble de charge USB-C et guide de démarrage numérique.",
+    "duoIncluded": "Le Duo comprend deux caméras. Retrouvez les accessoires sur le visuel du kit ; les cartes MicroSD ne sont pas incluses.",
+    "beforeTitle": "Et avec mon téléphone ?",
+    "beforeBody": "Un adaptateur USB-C/Lightning est inclus. Vérifiez le connecteur de votre téléphone. Les fichiers AVI peuvent nécessiter VLC ou une conversion avant montage.",
+    "phoneGuide": "Lire le guide de lecture sur téléphone",
+    "galleryLabel": "Photos du produit",
+    "gallery": {
+      "0": "Caméra Whiskcam et collier, vue studio",
+      "1": "Caméra à côté d’une pièce d’un euro pour comparer la taille",
+      "2": "Photo client : caméra et fixation en main",
+      "3": "Contenu du kit — MicroSD non incluse"
+    },
+    "galleryShort": {
+      "0": "Caméra",
+      "1": "Taille",
+      "2": "En main",
+      "3": "Le kit"
+    },
+    "footageEyebrow": "DE L’AUTRE CÔTÉ DU COLLIER",
+    "footageTitle": "Petite caméra. Grandes escapades.",
+    "footageIntro": "Regardez les extraits et leurs détails pour découvrir les images que vous aimeriez filmer.",
+    "films": {
+      "0": "La poursuite",
+      "1": "Une rencontre imprévue",
+      "2": "Le jardin, autrement"
+    },
+    "howEyebrow": "DU COLLIER À VOS SOUVENIRS",
+    "howTitle": "Un peu de préparation. Une autre histoire.",
+    "howIntro": "Faites le premier essai à la maison, en surveillant votre chat.",
+    "steps": {
+      "0": {
+        "title": "Vérifiez l’ajustement.",
+        "body": "Vérifiez le poids total et le confort. Pour un chat, utilisez un collier à ouverture rapide sans bloquer son mécanisme.",
+        "link": "Guide d’ajustement et de confort"
+      },
+      "1": {
+        "title": "Filmez un premier essai.",
+        "body": "Chargez la caméra hors de l’animal, insérez une carte compatible et faites un court enregistrement avant la première sortie.",
+        "link": "Découvrir la caméra"
+      },
+      "2": {
+        "title": "Découvrez ses images.",
+        "body": "Transférez les fichiers AVI avec un lecteur compatible. Testez la lecture sur votre téléphone avant le montage ou le partage.",
+        "link": "Regarder sur iPhone"
+      }
+    },
+    "limitsTitle": "La bonne caméra pour le bon moment.",
+    "limitsBody": "Whiskcam filme pour un visionnage au retour. Ce n’est ni un GPS, ni une caméra en direct ou à vision nocturne. L’autonomie continue est encore en cours de vérification.",
+    "helpEyebrow": "UNE QUESTION AVANT L’AVENTURE ?",
+    "helpTitle": "On vous aide à choisir.",
+    "helpBody": "Écrivez-nous pour le kit, votre téléphone ou la livraison avant de commander.",
+    "guidesTitle": "Quelques repères pour décider",
+    "guideCompare": "Comparer les caméras de collier",
+    "guideFit": "Vérifier le confort et l’ajustement",
+    "guideDelivery": "La livraison dans votre pays",
+    "purchaseLabel": "Votre kit sélectionné",
+    "change": "Changer de kit"
   }
 }

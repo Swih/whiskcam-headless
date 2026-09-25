@@ -1,20 +1,14 @@
-import { HeroSection } from "components/landing/hero-section";
-import { VideoShowcase } from "components/landing/video-showcase";
-import { FeaturesGrid } from "components/landing/features-grid";
-import { HowItWorks } from "components/landing/how-it-works";
-import { ProductSection } from "components/landing/product-section";
-import { SocialProofBar } from "components/landing/social-proof-bar";
-import { ComparisonTable } from "components/landing/comparison-table";
-import { CtaBanner } from "components/landing/cta-banner";
-import { FromTheBlog } from "components/landing/from-the-blog";
-import { PeaceOfMind } from "components/landing/peace-of-mind";
-import { DuoPackCallout } from "components/landing/duo-pack-callout";
 import { FaqSection } from "components/landing/faq-section";
 import { ReviewsSection } from "components/landing/reviews-section";
 import Footer from "components/layout/footer";
-import { StickyAtcBar } from "components/ui/sticky-atc-bar";
 import { getProduct } from "lib/shopify";
-import { PRODUCT_HANDLE, DUO_PRODUCT_HANDLE, HERO_CONTENT, VIDEOS, PRODUCT_FACTS } from "lib/content";
+import {
+  PRODUCT_HANDLE,
+  DUO_PRODUCT_HANDLE,
+  HERO_CONTENT,
+  VIDEOS,
+  PRODUCT_FACTS,
+} from "lib/content";
 import {
   ORG_ID,
   PRODUCT_ID,
@@ -25,30 +19,37 @@ import {
   websiteSchema,
 } from "lib/schema";
 import { alternatesFor } from "lib/seo";
-import { formatPrice } from "lib/format";
+import { StorefrontV2 } from "components/landing/storefront-v2";
 import { cookies } from "next/headers";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { baseUrl } from "lib/utils";
 
-const ogData: Record<string, { title: string; description: string; locale: string }> = {
+const ogData: Record<
+  string,
+  { title: string; description: string; locale: string }
+> = {
   en: {
     title: "Whiskcam | 1080P Cat Collar Camera, No WiFi",
-    description: "The pet collar camera that reveals your pet's secret life. 1080P Full HD, 170° wide angle, ultra-lightweight.",
+    description:
+      "The pet collar camera that reveals your pet's secret life. 1080P Full HD, 170° wide angle, ultra-lightweight.",
     locale: "en_US",
   },
   fr: {
     title: "Whiskcam | Caméra collier pour chat 1080P",
-    description: "La caméra de collier qui révèle la vie secrète de votre animal. 1080P Full HD, 170° grand angle, ultra-légère.",
+    description:
+      "La caméra de collier qui révèle la vie secrète de votre animal. 1080P Full HD, 170° grand angle, ultra-légère.",
     locale: "fr_FR",
   },
   de: {
     title: "Whiskcam | 1080P Halsbandkamera für Katzen",
-    description: "Die Halsbandkamera, die das geheime Leben deines Haustieres enthüllt. 1080P Full HD, 170° Weitwinkel, ultraleicht.",
+    description:
+      "Die Halsbandkamera, die das geheime Leben deines Haustieres enthüllt. 1080P Full HD, 170° Weitwinkel, ultraleicht.",
     locale: "de_DE",
   },
   es: {
     title: "Whiskcam | Cámara de collar para gatos 1080P",
-    description: "La cámara de collar que revela la vida secreta de tu mascota. 1080P Full HD, 170° gran angular, ultraligera.",
+    description:
+      "La cámara de collar que revela la vida secreta de tu mascota. 1080P Full HD, 170° gran angular, ultraligera.",
     locale: "es_ES",
   },
 };
@@ -83,7 +84,7 @@ export async function generateMetadata({
       siteName: "Whiskcam",
       locale: og.locale,
       alternateLocale: ["en_US", "fr_FR", "de_DE", "es_ES"].filter(
-        (l) => l !== og.locale
+        (l) => l !== og.locale,
       ),
     },
     twitter: {
@@ -109,12 +110,6 @@ export default async function HomePage({
     getProduct(PRODUCT_HANDLE, country),
     getProduct(DUO_PRODUCT_HANDLE, country),
   ]);
-
-  const cc = product?.priceRange.maxVariantPrice.currencyCode || "EUR";
-  const compareAt = product?.variants[0]?.compareAtPrice;
-  const compareAtPriceFormatted = compareAt?.currencyCode === cc &&
-    Number(compareAt.amount) > Number(product?.priceRange.maxVariantPrice.amount)
-    ? formatPrice(compareAt.amount, cc) : undefined;
 
   const pageUrl = locale === "en" ? baseUrl : `${baseUrl}/${locale}`;
 
@@ -252,31 +247,11 @@ export default async function HomePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(graphJsonLd) }}
       />
 
-      <HeroSection product={product} />
-      <SocialProofBar />
-      <VideoShowcase />
-      <ProductSection product={product} />
-      <ReviewsSection />
-      <DuoPackCallout duoProduct={duoProduct} singleProduct={product} />
-      <FeaturesGrid />
-      <HowItWorks />
-      <ComparisonTable price={product ? formatPrice(product.priceRange.maxVariantPrice.amount, product.priceRange.maxVariantPrice.currencyCode) : undefined} />
-      <PeaceOfMind />
-      <CtaBanner product={product} />
-      <FromTheBlog />
-      <FaqSection />
+      <StorefrontV2 product={product} duoProduct={duoProduct}>
+        <ReviewsSection compact />
+        <FaqSection />
+      </StorefrontV2>
       <Footer />
-
-      {product && (
-        <StickyAtcBar
-          price={formatPrice(
-            product.priceRange.maxVariantPrice.amount,
-            product.priceRange.maxVariantPrice.currencyCode
-          )}
-          compareAtPrice={compareAtPriceFormatted}
-          product={product}
-        />
-      )}
     </>
   );
 }

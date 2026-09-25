@@ -100,7 +100,7 @@
   "reviews": {
     "overline": "Opiniones",
     "title": "Lo que descubrieron con Whiskcam",
-    "subtitle": "Dueños reales. Gatos reales. Sorpresas reales.",
+    "subtitle": "Reseñas históricas de este modelo de cámara. No son compras verificadas en Whiskcam.",
     "verifiedBuyer": "Compra verificada",
     "showPhotos": "Ver fotos",
     "hidePhotos": "Ocultar fotos",
@@ -112,7 +112,7 @@
     "showAll": "Ver todas las opiniones",
     "showAllCount": "Ver las {count} opiniones",
     "translated": "",
-    "trustFooter": "Las opiniones provienen de compradores verificados de la cámara Whiskcam. Añadimos los comentarios de nuestros propios clientes a medida que se entregan los pedidos."
+    "trustFooter": "Estas reseñas históricas se refieren a este modelo de cámara y no son compras verificadas en Whiskcam. Whiskcam no ha comprobado su fuente original de forma independiente."
   },
   "howItWorks": {
     "overline": "Cómo funciona",
@@ -191,7 +191,7 @@
       },
       "3": {
         "item": "Collar ajustable",
-        "detail": "Para gatos y perros de todos los tamaños"
+        "detail": "Ajustable; comprueba las medidas y la apertura"
       },
       "4": {
         "item": "Cable USB-C",
@@ -202,7 +202,7 @@
         "detail": "\"Cómo capturar la vida secreta de tu mascota\""
       }
     },
-    "storageNotice": "Tarjeta MicroSD no incluida: la tarjeta de 32 GB no está disponible actualmente. Necesitas una tarjeta MicroSD compatible por separado para grabar."
+    "storageNotice": "Tarjeta MicroSD por separado. Necesitas una tarjeta MicroSD compatible antes de la primera grabación."
   },
   "comparison": {
     "overline": "Compara",
@@ -275,7 +275,7 @@
     "items": {
       "0": {
         "question": "¿Y si no me convence?",
-        "answer": "Tranqui, tienes 30 días para devolverla sin preguntas. Si tú o tu mascota no estáis contentos con Whiskcam, escríbenos a support@whiskcam.com y te devolvemos todo el dinero — ni siquiera tienes que devolver el producto. Estamos tan seguros de que te va a encantar que asumimos ese riesgo."
+        "answer": "Tienes 30 días desde la entrega para solicitar un reembolso. Escribe a support@whiskcam.com con tu número de pedido. En la mayoría de los casos no es necesario devolver el producto. Consulta nuestra política de devoluciones."
       },
       "1": {
         "question": "¿Es segura para mi gato?",
@@ -287,7 +287,7 @@
       },
       "3": {
         "question": "¿Necesito descargar alguna app?",
-        "answer": "Nada de apps, nada de WiFi, nada de cuentas. Solo pulsa el botón de grabar en la cámara. Cuando tu gato vuelva a casa, saca la tarjeta SD, conéctala a tu móvil con el adaptador incluido y disfruta de los vídeos. Así de simple. Tarjeta MicroSD no incluida: la tarjeta de 32 GB no está disponible actualmente. Necesitas una tarjeta MicroSD compatible por separado para grabar."
+        "answer": "No necesitas una cuenta ni WiFi para grabar. Inserta una MicroSD compatible (se vende por separado) y pulsa el botón. Lee la tarjeta con el adaptador incluido o un lector compatible. Tu teléfono puede necesitar un reproductor compatible con archivos AVI."
       },
       "4": {
         "question": "¿Cómo veo los vídeos en el móvil?",
@@ -330,7 +330,7 @@
     "trustShipping": "Envío gratis en toda Europa",
     "trustReturns": "Devolución en 30 días",
     "trustSecure": "Pago 100% seguro",
-    "trustPetSafe": "Segura para mascotas",
+    "trustPetSafe": "Guía de ajuste disponible",
     "copyright": "© {year} Whiskcam. Todos los derechos reservados."
   },
   "cookie": {
@@ -374,7 +374,7 @@
   },
   "stickyAtc": {
     "productName": "Whiskcam Original",
-    "addToCart": "¡Lo quiero!",
+    "addToCart": "Añadir a la cesta",
     "adding": "Añadiendo...",
     "added": "¡Añadido!",
     "outOfStock": "Agotado",
@@ -415,6 +415,100 @@
     "faqShipping": "Envío gratis a 17 destinos disponibles. EE. UU. y Reino Unido: 7–12 días laborables; países europeos disponibles: 8–14; Canadá y Australia: 10–14; Nueva Zelanda: 10–18. Plazos estimados. Comprueba los destinos antes de comprar.",
     "countries": "Actualmente enviamos a los países indicados abajo. Otros destinos, incluidos Alemania, Italia y Suiza, no están disponibles.",
     "note": "Los plazos son estimados. Los posibles impuestos de importación son distintos de los gastos de envío. Contáctanos si necesitas aclaraciones.",
-    "error": "No se pudo añadir este artículo. Inténtalo de nuevo."
+    "error": "No se pudo añadir este artículo. Inténtalo de nuevo.",
+    "chooseCountry": "Elige tu país",
+    "businessDays": "días laborables estimados"
+  },
+  "v2": {
+    "eyebrow": "LA CÁMARA DE COLLAR PARA GATOS",
+    "headline": "Su mundo.",
+    "headlineAccent": "Un poco más cerca.",
+    "intro": "Las rondas por el jardín. Los encuentros inesperados. Graba la perspectiva de tu gato en 1080P y descubre su historia cuando vuelva a casa.",
+    "choose": "Elegir mi kit",
+    "watch": "Ver 22 segundos",
+    "noSubscription": "Sin suscripción",
+    "readReviews": "Leer opiniones",
+    "heroVideo": "Vídeo desde la perspectiva de un gato: El encuentro",
+    "filmCaption": "El mismo jardín. Una perspectiva diferente.",
+    "cameraNote": "Cámara de 24 g · 1080P · Sin WiFi",
+    "promiseRecord": "Graba sin WiFi",
+    "promiseWatch": "Mira cuando vuelva",
+    "promiseKeep": "Guarda tus momentos favoritos",
+    "offerEyebrow": "PEQUEÑA CÁMARA. NUEVA PERSPECTIVA.",
+    "offerTitle": "Conoce Whiskcam Original.",
+    "offerIntro": "Vídeos sin conexión, un adaptador para el móvil y otra forma de descubrir su día.",
+    "choosePack": "Elige tu kit",
+    "singleName": "Original",
+    "singleDescription": "1 cámara · para un animal",
+    "duoName": "Duo",
+    "duoDescription": "2 cámaras · para dos animales",
+    "save": "Ahorra {amount} frente a 2 Original",
+    "unavailable": "No disponible actualmente",
+    "storageTitle": "Tarjeta MicroSD por separado.",
+    "storageBody": "Necesitas una tarjeta MicroSD compatible antes de la primera grabación.",
+    "add": "Añadir a la cesta — {price}",
+    "addShort": "Añadir a la cesta",
+    "adding": "Añadiendo…",
+    "cartError": "No se ha podido añadir el kit. Inténtalo de nuevo; no se ha realizado ningún cobro.",
+    "secure": "Pago seguro con Shopify",
+    "returns": "Política de reembolso de 30 días",
+    "includedTitle": "¿Qué incluye el kit?",
+    "singleIncluded": "1 cámara, adaptador para móvil, collar ajustable, cable de carga USB-C y guía digital.",
+    "duoIncluded": "El Duo incluye dos cámaras. Consulta los accesorios en la imagen del kit; las tarjetas MicroSD no están incluidas.",
+    "beforeTitle": "¿Funcionará con mi móvil?",
+    "beforeBody": "Se incluye un adaptador USB-C/Lightning. Comprueba el conector del móvil. Los archivos AVI pueden necesitar VLC o una conversión antes de editarlos.",
+    "phoneGuide": "Guía de reproducción en el móvil",
+    "galleryLabel": "Fotos del producto",
+    "gallery": {
+      "0": "Cámara Whiskcam y collar en estudio",
+      "1": "Cámara junto a una moneda de un euro para comparar el tamaño",
+      "2": "Foto de cliente: cámara y soporte en la mano",
+      "3": "Contenido del kit — MicroSD no incluida"
+    },
+    "galleryShort": {
+      "0": "Cámara",
+      "1": "Tamaño",
+      "2": "En mano",
+      "3": "El kit"
+    },
+    "footageEyebrow": "AL OTRO LADO DEL COLLAR",
+    "footageTitle": "Pequeña cámara. Grandes aventuras.",
+    "footageIntro": "Mira los clips y sus detalles para decidir si esta es la perspectiva que quieres grabar.",
+    "films": {
+      "0": "La persecución",
+      "1": "Un encuentro inesperado",
+      "2": "Redescubriendo el jardín"
+    },
+    "howEyebrow": "DEL COLLAR A TUS RECUERDOS",
+    "howTitle": "Un poco de preparación. Una nueva historia.",
+    "howIntro": "Haz la primera prueba en casa y supervisa a tu gato.",
+    "steps": {
+      "0": {
+        "title": "Comprueba el ajuste.",
+        "body": "Comprueba el peso total y la comodidad. Usa un collar de apertura rápida para gatos sin obstruir el mecanismo.",
+        "link": "Guía de ajuste y comodidad"
+      },
+      "1": {
+        "title": "Graba una prueba.",
+        "body": "Carga la cámara fuera del animal, inserta una tarjeta compatible y graba un clip corto antes de la primera salida.",
+        "link": "Conocer la cámara"
+      },
+      "2": {
+        "title": "Descubre sus imágenes.",
+        "body": "Transfiere AVI con un lector compatible. Prueba la reproducción en el móvil antes de editar o compartir.",
+        "link": "Ver en iPhone"
+      }
+    },
+    "limitsTitle": "La cámara adecuada para cada momento.",
+    "limitsBody": "Whiskcam graba para ver los vídeos después. No es un GPS ni una cámara en directo o de visión nocturna. La autonomía continua todavía se está verificando.",
+    "helpEyebrow": "¿UNA PREGUNTA ANTES DE LA AVENTURA?",
+    "helpTitle": "Te ayudamos a elegir.",
+    "helpBody": "Pregúntanos por el kit, tu móvil o el envío antes de comprar.",
+    "guidesTitle": "Información para decidir",
+    "guideCompare": "Comparar cámaras de collar",
+    "guideFit": "Comprobar ajuste y comodidad",
+    "guideDelivery": "Envíos a tu país",
+    "purchaseLabel": "Tu kit seleccionado",
+    "change": "Cambiar kit"
   }
 }

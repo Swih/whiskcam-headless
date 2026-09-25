@@ -11,6 +11,10 @@ const CONSENT_KEY = "wk-cookie-consent";
 /** Check if user accepted cookies */
 export function hasConsent(): boolean {
   try {
+    if (
+      !["whiskcam.com", "www.whiskcam.com"].includes(window.location.hostname)
+    )
+      return false;
     const raw = localStorage.getItem(CONSENT_KEY);
     if (!raw) return false;
     if (raw === "accepted") return true;
@@ -29,8 +33,14 @@ export function hasConsent(): boolean {
  */
 export function Analytics({ checkoutDomain }: { checkoutDomain?: string }) {
   const [consent, setConsent] = useState(false);
+  const [liveStorefront, setLiveStorefront] = useState(false);
 
   useEffect(() => {
+    if (
+      !["whiskcam.com", "www.whiskcam.com"].includes(window.location.hostname)
+    )
+      return;
+    setLiveStorefront(true);
     const granted = hasConsent();
     setConsent(granted);
 
@@ -60,6 +70,8 @@ export function Analytics({ checkoutDomain }: { checkoutDomain?: string }) {
       window.removeEventListener("wk-consent-update", onConsent);
     };
   }, []);
+
+  if (!liveStorefront) return null;
 
   return (
     <>
@@ -153,6 +165,7 @@ export function trackEvent(
   eventName: string,
   params?: Record<string, unknown>,
 ) {
+  if (!hasConsent()) return;
   // GA4
   window.gtag?.("event", eventName, params);
   // Meta Pixel (when added)
@@ -166,6 +179,7 @@ export function trackViewContent(product: {
   price: string;
   currency: string;
 }) {
+  if (!hasConsent()) return;
   // GA4
   window.gtag?.("event", "view_item", {
     currency: product.currency,
@@ -194,6 +208,7 @@ export function trackAddToCart(product: {
   currency: string;
   quantity: number;
 }) {
+  if (!hasConsent()) return;
   // GA4
   window.gtag?.("event", "add_to_cart", {
     currency: product.currency,
@@ -235,6 +250,7 @@ export function trackBeginCheckout(cart: {
   currency: string;
   items: { name: string; price: string; quantity: number }[];
 }) {
+  if (!hasConsent()) return;
   const value = parseFloat(cart.value);
 
   window.gtag?.("event", "begin_checkout", {

@@ -38,7 +38,7 @@ export function organizationSchema() {
       "pet point-of-view video",
       "collar camera weight limits",
     ],
-    sameAs: ["https://tiktok.com/@whiskcam", "https://instagram.com/whiskcam"],
+    sameAs: ["https://www.tiktok.com/@whiskcam0"],
     contactPoint: {
       "@type": "ContactPoint",
       email: "support@whiskcam.com",

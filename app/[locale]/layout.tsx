@@ -19,6 +19,7 @@ import "../globals.css";
 import { baseUrl } from "lib/utils";
 import { alternatesFor } from "lib/seo";
 import { DM_Sans } from "next/font/google";
+import { DeliveryCountryProvider } from "components/delivery-info";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -97,33 +98,51 @@ export default async function LocaleLayout({
   const product = await getProduct(PRODUCT_HANDLE, country);
   const compareAt = product?.variants[0]?.compareAtPrice;
   const savingsPerUnit = compareAt
-    ? computeSavings(product!.priceRange.maxVariantPrice.amount, compareAt.amount)
+    ? computeSavings(
+        product!.priceRange.maxVariantPrice.amount,
+        compareAt.amount,
+      )
     : 0;
-  const currencyCode = product?.priceRange.maxVariantPrice.currencyCode || "EUR";
+  const currencyCode =
+    product?.priceRange.maxVariantPrice.currencyCode || "EUR";
 
   return (
     <html lang={locale} className={dmSans.variable}>
       <head>
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
       </head>
       <body className="bg-white font-[family-name:var(--font-dm-sans)] text-wk-black antialiased">
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-wk-amber focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-wk-black">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-wk-amber focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-wk-black"
+        >
           Skip to content
         </a>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <CartProvider cartPromise={cart}>
-            <AnnouncementBar />
-            <Navbar savingsPerUnit={savingsPerUnit} currencyCode={currencyCode} />
-            <main id="main-content" className="overflow-x-clip">{children}</main>
-            <Toaster closeButton />
-            <CookieConsent />
-            <Analytics
-              checkoutDomain={
-                process.env.SHOPIFY_CHECKOUT_DOMAIN || process.env.SHOPIFY_STORE_DOMAIN
-              }
-            />
-            <VercelAnalytics />
+            <DeliveryCountryProvider>
+              <AnnouncementBar />
+              <Navbar
+                savingsPerUnit={savingsPerUnit}
+                currencyCode={currencyCode}
+              />
+              <main id="main-content" className="overflow-x-clip">
+                {children}
+              </main>
+              <Toaster closeButton />
+              <CookieConsent />
+              <Analytics
+                checkoutDomain={
+                  process.env.SHOPIFY_CHECKOUT_DOMAIN ||
+                  process.env.SHOPIFY_STORE_DOMAIN
+                }
+              />
+              <VercelAnalytics />
+            </DeliveryCountryProvider>
           </CartProvider>
         </NextIntlClientProvider>
       </body>

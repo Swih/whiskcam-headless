@@ -38,8 +38,7 @@ const aboutJsonLd = {
       "Whiskcam designs lightweight collar cameras for cats, helping owners see the world through their pet's eyes.",
     foundingDate: "2026",
     sameAs: [
-      "https://tiktok.com/@whiskcam",
-      "https://instagram.com/whiskcam",
+      "https://www.tiktok.com/@whiskcam0",
     ],
   },
 };
