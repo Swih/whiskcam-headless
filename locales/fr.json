@@ -509,6 +509,10 @@
     "guideFit": "Vérifier le confort et l’ajustement",
     "guideDelivery": "La livraison dans votre pays",
     "purchaseLabel": "Votre kit sélectionné",
-    "change": "Changer de kit"
+    "change": "Changer de kit",
+    "scaleNote": "24 g · Format compact",
+    "perCamera": "soit {price} la caméra",
+    "fitTitle": "Est-ce adapté à votre chat ?",
+    "fitBody": "Commencez par une courte séance sous surveillance, avec un collier à ouverture de sécurité bien ajusté. Retirez la caméra si votre chat semble gêné."
   }
 }

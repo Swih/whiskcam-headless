@@ -509,6 +509,10 @@
     "guideFit": "Comprobar ajuste y comodidad",
     "guideDelivery": "Envíos a tu país",
     "purchaseLabel": "Tu kit seleccionado",
-    "change": "Cambiar kit"
+    "change": "Cambiar kit",
+    "scaleNote": "24 g · Formato compacto",
+    "perCamera": "{price} por cámara",
+    "fitTitle": "¿Es adecuada para tu gato?",
+    "fitBody": "Empieza con una sesión corta bajo supervisión y un collar de apertura de seguridad bien ajustado. Retira la cámara si tu gato parece incómodo."
   }
 }

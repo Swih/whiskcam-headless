@@ -509,6 +509,10 @@
     "guideFit": "Sitz und Komfort prüfen",
     "guideDelivery": "Lieferung in dein Land",
     "purchaseLabel": "Dein ausgewähltes Set",
-    "change": "Set ändern"
+    "change": "Set ändern",
+    "scaleNote": "24 g · Kompaktes Format",
+    "perCamera": "{price} pro Kamera",
+    "fitTitle": "Passt sie zu deiner Katze?",
+    "fitBody": "Beginne mit einer kurzen, beaufsichtigten Aufnahme und einem gut sitzenden Sicherheitshalsband mit Auslöseverschluss. Nimm die Kamera ab, wenn sich deine Katze unwohl fühlt."
   }
 }

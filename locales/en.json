@@ -509,6 +509,10 @@
     "guideFit": "Check fit and comfort",
     "guideDelivery": "Delivery to your country",
     "purchaseLabel": "Your selected kit",
-    "change": "Change kit"
+    "change": "Change kit",
+    "scaleNote": "24 g · Compact design",
+    "perCamera": "{price} per camera",
+    "fitTitle": "Is it right for your cat?",
+    "fitBody": "Start with a short supervised session using a properly fitted breakaway collar. Remove the camera if your cat seems uncomfortable."
   }
 }
