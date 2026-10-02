@@ -1,10 +1,19 @@
 import type { Metadata } from "next";
 import Prose from "components/prose";
 import Footer from "components/layout/footer";
-import { getPage } from "lib/shopify";
+import { getPage, getPages } from "lib/shopify";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { alternatesFor } from "lib/seo";
+
+// Only real Shopify page handles render; any other path is a real 404 instead
+// of a 200 shell with a streamed notFound() (soft 404s in Search Console).
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const pages = await getPages();
+  return pages.map((page) => ({ page: page.handle }));
+}
 
 function buildPageAlternates(locale: string, handle: string) {
   // Shopify CMS pages exist in a single language, so every locale-prefixed copy

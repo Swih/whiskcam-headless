@@ -45,7 +45,7 @@ mass and heat to something an animal wears on its neck.
 - Connectivity: ${f.charging} for charging and file transfer. No WiFi, no app, no account, no cloud, no subscription.
 - Video format: ${f.videoFormat} (see the iPhone playback guide linked below)
 - Collar: ${f.collarCm} cm adjustable collar included; also clips onto an existing collar
-- Suitable for: adult cats and dogs under 10 kg
+- Suitability: depends on the individual cat or small dog, collar fit and total mounted weight; check with a short supervised trial
 - Shipping: free to supported destinations only; 7–18 business days depending on destination
 - Guarantee: ${f.returnDays}-day money-back guarantee, no return shipment required
 - Support: support@whiskcam.com

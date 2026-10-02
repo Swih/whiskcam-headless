@@ -18,6 +18,7 @@ import { baseUrl } from "lib/utils";
 import { CAMERA_OPTIONS, COMPARISON_FAQS } from "lib/blog/comparison-facts";
 import { BlogProductLink } from "components/blog/product-link";
 import { SAFETY_FAQS, WEIGHT_FAQS } from "lib/blog/safety-facts";
+import { LEGAL_FAQS } from "lib/blog/legal-facts";
 
 // Article content components — lazy loaded per slug
 const articleComponents: Record<string, React.ComponentType> = {
@@ -63,7 +64,13 @@ const articleComponents: Record<string, React.ComponentType> = {
   "where-does-my-outdoor-cat-actually-go": dynamic(
     () => import("lib/blog/where-does-my-outdoor-cat-actually-go"),
   ),
+  "is-it-legal-to-put-a-camera-on-your-cat": dynamic(
+    () => import("lib/blog/is-it-legal-to-put-a-camera-on-your-cat"),
+  ),
 };
+
+// Unknown slugs must be a real 404, not a 200 shell with a streamed notFound().
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -187,27 +194,34 @@ export default async function BlogArticlePage({
       ? [...COMPARISON_FAQS[slug as keyof typeof COMPARISON_FAQS]]
       : [];
   if (slug === "are-cat-collar-cameras-safe") faqItems.push(...SAFETY_FAQS);
+  if (slug === "is-it-legal-to-put-a-camera-on-your-cat")
+    faqItems.push(...LEGAL_FAQS);
   if (slug === "what-cats-do-when-alone-at-home") {
     faqItems.push(
       {
         question: "Do cats get lonely when home alone all day?",
         answer:
-          "Most adult cats tolerate 8-10 hours alone without stress signals. Kittens under 6 months and older cats with health conditions need shorter gaps. Signs of loneliness include excessive vocalization, over-grooming, and door-sitting with no other activity.",
+          "Some do. Many adult cats cope with a normal working day if their needs are met, but cats closely bonded to their owners can show separation-related problems. Signs include excessive vocalisation, restlessness, changes in appetite, hiding and toileting outside the tray. Check with your vet if you notice them.",
       },
       {
         question: "Is it cruel to leave a cat alone for a full workday?",
         answer:
-          "No, provided basic needs are met: fresh water, food access, clean litter, environmental enrichment like windows and hiding spots. Camera footage shows well-provided cats handling 8-9 hour gaps calmly.",
-      },
-      {
-        question: "Do cats sleep all day really?",
-        answer:
-          "No. The '16 hours a day' figure averages over 24 hours including night. Daytime alone-time sleep is 40-45%, not 70-80%. The rest is quiet activity owners rarely observe.",
+          "Not usually, if the basics are covered: food, fresh water, a clean litter tray, safe toys, and places to hide and perch. Cats Protection says most adult cats can occasionally be left for up to 12 hours. Kittens, and cats with health conditions, need more frequent care.",
       },
       {
         question: "Will a cat destroy the house when bored?",
         answer:
-          "Boredom-driven destruction is rarer than people think. Chewing and scratching peaks typically happen within 30 minutes of the owner's return — suggesting frustration at absence ending, not boredom during it.",
+          "It can happen. Cats Protection lists damage to furniture among the possible effects of boredom, and destructive behaviour was among the problems owners most often reported in the 2020 separation-related problems study. Enrichment, play before you leave and puzzle feeders are sensible first steps. Recordings can help you see when it happens.",
+      },
+      {
+        question: "Do cats really sleep all day?",
+        answer:
+          "Cats often nap for 12 to 16 hours a day, but in short bursts spread across the day and night. They are most active around dawn and dusk, so a quiet midday while you are out is normal.",
+      },
+      {
+        question: "Can I see what my cat does without a camera?",
+        answer:
+          "Partially. Activity trackers show when a cat moves but not what it does. Fixed pet cameras show one room. Collar cameras follow the cat but add weight to the collar. Each approach has trade-offs.",
       },
     );
   }
@@ -217,24 +231,23 @@ export default async function BlogArticlePage({
       {
         question: "Do all outdoor cats have a second home?",
         answer:
-          "Most don't. Informal surveys of collar camera footage in dense urban and suburban neighborhoods suggest 20-25% of outdoor cats have a consistent secondary feeder or resting spot. Rural cats with more spread-out human populations are less likely to develop this pattern. Indoor-only cats don't have one at all.",
+          "No, and there is no reliable figure for how many do. GPS research shows most pet cats stay within about 100 m of home, so neighbouring gardens are often part of their range. A cat that is regularly fed or sheltered by a neighbour is a common story, but how often it happens is unknown.",
       },
       {
         question:
           "Is it ethical to film a cat going into a neighbor's property?",
         answer:
-          "Video recording in publicly visible spaces is generally legal in most jurisdictions. Audio recording rules are stricter and vary by country. If your cat regularly enters a neighbor's enclosed space, the respectful move is to mention it before reviewing extended footage. Most people find it funny rather than invasive.",
+          "Rules on recording, especially audio, differ by country and region, so check what applies where you live. Out of respect, tell a neighbour if your cat regularly goes into their home or enclosed garden. Don't publish footage of the inside of someone else's home without their permission.",
       },
       {
-        question:
-          "How often should I review cat camera footage to spot patterns?",
+        question: "How often should I review footage to spot patterns?",
         answer:
-          "Once a week is plenty. Patterns show up quickly because cats are deeply routine-driven — same nap spots, same walking routes, same social encounters at similar times. Daily review produces fatigue without extra insight. A weekly hour at 4x playback speed catches almost everything.",
+          "There is no set rule. Many owners find a weekly review easier than checking every clip daily. Cats tend to follow routines, so writing down rest spots, routes and encounters in a simple log makes repeated patterns easier to see.",
       },
       {
         question: "Can short recording sessions reveal cat behavior patterns?",
         answer:
-          "Not reliably. Most interesting patterns need at least 3-4 hours of continuous recording to become visible. Short 20-minute sessions catch isolated moments, not patterns. Consistency over weeks beats individual clip length, which beats resolution — in that order of importance.",
+          "Yes, if you repeat them. One short clip shows a moment, not a pattern. Several short sessions at similar times of day, over a few weeks, will show what repeats. Short sessions also let you check that your cat tolerates the collar and camera.",
       },
     );
   }
@@ -243,22 +256,22 @@ export default async function BlogArticlePage({
       {
         question: "Can any cat be a viral TikTok cat?",
         answer:
-          "Honestly, no. Temperament matters more than looks. A calm, curious cat who tolerates a collar and explores actively will outperform a gorgeous-but-anxious cat every time. About 1 in 10 cats refuses the camera entirely, and another 20-30% will tolerate it but won't give you interesting footage because their baseline behavior is too sedentary.",
+          "Not necessarily. Temperament matters more than looks. A calm, curious cat who accepts a collar and explores will give you more to work with than a cat who is anxious about it. Some cats never accept a camera, and many will mostly record sleeping. If your cat dislikes the camera, don't force it.",
       },
       {
-        question: "Do I need 4K to go viral on TikTok with cat POV?",
+        question: "Do I need 4K to go viral?",
         answer:
-          "No. 1080p is more than enough for TikTok, which compresses everything anyway. The visible quality difference between a $50 1080p collar camera and a $400 4K rig disappears almost entirely after TikTok's upload pipeline. Viral clips are made by moment selection, edit pace, and audio choice — not resolution.",
+          "No. 1080P is enough for vertical social video, and platforms compress uploads anyway. What makes a clip work is the moment you choose, the pace of the edit and the sound. Higher resolution gives you more room to crop, but it is not what makes a video spread.",
       },
       {
-        question: "What camera does Mr. Kitters use?",
+        question: "What camera do the big cat POV accounts use?",
         answer:
-          "Publicly, he uses an Insta360 Go 3 paired with a Furee harness — both mentioned in several of his own behind-the-scenes clips. Together around $450. Worth noting: he started the account on a much cheaper setup and only upgraded after his format was already working. The gear is a consequence of his growth, not the cause.",
+          "It varies, and setups change over time. Some creators mention their gear in their own videos or profiles. Check those directly instead of relying on second-hand lists. Better gear usually follows a format that already works. It doesn't create one.",
       },
       {
         question: "How many views is considered viral for a cat video?",
         answer:
-          "In 2026: 100,000 views is a genuine hit — your video broke out of your usual audience. 1 million views is viral by any reasonable definition. 10 million and up is top-tier cat content for the year. Most accounts spend weeks or months in the 500-5,000 view range before the first 100k-plus clip lands.",
+          "There is no official threshold. A practical definition is a video that reaches far beyond your usual audience, measured against your own average. For a new account that might be a few thousand views. For an established one it could be many times more.",
       },
     );
   }
@@ -291,22 +304,22 @@ export default async function BlogArticlePage({
       {
         question: "How far do outdoor cats typically roam?",
         answer:
-          "Median daily range across the major GPS studies sits between 40 and 200 m from home, with most cats keeping roughly 80% of their outdoor time inside a 100 m radius. Intact males roam 2-3x further than females, and suburban cats range further than urban ones. Ranges over 500 m are uncommon.",
+          "Less than most owners think. In the Cat Tracker study of 925 pet cats, the average home range was about 3.6 ha, and most cats stayed within roughly 100 m of home. Only three ranged over more than 1 km². Older cats roamed less. Males, unneutered cats and rural cats tended to range further.",
       },
       {
         question: "Where does my cat go at night?",
         answer:
-          "If your cat comes home to sleep, almost nowhere — most indoor-nighters are inactive from roughly 22:00 to 04:00. Cats that stay outside overnight often cover their widest ground between 03:00 and 05:00, with the most frequent activity being social encounters with other neighborhood cats on shared walls, paths, and garden boundaries.",
+          "It depends on the cat. Cats are most active around dawn and dusk, and many outdoor cats stay within a few gardens of home. If your cat is out overnight, the best way to find out is to track or record them, and there is no reliable universal pattern. Keeping cats in at night is a choice many owners make for safety.",
       },
       {
         question: "Should I keep my cat indoors to limit roaming?",
         answer:
-          "That's a personal decision with legitimate arguments on both sides. Indoor-only cats live longer on average and face fewer road, predator, and fight risks. Outdoor access provides mental stimulation hard to replicate indoors. A middle-ground option — catio, harness walks, or supervised garden — preserves most enrichment without the risk.",
+          "That's a personal decision with legitimate arguments on both sides. Outdoor access brings risks from traffic, fights and getting lost, and outdoor cats affect local wildlife. It also gives cats stimulation that is hard to replicate indoors. A catio, harness walks or supervised garden time can be a middle ground.",
       },
       {
         question: "Can I know where my cat goes without a GPS?",
         answer:
-          "Partially, yes. A collar camera gives rich behavioral context and identifiable landmarks, even without exact coordinates. Combined with neighborhood observation — asking neighbors, checking common cat corridors like fence tops and hedges — you can usually reconstruct the rough territory in a couple of weeks without paying for GPS subscriptions.",
+          "Partially, yes. A collar camera gives you behaviour and recognisable landmarks, even without exact coordinates. Combined with asking neighbours and checking common cat routes like fence tops and hedges, you can often piece together the rough territory over a few weeks.",
       },
     );
   }

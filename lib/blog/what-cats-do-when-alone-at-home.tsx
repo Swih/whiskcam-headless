@@ -1,222 +1,329 @@
 // =============================================================================
-// Article: What Cats Actually Do When Alone at Home — First-party data angle
+// Article: What Cats Actually Do When Alone at Home — cited behaviour guide
+// Rewritten 2026-10: the earlier version presented percentages from an
+// unverifiable "footage review". This version relies on cited welfare and
+// veterinary sources and frames camera use as the owner's own observation.
 // =============================================================================
+
+import { PRODUCT_FACTS as f } from "lib/content";
+
+const sources = {
+  cpAlone:
+    "https://www.cats.org.uk/cats-blog/how-long-can-you-leave-a-cat-alone",
+  cpSeparation:
+    "https://www.cats.org.uk/cats-blog/does-my-cat-have-separation-anxiety",
+  cpStress: "https://www.cats.org.uk/help-and-advice/health/cat-stress",
+  cpFighting:
+    "https://www.cats.org.uk/help-and-advice/cat-behaviour/cats-and-fighting",
+  icatcareHome: "https://icatcare.org/articles/making-your-home-cat-friendly",
+  icatcareMultiCat: "https://icatcare.org/articles/multi-cat-households",
+  vcaNocturnal:
+    "https://vcahospitals.com/resources/behavior-cat/true-or-false-cats-are-nocturnal",
+  vcaEnrichment:
+    "https://vcahospitals.com/know-your-pet/cat-behavior-and-training---enrichment-for-indoor-cats",
+  srpStudy:
+    "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0230999",
+} as const;
 
 export default function WhatCatsDoWhenAloneAtHome() {
   return (
     <article className="prose-article">
-      {/* ---- Answer-first intro (45-60 words) ---- */}
+      {/* ---- Answer-first intro ---- */}
       <p className="lead">
-        Cats alone at home spend roughly 40% of the time sleeping, 20% grooming, 15% watching
-        windows, 10% eating or drinking, and the remaining 15% patrolling, playing with random
-        objects, or doing something their owners have never seen. These numbers come from direct
-        footage review, not self-reports.
+        Most cats left alone at home spend much of the time resting in short
+        naps, then fit grooming, eating, looking outside, exploring and brief
+        play between them. Cats are most active around dawn and dusk, so a quiet
+        midday is normal. What varies is how well each cat copes, and that is
+        what is worth watching for.
       </p>
 
       <p>
-        Most cat owners assume their cat sleeps all day. That&apos;s roughly half-true. What people
-        miss is the surprising variety in the other half of the day — and how much of it is
-        triggered by things the cat doesn&apos;t do when you&apos;re in the room. We reviewed hours
-        of footage from collar cameras worn by adult indoor cats between ages 2 and 9 and compiled
-        what we actually saw.
+        Most owners never see this part of their cat&apos;s day. This guide
+        brings together what veterinary and welfare organisations say about cats
+        left on their own, which behaviours are normal, which ones can point to
+        stress, and what to look for if you record your own cat. Whiskcam Team
+        has not run a behaviour study, so this article contains no activity
+        percentages. Every cat is different, and your own observations will tell
+        you more than an average would.
+      </p>
+
+      {/* ---- What sources say ---- */}
+      <h2>What Welfare Charities Say About Cats Left Alone</h2>
+      <p>
+        UK charity Cats Protection says most adult cats can occasionally be left
+        alone for up to 12 hours, as long as they have food, fresh water, a
+        clean litter tray, safe toys and places to hide and perch. Kittens
+        should only be left for a few hours. The charity also warns that boredom
+        can lead to overgrooming, overeating or damage to furniture, and that
+        cats closely bonded to their owners may show separation-related problems
+        (
+        <a href={sources.cpAlone}>
+          Cats Protection: how long can you leave a cat alone?
+        </a>
+        ).
+      </p>
+      <p>
+        Separation-related problems are real but not universal. In a 2020
+        questionnaire study published in <em>PLOS ONE</em>, owners in one
+        Brazilian city answered questions about 223 cats. Around 13% (30 cats)
+        met at least one of the researchers&apos; criteria for a possible
+        separation-related problem. Those problems were more often reported in
+        homes where the cat had no toys or lived without another animal (
+        <a href={sources.srpStudy}>de Souza Machado et al., 2020</a>). This was
+        one owner-reported sample, not a figure that applies to every cat, and
+        the authors point out that owners cannot directly observe what their
+        cats do while they are out.
       </p>
 
       {/* ---- What they do ---- */}
-      <h2>The Five Things Cats Actually Do When Home Alone</h2>
-
+      <h2>The Five Things Cats Commonly Do When Home Alone</h2>
       <p>
-        After reviewing collar camera footage across six indoor cats (four in apartments, two in
-        houses with gardens), a consistent daily pattern emerged. The rough distribution, averaged
-        over a standard 8-hour owner-away window:
+        The table below lists common behaviours and what to check in your own
+        recordings. It is a guide to observation, not measured data. Time spent
+        on each one depends on age, health, the layout of your home and whether
+        there are other animals.
       </p>
 
       <div className="overflow-x-auto">
         <table>
           <thead>
             <tr>
-              <th>Activity</th>
-              <th>Average % of time alone</th>
-              <th>Frequency</th>
+              <th>Behaviour</th>
+              <th>Usually means</th>
+              <th>Worth noting in footage</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Sleeping or resting</td>
-              <td>40-45%</td>
-              <td>3-5 separate naps</td>
+              <td>Normal energy conservation between active periods</td>
+              <td>
+                Where they rest, and whether the spot moves during the day
+              </td>
             </tr>
             <tr>
               <td>Grooming</td>
-              <td>15-20%</td>
-              <td>Continuously throughout day</td>
+              <td>Routine coat care, sometimes calming</td>
+              <td>Long sessions on one area, or new bald patches</td>
             </tr>
             <tr>
               <td>Window or door watching</td>
-              <td>10-18%</td>
-              <td>Triggered by outside movement</td>
+              <td>Interest in movement outside</td>
+              <td>
+                Tense posture, tail flicking or a fixed stare at other cats
+              </td>
             </tr>
             <tr>
-              <td>Eating, drinking, litter</td>
-              <td>8-12%</td>
-              <td>2-4 short sessions</td>
+              <td>Eating, drinking, litter tray</td>
+              <td>Basic needs met through the day</td>
+              <td>Food left untouched until you come home</td>
             </tr>
             <tr>
-              <td>Patrolling the home</td>
-              <td>6-10%</td>
-              <td>Typically 1-2 full rounds</td>
-            </tr>
-            <tr>
-              <td>Playing alone</td>
-              <td>3-8%</td>
-              <td>Short bursts, 30 sec - 3 min</td>
+              <td>Exploring and play</td>
+              <td>Curiosity and hunting-type behaviour</td>
+              <td>Which objects they actually choose to play with</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <p>
-        The numbers vary between cats. Younger cats (under 3) played significantly more. Older cats
-        (7+) slept closer to 55% of the day. One cat in our footage spent 22% of his alone-time
-        sitting in front of a closed bedroom door — the one room he isn&apos;t usually allowed into.
-      </p>
-
       {/* ---- The nap cycle ---- */}
       <h2>Sleep Isn&apos;t Just Sleep: The Nap Cycle</h2>
       <p>
-        Cat sleep isn&apos;t one long block. In 8 hours of footage, the cats we reviewed slept in
-        3-5 discrete blocks averaging 45-90 minutes each. Between naps, they typically stretched,
-        groomed briefly, moved to a new location, and settled again.
+        Cats are crepuscular, meaning they are most active around dawn and dusk.
+        They often spend 12 to 16 hours a day napping, in short bursts spread
+        across the day and night rather than one long sleep (
+        <a href={sources.vcaNocturnal}>VCA Animal Hospitals</a>). If you are out
+        during the middle of the day, a lot of rest is normal.
       </p>
       <p>
-        Preferred nap locations rotated by time of day — this is where collar cameras reveal
-        something owners rarely notice. One cat moved 4 times across 8 hours, chasing patches of
-        sunlight as they crossed the living room floor. Most owners assume their cat sleeps in
-        the same spot for hours. They usually don&apos;t.
+        A camera that moves with the cat can show <em>where</em> those naps
+        happen. Look for a pattern: does your cat follow the sun across the
+        room, choose a high shelf, or go somewhere enclosed? International Cat
+        Care notes that cats feel safe resting in high places and that hiding
+        places are an essential part of everyday life for a cat (
+        <a href={sources.icatcareHome}>
+          International Cat Care: making your home cat friendly
+        </a>
+        ). If recordings show your cat using one spot again and again, keep it
+        available.
       </p>
 
       {/* ---- Window watching ---- */}
-      <h2>Why Window-Watching Takes Up So Much Time</h2>
+      <h2>Why Window-Watching Deserves a Closer Look</h2>
       <p>
-        This was the biggest surprise in our footage review. Window-watching isn&apos;t passive —
-        it&apos;s active hunting behavior triggered by external stimuli. Every time a bird, a
-        squirrel, a person, or a passing car appeared outside, the cat&apos;s attention locked in.
+        Watching birds, people and traffic can be engaging for an indoor cat,
+        and VCA recommends safe resting places with interesting views as part of
+        indoor enrichment (
+        <a href={sources.vcaEnrichment}>VCA: enrichment for indoor cats</a>).
+        But a window is not automatically relaxing. International Cat Care
+        explains that large windows can confuse some cats: they can see
+        potential dangers outside without understanding that they are safe
+        indoors. Cats Protection also lists spending a lot of time staring out
+        of the window or cat flap as a possible sign of tension with
+        neighbourhood cats (
+        <a href={sources.cpFighting}>Cats Protection: cats and fighting</a>).
       </p>
       <p>
-        Cats in apartments with street-level windows spent up to 18% of the day watching. Cats on
-        higher floors spent closer to 10%. Cats with no garden-facing window spent only 4-6%,
-        and compensated with more patrolling.
-      </p>
-      <p>
-        The practical takeaway: if your cat seems destructive or restless when you return home,
-        window access during the day is one of the easiest environmental fixes. A perch by a
-        bird-visible window absorbs hours of mental stimulation for free.
+        When you review footage, look at body language at the window. Relaxed
+        watching with soft eyes and a still tail is different from crouching,
+        tail lashing or a long stare at another cat. If it is the second kind,
+        International Cat Care suggests partly blocking the lower part of the
+        glass, for example with frosted film or plants.
       </p>
 
       {/* ---- Secret patrol ---- */}
-      <h2>The Patrol Route (Every Cat Has One)</h2>
+      <h2>The Patrol Route: What to Look for in Your Own Footage</h2>
       <p>
-        Every single cat in our footage had a repeating patrol route through the home. The
-        specifics differed — one cat checked every closed door in sequence, another walked the
-        same loop around the couch 6 times across the day — but the pattern was universal.
+        Many owners notice that their cat walks a similar route through the
+        home: checking doors, windows, food and favourite resting places. We
+        cannot tell you how often a typical cat does this, because there is no
+        reliable figure. What you can do is check your own recordings.
       </p>
+      <ul>
+        <li>
+          Does the route include places you didn&apos;t expect, like a closed
+          door?
+        </li>
+        <li>Does it end in a calm nap, or does it repeat without rest?</li>
+        <li>
+          Does the pattern change after a new piece of furniture, a visitor or a
+          new cat nearby?
+        </li>
+      </ul>
       <p>
-        Patrol behavior usually increases when the owner has been gone more than 4-5 hours. It
-        appears to be a territorial check: is my space still my space? Nothing new or threatening?
-        It ends with a nap, often at the perimeter of the territory rather than in a safe
-        center location.
+        A route that ends with rest is unremarkable. Restless, repeated pacing
+        that does not settle is listed by Cats Protection among the signs of
+        stress, so note it and compare it with other changes (
+        <a href={sources.cpStress}>Cats Protection: cat stress</a>).
       </p>
 
       {/* ---- Alone play ---- */}
-      <h2>Solo Play: Shorter Than You Think</h2>
+      <h2>Solo Play: Make Toys Less Predictable</h2>
       <p>
-        Solo play exists, but it&apos;s short. In our footage, play bursts averaged 30 seconds to
-        3 minutes. Objects that triggered play: a bottle cap, a hair tie, a paper ball, and in one
-        case an Amazon shipping label peeled off a box. None of the cats played with the expensive
-        toys their owners had bought them.
+        Many cats ignore expensive toys and pounce on a bottle cap instead.
+        There is a reason for that. International Cat Care notes that most cats
+        prefer toys that resemble hunting. Toys that move unpredictably hold
+        their interest, while motionless toys left lying around soon become
+        predictable and boring. It recommends rotating toys and regularly
+        bringing in new items, such as cardboard boxes or paper bags, for the
+        cat to investigate.
       </p>
       <p>
-        If you want your cat to play more when alone, the research-backed tactic is to leave novel
-        low-stakes items in unusual locations. Fancy toys sitting in a toy basket don&apos;t
-        register as interesting. A ping pong ball left on top of a bookshelf does.
+        VCA suggests short wand-toy sessions each day and puzzle feeders that
+        deliver part of a meal (<a href={sources.vcaEnrichment}>VCA</a>). Play
+        with your cat before you leave, then set out a puzzle feeder or a new
+        box. In your footage, note which items your cat actually goes back to.
       </p>
 
       {/* ---- Stress signs ---- */}
       <h2>Signs of a Stressed Cat When You&apos;re Not Home</h2>
       <p>
-        Camera footage is also useful for catching stress signals you don&apos;t see when
-        you&apos;re home. Behaviors that indicate your cat isn&apos;t coping well with
-        alone-time:
+        Cats Protection suggests recording your cat while you are out if you are
+        worried about how they cope (
+        <a href={sources.cpSeparation}>
+          Cats Protection: does my cat have separation anxiety?
+        </a>
+        ). Signs that the charity associates with stress or separation-related
+        problems include:
       </p>
       <ul>
         <li>
-          <strong>Over-grooming.</strong> More than 25-30% of the day spent grooming, especially
-          on the belly or legs, can signal anxiety.
+          <strong>Restlessness.</strong> Being unable to settle, pacing or
+          circling.
         </li>
         <li>
-          <strong>Pacing.</strong> Repeating the same short route over and over, not stopping to
-          investigate or rest.
+          <strong>Excessive vocalisation.</strong> Repeated meowing or crying
+          after you leave. A camera with audio can capture this.
         </li>
         <li>
-          <strong>Vocalization.</strong> Crying or yowling sporadically — collar cameras with audio
-          will pick this up even when neighbors don&apos;t report it.
+          <strong>Changes in appetite.</strong> Eating less, or overeating.
         </li>
         <li>
-          <strong>Not eating until you return.</strong> If the food bowl is untouched after 6+
-          hours of absence, the cat may be associating meals with your presence.
+          <strong>More hiding than usual</strong>, or a tense, crouched posture.
         </li>
         <li>
-          <strong>Staying in one spot.</strong> Frozen posture, no grooming, no movement — the
-          opposite of relaxation. This often happens near the door you left through.
+          <strong>Overgrooming</strong>, destructive scratching or toileting
+          outside the litter tray.
         </li>
       </ul>
       <p>
-        One pattern didn&apos;t signal stress as much as it looked like it should: sitting by the
-        door. Cats sit by doors for lots of reasons — hearing footsteps in the hall, sunlight on
-        the threshold, curiosity about what&apos;s beyond. Door-sitting alone is not separation
-        anxiety.
+        Any of these can also have a medical cause. Cats Protection advises
+        seeing your vet first when you notice a change in behaviour (
+        <a href={sources.cpStress}>Cats Protection: cat stress</a>). Sitting by
+        the door on its own does not mean your cat has separation anxiety. Cats
+        sit by doors for many reasons, including sounds in the hallway or a warm
+        spot.
       </p>
 
       {/* ---- Differences ---- */}
       <h2>What Changes with Two Cats vs One</h2>
       <p>
-        Households with two cats showed noticeably different patterns. Total sleep dropped by
-        about 8%, replaced by short social interactions — grooming each other, short chase
-        sequences, territorial passing. Solo play dropped to near zero; the other cat absorbed
-        play energy.
+        A second cat is not an automatic fix for loneliness. International Cat
+        Care notes that cats in the same home often form separate social
+        sub-groups, and some cats prefer to live alone when given the choice.
+        Signs of tension can be as subtle as one cat leaving the room when
+        another arrives (
+        <a href={sources.icatcareMultiCat}>
+          International Cat Care: multi-cat households
+        </a>
+        ).
       </p>
       <p>
-        This isn&apos;t an argument for getting a second cat automatically. Some cats are
-        territorial and a companion causes stress, not reduces it. But for cats that already
-        tolerate each other, our footage suggests the alone-time experience is substantially
-        different.
+        If you already have more than one cat, footage can show whether they
+        rest together, groom each other or avoid each other. International Cat
+        Care recommends one of each resource per cat plus one extra, placed in
+        different locations. That includes food, water, litter trays and beds.
       </p>
 
       {/* ---- Outdoor access ---- */}
-      <h2>Cats With Outdoor Access: Completely Different Day</h2>
+      <h2>Cats With Outdoor Access: A Different Day</h2>
       <p>
-        The two cats in our sample with cat-flap access spent roughly half their &quot;alone
-        time&quot; outdoors. Their indoor activity compressed: less patrolling, less window-watching,
-        less grooming. They came back in to sleep, eat, and use the litter.
-      </p>
-      <p>
-        Outdoor footage for these cats is its own topic — we cover it in our article on{" "}
-        <a href="/blog/are-cat-collar-cameras-safe">safety considerations for outdoor collar
-        cameras</a>.
+        If your cat has a cat flap, their time alone will include time outside.
+        That is harder to observe, and a home camera will miss it. GPS research
+        suggests that most pet cats stay surprisingly close to home. We cover
+        that research in{" "}
+        <a href="/blog/where-does-my-outdoor-cat-actually-go">
+          where outdoor cats actually go
+        </a>
+        . Before putting any camera on an outdoor cat, read our{" "}
+        <a href="/blog/are-cat-collar-cameras-safe">
+          safety considerations for collar cameras
+        </a>
+        .
       </p>
 
-      {/* ---- How we got the data ---- */}
-      <h2>A Note on Methodology</h2>
+      {/* ---- How to record ---- */}
+      <h2>How to Record and Read Your Own Cat&apos;s Day</h2>
       <p>
-        The figures in this article come from approximately 48 hours of collar camera footage
-        across 6 adult indoor cats (4 apartments, 2 houses), recorded in sessions of 2-4 hours at
-        a time during Q1 2026. This is not a scientific study — sample size is too small and
-        environmental conditions varied. Treat these numbers as directional, not precise.
+        You do not need a lab to learn your cat&apos;s routine. A simple
+        approach:
       </p>
+      <ul>
+        <li>
+          Choose your tool. A fixed pet camera covers one room. A collar camera
+          follows the cat but adds weight to the collar. An activity tracker
+          records movement without showing what the cat is doing.
+        </li>
+        <li>
+          Start with short, supervised sessions if you use a collar camera, and
+          stop if your cat freezes, scratches at it or moves differently.
+        </li>
+        <li>
+          Record at different times on different days, such as just after you
+          leave and before you return, rather than one long session.
+        </li>
+        <li>
+          Keep a simple log of where your cat rests, what they play with, and
+          any of the stress signs above.
+        </li>
+      </ul>
       <p>
-        Several academic studies on cat behavior using accelerometers and direct observation have
-        published compatible findings. Published cat activity research (e.g., indoor activity
-        tracking studies from European veterinary schools) reports similar sleep percentages and
-        activity distributions.
+        Our{" "}
+        <a href="/blog/i-filmed-my-cat-for-7-days-what-i-learned">
+          seven-day cat camera recording plan
+        </a>{" "}
+        includes a printable observation template.
       </p>
 
       {/* ---- FAQ ---- */}
@@ -224,53 +331,109 @@ export default function WhatCatsDoWhenAloneAtHome() {
 
       <h3>Do cats get lonely when home alone all day?</h3>
       <p>
-        Most adult cats tolerate 8-10 hours alone without stress signals. Kittens under 6 months
-        and older cats with health conditions need shorter gaps. Signs of loneliness in footage
-        include excessive vocalization, over-grooming, and door-sitting with no other activity.
+        Some do. Many adult cats cope with a normal working day if their needs
+        are met, but cats closely bonded to their owners can show
+        separation-related problems. Signs include excessive vocalisation,
+        restlessness, changes in appetite, hiding and toileting outside the
+        tray. Check with your vet if you notice them.
       </p>
 
       <h3>Is it cruel to leave a cat alone for a full workday?</h3>
       <p>
-        No, provided basic needs are met: fresh water, food access, clean litter, environmental
-        enrichment (windows, climbing, hiding spots). Camera footage consistently shows
-        well-provided cats handling 8-9 hour gaps calmly.
+        Not usually, if the basics are covered: food, fresh water, a clean
+        litter tray, safe toys, and places to hide and perch. Cats Protection
+        says most adult cats can occasionally be left for up to 12 hours.
+        Kittens, and cats with health conditions, need more frequent care.
       </p>
 
       <h3>Will a cat destroy the house when bored?</h3>
       <p>
-        Boredom-driven destruction exists but is rarer than people think. In our footage, chewing
-        and scratching peaks happened within 30 minutes of the owner&apos;s return — not during
-        alone-time. This suggests frustration at absence ending, not boredom during it.
+        It can happen. Cats Protection lists damage to furniture among the
+        possible effects of boredom, and destructive behaviour was among the
+        problems owners most often reported in the 2020 separation-related
+        problems study. Enrichment, play before you leave and puzzle feeders are
+        sensible first steps. Recordings can help you see when it happens.
       </p>
 
-      <h3>Do cats sleep all day really?</h3>
+      <h3>Do cats really sleep all day?</h3>
       <p>
-        No. The &quot;cats sleep 16 hours a day&quot; figure is averaged over 24 hours including
-        night. Daytime alone-time sleep is 40-45%, not 70-80%. The rest is quiet activity that
-        owners rarely observe.
+        Cats often nap for 12 to 16 hours a day, but in short bursts spread
+        across the day and night. They are most active around dawn and dusk, so
+        a quiet midday while you are out is normal.
       </p>
 
       <h3>Can I see what my cat does without a camera?</h3>
       <p>
-        Partially. Activity trackers tell you when they move but not what they do. Pet cameras
-        show one room. Collar cameras follow the cat, which is how we recorded the data for this
-        article. Each approach has trade-offs.
+        Partially. Activity trackers show when a cat moves but not what it does.
+        Fixed pet cameras show one room. Collar cameras follow the cat but add
+        weight to the collar. Each approach has trade-offs.
       </p>
 
       {/* ---- Bottom line ---- */}
       <h2>The Bottom Line</h2>
       <p>
-        Your cat is busier than you think, but in small ways. The day isn&apos;t wasted on sleep —
-        it&apos;s segmented into short routines repeated in a predictable pattern. Once you see
-        the pattern on camera, most &quot;problem&quot; behaviors (pacing, destructiveness,
-        crying) become easier to address because you can see what triggers them.
+        A cat home alone is usually not bored all day or asleep all day. The day
+        is a series of naps, with grooming, eating, watching and short bursts of
+        exploring in between. Once you know your own cat&apos;s pattern, changes
+        like pacing, crying, overgrooming or untouched food are easier to spot,
+        and you can raise them with your vet.
       </p>
       <p>
-        If you&apos;re curious about what your own cat does, a lightweight collar camera
-        like the <a href="/what-is-whiskcam">Whiskcam Original</a> records continuously for 1-2
-        hours at a time, which covers the most interesting windows (first hour after you leave,
-        last hour before you return).
+        If you want to record what your cat does, the{" "}
+        <a href="/what-is-whiskcam">Whiskcam Original</a> is a {f.weightGrams} g
+        collar camera that records 1080P video to a MicroSD card. The card is
+        sold separately. It has no night vision, and its continuous battery
+        runtime has not been independently verified, so plan short sessions.
+        Whiskcam publishes this article and sells that camera.
       </p>
+
+      {/* ---- Sources ---- */}
+      <h2>Sources</h2>
+      <ul>
+        <li>
+          <a href={sources.cpAlone}>
+            Cats Protection: How long can you leave a cat alone?
+          </a>
+        </li>
+        <li>
+          <a href={sources.cpSeparation}>
+            Cats Protection: Does my cat have separation anxiety?
+          </a>
+        </li>
+        <li>
+          <a href={sources.cpStress}>Cats Protection: Cat stress</a>
+        </li>
+        <li>
+          <a href={sources.cpFighting}>Cats Protection: Cats and fighting</a>
+        </li>
+        <li>
+          <a href={sources.icatcareHome}>
+            International Cat Care: Making your home cat friendly
+          </a>
+        </li>
+        <li>
+          <a href={sources.icatcareMultiCat}>
+            International Cat Care: Multi-cat households
+          </a>
+        </li>
+        <li>
+          <a href={sources.vcaNocturnal}>
+            VCA Animal Hospitals: True or false, cats are nocturnal
+          </a>
+        </li>
+        <li>
+          <a href={sources.vcaEnrichment}>
+            VCA Animal Hospitals: Enrichment for indoor cats
+          </a>
+        </li>
+        <li>
+          <a href={sources.srpStudy}>
+            de Souza Machado D. et al. (2020). Identification of
+            separation-related problems in domestic cats: A questionnaire
+            survey. PLOS ONE 15(4): e0230999
+          </a>
+        </li>
+      </ul>
     </article>
   );
 }

@@ -1,311 +1,287 @@
 // =============================================================================
 // Article: How to Make a Viral Cat POV TikTok Video (2026 Guide)
 // Angle: Pragmatic guide for aspiring cat POV creators — honest, no hype
+// Rewritten 2026-10: removed unverifiable creator view counts and gear claims,
+// invented algorithm/engagement statistics and implied Whiskcam testing.
+// Editing suggestions are presented as suggestions, not measured results.
 // =============================================================================
+
+import { PRODUCT_FACTS as f } from "lib/content";
+
+const sources = {
+  vcaNocturnal:
+    "https://vcahospitals.com/resources/behavior-cat/true-or-false-cats-are-nocturnal",
+} as const;
 
 export default function CatPovTikTokViralGuide2026() {
   return (
     <article className="prose-article">
-      {/* ---- Answer-first intro (50-60 words) ---- */}
+      {/* ---- Answer-first intro ---- */}
       <p className="lead">
-        Viral cat POV videos on TikTok share four things: a clear story in 7-15 seconds,
-        footage captured at peak activity hour, a hook in the first second, and either
-        genuine discovery or genuine cuteness. Hardware matters less than most people
-        think — it&apos;s the editing and moment selection that makes Mr. Kitters average
-        5 million views per video and not 50,000.
+        Successful cat POV videos on TikTok tend to share four things: a clear
+        story in a few seconds, footage captured when the cat is active, a hook
+        in the first second, and a real discovery or a cute moment. Hardware
+        matters less than most people think. Choosing the right moment and
+        editing it well do most of the work. Nothing guarantees views.
       </p>
 
       <p>
-        This guide is for people who&apos;ve seen the big cat POV accounts and want to
-        understand how they actually work. Not the hype version. The real one, with
-        timing, editing, and a realistic timeline. If you&apos;re expecting &quot;go
-        viral overnight,&quot; stop reading. If you want the actual mechanics behind
-        the format that&apos;s dominating #cattok in 2026, keep going.
+        This guide is for people who have seen the big cat POV accounts and want
+        to understand how the format works. It covers timing, editing and a
+        realistic plan. It is not a promise of going viral overnight, and the
+        suggestions below are editorial advice, not results from a Whiskcam
+        study.
       </p>
 
       {/* ---- What's trending ---- */}
       <h2>What&apos;s Actually Trending in 2026</h2>
       <p>
-        Cat POV isn&apos;t a niche anymore. <strong>Mr. Kitters</strong>
-        (@mr.kitters.the.cat) sits at the top of the format, averaging around
-        5 million views per short clip and pushing 90 million on some of his longer
-        compilations. <strong>Snowy</strong>, an outdoor cat whose single POV video
-        hit 37 million views, turned the &quot;day in the life&quot; subformat into
-        the dominant template. <strong>Niko</strong> and <strong>Cat.Mando</strong>
-        are the next tier down, each with their own variation — urban vs. rural,
-        indoor vs. roaming.
+        Cat POV is no longer a niche. Several accounts have built large
+        audiences around footage from a camera on a cat&apos;s collar or
+        harness. Their view counts change constantly and are best checked on the
+        accounts themselves. Two broad styles have emerged: indoor clips built
+        around the home, and outdoor &quot;day in the life&quot; clips that
+        follow a cat around the neighbourhood.
       </p>
       <p>
-        The hashtag ecosystem is tight: #catcam, #catpov, #cattok, #catsdaily,
-        #dayinthelife, and #fyp as the catch-all. Mixing two cat-specific tags with
-        one broad discovery tag is the pattern that currently performs best.
+        Common hashtags include #catcam, #catpov, #cattok and #dayinthelife.
+        Hashtags help describe a video, but there is no proven combination that
+        guarantees reach. Treat them as labels, not a growth strategy.
       </p>
       <p>
-        Two formats dominate. The first is the 10-25 second clip with a clean story
-        arc — exit home, discover something, return. The second is the 8-12 minute
-        compilation stitched from a full day of footage, which now regularly crosses
-        10 million views on the bigger accounts. TikTok&apos;s 2026 algorithm
-        prioritizes rewatch rate and comment velocity over raw like counts, which is
-        why a 9-second loop can outperform a polished 60-second edit.
+        Two formats are common: the short clip with a clean story (leave the
+        house, discover something, come back) and the longer compilation
+        stitched together from a day of footage. TikTok does not publish a
+        precise ranking formula, so be wary of anyone who claims to know exactly
+        what the algorithm rewards in a given month.
       </p>
 
       {/* ---- Hardware ---- */}
       <h2>The Hardware You Actually Need</h2>
       <p>
-        There are roughly three tiers, and most people dramatically overspend on the
-        first purchase. Entry level is a sub-$50 collar camera — a Whiskcam Original
-        or equivalent, around 26 g, 1080p, no app required. For the first 80% of
-        creators, this is enough to shoot videos that can break through. You&apos;re
-        not losing views because your camera isn&apos;t 4K.
+        There are roughly three tiers, and many people overspend on their first
+        purchase. The entry level is a small collar camera, such as the Whiskcam
+        Original or an equivalent. Whiskcam lists a camera weight of{" "}
+        {f.weightGrams} g and 1080P recording, and needs no app. For a first
+        account, 1080P is enough for vertical social video. Whiskcam publishes
+        this guide and sells that camera.
       </p>
       <p>
-        Mid tier is the Insta360 Go 3 at around $380, which is what Mr. Kitters
-        currently shoots with. The advantage is stabilization, better low-light
-        performance, and magnetic mounting. The disadvantage is size, weight, and
-        the fact that it&apos;s overkill for a cat who hasn&apos;t started pulling
-        numbers yet.
+        The mid tier is a small action camera, such as the Insta360 GO range.
+        Action cameras can offer better stabilisation and higher resolution, but
+        they are heavier and cost more. See our{" "}
+        <a href="/blog/cat-collar-camera-vs-insta360-go-3">
+          Whiskcam vs Insta360 GO 3 comparison
+        </a>{" "}
+        for the listed specifications.
       </p>
       <p>
-        Pro tier is a multi-camera setup paired with Premiere or DaVinci Resolve.
-        Not necessary for phase one, and honestly not necessary until you&apos;re
-        past 100k followers.
+        The pro tier is a multi-camera setup with desktop editing software such
+        as Premiere or DaVinci Resolve. You don&apos;t need it to start.
       </p>
       <p>
-        Worth remembering: Mr. Kitters started on a cheap camera before upgrading
-        to the Insta360. The content worked first, then the hardware caught up. If
-        you flip that order, you&apos;ll end up with expensive footage of a cat who
-        naps through 90% of your recording window.
+        Whatever you choose, check the total weight on the collar, use a
+        quick-release collar and start with short, supervised sessions. Get the
+        content right first and upgrade the hardware later. Expensive footage of
+        a cat sleeping is still footage of a cat sleeping.
       </p>
 
       {/* ---- Golden hour ---- */}
       <h2>The Golden Hour (And Why Most People Film at the Wrong Time)</h2>
       <p>
-        Cats are crepuscular. They&apos;re most active in the 30 minutes after
-        sunrise and the 30 minutes before sunset. Film at noon and you&apos;ll get
-        a cat who sleeps, grooms for 90 seconds, then sleeps again. Film at dusk
-        and the same cat is hunting, climbing, and reacting to things.
+        Cats are crepuscular: they are most active around dawn and dusk. They
+        often nap for 12 to 16 hours a day in short bursts (
+        <a href={sources.vcaNocturnal}>VCA Animal Hospitals</a>). If you film at
+        midday you will often get a cat who sleeps, grooms, then sleeps again.
+        If you film around dusk, the same cat is more likely to be exploring,
+        climbing and reacting to things.
       </p>
       <p>
-        For indoor cats, the practical windows are roughly 10-11 AM and 5-7 PM,
-        usually tied to feeding time. Outdoor cats peak at dusk — that&apos;s when
-        prey animals come out, and that&apos;s when most of the interesting
-        confrontation footage happens. If you have a cat who uses a cat flap,
-        opening it at 6 PM in summer is the single highest-leverage thing you can
-        do for content.
+        For indoor cats, active periods are often tied to feeding times, so try
+        recording around meals. Outdoor cats are often more active around dawn
+        and dusk. Note when your own cat is most active and plan short sessions
+        around those times.
       </p>
       <p>
-        The math is brutal but consistent: same cat, same camera, a 90-minute
-        session at 5 PM will produce roughly 3x more usable clips than the same
-        session at 2 PM. Mid-afternoon sessions routinely yield zero usable
-        moments despite recording for hours. Golden hour sessions rarely do.
-      </p>
-      <p>
-        For one viral 15-second clip, you should expect to sort through 1-2 hours
-        of raw footage. That ratio is already generous. At the wrong time of day
-        it blows out to something like 0 moments from 3 hours of recording, which
-        is how most people conclude the camera is broken when the problem is the
-        calendar.
+        Expect to record a lot more than you post. Most raw footage of a cat is
+        walking, resting and grooming. A few good seconds can come from a long
+        stretch of uneventful recording, and at the wrong time of day you may
+        get nothing usable. That is usually a timing problem, not a faulty
+        camera.
       </p>
 
       {/* ---- 7-second story arc ---- */}
       <h2>The 7-Second Story Arc</h2>
       <p>
-        The single most viral structure on cat TikTok right now: Hook (0-1s),
-        Setup (1-4s), Payoff (4-7s). That&apos;s it. Every short Mr. Kitters clip
-        that crosses a million views follows some variant of this curve.
+        A simple structure for short clips: Hook (0-1s), Setup (1-4s), Payoff
+        (4-7s). It isn&apos;t a rule, but it is a useful test.
       </p>
       <p>
-        A concrete example. Hook: cat jumps off the couch, camera swings fast —
-        that motion in the first frame is what stops a scroll. Setup: cat walks
-        through the kitchen, camera passes an open fridge. Payoff: cat swipes a
-        slice of ham off the lower shelf. Seven seconds. Clear story. Rewatchable.
+        A concrete example. Hook: the cat jumps off the couch and the camera
+        swings fast. Movement in the first frame can stop someone scrolling.
+        Setup: the cat walks through the kitchen and passes an open fridge.
+        Payoff: the cat reaches for something on the lower shelf. Seven seconds.
+        Clear story. Rewatchable.
       </p>
       <p>
-        A bad example: 15 seconds of cat walking through a hallway without finding
-        anything. No hook, no setup, no payoff. Scroll past within 2 seconds.
+        A weak example: 15 seconds of a cat walking down a hallway without
+        finding anything. No hook, no setup, no payoff.
       </p>
       <p>
-        The test is simple. If you can summarize the video in 5 words — &quot;cat
-        discovers X,&quot; &quot;cat confronts Y,&quot; &quot;cat escapes Z&quot; —
-        you have a video. If you can&apos;t, you have footage. The difference
-        matters. Roughly 80% of raw recordings are footage, not videos, and most
-        of the editing work is identifying which 5% of clips can carry a 5-word
-        summary.
+        The test is simple. If you can sum up the video in five words, such as
+        &quot;cat discovers X,&quot; &quot;cat confronts Y&quot; or &quot;cat
+        escapes Z,&quot; you have a video. If you can&apos;t, you have footage.
+        Most editing work is finding the few clips that pass this test.
       </p>
       <p>
-        The 7-second window isn&apos;t arbitrary. It&apos;s the average attention
-        budget a TikTok viewer gives an unknown creator before deciding to stay.
-        Longer formats still work, but they have to earn their extra seconds.
+        Longer formats can work too, but they need a reason to keep people
+        watching.
       </p>
 
       {/* ---- What to actually film ---- */}
       <h2>What to Actually Film</h2>
+      <p>Five categories tend to make good POV material:</p>
       <p>
-        Five categories consistently outperform everything else. In rough order of
-        reliability:
+        <strong>&quot;First time&quot; moments.</strong> First outdoor
+        recording. First time meeting another cat. First snow. First encounter
+        with a bird. Novelty gives a clip a natural story.
       </p>
       <p>
-        <strong>&quot;First time&quot; moments.</strong> First outdoor recording.
-        First time meeting another cat. First snow. First encounter with a bird.
-        First-time content carries natural novelty, and novelty is the single
-        strongest signal for TikTok&apos;s algorithm. Snowy&apos;s 37M-view clip
-        was effectively a first-time outdoor compilation.
+        <strong>Discovery moments.</strong> The cat finds a hidden spot, meets a
+        delivery person, or wanders into a neighbour&apos;s garden. The viewer
+        discovers it at the same moment as the cat, which is the emotional hook
+        of the POV format.
       </p>
       <p>
-        <strong>Discovery moments.</strong> Cat finds a hidden spot, cat intercepts
-        a delivery person, cat &quot;catches&quot; a neighbor doing something
-        unremarkable. The viewer sees the reveal alongside the cat, which is the
-        emotional hook of the entire POV format.
+        <strong>The POV itself.</strong> A jump onto a high shelf looks dramatic
+        from a collar camera. Passing under a low bench looks like a cinematic
+        crawl shot. In these clips the point of view is the story.
       </p>
       <p>
-        <strong>POV perspective flex.</strong> A cat jumping onto a 2-meter shelf
-        looks dramatic from a collar camera. A cat passing under a low bench looks
-        like a cinematic crawl shot. These are moments where the POV itself is
-        the story — they don&apos;t need a narrative beyond the physics.
+        <strong>Everyday moments made strange.</strong> Grooming seen from
+        ground level becomes oddly hypnotic. Jumping onto a bed becomes a
+        first-person launch sequence. The routine is familiar, and the POV makes
+        it new.
       </p>
       <p>
-        <strong>Mundane made weird.</strong> A cat grooming from ground level
-        becomes strangely hypnotic. A cat jumping onto a bed becomes a first-person
-        launch sequence. The routine is familiar; the POV makes it new.
+        <strong>Encounters.</strong> Another cat on the wall, a cautious dog, a
+        squirrel at eye level. Visual tension holds attention. Never set up or
+        encourage confrontations, though. If your cat looks stressed, stop
+        recording and let them settle.
       </p>
       <p>
-        <strong>Confrontation.</strong> Another cat on the wall, a cautious dog,
-        a squirrel at eye level. Visual tension stops a scroll almost automatically.
-        The stare-down format — two cats holding eye contact for 15-20 seconds —
-        has been one of the strongest performers of 2026.
-      </p>
-      <p>
-        What to avoid: long walk-and-walk footage with no destination, night-time
-        low-light clips (grainy, looks bad, doesn&apos;t rewatch), and 10-minute
-        stretches of sleeping. A cat sleeping on a couch is not content. It&apos;s
-        your cat&apos;s personal time that you happened to record.
+        What to avoid: long stretches of walking with no destination, very dark
+        clips (Whiskcam has no night vision, and low light looks grainy on most
+        small cameras), and long stretches of sleeping.
       </p>
 
       {/* ---- Editing ---- */}
       <h2>Editing That Converts Views to Follows</h2>
       <p>
-        Length first. The sweet spots in 2026 are 8-15 seconds for a hit-driven
-        clip, 30-60 seconds for a story-driven narrative, and 5-10 minutes for a
-        compilation. Anything between 20 and 28 seconds seems to underperform
-        consistently — too long for the short window, too short to earn the mid
-        window.
+        Length first. Very short clips suit single moments. A 30 to 60 second
+        cut suits a small story, and longer compilations suit a full outing. Try
+        different lengths and compare your own analytics rather than relying on
+        a supposed universal sweet spot.
       </p>
       <p>
-        Captions are non-negotiable. Even without voiceover, TikTok&apos;s algorithm
-        favors videos with on-screen text, and roughly 60% of users watch with
-        sound off on the first view. Bare clip, no text, no caption = you&apos;re
-        leaving half the reach on the table.
+        Add on-screen captions. Many people scroll with the sound off, and text
+        helps the story land without audio.
       </p>
       <p>
-        Audio in 2026 is about trending sounds over original audio by a wide
-        margin. Check TikTok&apos;s Sound library weekly — the specific sound that
-        works changes every 7-14 days, but the principle holds. Original audio
-        only works for creators already past 100k followers, where the audience
-        is tuning in for the voice.
+        Trending sounds can help a clip fit what people are already watching.
+        Check that a sound is licensed for your use. Original audio works well
+        once viewers come back for your cat specifically.
       </p>
       <p>
-        Cut every 1-2 seconds. Even 2 seconds of static action without a new beat
-        is enough to lose viewers. The worst thing a cat POV clip can do is linger
-        on a single moment for 4-5 seconds.
+        Cut tightly. POV footage is shaky, and lingering on one moment without
+        anything new happening quickly loses viewers.
       </p>
       <p>
-        Outro: either resolve the story arc cleanly or engineer a perfect loop so
-        the viewer doesn&apos;t realize the video restarted. Cutting mid-action
-        without either resolution or loop is the single most common mistake and
-        kills rewatch rate.
+        End the video by either resolving the story clearly or creating a loop
+        so the viewer doesn&apos;t notice it restarting. Cutting off in the
+        middle of an action, with no resolution or loop, is a common mistake.
       </p>
 
       {/* ---- Safety / ethics ---- */}
       <h2>Safety and Ethics Before You Post</h2>
       <p>
-        A breakaway collar is non-negotiable for any outdoor cat wearing a camera.
-        Not optional, not a maybe — breakaway. We covered the full safety logic in
-        our piece on whether{" "}
-        <a href="/blog/are-cat-collar-cameras-safe">cat collar cameras are safe</a>,
-        but the short version is that a camera adds weight and snag risk, and the
-        only acceptable mitigation is a collar that releases under pressure.
+        Use a properly fitted quick-release (breakaway) collar for any cat
+        wearing a camera, especially outdoors. Our guide on whether{" "}
+        <a href="/blog/are-cat-collar-cameras-safe">
+          cat collar cameras are safe
+        </a>{" "}
+        covers fit, weight and supervised trials. A camera adds weight and the
+        risk of snagging, so start with short sessions you can watch.
       </p>
       <p>
-        Privacy matters too. If your cat wanders into a neighbor&apos;s property
-        and the camera captures the interior of their home, that&apos;s footage you
-        shouldn&apos;t post. Outdoor spaces visible from the street are generally
-        fine; living rooms through windows are not.
+        Privacy matters too. If your cat wanders into a neighbour&apos;s
+        property and the camera captures the inside of their home, don&apos;t
+        post that footage without their permission. Avoid showing faces, house
+        numbers and number plates.
       </p>
       <p>
-        Audio is even stricter than video in most jurisdictions. Recording private
-        conversations — even inadvertently — can violate consent laws in several
-        U.S. states and most of Europe. If you&apos;re uncertain, strip the audio
-        and use a trending sound instead. That&apos;s better for the algorithm
-        anyway.
+        Rules on audio recording are often stricter than for video, and they
+        vary by country and region. If you&apos;re unsure, remove the original
+        audio and use a licensed sound instead.
       </p>
       <p>
-        Finally: some cats refuse the camera. They scratch it off, sulk, change
-        their behavior. About 1 in 10 cats, based on informal owner reports, never
-        adapts. If your cat is in that group, accept it and move on. Forcing a
-        reluctant cat is both ethically bad and produces footage that performs
-        worse, because the discomfort is visible on camera.
+        Finally, some cats won&apos;t accept a camera. They scratch at it,
+        freeze or change how they move. If your cat is one of them, accept it
+        and stop. Forcing a reluctant cat is bad for the cat, and the discomfort
+        shows on camera.
       </p>
 
       {/* ---- Viral timeline ---- */}
       <h2>How Long Until You Hit Viral?</h2>
       <p>
-        The honest answer: most cat POV creators post between 50 and 100 videos
-        before their first real hit. Not 5. Not 10. Fifty to a hundred. The people
-        who go viral on clip #3 exist, but they&apos;re statistical outliers and
-        usually already have a cat with an unusually photogenic face or distinctive
-        coat.
+        The honest answer: nobody can tell you. Some creators post for months
+        before a clip takes off, some never get a big hit, and a few get one
+        early. Treat any specific number of videos or days as a guess.
       </p>
       <p>
-        The cadence that works: one video per day, minimum, for 60 days. Less than
-        that and you don&apos;t give the algorithm enough data to figure out who
-        your audience is.
+        What you can control is consistency. Post regularly enough to learn what
+        your audience responds to, but not so often that quality drops or your
+        cat is wearing a camera more than is comfortable.
       </p>
       <p>
-        TikTok in 2026 runs something close to a 100-video calibration window.
-        Your first hundred videos are tested on progressively larger micro-audiences,
-        and most accounts see their first genuine hit somewhere between video #47
-        and video #60. Before that point, 200-500 view clips are normal and not a
-        signal of failure. After that point, you&apos;re compounding.
-      </p>
-      <p>
-        If you&apos;ve posted 3 clips, got 400 views each, and concluded the
-        format isn&apos;t working for you, you&apos;ve stopped at the worst
-        possible moment. It&apos;s not the camera. It&apos;s not the cat.
-        It&apos;s the sample size.
+        If you&apos;ve posted three clips with a few hundred views each and
+        decided the format doesn&apos;t work, you have very little data. Keep
+        going long enough to compare different hooks, lengths and times of day.
       </p>
 
       {/* ---- 30-day plan ---- */}
       <h2>A Realistic 30-Day Plan</h2>
       <p>
-        A concrete schedule for someone starting from zero, based on what actually
-        works for the creators who&apos;ve broken through in the last 12 months.
+        A schedule for someone starting from zero. Adjust it to your cat&apos;s
+        comfort, which always comes before content.
       </p>
       <p>
-        <strong>Days 1-3: Setup.</strong> Fit the camera and let the cat get used
-        to it. Short 10-15 minute sessions. No pressure to produce anything. Most
-        cats adapt within 20 minutes; some take two days.
+        <strong>Days 1-3: Setup.</strong> Fit the collar and camera and let your
+        cat get used to it in short, supervised sessions. Don&apos;t try to
+        produce anything yet. Stop if your cat seems uncomfortable.
       </p>
       <p>
-        <strong>Days 4-7: Daily 90-minute sessions at golden hour.</strong> One
-        session per day, same time each day. This is pure data collection — you
-        are not editing yet. Your job is to build a footage library.
+        <strong>Days 4-7: Short sessions at active times.</strong> Record one
+        short session a day around the times your cat is most active. Check the
+        battery and storage before each session, because Whiskcam&apos;s
+        continuous runtime has not been independently verified. The goal is a
+        library of footage, not finished videos.
       </p>
       <p>
-        <strong>Days 8-10: Review and tag.</strong> Scrub through all of the
-        footage at 4x speed. Identify 5-7 moments that meet the 5-word summary
-        test. Everything else goes in an archive folder.
+        <strong>Days 8-10: Review and tag.</strong> Skim the footage at higher
+        speed. Pick out the moments that pass the five-word test and archive the
+        rest.
       </p>
       <p>
-        <strong>Days 11-20: Post one video per day.</strong> Vary the format:
-        some 7-second clips, some 15-second, some 30-second. Use trending sounds.
-        Include captions. Don&apos;t post twice a day — it splits the algorithm&apos;s
-        attention.
+        <strong>Days 11-20: Post regularly.</strong> Vary the format, with some
+        very short clips and some longer stories. Add captions and test both
+        trending sounds and original audio.
       </p>
       <p>
-        <strong>Days 21-30: Analyze and double down.</strong> Look at which 2-3
-        videos outperformed the rest by at least 3x. Whatever structure they
-        share — hook type, length, time of day filmed — is your format. Next
-        month, lean into it.
+        <strong>Days 21-30: Analyse and double down.</strong> Look at which
+        videos did clearly better than the rest. Whatever they share, whether
+        that is the hook, the length or the time of day you filmed, is the
+        starting point for next month.
       </p>
 
       {/* ---- FAQ ---- */}
@@ -313,56 +289,52 @@ export default function CatPovTikTokViralGuide2026() {
 
       <h3>Can any cat be a viral TikTok cat?</h3>
       <p>
-        Honestly, no. Temperament matters more than looks. A calm, curious cat
-        who tolerates a collar and explores actively will outperform a
-        gorgeous-but-anxious cat every time. About 1 in 10 cats refuses the
-        camera entirely, and another 20-30% will tolerate it but won&apos;t give
-        you interesting footage because their baseline behavior is too sedentary.
-        If your cat sleeps 20 hours a day and hates doorways, the format
-        probably isn&apos;t for you.
+        Not necessarily. Temperament matters more than looks. A calm, curious
+        cat who accepts a collar and explores will give you more to work with
+        than a cat who is anxious about it. Some cats never accept a camera, and
+        many will mostly record sleeping. If your cat dislikes the camera,
+        don&apos;t force it.
       </p>
 
       <h3>Do I need 4K to go viral?</h3>
       <p>
-        No. 1080p is more than enough for TikTok, which compresses everything
-        anyway. The visible quality difference between a $50 1080p collar camera
-        and a $400 4K rig disappears almost entirely after TikTok&apos;s upload
-        pipeline processes the file. What separates viral clips from forgettable
-        ones is never resolution. It&apos;s moment selection, edit pace, and
-        audio choice.
+        No. 1080P is enough for vertical social video, and platforms compress
+        uploads anyway. What makes a clip work is the moment you choose, the
+        pace of the edit and the sound. Higher resolution gives you more room to
+        crop, but it is not what makes a video spread.
       </p>
 
-      <h3>What camera does Mr. Kitters use?</h3>
+      <h3>What camera do the big cat POV accounts use?</h3>
       <p>
-        Publicly, he uses an Insta360 Go 3 paired with a Furee harness — both
-        mentioned in several of his own behind-the-scenes clips. Price together
-        lands somewhere around $450. Worth noting: he started the account on a
-        much cheaper setup and only upgraded after his format was already
-        working. The gear is a consequence of his growth, not the cause of it.
+        It varies, and setups change over time. Some creators mention their gear
+        in their own videos or profiles. Check those directly instead of relying
+        on second-hand lists. Better gear usually follows a format that already
+        works. It doesn&apos;t create one.
       </p>
 
       <h3>How many views is considered viral for a cat video?</h3>
       <p>
-        The rough thresholds in 2026: 100,000 views is a genuine hit — your
-        video broke out of your usual audience and reached strangers. 1 million
-        views is viral by any reasonable definition. 10 million and up is top-tier
-        cat content for the year. Most accounts that eventually break through
-        spend weeks or months in the 500-5,000 view range before the first
-        100k-plus clip lands.
+        There is no official threshold. A practical definition is a video that
+        reaches far beyond your usual audience, measured against your own
+        average. For a new account that might be a few thousand views. For an
+        established one it could be many times more.
       </p>
 
       {/* ---- Bottom line ---- */}
       <h2>The Bottom Line</h2>
       <p>
-        Your cat is already unique. The camera is just a way to show that. The
-        hardware is a tool, not a shortcut — the Mr. Kitters of 2027 is currently
-        filming with something cheap, iterating on cadence, and getting 600 views
-        a video. If you want to see what a week of serious recording actually
-        produces, we wrote about it in detail in{" "}
-        <a href="/blog/i-filmed-my-cat-for-7-days-what-i-learned">I filmed my
-        cat for 7 days — what I learned</a>. If you want the camera we use, the{" "}
-        <a href="/what-is-whiskcam">Whiskcam Original</a> is 26 g, 1080p, and
-        priced for exactly this phase of a creator&apos;s timeline.
+        Your cat is already unique, and the camera is just a way to show it.
+        Hardware is a tool, not a shortcut. Many creators start with simple
+        gear, small audiences and a lot of trial and error. If you want a
+        structured way to start, follow our{" "}
+        <a href="/blog/i-filmed-my-cat-for-7-days-what-i-learned">
+          seven-day cat camera recording plan
+        </a>
+        . If you&apos;re choosing a camera, the{" "}
+        <a href="/what-is-whiskcam">Whiskcam Original</a> is a {f.weightGrams}{" "}
+        g, 1080P collar camera that needs no app. A MicroSD card is sold
+        separately, and it has no night vision. Whiskcam publishes this guide
+        and sells that camera.
       </p>
     </article>
   );

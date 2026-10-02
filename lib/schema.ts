@@ -29,8 +29,7 @@ export function organizationSchema() {
       "@type": "ImageObject",
       url: `${baseUrl}/images/logos/whiskcam-logo-icon.webp`,
     },
-    description:
-      `Whiskcam makes ${f.weightGrams} g pet collar cameras that record ${f.resolution} video from a cat's or small dog's point of view. No app, no WiFi, no subscription.`,
+    description: `Whiskcam makes ${f.weightGrams} g pet collar cameras that record ${f.resolution} video from a cat's or small dog's point of view. No app, no WiFi, no subscription.`,
     foundingDate: "2026",
     knowsAbout: [
       "pet collar cameras",
@@ -38,7 +37,10 @@ export function organizationSchema() {
       "pet point-of-view video",
       "collar camera weight limits",
     ],
-    sameAs: ["https://www.tiktok.com/@whiskcam0"],
+    sameAs: [
+      "https://www.tiktok.com/@whiskcam0",
+      "https://www.youtube.com/@Whiskcam",
+    ],
     contactPoint: {
       "@type": "ContactPoint",
       email: "support@whiskcam.com",
@@ -67,7 +69,8 @@ export function merchantReturnPolicy() {
     applicableCountry: [...SHIPPING_COUNTRIES],
     returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
     merchantReturnDays: f.returnDays,
-    returnMethod: "https://schema.org/ReturnByMail",
+    // The returns page: "In most cases, no. We don't require you to ship the product back."
+    returnMethod: "https://schema.org/KeepProduct",
     returnFees: "https://schema.org/FreeReturn",
   };
 }
@@ -108,9 +111,21 @@ export function productProperties() {
   return [
     { "@type": "PropertyValue", name: "Weight", value: `${f.weightGrams} g` },
     { "@type": "PropertyValue", name: "Resolution", value: f.resolution },
-    { "@type": "PropertyValue", name: "Field of View", value: `${f.fieldOfViewDegrees} degrees` },
-    { "@type": "PropertyValue", name: "Storage", value: `${f.storageGb} GB MicroSD (${f.storageIncluded ? "included" : "required separately; not included"})` },
-    { "@type": "PropertyValue", name: "Charging", value: `${f.charging}, full charge under ${f.chargeTimeHours} hour` },
+    {
+      "@type": "PropertyValue",
+      name: "Field of View",
+      value: `${f.fieldOfViewDegrees} degrees`,
+    },
+    {
+      "@type": "PropertyValue",
+      name: "Storage",
+      value: `${f.storageGb} GB MicroSD (${f.storageIncluded ? "included" : "required separately; not included"})`,
+    },
+    {
+      "@type": "PropertyValue",
+      name: "Charging",
+      value: `${f.charging}, full charge under ${f.chargeTimeHours} hour`,
+    },
     { "@type": "PropertyValue", name: "Video Format", value: f.videoFormat },
     { "@type": "PropertyValue", name: "App Required", value: "No" },
     { "@type": "PropertyValue", name: "WiFi Required", value: "No" },

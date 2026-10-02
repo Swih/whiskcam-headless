@@ -31,6 +31,30 @@ const gallery = [
   "/images/product/whiskcam-kit-en.png",
 ];
 
+const MORE_GUIDES = [
+  { href: "/blog/mr-petcam-vs-whiskcam", label: "Mr Petcam HD vs Whiskcam" },
+  {
+    href: "/blog/cat-collar-weight-chart-by-size",
+    label: "Cat collar weight chart",
+  },
+  {
+    href: "/blog/cat-collar-camera-vs-gps-tracker-2026",
+    label: "Collar camera or GPS tracker?",
+  },
+  {
+    href: "/blog/cat-collar-camera-vs-insta360-go-3",
+    label: "Collar camera vs Insta360 GO 3",
+  },
+  {
+    href: "/blog/best-cat-collar-camera-for-maine-coon",
+    label: "Collar cameras for large cats",
+  },
+  {
+    href: "/blog/is-it-legal-to-put-a-camera-on-your-cat",
+    label: "Is a cat camera legal?",
+  },
+];
+
 function Arrow() {
   return <span aria-hidden="true">↗</span>;
 }
@@ -206,8 +230,10 @@ export function StorefrontV2({
     <div className={styles.storefront}>
       <section id="hero" className={styles.hero}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>{t("eyebrow")}</p>
+          {/* The category line belongs to the H1 so the heading names the
+              product ("cat collar camera"), not only the slogan. */}
           <h1>
+            <span className={styles.eyebrow}>{t("eyebrow")}</span>{" "}
             {t("headline")} <em>{t("headlineAccent")}</em>
           </h1>
           <p className={styles.intro}>{t("intro")}</p>
@@ -515,6 +541,13 @@ export function StorefrontV2({
           <Link href="/policies/shipping">
             {t("guideDelivery")} <Arrow />
           </Link>
+          {/* English-only guides, linked by their canonical titles so every
+              article is reachable from the homepage. */}
+          {MORE_GUIDES.map(({ href, label }) => (
+            <NextLink key={href} href={href} lang="en">
+              {label} <Arrow />
+            </NextLink>
+          ))}
         </div>
       </section>
 

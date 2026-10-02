@@ -43,6 +43,11 @@
   max-width: 620px;
   margin: 0;
 }
+.hero h1 .eyebrow {
+  display: block;
+  line-height: normal;
+  letter-spacing: 0.14em;
+}
 .hero h1 em {
   display: block;
   font-family: Georgia, serif;
@@ -375,7 +380,8 @@
   font-size: 13px;
   line-height: 1.65;
 }
-.included h3, .honestNote h3 {
+.included h3,
+.honestNote h3 {
   font-weight: 600;
 }
 .included > p {
@@ -583,10 +589,10 @@
   border-bottom: 1px solid #b1b7a5;
   padding-bottom: 4px;
 }
-.reading a {
+.help .reading a {
   display: flex;
   justify-content: space-between;
-  padding: 16px 0;
+  padding: 12px 0;
   border-bottom: 1px solid var(--line);
   gap: 20px;
 }

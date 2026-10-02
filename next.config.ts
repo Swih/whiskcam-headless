@@ -26,6 +26,21 @@ const config: NextConfig = {
         destination: "/",
         permanent: true,
       },
+      // Single-product store: product and legacy Shopify theme URLs consolidate
+      // on the homepage. Redirecting here returns a real 308; the page-level
+      // permanentRedirect() was streamed after PPR's 200 shell.
+      {
+        source: "/:locale(fr|de|es)/product/:handle*",
+        destination: "/:locale",
+        permanent: true,
+      },
+      { source: "/product/:handle*", destination: "/", permanent: true },
+      { source: "/products/:handle*", destination: "/", permanent: true },
+      { source: "/collections/:path*", destination: "/", permanent: true },
+      // English is unprefixed. next-intl answers /en/* with a 307; make the
+      // legacy URLs (still in Google's index) permanent.
+      { source: "/en", destination: "/", permanent: true },
+      { source: "/en/:path*", destination: "/:path*", permanent: true },
     ];
   },
   async headers() {

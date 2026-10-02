@@ -39,6 +39,7 @@ const aboutJsonLd = {
     foundingDate: "2026",
     sameAs: [
       "https://www.tiktok.com/@whiskcam0",
+      "https://www.youtube.com/@Whiskcam",
     ],
   },
 };
@@ -47,8 +48,18 @@ const breadcrumbJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://whiskcam.com" },
-    { "@type": "ListItem", position: 2, name: "About", item: "https://whiskcam.com/about" },
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://whiskcam.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "About",
+      item: "https://whiskcam.com/about",
+    },
   ],
 };
 
@@ -94,16 +105,12 @@ export default async function AboutPage({
       {/* Content */}
       <div className="mx-auto max-w-2xl px-5 py-16 md:py-20">
         <div className="space-y-5 text-base leading-relaxed text-wk-grey-600">
-          <p className="text-lg text-wk-black">
-            {t("opening")}
-          </p>
+          <p className="text-lg text-wk-black">{t("opening")}</p>
           <p>{t("p1")}</p>
           <p>{t("p2")}</p>
           <p>{t("p3")}</p>
           <p>{t("p4")}</p>
-          <p className="font-semibold text-wk-black">
-            {t("closing")}
-          </p>
+          <p className="font-semibold text-wk-black">{t("closing")}</p>
         </div>
 
         <div className="mt-12">
@@ -111,8 +118,18 @@ export default async function AboutPage({
             href="/"
             className="inline-flex items-center gap-2 text-sm font-semibold text-wk-amber transition-colors hover:text-wk-amber-hover"
           >
-            <svg className="h-4 w-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            <svg
+              className="h-4 w-4 rotate-180"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 5l7 7-7 7"
+              />
             </svg>
             {t("backToShop")}
           </a>

@@ -76,6 +76,7 @@ for (const slug of [
   "mr-petcam-vs-whiskcam",
   "are-cat-collar-cameras-safe",
   "cat-collar-weight-chart-by-size",
+  "is-it-legal-to-put-a-camera-on-your-cat",
 ]) {
   for (const prefix of ["", "/fr"]) {
     const path = `${prefix}/blog/${slug}`;
@@ -102,7 +103,10 @@ for (const slug of [
     });
     const article = graph.find((n) => n["@type"] === "Article");
     check(
-      article?.dateModified === "2026-09-25T00:00:00Z",
+      article?.dateModified ===
+        (slug === "is-it-legal-to-put-a-camera-on-your-cat"
+          ? "2026-10-02T00:00:00Z"
+          : "2026-09-25T00:00:00Z"),
       `${path}: article modification date mismatch`,
     );
     const faq = graph.find((n) => n["@type"] === "FAQPage");

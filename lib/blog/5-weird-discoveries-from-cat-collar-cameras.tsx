@@ -1,211 +1,203 @@
 // =============================================================================
 // Article: 5 Weird Things People Discovered With a Cat Collar Camera
-// Angle: Emotional listicle with specific cat stories — shareable, factual tone
+// Angle: Commonly reported owner observations, explained with cited sources.
+// Rewritten 2026-10: removed named "case studies", beta-tester claims and
+// invented prevalence figures. These are patterns owners describe, not
+// Whiskcam test results.
 // =============================================================================
+
+import { PRODUCT_FACTS as f } from "lib/content";
+
+const sources = {
+  kays: "https://doi.org/10.1111/acv.12563",
+  ncsu: "https://news.ncsu.edu/2020/03/domestic-cat-effects/",
+  rspcaFeeding:
+    "https://www.rspca.org.uk/adviceandwelfare/pets/general/feedingpeoplespets",
+  cpFighting:
+    "https://www.cats.org.uk/help-and-advice/cat-behaviour/cats-and-fighting",
+  icatcareHome: "https://icatcare.org/articles/making-your-home-cat-friendly",
+  cpStress: "https://www.cats.org.uk/help-and-advice/health/cat-stress",
+} as const;
 
 export default function FiveWeirdDiscoveriesFromCatCollarCameras() {
   return (
     <article className="prose-article">
-      {/* ---- Answer-first intro (45-60 words) ---- */}
+      {/* ---- Answer-first intro ---- */}
       <p className="lead">
-        Collar cameras consistently reveal something their owners didn&apos;t expect. Across
-        thousands of hours of footage shared by cat owners online, five patterns come up again
-        and again — from secret second homes to unexpected friendships with other cats. Here are
-        the weirdest, with context on why they happen.
+        Owners who put a camera on their cat often find something they
+        didn&apos;t expect: a neighbour who feeds the cat, a nap spot nobody
+        knew about, a regular meeting with another cat, or a fear of something
+        harmless. Here are five commonly reported discoveries and what the
+        behaviour research says about why they happen.
       </p>
 
       <h2>Where These Stories Come From</h2>
       <p>
-        The stories below are drawn from a combination of publicly shared footage on Reddit&apos;s
-        cat communities, Facebook groups dedicated to indoor and outdoor cats, conversations with
-        Whiskcam beta testers during the first months of 2026, and patterns that show up across
-        almost every long recording session. Names have been changed. Specific details like age,
-        weight, and timing are preserved because they matter — cat behavior is context-dependent,
-        and vague stories aren&apos;t useful. Nothing here is sensationalized. These are the kinds
-        of discoveries that happen quietly, usually during a Sunday afternoon of watching
-        uneventful footage, until a pattern clicks into place.
+        These are patterns that cat owners commonly describe when they share
+        collar camera clips online and in cat communities. They are not results
+        from Whiskcam testing, and they are not individual case reports we have
+        verified. We do not include names, ages or exact figures for that
+        reason. Nobody has published reliable data on how often each pattern
+        happens, so treat them as things worth looking out for, not predictions.
+        Where there is research or welfare guidance on the underlying behaviour,
+        we link to it.
       </p>
 
       {/* ---- Story 1 ---- */}
-      <h2>1. The Second Home (or: &quot;Your Cat Has a Roommate You&apos;ve Never Met&quot;)</h2>
+      <h2>
+        1. The Second Home (or: &quot;Your Cat Has a Roommate You&apos;ve Never
+        Met&quot;)
+      </h2>
       <p>
-        <em>Marbles</em>, a 5-year-old domestic shorthair with outdoor access through a cat flap,
-        had what his owner thought was a boring daily routine. Breakfast, garden nap, back inside,
-        dinner. The collar camera said otherwise. For at least 2 hours a day, every single
-        weekday, Marbles was in a neighbor&apos;s garage two houses down.
+        The classic discovery: a cat with outdoor access that seems to have a
+        dull routine turns out to visit the same neighbour&apos;s garden, garage
+        or kitchen regularly. Sometimes the neighbour has been leaving out food
+        or a blanket. Sometimes they have assumed the cat is a stray.
       </p>
       <p>
-        The neighbor — a retired man living alone — had been feeding him small amounts of wet
-        food and letting him nap on an old armchair for about 8 months. He had no idea who owned
-        the cat. Marbles showed up, ate a little, slept, left. The neighbor had assumed he was a
-        stray with a loose collar and had been quietly considering taking him to the vet for a
-        microchip scan.
+        That fits what we know about where pet cats go. The international Cat
+        Tracker study followed 925 pet cats with GPS. It found that most stayed
+        within about 100 m of home, an area that usually covers a few
+        neighbouring gardens (
+        <a href={sources.ncsu}>NC State University summary</a>;{" "}
+        <a href={sources.kays}>Kays et al., 2020, Animal Conservation</a>). If
+        one of those gardens offers food, warmth or a quiet place to sleep, it
+        can easily become part of the routine.
       </p>
       <p>
-        This kind of discovery is more common than most owners realize. Cats form territorial
-        &quot;secondary home&quot; relationships, especially with humans who consistently provide
-        food, quiet, and warmth. It&apos;s not a sign your cat prefers the other person — it&apos;s
-        a sign they&apos;ve expanded their territory to include a second reliable base.
-      </p>
-      <p>
-        In Marbles&apos; case, the story ended well: a polite conversation between neighbors, a
-        shared feeding schedule, and an informal co-parenting arrangement. A rough estimate from
-        informal owner surveys in dense residential neighborhoods suggests around 22% of outdoor
-        cats have a &quot;secondary feeder&quot; within a three-house radius. Most owners never find
-        out.
+        The RSPCA notes that many cats will take an extra meal even when they
+        are well fed at home. Being fed elsewhere can cause weight gain or
+        allergic reactions, and can mean the cat comes home less often (
+        <a href={sources.rspcaFeeding}>
+          RSPCA: why you shouldn&apos;t feed other people&apos;s pets
+        </a>
+        ). It does not mean your cat prefers the other person. It is usually a
+        sign that the cat has found a reliable resource nearby.
       </p>
 
       {/* ---- Story 2 ---- */}
       <h2>2. The Hidden Nap Location Nobody Checks</h2>
       <p>
-        <em>Pixel</em>, a small 3 kg domestic shorthair living in a one-bedroom apartment, had
-        what her owner described as an &quot;obvious&quot; nap pattern: the armchair in the morning,
-        the bed in the afternoon. The collar camera recorded a third location nobody had thought
-        to check. For roughly 90 minutes every day, Pixel slept in the 8 cm gap between the
-        washing machine and the wall.
+        Owners often think they know where their cat sleeps: the armchair, the
+        bed, the sunny windowsill. Footage sometimes shows another spot
+        entirely, such as behind an appliance, on top of a wardrobe, or inside a
+        cupboard or laundry basket. The spot may also change with the seasons.
       </p>
       <p>
-        The reason is less strange than it looks. That spot offers diffuse heat from the machine
-        cycle, total darkness, no drafts, and a vibration pattern that&apos;s predictable rather
-        than alarming. Cats prefer enclosed sleeping spots with vertical walls on at least two
-        sides, and their ideal sleep temperature sits around 26-30°C — meaningfully warmer than
-        what most humans consider comfortable. The appliance gap hit all three conditions.
+        This is less strange than it looks. International Cat Care explains that
+        cats feel safe resting in high places, and that hiding places are an
+        essential part of everyday life for a cat (
+        <a href={sources.icatcareHome}>
+          International Cat Care: making your home cat friendly
+        </a>
+        ). An enclosed, warm, quiet corner meets those needs. Without footage,
+        owners rarely see how long a cat spends in a spot like that.
       </p>
       <p>
-        Interestingly, once summer arrived and the ambient indoor temperature climbed, Pixel
-        abandoned the spot and switched to the inside of the laundry basket. Without temperature
-        tracking, her owner would&apos;ve never noticed the shift — basket napping looks identical
-        from the outside regardless of whether the cat sleeps 20 minutes there or 90. Collar
-        footage made the seasonal migration obvious.
+        The practical check is safety. A spot next to a running appliance, a
+        heater or anything that could trap or pinch a cat should be blocked off,
+        and you can offer a safer enclosed bed nearby.
       </p>
 
       {/* ---- Story 3 ---- */}
       <h2>3. The Staring Session With Another Cat</h2>
       <p>
-        <em>Luna</em>, a 4-year-old outdoor cat, had what looked like a standing appointment. Every
-        afternoon between 15:30 and 16:00, she climbed onto the same garden wall, sat at the same
-        corner, and waited. Within a few minutes, another cat from somewhere in the neighborhood
-        would arrive from the opposite direction and sit roughly 1.5 meters away.
+        Another commonly shared clip: two neighbourhood cats on a garden wall or
+        fence, sitting a short distance apart, watching each other for a long
+        time, then one walks away. No fight, no play.
       </p>
       <p>
-        They didn&apos;t fight. They didn&apos;t groom each other. They didn&apos;t play. They just
-        looked at each other, sometimes for 20 minutes straight, occasionally blinking slowly.
-        Then one of them — usually the visitor — stood up, stretched, and walked away. Luna
-        followed a few minutes later.
+        Cats Protection notes that cats prefer to avoid conflict and that
+        fighting is a last resort. It suggests that owners of cats who clash
+        arrange to let them out at different times (
+        <a href={sources.cpFighting}>Cats Protection: cats and fighting</a>).
+        Cats in the same neighbourhood often use shared routes at different
+        times. A calm, distant stand-off can be part of how they manage that.
       </p>
       <p>
-        Ethologists describe this as a form of mutual gaze signaling: a protocol between cats
-        that know each other and have worked out how to share overlapping territory without
-        physical conflict. It&apos;s neither friendship nor hostility. It&apos;s closer to two
-        coworkers nodding in a shared office kitchen. Daily, predictable, low-effort, and socially
-        meaningful in a way that&apos;s completely invisible to the humans involved.
-      </p>
-      <p>
-        Luna&apos;s owner eventually identified the other cat — a neighbor&apos;s 3-year-old named
-        Theo — after catching his collar ID on camera. The two humans had lived on the same street
-        for four years and had never spoken. Their cats had apparently scheduled a daily meeting
-        for at least 18 months.
+        Not every stare is friendly, though. Cats Protection also lists long
+        periods of staring out of a window or cat flap as a possible sign of
+        tension with neighbourhood cats. In footage, look at body language:
+        flattened ears, a lashing tail, crouching or growling suggest a
+        standoff, not a peaceful truce.
       </p>
 
       {/* ---- Story 4 ---- */}
       <h2>4. The Food-Stealing Expedition</h2>
       <p>
-        <em>Biscuit</em>, a 6 kg tabby who was, by his vet&apos;s honest assessment, overweight,
-        had been steadily gaining about 200 g every two months for six months. His owner was
-        puzzled — portions hadn&apos;t changed, no treats were being handed out, and he seemed to
-        leave some of his kibble in the bowl. The collar camera found the missing calories
-        quickly.
+        A related discovery: a cat that is gaining weight despite unchanged
+        portions turns out to be eating elsewhere. The cat might be getting
+        treats at one back door, or finishing another cat&apos;s bowl through a
+        neighbour&apos;s cat flap.
       </p>
       <p>
-        Biscuit was visiting two separate neighbors, both of whom had taken to offering him small
-        snacks when he showed up at the back door. At one house, it was a tablespoon of leftover
-        chicken. At the other, a small handful of commercial cat treats. Neither neighbor knew the
-        other was doing it. Biscuit, evidently, did.
-      </p>
-      <p>
-        One estimate from owner-reported footage in dense residential areas puts it at roughly 1
-        cat in 5 receiving food from at least two separate homes on a regular basis. This pattern
-        explains a frustrating portion of the &quot;my cat is mysteriously gaining weight&quot;
-        cases veterinarians see every year. Portion control at home is only half the equation when
-        the cat has an unsupervised 20-minute window outdoors.
-      </p>
-      <p>
-        Biscuit&apos;s story ended with a three-way diplomatic conversation, a shared spreadsheet
-        of daily calorie contributions, and a loss of 400 g over three months.
+        The RSPCA describes exactly this problem. Owners have no control over
+        what or how much their cat is fed elsewhere. It suggests a snap-safe,
+        quick-release &quot;don&apos;t feed me&quot; collar for cats on a diet
+        or with allergies (<a href={sources.rspcaFeeding}>RSPCA</a>). If your
+        cat&apos;s weight is changing for no obvious reason, talk to your vet
+        before assuming it is a neighbour. Weight changes can also have medical
+        causes.
       </p>
 
       {/* ---- Story 5 ---- */}
       <h2>5. The Thing They&apos;re Actually Afraid Of</h2>
       <p>
-        <em>Mochi</em>, a 2-year-old tabby, had a fear profile her owner was confident about: the
-        vacuum cleaner, the hairdryer, and the doorbell. The collar camera revealed Mochi
-        didn&apos;t care about any of those. She stayed on the couch when the vacuum ran. She
-        watched the hairdryer with mild curiosity. The doorbell made her ears twitch and nothing
-        else.
+        Owners often have a fixed idea of what scares their cat: the vacuum
+        cleaner, the doorbell. Footage sometimes shows something different. A
+        cat may calmly ignore the vacuum but take a wide detour around an
+        ordinary object, like a box, a bag or a new piece of furniture, and back
+        away from it with flattened ears.
       </p>
       <p>
-        What actually frightened her was an empty cardboard box in the hallway. A plain medium-sized
-        shipping box, open flaps, nothing inside. Mochi made a consistent 3-meter detour every
-        time she walked past it, and on three separate occasions the footage captured her
-        backing away from it slowly, ears flat.
-      </p>
-      <p>
-        The likely cause is an early aversive association. Mochi had arrived as a kitten in a
-        similar-sized box, taken her first vet trip in a similar-sized box, and been temporarily
-        relocated during a home repair in a similar-sized box. Her brain generalized. From her
-        perspective, cardboard boxes are the shape of bad things happening.
-      </p>
-      <p>
-        The broader lesson is useful: what our cats avoid is often not what we think they&apos;re
-        afraid of. Humans read cat fear through human-shaped assumptions — loud noise means
-        scary. Cats categorize threats by smell, shape, and past association. Collar cameras
-        reveal the actual fear list. It&apos;s almost never the list we would&apos;ve guessed.
+        We can&apos;t know why a particular cat fears a particular object, but
+        cats can link everyday objects with earlier unpleasant experiences. Cats
+        Protection lists hiding, a tense crouched posture, flattened ears and
+        wide pupils among signs of stress, and says cats are good at hiding how
+        they feel (<a href={sources.cpStress}>Cats Protection: cat stress</a>).
+        A camera can catch reactions that happen when nobody is in the room.
       </p>
 
       {/* ---- Why collar cams ---- */}
       <h2>Why Collar Cameras Reveal What Regular Cameras Don&apos;t</h2>
       <p>
-        Fixed home cameras — the kind mounted in a corner of the living room — miss almost all of
-        this. Once a cat leaves the frame, the story stops. In practice, a single fixed camera
-        captures maybe 10% of a cat&apos;s day, and it&apos;s the least interesting 10%. It doesn&apos;t
-        follow them to the garage next door, it doesn&apos;t sit with them on the garden wall, and
-        it doesn&apos;t show you what they&apos;re looking at when they freeze in the hallway.
+        A fixed home camera only covers what is in its frame. Once the cat
+        leaves the room, the recording stops being useful. It cannot follow the
+        cat to the garage next door, onto the garden wall or into the cupboard.
       </p>
       <p>
-        A collar camera follows the cat&apos;s gaze. That&apos;s the key difference. You&apos;re not
-        watching where the cat is — you&apos;re watching what the cat is paying attention to. The
-        nuances are real: night vision is limited on most collar cameras, audio is sometimes
-        absent, and the wide-angle lens can distort distances so a far object looks closer. But for
-        behavioral discovery, it&apos;s the only tool that works.
-      </p>
-      <p>
-        For a deeper look at what indoor cats do with their alone time, see our piece on{" "}
-        <a href="/blog/what-cats-do-when-alone-at-home">what cats actually do when alone at home</a>.
+        A collar camera roughly follows what is in front of the cat&apos;s head.
+        There are limits. It adds weight to the collar. The wide-angle lens can
+        distort distances. Clips are often shaky. Low-light footage depends on
+        the camera: Whiskcam has no night vision, while some other collar
+        cameras list infrared recording. GPS is better for location. For more on
+        indoor routines, see our guide to{" "}
+        <a href="/blog/what-cats-do-when-alone-at-home">
+          what cats do when alone at home
+        </a>
+        .
       </p>
 
       {/* ---- What to do ---- */}
       <h2>What to Do With What You Find</h2>
-      <p>
-        Discoveries like these are usually harmless. Three practical notes on how to handle the
-        most common ones:
-      </p>
+      <p>Most discoveries like these are harmless. A few practical notes:</p>
       <ul>
         <li>
-          <strong>Second feeder situations:</strong> Start with a non-aggressive conversation.
-          Most neighbors who&apos;ve been feeding your cat didn&apos;t mean to steal them —
-          they&apos;re usually relieved to learn the cat has a home. Co-parenting arrangements
-          work surprisingly well when both parties just want the cat to be healthy.
+          <strong>Second feeder situations:</strong> Start with a friendly
+          conversation. Make sure the neighbour knows the cat has a home, and
+          explain any diet or allergy concerns. A quick-release &quot;don&apos;t
+          feed me&quot; collar is another option the RSPCA mentions.
         </li>
         <li>
-          <strong>Hidden nap spots:</strong> Leave them alone. If the spot is safe (not behind a
-          running appliance, not near anything hot or pinch-risky), your cat has already chosen
-          it for reasons that make sense to them. Contesting a nap spot rarely ends well.
+          <strong>Hidden nap spots:</strong> If the spot is safe, leave it. If
+          it is near a running appliance, a heat source or anything that could
+          trap or pinch, block it and offer a safer enclosed bed nearby.
         </li>
         <li>
-          <strong>Unexpected fears:</strong> Don&apos;t force exposure. Gradual desensitization —
-          moving the feared object to a more neutral location, pairing its presence with food or
-          positive experiences, not making a point of &quot;proving&quot; it&apos;s harmless — is
-          the only approach with reliable outcomes.
+          <strong>Unexpected fears:</strong> Don&apos;t force your cat to
+          approach the object. Move it somewhere neutral, give your cat space
+          and a way to avoid it, and speak to your vet or a qualified
+          behaviourist if the fear affects daily life.
         </li>
       </ul>
 
@@ -214,53 +206,89 @@ export default function FiveWeirdDiscoveriesFromCatCollarCameras() {
 
       <h3>Do all outdoor cats have a second home?</h3>
       <p>
-        Most don&apos;t. The rough estimate from informal surveys of collar camera footage in
-        dense urban and suburban neighborhoods puts it at 20-25% of outdoor cats having a
-        consistent secondary feeder or resting spot. Rural cats with more spread-out human
-        populations are less likely to develop this pattern. Indoor-only cats obviously don&apos;t
-        have one at all.
+        No, and there is no reliable figure for how many do. GPS research shows
+        most pet cats stay within about 100 m of home, so neighbouring gardens
+        are often part of their range. A cat that is regularly fed or sheltered
+        by a neighbour is a common story, but how often it happens is unknown.
       </p>
 
-      <h3>Is it ethical to film a cat going into a neighbor&apos;s property?</h3>
+      <h3>
+        Is it ethical to film a cat going into a neighbor&apos;s property?
+      </h3>
       <p>
-        Video recording in publicly visible spaces (streets, front gardens, shared alleys) is
-        generally legal in most jurisdictions. Audio recording rules are stricter and vary by
-        country. If your cat regularly enters a neighbor&apos;s enclosed space, the respectful move
-        is to mention it to them before reviewing extended footage. Most people find it more funny
-        than invasive once they know what&apos;s going on.
+        Rules on recording, especially audio, differ by country and region, so
+        check what applies where you live. Out of respect, tell a neighbour if
+        your cat regularly goes into their home or enclosed garden. Don&apos;t
+        publish footage of the inside of someone else&apos;s home without their
+        permission.
       </p>
 
       <h3>How often should I review footage to spot patterns?</h3>
       <p>
-        Once a week is plenty for most owners. Patterns show up quickly because cats are deeply
-        routine-driven — the same nap spots, the same walking routes, the same social encounters
-        at similar times. Daily review tends to produce fatigue without additional insight. A
-        weekly hour of scrubbing through footage at 4x speed catches almost everything worth
-        catching.
+        There is no set rule. Many owners find a weekly review easier than
+        checking every clip daily. Cats tend to follow routines, so writing down
+        rest spots, routes and encounters in a simple log makes repeated
+        patterns easier to see.
       </p>
 
-      <h3>Can I fake these discoveries with shorter sessions?</h3>
+      <h3>Can short recording sessions reveal cat behavior patterns?</h3>
       <p>
-        Not really. Most of the interesting patterns require at least 3-4 hours of continuous
-        recording to become visible. Short 20-minute sessions catch isolated moments, not
-        patterns. The stories in this article all emerged from owners who recorded regularly over
-        weeks — not from one-off clips. Consistency beats length beats resolution, in that order.
+        Yes, if you repeat them. One short clip shows a moment, not a pattern.
+        Several short sessions at similar times of day, over a few weeks, will
+        show what repeats. Short sessions also let you check that your cat
+        tolerates the collar and camera.
       </p>
 
       {/* ---- Bottom line ---- */}
       <h2>The Bottom Line</h2>
       <p>
-        Collar cameras don&apos;t change your cat. They change you. You become a slightly more
-        attentive observer of a small animal that has always had a richer, weirder, more socially
-        complicated life than you assumed. The discoveries are almost never dramatic. They&apos;re
-        quiet, specific, and often slightly embarrassing to realize you missed.
+        Collar cameras don&apos;t change your cat. They make you a more
+        attentive observer of a small animal whose life is more social and more
+        routine-driven than most people assume. The discoveries are rarely
+        dramatic. They are small, specific and often easy to act on.
       </p>
       <p>
-        If you&apos;re curious about recording your own cat&apos;s day, the{" "}
-        <a href="/what-is-whiskcam">Whiskcam Original</a> is a 26 g collar camera designed for
-        1080p footage in 1-2 hour sessions — long enough for most of the patterns above to become
-        visible within a few weeks of casual use.
+        If you want to record your own cat&apos;s day, the{" "}
+        <a href="/what-is-whiskcam">Whiskcam Original</a> is a {f.weightGrams} g
+        collar camera that records 1080P video to a MicroSD card. The card is
+        sold separately. It has no night vision, and its continuous battery
+        runtime has not been independently verified, so start with short,
+        supervised sessions. Whiskcam publishes this article and sells that
+        camera.
       </p>
+
+      {/* ---- Sources ---- */}
+      <h2>Sources</h2>
+      <ul>
+        <li>
+          <a href={sources.kays}>
+            Kays R. et al. (2020). The small home ranges and large local
+            ecological impacts of pet cats. Animal Conservation 23: 516–523
+          </a>
+        </li>
+        <li>
+          <a href={sources.ncsu}>
+            NC State University News: Keeping cats indoors could blunt adverse
+            effects to wildlife (2020)
+          </a>
+        </li>
+        <li>
+          <a href={sources.rspcaFeeding}>
+            RSPCA: Why you shouldn&apos;t feed other people&apos;s pets
+          </a>
+        </li>
+        <li>
+          <a href={sources.cpFighting}>Cats Protection: Cats and fighting</a>
+        </li>
+        <li>
+          <a href={sources.cpStress}>Cats Protection: Cat stress</a>
+        </li>
+        <li>
+          <a href={sources.icatcareHome}>
+            International Cat Care: Making your home cat friendly
+          </a>
+        </li>
+      </ul>
     </article>
   );
 }
