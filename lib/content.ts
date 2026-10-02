@@ -30,6 +30,8 @@ export const PRODUCT_FACTS = {
   storageIncluded: false,
   collarCm: 39,
   videoFormat: "AVI",
+  /** Confirmed by the owner on 2026-10-02: video files include sound. */
+  recordsAudio: true,
   charging: "USB-C",
   requiresApp: false,
   requiresWifi: false,

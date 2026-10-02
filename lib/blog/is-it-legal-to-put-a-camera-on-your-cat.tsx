@@ -196,7 +196,11 @@ export default function IsItLegalToPutACameraOnYourCat() {
       <h2 id="checklist">A practical checklist for cat camera owners</h2>
       <ol>
         <li>Record mainly at home and in your own garden at first.</li>
-        <li>Turn audio off if your camera allows it, especially outdoors.</li>
+        <li>
+          Check whether your camera records sound. Whiskcam records audio with
+          its video, so mute or cut sound that captures other people&apos;s
+          conversations before keeping or sharing a clip.
+        </li>
         <li>
           Review footage soon after each session and delete clips of other
           people you do not need.

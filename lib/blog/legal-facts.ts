@@ -41,7 +41,7 @@ export const LEGAL_FAQS = [
   {
     question: "Is recording sound with a pet camera treated differently?",
     answer:
-      "Yes. Regulators and courts treat audio as more intrusive than video. In the US, the federal Wiretap Act and state laws restrict recording private conversations without consent, and some states require every party's consent. An owner who is not present is not a party to a neighbour's conversation, so turn audio off where possible.",
+      "Yes. Regulators and courts treat audio as more intrusive than video. In the US, the federal Wiretap Act and state laws restrict recording private conversations without consent, and some states require every party's consent. An owner who is not present is not a party to a neighbour's conversation. Whiskcam records sound with its video, so mute or cut audio that captures other people before keeping or sharing a clip.",
   },
   {
     question: "Can I post my cat camera footage online?",

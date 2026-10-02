@@ -43,7 +43,7 @@ mass and heat to something an animal wears on its neck.
 - Battery: rechargeable via USB-C. Verified continuous recording duration is not yet available.
 - Storage: compatible ${f.storageGb} GB MicroSD card required separately. The card is currently unavailable and is NOT included in current orders.
 - Connectivity: ${f.charging} for charging and file transfer. No WiFi, no app, no account, no cloud, no subscription.
-- Video format: ${f.videoFormat} (see the iPhone playback guide linked below)
+- Video format: ${f.videoFormat} with sound (see the iPhone playback guide linked below)
 - Collar: ${f.collarCm} cm adjustable collar included; also clips onto an existing collar
 - Suitability: depends on the individual cat or small dog, collar fit and total mounted weight; check with a short supervised trial
 - Shipping: free to supported destinations only; 7–18 business days depending on destination
