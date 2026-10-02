@@ -33,9 +33,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   },
   {
     slug: "best-cat-collar-cameras-2026",
-    title: "Best Cat Collar Cameras 2026: Weight, Features & Kit Guide",
+    title: "Best Cat Collar Cameras 2026: 5 Options Compared",
     description:
-      "Compare cat collar cameras by weight, storage, night vision and phone playback. Whiskcam, Mr Petcam HD and Insta360 GO 3S, with sources and buying trade-offs.",
+      "The best cat collar cameras of 2026 compared: Whiskcam, Mr Petcam HD, Insta360 GO 3S and more. Weight, night vision, storage, breakaway fit, GPS and UK buying.",
     datePublished: "2026-03-19T00:00:00Z",
     dateModified: COMPARISON_REVIEWED,
     author: "Whiskcam Team",

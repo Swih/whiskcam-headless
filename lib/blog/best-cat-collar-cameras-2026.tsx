@@ -10,8 +10,9 @@ export default function BestCatCollarCameras2026() {
   return (
     <article className="prose-article">
       <p className="lead">
-        The best cat collar camera depends on your cat&apos;s comfort and what
-        you want to record. <strong>Whiskcam Original</strong> is an option for
+        The best cat collar camera in 2026 depends on your cat&apos;s comfort
+        and what you want to record. We compare five cat collar camera options
+        below. <strong>Whiskcam Original</strong> is an option for
         offline 1080P clips with a phone adapter. <strong>Mr Petcam HD</strong>{" "}
         lists a lighter camera body and infrared recording.{" "}
         <strong>Insta360 GO 3S</strong>
@@ -33,13 +34,25 @@ export default function BestCatCollarCameras2026() {
         <p className="font-semibold">Find the answer you need</p>
         <ul className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
           <li>
-            <a href="#comparison">Compare cameras and kit contents</a>
+            <a href="#what-to-look-for">What to look for</a>
+          </li>
+          <li>
+            <a href="#comparison">Best cat collar cameras compared</a>
           </li>
           <li>
             <a href="#choose-by-use">Choose by recording goal</a>
           </li>
           <li>
-            <a href="#fit-and-safety">Check collar fit and comfort</a>
+            <a href="#fit-and-safety">Breakaway collar and fit</a>
+          </li>
+          <li>
+            <a href="#lightest">Lightest cat collar camera</a>
+          </li>
+          <li>
+            <a href="#camera-and-tracker">Camera and GPS tracker together</a>
+          </li>
+          <li>
+            <a href="#uk-and-international">Buying in the UK and elsewhere</a>
           </li>
           <li>
             <a href="#phone-and-social">Play and edit POV footage</a>
@@ -52,8 +65,48 @@ export default function BestCatCollarCameras2026() {
           </li>
         </ul>
       </nav>
+      <h2 id="what-is">What is a cat collar camera?</h2>
+      <p>
+        A cat collar camera is a small camera that clips to a collar and
+        records video from your cat&apos;s point of view. Most store footage on
+        a MicroSD card that you watch after the camera comes off. That is
+        different from a fixed pet camera at home, which shows the room rather
+        than what your cat sees, and from a GPS tracker, which reports location
+        rather than video.
+      </p>
+      <h2 id="what-to-look-for">What to look for in a cat collar camera</h2>
+      <ol>
+        <li>
+          <strong>Total mounted weight:</strong> add the camera, mount, collar
+          and tags. A lighter body helps, but no single gram figure makes a
+          camera suitable for every cat.
+        </li>
+        <li>
+          <strong>Collar and release:</strong> a properly fitted quick-release
+          collar whose release the camera mount does not block.
+        </li>
+        <li>
+          <strong>Recording:</strong> resolution, field of view and whether
+          low-light or night recording is documented with sample footage.
+        </li>
+        <li>
+          <strong>Storage and playback:</strong> whether a MicroSD card is
+          included, the video format and how you will watch files on your
+          phone or computer.
+        </li>
+        <li>
+          <strong>Battery and controls:</strong> a documented runtime under
+          stated conditions and a record button you can operate easily.
+        </li>
+        <li>
+          <strong>Complete cost and returns:</strong> missing accessories,
+          delivery to your country and the return terms if your cat refuses
+          the camera.
+        </li>
+      </ol>
       <h2 id="comparison">
-        Cat collar cameras compared: weight, recording and storage
+        The best cat collar cameras compared (2026): weight, recording and
+        storage
       </h2>
       <p>
         Compare camera-body weight separately from the complete wearable setup.
@@ -255,7 +308,7 @@ export default function BestCatCollarCameras2026() {
         activity without attaching equipment.
       </p>
       <h2 id="fit-and-safety">
-        How do I check a breakaway collar and camera fit?
+        Best breakaway cat collar camera setup: how to check the fit
       </h2>
       <p>
         Cats Protection recommends a quick-release collar with two fingers
@@ -273,6 +326,65 @@ export default function BestCatCollarCameras2026() {
       <p>
         Source:{" "}
         <a href={sources.collarSafety}>Cats Protection: Caring for your cat</a>.
+        Our{" "}
+        <a href="/blog/are-cat-collar-cameras-safe">
+          cat collar camera safety guide
+        </a>{" "}
+        includes a load calculator and warning signs.
+      </p>
+      <h2 id="lightest">Which is the lightest cat collar camera?</h2>
+      <p>
+        On published camera-body figures, Mr Petcam HD is the lightest option
+        here at a listed 16 g, followed by Whiskcam Original at {f.weightGrams}{" "}
+        g and Insta360 GO 3S at 39.1 g before its Action Pod. Generic and
+        full-size action cameras vary by model and mount. These are listed
+        specifications, not our own weigh-in.
+      </p>
+      <p>
+        Camera-body weight is only part of the load. Compare the complete
+        setup your cat would wear, including the mount, collar and tags, and
+        judge by your cat&apos;s response in a short supervised trial rather
+        than by the lightest number alone. The{" "}
+        <a href="/blog/cat-collar-weight-chart-by-size">
+          cat collar weight chart by size
+        </a>{" "}
+        shows how to add up the total.
+      </p>
+      <h2 id="camera-and-tracker">
+        Cat collar camera and GPS tracker together
+      </h2>
+      <p>
+        A camera and a GPS tracker solve different problems. A camera shows
+        what your cat did once you retrieve the footage; a tracker reports
+        where your cat is. If your cat may go missing, a tracker is the device
+        that helps, and none of the recording cameras above provides live
+        location.
+      </p>
+      <p>
+        Wearing both adds the tracker&apos;s listed weight to the camera, mount
+        and collar, so check the combined load, especially for a small cat.
+        Alternating devices is an option when the combined setup is too much.
+        See the{" "}
+        <a href="/blog/cat-collar-camera-vs-gps-tracker-2026">
+          cat collar camera vs GPS tracker comparison
+        </a>{" "}
+        for coverage, subscriptions and weight.
+      </p>
+      <h2 id="uk-and-international">
+        Buying a cat collar camera in the UK and elsewhere
+      </h2>
+      <p>
+        Outside the US, check delivery to your country, the currency charged,
+        any import costs and the return route before ordering. Marketplace
+        listings may be easier to buy locally, but confirm the exact model and
+        seller-specific return terms.
+      </p>
+      <p>
+        Whiskcam lists delivery to the UK, Ireland, several EU countries,
+        Norway, the US, Canada, Australia and New Zealand, with a{" "}
+        {f.returnDays}-day
+        return window. Check the estimated delivery time for your country on
+        the product page and at checkout before you order.
       </p>
       <h2 id="phone-and-social">
         Which camera works for TikTok, Reels and Shorts?
