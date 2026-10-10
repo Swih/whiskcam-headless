@@ -27,6 +27,10 @@ export default function Footer() {
       { title: t("links.trackOrder"), path: "/track" },
       { title: t("links.shipping"), path: "/policies/shipping" },
       { title: t("links.returns"), path: "/policies/returns" },
+      {
+        title: policyCopy.withdrawalAction,
+        path: "https://shopify.com/101140988246/account",
+      },
       { title: t("links.contact"), path: "mailto:support@whiskcam.com" },
     ],
     legal: [

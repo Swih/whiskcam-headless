@@ -156,7 +156,8 @@
           ]
         }
       ]
-    }
+    },
+    "withdrawalAction": "Request a return or withdrawal"
   },
   "fr": {
     "updated": "Mis à jour le 10 octobre 2026",
@@ -315,7 +316,8 @@
           ]
         }
       ]
-    }
+    },
+    "withdrawalAction": "Demander un retour ou une rétractation"
   },
   "de": {
     "updated": "Aktualisiert am 10. Oktober 2026",
@@ -474,7 +476,8 @@
           ]
         }
       ]
-    }
+    },
+    "withdrawalAction": "Rückgabe oder Widerruf beantragen"
   },
   "es": {
     "updated": "Actualizado el 10 de octubre de 2026",
@@ -633,6 +636,7 @@
           ]
         }
       ]
-    }
+    },
+    "withdrawalAction": "Solicitar una devolución o desistimiento"
   }
 }

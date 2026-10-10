@@ -59,6 +59,16 @@ export default function PolicyPage({
               <a href={who.mediator.url}>{who.mediator.url}</a>
             </p>
           )}
+          {policy === "returns" && (
+            <p>
+              <a
+                className="inline-block rounded-lg border px-4 py-3"
+                href="https://shopify.com/101140988246/account"
+              >
+                {copy.withdrawalAction}
+              </a>
+            </p>
+          )}
           <h2>{copy.contact}</h2>
           <p>
             <a href={`mailto:${who.supportEmail}`}>{who.supportEmail}</a>
