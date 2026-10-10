@@ -9,7 +9,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return policyMetadata("terms", locale);
+  return policyMetadata("legal", locale);
 }
 export default async function Page({
   params,
@@ -18,5 +18,5 @@ export default async function Page({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <PolicyPage policy="terms" locale={locale} />;
+  return <PolicyPage policy="legal" locale={locale} />;
 }

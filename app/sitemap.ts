@@ -21,9 +21,30 @@ const STATIC_ROUTES: Route[] = [
   { path: "/about", priority: 0.6, changeFrequency: "monthly" },
   { path: "/faq", priority: 0.6, changeFrequency: "monthly" },
   { path: "/policies/shipping", priority: 0.4, changeFrequency: "yearly" },
-  { path: "/policies/returns", priority: 0.4, changeFrequency: "yearly" },
-  { path: "/policies/privacy", priority: 0.3, changeFrequency: "yearly" },
-  { path: "/policies/terms", priority: 0.3, changeFrequency: "yearly" },
+  {
+    path: "/policies/returns",
+    priority: 0.4,
+    changeFrequency: "yearly",
+    lastModified: "2026-10-10",
+  },
+  {
+    path: "/policies/privacy",
+    priority: 0.3,
+    changeFrequency: "yearly",
+    lastModified: "2026-10-10",
+  },
+  {
+    path: "/policies/terms",
+    priority: 0.3,
+    changeFrequency: "yearly",
+    lastModified: "2026-10-10",
+  },
+  {
+    path: "/policies/legal",
+    priority: 0.3,
+    changeFrequency: "yearly",
+    lastModified: "2026-10-10",
+  },
 ];
 
 /**

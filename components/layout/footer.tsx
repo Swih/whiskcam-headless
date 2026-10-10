@@ -1,10 +1,12 @@
-import { useTranslations } from "next-intl";
+import { legalCopy } from "lib/legal";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import NextLink from "next/link";
 import { Link } from "../../i18n/navigation";
 
 export default function Footer() {
   const t = useTranslations("footer");
+  const policyCopy = legalCopy(useLocale());
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
@@ -28,6 +30,7 @@ export default function Footer() {
       { title: t("links.contact"), path: "mailto:support@whiskcam.com" },
     ],
     legal: [
+      { title: policyCopy.legal.title, path: "/policies/legal" },
       { title: t("links.privacy"), path: "/policies/privacy" },
       { title: t("links.terms"), path: "/policies/terms" },
     ],

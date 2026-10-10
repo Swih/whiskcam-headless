@@ -100,7 +100,11 @@ export function Analytics({ checkoutDomain }: { checkoutDomain?: string }) {
 
       {/* Microsoft Clarity — only loaded after consent */}
       {consent && (
-        <Script id="clarity-init" strategy="afterInteractive">
+        <Script
+          id="clarity-init"
+          strategy="afterInteractive"
+          onReady={() => updateAllConsent(hasConsent())}
+        >
           {`
             (function(c,l,a,r,i,t,y){
               c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -124,6 +128,10 @@ function updateAllConsent(accepted: boolean) {
     ad_user_data: permission,
     ad_personalization: permission,
   });
+  window.clarity?.("consentv2", {
+    ad_Storage: permission,
+    analytics_Storage: permission,
+  });
   // TikTok grant consent
   if (accepted) window.ttq?.grantConsent();
   else window.ttq?.revokeConsent();
@@ -133,6 +141,7 @@ function updateAllConsent(accepted: boolean) {
 
 declare global {
   interface Window {
+    clarity?: (...args: unknown[]) => void;
     gtag?: (...args: unknown[]) => void;
     fbq?: (...args: unknown[]) => void;
     ttq?: {

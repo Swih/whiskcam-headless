@@ -1,0 +1,638 @@
+{
+  "en": {
+    "updated": "Updated 10 October 2026",
+    "seller": "Seller and publisher",
+    "status": "sole trader (French micro-enterprise), trading as DEKIM",
+    "vat": "VAT not applicable, Article L. 223-3 of the French Code of Taxes on Goods and Services (CIBS).",
+    "contact": "Contact",
+    "related": "Useful links",
+    "cookies": "Cookie preferences",
+    "legal": {
+      "title": "Legal notice",
+      "description": "The legal identity of DEKIM, seller and publisher of Whiskcam.",
+      "sections": [
+        {
+          "heading": "Publication",
+          "paragraphs": [
+            "Publication director: Elodie DIKIM. Whiskcam is a trading brand of DEKIM; the seller remains the sole trader identified below."
+          ]
+        },
+        {
+          "heading": "Hosting and checkout",
+          "paragraphs": [
+            "The website is hosted by Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, United States. The checkout and order management are provided by Shopify. Contact details and privacy information: vercel.com/legal/privacy-notice and shopify.com/legal/privacy."
+          ]
+        },
+        {
+          "heading": "Customer complaints",
+          "paragraphs": [
+            "Send complaints to support@whiskcam.com, stating your order number and what happened. You retain your right to apply to the competent courts and the mandatory consumer protections that apply where you live."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Terms of sale and service",
+      "description": "Whiskcam ordering, payment, delivery, returns and statutory consumer rights.",
+      "sections": [
+        {
+          "heading": "Seller and products",
+          "paragraphs": [
+            "These terms cover purchases on whiskcam.com from DEKIM. The product page gives the camera's essential characteristics and the accessories included. A microSD card is not included. Follow the instructions and supervise your pet; the camera does not replace a suitable breakaway collar."
+          ]
+        },
+        {
+          "heading": "Price and payment",
+          "paragraphs": [
+            "The price and currency displayed at checkout apply to your order. DEKIM is under the French VAT exemption scheme described below. Any delivery charges and taxes collected at checkout are shown before payment. For international shipments, customs duties or import taxes not collected at checkout may be charged by the carrier or destination authorities. Please contact us before ordering if responsibility for these charges is unclear."
+          ]
+        },
+        {
+          "heading": "Placing an order",
+          "paragraphs": [
+            "You can review and correct the products, quantities, contact details and delivery address before confirming payment in the secure Shopify checkout. Confirmation creates an obligation to pay. You receive an order confirmation by email. Price changes apply to future orders; they do not change an order already confirmed. If we cannot fulfill an order, we contact you and refund it."
+          ]
+        },
+        {
+          "heading": "Delivery",
+          "paragraphs": [
+            "Available destinations and estimated delivery times are listed in the shipping policy. The delivery date or period communicated for your order applies. If no date is agreed, delivery is due within 30 days. If delivery is late, you can require delivery within a reasonable additional period and then cancel if it still does not occur; immediate cancellation is possible where the law allows it. A lawful cancellation for non-delivery is refunded within 14 days. The risk of loss passes when you, or the person you designate, physically receive the goods, except when you appoint a carrier not offered by us."
+          ]
+        },
+        {
+          "heading": "Returns and withdrawal",
+          "paragraphs": [
+            "Our existing 30-day money-back guarantee runs from delivery, without requiring a reason. It supplements the statutory 14-day right of withdrawal for consumers. The return policy explains how to notify us, the model withdrawal form and refunds. These rights do not depend on the product being defective."
+          ]
+        },
+        {
+          "heading": "Statutory warranties",
+          "paragraphs": [
+            "For new goods, French consumers have a two-year legal conformity warranty from delivery (Articles L. 217-3 et seq. of the Consumer Code). Repair or replacement must be free, within 30 days and without major inconvenience; a price reduction or refund is available in the cases prescribed by law. The hidden-defects warranty also applies (Civil Code Articles 1641 and 1648): a claim can be made within two years of discovering the defect. Our commercial guarantee does not replace these rights. Contact support@whiskcam.com; there is no seven-day limit for reporting a statutory warranty claim."
+          ]
+        },
+        {
+          "heading": "Applicable law and complaints",
+          "paragraphs": [
+            "French law applies without depriving consumers of mandatory protections in their country of residence. No clause limits the seller's liability for obligations that cannot legally be excluded. Contact support@whiskcam.com first to seek a solution. Consumer disputes remain subject to the courts competent under the applicable rules; these terms do not impose an exclusive court on consumers."
+          ]
+        }
+      ]
+    },
+    "returns": {
+      "title": "Returns, refunds and withdrawal",
+      "description": "The Whiskcam 30-day guarantee, statutory withdrawal and product warranties.",
+      "sections": [
+        {
+          "heading": "30-day money-back guarantee",
+          "paragraphs": [
+            "You have 30 days from delivery to request a full refund if you are not satisfied. No reason is required. Email support@whiskcam.com with your order number. In most cases, we do not ask you to ship the product back. If a return is necessary, we send you the instructions and a prepaid label; do not send a parcel without those instructions."
+          ]
+        },
+        {
+          "heading": "Statutory withdrawal",
+          "paragraphs": [
+            "Consumers also have the statutory right to withdraw within 14 days, starting the day after receipt of the goods (or the last item of an order delivered separately). Notify us of your decision before the deadline using an unambiguous statement or the model below. You do not need to explain your decision. If a return is required, send it within 14 days of notifying us; our prepaid label covers the direct return cost."
+          ]
+        },
+        {
+          "heading": "Refunds",
+          "paragraphs": [
+            "We aim to process refunds within 3–5 business days. For statutory withdrawal, the refund is due no later than 14 days after your notification and includes any standard outward delivery charge. Where a return is required, we may wait until we receive the goods or proof of dispatch, whichever comes first. Refunds use the original payment method, without a fee, unless you expressly agree otherwise. Your bank may take additional time to show the credit; this does not extend our legal deadline."
+          ]
+        },
+        {
+          "heading": "Damaged or defective products",
+          "paragraphs": [
+            "Contact support@whiskcam.com if a product is damaged or defective. Photos help us resolve the issue, but do not replace your statutory warranty rights. The two-year conformity warranty and the hidden-defects warranty described in our terms remain available after the 30-day commercial guarantee."
+          ]
+        },
+        {
+          "heading": "Model withdrawal form",
+          "paragraphs": [
+            "To Elodie DIKIM (DEKIM), 7 Rue Ferdinand Buisson, 45200 Montargis, France — support@whiskcam.com. I hereby notify you that I withdraw from the sales contract for the following goods: […]. Order number: […]. Ordered on / received on: […]. Consumer's name: […]. Consumer's address: […]. Date: […]. Signature only if this form is sent on paper."
+          ]
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Privacy and cookies",
+      "description": "Who processes Whiskcam customer data, why, and how to exercise your rights.",
+      "sections": [
+        {
+          "heading": "Data controller",
+          "paragraphs": [
+            "Elodie DIKIM, sole trader trading as DEKIM, is the controller of the customer data processed for Whiskcam. Contact the professional address below for privacy requests, or support@whiskcam.com."
+          ]
+        },
+        {
+          "heading": "Data and purposes",
+          "paragraphs": [
+            "Orders require your name, email, delivery address, order details and the payment data needed by the checkout provider. These are used to perform the sales contract, deliver goods, send order and shipping emails and provide support. Without the necessary details, we cannot fulfill your order. Payment card details are handled by the payment provider; Whiskcam does not store full card numbers. We also process technical and security data to operate the site and prevent fraud (legitimate interest), and records required by accounting and tax law (legal obligation). Marketing and optional tracking rely on your consent where required."
+          ]
+        },
+        {
+          "heading": "Service providers",
+          "paragraphs": [
+            "Shopify provides checkout and order management; Vercel hosts the website. Payment providers and carriers receive the details needed for payment and delivery. Google Analytics, Microsoft Clarity and TikTok provide measurement or advertising tools as described below. Providers may process data outside the European Economic Area; their applicable transfer safeguards and privacy information can be consulted in their policies. Our use of Shopify is also described in Shopify's consumer privacy policy."
+          ]
+        },
+        {
+          "heading": "Cookies and audience measurement",
+          "paragraphs": [
+            "The cart, chosen country and cookie preference support the shopping experience. Google Analytics and TikTok scripts use restricted consent settings before you accept; Microsoft Clarity loads after acceptance. Vercel Analytics measures visits without cookies. Use the cookie preferences button on this page to change your choice or withdraw consent at any time. Refusing optional tracking does not prevent you from shopping."
+          ]
+        },
+        {
+          "heading": "Retention",
+          "paragraphs": [
+            "Order data is kept to fulfill the contract, manage warranties and address disputes, then for applicable statutory periods. Accounting and invoice records are retained for 10 years. Support correspondence is reviewed for deletion or restricted archiving three years after the matter is closed, except where needed for a dispute or legal obligation. Provider-specific technical retention periods are described in their policies."
+          ]
+        },
+        {
+          "heading": "Your rights",
+          "paragraphs": [
+            "You can request access, correction, deletion, restriction, portability or object where the law provides for it, and withdraw consent. Contact dekim.pro@gmail.com. We respond within one month, subject to lawful extensions. You may complain to the French CNIL at cnil.fr or your local data protection authority. Withdrawing consent does not affect processing that was lawful before withdrawal."
+          ]
+        }
+      ]
+    }
+  },
+  "fr": {
+    "updated": "Mis à jour le 10 octobre 2026",
+    "seller": "Vendeur et éditeur",
+    "status": "entrepreneur individuel (micro-entrepreneur), sous le nom commercial DEKIM",
+    "vat": "TVA non applicable, article L. 223-3 du Code des impositions sur les biens et services (CIBS).",
+    "contact": "Contact",
+    "related": "Liens utiles",
+    "cookies": "Préférences des cookies",
+    "legal": {
+      "title": "Mentions légales",
+      "description": "L’identité légale de DEKIM, vendeur et éditeur de Whiskcam.",
+      "sections": [
+        {
+          "heading": "Publication",
+          "paragraphs": [
+            "Directrice de la publication : Elodie DIKIM. Whiskcam est une marque commerciale de DEKIM ; le vendeur reste l’entrepreneuse individuelle identifiée ci-dessous."
+          ]
+        },
+        {
+          "heading": "Hébergement et paiement",
+          "paragraphs": [
+            "Le site est hébergé par Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, États-Unis. Le paiement et la gestion des commandes sont fournis par Shopify. Coordonnées et confidentialité : vercel.com/legal/privacy-notice et shopify.com/legal/privacy."
+          ]
+        },
+        {
+          "heading": "Réclamations",
+          "paragraphs": [
+            "Adressez vos réclamations à support@whiskcam.com avec le numéro de commande et une description du problème. Vous conservez votre droit de saisir les juridictions compétentes et les protections impératives applicables dans votre pays de résidence."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Conditions générales de vente et d’utilisation",
+      "description": "Commande, paiement, livraison, retours et droits des consommateurs Whiskcam.",
+      "sections": [
+        {
+          "heading": "Vendeur et produits",
+          "paragraphs": [
+            "Ces conditions encadrent les achats sur whiskcam.com auprès de DEKIM. La fiche produit présente les caractéristiques essentielles de la caméra et les accessoires inclus. La carte microSD n’est pas incluse. Respectez les instructions et surveillez votre animal ; la caméra ne remplace pas un collier adapté à ouverture de sécurité."
+          ]
+        },
+        {
+          "heading": "Prix et paiement",
+          "paragraphs": [
+            "Le prix et la devise affichés au paiement s’appliquent à votre commande. DEKIM relève de la franchise en base de TVA indiquée ci-dessous. Les frais de livraison et les taxes éventuellement collectées au paiement sont présentés avant validation. Pour les envois internationaux, les droits de douane ou taxes d’importation non collectés au paiement peuvent être demandés par le transporteur ou les autorités du pays de destination. Contactez-nous avant de commander si la prise en charge de ces frais n’est pas claire."
+          ]
+        },
+        {
+          "heading": "Commande",
+          "paragraphs": [
+            "Vous pouvez vérifier et corriger les produits, quantités, coordonnées et adresse de livraison avant de confirmer le paiement dans le parcours sécurisé Shopify. La confirmation engage au paiement. Vous recevez une confirmation de commande par email. Une modification de prix concerne les commandes futures et ne modifie pas une commande confirmée. Si nous ne pouvons pas honorer une commande, nous vous contactons et vous remboursons."
+          ]
+        },
+        {
+          "heading": "Livraison",
+          "paragraphs": [
+            "Les destinations disponibles et les délais estimés figurent dans la politique de livraison. La date ou le délai communiqué pour votre commande s’applique. À défaut de date convenue, la livraison intervient sous 30 jours. En cas de retard, vous pouvez demander une livraison dans un délai supplémentaire raisonnable, puis résoudre le contrat si elle n’intervient pas ; une résolution immédiate est possible dans les cas prévus par la loi. Une résolution légale pour défaut de livraison est remboursée sous 14 jours. Le risque de perte est transféré lors de la réception physique du bien par vous ou la personne désignée, sauf si vous choisissez un transporteur que nous n’avons pas proposé."
+          ]
+        },
+        {
+          "heading": "Retours et rétractation",
+          "paragraphs": [
+            "Notre garantie satisfait ou remboursé de 30 jours court dès la livraison, sans justification à fournir. Elle complète le droit légal de rétractation de 14 jours des consommateurs. La politique de retour précise la notification, le formulaire type et le remboursement. Ces droits ne dépendent pas de l’existence d’un défaut du produit."
+          ]
+        },
+        {
+          "heading": "Garanties légales",
+          "paragraphs": [
+            "Les consommateurs bénéficient pour les biens neufs de la garantie légale de conformité pendant deux ans à compter de la livraison (articles L. 217-3 et suivants du Code de la consommation). La réparation ou le remplacement est sans frais, sous 30 jours et sans inconvénient majeur ; une réduction du prix ou un remboursement est possible dans les cas prévus par la loi. La garantie des vices cachés s’applique aussi (articles 1641 et 1648 du Code civil) : l’action peut être exercée dans les deux ans suivant la découverte du vice. Notre garantie commerciale ne remplace pas ces droits. Contactez support@whiskcam.com ; aucun délai de sept jours ne limite une demande au titre des garanties légales."
+          ]
+        },
+        {
+          "heading": "Droit applicable et réclamations",
+          "paragraphs": [
+            "Le droit français s’applique sans priver les consommateurs des protections impératives de leur pays de résidence. Aucune clause ne limite la responsabilité du vendeur pour une obligation qui ne peut légalement être exclue. Contactez d’abord support@whiskcam.com pour rechercher une solution. Les litiges des consommateurs relèvent des juridictions compétentes selon les règles applicables ; ces conditions ne leur imposent aucun tribunal exclusif."
+          ]
+        }
+      ]
+    },
+    "returns": {
+      "title": "Retours, remboursements et rétractation",
+      "description": "Garantie de 30 jours, rétractation légale et garanties des produits Whiskcam.",
+      "sections": [
+        {
+          "heading": "Garantie satisfait ou remboursé de 30 jours",
+          "paragraphs": [
+            "Vous disposez de 30 jours à compter de la livraison pour demander un remboursement intégral si vous n’êtes pas satisfait. Aucun motif n’est exigé. Écrivez à support@whiskcam.com avec le numéro de commande. Dans la plupart des cas, nous ne demandons pas de renvoyer le produit. Si un retour est nécessaire, nous vous transmettons les instructions et une étiquette prépayée ; n’envoyez pas de colis sans ces instructions."
+          ]
+        },
+        {
+          "heading": "Droit légal de rétractation",
+          "paragraphs": [
+            "Les consommateurs disposent aussi du droit légal de se rétracter sous 14 jours, à compter du lendemain de la réception du bien (ou du dernier article d’une commande livrée séparément). Informez-nous de votre décision avant l’expiration du délai, par une déclaration sans ambiguïté ou le modèle ci-dessous. Vous n’avez pas à justifier votre décision. Si un retour est demandé, expédiez-le sous 14 jours après la notification ; notre étiquette prépayée couvre les frais directs de retour."
+          ]
+        },
+        {
+          "heading": "Remboursements",
+          "paragraphs": [
+            "Nous visons un traitement des remboursements sous 3 à 5 jours ouvrés. Pour une rétractation légale, le remboursement est dû au plus tard 14 jours après votre notification et comprend les frais de livraison initiale standard éventuellement payés. Si un retour est demandé, nous pouvons attendre la réception du bien ou la preuve d’expédition, selon le premier événement. Le remboursement utilise le moyen de paiement initial, sans frais, sauf accord exprès contraire. Le délai d’affichage bancaire ne prolonge pas notre délai légal."
+          ]
+        },
+        {
+          "heading": "Produits endommagés ou défectueux",
+          "paragraphs": [
+            "Contactez support@whiskcam.com si un produit est endommagé ou défectueux. Des photos facilitent le traitement, mais ne remplacent pas vos droits légaux. La garantie de conformité de deux ans et celle des vices cachés décrites dans nos conditions restent applicables après la garantie commerciale de 30 jours."
+          ]
+        },
+        {
+          "heading": "Formulaire type de rétractation",
+          "paragraphs": [
+            "À l’attention d’Elodie DIKIM (DEKIM), 7 Rue Ferdinand Buisson, 45200 Montargis, France — support@whiskcam.com. Je vous notifie par la présente ma rétractation du contrat portant sur la vente du bien ci-dessous : […]. Numéro de commande : […]. Commandé le / reçu le : […]. Nom du consommateur : […]. Adresse du consommateur : […]. Date : […]. Signature uniquement pour l’envoi sur papier."
+          ]
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Confidentialité et cookies",
+      "description": "Qui traite les données Whiskcam, pourquoi, et comment exercer vos droits.",
+      "sections": [
+        {
+          "heading": "Responsable du traitement",
+          "paragraphs": [
+            "Elodie DIKIM, entrepreneuse individuelle sous le nom commercial DEKIM, est responsable du traitement des données clients Whiskcam. Pour vos demandes, utilisez l’adresse professionnelle ci-dessous ou support@whiskcam.com."
+          ]
+        },
+        {
+          "heading": "Données et finalités",
+          "paragraphs": [
+            "La commande nécessite votre nom, email, adresse de livraison, détails de commande et les données de paiement requises par le prestataire. Elles servent à exécuter la vente, livrer, envoyer les emails de commande et d’expédition et assurer le support. Sans les renseignements nécessaires, nous ne pouvons pas honorer la commande. Les données de carte sont traitées par le prestataire de paiement ; Whiskcam ne stocke pas les numéros complets. Les données techniques et de sécurité servent au fonctionnement et à la prévention de la fraude (intérêt légitime). Les pièces comptables et fiscales relèvent d’une obligation légale. La prospection et les traceurs facultatifs reposent sur votre consentement lorsqu’il est requis."
+          ]
+        },
+        {
+          "heading": "Prestataires",
+          "paragraphs": [
+            "Shopify fournit le paiement et la gestion des commandes ; Vercel héberge le site. Les prestataires de paiement et transporteurs reçoivent les informations nécessaires à leur mission. Google Analytics, Microsoft Clarity et TikTok proposent les outils de mesure ou de publicité décrits ci-dessous. Des traitements peuvent avoir lieu hors de l’Espace économique européen ; les garanties de transfert applicables et les informations de confidentialité figurent dans les politiques des prestataires. L’utilisation de Shopify est aussi décrite dans sa politique de confidentialité pour les consommateurs."
+          ]
+        },
+        {
+          "heading": "Cookies et mesure d’audience",
+          "paragraphs": [
+            "Le panier, le pays choisi et la préférence de cookies permettent le fonctionnement de la boutique. Les scripts Google Analytics et TikTok utilisent des paramètres de consentement restreints avant acceptation ; Microsoft Clarity se charge après acceptation. Vercel Analytics mesure les visites sans cookies. Le bouton de préférences de cette page permet de modifier votre choix ou de retirer votre consentement à tout moment. Refuser les traceurs facultatifs n’empêche pas d’acheter."
+          ]
+        },
+        {
+          "heading": "Conservation",
+          "paragraphs": [
+            "Les données de commande sont conservées pour exécuter le contrat, traiter les garanties et litiges, puis pendant les durées légales applicables. Les pièces comptables et factures sont conservées 10 ans. Les échanges de support sont réexaminés pour suppression ou archivage restreint trois ans après la clôture du dossier, sauf litige ou obligation légale. Les durées techniques propres aux prestataires figurent dans leurs politiques."
+          ]
+        },
+        {
+          "heading": "Vos droits",
+          "paragraphs": [
+            "Vous pouvez demander l’accès, la rectification, l’effacement, la limitation, la portabilité ou vous opposer lorsque la loi le permet, et retirer votre consentement. Écrivez à dekim.pro@gmail.com. Nous répondons sous un mois, sous réserve des prolongations légales. Vous pouvez saisir la CNIL sur cnil.fr ou l’autorité de votre pays. Le retrait ne remet pas en cause les traitements licites déjà réalisés."
+          ]
+        }
+      ]
+    }
+  },
+  "de": {
+    "updated": "Aktualisiert am 10. Oktober 2026",
+    "seller": "Verkäufer und Herausgeber",
+    "status": "Einzelunternehmerin (französisches Kleinstunternehmen), Handelsname DEKIM",
+    "vat": "Umsatzsteuer nicht anwendbar gemäß Artikel L. 223-3 des französischen Steuergesetzbuchs für Waren und Dienstleistungen (CIBS).",
+    "contact": "Kontakt",
+    "related": "Weiterführende Links",
+    "cookies": "Cookie-Einstellungen",
+    "legal": {
+      "title": "Impressum",
+      "description": "Die rechtliche Identität von DEKIM, Verkäufer und Herausgeber von Whiskcam.",
+      "sections": [
+        {
+          "heading": "Veröffentlichung",
+          "paragraphs": [
+            "Verantwortlich für die Veröffentlichung: Elodie DIKIM. Whiskcam ist eine Handelsmarke von DEKIM; Verkäuferin bleibt die unten genannte Einzelunternehmerin."
+          ]
+        },
+        {
+          "heading": "Hosting und Zahlung",
+          "paragraphs": [
+            "Die Website wird von Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, USA, gehostet. Shopify stellt den Checkout und die Bestellverwaltung bereit. Kontakt und Datenschutz: vercel.com/legal/privacy-notice und shopify.com/legal/privacy."
+          ]
+        },
+        {
+          "heading": "Beschwerden",
+          "paragraphs": [
+            "Senden Sie Beschwerden mit Bestellnummer und Beschreibung an support@whiskcam.com. Ihr Recht, zuständige Gerichte anzurufen, und die zwingenden Verbraucherschutzrechte Ihres Wohnsitzlandes bleiben bestehen."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Verkaufs- und Nutzungsbedingungen",
+      "description": "Bestellung, Zahlung, Lieferung, Rückgabe und Verbraucherrechte bei Whiskcam.",
+      "sections": [
+        {
+          "heading": "Verkäuferin und Produkte",
+          "paragraphs": [
+            "Diese Bedingungen gelten für Käufe auf whiskcam.com bei DEKIM. Die Produktseite beschreibt die wesentlichen Merkmale der Kamera und das enthaltene Zubehör. Eine microSD-Karte ist nicht enthalten. Befolgen Sie die Anleitung und beaufsichtigen Sie Ihr Tier; die Kamera ersetzt kein geeignetes Sicherheitshalsband mit Öffnungsmechanismus."
+          ]
+        },
+        {
+          "heading": "Preis und Zahlung",
+          "paragraphs": [
+            "Der beim Checkout angezeigte Preis und die Währung gelten für Ihre Bestellung. Für DEKIM gilt die unten beschriebene französische Umsatzsteuerbefreiung. Versandkosten und gegebenenfalls beim Checkout erhobene Steuern werden vor der Zahlung angezeigt. Bei internationalen Sendungen können nicht beim Checkout erhobene Zölle oder Einfuhrsteuern vom Transporteur oder den Behörden verlangt werden. Kontaktieren Sie uns vor der Bestellung, wenn die Kostentragung unklar ist."
+          ]
+        },
+        {
+          "heading": "Bestellung",
+          "paragraphs": [
+            "Vor der Zahlungsbestätigung im sicheren Shopify-Checkout können Sie Produkte, Mengen, Kontaktdaten und Lieferadresse prüfen und korrigieren. Die Bestätigung begründet eine Zahlungspflicht. Sie erhalten eine Bestätigung per E-Mail. Preisänderungen gelten für künftige Bestellungen, nicht für bereits bestätigte. Können wir eine Bestellung nicht erfüllen, kontaktieren wir Sie und erstatten den Betrag."
+          ]
+        },
+        {
+          "heading": "Lieferung",
+          "paragraphs": [
+            "Lieferländer und geschätzte Lieferzeiten stehen in der Versandrichtlinie. Der für Ihre Bestellung mitgeteilte Termin oder Zeitraum gilt. Ohne vereinbarten Termin erfolgt die Lieferung innerhalb von 30 Tagen. Bei Verspätung können Sie eine angemessene Nachfrist setzen und anschließend vom Vertrag zurücktreten, wenn weiterhin nicht geliefert wird; ein sofortiger Rücktritt ist in den gesetzlich vorgesehenen Fällen möglich. Eine rechtmäßige Vertragsauflösung wegen Nichtlieferung wird innerhalb von 14 Tagen erstattet. Das Verlustrisiko geht erst mit dem tatsächlichen Empfang durch Sie oder eine von Ihnen benannte Person über, außer Sie beauftragen einen von uns nicht angebotenen Transporteur."
+          ]
+        },
+        {
+          "heading": "Rückgabe und Widerruf",
+          "paragraphs": [
+            "Unsere bestehende 30-Tage-Geld-zurück-Garantie beginnt mit der Lieferung und erfordert keine Begründung. Sie ergänzt das gesetzliche 14-tägige Widerrufsrecht von Verbrauchern. Die Rückgaberichtlinie erläutert Mitteilung, Musterformular und Erstattung. Diese Rechte setzen keinen Produktmangel voraus."
+          ]
+        },
+        {
+          "heading": "Gesetzliche Gewährleistung",
+          "paragraphs": [
+            "Französische Verbraucher haben bei neuen Waren ab Lieferung zwei Jahre gesetzlichen Anspruch auf Vertragsmäßigkeit (Artikel L. 217-3 ff. des französischen Verbrauchergesetzbuchs). Reparatur oder Ersatz müssen kostenlos, innerhalb von 30 Tagen und ohne erhebliche Unannehmlichkeiten erfolgen; Preisminderung oder Erstattung sind in den gesetzlichen Fällen möglich. Die Haftung für versteckte Mängel gilt ebenfalls (Artikel 1641 und 1648 des französischen Zivilgesetzbuchs); eine Klage ist innerhalb von zwei Jahren nach Entdeckung möglich. Unsere kommerzielle Garantie ersetzt diese Rechte nicht. Kontaktieren Sie support@whiskcam.com; für gesetzliche Ansprüche gilt keine siebentägige Meldefrist."
+          ]
+        },
+        {
+          "heading": "Anwendbares Recht und Beschwerden",
+          "paragraphs": [
+            "Es gilt französisches Recht, ohne Verbraucher ihrer zwingenden Schutzrechte im Wohnsitzland zu berauben. Keine Klausel beschränkt die Haftung für rechtlich nicht ausschließbare Pflichten. Kontaktieren Sie zunächst support@whiskcam.com. Zuständig sind die Gerichte nach den anwendbaren Vorschriften; Verbrauchern wird kein ausschließlicher Gerichtsstand auferlegt."
+          ]
+        }
+      ]
+    },
+    "returns": {
+      "title": "Rückgabe, Erstattung und Widerruf",
+      "description": "30-Tage-Garantie, gesetzlicher Widerruf und Gewährleistung für Whiskcam.",
+      "sections": [
+        {
+          "heading": "30-Tage-Geld-zurück-Garantie",
+          "paragraphs": [
+            "Wenn Sie nicht zufrieden sind, können Sie innerhalb von 30 Tagen ab Lieferung eine vollständige Erstattung verlangen. Eine Begründung ist nicht erforderlich. Schreiben Sie mit Bestellnummer an support@whiskcam.com. Meist verlangen wir keine Rücksendung. Falls sie nötig ist, erhalten Sie Anweisungen und ein vorausbezahltes Versandetikett; senden Sie vorher kein Paket."
+          ]
+        },
+        {
+          "heading": "Gesetzlicher Widerruf",
+          "paragraphs": [
+            "Verbraucher können außerdem innerhalb von 14 Tagen widerrufen, beginnend am Tag nach Empfang der Ware oder des letzten getrennt gelieferten Artikels. Teilen Sie uns Ihre Entscheidung vor Fristende mit einer eindeutigen Erklärung oder dem folgenden Muster mit. Ein Grund ist nicht nötig. Wenn eine Rücksendung erforderlich ist, versenden Sie innerhalb von 14 Tagen nach der Mitteilung; unser vorausbezahltes Etikett deckt die direkten Rücksendekosten."
+          ]
+        },
+        {
+          "heading": "Erstattungen",
+          "paragraphs": [
+            "Wir streben eine Bearbeitung innerhalb von 3–5 Werktagen an. Beim gesetzlichen Widerruf ist die Erstattung spätestens 14 Tage nach Ihrer Mitteilung fällig, einschließlich gegebenenfalls bezahlter Standard-Hinversandkosten. Bei erforderlicher Rücksendung können wir bis zum Empfang oder Versandnachweis warten, je nachdem, was zuerst eintritt. Wir verwenden ohne Gebühr das ursprüngliche Zahlungsmittel, sofern Sie nicht ausdrücklich etwas anderes vereinbaren. Banklaufzeiten verlängern unsere gesetzliche Frist nicht."
+          ]
+        },
+        {
+          "heading": "Beschädigte oder mangelhafte Produkte",
+          "paragraphs": [
+            "Kontaktieren Sie support@whiskcam.com. Fotos helfen bei der Bearbeitung, ersetzen aber keine gesetzlichen Rechte. Die zweijährige Gewährleistung und die Haftung für versteckte Mängel gemäß unseren Bedingungen bestehen auch nach der kommerziellen 30-Tage-Garantie."
+          ]
+        },
+        {
+          "heading": "Muster-Widerrufsformular",
+          "paragraphs": [
+            "An Elodie DIKIM (DEKIM), 7 Rue Ferdinand Buisson, 45200 Montargis, Frankreich — support@whiskcam.com. Hiermit widerrufe ich den Kaufvertrag über folgende Waren: […]. Bestellnummer: […]. Bestellt am / erhalten am: […]. Name des Verbrauchers: […]. Anschrift des Verbrauchers: […]. Datum: […]. Unterschrift nur bei Versand auf Papier."
+          ]
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Datenschutz und Cookies",
+      "description": "Verarbeitung Ihrer Whiskcam-Daten, Zwecke und Ihre Rechte.",
+      "sections": [
+        {
+          "heading": "Verantwortliche",
+          "paragraphs": [
+            "Elodie DIKIM, Einzelunternehmerin unter dem Handelsnamen DEKIM, ist für Whiskcam-Kundendaten verantwortlich. Nutzen Sie für Anfragen die unten genannte geschäftliche Adresse oder support@whiskcam.com."
+          ]
+        },
+        {
+          "heading": "Daten und Zwecke",
+          "paragraphs": [
+            "Für Bestellungen benötigen wir Name, E-Mail, Lieferadresse, Bestelldaten und die vom Zahlungsanbieter benötigten Angaben. Sie dienen der Vertragserfüllung, Lieferung, Bestell- und Versand-E-Mails sowie dem Support. Ohne notwendige Angaben können wir die Bestellung nicht erfüllen. Kartendaten verarbeitet der Zahlungsanbieter; Whiskcam speichert keine vollständigen Kartennummern. Technische und Sicherheitsdaten dienen dem Betrieb und der Betrugsprävention (berechtigtes Interesse). Buchhaltungs- und Steuerunterlagen beruhen auf einer rechtlichen Verpflichtung. Werbung und optionale Tracker beruhen auf Ihrer Einwilligung, soweit erforderlich."
+          ]
+        },
+        {
+          "heading": "Dienstleister",
+          "paragraphs": [
+            "Shopify stellt Checkout und Bestellverwaltung bereit; Vercel hostet die Website. Zahlungsanbieter und Transporteure erhalten die für ihre Aufgabe nötigen Daten. Google Analytics, Microsoft Clarity und TikTok stellen die unten beschriebenen Mess- oder Werbewerkzeuge bereit. Daten können außerhalb des Europäischen Wirtschaftsraums verarbeitet werden; anwendbare Übermittlungsgarantien und Datenschutzinformationen stehen in den Richtlinien der Anbieter. Shopifys Verbraucher-Datenschutzrichtlinie beschreibt dessen Verarbeitung ebenfalls."
+          ]
+        },
+        {
+          "heading": "Cookies und Besuchsmessung",
+          "paragraphs": [
+            "Warenkorb, ausgewähltes Land und Cookie-Präferenz unterstützen den Einkauf. Google-Analytics- und TikTok-Skripte verwenden vor Zustimmung eingeschränkte Einwilligungseinstellungen; Microsoft Clarity lädt nach Zustimmung. Vercel Analytics misst Besuche ohne Cookies. Über die Cookie-Einstellungen auf dieser Seite können Sie Ihre Wahl jederzeit ändern oder die Einwilligung widerrufen. Das Ablehnen optionaler Tracker verhindert keinen Einkauf."
+          ]
+        },
+        {
+          "heading": "Aufbewahrung",
+          "paragraphs": [
+            "Bestelldaten werden für Vertrag, Gewährleistung und Streitfälle aufbewahrt, anschließend für gesetzliche Fristen. Buchhaltungsunterlagen und Rechnungen werden zehn Jahre aufbewahrt. Support-Korrespondenz wird drei Jahre nach Abschluss auf Löschung oder eingeschränkte Archivierung geprüft, außer bei Streitfällen oder gesetzlichen Pflichten. Technische Aufbewahrungsfristen der Anbieter stehen in deren Richtlinien."
+          ]
+        },
+        {
+          "heading": "Ihre Rechte",
+          "paragraphs": [
+            "Sie können nach den gesetzlichen Voraussetzungen Auskunft, Berichtigung, Löschung, Einschränkung, Übertragbarkeit oder Widerspruch verlangen und Ihre Einwilligung widerrufen. Schreiben Sie an dekim.pro@gmail.com. Wir antworten innerhalb eines Monats, vorbehaltlich rechtmäßiger Verlängerungen. Beschwerden sind bei der französischen CNIL unter cnil.fr oder Ihrer örtlichen Aufsichtsbehörde möglich. Ein Widerruf ändert nicht die Rechtmäßigkeit der bisherigen Verarbeitung."
+          ]
+        }
+      ]
+    }
+  },
+  "es": {
+    "updated": "Actualizado el 10 de octubre de 2026",
+    "seller": "Vendedor y editor",
+    "status": "empresaria individual (microempresa francesa), con nombre comercial DEKIM",
+    "vat": "IVA no aplicable, artículo L. 223-3 del Código francés de impuestos sobre bienes y servicios (CIBS).",
+    "contact": "Contacto",
+    "related": "Enlaces útiles",
+    "cookies": "Preferencias de cookies",
+    "legal": {
+      "title": "Aviso legal",
+      "description": "Identidad legal de DEKIM, vendedor y editor de Whiskcam.",
+      "sections": [
+        {
+          "heading": "Publicación",
+          "paragraphs": [
+            "Directora de la publicación: Elodie DIKIM. Whiskcam es una marca comercial de DEKIM; la vendedora sigue siendo la empresaria individual identificada abajo."
+          ]
+        },
+        {
+          "heading": "Alojamiento y pago",
+          "paragraphs": [
+            "El sitio está alojado por Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, Estados Unidos. Shopify proporciona el pago y la gestión de pedidos. Contacto y privacidad: vercel.com/legal/privacy-notice y shopify.com/legal/privacy."
+          ]
+        },
+        {
+          "heading": "Reclamaciones",
+          "paragraphs": [
+            "Envíe sus reclamaciones a support@whiskcam.com con el número de pedido y una descripción del problema. Conserva el derecho a acudir a los tribunales competentes y las protecciones obligatorias de su país de residencia."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Condiciones de venta y uso",
+      "description": "Pedidos, pago, entrega, devoluciones y derechos del consumidor en Whiskcam.",
+      "sections": [
+        {
+          "heading": "Vendedora y productos",
+          "paragraphs": [
+            "Estas condiciones se aplican a las compras en whiskcam.com a DEKIM. La ficha del producto describe las características esenciales de la cámara y los accesorios incluidos. La tarjeta microSD no está incluida. Siga las instrucciones y supervise a su mascota; la cámara no sustituye a un collar adecuado con apertura de seguridad."
+          ]
+        },
+        {
+          "heading": "Precio y pago",
+          "paragraphs": [
+            "El precio y la moneda mostrados al pagar se aplican a su pedido. DEKIM está acogida a la exención francesa de IVA indicada abajo. Los gastos de envío y los impuestos cobrados al pagar se muestran antes de confirmar. En envíos internacionales, el transportista o las autoridades de destino pueden exigir derechos de aduana o impuestos de importación no cobrados al pagar. Contacte con nosotros antes de comprar si no está claro quién asume estos cargos."
+          ]
+        },
+        {
+          "heading": "Pedido",
+          "paragraphs": [
+            "Puede revisar y corregir productos, cantidades, datos de contacto y dirección antes de confirmar el pago en el proceso seguro de Shopify. La confirmación implica la obligación de pagar. Recibirá una confirmación por email. Los cambios de precio afectan a futuros pedidos, no a los ya confirmados. Si no podemos cumplir un pedido, le contactaremos y reembolsaremos."
+          ]
+        },
+        {
+          "heading": "Entrega",
+          "paragraphs": [
+            "Los destinos y plazos estimados figuran en la política de envío. Se aplica la fecha o el plazo comunicado para su pedido. Si no se acuerda una fecha, la entrega debe producirse en 30 días. En caso de retraso, puede exigir la entrega en un plazo adicional razonable y resolver el contrato si no se cumple; la resolución inmediata es posible en los casos legales. La resolución legal por falta de entrega se reembolsa en 14 días. El riesgo de pérdida se transmite cuando usted o la persona designada recibe físicamente el bien, salvo que contrate un transportista que no hayamos ofrecido."
+          ]
+        },
+        {
+          "heading": "Devoluciones y desistimiento",
+          "paragraphs": [
+            "Nuestra garantía de reembolso de 30 días comienza con la entrega y no exige un motivo. Complementa el derecho legal de desistimiento de 14 días del consumidor. La política de devolución explica la notificación, el formulario tipo y el reembolso. Estos derechos no requieren que el producto sea defectuoso."
+          ]
+        },
+        {
+          "heading": "Garantías legales",
+          "paragraphs": [
+            "Los consumidores franceses disponen, para bienes nuevos, de una garantía legal de conformidad de dos años desde la entrega (artículos L. 217-3 y siguientes del Código de consumo francés). La reparación o sustitución debe ser gratuita, en 30 días y sin inconvenientes importantes; la reducción del precio o el reembolso procede en los casos legales. También se aplica la garantía por vicios ocultos (artículos 1641 y 1648 del Código civil francés), con acción durante dos años desde su descubrimiento. Nuestra garantía comercial no sustituye estos derechos. Contacte con support@whiskcam.com; no existe un límite de siete días para reclamar las garantías legales."
+          ]
+        },
+        {
+          "heading": "Ley aplicable y reclamaciones",
+          "paragraphs": [
+            "Se aplica la ley francesa sin privar al consumidor de las protecciones obligatorias de su país. Ninguna cláusula limita responsabilidades legalmente irrenunciables. Contacte primero con support@whiskcam.com. Los tribunales competentes se determinan según las reglas aplicables; estas condiciones no imponen un tribunal exclusivo al consumidor."
+          ]
+        }
+      ]
+    },
+    "returns": {
+      "title": "Devoluciones, reembolsos y desistimiento",
+      "description": "Garantía Whiskcam de 30 días, desistimiento legal y garantías del producto.",
+      "sections": [
+        {
+          "heading": "Garantía de reembolso de 30 días",
+          "paragraphs": [
+            "Dispone de 30 días desde la entrega para solicitar un reembolso íntegro si no está satisfecho. No necesita indicar un motivo. Escriba a support@whiskcam.com con su número de pedido. Normalmente no pedimos devolver el producto. Si es necesario, enviaremos instrucciones y una etiqueta prepagada; no envíe un paquete antes de recibirlas."
+          ]
+        },
+        {
+          "heading": "Desistimiento legal",
+          "paragraphs": [
+            "Los consumidores también pueden desistir en 14 días, contados desde el día posterior a la recepción del bien o del último artículo entregado por separado. Notifique su decisión antes del vencimiento mediante una declaración inequívoca o el modelo siguiente. No necesita justificarla. Si se requiere devolución, envíe el bien en 14 días desde la notificación; nuestra etiqueta prepagada cubre el coste directo."
+          ]
+        },
+        {
+          "heading": "Reembolsos",
+          "paragraphs": [
+            "Procuramos tramitar los reembolsos en 3–5 días laborables. Para el desistimiento legal, el reembolso vence como máximo 14 días después de su notificación e incluye los gastos de envío inicial estándar pagados. Si se requiere devolución, podemos esperar a recibir el bien o la prueba de envío, lo que ocurra primero. Utilizamos el medio de pago original sin cargos, salvo acuerdo expreso distinto. El plazo de su banco no amplía nuestro plazo legal."
+          ]
+        },
+        {
+          "heading": "Productos dañados o defectuosos",
+          "paragraphs": [
+            "Contacte con support@whiskcam.com. Las fotos ayudan a resolver el problema, pero no sustituyen sus derechos legales. La garantía de conformidad de dos años y la de vicios ocultos descritas en las condiciones continúan tras la garantía comercial de 30 días."
+          ]
+        },
+        {
+          "heading": "Formulario tipo de desistimiento",
+          "paragraphs": [
+            "A la atención de Elodie DIKIM (DEKIM), 7 Rue Ferdinand Buisson, 45200 Montargis, Francia — support@whiskcam.com. Notifico mi desistimiento del contrato de venta de los siguientes bienes: […]. Número de pedido: […]. Pedido el / recibido el: […]. Nombre del consumidor: […]. Dirección del consumidor: […]. Fecha: […]. Firma solo si se envía en papel."
+          ]
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Privacidad y cookies",
+      "description": "Tratamiento de los datos Whiskcam, finalidades y sus derechos.",
+      "sections": [
+        {
+          "heading": "Responsable del tratamiento",
+          "paragraphs": [
+            "Elodie DIKIM, empresaria individual bajo el nombre comercial DEKIM, es responsable de los datos de clientes Whiskcam. Para solicitudes, utilice la dirección profesional de abajo o support@whiskcam.com."
+          ]
+        },
+        {
+          "heading": "Datos y finalidades",
+          "paragraphs": [
+            "El pedido requiere nombre, email, dirección de entrega, detalles del pedido y los datos necesarios para el proveedor de pago. Se usan para ejecutar la venta, entregar, enviar emails de pedido y envío y prestar soporte. Sin los datos necesarios no podemos cumplir el pedido. El proveedor trata los datos de tarjeta; Whiskcam no almacena números completos. Los datos técnicos y de seguridad sirven para operar y prevenir fraude (interés legítimo). Los documentos contables y fiscales responden a una obligación legal. La publicidad y los rastreadores opcionales se basan en su consentimiento cuando sea obligatorio."
+          ]
+        },
+        {
+          "heading": "Proveedores",
+          "paragraphs": [
+            "Shopify proporciona el pago y la gestión de pedidos; Vercel aloja el sitio. Los proveedores de pago y transportistas reciben los datos necesarios. Google Analytics, Microsoft Clarity y TikTok ofrecen las herramientas de medición o publicidad descritas abajo. Puede haber tratamiento fuera del Espacio Económico Europeo; las garantías de transferencia y la información de privacidad figuran en sus políticas. La política de privacidad de Shopify para consumidores también explica su tratamiento."
+          ]
+        },
+        {
+          "heading": "Cookies y medición de visitas",
+          "paragraphs": [
+            "El carrito, el país elegido y la preferencia de cookies permiten comprar. Los scripts de Google Analytics y TikTok usan ajustes de consentimiento restringidos antes de aceptar; Microsoft Clarity se carga tras aceptar. Vercel Analytics mide visitas sin cookies. El botón de preferencias permite cambiar su elección o retirar el consentimiento en cualquier momento. Rechazar los rastreadores opcionales no impide comprar."
+          ]
+        },
+        {
+          "heading": "Conservación",
+          "paragraphs": [
+            "Los datos de pedidos se conservan para ejecutar el contrato, gestionar garantías y litigios, y después durante los plazos legales. Los documentos contables y facturas se conservan diez años. La correspondencia de soporte se revisa para eliminarla o archivarla con acceso restringido tres años después de cerrar el asunto, salvo litigio u obligación legal. Los plazos técnicos de los proveedores figuran en sus políticas."
+          ]
+        },
+        {
+          "heading": "Sus derechos",
+          "paragraphs": [
+            "Puede solicitar acceso, rectificación, supresión, limitación, portabilidad u oposición cuando la ley lo permita, y retirar su consentimiento. Escriba a dekim.pro@gmail.com. Respondemos en un mes, salvo prórrogas legales. Puede reclamar ante la CNIL francesa en cnil.fr o la autoridad de su país. La retirada no afecta a los tratamientos lícitos ya realizados."
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -25,7 +25,16 @@ export const DEFAULT_LOCALE: Locale = "en";
  * Add a path here the day its content is actually translated, and the sitemap
  * picks the change up automatically.
  */
-export const TRANSLATED_ROUTES = new Set<string>(["", "/about", "/faq"]);
+export const TRANSLATED_ROUTES = new Set<string>([
+  "",
+  "/about",
+  "/faq",
+  "/policies/legal",
+  "/policies/terms",
+  "/policies/returns",
+  "/policies/privacy",
+  "/policies/shipping",
+]);
 
 /** Absolute URL for `path` in `locale`, honouring next-intl's `as-needed` prefix. */
 export function localizedUrl(path: string, locale: string): string {
@@ -56,7 +65,10 @@ export function alternatesFor(path: string, locale: string): Alternates {
   const english = localizedUrl(path, DEFAULT_LOCALE);
 
   if (!isTranslatedRoute(path)) {
-    return { canonical: english, languages: { en: english, "x-default": english } };
+    return {
+      canonical: english,
+      languages: { en: english, "x-default": english },
+    };
   }
 
   const languages: Record<string, string> = {};
@@ -70,7 +82,9 @@ export function alternatesFor(path: string, locale: string): Alternates {
  * Sitemap `alternates.languages` for a path — omitted entirely for English-only
  * routes so the sitemap stops advertising translations that do not exist.
  */
-export function sitemapLanguagesFor(path: string): Record<string, string> | undefined {
+export function sitemapLanguagesFor(
+  path: string,
+): Record<string, string> | undefined {
   if (!isTranslatedRoute(path)) return undefined;
 
   const languages: Record<string, string> = {};

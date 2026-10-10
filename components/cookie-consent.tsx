@@ -20,7 +20,11 @@ function readConsent(): ConsentData | null {
 
     // Backward-compat with old string format ("accepted" / "declined")
     if (raw === "accepted" || raw === "declined") {
-      return { accepted: raw === "accepted", timestamp: new Date().toISOString(), version: "0" };
+      return {
+        accepted: raw === "accepted",
+        timestamp: new Date().toISOString(),
+        version: "0",
+      };
     }
 
     return JSON.parse(raw) as ConsentData;
@@ -37,6 +41,9 @@ export function CookieConsent() {
     if (!readConsent()) {
       setVisible(true);
     }
+    const reopen = () => setVisible(true);
+    window.addEventListener("wk-cookie-preferences", reopen);
+    return () => window.removeEventListener("wk-cookie-preferences", reopen);
   }, []);
 
   const respond = (accepted: boolean) => {
@@ -62,7 +69,10 @@ export function CookieConsent() {
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-3 rounded-[var(--radius-card)] border border-wk-grey-200 bg-white/95 px-5 py-4 shadow-lg backdrop-blur-sm sm:flex-row sm:gap-4">
         <p className="flex-1 text-sm leading-relaxed text-wk-grey-600">
           {t("message")}{" "}
-          <Link href="/policies/privacy" className="underline underline-offset-2 text-wk-grey-500 hover:text-wk-black transition-colors">
+          <Link
+            href="/policies/privacy"
+            className="underline underline-offset-2 text-wk-grey-500 hover:text-wk-black transition-colors"
+          >
             {t("privacyLink")}
           </Link>
         </p>
@@ -82,5 +92,18 @@ export function CookieConsent() {
         </div>
       </div>
     </div>
+  );
+}
+
+/** A permanent entry point for changing or withdrawing optional tracking consent. */
+export function CookiePreferences({ label }: { label: string }) {
+  return (
+    <button
+      type="button"
+      onClick={() => window.dispatchEvent(new Event("wk-cookie-preferences"))}
+      className="rounded-lg border border-wk-grey-300 px-4 py-2 text-sm hover:border-wk-black"
+    >
+      {label}
+    </button>
   );
 }

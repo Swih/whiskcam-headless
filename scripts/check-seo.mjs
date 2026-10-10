@@ -169,6 +169,30 @@ for (const slug of [
     slug + ": unsupported trial title",
   );
 }
+for (const locale of ["en", "fr", "de", "es"]) {
+  for (const policy of ["legal", "terms", "returns", "privacy"]) {
+    const path = (locale === "en" ? "" : "/" + locale) + "/policies/" + policy;
+    const html = await get(path);
+    check(
+      canonical(html) === canonicalOrigin + path,
+      path + ": policy canonical",
+    );
+    check(
+      tags(html, "link").filter((t) => attr(t, "hreflang")).length === 5,
+      path + ": translated policy alternates",
+    );
+    check(
+      new RegExp('<html[^>]+lang="' + locale + '"').test(html),
+      path + ": language",
+    );
+    check(
+      html.includes("Elodie DIKIM") && html.includes("10218235900012"),
+      path + ": seller identity",
+    );
+    check(html.includes("223-3"), path + ": VAT franchise mention");
+    check(!html.includes("CM2C"), path + ": unconfirmed mediator");
+  }
+}
 const safety = await get("/blog/are-cat-collar-cameras-safe");
 check(
   !safety.includes("Within the conservative 3% limit"),
@@ -194,8 +218,17 @@ for (const [i, entry] of entries.entries()) {
     !/\/(fr|de|es|en)\/blog\//.test(urls[i]),
     "English article advertised as translation",
   );
-  if (!urls[i].includes("/blog/"))
-    check(!entry.includes("<lastmod>"), "Synthetic static lastmod date");
+  if (!urls[i].includes("/blog/")) {
+    const changedPolicy = /\/policies\/(legal|terms|returns|privacy)$/.test(
+      urls[i],
+    );
+    if (changedPolicy)
+      check(
+        entry.includes("<lastmod>2026-10-10"),
+        "Wrong policy modification date",
+      );
+    else check(!entry.includes("<lastmod>"), "Synthetic static lastmod date");
+  }
 }
 check(sitemap === (await get("/sitemap.xml")), "Unstable sitemap");
 const robots = await get("/robots.txt");
