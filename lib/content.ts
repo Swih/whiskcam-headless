@@ -50,7 +50,16 @@ export const PRODUCT_FACTS = {
 } as const;
 
 /** Countries the free-shipping offer and the return policy actually cover. */
-export const SHIPPING_COUNTRIES = ["US", "CA", "GB", "IE", "FR", "BE", "NL", "LU", "MT", "ES", "PT", "NO", "DK", "FI", "PL", "AU", "NZ"] as const;
+// DSers, supplier 1005008267867556, X6 / only camera, checked 2026-10-11.
+// IE, PT, DK and PL currently have no shipping method. Shopify zones match.
+export const SHIPPING_COUNTRIES = ["US", "CA", "GB", "FR", "BE", "NL", "LU", "MT", "ES", "NO", "FI", "AU", "NZ"] as const;
+
+/** Supplier estimates in days, not guaranteed arrival dates or business days. */
+export const SHIPPING_ESTIMATES: Record<string, readonly [number, number]> = {
+  US: [9, 17], CA: [8, 15], GB: [7, 17], FR: [7, 14], BE: [7, 21],
+  NL: [7, 16], LU: [8, 17], MT: [13, 23], ES: [8, 16], NO: [11, 20],
+  FI: [19, 29], AU: [7, 15], NZ: [6, 16],
+};
 
 export const STATS = [
   { value: "1080P" },

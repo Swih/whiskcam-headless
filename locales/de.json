@@ -299,7 +299,7 @@
       },
       "6": {
         "question": "Wie lange dauert der Versand?",
-        "answer": "Kostenloser Versand in 17 unterstützte Länder. USA und Großbritannien: 7–12 Werktage; unterstützte europäische Länder: 8–14; Kanada und Australien: 10–14; Neuseeland: 10–18. Geschätzte Zeiten. Bitte Lieferländer vor der Bestellung prüfen."
+        "answer": "Kostenloser Standardversand in 13 unterstützte Länder. Die geschätzte Lieferzeit hängt vom Land ab. Bitte prüfe die aktuellen Lieferländer und Lieferzeiten vor der Bestellung."
       },
       "7": {
         "question": "In welchem Format nimmt Whiskcam auf?",
@@ -404,7 +404,7 @@
     "short": "Kostenloser Versand · Ausgewählte Länder",
     "check": "Lieferung in dein Land prüfen",
     "select": "Land / Region",
-    "available": "Kostenloser Versand · voraussichtlich {min}–{max} Werktage",
+    "available": "Kostenloser Versand · voraussichtlich {min}–{max} Tage",
     "unavailable": "An dieses Ziel liefern wir derzeit nicht.",
     "destinations": "Alle Lieferländer ansehen",
     "other": "Ein anderes Land",
@@ -412,12 +412,12 @@
     "batteryAnswer": "Die Laufzeit hängt von den Aufnahmebedingungen ab. Wir prüfen die kontinuierliche Aufnahmezeit, bevor wir eine genaue Dauer veröffentlichen. Vor Gebrauch per USB-C laden.",
     "charge": "USB-C-Ladung",
     "batteryLabel": "Wiederaufladbar",
-    "faqShipping": "Kostenloser Versand in 17 unterstützte Länder. USA und Großbritannien: 7–12 Werktage; unterstützte europäische Länder: 8–14; Kanada und Australien: 10–14; Neuseeland: 10–18. Geschätzte Zeiten. Bitte Lieferländer vor der Bestellung prüfen.",
+    "faqShipping": "Kostenloser Standardversand in 13 unterstützte Länder. Die geschätzte Lieferzeit hängt vom Land ab. Bitte prüfe die aktuellen Lieferländer und Lieferzeiten vor der Bestellung.",
     "countries": "Wir liefern derzeit in die unten aufgeführten Länder. Andere Ziele, darunter Deutschland, Italien und die Schweiz, sind nicht verfügbar.",
     "note": "Lieferzeiten sind Schätzungen. Mögliche Einfuhrabgaben sind nicht mit Versandkosten gleichzusetzen. Bei Fragen kontaktiere uns.",
     "error": "Der Artikel konnte nicht hinzugefügt werden. Bitte erneut versuchen.",
     "chooseCountry": "Land auswählen",
-    "businessDays": "Werktage, geschätzt"
+    "businessDays": "Tage, geschätzt"
   },
   "v2": {
     "eyebrow": "DIE HALSBANDKAMERA FÜR KATZEN",

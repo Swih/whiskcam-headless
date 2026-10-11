@@ -380,7 +380,7 @@ export default function BestCatCollarCameras2026() {
         seller-specific return terms.
       </p>
       <p>
-        Whiskcam lists delivery to the UK, Ireland, several EU countries,
+        Whiskcam lists delivery to the UK, selected EU countries,
         Norway, the US, Canada, Australia and New Zealand, with a{" "}
         {f.returnDays}-day
         return window. Check the estimated delivery time for your country on

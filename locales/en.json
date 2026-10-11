@@ -299,7 +299,7 @@
       },
       "6": {
         "question": "How long does shipping take?",
-        "answer": "Shipping is free to our 17 supported destinations. US and UK: 7–12 business days; supported European destinations: 8–14; Canada and Australia: 10–14; New Zealand: 10–18. These are estimates. Check the delivery destinations before ordering."
+        "answer": "Free standard shipping to 13 supported destinations. Delivery estimates vary by country. Check the current destinations and estimated time before ordering."
       },
       "7": {
         "question": "What video format does it record in?",
@@ -404,7 +404,7 @@
     "short": "Free shipping · Selected countries",
     "check": "Check delivery to your country",
     "select": "Country / region",
-    "available": "Free shipping · {min}–{max} business days (estimated)",
+    "available": "Free shipping · {min}–{max} days (estimated)",
     "unavailable": "We do not currently ship to this destination.",
     "destinations": "View all delivery destinations",
     "other": "Another country",
@@ -412,12 +412,12 @@
     "batteryAnswer": "Runtime varies with recording conditions. We are verifying continuous recording time before publishing a specific duration. Charge via USB-C before use.",
     "charge": "USB-C charging",
     "batteryLabel": "Rechargeable",
-    "faqShipping": "Shipping is free to our 17 supported destinations. US and UK: 7–12 business days; supported European destinations: 8–14; Canada and Australia: 10–14; New Zealand: 10–18. These are estimates. Check the delivery destinations before ordering.",
+    "faqShipping": "Free standard shipping to 13 supported destinations. Delivery estimates vary by country. Check the current destinations and estimated time before ordering.",
     "countries": "We currently deliver to the countries listed below. Other destinations, including Germany, Italy and Switzerland, are not available.",
     "note": "Delivery estimates are not guaranteed arrival dates. Any import duties are separate from shipping; contact us if you need clarification.",
     "error": "We could not add this item. Please try again.",
     "chooseCountry": "Choose your country",
-    "businessDays": "business days, estimated"
+    "businessDays": "days, estimated"
   },
   "v2": {
     "eyebrow": "THE CAT COLLAR CAMERA",

@@ -299,7 +299,7 @@
       },
       "6": {
         "question": "Quand est-ce que je le reçois ?",
-        "answer": "Livraison offerte vers nos 17 destinations desservies. États-Unis et Royaume-Uni : 7–12 jours ouvrés ; pays européens desservis : 8–14 ; Canada et Australie : 10–14 ; Nouvelle-Zélande : 10–18. Délais estimatifs. Vérifiez les destinations avant de commander."
+        "answer": "Livraison standard offerte vers 13 destinations desservies. Les délais estimés varient selon le pays. Vérifiez les destinations et le délai actuel avant de commander."
       },
       "7": {
         "question": "Quel format vidéo ?",
@@ -404,7 +404,7 @@
     "short": "Livraison offerte · Pays sélectionnés",
     "check": "Vérifier la livraison dans votre pays",
     "select": "Pays / région",
-    "available": "Livraison offerte · {min}–{max} jours ouvrés estimés",
+    "available": "Livraison offerte · {min}–{max} jours estimés",
     "unavailable": "Nous ne livrons pas cette destination actuellement.",
     "destinations": "Voir toutes les destinations desservies",
     "other": "Un autre pays",
@@ -412,12 +412,12 @@
     "batteryAnswer": "L’autonomie varie selon les conditions d’enregistrement. Nous vérifions la durée continue avant de publier un chiffre précis. Rechargez par USB-C avant utilisation.",
     "charge": "Recharge USB-C",
     "batteryLabel": "Rechargeable",
-    "faqShipping": "Livraison offerte vers nos 17 destinations desservies. États-Unis et Royaume-Uni : 7–12 jours ouvrés ; pays européens desservis : 8–14 ; Canada et Australie : 10–14 ; Nouvelle-Zélande : 10–18. Délais estimatifs. Vérifiez les destinations avant de commander.",
+    "faqShipping": "Livraison standard offerte vers 13 destinations desservies. Les délais estimés varient selon le pays. Vérifiez les destinations et le délai actuel avant de commander.",
     "countries": "Nous livrons actuellement les pays ci-dessous. Les autres destinations, notamment l’Allemagne, l’Italie et la Suisse, ne sont pas disponibles.",
     "note": "Les délais sont estimatifs. Les éventuels droits d’importation sont distincts des frais de livraison ; contactez-nous pour toute précision.",
     "error": "Impossible d’ajouter cet article. Veuillez réessayer.",
     "chooseCountry": "Choisissez votre pays",
-    "businessDays": "jours ouvrés estimés"
+    "businessDays": "jours estimés"
   },
   "v2": {
     "eyebrow": "LA CAMÉRA COLLIER POUR CHAT",

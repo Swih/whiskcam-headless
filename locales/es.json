@@ -299,7 +299,7 @@
       },
       "6": {
         "question": "¿Cuánto tarda el envío?",
-        "answer": "Envío gratis a 17 destinos disponibles. EE. UU. y Reino Unido: 7–12 días laborables; países europeos disponibles: 8–14; Canadá y Australia: 10–14; Nueva Zelanda: 10–18. Plazos estimados. Comprueba los destinos antes de comprar."
+        "answer": "Envío estándar gratis a 13 destinos disponibles. Los plazos estimados varían según el país. Comprueba los destinos y el plazo actual antes de comprar."
       },
       "7": {
         "question": "¿En qué formato graba los vídeos?",
@@ -404,7 +404,7 @@
     "short": "Envío gratis · Países seleccionados",
     "check": "Comprobar el envío a tu país",
     "select": "País / región",
-    "available": "Envío gratis · {min}–{max} días laborables estimados",
+    "available": "Envío gratis · {min}–{max} días estimados",
     "unavailable": "Actualmente no enviamos a este destino.",
     "destinations": "Ver todos los destinos disponibles",
     "other": "Otro país",
@@ -412,12 +412,12 @@
     "batteryAnswer": "La autonomía depende de las condiciones de grabación. Estamos verificando la duración continua antes de publicar una cifra concreta. Carga por USB-C antes de usarla.",
     "charge": "Carga USB-C",
     "batteryLabel": "Recargable",
-    "faqShipping": "Envío gratis a 17 destinos disponibles. EE. UU. y Reino Unido: 7–12 días laborables; países europeos disponibles: 8–14; Canadá y Australia: 10–14; Nueva Zelanda: 10–18. Plazos estimados. Comprueba los destinos antes de comprar.",
+    "faqShipping": "Envío estándar gratis a 13 destinos disponibles. Los plazos estimados varían según el país. Comprueba los destinos y el plazo actual antes de comprar.",
     "countries": "Actualmente enviamos a los países indicados abajo. Otros destinos, incluidos Alemania, Italia y Suiza, no están disponibles.",
     "note": "Los plazos son estimados. Los posibles impuestos de importación son distintos de los gastos de envío. Contáctanos si necesitas aclaraciones.",
     "error": "No se pudo añadir este artículo. Inténtalo de nuevo.",
     "chooseCountry": "Elige tu país",
-    "businessDays": "días laborables estimados"
+    "businessDays": "días estimados"
   },
   "v2": {
     "eyebrow": "LA CÁMARA DE COLLAR PARA GATOS",

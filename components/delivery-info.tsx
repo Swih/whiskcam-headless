@@ -1,6 +1,6 @@
 "use client";
 
-import { SHIPPING_COUNTRIES } from "lib/content";
+import { SHIPPING_COUNTRIES, SHIPPING_ESTIMATES } from "lib/content";
 import { Link } from "i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import {
@@ -16,15 +16,9 @@ const DeliveryCountryContext = createContext<{
   setCountry: (country: string) => void;
 } | null>(null);
 
-/** Estimated business days to a served destination. */
+/** Current supplier estimate to a served destination. */
 export function deliveryDays(country: string): [number, number] {
-  return country === "US" || country === "GB"
-    ? [7, 12]
-    : country === "CA" || country === "AU"
-      ? [10, 14]
-      : country === "NZ"
-        ? [10, 18]
-        : [8, 14];
+  return [...(SHIPPING_ESTIMATES[country] ?? [7, 29])] as [number, number];
 }
 
 export function isServedCountry(country: string) {

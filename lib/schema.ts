@@ -10,7 +10,7 @@
 // of a handful of look-alike islands.
 // =============================================================================
 
-import { PRODUCT_FACTS, SHIPPING_COUNTRIES } from "lib/content";
+import { PRODUCT_FACTS, SHIPPING_COUNTRIES, SHIPPING_ESTIMATES } from "lib/content";
 import { baseUrl } from "lib/utils";
 
 export const ORG_ID = `${baseUrl}/#organization`;
@@ -97,8 +97,8 @@ export function offerShippingDetails(currency: string = f.currency) {
       },
       transitTime: {
         "@type": "QuantitativeValue",
-        minValue: f.shippingDaysMin,
-        maxValue: f.shippingDaysMax,
+        minValue: Math.min(...SHIPPING_COUNTRIES.map(country => SHIPPING_ESTIMATES[country]![0])),
+        maxValue: Math.max(...SHIPPING_COUNTRIES.map(country => SHIPPING_ESTIMATES[country]![1])),
         unitCode: "DAY",
       },
     },
