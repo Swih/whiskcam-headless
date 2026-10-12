@@ -52,11 +52,11 @@ const config: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.clarity.ms https://connect.facebook.net https://analytics.tiktok.com https://*.tiktok.com",
+              "script-src 'self' 'unsafe-inline' https://stats.ritoko.com https://www.googletagmanager.com https://www.google-analytics.com https://*.clarity.ms https://connect.facebook.net https://analytics.tiktok.com https://*.tiktok.com",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: blob: https://cdn.shopify.com https://www.google-analytics.com https://www.facebook.com https://*.clarity.ms https://analytics.tiktok.com https://*.tiktok.com",
               "font-src 'self' data:",
-              "connect-src 'self' https://*.shopify.com https://*.google-analytics.com https://*.analytics.google.com https://*.clarity.ms https://*.facebook.com https://analytics.tiktok.com https://*.tiktok.com https://*.tiktokapi.eu https://a.klaviyo.com",
+              "connect-src 'self' https://stats.ritoko.com https://*.shopify.com https://*.google-analytics.com https://*.analytics.google.com https://*.clarity.ms https://*.facebook.com https://analytics.tiktok.com https://*.tiktok.com https://*.tiktokapi.eu https://a.klaviyo.com",
               "media-src 'self' blob:",
               "frame-ancestors 'none'",
             ].join("; "),

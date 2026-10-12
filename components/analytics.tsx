@@ -3,6 +3,8 @@
 import Script from "next/script";
 import { useEffect, useState } from "react";
 import { ga4Bootstrap } from "lib/analytics-bootstrap";
+import { UmamiAnalytics } from "./umami-analytics";
+import { trackUmami } from "lib/umami";
 
 const GA_ID = "G-D315FW4BML";
 const CLARITY_ID = "vxtexd0crl";
@@ -76,6 +78,7 @@ export function Analytics({ checkoutDomain }: { checkoutDomain?: string }) {
 
   return (
     <>
+      <UmamiAnalytics />
       {/* Google Analytics 4 — always loaded, consent mode controls tracking */}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
@@ -160,6 +163,7 @@ export function trackEvent(
   params?: Record<string, unknown>,
 ) {
   if (!hasConsent()) return;
+  trackUmami(eventName, params);
   // GA4
   window.gtag?.("event", eventName, params);
   // Meta Pixel (when added)
@@ -174,6 +178,7 @@ export function trackViewContent(product: {
   currency: string;
 }) {
   if (!hasConsent()) return;
+  trackUmami("product_view");
   // GA4
   window.gtag?.("event", "view_item", {
     currency: product.currency,
@@ -203,6 +208,10 @@ export function trackAddToCart(product: {
   quantity: number;
 }) {
   if (!hasConsent()) return;
+  trackUmami("add_to_cart", {
+    variant: /duo/i.test(product.name) ? "duo" : "original",
+    quantity: product.quantity,
+  });
   // GA4
   window.gtag?.("event", "add_to_cart", {
     currency: product.currency,
@@ -245,6 +254,7 @@ export function trackBeginCheckout(cart: {
   items: { name: string; price: string; quantity: number }[];
 }) {
   if (!hasConsent()) return;
+  trackUmami("checkout_started");
   const value = parseFloat(cart.value);
 
   window.gtag?.("event", "begin_checkout", {

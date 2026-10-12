@@ -20,6 +20,7 @@ import {
   trackViewContent,
 } from "components/analytics";
 import { DeliveryInfo } from "components/delivery-info";
+import { trackUmami } from "lib/umami";
 import { HERO_CONTENT, VIDEOS, PRODUCT_FACTS } from "lib/content";
 import type { Product } from "lib/shopify/types";
 import styles from "./storefront-v2.module.css";
@@ -161,6 +162,9 @@ export function StorefrontV2({
   }, [selected]);
 
   function choose(next: "single" | "duo") {
+    trackUmami("variant_selected", {
+      variant: next === "duo" ? "duo" : "original",
+    });
     setPack(next);
     setError(null);
     if (hasConsent())

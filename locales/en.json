@@ -334,7 +334,7 @@
     "copyright": "© {year} Whiskcam. All rights reserved."
   },
   "cookie": {
-    "message": "We use cookies to improve your experience and analyze site traffic.",
+    "message": "We use optional analytics, including our private Umami service, to understand visits and shopping actions. You can refuse or change your choice at any time.",
     "privacyLink": "Privacy Policy",
     "decline": "Decline",
     "accept": "Accept"

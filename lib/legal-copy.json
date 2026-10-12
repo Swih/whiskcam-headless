@@ -145,6 +145,13 @@
           ]
         },
         {
+          "heading": "Our private Umami analytics",
+          "paragraphs": [
+            "With your agreement, Umami records page paths, referring site origins, browser language, device category and predefined actions such as viewing the offer, adding to cart and starting checkout. It loads only after a valid new consent and respects Do Not Track and Global Privacy Control. URL queries, fragments, form contents, customer and cart identifiers, and document titles are excluded. No session recording or cross-site visitor identity is enabled.",
+            "The private analytics service at stats.ritoko.com is hosted on Vercel, with its Neon database in Frankfurt. Only authorized administrators can read its statistics, including from our private reporting dashboard. Detailed analytics are kept for 90 days. The cookie choice is stored locally for six months; the preferences button lets you withdraw it. Withdrawal stops future collection; already collected aggregate statistics are not linked to your customer account. This tracking does not confirm purchases completed on Shopify."
+          ]
+        },
+        {
           "heading": "Retention",
           "paragraphs": [
             "Order data is kept to fulfill the contract, manage warranties and address disputes, then for applicable statutory periods. Accounting and invoice records are retained for 10 years. Support correspondence is reviewed for deletion or restricted archiving three years after the matter is closed, except where needed for a dispute or legal obligation. Provider-specific technical retention periods are described in their policies."
@@ -303,6 +310,13 @@
           "heading": "Cookies et mesure d’audience",
           "paragraphs": [
             "Le panier, le pays choisi et la préférence de cookies permettent le fonctionnement de la boutique. Les scripts Google Analytics et TikTok utilisent des paramètres de consentement restreints avant acceptation ; Microsoft Clarity se charge après acceptation. Vercel Analytics mesure les visites sans cookies. Le bouton de préférences de cette page permet de modifier votre choix ou de retirer votre consentement à tout moment. Refuser les traceurs facultatifs n’empêche pas d’acheter."
+          ]
+        },
+        {
+          "heading": "Notre mesure Umami privée",
+          "paragraphs": [
+            "Avec votre accord, Umami mesure les chemins de pages, les sites d’origine, la langue, la catégorie d’appareil et des actions prédéfinies : voir l’offre, ajouter au panier et commencer le paiement. Il se charge uniquement après un nouveau consentement valable et respecte Do Not Track et Global Privacy Control. Les paramètres et fragments d’URL, contenus de formulaires, identifiants de clients et de panier et titres de pages sont exclus. Aucune session filmée ni identité de visiteur commune aux sites n’est activée.",
+            "Le service privé stats.ritoko.com est hébergé sur Vercel, avec une base Neon à Francfort. Seuls les administrateurs autorisés peuvent lire ses statistiques, y compris depuis notre tableau de bord privé. Les analytics détaillées sont conservées 90 jours. Le choix est stocké localement pendant six mois ; le bouton de préférences permet de le retirer. Le retrait arrête les prochaines collectes ; les statistiques agrégées déjà collectées ne sont pas reliées à votre compte client. Ce suivi ne confirme pas les achats réalisés chez Shopify."
           ]
         },
         {
@@ -467,6 +481,13 @@
           ]
         },
         {
+          "heading": "Unsere private Umami-Analyse",
+          "paragraphs": [
+            "Mit Ihrer Zustimmung misst Umami Seitenpfade, Herkunftsseiten, Browsersprache, Gerätetyp und festgelegte Aktionen wie Angebotsansicht, Warenkorb und Beginn des Checkouts. Umami wird erst nach einer gültigen neuen Zustimmung geladen und berücksichtigt Do Not Track und Global Privacy Control. URL-Parameter und Fragmente, Formularinhalte, Kunden- und Warenkorbkennungen sowie Seitentitel werden ausgeschlossen. Keine Sitzungsaufzeichnung oder gemeinsame Besucherkennung über mehrere Websites.",
+            "Der private Dienst stats.ritoko.com wird bei Vercel gehostet, mit einer Neon-Datenbank in Frankfurt. Nur berechtigte Administratoren können die Statistiken lesen, auch über unser privates Dashboard. Detaillierte Analysen werden 90 Tage gespeichert. Ihre lokal gespeicherte Wahl gilt sechs Monate und kann über die Cookie-Einstellungen widerrufen werden. Ein Widerruf stoppt die weitere Erfassung; vorhandene aggregierte Statistiken sind nicht mit Ihrem Kundenkonto verknüpft. Diese Messung bestätigt keine Shopify-Käufe."
+          ]
+        },
+        {
           "heading": "Aufbewahrung",
           "paragraphs": [
             "Bestelldaten werden für Vertrag, Gewährleistung und Streitfälle aufbewahrt, anschließend für gesetzliche Fristen. Buchhaltungsunterlagen und Rechnungen werden zehn Jahre aufbewahrt. Support-Korrespondenz wird drei Jahre nach Abschluss auf Löschung oder eingeschränkte Archivierung geprüft, außer bei Streitfällen oder gesetzlichen Pflichten. Technische Aufbewahrungsfristen der Anbieter stehen in deren Richtlinien."
@@ -625,6 +646,13 @@
           "heading": "Cookies y medición de visitas",
           "paragraphs": [
             "El carrito, el país elegido y la preferencia de cookies permiten comprar. Los scripts de Google Analytics y TikTok usan ajustes de consentimiento restringidos antes de aceptar; Microsoft Clarity se carga tras aceptar. Vercel Analytics mide visitas sin cookies. El botón de preferencias permite cambiar su elección o retirar el consentimiento en cualquier momento. Rechazar los rastreadores opcionales no impide comprar."
+          ]
+        },
+        {
+          "heading": "Nuestro análisis privado Umami",
+          "paragraphs": [
+            "Con su consentimiento, Umami mide rutas de páginas, sitios de origen, idioma del navegador, categoría de dispositivo y acciones predefinidas: ver la oferta, añadir al carrito e iniciar el pago. Solo se carga después de un nuevo consentimiento válido y respeta Do Not Track y Global Privacy Control. Se excluyen parámetros y fragmentos de URL, contenidos de formularios, identificadores de clientes y carritos y títulos de páginas. No se activan grabaciones de sesiones ni identidad compartida entre sitios.",
+            "El servicio privado stats.ritoko.com está alojado en Vercel, con una base Neon en Frankfurt. Solo los administradores autorizados pueden leer sus estadísticas, también desde nuestro panel privado. Los análisis detallados se conservan 90 días. La elección local dura seis meses y puede retirarse en las preferencias de cookies. La retirada detiene la recogida futura; las estadísticas agregadas existentes no se vinculan a su cuenta de cliente. Esta medición no confirma compras completadas en Shopify."
           ]
         },
         {

@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "../i18n/navigation";
 
 const CONSENT_KEY = "wk-cookie-consent";
-const CONSENT_VERSION = "1";
+const CONSENT_VERSION = "2";
 
 interface ConsentData {
   accepted: boolean;
@@ -18,16 +18,17 @@ function readConsent(): ConsentData | null {
     const raw = localStorage.getItem(CONSENT_KEY);
     if (!raw) return null;
 
-    // Backward-compat with old string format ("accepted" / "declined")
-    if (raw === "accepted" || raw === "declined") {
-      return {
-        accepted: raw === "accepted",
-        timestamp: new Date().toISOString(),
-        version: "0",
-      };
-    }
-
-    return JSON.parse(raw) as ConsentData;
+    const data = JSON.parse(raw) as ConsentData;
+    const at = Date.parse(data?.timestamp || "");
+    if (
+      data?.version !== CONSENT_VERSION ||
+      typeof data.accepted !== "boolean" ||
+      !Number.isFinite(at) ||
+      at > Date.now() ||
+      Date.now() - at >= 180 * 86400_000
+    )
+      return null;
+    return data;
   } catch {
     return null;
   }

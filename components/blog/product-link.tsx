@@ -2,6 +2,7 @@
 
 import { Link } from "i18n/navigation";
 import { hasConsent } from "components/analytics";
+import { trackUmami } from "lib/umami";
 
 export function BlogProductLink({
   slug,
@@ -18,6 +19,10 @@ export function BlogProductLink({
       className="inline-block rounded-lg bg-wk-amber px-6 py-3 text-sm font-semibold text-wk-dark transition-colors hover:bg-wk-amber-hover"
       onClick={() => {
         if (hasConsent()) {
+          trackUmami("blog_product_click", {
+            article_slug: slug,
+            cta_placement: placement,
+          });
           window.gtag?.("event", "blog_product_click", {
             article_slug: slug,
             cta_placement: placement,
