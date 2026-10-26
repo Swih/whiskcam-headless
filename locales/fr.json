@@ -99,7 +99,7 @@
   },
   "reviews": {
     "overline": "Avis clients",
-    "title": "Ce qu'ils ont découvert grâce à Whiskcam",
+    "title": "Leur point de vue sur la caméra",
     "subtitle": "Avis historiques sur ce modèle de caméra. Il ne s’agit pas d’achats vérifiés chez Whiskcam.",
     "verifiedBuyer": "Acheteur vérifié",
     "showPhotos": "Voir les photos",
@@ -282,8 +282,8 @@
         "answer": "L’adaptation dépend de votre animal, du collier et de l’ensemble porté. La caméra pèse 24 g ; ajoutez le collier, la fixation et les médailles au poids total. Pour un chat, utilisez un collier à ouverture rapide et commencez par un bref essai surveillé. Retirez le matériel s’il gêne ses mouvements ou provoque de la détresse. Demandez conseil à votre vétérinaire pour votre animal."
       },
       "2": {
-        "question": "Combien de temps dure la batterie ?",
-        "answer": "L’autonomie varie selon les conditions d’enregistrement. Nous vérifions la durée continue avant de publier un chiffre précis. Rechargez par USB-C avant utilisation."
+        "question": "Comment préparer sa première aventure ?",
+        "answer": "Chargez la caméra par USB-C, ajoutez une carte MicroSD compatible (vendue séparément), puis filmez un court essai à la maison. Vérifiez le confort et regardez la vidéo avant la sortie. Notre guide de démarrage vous accompagne à chaque étape."
       },
       "3": {
         "question": "Il faut une appli ?",
@@ -425,7 +425,7 @@
     "headlineAccent": "D’un peu plus près.",
     "intro": "Les rondes au jardin. Les rencontres imprévues. Filmez le point de vue de votre chat en 1080P, puis découvrez son histoire à son retour.",
     "choose": "Choisir mon kit",
-    "watch": "Voir 22 secondes",
+    "watch": "Voir la vidéo",
     "noSubscription": "Sans abonnement",
     "readReviews": "Lire les avis",
     "heroVideo": "Vidéo du point de vue d’un chat : La Rencontre",

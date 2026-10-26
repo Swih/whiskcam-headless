@@ -6,27 +6,37 @@ import { getCampaignCopy } from "lib/campaign-copy";
 import { Link } from "i18n/navigation";
 import { CampaignCountdown } from "components/campaign/countdown";
 
+/** One quiet line; the offer terms sit with the purchase controls. */
 export function AnnouncementBar() {
   const t = useTranslations("announcement");
   const active = useHalloweenCampaign();
   const copy = getCampaignCopy(useLocale(), active);
   if (active) {
+    const accent =
+      active.code === "HALLOWEEN15" ? "bg-[#f0a46a]" : "bg-[#e8b27a]";
     return (
       <Link
         href="/#product"
-        className="flex min-h-11 flex-wrap items-center justify-center gap-x-4 gap-y-1 bg-[#24251f] px-4 py-2 text-center text-sm text-[#fff7e9]"
+        className="flex min-h-10 items-center justify-center gap-x-3 bg-[#171614] px-4 py-2 text-center text-sm leading-snug text-[#f4f1ec] hover:underline hover:underline-offset-4"
       >
-        <strong>
-          {copy.name} · {copy.banner}
-        </strong>
-        <span className="text-[#f2c493]">{copy.code}</span>
-        <span className="text-sm">{copy.deadline}</span>
-        <CampaignCountdown campaign={active} />
+        <span
+          aria-hidden="true"
+          className={`h-1.5 w-1.5 flex-none rounded-full ${accent}`}
+        />
+        <span className="hidden font-semibold sm:inline">{copy.name}</span>
+        <span>{copy.banner}</span>
+        <span className="hidden text-[#b9b3a8] md:inline">{copy.code}</span>
+        <span className="sr-only lg:not-sr-only lg:text-[#b9b3a8]">
+          {copy.deadline}
+        </span>
+        <span className="whitespace-nowrap text-[#b9b3a8] [&_span]:[color:inherit] [&_span]:[font-family:inherit]">
+          <CampaignCountdown campaign={active} />
+        </span>
       </Link>
     );
   }
   return (
-    <div className="bg-wk-black px-3 py-2 text-center text-xs font-medium text-white/90">
+    <div className="bg-[#171614] px-3 py-2 text-center text-sm text-[#f4f1ec]">
       {t("staticDefault")}
     </div>
   );

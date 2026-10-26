@@ -49,7 +49,7 @@ export function Navbar() {
   return (
     <>
       <nav
-        className={`sticky top-0 z-40 bg-white/95 backdrop-blur-xl ${scrolled ? "shadow-sm" : "border-b border-wk-grey-100"}`}
+        className={`sticky top-0 z-40 border-b bg-[#faf8f4]/95 backdrop-blur-xl transition-colors ${scrolled ? "border-[#e4ded3]" : "border-transparent"}`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
           {/* Mobile hamburger */}
@@ -68,7 +68,7 @@ export function Navbar() {
           {/* Logo — wordmark on desktop, icon on mobile */}
           <Link
             href="/"
-            className="flex items-center"
+            className="flex min-h-11 items-center"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
             <Image
@@ -89,9 +89,9 @@ export function Navbar() {
                 <li key={link.title}>
                   <button
                     onClick={() => handleNavClick(link.path)}
-                    className={`text-sm font-medium transition-colors ${
+                    className={`min-h-11 text-sm font-medium transition-colors ${
                       lightSurface
-                        ? "text-wk-grey-600 hover:text-wk-black"
+                        ? "text-[#615d55] hover:text-[#1d1c1a]"
                         : "text-white/70 hover:text-white"
                     }`}
                   >
@@ -102,9 +102,9 @@ export function Navbar() {
                 <li key={link.title}>
                   <Link
                     href={link.path}
-                    className={`text-sm font-medium transition-colors ${
+                    className={`inline-flex min-h-11 items-center text-sm font-medium transition-colors ${
                       lightSurface
-                        ? "text-wk-grey-600 hover:text-wk-black"
+                        ? "text-[#615d55] hover:text-[#1d1c1a]"
                         : "text-white/70 hover:text-white"
                     }`}
                   >
@@ -134,11 +134,12 @@ export function Navbar() {
           onClose={() => setMobileOpen(false)}
           className="relative z-[60]"
         >
-          <DialogPanel className="fixed inset-0 overflow-y-auto bg-white">
+          <DialogPanel className="fixed inset-0 overflow-y-auto bg-[#faf8f4]">
             <DialogTitle className="sr-only">Whiskcam</DialogTitle>
-            <div className="flex items-center justify-between px-4 py-3">
+            <div className="flex items-center justify-between border-b border-[#e4ded3] px-4 py-3">
               <Link
                 href="/"
+                className="flex min-h-11 items-center"
                 onClick={() => {
                   setMobileOpen(false);
                   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -165,7 +166,7 @@ export function Navbar() {
                   <button
                     key={link.title}
                     onClick={() => handleNavClick(link.path)}
-                    className="block w-full border-b border-wk-grey-100 py-4 text-left text-lg font-semibold text-wk-black transition-colors hover:text-wk-amber"
+                    className="block w-full border-b border-[#e4ded3] py-4 text-left text-2xl font-semibold tracking-tight text-[#1d1c1a]"
                   >
                     {link.title}
                   </button>
@@ -174,14 +175,14 @@ export function Navbar() {
                     key={link.title}
                     href={link.path}
                     onClick={() => setMobileOpen(false)}
-                    className="block border-b border-wk-grey-100 py-4 text-lg font-semibold text-wk-black transition-colors hover:text-wk-amber"
+                    className="block border-b border-[#e4ded3] py-4 text-2xl font-semibold tracking-tight text-[#1d1c1a]"
                   >
                     {link.title}
                   </Link>
                 ),
               )}
               {/* Mobile language switcher */}
-              <div className="mt-6 flex items-center gap-2 border-b border-wk-grey-100 pb-4">
+              <div className="mt-6 flex items-center gap-2 border-b border-[#e4ded3] pb-4">
                 <LanguageSwitcher variant="light" />
               </div>
             </nav>

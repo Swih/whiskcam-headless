@@ -9,6 +9,7 @@ const EVENTS = new Set([
   "checkout_started",
   "blog_product_click",
   "variant_selected",
+  "product_video_play",
 ]);
 let started = false;
 let lastPage = "";
@@ -111,7 +112,17 @@ export function umamiBeforeSend(
     articleSlugs.has(raw.article_slug)
   )
     data.article_slug = raw.article_slug;
-  if (["comparison", "article-footer"].includes(String(raw.cta_placement)))
+  if (
+    [
+      "comparison",
+      "article-footer",
+      "hero",
+      "offer",
+      "sticky",
+      "home_hero",
+      "home_footage",
+    ].includes(String(raw.cta_placement))
+  )
     data.cta_placement = raw.cta_placement;
   return {
     website: WEBSITE_ID,

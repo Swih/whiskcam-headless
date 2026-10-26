@@ -99,7 +99,7 @@
   },
   "reviews": {
     "overline": "Opiniones",
-    "title": "Lo que descubrieron con Whiskcam",
+    "title": "Qué opinan de la cámara",
     "subtitle": "Reseñas históricas de este modelo de cámara. No son compras verificadas en Whiskcam.",
     "verifiedBuyer": "Compra verificada",
     "showPhotos": "Ver fotos",
@@ -282,8 +282,8 @@
         "answer": "La idoneidad depende de tu mascota, del ajuste y del conjunto completo. La cámara pesa 24 g; añade el collar, la fijación y las placas al peso total. En gatos, utiliza un collar de apertura rápida y empieza con una prueba breve supervisada. Retira el equipo si altera sus movimientos o provoca malestar. Consulta a tu veterinario sobre la idoneidad para tu mascota."
       },
       "2": {
-        "question": "¿Cuánto dura la batería?",
-        "answer": "La autonomía depende de las condiciones de grabación. Estamos verificando la duración continua antes de publicar una cifra concreta. Carga por USB-C antes de usarla."
+        "question": "¿Cómo preparo su primera aventura?",
+        "answer": "Carga la cámara por USB-C, añade una tarjeta MicroSD compatible (se vende por separado) y graba una prueba breve en casa. Comprueba el ajuste y reproduce el vídeo antes de salir. Nuestra guía de inicio te acompaña paso a paso."
       },
       "3": {
         "question": "¿Necesito descargar alguna app?",
@@ -425,7 +425,7 @@
     "headlineAccent": "Un poco más cerca.",
     "intro": "Las rondas por el jardín. Los encuentros inesperados. Graba la perspectiva de tu gato en 1080P y descubre su historia cuando vuelva a casa.",
     "choose": "Elegir mi kit",
-    "watch": "Ver 22 segundos",
+    "watch": "Ver el vídeo",
     "noSubscription": "Sin suscripción",
     "readReviews": "Leer opiniones",
     "heroVideo": "Vídeo desde la perspectiva de un gato: El encuentro",
