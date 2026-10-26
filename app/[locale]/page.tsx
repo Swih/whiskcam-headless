@@ -137,7 +137,6 @@ export default async function HomePage({
         sku: productSku,
         mpn: productSku,
         brand: { "@id": ORG_ID },
-        manufacturer: { "@id": ORG_ID },
         category: "Pet Cameras",
         weight: {
           "@type": "QuantitativeValue",

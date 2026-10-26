@@ -95,6 +95,7 @@ export function umamiBeforeSend(
       ? (payload.data as Record<string, unknown>)
       : {};
   const data: Record<string, unknown> = {};
+  if (raw.promo === "halloween10") data.promo = "halloween10";
   if (raw.variant === "original" || raw.variant === "duo")
     data.variant = raw.variant;
   if (

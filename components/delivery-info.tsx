@@ -31,8 +31,14 @@ export function useDeliveryCountry() {
 }
 
 /** An estimate chosen by the visitor, shared with the cart; not a Shopify market change. */
-export function DeliveryCountryProvider({ children }: { children: ReactNode }) {
-  const [country, setCountry] = useState("");
+export function DeliveryCountryProvider({
+  children,
+  initialCountry = "",
+}: {
+  children: ReactNode;
+  initialCountry?: string;
+}) {
+  const [country, setCountry] = useState(initialCountry);
   return (
     <DeliveryCountryContext.Provider value={{ country, setCountry }}>
       {children}
@@ -65,7 +71,7 @@ export function DeliveryInfo({
   return (
     <details
       open={expanded || undefined}
-      className={`mt-3 rounded-lg border border-wk-grey-200 bg-white ${compact ? "p-2.5" : "p-3"} text-xs`}
+      className={`mt-3 rounded-lg border border-wk-grey-200 bg-white ${compact ? "p-2.5" : "p-3"} text-sm`}
     >
       <summary className="cursor-pointer font-medium text-wk-black">
         {country && supported

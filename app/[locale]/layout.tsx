@@ -4,9 +4,7 @@ import { AnnouncementBar } from "components/layout/announcement-bar";
 import { CartProvider } from "components/cart/cart-context";
 import { CookieConsent } from "components/cookie-consent";
 import { Navbar } from "components/layout/navbar";
-import { getCart, getProduct } from "lib/shopify";
-import { computeSavings } from "lib/format";
-import { PRODUCT_HANDLE } from "lib/content";
+import { getCart } from "lib/shopify";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { hasLocale } from "next-intl";
@@ -93,18 +91,8 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   const messages = await getMessages();
-  const country = (await cookies()).get("country")?.value || "FR";
+  const detectedCountry = (await cookies()).get("country")?.value || "";
   const cart = getCart();
-  const product = await getProduct(PRODUCT_HANDLE, country);
-  const compareAt = product?.variants[0]?.compareAtPrice;
-  const savingsPerUnit = compareAt
-    ? computeSavings(
-        product!.priceRange.maxVariantPrice.amount,
-        compareAt.amount,
-      )
-    : 0;
-  const currencyCode =
-    product?.priceRange.maxVariantPrice.currencyCode || "EUR";
 
   return (
     <html lang={locale} className={dmSans.variable}>
@@ -124,12 +112,9 @@ export default async function LocaleLayout({
         </a>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <CartProvider cartPromise={cart}>
-            <DeliveryCountryProvider>
+            <DeliveryCountryProvider initialCountry={detectedCountry}>
               <AnnouncementBar />
-              <Navbar
-                savingsPerUnit={savingsPerUnit}
-                currencyCode={currencyCode}
-              />
+              <Navbar />
               <main id="main-content" className="overflow-x-clip">
                 {children}
               </main>
