@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { ga4Bootstrap } from "lib/analytics-bootstrap";
 import { UmamiAnalytics } from "./umami-analytics";
 import { trackUmami } from "lib/umami";
-import { HALLOWEEN_CAMPAIGN, isHalloweenActive } from "lib/campaign";
+import { getActiveCampaign, isSeasonalCode } from "lib/campaign";
 
 const GA_ID = "G-D315FW4BML";
 const CLARITY_ID = "vxtexd0crl";
@@ -209,16 +209,17 @@ export function trackAddToCart(product: {
   quantity: number;
 }) {
   if (!hasConsent()) return;
+  const campaign = getActiveCampaign();
   trackUmami("add_to_cart", {
     variant: /duo/i.test(product.name) ? "duo" : "original",
     quantity: product.quantity,
-    ...(isHalloweenActive() ? { promo: "halloween10" } : {}),
+    ...(campaign ? { promo: campaign.id } : {}),
   });
   // GA4
   window.gtag?.("event", "add_to_cart", {
     currency: product.currency,
     value: parseFloat(product.price) * product.quantity,
-    ...(isHalloweenActive() ? { promotion_id: HALLOWEEN_CAMPAIGN.code } : {}),
+    ...(campaign ? { promotion_id: campaign.code } : {}),
     items: [
       {
         item_name: product.name,
@@ -259,8 +260,8 @@ export function trackBeginCheckout(cart: {
 }) {
   if (!hasConsent()) return;
   trackUmami("checkout_started", {
-    ...(cart.coupon === HALLOWEEN_CAMPAIGN.code
-      ? { promo: "halloween10" }
+    ...(cart.coupon && isSeasonalCode(cart.coupon)
+      ? { promo: cart.coupon.toLowerCase() }
       : {}),
   });
   const value = parseFloat(cart.value);
