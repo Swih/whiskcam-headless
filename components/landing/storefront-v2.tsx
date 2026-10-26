@@ -42,7 +42,7 @@ const gallery = [
   "/images/product/whiskcam-kit-en.png",
 ];
 
-/** The 22-second encounter leads the clips; it is also the hero teaser. */
+/** The encounter leads the clips; it is also the hero teaser. */
 const FILM_ORDER = [2, 0, 1] as const;
 
 const MORE_GUIDES = [
@@ -370,7 +370,9 @@ export function StorefrontV2({
               <img src={HERO_CONTENT.posterSrc} alt="" width={96} height={54} />
               <span>
                 <strong>{brand.clipTeaser}</strong>
-                <small>0:22 · {t("films.2")}</small>
+                <small>
+                  {HERO_CONTENT.duration} · {t("films.2")}
+                </small>
               </span>
               <span aria-hidden="true" className={styles.play}>
                 ▶

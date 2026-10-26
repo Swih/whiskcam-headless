@@ -200,7 +200,7 @@ export default async function HomePage({
     uploadDate: "2026-03-01T00:00:00Z",
     contentUrl: baseUrl + HERO_CONTENT.videoSrc,
     embedUrl: baseUrl,
-    duration: "PT0M22S",
+    duration: toIsoDuration(HERO_CONTENT.duration),
     inLanguage: locale,
     publisher: { "@id": ORG_ID },
   };

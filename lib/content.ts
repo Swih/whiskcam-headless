@@ -7,6 +7,7 @@
 export const HERO_CONTENT = {
   videoSrc: "/videos/wk-video-encounter.mp4",
   posterSrc: "/images/hero/whiskcam-hero-video-frame.webp",
+  duration: "0:15",
 };
 
 // -----------------------------------------------------------------------------
@@ -52,13 +53,37 @@ export const PRODUCT_FACTS = {
 /** Countries the free-shipping offer and the return policy actually cover. */
 // DSers, supplier 1005008267867556, X6 / only camera, checked 2026-10-11.
 // IE, PT, DK and PL currently have no shipping method. Shopify zones match.
-export const SHIPPING_COUNTRIES = ["US", "CA", "GB", "FR", "BE", "NL", "LU", "MT", "ES", "NO", "FI", "AU", "NZ"] as const;
+export const SHIPPING_COUNTRIES = [
+  "US",
+  "CA",
+  "GB",
+  "FR",
+  "BE",
+  "NL",
+  "LU",
+  "MT",
+  "ES",
+  "NO",
+  "FI",
+  "AU",
+  "NZ",
+] as const;
 
 /** Supplier estimates in days, not guaranteed arrival dates or business days. */
 export const SHIPPING_ESTIMATES: Record<string, readonly [number, number]> = {
-  US: [9, 17], CA: [8, 15], GB: [7, 17], FR: [7, 14], BE: [7, 21],
-  NL: [7, 16], LU: [8, 17], MT: [13, 23], ES: [8, 16], NO: [11, 20],
-  FI: [19, 29], AU: [7, 15], NZ: [6, 16],
+  US: [9, 17],
+  CA: [8, 15],
+  GB: [7, 17],
+  FR: [7, 14],
+  BE: [7, 21],
+  NL: [7, 16],
+  LU: [8, 17],
+  MT: [13, 23],
+  ES: [8, 16],
+  NO: [11, 20],
+  FI: [19, 29],
+  AU: [7, 15],
+  NZ: [6, 16],
 };
 
 export const STATS = [
@@ -77,11 +102,7 @@ export const FEATURES = [
   { icon: "shield" },
 ];
 
-export const HOW_IT_WORKS = [
-  { step: 1 },
-  { step: 2 },
-  { step: 3 },
-];
+export const HOW_IT_WORKS = [{ step: 1 }, { step: 2 }, { step: 3 }];
 
 export const COMPARISON = [
   { whiskcam: "€79", others: "€70–380" },
@@ -142,21 +163,62 @@ export const POV_IMAGES = [
   { src: "/images/pov/wk-pov-2.webp", alt: "Cat POV meeting another cat" },
   { src: "/images/pov/wk-pov-3.webp", alt: "Cat POV rooftop adventure" },
   { src: "/images/pov/wk-pov-4.webp", alt: "Cat POV through the neighborhood" },
-  { src: "/images/pov/wk-pov-sky-whiskers.webp", alt: "Cat POV looking up at the sky" },
+  {
+    src: "/images/pov/wk-pov-sky-whiskers.webp",
+    alt: "Cat POV looking up at the sky",
+  },
   { src: "/images/pov/wk-pov-6.webp", alt: "Cat POV chasing through the yard" },
-  { src: "/images/pov/wk-pov-7.webp", alt: "Cat POV scratching post adventure" },
+  {
+    src: "/images/pov/wk-pov-7.webp",
+    alt: "Cat POV scratching post adventure",
+  },
   { src: "/images/pov/wk-pov-8.webp", alt: "Cat POV wild outdoor exploration" },
 ];
 
 // title is kept in English for JSON-LD structured data in app/page.tsx (SEO)
 export const VIDEOS = [
-  { src: "/videos/wk-video-chase.mp4", title: "The Chase", duration: "0:08", poster: "/images/pov/wk-pov-1.webp" },
-  { src: "/videos/wk-video-confrontation.mp4", title: "The Confrontation", duration: "0:13", poster: "/images/pov/wk-pov-2.webp" },
-  { src: "/videos/wk-video-encounter.mp4", title: "The Encounter", duration: "0:22", poster: "/images/pov/wk-pov-3.webp" },
-  { src: "/videos/wk-video-catnip.mp4", title: "Hold My Catnip", duration: "0:15", poster: "/images/pov/wk-pov-6.webp" },
-  { src: "/videos/wk-video-nails.mp4", title: "Nail Care Session", duration: "0:12", poster: "/images/pov/wk-pov-7.webp" },
-  { src: "/videos/wk-video-wild.mp4", title: "Cats Gone Wild", duration: "0:18", poster: "/images/pov/wk-pov-8.webp" },
-  { src: "/videos/wk-video-ungrounded.mp4", title: "Ungrounded", duration: "0:14", poster: "/images/pov/wk-pov-sky-whiskers.webp" },
+  {
+    src: "/videos/wk-video-chase.mp4",
+    title: "The Chase",
+    duration: "0:08",
+    poster: "/images/pov/wk-pov-1.webp",
+  },
+  {
+    src: "/videos/wk-video-confrontation.mp4",
+    title: "The Confrontation",
+    duration: "0:13",
+    poster: "/images/pov/wk-pov-2.webp",
+  },
+  {
+    src: "/videos/wk-video-encounter.mp4",
+    title: "The Encounter",
+    duration: HERO_CONTENT.duration,
+    poster: "/images/pov/wk-pov-3.webp",
+  },
+  {
+    src: "/videos/wk-video-catnip.mp4",
+    title: "Hold My Catnip",
+    duration: "0:25",
+    poster: "/images/pov/wk-pov-6.webp",
+  },
+  {
+    src: "/videos/wk-video-nails.mp4",
+    title: "Nail Care Session",
+    duration: "0:13",
+    poster: "/images/pov/wk-pov-7.webp",
+  },
+  {
+    src: "/videos/wk-video-wild.mp4",
+    title: "Cats Gone Wild",
+    duration: "0:20",
+    poster: "/images/pov/wk-pov-8.webp",
+  },
+  {
+    src: "/videos/wk-video-ungrounded.mp4",
+    title: "Ungrounded",
+    duration: "0:17",
+    poster: "/images/pov/wk-pov-sky-whiskers.webp",
+  },
 ];
 
 export const PRODUCT_HANDLE = "whiskcam-original";
