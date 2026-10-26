@@ -10,7 +10,7 @@ import {
   useDeliveryCountry,
 } from "components/delivery-info";
 import { useHalloweenCampaign } from "components/campaign/use-halloween-campaign";
-import { HALLOWEEN_CAMPAIGN, isCampaignProduct } from "lib/campaign";
+import { isSeasonalCode, isCampaignProduct } from "lib/campaign";
 import { getCampaignCopy } from "lib/campaign-copy";
 import { StorageNotice } from "components/landing/storage-notice";
 import { DEFAULT_OPTION } from "lib/constants";
@@ -29,7 +29,7 @@ export default function CartModal() {
   const t = useTranslations("cart");
   const locale = useLocale();
   const campaignActive = useHalloweenCampaign();
-  const campaign = getCampaignCopy(locale);
+  const campaign = getCampaignCopy(locale, campaignActive);
   const deliveryCountry = useDeliveryCountry()?.country;
   const unsupported = !!deliveryCountry && !isServedCountry(deliveryCountry);
   const { cart, updateCartItem } = useCart();
@@ -58,14 +58,13 @@ export default function CartModal() {
   const hasItems = cart && cart.lines.length > 0;
   const campaignApplied = !!cart?.discountCodes?.some(
     (code) =>
-      code.code.toUpperCase() === HALLOWEEN_CAMPAIGN.code && code.applicable,
+      code.code.toUpperCase() === campaignActive?.code && code.applicable,
   );
   const campaignEligible = !!cart?.lines.some((line) =>
     isCampaignProduct(line.merchandise.product.handle),
   );
   const otherOfferApplied = !!cart?.discountCodes?.some(
-    (code) =>
-      code.code.toUpperCase() !== HALLOWEEN_CAMPAIGN.code && code.applicable,
+    (code) => !isSeasonalCode(code.code) && code.applicable,
   );
 
   return (

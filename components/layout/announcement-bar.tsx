@@ -4,11 +4,12 @@ import { useLocale, useTranslations } from "next-intl";
 import { useHalloweenCampaign } from "components/campaign/use-halloween-campaign";
 import { getCampaignCopy } from "lib/campaign-copy";
 import { Link } from "i18n/navigation";
+import { CampaignCountdown } from "components/campaign/countdown";
 
 export function AnnouncementBar() {
   const t = useTranslations("announcement");
   const active = useHalloweenCampaign();
-  const copy = getCampaignCopy(useLocale());
+  const copy = getCampaignCopy(useLocale(), active);
   if (active) {
     return (
       <Link
@@ -20,6 +21,7 @@ export function AnnouncementBar() {
         </strong>
         <span className="text-[#f2c493]">{copy.code}</span>
         <span className="text-sm">{copy.deadline}</span>
+        <CampaignCountdown campaign={active} />
       </Link>
     );
   }

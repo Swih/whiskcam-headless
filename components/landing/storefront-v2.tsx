@@ -80,9 +80,9 @@ export function StorefrontV2({
   const t = useTranslations("v2");
   const locale = useLocale();
   const copy = getStorefrontCopy(locale);
-  const offer = getCampaignCopy(locale);
   // False on the server and first render; switches itself off at the campaign end.
   const campaign = useHalloweenCampaign();
+  const offer = getCampaignCopy(locale, campaign);
   const router = useRouter();
   const { addCartItem } = useCart();
   const [pack, setPack] = useState<"single" | "duo">("single");
@@ -113,7 +113,7 @@ export function StorefrontV2({
   const codeMoney = (p?: Product) =>
     campaign && p && isCampaignProduct(p.handle)
       ? format(
-          halloweenPrice(p.priceRange.maxVariantPrice.amount),
+          halloweenPrice(p.priceRange.maxVariantPrice.amount, campaign),
           p.priceRange.maxVariantPrice.currencyCode,
         )
       : null;
@@ -139,7 +139,10 @@ export function StorefrontV2({
     ? t("perCamera", {
         price: format(
           (duoOnCode
-            ? halloweenPrice(duoProduct.priceRange.maxVariantPrice.amount)
+            ? halloweenPrice(
+                duoProduct.priceRange.maxVariantPrice.amount,
+                campaign!,
+              )
             : Number(duoProduct.priceRange.maxVariantPrice.amount)) / 2,
           duoProduct.priceRange.maxVariantPrice.currencyCode,
         ),
@@ -462,7 +465,11 @@ export function StorefrontV2({
 
           {campaign && (
             <div className={styles.season}>
-              <p className={styles.seasonKicker}>{copy.season.kicker}</p>
+              <p className={styles.seasonKicker}>
+                {campaign.code === "HALLOWEEN15"
+                  ? copy.season.kicker
+                  : offer.name}
+              </p>
               <p>
                 <strong>{offer.name}</strong> · {offer.banner} · {offer.code}
               </p>

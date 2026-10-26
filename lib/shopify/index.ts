@@ -1,8 +1,8 @@
 import crypto from "crypto";
 import {
-  HALLOWEEN_CAMPAIGN,
+  getActiveCampaign,
   isCampaignProduct,
-  isHalloweenActive,
+  isSeasonalCode,
 } from "lib/campaign";
 import {
   HIDDEN_PRODUCT_TAG,
@@ -336,21 +336,27 @@ export async function getCart(): Promise<Cart | undefined> {
 /** Synchronise our campaign only; never remove or replace a buyer's other code. */
 export async function syncHalloweenDiscount(cart: Cart): Promise<Cart> {
   if (!cart.id || !endpoint || !key) return cart;
-  const ownCode = HALLOWEEN_CAMPAIGN.code;
+  const campaign = getActiveCampaign();
   const codes = cart.discountCodes ?? [];
-  const own = codes.find((item) => item.code.toUpperCase() === ownCode);
-  const others = codes.filter((item) => item.code.toUpperCase() !== ownCode);
+  const own = codes.filter((item) => isSeasonalCode(item.code));
+  const others = codes.filter((item) => !isSeasonalCode(item.code));
   const eligible = cart.lines.some((line) =>
     isCampaignProduct(line.merchandise.product.handle),
   );
-  const shouldApply = isHalloweenActive() && eligible;
+  const shouldApply =
+    campaign && eligible && !others.some((item) => item.applicable);
   // An existing applicable offer takes precedence over our non-stacking code.
-  if (shouldApply && others.some((item) => item.applicable)) return cart;
-  if (shouldApply && own?.applicable) return cart;
-  if (!shouldApply && !own) return cart;
+  if (
+    shouldApply &&
+    own.length === 1 &&
+    own[0]?.code.toUpperCase() === campaign.code &&
+    own[0].applicable
+  )
+    return cart;
+  if (!shouldApply && !own.length) return cart;
   const discountCodes = [
     ...others.map((item) => item.code),
-    ...(shouldApply ? [ownCode] : []),
+    ...(shouldApply ? [campaign.code] : []),
   ];
   type DiscountOperation = {
     variables: { cartId: string; discountCodes: string[]; country?: string };
