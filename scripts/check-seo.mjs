@@ -219,7 +219,8 @@ for (const [i, entry] of entries.entries()) {
     "English article advertised as translation",
   );
   if (!urls[i].includes("/blog/")) {
-    const path = new URL(urls[i]).pathname.replace(/^\/(fr|de|es)(?=\/|$)/, "") || "/";
+    const path =
+      new URL(urls[i]).pathname.replace(/^\/(fr|de|es)(?=\/|$)/, "") || "/";
     const changedCampaignRoute = path === "/" || path === "/start";
     const changedPolicy = /\/policies\/(legal|terms|returns|privacy)$/.test(
       urls[i],
@@ -230,7 +231,10 @@ for (const [i, entry] of entries.entries()) {
         "Wrong policy modification date",
       );
     else if (changedCampaignRoute)
-      check(entry.includes("<lastmod>2026-10-26"), "Wrong campaign route modification date");
+      check(
+        entry.includes("<lastmod>2026-10-26"),
+        "Wrong campaign route modification date",
+      );
     else check(!entry.includes("<lastmod>"), "Synthetic static lastmod date");
   }
 }
