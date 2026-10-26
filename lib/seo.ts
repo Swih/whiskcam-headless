@@ -29,6 +29,7 @@ export const TRANSLATED_ROUTES = new Set<string>([
   "",
   "/about",
   "/faq",
+  "/start",
   "/policies/legal",
   "/policies/terms",
   "/policies/returns",

@@ -1,7 +1,30 @@
 import cartFragment from "../fragments/cart";
 
+export const updateCartDiscountCodesMutation = /* GraphQL */ `
+  mutation updateCartDiscountCodes(
+    $cartId: ID!
+    $discountCodes: [String!]!
+    $country: CountryCode
+  ) @inContext(country: $country) {
+    cartDiscountCodesUpdate(cartId: $cartId, discountCodes: $discountCodes) {
+      cart {
+        ...cart
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+  ${cartFragment}
+`;
+
 export const addToCartMutation = /* GraphQL */ `
-  mutation addToCart($cartId: ID!, $lines: [CartLineInput!]!, $country: CountryCode) @inContext(country: $country) {
+  mutation addToCart(
+    $cartId: ID!
+    $lines: [CartLineInput!]!
+    $country: CountryCode
+  ) @inContext(country: $country) {
     cartLinesAdd(cartId: $cartId, lines: $lines) {
       cart {
         ...cart
@@ -12,7 +35,8 @@ export const addToCartMutation = /* GraphQL */ `
 `;
 
 export const createCartMutation = /* GraphQL */ `
-  mutation createCart($lineItems: [CartLineInput!], $country: CountryCode) @inContext(country: $country) {
+  mutation createCart($lineItems: [CartLineInput!], $country: CountryCode)
+  @inContext(country: $country) {
     cartCreate(input: { lines: $lineItems }) {
       cart {
         ...cart
@@ -23,7 +47,11 @@ export const createCartMutation = /* GraphQL */ `
 `;
 
 export const editCartItemsMutation = /* GraphQL */ `
-  mutation editCartItems($cartId: ID!, $lines: [CartLineUpdateInput!]!, $country: CountryCode) @inContext(country: $country) {
+  mutation editCartItems(
+    $cartId: ID!
+    $lines: [CartLineUpdateInput!]!
+    $country: CountryCode
+  ) @inContext(country: $country) {
     cartLinesUpdate(cartId: $cartId, lines: $lines) {
       cart {
         ...cart
@@ -34,7 +62,8 @@ export const editCartItemsMutation = /* GraphQL */ `
 `;
 
 export const removeFromCartMutation = /* GraphQL */ `
-  mutation removeFromCart($cartId: ID!, $lineIds: [ID!]!, $country: CountryCode) @inContext(country: $country) {
+  mutation removeFromCart($cartId: ID!, $lineIds: [ID!]!, $country: CountryCode)
+  @inContext(country: $country) {
     cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
       cart {
         ...cart

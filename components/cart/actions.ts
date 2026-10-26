@@ -8,14 +8,14 @@ import {
   getCart,
   removeFromCart,
   updateCart,
+  syncHalloweenDiscount,
 } from "lib/shopify";
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 export async function addItem(
   prevState: unknown,
-  selectedVariantId: string | undefined
+  selectedVariantId: string | undefined,
 ) {
   if (!selectedVariantId) {
     return "Error adding item to cart";
@@ -23,9 +23,20 @@ export async function addItem(
 
   try {
     if (!(await cookies()).get("cartId")) await createCartAndSetCookie();
-    const updated = await addToCart([{ merchandiseId: selectedVariantId, quantity: 1 }]);
-    if (!updated.id || !updated.lines.some((line) => line.merchandise.id === selectedVariantId)) {
+    const updated = await addToCart([
+      { merchandiseId: selectedVariantId, quantity: 1 },
+    ]);
+    if (
+      !updated.id ||
+      !updated.lines.some((line) => line.merchandise.id === selectedVariantId)
+    ) {
       return "Error adding item to cart";
+    }
+    // A temporary promotion error must never discard an otherwise valid cart.
+    try {
+      await syncHalloweenDiscount(updated);
+    } catch {
+      console.warn("Could not synchronise the seasonal cart discount.");
     }
     revalidateTag(TAGS.cart, "seconds");
   } catch (e) {
@@ -42,7 +53,7 @@ export async function removeItem(prevState: unknown, merchandiseId: string) {
     }
 
     const lineItem = cart.lines.find(
-      (line) => line.merchandise.id === merchandiseId
+      (line) => line.merchandise.id === merchandiseId,
     );
 
     if (lineItem && lineItem.id) {
@@ -61,7 +72,7 @@ export async function updateItemQuantity(
   payload: {
     merchandiseId: string;
     quantity: number;
-  }
+  },
 ) {
   const { merchandiseId, quantity } = payload;
 
@@ -73,7 +84,7 @@ export async function updateItemQuantity(
     }
 
     const lineItem = cart.lines.find(
-      (line) => line.merchandise.id === merchandiseId
+      (line) => line.merchandise.id === merchandiseId,
     );
 
     if (lineItem && lineItem.id) {
@@ -99,8 +110,15 @@ export async function updateItemQuantity(
   }
 }
 
-export async function redirectToCheckout() {
-  const cart = await getCart();
+export async function prepareCheckout() {
+  let cart = await getCart();
+  if (cart) {
+    try {
+      cart = await syncHalloweenDiscount(cart);
+    } catch {
+      console.warn("Could not synchronise the seasonal checkout discount.");
+    }
+  }
   if (cart?.checkoutUrl) {
     // Shopify builds the checkout URL on its own primary domain. Send the buyer
     // straight there — with one exception: if it comes back on the storefront
@@ -118,9 +136,21 @@ export async function redirectToCheckout() {
     if (checkoutHost && new URL(url).hostname === new URL(baseUrl).hostname) {
       url = url.replace(/https?:\/\/[^/]+/, `https://${checkoutHost}`);
     }
-    redirect(url);
+    return {
+      url,
+      value: cart.cost.totalAmount.amount,
+      currency: cart.cost.totalAmount.currencyCode,
+      coupon: cart.discountCodes?.find((code) => code.applicable)?.code,
+      items: cart.lines.map((line) => ({
+        name: line.merchandise.product.title,
+        price: (Number(line.cost.totalAmount.amount) / line.quantity).toFixed(
+          2,
+        ),
+        quantity: line.quantity,
+      })),
+    };
   }
-  redirect("/");
+  return null;
 }
 
 export async function createCartAndSetCookie() {

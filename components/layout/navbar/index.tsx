@@ -9,28 +9,15 @@ import { useTranslations } from "next-intl";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 
-interface NavbarProps {
-  savingsPerUnit?: number;
-  currencyCode?: string;
-}
-
-export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
+export function Navbar() {
   const t = useTranslations("nav");
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
 
-  // Pages that render a dark hero directly behind the navbar. The transparent
-  // navbar with white text is only safe on these pages. Everywhere else the
-  // body background is white, so the navbar must render with a light bg and
-  // dark text from the start — otherwise the navbar becomes invisible at the
-  // top of the page (white text on white body).
-  const isDarkHeroPage = pathname === "/about";
-
-  // Visual state: use the "light surface / dark text" look any time either
-  // the user has scrolled OR the current page doesn't have a dark hero.
-  const lightSurface = scrolled || !isDarkHeroPage;
+  // The sticky navigation has its own light background on every page.
+  const lightSurface = true;
 
   const NAV_LINKS = [
     { title: t("shop"), path: "#product" },
@@ -62,11 +49,7 @@ export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
   return (
     <>
       <nav
-        className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
-          lightSurface
-            ? `${!scrolled && pathname === "/" ? "top-9" : "top-0"} bg-white/90 shadow-sm backdrop-blur-xl`
-            : "top-9 bg-transparent"
-        }`}
+        className={`sticky top-0 z-40 bg-white/95 backdrop-blur-xl ${scrolled ? "shadow-sm" : "border-b border-wk-grey-100"}`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
           {/* Mobile hamburger */}
@@ -138,10 +121,7 @@ export function Navbar({ savingsPerUnit, currencyCode }: NavbarProps) {
               <LanguageSwitcher variant={lightSurface ? "light" : "dark"} />
             </div>
             <div className={lightSurface ? "text-wk-black" : "text-white"}>
-              <CartModal
-                savingsPerUnit={savingsPerUnit}
-                currencyCode={currencyCode}
-              />
+              <CartModal />
             </div>
           </div>
         </div>

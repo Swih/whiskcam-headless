@@ -4,13 +4,20 @@ import { Dialog, Transition } from "@headlessui/react";
 import { ShoppingCartIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Price from "components/price";
 import { PRODUCT_HANDLE, DUO_PRODUCT_HANDLE } from "lib/content";
-import { DeliveryInfo } from "components/delivery-info";
+import {
+  DeliveryInfo,
+  isServedCountry,
+  useDeliveryCountry,
+} from "components/delivery-info";
+import { useHalloweenCampaign } from "components/campaign/use-halloween-campaign";
+import { HALLOWEEN_CAMPAIGN, isCampaignProduct } from "lib/campaign";
+import { getCampaignCopy } from "lib/campaign-copy";
 import { StorageNotice } from "components/landing/storage-notice";
 import { DEFAULT_OPTION } from "lib/constants";
 import Image from "next/image";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
-import { createCartAndSetCookie, redirectToCheckout } from "./actions";
+import { createCartAndSetCookie, prepareCheckout } from "./actions";
 import { trackBeginCheckout } from "components/analytics";
 import { useCart } from "./cart-context";
 import { DeleteItemButton } from "./delete-item-button";
@@ -18,17 +25,16 @@ import { EditItemQuantityButton } from "./edit-item-quantity-button";
 import OpenCart from "./open-cart";
 import { useLocale, useTranslations } from "next-intl";
 
-export default function CartModal({
-  savingsPerUnit,
-  currencyCode: propCurrencyCode,
-}: {
-  savingsPerUnit?: number;
-  currencyCode?: string;
-}) {
+export default function CartModal() {
   const t = useTranslations("cart");
   const locale = useLocale();
+  const campaignActive = useHalloweenCampaign();
+  const campaign = getCampaignCopy(locale);
+  const deliveryCountry = useDeliveryCountry()?.country;
+  const unsupported = !!deliveryCountry && !isServedCountry(deliveryCountry);
   const { cart, updateCartItem } = useCart();
   const [isOpen, setIsOpen] = useState(false);
+  const [checkoutError, setCheckoutError] = useState(false);
   const quantityRef = useRef(cart?.totalQuantity);
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
@@ -50,15 +56,17 @@ export default function CartModal({
   }, [isOpen, cart?.totalQuantity, quantityRef]);
 
   const hasItems = cart && cart.lines.length > 0;
-  const resolvedCurrency =
-    cart?.cost.totalAmount.currencyCode || propCurrencyCode || "EUR";
-  const totalSavings =
-    savingsPerUnit && cart
-      ? savingsPerUnit *
-        cart.lines
-          .filter((line) => line.merchandise.product.handle === PRODUCT_HANDLE)
-          .reduce((sum, line) => sum + line.quantity, 0)
-      : 0;
+  const campaignApplied = !!cart?.discountCodes?.some(
+    (code) =>
+      code.code.toUpperCase() === HALLOWEEN_CAMPAIGN.code && code.applicable,
+  );
+  const campaignEligible = !!cart?.lines.some((line) =>
+    isCampaignProduct(line.merchandise.product.handle),
+  );
+  const otherOfferApplied = !!cart?.discountCodes?.some(
+    (code) =>
+      code.code.toUpperCase() !== HALLOWEEN_CAMPAIGN.code && code.applicable,
+  );
 
   return (
     <>
@@ -90,9 +98,9 @@ export default function CartModal({
             leaveFrom="translate-x-0"
             leaveTo="translate-x-full"
           >
-            <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex h-full w-full flex-col bg-white text-wk-black shadow-2xl md:w-[420px]">
+            <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex h-full w-full flex-col overflow-y-auto bg-white text-wk-black shadow-2xl md:w-[420px]">
               {/* Header */}
-              <div className="flex items-center justify-between border-b border-wk-grey-100 px-5 py-4">
+              <div className="flex shrink-0 items-center justify-between border-b border-wk-grey-100 px-5 py-4">
                 <div className="flex items-center gap-2">
                   <ShoppingCartIcon className="h-5 w-5 text-wk-black" />
                   <Dialog.Title className="text-base font-semibold">
@@ -155,7 +163,7 @@ export default function CartModal({
                   </div>
 
                   {/* Cart items */}
-                  <div className="flex-1 overflow-auto px-5">
+                  <div className="min-h-40 flex-1 overflow-auto px-5">
                     <ul className="divide-y divide-wk-grey-100">
                       {cart.lines
                         .sort((a, b) =>
@@ -260,33 +268,24 @@ export default function CartModal({
                   </div>
 
                   {/* Footer — totals + checkout */}
-                  <div className="border-t border-wk-grey-100 bg-wk-grey-50 px-5 pb-5 pt-4">
-                    {/* Savings */}
-                    {totalSavings > 0 && (
-                      <div className="mb-3 flex items-center justify-center gap-1.5 rounded-lg bg-wk-green/5 px-3 py-2">
-                        <svg
-                          className="h-3.5 w-3.5 text-wk-green"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth={2.5}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                        <span className="text-xs font-semibold text-wk-green">
-                          {t("saving", {
-                            amount: new Intl.NumberFormat(locale, {
-                              style: "currency",
-                              currency: resolvedCurrency,
-                            }).format(totalSavings),
-                          })}
-                        </span>
-                      </div>
-                    )}
+                  <div className="shrink-0 border-t border-wk-grey-100 bg-wk-grey-50 px-5 pb-5 pt-4">
+                    {campaignActive &&
+                      campaignEligible &&
+                      !otherOfferApplied && (
+                        <div className="mb-3 border-l-2 border-[#b8430f] pl-3 text-sm text-wk-black">
+                          <strong>
+                            {campaignApplied
+                              ? campaign.applied
+                              : campaign.pending}
+                          </strong>
+                          {campaignApplied && (
+                            <p className="mt-1 text-sm">{campaign.code}</p>
+                          )}
+                          <p className="mt-1 text-sm text-wk-grey-600">
+                            {campaign.deadline}
+                          </p>
+                        </div>
+                      )}
 
                     <div className="space-y-1.5 text-sm">
                       <div className="flex items-center justify-between">
@@ -303,8 +302,8 @@ export default function CartModal({
                         <span className="text-wk-grey-500">
                           {t("shipping")}
                         </span>
-                        <span className="text-xs font-semibold text-wk-green">
-                          {t("freeLabel")}
+                        <span className="max-w-48 text-right text-sm text-wk-grey-600">
+                          {campaign.shipping}
                         </span>
                       </div>
                     </div>
@@ -323,28 +322,37 @@ export default function CartModal({
 
                     {/* Checkout button */}
                     <form
-                      action={redirectToCheckout}
+                      action={async () => {
+                        setCheckoutError(false);
+                        try {
+                          const checkout = await prepareCheckout();
+                          if (!checkout) {
+                            setCheckoutError(true);
+                            return;
+                          }
+                          // Measurement uses Shopify's synchronized price. Tracking
+                          // failures must never prevent a buyer reaching checkout.
+                          try {
+                            trackBeginCheckout(checkout);
+                          } finally {
+                            window.location.assign(checkout.url);
+                          }
+                        } catch {
+                          setCheckoutError(true);
+                        }
+                      }}
                       className="mt-4"
-                      onSubmit={() =>
-                        trackBeginCheckout({
-                          value: cart.cost.totalAmount.amount,
-                          currency: cart.cost.totalAmount.currencyCode,
-                          items: cart.lines.map((line) => ({
-                            name: line.merchandise.product.title,
-                            price: (
-                              Number(line.cost.totalAmount.amount) /
-                              line.quantity
-                            ).toFixed(2),
-                            quantity: line.quantity,
-                          })),
-                        })
-                      }
                     >
-                      <CheckoutButton />
+                      <CheckoutButton blocked={unsupported} />
+                      {checkoutError && (
+                        <p role="alert" className="mt-2 text-sm text-red-700">
+                          {campaign.checkoutError}
+                        </p>
+                      )}
                     </form>
 
                     {/* Trust line */}
-                    <div className="mt-3 flex items-center justify-center gap-4 text-[10px] text-wk-grey-400">
+                    <div className="mt-3 flex flex-wrap items-center justify-center gap-4 text-sm text-wk-grey-600">
                       <span className="flex items-center gap-1">
                         <svg
                           className="h-3 w-3"
@@ -381,15 +389,15 @@ export default function CartModal({
   );
 }
 
-function CheckoutButton() {
+function CheckoutButton({ blocked = false }: { blocked?: boolean }) {
   const { pending } = useFormStatus();
   const t = useTranslations("cart");
 
   return (
     <button
-      className="flex w-full items-center justify-center gap-2 rounded-[var(--radius-btn)] bg-wk-black px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_20px_rgba(245,166,35,0.3)] active:scale-[0.98] disabled:opacity-70"
+      className="flex min-h-12 w-full items-center justify-center gap-2 rounded-[var(--radius-btn)] bg-wk-amber px-6 py-3.5 text-base font-semibold text-wk-black transition-colors hover:bg-wk-amber-hover disabled:opacity-60"
       type="submit"
-      disabled={pending}
+      disabled={pending || blocked}
     >
       {pending ? (
         <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">

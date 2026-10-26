@@ -15,7 +15,18 @@ type Route = {
 // `/track` is noindex at the page level and `/product/[handle]` 308-redirects to `/`,
 // so neither belongs here.
 const STATIC_ROUTES: Route[] = [
-  { path: "", priority: 1.0, changeFrequency: "weekly" },
+  {
+    path: "",
+    priority: 1.0,
+    changeFrequency: "weekly",
+    lastModified: "2026-10-26",
+  },
+  {
+    path: "/start",
+    priority: 0.6,
+    changeFrequency: "monthly",
+    lastModified: "2026-10-26",
+  },
   { path: "/what-is-whiskcam", priority: 0.9, changeFrequency: "monthly" },
   { path: "/blog", priority: 0.8, changeFrequency: "weekly" },
   { path: "/about", priority: 0.6, changeFrequency: "monthly" },

@@ -1,5 +1,10 @@
 import crypto from "crypto";
 import {
+  HALLOWEEN_CAMPAIGN,
+  isCampaignProduct,
+  isHalloweenActive,
+} from "lib/campaign";
+import {
   HIDDEN_PRODUCT_TAG,
   SHOPIFY_GRAPHQL_API_ENDPOINT,
   TAGS,
@@ -18,6 +23,7 @@ import {
   createCartMutation,
   editCartItemsMutation,
   removeFromCartMutation,
+  updateCartDiscountCodesMutation,
 } from "./mutations/cart";
 import { getCartQuery } from "./queries/cart";
 import {
@@ -83,7 +89,6 @@ export async function shopifyFetch<T>({
   }
 
   try {
-
     const result = await fetch(endpoint, {
       method: "POST",
       headers: {
@@ -143,7 +148,7 @@ const reshapeCart = (cart: ShopifyCart): Cart => {
 };
 
 const reshapeCollection = (
-  collection: ShopifyCollection
+  collection: ShopifyCollection,
 ): Collection | undefined => {
   if (!collection) {
     return undefined;
@@ -185,7 +190,7 @@ const reshapeImages = (images: Connection<Image>, productTitle: string) => {
 
 const reshapeProduct = (
   product: ShopifyProduct,
-  filterHiddenProducts: boolean = true
+  filterHiddenProducts: boolean = true,
 ) => {
   if (
     !product ||
@@ -200,7 +205,9 @@ const reshapeProduct = (
     ...rest,
     images: reshapeImages(images, product.title),
     variants: removeEdgesAndNodes(variants).map((variant) => {
-      const v = variant as typeof variant & { compareAtPriceV2?: { amount: string; currencyCode: string } };
+      const v = variant as typeof variant & {
+        compareAtPriceV2?: { amount: string; currencyCode: string };
+      };
       return {
         ...variant,
         compareAtPrice: v.compareAtPriceV2 ?? undefined,
@@ -252,7 +259,7 @@ export async function createCart(country?: string): Promise<Cart> {
 }
 
 export async function addToCart(
-  lines: { merchandiseId: string; quantity: number }[]
+  lines: { merchandiseId: string; quantity: number }[],
 ): Promise<Cart> {
   if (!endpoint || !key) return emptyCart;
 
@@ -282,7 +289,7 @@ export async function removeFromCart(lineIds: string[]): Promise<Cart> {
 }
 
 export async function updateCart(
-  lines: { id: string; merchandiseId: string; quantity: number }[]
+  lines: { id: string; merchandiseId: string; quantity: number }[],
 ): Promise<Cart> {
   if (!endpoint || !key) return emptyCart;
 
@@ -326,8 +333,47 @@ export async function getCart(): Promise<Cart | undefined> {
   return reshapeCart(res.body.data.cart);
 }
 
+/** Synchronise our campaign only; never remove or replace a buyer's other code. */
+export async function syncHalloweenDiscount(cart: Cart): Promise<Cart> {
+  if (!cart.id || !endpoint || !key) return cart;
+  const ownCode = HALLOWEEN_CAMPAIGN.code;
+  const codes = cart.discountCodes ?? [];
+  const own = codes.find((item) => item.code.toUpperCase() === ownCode);
+  const others = codes.filter((item) => item.code.toUpperCase() !== ownCode);
+  const eligible = cart.lines.some((line) =>
+    isCampaignProduct(line.merchandise.product.handle),
+  );
+  const shouldApply = isHalloweenActive() && eligible;
+  // An existing applicable offer takes precedence over our non-stacking code.
+  if (shouldApply && others.some((item) => item.applicable)) return cart;
+  if (shouldApply && own?.applicable) return cart;
+  if (!shouldApply && !own) return cart;
+  const discountCodes = [
+    ...others.map((item) => item.code),
+    ...(shouldApply ? [ownCode] : []),
+  ];
+  type DiscountOperation = {
+    variables: { cartId: string; discountCodes: string[]; country?: string };
+    data: {
+      cartDiscountCodesUpdate: {
+        cart: ShopifyCart | null;
+        userErrors: { field: string[] | null; message: string }[];
+      };
+    };
+  };
+  const country = (await cookies()).get("country")?.value;
+  const result = await shopifyFetch<DiscountOperation>({
+    query: updateCartDiscountCodesMutation,
+    variables: { cartId: cart.id, discountCodes, ...(country && { country }) },
+  });
+  const payload = result.body.data?.cartDiscountCodesUpdate;
+  return payload?.cart && !payload.userErrors.length
+    ? reshapeCart(payload.cart)
+    : cart;
+}
+
 export async function getCollection(
-  handle: string
+  handle: string,
 ): Promise<Collection | undefined> {
   "use cache";
   cacheTag(TAGS.collections);
@@ -375,7 +421,7 @@ export async function getCollectionProducts({
   }
 
   return reshapeProducts(
-    removeEdgesAndNodes(res.body.data.collection.products)
+    removeEdgesAndNodes(res.body.data.collection.products),
   );
 }
 
@@ -419,7 +465,7 @@ export async function getCollections(): Promise<Collection[]> {
     // Filter out the `hidden` collections.
     // Collections that start with `hidden-*` need to be hidden on the search page.
     ...reshapeCollections(shopifyCollections).filter(
-      (collection) => !collection.handle.startsWith("hidden")
+      (collection) => !collection.handle.startsWith("hidden"),
     ),
   ];
 
@@ -478,7 +524,10 @@ export async function getPages(): Promise<Page[]> {
   return removeEdgesAndNodes(res.body.data.pages);
 }
 
-export async function getProduct(handle: string, country?: string): Promise<Product | undefined> {
+export async function getProduct(
+  handle: string,
+  country?: string,
+): Promise<Product | undefined> {
   "use cache";
   cacheTag(TAGS.products);
   cacheLife("days");
@@ -499,7 +548,7 @@ export async function getProduct(handle: string, country?: string): Promise<Prod
 }
 
 export async function getProductRecommendations(
-  productId: string
+  productId: string,
 ): Promise<Product[]> {
   "use cache";
   cacheTag(TAGS.products);

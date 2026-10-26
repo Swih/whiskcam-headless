@@ -19,9 +19,14 @@ import {
   trackAddToCart,
   trackViewContent,
 } from "components/analytics";
+import { useHalloweenCampaign } from "components/campaign/use-halloween-campaign";
 import { DeliveryInfo } from "components/delivery-info";
 import { trackUmami } from "lib/umami";
 import { HERO_CONTENT, VIDEOS, PRODUCT_FACTS } from "lib/content";
+import { halloweenPrice, isCampaignProduct } from "lib/campaign";
+import { getCampaignCopy } from "lib/campaign-copy";
+import { getStorefrontCopy } from "lib/halloween-storefront-copy";
+import { startGuide } from "lib/start-guide";
 import type { Product } from "lib/shopify/types";
 import styles from "./storefront-v2.module.css";
 
@@ -56,6 +61,8 @@ const MORE_GUIDES = [
   },
 ];
 
+const PROMISES = ["promiseRecord", "promiseWatch", "promiseKeep"] as const;
+
 function Arrow() {
   return <span aria-hidden="true">↗</span>;
 }
@@ -72,6 +79,10 @@ export function StorefrontV2({
 }) {
   const t = useTranslations("v2");
   const locale = useLocale();
+  const copy = getStorefrontCopy(locale);
+  const offer = getCampaignCopy(locale);
+  // False on the server and first render; switches itself off at the campaign end.
+  const campaign = useHalloweenCampaign();
   const router = useRouter();
   const { addCartItem } = useCart();
   const [pack, setPack] = useState<"single" | "duo">("single");
@@ -86,13 +97,29 @@ export function StorefrontV2({
   const variant =
     selected?.variants.length === 1 ? selected.variants[0] : undefined;
   const canBuy = !!selected?.availableForSale && !!variant?.availableForSale;
+
+  const format = (amount: number, currency: string) =>
+    new Intl.NumberFormat(locale, { style: "currency", currency }).format(
+      amount,
+    );
   const money = (p?: Product) =>
     p
-      ? new Intl.NumberFormat(locale, {
-          style: "currency",
-          currency: p.priceRange.maxVariantPrice.currencyCode,
-        }).format(Number(p.priceRange.maxVariantPrice.amount))
+      ? format(
+          Number(p.priceRange.maxVariantPrice.amount),
+          p.priceRange.maxVariantPrice.currencyCode,
+        )
       : t("unavailable");
+  /** Code price, derived from the live Shopify price; null outside the campaign. */
+  const codeMoney = (p?: Product) =>
+    campaign && p && isCampaignProduct(p.handle)
+      ? format(
+          halloweenPrice(p.priceRange.maxVariantPrice.amount),
+          p.priceRange.maxVariantPrice.currencyCode,
+        )
+      : null;
+  const withoutCode = (p?: Product) =>
+    copy.season.withoutCode.replace("{price}", money(p));
+
   const savings =
     product &&
     duoProduct &&
@@ -101,19 +128,25 @@ export function StorefrontV2({
       ? 2 * Number(product.priceRange.maxVariantPrice.amount) -
         Number(duoProduct.priceRange.maxVariantPrice.amount)
       : 0;
+  // The "vs 2 Originals" comparison competes with the code price, so it waits
+  // until the campaign is over.
   const savingLabel =
-    savings > 0 && product
-      ? new Intl.NumberFormat(locale, {
-          style: "currency",
-          currency: product.priceRange.maxVariantPrice.currencyCode,
-        }).format(savings)
+    !campaign && savings > 0 && product
+      ? format(savings, product.priceRange.maxVariantPrice.currencyCode)
       : null;
+  const duoOnCode = !!duoProduct && !!codeMoney(duoProduct);
   const unitPrice = duoProduct
-    ? new Intl.NumberFormat(locale, {
-        style: "currency",
-        currency: duoProduct.priceRange.maxVariantPrice.currencyCode,
-      }).format(Number(duoProduct.priceRange.maxVariantPrice.amount) / 2)
+    ? t("perCamera", {
+        price: format(
+          (duoOnCode
+            ? halloweenPrice(duoProduct.priceRange.maxVariantPrice.amount)
+            : Number(duoProduct.priceRange.maxVariantPrice.amount)) / 2,
+          duoProduct.priceRange.maxVariantPrice.currencyCode,
+        ),
+      }) + (duoOnCode ? ` ${offer.withCode}` : "")
     : null;
+  const heroCode = codeMoney(product);
+  const selectedCode = codeMoney(selected);
 
   useEffect(() => {
     const hero = document.getElementById("hero");
@@ -228,10 +261,15 @@ export function StorefrontV2({
     ? t("adding")
     : !canBuy
       ? t("unavailable")
-      : t("add", { price: money(selected) });
+      : selectedCode
+        ? `${t("addShort")} — ${selectedCode} ${offer.withCode}`
+        : t("add", { price: money(selected) });
 
   return (
-    <div className={styles.storefront}>
+    <div
+      className={styles.storefront}
+      data-season={campaign ? "halloween" : undefined}
+    >
       <section id="hero" className={styles.hero}>
         <div className={styles.heroCopy}>
           {/* The category line belongs to the H1 so the heading names the
@@ -241,77 +279,123 @@ export function StorefrontV2({
             {t("headline")} <em>{t("headlineAccent")}</em>
           </h1>
           <p className={styles.intro}>{t("intro")}</p>
+
+          {/* The product, what it does and what it costs, before any scrolling. */}
+          <div className={styles.plate}>
+            {campaign && <p className={styles.plateTag}>{offer.name}</p>}
+            <div className={styles.plateShot}>
+              <Image
+                src={gallery[0]!}
+                alt={t("gallery.0")}
+                fill
+                priority
+                sizes="(max-width: 760px) 104px, 168px"
+              />
+            </div>
+            <div className={styles.plateBody}>
+              <p className={styles.plateName}>
+                <strong>Whiskcam Original</strong>
+                <span>{copy.evergreen.productKind}</span>
+              </p>
+              <p className={styles.plateFacts}>
+                {PRODUCT_FACTS.weightGrams} g · 1080P ·{" "}
+                {PRODUCT_FACTS.fieldOfViewDegrees}°.{" "}
+                {copy.evergreen.productRecords}
+              </p>
+              <p className={styles.platePrice}>
+                <strong>{heroCode ?? money(product)}</strong>
+                {heroCode && (
+                  <span className={styles.withCode}>{offer.withCode}</span>
+                )}
+              </p>
+              <p className={styles.plateNote}>
+                {!product?.availableForSale
+                  ? t("unavailable")
+                  : heroCode
+                    ? `${withoutCode(product)} · ${offer.deadline}`
+                    : duoProduct?.availableForSale
+                      ? `${t("noSubscription")} · ${t("duoName")} ${money(duoProduct)}`
+                      : t("noSubscription")}
+              </p>
+            </div>
+          </div>
+
           <div className={styles.heroActions}>
             <a href="#product" className={styles.primary}>
               {t("choose")} <Arrow />
             </a>
-            <button onClick={playHero} className={styles.textButton}>
+            <button
+              type="button"
+              onClick={playHero}
+              className={styles.textButton}
+            >
               {t("watch")} <span aria-hidden="true">▷</span>
             </button>
           </div>
-          <div className={styles.heroNote}>
-            <span>{money(product)}</span>
-            <span>{t("noSubscription")}</span>
-            <a href="#reviews">{t("readReviews")}</a>
-          </div>
         </div>
+
         <div className={styles.heroVisual}>
           <div className={styles.filmFrame}>
-            <div className={styles.filmLabel}>
-              <span>WHISKCAM / POV 003</span>
+            <div className={styles.filmLabel} aria-hidden="true">
+              <span>
+                {campaign
+                  ? `${copy.season.filmLabel} · POV 003`
+                  : "WHISKCAM / POV 003"}
+              </span>
               <span>00:22</span>
             </div>
-            <video
-              ref={heroRef}
-              poster={HERO_CONTENT.posterSrc}
-              src={HERO_CONTENT.videoSrc}
-              controls={heroPlaying}
-              playsInline
-              preload="none"
-              onEnded={() => setHeroPlaying(false)}
-              aria-label={t("heroVideo")}
-            />
-            {!heroPlaying && (
-              <button
-                className={styles.play}
-                onClick={playHero}
-                aria-label={t("watch")}
-              >
-                <span aria-hidden="true">▷</span>
-              </button>
-            )}
+            <div className={styles.filmScreen}>
+              <video
+                ref={heroRef}
+                poster={HERO_CONTENT.posterSrc}
+                src={HERO_CONTENT.videoSrc}
+                controls={heroPlaying}
+                playsInline
+                preload="none"
+                onEnded={() => setHeroPlaying(false)}
+                aria-label={t("heroVideo")}
+              />
+              {!heroPlaying && (
+                <button
+                  type="button"
+                  className={styles.play}
+                  onClick={playHero}
+                  aria-label={t("watch")}
+                >
+                  <span aria-hidden="true">▷</span>
+                </button>
+              )}
+            </div>
             <p className={styles.filmCaption}>{t("filmCaption")}</p>
           </div>
-          <a href="#product" className={styles.cameraNote}>
-            <Image
-              src={gallery[1]!}
-              width={104}
-              height={84}
-              alt={t("gallery.1")}
-            />
-            <span>
-              <strong>Whiskcam Original</strong>
-              <small>{t("scaleNote")}</small>
+          <a href="#product" className={styles.scale}>
+            <span className={styles.scaleShot}>
+              <Image
+                src={gallery[1]!}
+                alt={t("gallery.1")}
+                fill
+                sizes="(max-width: 760px) 132px, 196px"
+              />
             </span>
-            <Arrow />
+            <span className={styles.scaleCaption}>{t("scaleNote")}</span>
           </a>
         </div>
       </section>
 
-      <div className={styles.promiseStrip}>
-        <p>
-          <span>01</span>
-          {t("promiseRecord")}
+      <section className={styles.ledger} aria-labelledby="ledger-title">
+        <p id="ledger-title" className={styles.eyebrow}>
+          {copy.evergreen.howItRecords}
         </p>
-        <p>
-          <span>02</span>
-          {t("promiseWatch")}
-        </p>
-        <p>
-          <span>03</span>
-          {t("promiseKeep")}
-        </p>
-      </div>
+        <ol>
+          {PROMISES.map((key, i) => (
+            <li key={key}>
+              <span className={styles.ledgerNumber}>0{i + 1}</span>
+              <strong>{t(key)}</strong>
+              <span>{copy.evergreen.promiseDetails[i]}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
 
       <section
         id="product"
@@ -328,11 +412,15 @@ export function StorefrontV2({
               sizes="(max-width: 760px) 100vw, 50vw"
               className={styles.contain}
             />
-            <span className={styles.photoCount}>
+            <span className={styles.photoCount} aria-hidden="true">
               {String(photo + 1).padStart(2, "0")} / 04
             </span>
           </div>
-          <div className={styles.thumbnails} aria-label={t("galleryLabel")}>
+          <div
+            className={styles.thumbnails}
+            role="group"
+            aria-label={t("galleryLabel")}
+          >
             {gallery.map((src, i) => (
               <button
                 key={src}
@@ -353,16 +441,39 @@ export function StorefrontV2({
           <p className={styles.eyebrow}>{t("offerEyebrow")}</p>
           <h2 id="offer-title">{t("offerTitle")}</h2>
           <p className={styles.offerIntro}>{t("offerIntro")}</p>
-          <div className={styles.specLine}>
-            <span>1080P</span>
-            <span>{PRODUCT_FACTS.weightGrams} g</span>
-            <span>170°</span>
-            <span>USB-C</span>
-          </div>
+          <dl className={styles.specs}>
+            <div>
+              <dt>{copy.evergreen.specVideo}</dt>
+              <dd>1080P</dd>
+            </div>
+            <div>
+              <dt>{copy.evergreen.specWeight}</dt>
+              <dd>{PRODUCT_FACTS.weightGrams} g</dd>
+            </div>
+            <div>
+              <dt>{copy.evergreen.specView}</dt>
+              <dd>{PRODUCT_FACTS.fieldOfViewDegrees}°</dd>
+            </div>
+            <div>
+              <dt>{copy.evergreen.specCharge}</dt>
+              <dd>{PRODUCT_FACTS.charging}</dd>
+            </div>
+          </dl>
+
+          {campaign && (
+            <div className={styles.season}>
+              <p className={styles.seasonKicker}>{copy.season.kicker}</p>
+              <p>
+                <strong>{offer.name}</strong> · {offer.banner} · {offer.code}
+              </p>
+            </div>
+          )}
+
           <fieldset className={styles.packs} disabled={pending}>
             <legend>{t("choosePack")}</legend>
             {(["single", "duo"] as const).map((kind) => {
               const item = kind === "duo" ? duoProduct : product;
+              const code = codeMoney(item);
               return (
                 <label
                   key={kind}
@@ -375,36 +486,50 @@ export function StorefrontV2({
                     checked={pack === kind}
                     onChange={() => choose(kind)}
                   />
-                  <span>
+                  <span className={styles.packName}>
                     <strong>{t(`${kind}Name`)}</strong>
                     <small>{t(`${kind}Description`)}</small>
                   </span>
                   <span className={styles.packPrice}>
-                    <strong>{money(item)}</strong>
+                    {code ? (
+                      <>
+                        <strong>{code}</strong>
+                        <small className={styles.withCode}>
+                          {offer.withCode}
+                        </small>
+                        <small>{withoutCode(item)}</small>
+                      </>
+                    ) : (
+                      <strong>{money(item)}</strong>
+                    )}
                     {kind === "duo" && savingLabel && (
                       <small>{t("save", { amount: savingLabel })}</small>
                     )}
-                    {kind === "duo" && unitPrice && (
-                      <small>{t("perCamera", { price: unitPrice })}</small>
-                    )}
-                    {!item?.availableForSale && (
-                      <small>{t("unavailable")}</small>
+                    {kind === "duo" && unitPrice && <small>{unitPrice}</small>}
+                    {item && !item.availableForSale && (
+                      <small className={styles.soldOut}>
+                        {t("unavailable")}
+                      </small>
                     )}
                   </span>
                 </label>
               );
             })}
           </fieldset>
+
           <div className={styles.included}>
             <h3>{t("includedTitle")}</h3>
             <p>{pack === "duo" ? t("duoIncluded") : t("singleIncluded")}</p>
-            <p className={styles.storage}>
-              <span aria-hidden="true">＋</span>
-              <span>
-                <strong>{t("storageTitle")}</strong> {t("storageBody")}
-              </span>
-            </p>
+            <Link href="/start" className={styles.textButton}>
+              {startGuide(locale).title} <Arrow />
+            </Link>
           </div>
+          <p id="microsd-note" className={styles.storage}>
+            <span aria-hidden="true">＋</span>
+            <span>
+              <strong>{t("storageTitle")}</strong> {t("storageBody")}
+            </span>
+          </p>
           <div id="add-to-cart" ref={purchaseRef} className={styles.purchase}>
             <button
               className={styles.primary}
@@ -412,6 +537,9 @@ export function StorefrontV2({
               onClick={buy}
               disabled={pending || !canBuy}
               aria-busy={pending}
+              aria-describedby={
+                campaign ? "microsd-note offer-terms" : "microsd-note"
+              }
             >
               {purchaseLabel}
               <Arrow />
@@ -422,6 +550,17 @@ export function StorefrontV2({
               </p>
             )}
           </div>
+          {campaign && (
+            <div id="offer-terms" className={styles.terms}>
+              <h3>
+                {copy.season.termsTitle} · {offer.code}
+              </h3>
+              <p>{offer.terms}</p>
+              <p>
+                {offer.deadline}. {copy.season.autoApplied}
+              </p>
+            </div>
+          )}
           <div className={styles.purchaseTrust}>
             <span>{t("secure")}</span>
             <Link href="/policies/returns">{t("returns")}</Link>
@@ -444,10 +583,17 @@ export function StorefrontV2({
       >
         <div className={styles.sectionIntro}>
           <div>
-            <p className={styles.eyebrow}>{t("footageEyebrow")}</p>
+            <p className={styles.eyebrow}>
+              {campaign ? copy.season.footageEyebrow : t("footageEyebrow")}
+            </p>
             <h2 id="footage-title">{t("footageTitle")}</h2>
           </div>
-          <p>{t("footageIntro")}</p>
+          <div>
+            <p>{t("footageIntro")}</p>
+            {campaign && (
+              <p className={styles.footageNote}>{copy.season.footageNote}</p>
+            )}
+          </div>
         </div>
         <div className={styles.films}>
           {VIDEOS.slice(0, 3).map((v, i) => (
@@ -564,15 +710,20 @@ export function StorefrontV2({
           )}
           <div>
             <a href="#product">
-              <strong>{t(`${pack}Name`)}</strong>
+              <strong>
+                {t(`${pack}Name`)} · {selectedCode ?? money(selected)}
+              </strong>
               <small>
-                {money(selected)} · {t("change")}
+                {selectedCode
+                  ? `${offer.withCode} · ${t("change")}`
+                  : t("change")}
               </small>
             </a>
             <button
               type="button"
               className={styles.primary}
               disabled={pending || !canBuy}
+              aria-busy={pending}
               onClick={buy}
             >
               {pending

@@ -1,4 +1,5 @@
 import { legalCopy } from "lib/legal";
+import { startGuide } from "lib/start-guide";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import NextLink from "next/link";
@@ -7,6 +8,7 @@ import { Link } from "../../i18n/navigation";
 export default function Footer() {
   const t = useTranslations("footer");
   const policyCopy = legalCopy(useLocale());
+  const guide = startGuide(useLocale());
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
@@ -23,6 +25,7 @@ export default function Footer() {
       { title: t("links.allArticles"), path: "/blog" },
     ],
     support: [
+      { title: guide.title, path: "/start" },
       { title: t("links.faq"), path: "/#faq" },
       { title: t("links.trackOrder"), path: "/track" },
       { title: t("links.shipping"), path: "/policies/shipping" },
