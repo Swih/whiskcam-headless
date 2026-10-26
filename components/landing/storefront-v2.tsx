@@ -29,9 +29,11 @@ import { getStorefrontCopy } from "lib/halloween-storefront-copy";
 import { getBrandCopy, type Season } from "lib/brand-storefront-copy";
 import { startGuide } from "lib/start-guide";
 import type { Product } from "lib/shopify/types";
-import { PixelSprite, signalType } from "./pixel-art";
-import { SignalPortrait } from "./signal-portrait";
 import styles from "./storefront-v2.module.css";
+
+/** Existing Whiskcam photos; the camera is visible on the collar in both. */
+const HERO_PHOTO = "/images/lifestyle/wk-cat-1.webp";
+const STORY_PHOTO = "/images/lifestyle/wk-cat-2.webp";
 
 const gallery = [
   "/images/product/whiskcam-product-studio.webp",
@@ -40,7 +42,7 @@ const gallery = [
   "/images/product/whiskcam-kit-en.png",
 ];
 
-/** The 22-second encounter leads the screening; it is also the hero clip. */
+/** The 22-second encounter leads the clips; it is also the hero teaser. */
 const FILM_ORDER = [2, 0, 1] as const;
 
 const MORE_GUIDES = [
@@ -71,7 +73,7 @@ type Pack = "single" | "duo";
 type Placement = "hero" | "offer" | "sticky";
 
 function Arrow() {
-  return <span aria-hidden="true">↗</span>;
+  return <span aria-hidden="true">→</span>;
 }
 
 /** The selected kit and request state are shared by every buy control. */
@@ -115,7 +117,10 @@ export function StorefrontV2({
   const variant =
     selected?.variants.length === 1 ? selected.variants[0] : undefined;
   const canBuy = !!selected?.availableForSale && !!variant?.availableForSale;
-  const facts = `${PRODUCT_FACTS.weightGrams} g · 1080P · ${PRODUCT_FACTS.fieldOfViewDegrees}° · ${brand.sound}`;
+  const fill = (text: string) =>
+    text
+      .replace("{weight}", String(PRODUCT_FACTS.weightGrams))
+      .replace("{fov}", String(PRODUCT_FACTS.fieldOfViewDegrees));
 
   const format = (amount: number, currency: string) =>
     new Intl.NumberFormat(locale, { style: "currency", currency }).format(
@@ -294,7 +299,7 @@ export function StorefrontV2({
       }
     });
   }
-  /** The hero monitor plays the real clip where it lives, in the screening. */
+  /** The hero teaser plays the real clip where it lives, in the footage section. */
   async function playFeature() {
     const video = featureRef.current;
     if (!video) return;
@@ -317,12 +322,11 @@ export function StorefrontV2({
       </p>
     ) : null;
 
-  const packLabel = (kind: Pack) => `Whiskcam ${t(`${kind}Name`)}`;
-  const heroLabel = pending
+  const addLabel = pending
     ? t("adding")
     : !canBuy
       ? t("unavailable")
-      : `${brand.addKit[pack]} — ${selectedCode ?? money(selected)}`;
+      : `${t("addShort")} — ${selectedCode ?? money(selected)}`;
   const purchaseLabel = pending
     ? t("adding")
     : !canBuy
@@ -330,55 +334,64 @@ export function StorefrontV2({
       : selectedCode
         ? `${t("addShort")} — ${selectedCode} ${offer.withCode}`
         : t("add", { price: money(selected) });
+  /** One line under the hero price: how the price is reached, or the Duo saving. */
+  const priceNote = selectedCode
+    ? `${offer.withCode}, ${brand.applied} · ${withoutCode(selected)}`
+    : pack === "duo" && savingLabel
+      ? t("save", { amount: savingLabel })
+      : null;
 
   return (
     <div className={styles.storefront} data-season={season}>
+      {/* ------------------------------------------------------------ */}
       <section id="hero" className={styles.hero} aria-labelledby="hero-title">
-        {/* One H1: the category descriptor plus the pixel display line. */}
         <h1 id="hero-title" className={styles.title}>
-          <span className={styles.category}>
-            <PixelSprite name="cat" size={14} />
-            {brand.category}
-          </span>
-          <span className={`${styles.display} ${signalType}`}>
-            {brand.headline}
-          </span>
+          <span className={styles.category}>{brand.category}</span>
+          <span className={styles.display}>{brand.headline}</span>
         </h1>
-        <p className={styles.intro}>
-          {brand.intro.replace("{weight}", String(PRODUCT_FACTS.weightGrams))}
-        </p>
 
-        {/* The box office: real product, real Shopify price, direct add. */}
-        <div ref={ticketRef} className={styles.ticket}>
-          <p className={styles.ticketHead}>
-            <span className={signalType}>{brand.boxOffice}</span>
-            {campaign && (
-              <span className={`${styles.ticketCode} ${signalType}`}>
-                {campaign.code} −{campaign.percentage}%
-              </span>
-            )}
-          </p>
-          <div className={styles.ticketProduct}>
-            <span className={styles.ticketShot}>
-              <Image
-                src={gallery[0]!}
-                alt={t("gallery.0")}
-                fill
-                priority
-                sizes="96px"
-              />
-            </span>
-            <p>
-              <strong>{packLabel(pack)}</strong>
-              <span>{brand.kitLine[pack]}</span>
-              <span>{facts}</span>
-            </p>
+        <figure className={styles.heroMedia}>
+          <div className={styles.heroPhoto}>
+            <Image
+              src={HERO_PHOTO}
+              alt={brand.heroAlt}
+              fill
+              priority
+              sizes="(max-width: 760px) 100vw, 56vw"
+            />
           </div>
+          <figcaption>
+            <button
+              type="button"
+              className={styles.teaser}
+              onClick={playFeature}
+            >
+              {/* Plain img: the page preloads this exact poster URL. */}
+              <img src={HERO_CONTENT.posterSrc} alt="" width={96} height={54} />
+              <span>
+                <strong>{brand.clipTeaser}</strong>
+                <small>0:22 · {t("films.2")}</small>
+              </span>
+              <span aria-hidden="true" className={styles.play}>
+                ▶
+              </span>
+            </button>
+          </figcaption>
+        </figure>
+
+        <p className={styles.intro}>{fill(brand.intro)}</p>
+
+        {/* Direct purchase: live Shopify prices, shared kit state. */}
+        <div ref={ticketRef} className={styles.buy}>
+          {campaign && (
+            <p className={styles.seasonLine}>
+              <span>{offer.name}</span> · {offer.banner}
+            </p>
+          )}
           <fieldset className={styles.toggle} disabled={pending}>
             <legend className={styles.srOnly}>{t("choosePack")}</legend>
             {(["single", "duo"] as const).map((kind) => {
               const item = kind === "duo" ? duoProduct : product;
-              const code = codeMoney(item);
               return (
                 <label
                   key={kind}
@@ -391,114 +404,68 @@ export function StorefrontV2({
                     checked={pack === kind}
                     onChange={() => choose(kind)}
                   />
-                  <span className={styles.toggleName}>{t(`${kind}Name`)}</span>
-                  <strong>{code ?? money(item)}</strong>
-                  {code && <small>{withoutCode(item)}</small>}
-                  {item && !item.availableForSale && (
-                    <small>{t("unavailable")}</small>
-                  )}
+                  <span className={styles.toggleName}>
+                    {t(`${kind}Name`)}
+                    <small>{t(`${kind}Description`).split(" · ")[0]}</small>
+                  </span>
+                  <strong>
+                    {item && !item.availableForSale
+                      ? t("unavailable")
+                      : (codeMoney(item) ?? money(item))}
+                  </strong>
                 </label>
               );
             })}
           </fieldset>
+          <p className={styles.packTagline}>{brand.packTagline[pack]}</p>
           <button
             type="button"
             className={styles.primary}
             onClick={() => buy("hero")}
             disabled={pending || !canBuy}
             aria-busy={pending}
-            aria-describedby="hero-ticket-note"
+            aria-describedby="hero-price-note hero-microsd"
           >
-            {heroLabel}
-            <Arrow />
+            {addLabel}
           </button>
           {errorAt("hero")}
-          <p id="hero-ticket-note" className={styles.ticketNote}>
+          <p id="hero-price-note" className={styles.priceNote}>
+            {priceNote}
             {campaign && (
-              <strong>
-                {offer.withCode} · {offer.deadline}.{" "}
-              </strong>
+              <>
+                {" "}
+                <a href="#offer-terms">{copy.season.termsLink}</a>
+              </>
             )}
-            {brand.panelNote}
           </p>
-          <a href="#product" className={styles.ticketLink}>
-            {brand.details} <span aria-hidden="true">↓</span>
-          </a>
+          <p id="hero-microsd" className={styles.microNote}>
+            {brand.microsd} <a href="#product">{brand.details}</a>
+          </p>
         </div>
-
-        <SignalPortrait
-          season={season}
-          credit={brand.credits[season]}
-          alt={brand.portraitAlt}
-          fullColour={brand.fullColour}
-        >
-          <button
-            type="button"
-            className={styles.monitor}
-            onClick={playFeature}
-          >
-            {/* Plain img: the page preloads this exact poster URL. */}
-            <img src={HERO_CONTENT.posterSrc} alt="" width={240} height={150} />
-            <span className={signalType}>
-              <span aria-hidden="true">▶</span> {brand.realClip}
-            </span>
-            <span className={styles.srOnly}>{t("watch")}</span>
-            <small aria-hidden="true">0:22</small>
-          </button>
-        </SignalPortrait>
       </section>
 
-      <ul className={`${styles.strip} ${signalType}`}>
-        {[
-          `${PRODUCT_FACTS.weightGrams} g ${brand.strip.camera}`,
-          brand.strip.sound,
-          `${PRODUCT_FACTS.fieldOfViewDegrees}° ${brand.strip.view}`,
-          PRODUCT_FACTS.charging,
-          brand.strip.offline,
-          brand.strip.card,
-        ].map((item, i) => (
-          <li key={item}>
-            {i > 0 && (
-              <PixelSprite
-                name={
-                  season === "halloween"
-                    ? "pumpkin"
-                    : season === "autumn"
-                      ? "leaf"
-                      : "cat"
-                }
-                size={12}
-              />
-            )}
-            {item}
+      <ul className={styles.facts}>
+        {brand.facts.map(({ value, label }) => (
+          <li key={label}>
+            <strong>{fill(value)}</strong>
+            <span>{label}</span>
           </li>
         ))}
       </ul>
 
+      {/* ------------------------------------------------------------ */}
       <section
         id="footage"
         className={styles.footage}
         aria-labelledby="footage-title"
       >
-        <div className={styles.sectionIntro}>
-          <div>
-            <p className={`${styles.eyebrow} ${signalType}`}>
-              {season === "halloween"
-                ? brand.screening.halloween
-                : season === "autumn"
-                  ? brand.screening.autumn
-                  : brand.screening.eyebrow}
-            </p>
-            <h2 id="footage-title" className={signalType}>
-              {brand.screening.title}
-            </h2>
-          </div>
-          <div>
-            <p>{brand.screening.intro}</p>
-            {season === "halloween" && (
-              <p className={styles.footageNote}>{brand.screening.nightNote}</p>
-            )}
-          </div>
+        <div className={styles.footageHead}>
+          <p className={styles.eyebrow}>{brand.footage.eyebrow[season]}</p>
+          <h2 id="footage-title">{brand.footage.title}</h2>
+          <p>
+            {brand.footage.intro}
+            {season === "halloween" && <> {brand.footage.seasonNote}</>}
+          </p>
         </div>
         <div className={styles.films}>
           {FILM_ORDER.map((index, i) => {
@@ -531,13 +498,8 @@ export function StorefrontV2({
                   }}
                 />
                 <figcaption>
-                  <span>
-                    <small className={signalType}>
-                      {brand.screening.tape} 0{i + 1}
-                    </small>
-                    <strong>{t(`films.${index}`)}</strong>
-                  </span>
-                  <span className={signalType}>{v.duration}</span>
+                  <strong>{t(`films.${index}`)}</strong>
+                  <span>{v.duration}</span>
                 </figcaption>
               </figure>
             );
@@ -545,6 +507,35 @@ export function StorefrontV2({
         </div>
       </section>
 
+      {/* ------------------------------------------------------------ */}
+      <section className={styles.story} aria-labelledby="story-title">
+        <div className={styles.storyPhoto}>
+          <Image
+            src={STORY_PHOTO}
+            alt={brand.story.photoAlt}
+            fill
+            sizes="(max-width: 760px) 100vw, 46vw"
+          />
+        </div>
+        <div className={styles.storyText}>
+          <p className={styles.eyebrow}>{brand.story.eyebrow}</p>
+          <h2 id="story-title">{brand.story.title}</h2>
+          <ol className={styles.beats}>
+            {brand.story.beats.map((beat, i) => (
+              <li key={beat.title}>
+                <span className={styles.beatNumber}>{i + 1}</span>
+                <h3>{beat.title}</h3>
+                <p>{fill(beat.body)}</p>
+              </li>
+            ))}
+          </ol>
+          <Link href="/start" className={styles.textLink}>
+            {brand.story.guideLink} <Arrow />
+          </Link>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------ */}
       <section
         id="product"
         className={styles.shop}
@@ -560,12 +551,6 @@ export function StorefrontV2({
               sizes="(max-width: 760px) 100vw, 50vw"
               className={styles.contain}
             />
-            <span
-              className={`${styles.photoCount} ${signalType}`}
-              aria-hidden="true"
-            >
-              {String(photo + 1).padStart(2, "0")} / 04
-            </span>
           </div>
           <div
             className={styles.thumbnails}
@@ -589,13 +574,9 @@ export function StorefrontV2({
         </div>
 
         <div className={styles.offer}>
-          <p className={`${styles.eyebrow} ${signalType}`}>
-            {t("offerEyebrow")}
-          </p>
-          <h2 id="offer-title" className={signalType}>
-            {t("offerTitle")}
-          </h2>
-          <p className={styles.offerIntro}>{t("offerIntro")}</p>
+          <p className={styles.eyebrow}>{brand.shop.eyebrow}</p>
+          <h2 id="offer-title">{brand.shop.title}</h2>
+          <p className={styles.offerIntro}>{brand.shop.intro}</p>
           <dl className={styles.specs}>
             <div>
               <dt>{copy.evergreen.specVideo}</dt>
@@ -616,22 +597,9 @@ export function StorefrontV2({
           </dl>
 
           {campaign && (
-            <div className={styles.season}>
-              <PixelSprite
-                name={season === "halloween" ? "pumpkin" : "leaf"}
-                size={30}
-              />
-              <p>
-                <strong className={signalType}>
-                  {season === "halloween"
-                    ? copy.season.kicker.halloween
-                    : copy.season.kicker.autumn}
-                </strong>
-                <span>
-                  {offer.banner} · {offer.code}
-                </span>
-              </p>
-            </div>
+            <p className={styles.seasonLine}>
+              <span>{offer.name}</span> · {offer.banner} · {offer.code}
+            </p>
           )}
 
           <fieldset className={styles.packs} disabled={pending}>
@@ -652,7 +620,8 @@ export function StorefrontV2({
                     onChange={() => choose(kind)}
                   />
                   <span className={styles.packName}>
-                    <strong>{t(`${kind}Name`)}</strong>
+                    <strong>Whiskcam {t(`${kind}Name`)}</strong>
+                    <small>{brand.packTagline[kind]}</small>
                     <small>{t(`${kind}Description`)}</small>
                   </span>
                   <span className={styles.packPrice}>
@@ -685,15 +654,9 @@ export function StorefrontV2({
           <div className={styles.included}>
             <h3>{t("includedTitle")}</h3>
             <p>{pack === "duo" ? t("duoIncluded") : t("singleIncluded")}</p>
-            <Link href="/start" className={styles.textButton}>
-              {startGuide(locale).title} <Arrow />
-            </Link>
           </div>
           <p id="microsd-note" className={styles.storage}>
-            <span aria-hidden="true">＋</span>
-            <span>
-              <strong>{t("storageTitle")}</strong> {t("storageBody")}
-            </span>
+            <strong>{t("storageTitle")}</strong> {t("storageBody")}
           </p>
           <div id="add-to-cart" ref={purchaseRef} className={styles.purchase}>
             <button
@@ -707,9 +670,12 @@ export function StorefrontV2({
               }
             >
               {purchaseLabel}
-              <Arrow />
             </button>
             {errorAt("offer")}
+          </div>
+          <div className={styles.purchaseTrust}>
+            <span>{t("secure")}</span>
+            <Link href="/policies/returns">{t("returns")}</Link>
           </div>
           {campaign && (
             <div id="offer-terms" className={styles.terms}>
@@ -722,10 +688,6 @@ export function StorefrontV2({
               </p>
             </div>
           )}
-          <div className={styles.purchaseTrust}>
-            <span>{t("secure")}</span>
-            <Link href="/policies/returns">{t("returns")}</Link>
-          </div>
           <DeliveryInfo compact expanded />
           <details className={styles.detail}>
             <summary>{t("beforeTitle")}</summary>
@@ -737,118 +699,67 @@ export function StorefrontV2({
         </div>
       </section>
 
-      <section className={styles.how} aria-labelledby="how-title">
-        <div className={styles.sectionIntro}>
-          <div>
-            <p className={`${styles.eyebrow} ${signalType}`}>
-              {brand.fit.eyebrow}
-            </p>
-            <h2 id="how-title" className={signalType}>
-              {brand.fit.title}
-            </h2>
-          </div>
-          <p>{brand.fit.intro}</p>
+      {/* ------------------------------------------------------------ */}
+      <section className={styles.know} aria-labelledby="know-title">
+        <div className={styles.knowHead}>
+          <p className={styles.eyebrow}>{brand.know.eyebrow}</p>
+          <h2 id="know-title">{brand.know.title}</h2>
         </div>
-        <div className={styles.checklist}>
-          <div className={styles.yes}>
-            <h3 className={signalType}>{brand.fit.yesTitle}</h3>
-            <ul>
-              {brand.fit.yes.map((line) => (
-                <li key={line}>{line}</li>
-              ))}
-            </ul>
-          </div>
-          <div className={styles.no}>
-            <h3 className={signalType}>{brand.fit.noTitle}</h3>
-            <ul>
-              {brand.fit.no.map((line) => (
-                <li key={line}>{line}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div className={styles.steps}>
-          {([0, 1, 2] as const).map((i) => (
-            <article key={i}>
-              <span className={`${styles.stepNumber} ${signalType}`}>
-                0{i + 1}
-              </span>
-              <h3>{t(`steps.${i}.title`)}</h3>
-              <p>{t(`steps.${i}.body`)}</p>
-              <NextLink
-                href={
-                  i === 0
-                    ? "/blog/are-cat-collar-cameras-safe"
-                    : i === 1
-                      ? "/what-is-whiskcam"
-                      : "/blog/how-to-watch-avi-on-iphone-cat-cam"
-                }
-              >
-                {t(`steps.${i}.link`)} <Arrow />
-              </NextLink>
-            </article>
+        <dl className={styles.knowList}>
+          {brand.know.items.map((item, i) => (
+            <div key={item.title}>
+              <dt>{item.title}</dt>
+              <dd>
+                {item.body}
+                {i === 2 && (
+                  <>
+                    {" "}
+                    <NextLink
+                      href="/blog/how-to-watch-avi-on-iphone-cat-cam"
+                      lang="en"
+                    >
+                      {brand.know.playbackLink}
+                    </NextLink>
+                  </>
+                )}
+                {i === 3 && (
+                  <>
+                    {" "}
+                    <NextLink href="/blog/are-cat-collar-cameras-safe">
+                      {brand.know.fitLink}
+                    </NextLink>
+                  </>
+                )}
+              </dd>
+            </div>
           ))}
+        </dl>
+        <div className={styles.service}>
+          <h3>{brand.know.helpTitle}</h3>
+          <Link href="/start">
+            <strong>{startGuide(locale).title}</strong>
+            <span>{brand.know.guide}</span>
+          </Link>
+          <a href="mailto:support@whiskcam.com">
+            <strong>support@whiskcam.com</strong>
+            <span>{brand.know.support}</span>
+          </a>
+          <Link href="/policies/returns">
+            <strong>{brand.know.refund}</strong>
+            <span>{t("secure")}</span>
+          </Link>
         </div>
-      </section>
-
-      <section className={styles.value} aria-labelledby="value-title">
-        <div className={styles.valueIntro}>
-          <p className={`${styles.eyebrow} ${signalType}`}>
-            {brand.value.eyebrow}
-          </p>
-          <h2 id="value-title" className={signalType}>
-            {brand.value.title}
-          </h2>
-        </div>
-        <ol className={styles.credits}>
-          <li>
-            <h3>{startGuide(locale).title}</h3>
-            <p>{brand.value.guide.body}</p>
-            <Link href="/start">
-              {brand.value.guide.link} <Arrow />
-            </Link>
-          </li>
-          <li>
-            <h3>{brand.value.clips.title}</h3>
-            <p>{brand.value.clips.body}</p>
-            <a href="#footage">
-              {brand.value.clips.link} <Arrow />
-            </a>
-          </li>
-          <li>
-            <h3>{brand.value.playback.title}</h3>
-            <p>{brand.value.playback.body}</p>
-            <NextLink href="/blog/how-to-watch-avi-on-iphone-cat-cam" lang="en">
-              {brand.value.playback.link} <Arrow />
-            </NextLink>
-          </li>
-          <li>
-            <h3>{brand.value.support.title}</h3>
-            <p>{brand.value.support.body}</p>
-            <a href="mailto:support@whiskcam.com">
-              support@whiskcam.com <Arrow />
-            </a>
-          </li>
-          <li>
-            <h3>{brand.value.refund.title}</h3>
-            <p>{brand.value.refund.body}</p>
-            <Link href="/policies/returns">
-              {brand.value.refund.link} <Arrow />
-            </Link>
-          </li>
-        </ol>
       </section>
 
       <div className={styles.audience}>{children}</div>
 
-      <section className={styles.help}>
+      {/* ------------------------------------------------------------ */}
+      <section className={styles.help} aria-labelledby="help-title">
         <div>
-          <p className={`${styles.eyebrow} ${signalType}`}>
-            {t("helpEyebrow")}
-          </p>
-          <h2 className={signalType}>{t("helpTitle")}</h2>
+          <p className={styles.eyebrow}>{t("helpEyebrow")}</p>
+          <h2 id="help-title">{t("helpTitle")}</h2>
           <p>{t("helpBody")}</p>
-          <a href="mailto:support@whiskcam.com">
+          <a href="mailto:support@whiskcam.com" className={styles.textLink}>
             support@whiskcam.com <Arrow />
           </a>
         </div>
@@ -859,6 +770,9 @@ export function StorefrontV2({
           </NextLink>
           <NextLink href="/blog/are-cat-collar-cameras-safe">
             {t("guideFit")} <Arrow />
+          </NextLink>
+          <NextLink href="/what-is-whiskcam">
+            {t("steps.1.link")} <Arrow />
           </NextLink>
           <Link href="/policies/shipping">
             {t("guideDelivery")} <Arrow />

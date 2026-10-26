@@ -99,7 +99,7 @@
   },
   "reviews": {
     "overline": "Bewertungen",
-    "title": "Was Whiskcam-Besitzer entdeckt haben",
+    "title": "Das sagen Nutzer zur Kamera",
     "subtitle": "Historische Bewertungen dieses Kameramodells. Keine verifizierten Käufe bei Whiskcam.",
     "verifiedBuyer": "Verifizierter Käufer",
     "showPhotos": "Fotos anzeigen",
@@ -282,8 +282,8 @@
         "answer": "Die Eignung hängt von deinem Tier, der Passform und der gesamten Ausrüstung ab. Die Kamera wiegt 24 g; Halsband, Halterung und Anhänger kommen hinzu. Verwende bei Katzen ein Halsband mit Sicherheitsverschluss und beginne mit einem kurzen beaufsichtigten Versuch. Entferne die Ausrüstung bei veränderter Bewegung oder Stress. Frage deinen Tierarzt nach der individuellen Eignung."
       },
       "2": {
-        "question": "Wie lange hält der Akku?",
-        "answer": "Die Laufzeit hängt von den Aufnahmebedingungen ab. Wir prüfen die kontinuierliche Aufnahmezeit, bevor wir eine genaue Dauer veröffentlichen. Vor Gebrauch per USB-C laden."
+        "question": "Wie bereite ich das erste Abenteuer vor?",
+        "answer": "Lade die Kamera über USB-C, setze eine kompatible MicroSD-Karte ein (separat erhältlich) und mache zu Hause eine kurze Testaufnahme. Prüfe den Sitz und spiele den Clip vor dem Ausflug ab. Unsere Startanleitung führt dich durch die Schritte."
       },
       "3": {
         "question": "Brauche ich eine App dafür?",

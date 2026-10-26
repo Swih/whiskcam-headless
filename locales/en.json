@@ -99,7 +99,7 @@
   },
   "reviews": {
     "overline": "Reviews",
-    "title": "What They Discovered With Whiskcam",
+    "title": "What people say about the camera",
     "subtitle": "Historical reviews of this camera model. These are not verified purchases from Whiskcam.",
     "verifiedBuyer": "Verified Buyer",
     "showPhotos": "Show photos",
@@ -282,8 +282,8 @@
         "answer": "Suitability depends on your pet, collar fit and the complete mounted setup. The camera weighs 24 g; add the collar, mount and tags to assess total weight. Use a quick-release collar for a cat and start with a brief supervised trial. Remove the equipment if it changes movement or causes distress. Ask your vet about individual suitability."
       },
       "2": {
-        "question": "How long does the battery last?",
-        "answer": "Runtime varies with recording conditions. We are verifying continuous recording time before publishing a specific duration. Charge via USB-C before use."
+        "question": "How do I get ready for the first adventure?",
+        "answer": "Charge the camera via USB-C, add a compatible MicroSD card (sold separately), and record a short test at home. Check the fit and play back the clip before heading out. Our getting-started guide walks you through it."
       },
       "3": {
         "question": "Do I need to download an app?",

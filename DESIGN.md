@@ -1,182 +1,137 @@
-# Whiskcam Design System — "A film by your cat"
+# Whiskcam Design System — "Their secret life. Your front-row seat."
 
-The homepage is the store. Its design job is to make one small, honest product
-feel like a brand worth buying from, and to keep the purchase obvious.
+The homepage is the store. Direction chosen by the owner: **premium and quiet —
+beautiful photos, large typography, few effects.** Copy sells the delight;
+design stays out of the way of the photos, the clips and the buy button.
 
 ## 1. Brand idea
 
-**Whiskcam turns your cat into the director.** A 24 g camera on the collar
-records their rounds offline; you watch the cut when they come home. The brand
-borrows the language of film and tape — premiere, screening, box office, tape
-numbers — and the look of a sampled signal: big pixel type, scanlines, hard
-offset shadows on a cream canvas.
+A cat leads a whole life we never see. Whiskcam lets you see it — and hear it —
+when they come home.
 
-- **Who it is for:** owners who wonder what their cat does all day and are
-  happy to watch afterwards (not live, not GPS, not at night).
-- **The moment:** opening the card in the evening and seeing their day from
-  collar height.
-- **Why buy from us:** real sample clips before ordering, a first-film guide in
-  four languages, phone/AVI playback help, a person on email, and a plain
-  30-day refund policy (return shipping normally paid by the customer).
+- **Promise:** discovering their little adventures, smiling at an unexpected
+  encounter, sharing the best bits.
+- **Proof:** real Whiskcam clips early on the page; the real product, sizeable
+  and legible.
+- **Why buy here:** a step-by-step first-film guide in four languages, a real
+  person on email, a 30-day refund policy.
 
-Copy never says _live_, _signal from your cat_, _streaming_ or anything that
-implies transmission. The signal aesthetic is visual only.
+### Voice
 
-Reference: the public preview of Scrolltide's _Mitten_ hero (large pixel
-headline left, scanline cat portrait right, faint ghost echo, minimal mono
-nav, ~12 fps feel). We use the composition principles only; no template code,
-footage or prompt was used. Everything is implemented with our own CSS/SVG.
+- Lead with desire and curiosity; keep facts exact. Warm, short sentences.
+- Limits are information, not headlines: they live in **Good to know**, next
+  to the purchase (microSD) and in the FAQ. Never headline what it can't do,
+  never "honest checklist" or "choose something else" rhetoric.
+- Never say _live_, _streaming_, _GPS_, _night vision_ as abilities. Never
+  invent runtime, included storage, arrival dates, free returns, bundles,
+  review counts or "verified" buyers.
+- No film jargon piles (ticket, box office, premiere…).
 
 ## 2. Colour
 
-Defined as CSS variables on `.storefront` in
-`components/landing/storefront-v2.module.css`. The season changes only the
-accent family; layout and type never depend on it.
+CSS variables on `.storefront` in `components/landing/storefront-v2.module.css`.
 
-| Token             | Evergreen | Halloween | Autumn    | Role                                   |
-| ----------------- | --------- | --------- | --------- | -------------------------------------- |
-| `--ink`           | `#1b1a17` | —         | —         | Text, rules, buttons, dark sections    |
-| `--paper`         | `#f3ecdf` | —         | —         | Hero canvas, alternate sections        |
-| `--sheet`         | `#fbf7ef` | —         | —         | Page and ticket background             |
-| `--muted`         | `#59554b` | —         | —         | Secondary text (6:1 on paper)          |
-| `--line`          | `#d9cfbd` | —         | —         | Hairlines                              |
-| `--accent`        | `#8a4a12` | `#a8390a` | `#94510f` | Accent **text** on cream (≥ 5:1)       |
-| `--accent-on-ink` | `#f2b75e` | `#ff9a52` | `#f0b46a` | Accent text on ink                     |
-| `--pop`           | `#f5a623` | `#ff6b1a` | `#e08a2c` | Fills only: hard shadows, chips, strip |
-| `--glow`          | `#e6dbc5` | `#ff7a22` | `#e9a95a` | The striped moon behind the portrait   |
+| Token               | Value                                                        | Role                                          |
+| ------------------- | ------------------------------------------------------------ | --------------------------------------------- |
+| `--bg`              | `#faf8f4`                                                    | Page canvas (warm near-white)                 |
+| `--stone`           | `#f1ede6`                                                    | Shop and help sections, photo backgrounds     |
+| `--white`           | `#ffffff`                                                    | Option cards, product plates                  |
+| `--ink`             | `#1d1c1a`                                                    | Text, primary button, selected states         |
+| `--muted`           | `#615d55`                                                    | Secondary text (AA on all light surfaces)     |
+| `--line`            | `#e4ded3`                                                    | Hairlines                                     |
+| `--night`           | `#171614`                                                    | Real-clips section and announcement bar       |
+| `--accent`          | evergreen `#6f5434` · Halloween `#b0440e` · autumn `#965314` | Small labels, campaign line, code price label |
+| `--accent-on-night` | `#d9b98f` · `#f0a46a` · `#e8b27a`                            | Eyebrows on `--night`                         |
 
-Rules:
-
-- Fill colours (`--pop`, `--glow`) never carry text except ink text on `--pop`
-  (≥ 6:1). Accent text uses `--accent` / `--accent-on-ink`.
-- No gradients other than the scanline/stripe patterns. No glows, no glass.
+The season (`data-season` = `halloween` / `autumn` / `evergreen`) changes the
+accent only. Halloween reads as a tasteful seasonal collection: burnt-orange
+labels, a small dot before the campaign name, one seasonal line in the clips
+section. No pumpkins, bats, gradients, glows or textures.
 
 ## 3. Typography
 
-- **Display — "Whiskcam Signal"**: self-hosted Silkscreen
-  (`public/fonts/Silkscreen-Regular.ttf`, SIL OFL 1.1, licence in
-  `public/fonts/OFL-Silkscreen.txt`), declared in
-  `components/landing/pixel-art.module.css`, `font-display: swap`, falling back
-  to the system monospace. Always uppercase. Use via the exported
-  `signalType` class.
-  - Use for: H1 display line, H2s, eyebrows, nav links, tape/timecode labels,
-    step numbers, campaign names and codes.
-  - Never for: body copy, prices, legal/terms, form controls.
-- **Text — DM Sans** (existing `next/font`), 400–700.
+DM Sans only (existing `next/font`). No other face.
 
-| Element                     | Desktop                   | Mobile                    |
-| --------------------------- | ------------------------- | ------------------------- |
-| H1 display (pixel)          | 64px (56 ≤1100, 48 ≤1000) | 40px (34 on short phones) |
-| H2 (pixel)                  | 40px                      | 28px                      |
-| Eyebrow (pixel)             | 14px                      | 14px                      |
-| Body                        | 15–17px                   | 15–16px                   |
-| Smallest informational text | 13px                      | **14px**                  |
+| Element                     | Desktop                                           | Mobile                       |
+| --------------------------- | ------------------------------------------------- | ---------------------------- |
+| H1 display line             | `clamp(40px, 4.6vw, 68px)`, 600, −0.045em, lh 1.0 | 31–38px (30 on short phones) |
+| H2                          | `clamp(30px, 3.4vw, 46px)`, 600, −0.035em         | 30px                         |
+| Category / eyebrow          | 13px, 600, uppercase, 0.12em                      | 13px                         |
+| Body                        | 15–18px, lh 1.6                                   | 15–16px                      |
+| Smallest informational text | 13px                                              | **14px**                     |
 
-The single H1 is the category descriptor ("Whiskcam cat collar camera") plus
-the pixel line ("A film by your cat."). It is campaign-neutral so the
-server-rendered H1 never changes.
+The single H1 = category line ("Whiskcam · the cat collar camera") + display
+line. The H1 never depends on the campaign.
 
-## 4. Components
+## 4. Page structure
 
-- **Category slate** — ink chip with the pixel cat mark; part of the H1.
-- **Box-office ticket** (hero buy panel) — 2px ink border, hard 8px `--pop`
-  shadow, square corners. Real product photo, kit line, facts, Original/Duo
-  toggle with live Shopify prices (code price + "without the code" price
-  during a campaign), direct **Add to bag**, microSD note, link to `#product`.
-  Shares selection, pending and error state with the `#product` offer and the
-  sticky bar — there is one cart state, not three.
-- **Primary button** — ink background, cream text, square, hard `--pop`
-  offset shadow; hover lifts 2px, press sinks 3px, in `steps()`. Disabled:
-  `#d6cebf`, no shadow. Minimum height 56px (48px in the sticky bar).
-- **Scanline portrait** (`components/landing/signal-portrait.tsx`) — an
-  existing real photo (`/images/lifestyle/wk-cat-2.webp`, camera visible on the
-  collar), grayscale + `multiply` on the canvas, cream rules every 5px, an
-  offset seasonal ghost echo, a striped moon behind. A **Full colour** toggle
-  removes the treatment. It is never presented as camera footage.
-- **Real-clip monitor** — desktop-only ink tile with the hero poster; plays the
-  real 0:22 clip in the screening section.
-- **Spec strip** — pixel labels separated by sprites; ink (evergreen) or
-  orange (Halloween).
-- **Screening** (`#footage`) — ink section, real clips only, tape labels, one
-  plays at a time, no autoplay.
-- **Fit checklist** — honest "good fit if / choose something else if" with
-  pixel tick and cross; followed by the three setup steps.
-- **Credit roll** — numbered list of what buying from Whiskcam actually
-  includes; every item links to something real.
-- **Sprites** (`components/landing/pixel-art.tsx`) — original cat, pumpkin,
-  bat, leaf, drawn as crisp SVG rects. `X` = `currentColor`, `O` =
-  `--pixel-accent`. Decorative (`aria-hidden`) unless titled.
+1. **Hero** `#hero` — category + headline; large lifestyle photo
+   (`wk-cat-1.webp`, camera visible on the collar); a real-clip teaser under the
+   photo (desktop); direct purchase: Original/Duo option cards with live
+   Shopify prices, code note, one charcoal pill CTA, microSD line. No box
+   around the purchase.
+2. **Facts** — four hairline-separated numbers.
+3. **Real clips** `#footage` — `--night` section, feature clip + two, captions
+   only. No autoplay; one plays at a time.
+4. **How it works** — `wk-cat-2.webp` beside three benefit-led beats and the
+   `/start` guide.
+5. **Shop** `#product` — gallery + full offer (specs, packs with taglines,
+   kit, microSD, CTA, terms, delivery, phone details).
+6. **Good to know** — four short items (offline, microSD, phone playback,
+   comfort) + "Help comes in the box" (guide, email, refund policy).
+7. Reviews (historical, disclosed) and FAQ `#faq` — homepage presentation via
+   `compact` reviews and `FaqSection`, same data.
+8. Help & reading list, footer.
 
-## 5. Seasons
+Mobile ≤760px: title → photo (full-bleed, 160–260px) → purchase → intro.
+Category, real photo, price and Add-to-bag are in the first screen at 360×740
+and 390×844. The sticky bar appears after the hero when the main button is out
+of view.
 
-`useHalloweenCampaign()` sets `data-season` on `.storefront`:
+## 5. Components
 
-| State       | Dates (Paris)                   | Visual                                                                                                                    |
-| ----------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `halloween` | until 31 Oct 23:59              | Orange accents, striped orange moon, bats + pumpkin, "Little Monsters" premiere credit, orange strip, pumpkin ticket stub |
-| `autumn`    | 1–8 Nov 23:59                   | Amber accents, leaves, "autumn screening"                                                                                 |
-| `evergreen` | otherwise (and on first render) | Amber accents, pale moon, no seasonal sprites                                                                             |
-
-The countdown is the fixed Shopify deadline only. Never add per-visitor
-timers, stock pressure or invented scarcity.
+- **Primary button** — charcoal pill, white text, 56px (48px in the sticky
+  bar). Hover black, press 0.99. Disabled `#d9d4ca`.
+- **Option cards** — white, 1px `--line`, 10px radius; selected = 2px ink
+  ring. Native radio inputs (visually hidden), focus ring on the label.
+- **Photos** — 4px radius, `object-fit: cover`, no filters, no overlays or
+  badges on photos.
+- **Rules** — 1px `--line` hairlines structure lists; one 1px ink rule above
+  the service row.
 
 ## 6. Motion
 
-- Portrait scans in once (`steps(10)`, 0.8s). The ghost echo jumps a few times
-  then rests. Bats flap a few times then rest. **No infinite loops.**
-- On fine pointers only, the ghost follows the pointer at ~12 updates/s in
-  3px steps (`--gx/--gy`). Touch devices get no pointer motion.
-- Buttons move in `steps(2)`.
-- `prefers-reduced-motion: reduce` removes all animation and transitions.
-  `prefers-reduced-data: reduce` drops the ghost and the moon.
-- No scroll hijacking, parallax, autoplaying video or audio.
+Colour/scale transitions ≤0.2s only. No scroll animation, parallax, loops or
+autoplay. `prefers-reduced-motion` removes transitions.
 
-## 7. Layout
+## 7. Accessibility & performance
 
-- Hero (desktop): `title / intro / ticket` in a ≤500px left column, portrait
-  stage on the right (min 620px tall).
-- Hero (mobile ≤760px): title → portrait (190px, 130px on short phones) →
-  ticket overlapping the portrait by ~48px → intro. Category, price and the
-  add button sit in the first screen at 390×844 and 360×740.
-- Section order: hero → spec strip → screening `#footage` → details
-  `#product` → fit checklist + steps → credit roll → reviews + FAQ `#faq` →
-  help & reading → footer. Anchors `#product`, `#footage`, `#faq` are stable.
-- Containers: content max ≈1240px; side padding 32px desktop, 24px tablet,
-  16px mobile.
-- Sticky buy bar (mobile): ink, appears after the hero when the main add
-  button is off-screen; respects the safe-area inset.
+AA contrast, 14px minimum on mobile, 44px targets, visible focus. `next/image`
+with `sizes`; the hero photo is `priority`. The clip teaser reuses the
+preloaded hero poster.
 
-## 8. Accessibility & performance
+## 8. Don'ts
 
-- AA contrast for all text; 14px minimum on mobile; 44px minimum targets.
-- Focus: 3px `--focus` outline, 4px offset (accent-on-ink inside dark
-  sections). Radio toggles keep native inputs (visually hidden) and show focus
-  on the label.
-- Images: `next/image` with explicit `sizes`; only the portrait and the ticket
-  product shot are `priority`. The pixel font is ~tens of KB, self-hosted, no
-  network font fetches.
+- No pixel fonts, scanlines, CRT effects, offset shadows, thick borders.
+- No illustration or generated imagery presented as Whiskcam; never call
+  lifestyle photos customer photos or footage.
+- No hardcoded prices; derive from Shopify. No invented urgency.
+- No generic SaaS cards, bento grids or glows.
 
-## 9. Don'ts
+## 9. Measurement and evidence
 
-- Don't present the treated portrait, sprites or any artwork as camera footage.
-- Don't filter real footage or product photos into illegibility; the product
-  must stay identifiable.
-- Don't use the pixel face for paragraphs, prices or legal text.
-- Don't introduce rounded "SaaS cards", glowing panels or bento grids.
-- Don't add WebGL, new animation libraries or fonts loaded from a network.
-- Don't add fake review badges, aggregate ratings, "verified" claims, or
-  free-return / risk-free promises.
-- Don't hardcode prices; derive them from the Shopify product objects.
+Product views now cover either visible buy panel, once per product with consent.
+This definition changed on 26 October with the new hero purchase controls; its
+view-to-cart ratio is not directly comparable with the earlier offer-only view.
+CTA placements are bounded to hero, offer and sticky; video placements to
+home_hero and home_footage. Analytics failures must not interrupt shopping.
+Shopify paid orders and refunds remain the revenue reference. No uplift is
+established at launch.
 
-## 9. Measurement
+The owner's 28-day comparison is 13 orders before the September 25 change and
+4 after (launch day excluded). Incomplete session tracking prevents computing a
+reliable conversion-rate change or attributing that drop to the design.
 
-Product views start when either buy panel is visible, once per product and only
-with consent. This definition changed on 26 October when the hero became a buy
-panel; do not compare the resulting view-to-cart ratio directly with the old
-offer-only measurement. Add-to-cart events identify `hero`, `offer` or `sticky`.
-Video events identify `home_hero` or `home_footage`. Umami accepts only these
-bounded placement values and never receives cart IDs or form content.
-
-Analytics failures must never turn a successful Shopify add into a cart error.
-Shopify paid orders and refunds remain the revenue reference. The redesign has
-no measured conversion uplift at launch.
+Practical reference: [Shopify product-page guidance](https://www.shopify.com/blog/product-page)
+for recognizable photography, benefit-led descriptions, transparent pricing and
+an obvious purchase action. These are design principles, not a promised uplift.

@@ -5,43 +5,38 @@ import { useHalloweenCampaign } from "components/campaign/use-halloween-campaign
 import { getCampaignCopy } from "lib/campaign-copy";
 import { Link } from "i18n/navigation";
 import { CampaignCountdown } from "components/campaign/countdown";
-import { PixelSprite, signalType } from "components/landing/pixel-art";
 
+/** One quiet line; the offer terms sit with the purchase controls. */
 export function AnnouncementBar() {
   const t = useTranslations("announcement");
   const active = useHalloweenCampaign();
   const copy = getCampaignCopy(useLocale(), active);
   if (active) {
-    const halloween = active.code === "HALLOWEEN15";
+    const accent =
+      active.code === "HALLOWEEN15" ? "bg-[#f0a46a]" : "bg-[#e8b27a]";
     return (
       <Link
         href="/#product"
-        className="flex min-h-11 flex-wrap items-center justify-center gap-x-3 gap-y-1 border-b-2 border-[#1b1a17] bg-[#1b1a17] px-4 py-2 text-center text-sm text-[#f6efe2] [--pixel-accent:#ff6b1a]"
+        className="flex min-h-10 items-center justify-center gap-x-3 bg-[#171614] px-4 py-2 text-center text-sm leading-snug text-[#f4f1ec] hover:underline hover:underline-offset-4"
       >
-        <PixelSprite
-          name={halloween ? "pumpkin" : "leaf"}
-          size={16}
-          className={halloween ? "text-[#f6efe2]" : "text-[#e08a2c]"}
-        />
-        <strong className={`${signalType} text-[14px] font-normal`}>
-          {copy.name}
-        </strong>
-        <span>{copy.banner}</span>
         <span
-          className={`${signalType} text-[14px] ${halloween ? "bg-[#ff6b1a]" : "bg-[#e08a2c]"} px-2 py-0.5 text-[#1b1a17]`}
-        >
-          {copy.code}
+          aria-hidden="true"
+          className={`h-1.5 w-1.5 flex-none rounded-full ${accent}`}
+        />
+        <span className="hidden font-semibold sm:inline">{copy.name}</span>
+        <span>{copy.banner}</span>
+        <span className="hidden text-[#b9b3a8] md:inline">{copy.code}</span>
+        <span className="sr-only lg:not-sr-only lg:text-[#b9b3a8]">
+          {copy.deadline}
         </span>
-        {/* The countdown carries the deadline visually on small screens. */}
-        <span className="sr-only text-sm sm:not-sr-only">{copy.deadline}</span>
-        <span className={`${signalType} [&_span]:[font-family:inherit]`}>
+        <span className="whitespace-nowrap text-[#b9b3a8] [&_span]:[color:inherit] [&_span]:[font-family:inherit]">
           <CampaignCountdown campaign={active} />
         </span>
       </Link>
     );
   }
   return (
-    <div className="bg-[#1b1a17] px-3 py-2 text-center text-sm font-medium text-[#f6efe2]">
+    <div className="bg-[#171614] px-3 py-2 text-center text-sm text-[#f4f1ec]">
       {t("staticDefault")}
     </div>
   );

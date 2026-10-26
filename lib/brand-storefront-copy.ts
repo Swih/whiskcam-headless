@@ -1,432 +1,410 @@
-// The Whiskcam brand world on the homepage: "a film by your cat". The camera
-// records at collar height and you watch the cut afterwards, so the language is
-// film and tape (premiere, screening, box office), never live signal or
-// streaming. Seasonal lines are chosen by campaign; everything else is evergreen.
-// `{weight}` is filled from PRODUCT_FACTS so the spec cannot drift here.
+// Homepage brand copy. Desire first: the cat's secret life, seen and heard
+// when they come home. Facts stay exact; limits live in "Good to know", near
+// the purchase and in the FAQ, never as the headline.
+// `{weight}` and `{fov}` are filled from PRODUCT_FACTS so specs cannot drift here.
 
 export type Season = "halloween" | "autumn" | "evergreen";
 
-type ValueItem = { title: string; body: string; link: string };
+type Item = { title: string; body: string };
 
 type BrandCopy = {
   /** Visible category descriptor, part of the H1. */
   category: string;
-  /** Pixel display line of the H1. Campaign-neutral so the server H1 is stable. */
+  /** Display line of the H1. Campaign-neutral so the server H1 is stable. */
   headline: string;
   intro: string;
-  credits: Record<Season, string>;
-  portraitAlt: string;
-  /** Toggle that removes the scanline treatment from the hero photo. */
-  fullColour: string;
-  realClip: string;
-  boxOffice: string;
-  kitLine: { single: string; duo: string };
-  sound: string;
-  addKit: { single: string; duo: string };
-  panelNote: string;
+  heroAlt: string;
+  clipTeaser: string;
+  packTagline: { single: string; duo: string };
+  /** After "with CODE": the code needs no typing. */
+  applied: string;
+  microsd: string;
   details: string;
-  strip: {
-    camera: string;
-    sound: string;
-    view: string;
-    offline: string;
-    card: string;
-  };
-  screening: {
-    eyebrow: string;
+  facts: { value: string; label: string }[];
+  footage: {
+    eyebrow: Record<Season, string>;
     title: string;
     intro: string;
-    tape: string;
-    halloween: string;
-    autumn: string;
-    nightNote: string;
+    seasonNote: string;
   };
-  fit: {
+  story: {
     eyebrow: string;
     title: string;
-    intro: string;
-    yesTitle: string;
-    yes: string[];
-    noTitle: string;
-    no: string[];
+    photoAlt: string;
+    beats: [Item, Item, Item];
+    guideLink: string;
   };
-  value: {
+  shop: { eyebrow: string; title: string; intro: string };
+  know: {
     eyebrow: string;
     title: string;
-    guide: Omit<ValueItem, "title">;
-    clips: ValueItem;
-    playback: ValueItem;
-    support: Omit<ValueItem, "link">;
-    refund: ValueItem;
+    items: [Item, Item, Item, Item];
+    playbackLink: string;
+    fitLink: string;
+    helpTitle: string;
+    guide: string;
+    support: string;
+    refund: string;
   };
 };
 
 const en: BrandCopy = {
-  category: "Whiskcam cat collar camera",
-  headline: "A film by your cat.",
+  category: "Whiskcam · the cat collar camera",
+  headline: "Their secret life. Your front-row seat.",
   intro:
-    "Clip the {weight} g camera to their collar, press record, and watch their 1080P point of view — with sound — once they’re home. No WiFi, app or subscription needed to record.",
-  credits: {
-    evergreen: "Whiskcam Pictures presents",
-    halloween: "A Halloween premiere: Little Monsters",
-    autumn: "An autumn screening",
+    "Clip a {weight} g camera to their collar and let them explore. When they come home, relive their adventures in 1080P — and hear them too. No WiFi, app or subscription to record.",
+  heroAlt:
+    "Ginger cat walking through a sunny meadow, wearing a Whiskcam camera on its collar",
+  clipTeaser: "Watch a real clip",
+  packTagline: {
+    single: "For one curious cat",
+    duo: "Two adventurers. Two points of view.",
   },
-  portraitAlt:
-    "Black and white cat resting on a sofa, wearing a Whiskcam camera on its collar",
-  fullColour: "Full colour",
-  realClip: "Real Whiskcam clip",
-  boxOffice: "Box office",
-  kitLine: {
-    single: "Cat collar camera kit · 1 camera",
-    duo: "2 cameras · for two cats",
-  },
-  sound: "sound",
-  addKit: { single: "Add Original to bag", duo: "Add Duo to bag" },
-  panelNote: "MicroSD card sold separately, one per camera.",
-  details: "What’s in the kit, delivery & phones",
-  strip: {
-    camera: "camera",
-    sound: "1080P with sound",
-    view: "wide view",
-    offline: "No WiFi, app or subscription to record",
-    card: "MicroSD sold separately",
-  },
-  screening: {
-    eyebrow: "Now screening",
-    title: "Real clips, filmed at collar height.",
+  applied: "applied automatically",
+  microsd: "MicroSD card sold separately, one per camera.",
+  details: "What’s in the box",
+  facts: [
+    { value: "{weight} g", label: "light on the collar" },
+    { value: "1080P", label: "video, with sound" },
+    { value: "{fov}°", label: "wide-angle view" },
+    { value: "0", label: "apps or subscriptions to record" },
+  ],
+  footage: {
+    eyebrow: {
+      evergreen: "Real Whiskcam clips",
+      halloween: "The Halloween edit · real clips",
+      autumn: "The autumn edit · real clips",
+    },
+    title: "Their day, as if you were there.",
     intro:
-      "Unscripted footage from Whiskcam cameras. Play one, look at the detail, and decide whether this is the view you want.",
-    tape: "Tape",
-    halloween: "Little Monsters · the daylight cut",
-    autumn: "Autumn rounds",
-    nightNote:
-      "Monsters roam in daylight too: Whiskcam is not a night-vision camera, so film their daytime rounds.",
+      "Garden patrols, a standoff at the fence, a sudden sprint. This is what the camera actually brings home.",
+    seasonNote:
+      "Little monsters, caught in the act. Whiskcam films best in daylight and bright rooms.",
   },
-  fit: {
-    eyebrow: "Before the premiere",
-    title: "Is it for your cat?",
+  story: {
+    eyebrow: "How it works",
+    title: "Clip it on. Let them explore. Relive it together.",
+    photoAlt:
+      "Black and white cat resting on a sofa, wearing a Whiskcam camera on its collar",
+    beats: [
+      {
+        title: "Clip it on",
+        body: "{weight} g on their collar and a single press to record. Nothing to pair, no account to create.",
+      },
+      {
+        title: "Let them explore",
+        body: "Garden patrols, sofa naps, a neighbour at the window: their day is recorded in 1080P, with sound.",
+      },
+      {
+        title: "Relive it together",
+        body: "Back home, connect the card to your phone with the included adapter. Watch their day, then share the best bits.",
+      },
+    ],
+    guideLink: "Step-by-step setup guide",
+  },
+  shop: {
+    eyebrow: "Choose your kit",
+    title: "Small on the collar. Big on stories.",
     intro:
-      "An honest checklist. If the right-hand column sounds more like you, another device will serve you better.",
-    yesTitle: "A good fit if",
-    yes: [
-      "Your cat already wears a collar calmly, or you’ll get them used to a breakaway collar at home first.",
-      "You want to watch their day afterwards, not follow them live.",
-      "You’re happy to add a microSD card, one per camera.",
-      "You can play AVI files, or don’t mind using VLC or converting to MP4 — on iPhone too.",
-    ],
-    noTitle: "Choose something else if",
-    no: [
-      "You need GPS location or live video.",
-      "You mainly want footage at night: there is no night vision.",
-      "Your cat won’t tolerate a collar, or your vet has advised against one.",
-      "You need a guaranteed recording time: continuous runtime is still being verified.",
-    ],
+      "One press to record, nothing to set up online. Add a microSD card and you’re ready for the first adventure.",
   },
-  value: {
-    eyebrow: "Buying from Whiskcam",
-    title: "The camera, plus the help to use it.",
-    guide: {
-      body: "Our step-by-step guide: the card, the fit, a short test at home and playback. In English, French, German and Spanish.",
-      link: "Read the guide",
-    },
-    clips: {
-      title: "Real sample clips",
-      body: "See what the camera actually films before you order. No simulated footage.",
-      link: "Watch the clips",
-    },
-    playback: {
-      title: "Phone playback help",
-      body: "Clear instructions for AVI files, including on iPhone.",
-      link: "Playback guide",
-    },
-    support: {
-      title: "A person on email",
-      body: "Questions about fit, your phone or delivery, before or after you order.",
-    },
-    refund: {
-      title: "30-day refund policy",
-      body: "Return shipping is normally paid by the customer. Read the full policy before ordering.",
-      link: "Refund policy",
-    },
+  know: {
+    eyebrow: "Good to know",
+    title: "Simple by design.",
+    items: [
+      {
+        title: "Records offline",
+        body: "Everything is saved to the card: no WiFi, app or subscription. It isn’t a GPS tracker or a live camera.",
+      },
+      {
+        title: "MicroSD sold separately",
+        body: "Add one compatible card per camera before the first outing. Not sure which one? Just ask us.",
+      },
+      {
+        title: "Watching on your phone",
+        body: "Files are AVI. On iPhone, a free player such as VLC opens them, and converting to MP4 makes sharing easy.",
+      },
+      {
+        title: "Comfort first",
+        body: "Use a breakaway collar and start with short, supervised sessions at home.",
+      },
+    ],
+    playbackLink: "Playback guide",
+    fitLink: "Fit & comfort guide",
+    helpTitle: "Help comes in the box",
+    guide: "Step-by-step guide in 4 languages",
+    support: "A real person on email, before and after you order",
+    refund: "30-day refund policy",
   },
 };
 
 const copy: Record<string, BrandCopy> = {
   en,
   fr: {
-    category: "Caméra collier pour chat Whiskcam",
-    headline: "Un film de votre chat.",
+    category: "Whiskcam · la caméra collier pour chat",
+    headline: "Le monde de votre chat. Enfin à l’écran.",
     intro:
-      "Fixez la caméra de {weight} g à son collier, lancez l’enregistrement et découvrez son point de vue en 1080P, avec le son, à son retour. Ni WiFi, ni appli, ni abonnement pour filmer.",
-    credits: {
-      evergreen: "Whiskcam Pictures présente",
-      halloween: "Avant-première d’Halloween : Petits Monstres",
-      autumn: "Une séance d’automne",
+      "Une caméra de {weight} g sur son collier, et le voilà parti. À son retour, revivez ses aventures en 1080P, avec le son. Ni WiFi, ni appli, ni abonnement pour filmer.",
+    heroAlt:
+      "Chat roux marchant dans une prairie ensoleillée, une caméra Whiskcam au collier",
+    clipTeaser: "Voir un vrai extrait",
+    packTagline: {
+      single: "Pour un chat curieux",
+      duo: "Deux aventuriers. Deux points de vue.",
     },
-    portraitAlt:
-      "Chat noir et blanc allongé sur un canapé, une caméra Whiskcam au collier",
-    fullColour: "Couleurs réelles",
-    realClip: "Vraie vidéo Whiskcam",
-    boxOffice: "Billetterie",
-    kitLine: {
-      single: "Kit caméra collier pour chat · 1 caméra",
-      duo: "2 caméras · pour deux chats",
-    },
-    sound: "son",
-    addKit: {
-      single: "Ajouter l’Original au panier",
-      duo: "Ajouter le Duo au panier",
-    },
-    panelNote: "Carte microSD vendue séparément, une par caméra.",
-    details: "Contenu du kit, livraison et téléphones",
-    strip: {
-      camera: "caméra",
-      sound: "1080P avec le son",
-      view: "grand angle",
-      offline: "Ni WiFi, ni appli, ni abonnement pour filmer",
-      card: "MicroSD vendue séparément",
-    },
-    screening: {
-      eyebrow: "À l’affiche",
-      title: "De vraies vidéos, filmées à hauteur de collier.",
+    applied: "appliqué automatiquement",
+    microsd: "Carte microSD vendue séparément, une par caméra.",
+    details: "Contenu de la boîte",
+    facts: [
+      { value: "{weight} g", label: "léger au collier" },
+      { value: "1080P", label: "vidéo, avec le son" },
+      { value: "{fov}°", label: "grand angle" },
+      { value: "0", label: "appli ou abonnement pour filmer" },
+    ],
+    footage: {
+      eyebrow: {
+        evergreen: "Vraies vidéos Whiskcam",
+        halloween: "L’édition Halloween · vraies vidéos",
+        autumn: "L’édition automne · vraies vidéos",
+      },
+      title: "Sa journée, comme si vous y étiez.",
       intro:
-        "Des images Whiskcam sans mise en scène. Lancez-en une, regardez les détails et voyez si c’est le point de vue que vous voulez.",
-      tape: "Bande",
-      halloween: "Petits Monstres · version plein jour",
-      autumn: "Rondes d’automne",
-      nightNote:
-        "Les monstres sortent aussi en plein jour : Whiskcam n’a pas de vision nocturne, filmez donc ses rondes de jour.",
+        "Rondes au jardin, face-à-face à la clôture, sprint soudain. Voilà ce que la caméra rapporte vraiment.",
+      seasonNote:
+        "Petits monstres pris sur le fait. Whiskcam filme au mieux en journée et dans les pièces lumineuses.",
     },
-    fit: {
-      eyebrow: "Avant la séance",
-      title: "Est-ce fait pour votre chat ?",
+    story: {
+      eyebrow: "Comment ça marche",
+      title: "Clipsez. Laissez-le explorer. Revivez tout ensemble.",
+      photoAlt:
+        "Chat noir et blanc allongé sur un canapé, une caméra Whiskcam au collier",
+      beats: [
+        {
+          title: "Clipsez",
+          body: "{weight} g sur son collier et une simple pression pour filmer. Rien à appairer, aucun compte à créer.",
+        },
+        {
+          title: "Il explore",
+          body: "Rondes au jardin, siestes sur le canapé, un voisin à la fenêtre : sa journée est filmée en 1080P, avec le son.",
+        },
+        {
+          title: "Revivez tout ensemble",
+          body: "À son retour, branchez la carte sur votre téléphone grâce à l’adaptateur inclus. Regardez sa journée, puis partagez les meilleurs moments.",
+        },
+      ],
+      guideLink: "Guide de démarrage pas à pas",
+    },
+    shop: {
+      eyebrow: "Choisissez votre kit",
+      title: "Petite au collier. Grande en histoires.",
       intro:
-        "Une liste honnête. Si la colonne de droite vous ressemble davantage, un autre appareil vous conviendra mieux.",
-      yesTitle: "Bon choix si",
-      yes: [
-        "Votre chat porte déjà calmement un collier, ou vous l’habituerez d’abord à la maison à un collier anti-étranglement.",
-        "Vous voulez revoir sa journée ensuite, pas le suivre en direct.",
-        "Vous acceptez d’ajouter une carte microSD, une par caméra.",
-        "Vous pouvez lire des fichiers AVI, ou utiliser VLC ou une conversion en MP4, y compris sur iPhone.",
-      ],
-      noTitle: "Choisissez autre chose si",
-      no: [
-        "Vous avez besoin d’une localisation GPS ou de vidéo en direct.",
-        "Vous voulez surtout filmer la nuit : il n’y a pas de vision nocturne.",
-        "Votre chat ne supporte pas le collier, ou votre vétérinaire le déconseille.",
-        "Il vous faut une durée d’enregistrement garantie : l’autonomie en continu est encore en cours de vérification.",
-      ],
+        "Une pression pour filmer, rien à configurer en ligne. Ajoutez une carte microSD et la première aventure peut commencer.",
     },
-    value: {
-      eyebrow: "Acheter chez Whiskcam",
-      title: "La caméra, et l’aide pour bien l’utiliser.",
-      guide: {
-        body: "Notre guide pas à pas : la carte, l’ajustement, un court essai à la maison et la lecture. En français, anglais, allemand et espagnol.",
-        link: "Lire le guide",
-      },
-      clips: {
-        title: "De vraies vidéos d’exemple",
-        body: "Voyez ce que filme vraiment la caméra avant de commander. Aucune image simulée.",
-        link: "Voir les vidéos",
-      },
-      playback: {
-        title: "Aide à la lecture sur téléphone",
-        body: "Des explications claires pour les fichiers AVI, y compris sur iPhone.",
-        link: "Guide de lecture",
-      },
-      support: {
-        title: "Une vraie personne par e-mail",
-        body: "Ajustement, téléphone ou livraison : posez vos questions avant ou après la commande.",
-      },
-      refund: {
-        title: "Remboursement sous 30 jours",
-        body: "Les frais de retour sont normalement à la charge du client. Lisez la politique complète avant de commander.",
-        link: "Politique de remboursement",
-      },
+    know: {
+      eyebrow: "Bon à savoir",
+      title: "Simple, par nature.",
+      items: [
+        {
+          title: "Enregistre hors ligne",
+          body: "Tout est enregistré sur la carte : ni WiFi, ni appli, ni abonnement. Ce n’est ni un traceur GPS ni une caméra en direct.",
+        },
+        {
+          title: "Carte microSD vendue séparément",
+          body: "Prévoyez une carte compatible par caméra avant la première sortie. Un doute ? Écrivez-nous.",
+        },
+        {
+          title: "Sur votre téléphone",
+          body: "Les fichiers sont en AVI. Sur iPhone, un lecteur gratuit comme VLC les ouvre, et une conversion en MP4 facilite le partage.",
+        },
+        {
+          title: "Le confort d’abord",
+          body: "Utilisez un collier anti-étranglement et commencez par de courtes sessions à la maison, sous surveillance.",
+        },
+      ],
+      playbackLink: "Guide de lecture",
+      fitLink: "Guide ajustement et confort",
+      helpTitle: "L’aide est incluse",
+      guide: "Guide pas à pas en 4 langues",
+      support: "Une vraie personne par e-mail, avant comme après la commande",
+      refund: "Politique de remboursement de 30 jours",
     },
   },
   de: {
-    category: "Whiskcam Halsbandkamera für Katzen",
-    headline: "Ein Film von deiner Katze.",
+    category: "Whiskcam · die Halsbandkamera für Katzen",
+    headline: "Das geheime Leben deiner Katze. Endlich zu sehen.",
     intro:
-      "Befestige die {weight}-g-Kamera am Halsband, starte die Aufnahme und sieh dir ihre Perspektive in 1080P – mit Ton – an, wenn sie zurück ist. Zum Aufnehmen brauchst du weder WLAN noch App oder Abo.",
-    credits: {
-      evergreen: "Whiskcam Pictures präsentiert",
-      halloween: "Halloween-Premiere: Kleine Monster",
-      autumn: "Eine Herbstvorstellung",
+      "Eine {weight}-g-Kamera ans Halsband – und los geht’s. Wenn sie heimkommt, erlebst du ihre Abenteuer noch einmal in 1080P, mit Ton. Zum Filmen brauchst du weder WLAN noch App oder Abo.",
+    heroAlt:
+      "Rote Katze läuft über eine sonnige Wiese, mit einer Whiskcam-Kamera am Halsband",
+    clipTeaser: "Echten Clip ansehen",
+    packTagline: {
+      single: "Für eine neugierige Katze",
+      duo: "Zwei Abenteurer. Zwei Perspektiven.",
     },
-    portraitAlt:
-      "Schwarz-weiße Katze auf einem Sofa, mit einer Whiskcam-Kamera am Halsband",
-    fullColour: "Echte Farben",
-    realClip: "Echter Whiskcam-Clip",
-    boxOffice: "Kasse",
-    kitLine: {
-      single: "Halsbandkamera-Set für Katzen · 1 Kamera",
-      duo: "2 Kameras · für zwei Katzen",
-    },
-    sound: "Ton",
-    addKit: {
-      single: "Original in den Warenkorb",
-      duo: "Duo in den Warenkorb",
-    },
-    panelNote: "MicroSD-Karte separat erhältlich, eine pro Kamera.",
-    details: "Lieferumfang, Versand & Handys",
-    strip: {
-      camera: "Kamera",
-      sound: "1080P mit Ton",
-      view: "Weitwinkel",
-      offline: "Kein WLAN, keine App, kein Abo zum Aufnehmen",
-      card: "MicroSD separat erhältlich",
-    },
-    screening: {
-      eyebrow: "Jetzt im Programm",
-      title: "Echte Clips, gefilmt auf Halsbandhöhe.",
+    applied: "automatisch angewendet",
+    microsd: "MicroSD-Karte separat erhältlich, eine pro Kamera.",
+    details: "Was in der Box ist",
+    facts: [
+      { value: "{weight} g", label: "leicht am Halsband" },
+      { value: "1080P", label: "Video, mit Ton" },
+      { value: "{fov}°", label: "Weitwinkel" },
+      { value: "0", label: "Apps oder Abos zum Filmen" },
+    ],
+    footage: {
+      eyebrow: {
+        evergreen: "Echte Whiskcam-Clips",
+        halloween: "Die Halloween-Edition · echte Clips",
+        autumn: "Die Herbst-Edition · echte Clips",
+      },
+      title: "Ihr Tag, als wärst du dabei.",
       intro:
-        "Ungestellte Aufnahmen von Whiskcam-Kameras. Spiel einen Clip ab, achte auf die Details und entscheide, ob das die Perspektive ist, die du willst.",
-      tape: "Band",
-      halloween: "Kleine Monster · die Tageslicht-Fassung",
-      autumn: "Herbstrunden",
-      nightNote:
-        "Monster sind auch tagsüber unterwegs: Whiskcam hat keine Nachtsicht – filme also ihre Runden bei Tag.",
+        "Gartenrunden, ein Kräftemessen am Zaun, ein plötzlicher Sprint. Das bringt die Kamera wirklich mit nach Hause.",
+      seasonNote:
+        "Kleine Monster, auf frischer Tat ertappt. Whiskcam filmt am besten bei Tageslicht und in hellen Räumen.",
     },
-    fit: {
-      eyebrow: "Vor der Vorstellung",
-      title: "Passt sie zu deiner Katze?",
+    story: {
+      eyebrow: "So funktioniert’s",
+      title: "Anclipsen. Losziehen lassen. Gemeinsam erleben.",
+      photoAlt:
+        "Schwarz-weiße Katze auf einem Sofa, mit einer Whiskcam-Kamera am Halsband",
+      beats: [
+        {
+          title: "Anclipsen",
+          body: "{weight} g am Halsband, ein Druck auf den Knopf – fertig. Nichts zu koppeln, kein Konto.",
+        },
+        {
+          title: "Losziehen lassen",
+          body: "Gartenrunden, Nickerchen auf dem Sofa, ein Nachbar am Fenster: Ihr Tag wird in 1080P aufgenommen, mit Ton.",
+        },
+        {
+          title: "Gemeinsam erleben",
+          body: "Zu Hause verbindest du die Karte über den beiliegenden Adapter mit deinem Handy. Sieh dir ihren Tag an und teile die besten Momente.",
+        },
+      ],
+      guideLink: "Schritt-für-Schritt-Anleitung",
+    },
+    shop: {
+      eyebrow: "Wähle dein Set",
+      title: "Klein am Halsband. Groß in Geschichten.",
       intro:
-        "Eine ehrliche Checkliste. Wenn die rechte Spalte eher auf dich zutrifft, ist ein anderes Gerät die bessere Wahl.",
-      yesTitle: "Passt gut, wenn",
-      yes: [
-        "deine Katze bereits ruhig ein Halsband trägt oder du sie zu Hause zuerst an ein Sicherheitshalsband gewöhnst.",
-        "du ihren Tag später ansehen möchtest, statt ihr live zu folgen.",
-        "du bereit bist, eine microSD-Karte dazuzukaufen, eine pro Kamera.",
-        "du AVI-Dateien abspielen kannst oder VLC bzw. eine MP4-Umwandlung nutzt – auch auf dem iPhone.",
-      ],
-      noTitle: "Wähle etwas anderes, wenn",
-      no: [
-        "du GPS-Ortung oder Live-Video brauchst.",
-        "du vor allem nachts filmen willst: Es gibt keine Nachtsicht.",
-        "deine Katze kein Halsband verträgt oder dein Tierarzt davon abrät.",
-        "du eine garantierte Aufnahmedauer brauchst: Die Dauerlaufzeit wird noch überprüft.",
-      ],
+        "Ein Druck zum Aufnehmen, nichts online einzurichten. Eine microSD-Karte dazu, und das erste Abenteuer kann beginnen.",
     },
-    value: {
-      eyebrow: "Bei Whiskcam kaufen",
-      title: "Die Kamera – und Hilfe, damit sie gut funktioniert.",
-      guide: {
-        body: "Unsere Schritt-für-Schritt-Anleitung: Karte, Sitz, ein kurzer Test zu Hause und Wiedergabe. Auf Deutsch, Englisch, Französisch und Spanisch.",
-        link: "Zur Anleitung",
-      },
-      clips: {
-        title: "Echte Beispielclips",
-        body: "Sieh vor der Bestellung, was die Kamera wirklich filmt. Keine simulierten Aufnahmen.",
-        link: "Clips ansehen",
-      },
-      playback: {
-        title: "Hilfe bei der Wiedergabe am Handy",
-        body: "Klare Anleitung für AVI-Dateien, auch auf dem iPhone.",
-        link: "Zur Wiedergabe-Anleitung",
-      },
-      support: {
-        title: "Ein Mensch per E-Mail",
-        body: "Fragen zu Sitz, Handy oder Versand – vor oder nach der Bestellung.",
-      },
-      refund: {
-        title: "30-Tage-Erstattungsrichtlinie",
-        body: "Die Rücksendekosten trägt in der Regel der Kunde. Lies die vollständige Richtlinie vor der Bestellung.",
-        link: "Erstattungsrichtlinie",
-      },
+    know: {
+      eyebrow: "Gut zu wissen",
+      title: "Einfach gemacht.",
+      items: [
+        {
+          title: "Speichert offline",
+          body: "Alles landet auf der Karte: kein WLAN, keine App, kein Abo. Sie ist kein GPS-Tracker und keine Live-Kamera.",
+        },
+        {
+          title: "MicroSD separat erhältlich",
+          body: "Plane vor dem ersten Ausflug eine kompatible Karte pro Kamera ein. Unsicher? Schreib uns.",
+        },
+        {
+          title: "Auf dem Handy ansehen",
+          body: "Die Dateien sind im AVI-Format. Auf dem iPhone öffnet sie ein kostenloser Player wie VLC; als MP4 lassen sie sich leicht teilen.",
+        },
+        {
+          title: "Komfort zuerst",
+          body: "Nutze ein Sicherheitshalsband und beginne mit kurzen, beaufsichtigten Runden zu Hause.",
+        },
+      ],
+      playbackLink: "Wiedergabe-Anleitung",
+      fitLink: "Sitz & Komfort",
+      helpTitle: "Hilfe inklusive",
+      guide: "Schritt-für-Schritt-Anleitung in 4 Sprachen",
+      support: "Ein Mensch per E-Mail, vor und nach der Bestellung",
+      refund: "30-Tage-Erstattungsrichtlinie",
     },
   },
   es: {
-    category: "Cámara de collar para gatos Whiskcam",
-    headline: "Una película de tu gato.",
+    category: "Whiskcam · la cámara de collar para gatos",
+    headline: "La vida secreta de tu gato. Por fin en pantalla.",
     intro:
-      "Engancha la cámara de {weight} g a su collar, pulsa grabar y descubre su punto de vista en 1080P, con sonido, cuando vuelva. Sin WiFi, app ni suscripción para grabar.",
-    credits: {
-      evergreen: "Whiskcam Pictures presenta",
-      halloween: "Estreno de Halloween: Pequeños Monstruos",
-      autumn: "Una sesión de otoño",
+      "Una cámara de {weight} g en su collar, y a explorar. Cuando vuelva, revive sus aventuras en 1080P, con sonido. Sin WiFi, app ni suscripción para grabar.",
+    heroAlt:
+      "Gato naranja caminando por un prado soleado, con una cámara Whiskcam en el collar",
+    clipTeaser: "Ver un vídeo real",
+    packTagline: {
+      single: "Para un gato curioso",
+      duo: "Dos aventureros. Dos puntos de vista.",
     },
-    portraitAlt:
-      "Gato blanco y negro tumbado en un sofá, con una cámara Whiskcam en el collar",
-    fullColour: "Color real",
-    realClip: "Vídeo real de Whiskcam",
-    boxOffice: "Taquilla",
-    kitLine: {
-      single: "Kit de cámara de collar para gatos · 1 cámara",
-      duo: "2 cámaras · para dos gatos",
-    },
-    sound: "sonido",
-    addKit: {
-      single: "Añadir Original a la cesta",
-      duo: "Añadir Duo a la cesta",
-    },
-    panelNote: "Tarjeta microSD no incluida, una por cámara.",
-    details: "Contenido del kit, envío y móviles",
-    strip: {
-      camera: "cámara",
-      sound: "1080P con sonido",
-      view: "gran angular",
-      offline: "Sin WiFi, app ni suscripción para grabar",
-      card: "MicroSD no incluida",
-    },
-    screening: {
-      eyebrow: "En cartelera",
-      title: "Vídeos reales, grabados a la altura del collar.",
+    applied: "aplicado automáticamente",
+    microsd: "Tarjeta microSD no incluida, una por cámara.",
+    details: "Qué incluye la caja",
+    facts: [
+      { value: "{weight} g", label: "ligera en el collar" },
+      { value: "1080P", label: "vídeo, con sonido" },
+      { value: "{fov}°", label: "gran angular" },
+      { value: "0", label: "apps o suscripciones para grabar" },
+    ],
+    footage: {
+      eyebrow: {
+        evergreen: "Vídeos reales de Whiskcam",
+        halloween: "La edición Halloween · vídeos reales",
+        autumn: "La edición otoño · vídeos reales",
+      },
+      title: "Su día, como si estuvieras allí.",
       intro:
-        "Imágenes de cámaras Whiskcam sin guion. Reproduce una, fíjate en los detalles y decide si es el punto de vista que quieres.",
-      tape: "Cinta",
-      halloween: "Pequeños Monstruos · versión a plena luz",
-      autumn: "Rondas de otoño",
-      nightNote:
-        "Los monstruos también salen de día: Whiskcam no tiene visión nocturna, así que graba sus rondas diurnas.",
+        "Rondas por el jardín, un duelo en la valla, un sprint repentino. Esto es lo que la cámara trae de verdad a casa.",
+      seasonNote:
+        "Pequeños monstruos, pillados in fraganti. Whiskcam graba mejor de día y en interiores luminosos.",
     },
-    fit: {
-      eyebrow: "Antes de la función",
-      title: "¿Es para tu gato?",
+    story: {
+      eyebrow: "Cómo funciona",
+      title: "Engánchala. Que explore. Revividlo juntos.",
+      photoAlt:
+        "Gato blanco y negro tumbado en un sofá, con una cámara Whiskcam en el collar",
+      beats: [
+        {
+          title: "Engánchala",
+          body: "{weight} g en su collar y una pulsación para grabar. Nada que emparejar, ninguna cuenta que crear.",
+        },
+        {
+          title: "Que explore",
+          body: "Rondas por el jardín, siestas en el sofá, un vecino en la ventana: su día se graba en 1080P, con sonido.",
+        },
+        {
+          title: "Revividlo juntos",
+          body: "En casa, conecta la tarjeta a tu móvil con el adaptador incluido. Mira su día y comparte los mejores momentos.",
+        },
+      ],
+      guideLink: "Guía de inicio paso a paso",
+    },
+    shop: {
+      eyebrow: "Elige tu kit",
+      title: "Pequeña en el collar. Grande en historias.",
       intro:
-        "Una lista honesta. Si te identificas más con la columna derecha, otro dispositivo te servirá mejor.",
-      yesTitle: "Encaja si",
-      yes: [
-        "Tu gato ya lleva collar con calma, o primero lo acostumbrarás en casa a un collar con cierre de seguridad.",
-        "Quieres ver su día después, no seguirlo en directo.",
-        "No te importa añadir una tarjeta microSD, una por cámara.",
-        "Puedes reproducir archivos AVI, o usar VLC o convertirlos a MP4, también en iPhone.",
-      ],
-      noTitle: "Elige otra cosa si",
-      no: [
-        "Necesitas localización GPS o vídeo en directo.",
-        "Quieres grabar sobre todo de noche: no tiene visión nocturna.",
-        "Tu gato no tolera el collar o tu veterinario lo desaconseja.",
-        "Necesitas un tiempo de grabación garantizado: la autonomía continua aún se está verificando.",
-      ],
+        "Una pulsación para grabar, nada que configurar en línea. Añade una tarjeta microSD y la primera aventura puede empezar.",
     },
-    value: {
-      eyebrow: "Comprar en Whiskcam",
-      title: "La cámara, y ayuda para usarla bien.",
-      guide: {
-        body: "Nuestra guía paso a paso: la tarjeta, el ajuste, una prueba corta en casa y la reproducción. En español, inglés, francés y alemán.",
-        link: "Leer la guía",
-      },
-      clips: {
-        title: "Vídeos de ejemplo reales",
-        body: "Mira lo que graba de verdad la cámara antes de pedir. Sin imágenes simuladas.",
-        link: "Ver los vídeos",
-      },
-      playback: {
-        title: "Ayuda para verlo en el móvil",
-        body: "Instrucciones claras para archivos AVI, también en iPhone.",
-        link: "Guía de reproducción",
-      },
-      support: {
-        title: "Una persona por correo",
-        body: "Dudas sobre el ajuste, tu móvil o el envío, antes o después de tu pedido.",
-      },
-      refund: {
-        title: "Política de reembolso de 30 días",
-        body: "Normalmente el cliente paga el envío de devolución. Lee la política completa antes de comprar.",
-        link: "Política de reembolso",
-      },
+    know: {
+      eyebrow: "Conviene saber",
+      title: "Sencilla por diseño.",
+      items: [
+        {
+          title: "Graba sin conexión",
+          body: "Todo se guarda en la tarjeta: sin WiFi, app ni suscripción. No es un localizador GPS ni una cámara en directo.",
+        },
+        {
+          title: "MicroSD no incluida",
+          body: "Prepara una tarjeta compatible por cámara antes de la primera salida. ¿Dudas? Escríbenos.",
+        },
+        {
+          title: "En tu móvil",
+          body: "Los archivos son AVI. En iPhone, un reproductor gratuito como VLC los abre, y convertirlos a MP4 facilita compartirlos.",
+        },
+        {
+          title: "La comodidad, primero",
+          body: "Usa un collar con cierre de seguridad y empieza con sesiones cortas y supervisadas en casa.",
+        },
+      ],
+      playbackLink: "Guía de reproducción",
+      fitLink: "Ajuste y comodidad",
+      helpTitle: "Ayuda incluida",
+      guide: "Guía paso a paso en 4 idiomas",
+      support: "Una persona real por correo, antes y después de tu pedido",
+      refund: "Política de reembolso de 30 días",
     },
   },
 };
