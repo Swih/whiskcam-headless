@@ -238,6 +238,7 @@ export default async function HomePage({
       <link
         rel="preload"
         href={HERO_CONTENT.posterSrc}
+        media="(min-width: 761px)"
         as="image"
         fetchPriority="high"
       />

@@ -26,8 +26,11 @@ import { HERO_CONTENT, VIDEOS, PRODUCT_FACTS } from "lib/content";
 import { halloweenPrice, isCampaignProduct } from "lib/campaign";
 import { getCampaignCopy } from "lib/campaign-copy";
 import { getStorefrontCopy } from "lib/halloween-storefront-copy";
+import { getBrandCopy, type Season } from "lib/brand-storefront-copy";
 import { startGuide } from "lib/start-guide";
 import type { Product } from "lib/shopify/types";
+import { PixelSprite, signalType } from "./pixel-art";
+import { SignalPortrait } from "./signal-portrait";
 import styles from "./storefront-v2.module.css";
 
 const gallery = [
@@ -36,6 +39,9 @@ const gallery = [
   "/images/reviews/customer-review-whiskcam-cat-camera-6.webp",
   "/images/product/whiskcam-kit-en.png",
 ];
+
+/** The 22-second encounter leads the screening; it is also the hero clip. */
+const FILM_ORDER = [2, 0, 1] as const;
 
 const MORE_GUIDES = [
   { href: "/blog/mr-petcam-vs-whiskcam", label: "Mr Petcam HD vs Whiskcam" },
@@ -61,13 +67,14 @@ const MORE_GUIDES = [
   },
 ];
 
-const PROMISES = ["promiseRecord", "promiseWatch", "promiseKeep"] as const;
+type Pack = "single" | "duo";
+type Placement = "hero" | "offer" | "sticky";
 
 function Arrow() {
   return <span aria-hidden="true">↗</span>;
 }
 
-/** The selected offer and request state are shared by the main and mobile controls. */
+/** The selected kit and request state are shared by every buy control. */
 export function StorefrontV2({
   product,
   duoProduct,
@@ -80,23 +87,35 @@ export function StorefrontV2({
   const t = useTranslations("v2");
   const locale = useLocale();
   const copy = getStorefrontCopy(locale);
-  // False on the server and first render; switches itself off at the campaign end.
+  const brand = getBrandCopy(locale);
+  // Null on the server and first render; switches itself at each campaign boundary.
   const campaign = useHalloweenCampaign();
   const offer = getCampaignCopy(locale, campaign);
+  const season: Season = !campaign
+    ? "evergreen"
+    : campaign.code === "HALLOWEEN15"
+      ? "halloween"
+      : "autumn";
   const router = useRouter();
   const { addCartItem } = useCart();
-  const [pack, setPack] = useState<"single" | "duo">("single");
+  const [pack, setPack] = useState<Pack>("single");
   const [photo, setPhoto] = useState(0);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<{
+    message: string;
+    at: Placement;
+  } | null>(null);
   const [pending, startTransition] = useTransition();
   const [showSticky, setShowSticky] = useState(false);
-  const [heroPlaying, setHeroPlaying] = useState(false);
-  const heroRef = useRef<HTMLVideoElement>(null);
+  const featureRef = useRef<HTMLVideoElement>(null);
+  const playPlacement = useRef<string | null>(null);
   const purchaseRef = useRef<HTMLDivElement>(null);
+  const ticketRef = useRef<HTMLDivElement>(null);
+  const viewedProducts = useRef(new Set<string>());
   const selected = pack === "duo" ? duoProduct : product;
   const variant =
     selected?.variants.length === 1 ? selected.variants[0] : undefined;
   const canBuy = !!selected?.availableForSale && !!variant?.availableForSale;
+  const facts = `${PRODUCT_FACTS.weightGrams} g · 1080P · ${PRODUCT_FACTS.fieldOfViewDegrees}° · ${brand.sound}`;
 
   const format = (amount: number, currency: string) =>
     new Intl.NumberFormat(locale, { style: "currency", currency }).format(
@@ -148,7 +167,6 @@ export function StorefrontV2({
         ),
       }) + (duoOnCode ? ` ${offer.withCode}` : "")
     : null;
-  const heroCode = codeMoney(product);
   const selectedCode = codeMoney(selected);
 
   useEffect(() => {
@@ -177,89 +195,134 @@ export function StorefrontV2({
     };
   }, []);
 
-  // A product view is recorded when the offer is seen, not merely when the home page loads.
+  // The hero now contains a complete buy panel. Count an actually visible panel
+  // once per variant, including when consent is granted while it is on screen.
   useEffect(() => {
-    const element = document.getElementById("product");
-    if (!element || !selected) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry?.isIntersecting || !hasConsent()) return;
+    const panels = [
+      ticketRef.current,
+      document.getElementById("product"),
+    ].filter((element): element is HTMLElement => !!element);
+    if (!selected || viewedProducts.current.has(selected.id)) return;
+    const record = (element: Element) => {
+      if (!hasConsent() || viewedProducts.current.has(selected.id)) return;
+      viewedProducts.current.add(selected.id);
+      try {
         trackViewContent({
           name: selected.title,
           price: selected.priceRange.maxVariantPrice.amount,
           currency: selected.priceRange.maxVariantPrice.currencyCode,
+          placement: element === ticketRef.current ? "hero" : "offer",
         });
-        observer.disconnect();
+      } catch {
+        // Measurement must never affect browsing or shopping.
+      }
+      observer.disconnect();
+    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find((entry) => entry.isIntersecting);
+        if (visible) record(visible.target);
       },
       { threshold: 0.2 },
     );
-    observer.observe(element);
-    return () => observer.disconnect();
+    panels.forEach((element) => observer.observe(element));
+    const onConsent = () => {
+      const visible = panels.find((element) => {
+        const rect = element.getBoundingClientRect();
+        return (
+          Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0) >=
+          rect.height * 0.2
+        );
+      });
+      if (visible) record(visible);
+    };
+    window.addEventListener("wk-consent-update", onConsent);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("wk-consent-update", onConsent);
+    };
   }, [selected]);
 
-  function choose(next: "single" | "duo") {
+  function choose(next: Pack) {
     trackUmami("variant_selected", {
       variant: next === "duo" ? "duo" : "original",
     });
     setPack(next);
     setError(null);
-    if (hasConsent())
-      window.gtag?.("event", "select_item", {
-        item_list_name: "home_offer_selector",
-        items: [
-          {
-            item_id: (next === "duo" ? duoProduct : product)?.id,
-            item_name: next,
-          },
-        ],
-      });
+    try {
+      if (hasConsent())
+        window.gtag?.("event", "select_item", {
+          item_list_name: "home_offer_selector",
+          items: [
+            {
+              item_id: (next === "duo" ? duoProduct : product)?.id,
+              item_name: next,
+            },
+          ],
+        });
+    } catch {
+      /* Analytics cannot block selecting a kit. */
+    }
   }
-  function buy() {
+  function buy(at: Placement) {
     if (!selected || !variant || !canBuy || pending) return;
     startTransition(async () => {
       setError(null);
       try {
         const result = await addItem(null, variant.id);
         if (result) {
-          setError(t("cartError"));
+          setError({ message: t("cartError"), at });
           router.refresh();
           return;
         }
         addCartItem(variant, selected);
-        if (hasConsent())
-          trackAddToCart({
-            name: selected.title,
-            price: variant.price.amount,
-            currency: variant.price.currencyCode,
-            quantity: 1,
-          });
+        try {
+          if (hasConsent())
+            trackAddToCart({
+              name: selected.title,
+              price: variant.price.amount,
+              currency: variant.price.currencyCode,
+              quantity: 1,
+              placement: at,
+            });
+        } catch {
+          /* The Shopify add succeeded; do not report a false cart error. */
+        }
         router.refresh();
       } catch {
-        setError(t("cartError"));
+        setError({ message: t("cartError"), at });
       }
     });
   }
-  async function playHero() {
-    const video = heroRef.current;
+  /** The hero monitor plays the real clip where it lives, in the screening. */
+  async function playFeature() {
+    const video = featureRef.current;
     if (!video) return;
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    playPlacement.current = "home_hero";
+    video.scrollIntoView({
+      block: "center",
+      behavior: still ? "auto" : "smooth",
+    });
     try {
-      document.querySelectorAll("video").forEach((other) => {
-        if (other !== video) other.pause();
-      });
-      const rect = video.getBoundingClientRect();
-      if (rect.top < 80 || rect.bottom > window.innerHeight)
-        video.scrollIntoView({ block: "center", behavior: "smooth" });
       await video.play();
-      setHeroPlaying(true);
-      if (hasConsent())
-        window.gtag?.("event", "product_video_play", {
-          video_title: "Whiskcam POV encounter",
-          placement: "home_hero",
-        });
     } catch {
-      setHeroPlaying(false);
+      playPlacement.current = null;
     }
   }
+  const errorAt = (at: Placement) =>
+    error?.at === at ? (
+      <p role="alert" className={styles.error}>
+        {error.message}
+      </p>
+    ) : null;
+
+  const packLabel = (kind: Pack) => `Whiskcam ${t(`${kind}Name`)}`;
+  const heroLabel = pending
+    ? t("adding")
+    : !canBuy
+      ? t("unavailable")
+      : `${brand.addKit[pack]} — ${selectedCode ?? money(selected)}`;
   const purchaseLabel = pending
     ? t("adding")
     : !canBuy
@@ -269,135 +332,217 @@ export function StorefrontV2({
         : t("add", { price: money(selected) });
 
   return (
-    <div
-      className={styles.storefront}
-      data-season={campaign ? "halloween" : undefined}
-    >
-      <section id="hero" className={styles.hero}>
-        <div className={styles.heroCopy}>
-          {/* The category line belongs to the H1 so the heading names the
-              product ("cat collar camera"), not only the slogan. */}
-          <h1>
-            <span className={styles.eyebrow}>{t("eyebrow")}</span>{" "}
-            {t("headline")} <em>{t("headlineAccent")}</em>
-          </h1>
-          <p className={styles.intro}>{t("intro")}</p>
+    <div className={styles.storefront} data-season={season}>
+      <section id="hero" className={styles.hero} aria-labelledby="hero-title">
+        {/* One H1: the category descriptor plus the pixel display line. */}
+        <h1 id="hero-title" className={styles.title}>
+          <span className={styles.category}>
+            <PixelSprite name="cat" size={14} />
+            {brand.category}
+          </span>
+          <span className={`${styles.display} ${signalType}`}>
+            {brand.headline}
+          </span>
+        </h1>
+        <p className={styles.intro}>
+          {brand.intro.replace("{weight}", String(PRODUCT_FACTS.weightGrams))}
+        </p>
 
-          {/* The product, what it does and what it costs, before any scrolling. */}
-          <div className={styles.plate}>
-            {campaign && <p className={styles.plateTag}>{offer.name}</p>}
-            <div className={styles.plateShot}>
+        {/* The box office: real product, real Shopify price, direct add. */}
+        <div ref={ticketRef} className={styles.ticket}>
+          <p className={styles.ticketHead}>
+            <span className={signalType}>{brand.boxOffice}</span>
+            {campaign && (
+              <span className={`${styles.ticketCode} ${signalType}`}>
+                {campaign.code} −{campaign.percentage}%
+              </span>
+            )}
+          </p>
+          <div className={styles.ticketProduct}>
+            <span className={styles.ticketShot}>
               <Image
                 src={gallery[0]!}
                 alt={t("gallery.0")}
                 fill
                 priority
-                sizes="(max-width: 760px) 104px, 168px"
-              />
-            </div>
-            <div className={styles.plateBody}>
-              <p className={styles.plateName}>
-                <strong>Whiskcam Original</strong>
-                <span>{copy.evergreen.productKind}</span>
-              </p>
-              <p className={styles.plateFacts}>
-                {PRODUCT_FACTS.weightGrams} g · 1080P ·{" "}
-                {PRODUCT_FACTS.fieldOfViewDegrees}°.{" "}
-                {copy.evergreen.productRecords}
-              </p>
-              <p className={styles.platePrice}>
-                <strong>{heroCode ?? money(product)}</strong>
-                {heroCode && (
-                  <span className={styles.withCode}>{offer.withCode}</span>
-                )}
-              </p>
-              <p className={styles.plateNote}>
-                {!product?.availableForSale
-                  ? t("unavailable")
-                  : heroCode
-                    ? `${withoutCode(product)} · ${offer.deadline}`
-                    : duoProduct?.availableForSale
-                      ? `${t("noSubscription")} · ${t("duoName")} ${money(duoProduct)}`
-                      : t("noSubscription")}
-              </p>
-            </div>
-          </div>
-
-          <div className={styles.heroActions}>
-            <a href="#product" className={styles.primary}>
-              {t("choose")} <Arrow />
-            </a>
-            <button
-              type="button"
-              onClick={playHero}
-              className={styles.textButton}
-            >
-              {t("watch")} <span aria-hidden="true">▷</span>
-            </button>
-          </div>
-        </div>
-
-        <div className={styles.heroVisual}>
-          <div className={styles.filmFrame}>
-            <div className={styles.filmLabel} aria-hidden="true">
-              <span>
-                {campaign
-                  ? `${copy.season.filmLabel} · POV 003`
-                  : "WHISKCAM / POV 003"}
-              </span>
-              <span>00:22</span>
-            </div>
-            <div className={styles.filmScreen}>
-              <video
-                ref={heroRef}
-                poster={HERO_CONTENT.posterSrc}
-                src={HERO_CONTENT.videoSrc}
-                controls={heroPlaying}
-                playsInline
-                preload="none"
-                onEnded={() => setHeroPlaying(false)}
-                aria-label={t("heroVideo")}
-              />
-              {!heroPlaying && (
-                <button
-                  type="button"
-                  className={styles.play}
-                  onClick={playHero}
-                  aria-label={t("watch")}
-                >
-                  <span aria-hidden="true">▷</span>
-                </button>
-              )}
-            </div>
-            <p className={styles.filmCaption}>{t("filmCaption")}</p>
-          </div>
-          <a href="#product" className={styles.scale}>
-            <span className={styles.scaleShot}>
-              <Image
-                src={gallery[1]!}
-                alt={t("gallery.1")}
-                fill
-                sizes="(max-width: 760px) 132px, 196px"
+                sizes="96px"
               />
             </span>
-            <span className={styles.scaleCaption}>{t("scaleNote")}</span>
+            <p>
+              <strong>{packLabel(pack)}</strong>
+              <span>{brand.kitLine[pack]}</span>
+              <span>{facts}</span>
+            </p>
+          </div>
+          <fieldset className={styles.toggle} disabled={pending}>
+            <legend className={styles.srOnly}>{t("choosePack")}</legend>
+            {(["single", "duo"] as const).map((kind) => {
+              const item = kind === "duo" ? duoProduct : product;
+              const code = codeMoney(item);
+              return (
+                <label
+                  key={kind}
+                  className={pack === kind ? styles.selectedPack : ""}
+                >
+                  <input
+                    type="radio"
+                    name="whiskcam-pack-hero"
+                    value={kind}
+                    checked={pack === kind}
+                    onChange={() => choose(kind)}
+                  />
+                  <span className={styles.toggleName}>{t(`${kind}Name`)}</span>
+                  <strong>{code ?? money(item)}</strong>
+                  {code && <small>{withoutCode(item)}</small>}
+                  {item && !item.availableForSale && (
+                    <small>{t("unavailable")}</small>
+                  )}
+                </label>
+              );
+            })}
+          </fieldset>
+          <button
+            type="button"
+            className={styles.primary}
+            onClick={() => buy("hero")}
+            disabled={pending || !canBuy}
+            aria-busy={pending}
+            aria-describedby="hero-ticket-note"
+          >
+            {heroLabel}
+            <Arrow />
+          </button>
+          {errorAt("hero")}
+          <p id="hero-ticket-note" className={styles.ticketNote}>
+            {campaign && (
+              <strong>
+                {offer.withCode} · {offer.deadline}.{" "}
+              </strong>
+            )}
+            {brand.panelNote}
+          </p>
+          <a href="#product" className={styles.ticketLink}>
+            {brand.details} <span aria-hidden="true">↓</span>
           </a>
         </div>
+
+        <SignalPortrait
+          season={season}
+          credit={brand.credits[season]}
+          alt={brand.portraitAlt}
+          fullColour={brand.fullColour}
+        >
+          <button
+            type="button"
+            className={styles.monitor}
+            onClick={playFeature}
+          >
+            {/* Plain img: the page preloads this exact poster URL. */}
+            <img src={HERO_CONTENT.posterSrc} alt="" width={240} height={150} />
+            <span className={signalType}>
+              <span aria-hidden="true">▶</span> {brand.realClip}
+            </span>
+            <span className={styles.srOnly}>{t("watch")}</span>
+            <small aria-hidden="true">0:22</small>
+          </button>
+        </SignalPortrait>
       </section>
 
-      <section className={styles.ledger} aria-labelledby="ledger-title">
-        <p id="ledger-title" className={styles.eyebrow}>
-          {copy.evergreen.howItRecords}
-        </p>
-        <ol>
-          {PROMISES.map((key, i) => (
-            <li key={key}>
-              <span className={styles.ledgerNumber}>0{i + 1}</span>
-              <strong>{t(key)}</strong>
-              <span>{copy.evergreen.promiseDetails[i]}</span>
-            </li>
-          ))}
-        </ol>
+      <ul className={`${styles.strip} ${signalType}`}>
+        {[
+          `${PRODUCT_FACTS.weightGrams} g ${brand.strip.camera}`,
+          brand.strip.sound,
+          `${PRODUCT_FACTS.fieldOfViewDegrees}° ${brand.strip.view}`,
+          PRODUCT_FACTS.charging,
+          brand.strip.offline,
+          brand.strip.card,
+        ].map((item, i) => (
+          <li key={item}>
+            {i > 0 && (
+              <PixelSprite
+                name={
+                  season === "halloween"
+                    ? "pumpkin"
+                    : season === "autumn"
+                      ? "leaf"
+                      : "cat"
+                }
+                size={12}
+              />
+            )}
+            {item}
+          </li>
+        ))}
+      </ul>
+
+      <section
+        id="footage"
+        className={styles.footage}
+        aria-labelledby="footage-title"
+      >
+        <div className={styles.sectionIntro}>
+          <div>
+            <p className={`${styles.eyebrow} ${signalType}`}>
+              {season === "halloween"
+                ? brand.screening.halloween
+                : season === "autumn"
+                  ? brand.screening.autumn
+                  : brand.screening.eyebrow}
+            </p>
+            <h2 id="footage-title" className={signalType}>
+              {brand.screening.title}
+            </h2>
+          </div>
+          <div>
+            <p>{brand.screening.intro}</p>
+            {season === "halloween" && (
+              <p className={styles.footageNote}>{brand.screening.nightNote}</p>
+            )}
+          </div>
+        </div>
+        <div className={styles.films}>
+          {FILM_ORDER.map((index, i) => {
+            const v = VIDEOS[index]!;
+            return (
+              <figure key={v.src}>
+                <video
+                  ref={i === 0 ? featureRef : undefined}
+                  src={v.src}
+                  poster={v.poster}
+                  controls
+                  playsInline
+                  preload="none"
+                  aria-label={t(`films.${index}`)}
+                  onPlay={(event) => {
+                    const current = event.currentTarget;
+                    document.querySelectorAll("video").forEach((video) => {
+                      if (video !== current) video.pause();
+                    });
+                    const placement = playPlacement.current ?? "home_footage";
+                    playPlacement.current = null;
+                    trackUmami("product_video_play", {
+                      cta_placement: placement,
+                    });
+                    if (hasConsent())
+                      window.gtag?.("event", "product_video_play", {
+                        video_title: v.title,
+                        placement,
+                      });
+                  }}
+                />
+                <figcaption>
+                  <span>
+                    <small className={signalType}>
+                      {brand.screening.tape} 0{i + 1}
+                    </small>
+                    <strong>{t(`films.${index}`)}</strong>
+                  </span>
+                  <span className={signalType}>{v.duration}</span>
+                </figcaption>
+              </figure>
+            );
+          })}
+        </div>
       </section>
 
       <section
@@ -415,7 +560,10 @@ export function StorefrontV2({
               sizes="(max-width: 760px) 100vw, 50vw"
               className={styles.contain}
             />
-            <span className={styles.photoCount} aria-hidden="true">
+            <span
+              className={`${styles.photoCount} ${signalType}`}
+              aria-hidden="true"
+            >
               {String(photo + 1).padStart(2, "0")} / 04
             </span>
           </div>
@@ -441,8 +589,12 @@ export function StorefrontV2({
         </div>
 
         <div className={styles.offer}>
-          <p className={styles.eyebrow}>{t("offerEyebrow")}</p>
-          <h2 id="offer-title">{t("offerTitle")}</h2>
+          <p className={`${styles.eyebrow} ${signalType}`}>
+            {t("offerEyebrow")}
+          </p>
+          <h2 id="offer-title" className={signalType}>
+            {t("offerTitle")}
+          </h2>
           <p className={styles.offerIntro}>{t("offerIntro")}</p>
           <dl className={styles.specs}>
             <div>
@@ -465,13 +617,19 @@ export function StorefrontV2({
 
           {campaign && (
             <div className={styles.season}>
-              <p className={styles.seasonKicker}>
-                {campaign.code === "HALLOWEEN15"
-                  ? copy.season.kicker
-                  : offer.name}
-              </p>
+              <PixelSprite
+                name={season === "halloween" ? "pumpkin" : "leaf"}
+                size={30}
+              />
               <p>
-                <strong>{offer.name}</strong> · {offer.banner} · {offer.code}
+                <strong className={signalType}>
+                  {season === "halloween"
+                    ? copy.season.kicker.halloween
+                    : copy.season.kicker.autumn}
+                </strong>
+                <span>
+                  {offer.banner} · {offer.code}
+                </span>
               </p>
             </div>
           )}
@@ -541,7 +699,7 @@ export function StorefrontV2({
             <button
               className={styles.primary}
               type="button"
-              onClick={buy}
+              onClick={() => buy("offer")}
               disabled={pending || !canBuy}
               aria-busy={pending}
               aria-describedby={
@@ -551,11 +709,7 @@ export function StorefrontV2({
               {purchaseLabel}
               <Arrow />
             </button>
-            {error && (
-              <p role="alert" className={styles.error}>
-                {error}
-              </p>
-            )}
+            {errorAt("offer")}
           </div>
           {campaign && (
             <div id="offer-terms" className={styles.terms}>
@@ -583,71 +737,42 @@ export function StorefrontV2({
         </div>
       </section>
 
-      <section
-        id="footage"
-        className={styles.footage}
-        aria-labelledby="footage-title"
-      >
-        <div className={styles.sectionIntro}>
-          <div>
-            <p className={styles.eyebrow}>
-              {campaign ? copy.season.footageEyebrow : t("footageEyebrow")}
-            </p>
-            <h2 id="footage-title">{t("footageTitle")}</h2>
-          </div>
-          <div>
-            <p>{t("footageIntro")}</p>
-            {campaign && (
-              <p className={styles.footageNote}>{copy.season.footageNote}</p>
-            )}
-          </div>
-        </div>
-        <div className={styles.films}>
-          {VIDEOS.slice(0, 3).map((v, i) => (
-            <figure key={v.src}>
-              <video
-                src={v.src}
-                poster={v.poster}
-                controls
-                playsInline
-                preload="none"
-                aria-label={t(`films.${i}`)}
-                onPlay={(event) => {
-                  const current = event.currentTarget;
-                  document.querySelectorAll("video").forEach((video) => {
-                    if (video !== current) video.pause();
-                  });
-                  if (hasConsent())
-                    window.gtag?.("event", "product_video_play", {
-                      video_title: v.title,
-                      placement: "home_footage",
-                    });
-                }}
-              />
-              <figcaption>
-                <span>
-                  <small>0{i + 1} / POV</small>
-                  <strong>{t(`films.${i}`)}</strong>
-                </span>
-                <span>{v.duration}</span>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </section>
-
       <section className={styles.how} aria-labelledby="how-title">
         <div className={styles.sectionIntro}>
           <div>
-            <p className={styles.eyebrow}>{t("howEyebrow")}</p>
-            <h2 id="how-title">{t("howTitle")}</h2>
+            <p className={`${styles.eyebrow} ${signalType}`}>
+              {brand.fit.eyebrow}
+            </p>
+            <h2 id="how-title" className={signalType}>
+              {brand.fit.title}
+            </h2>
           </div>
-          <p>{t("howIntro")}</p>
+          <p>{brand.fit.intro}</p>
+        </div>
+        <div className={styles.checklist}>
+          <div className={styles.yes}>
+            <h3 className={signalType}>{brand.fit.yesTitle}</h3>
+            <ul>
+              {brand.fit.yes.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          </div>
+          <div className={styles.no}>
+            <h3 className={signalType}>{brand.fit.noTitle}</h3>
+            <ul>
+              {brand.fit.no.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          </div>
         </div>
         <div className={styles.steps}>
           {([0, 1, 2] as const).map((i) => (
             <article key={i}>
-              <span className={styles.stepNumber}>0{i + 1}</span>
+              <span className={`${styles.stepNumber} ${signalType}`}>
+                0{i + 1}
+              </span>
               <h3>{t(`steps.${i}.title`)}</h3>
               <p>{t(`steps.${i}.body`)}</p>
               <NextLink
@@ -664,24 +789,64 @@ export function StorefrontV2({
             </article>
           ))}
         </div>
-        <div className={styles.honestNote}>
-          <div>
-            <h3>{t("fitTitle")}</h3>
-            <p>{t("fitBody")}</p>
-          </div>
-          <div>
-            <h3>{t("limitsTitle")}</h3>
-            <p>{t("limitsBody")}</p>
-          </div>
-        </div>
       </section>
 
-      {children}
+      <section className={styles.value} aria-labelledby="value-title">
+        <div className={styles.valueIntro}>
+          <p className={`${styles.eyebrow} ${signalType}`}>
+            {brand.value.eyebrow}
+          </p>
+          <h2 id="value-title" className={signalType}>
+            {brand.value.title}
+          </h2>
+        </div>
+        <ol className={styles.credits}>
+          <li>
+            <h3>{startGuide(locale).title}</h3>
+            <p>{brand.value.guide.body}</p>
+            <Link href="/start">
+              {brand.value.guide.link} <Arrow />
+            </Link>
+          </li>
+          <li>
+            <h3>{brand.value.clips.title}</h3>
+            <p>{brand.value.clips.body}</p>
+            <a href="#footage">
+              {brand.value.clips.link} <Arrow />
+            </a>
+          </li>
+          <li>
+            <h3>{brand.value.playback.title}</h3>
+            <p>{brand.value.playback.body}</p>
+            <NextLink href="/blog/how-to-watch-avi-on-iphone-cat-cam" lang="en">
+              {brand.value.playback.link} <Arrow />
+            </NextLink>
+          </li>
+          <li>
+            <h3>{brand.value.support.title}</h3>
+            <p>{brand.value.support.body}</p>
+            <a href="mailto:support@whiskcam.com">
+              support@whiskcam.com <Arrow />
+            </a>
+          </li>
+          <li>
+            <h3>{brand.value.refund.title}</h3>
+            <p>{brand.value.refund.body}</p>
+            <Link href="/policies/returns">
+              {brand.value.refund.link} <Arrow />
+            </Link>
+          </li>
+        </ol>
+      </section>
+
+      <div className={styles.audience}>{children}</div>
 
       <section className={styles.help}>
         <div>
-          <p className={styles.eyebrow}>{t("helpEyebrow")}</p>
-          <h2>{t("helpTitle")}</h2>
+          <p className={`${styles.eyebrow} ${signalType}`}>
+            {t("helpEyebrow")}
+          </p>
+          <h2 className={signalType}>{t("helpTitle")}</h2>
           <p>{t("helpBody")}</p>
           <a href="mailto:support@whiskcam.com">
             support@whiskcam.com <Arrow />
@@ -710,11 +875,7 @@ export function StorefrontV2({
 
       {showSticky && (
         <aside className={styles.sticky} aria-label={t("purchaseLabel")}>
-          {error && (
-            <p role="alert" className={styles.error}>
-              {error}
-            </p>
-          )}
+          {errorAt("sticky")}
           <div>
             <a href="#product">
               <strong>
@@ -731,7 +892,7 @@ export function StorefrontV2({
               className={styles.primary}
               disabled={pending || !canBuy}
               aria-busy={pending}
-              onClick={buy}
+              onClick={() => buy("sticky")}
             >
               {pending
                 ? t("adding")

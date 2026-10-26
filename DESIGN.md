@@ -1,249 +1,182 @@
-# Whiskcam Design System
+# Whiskcam Design System — "A film by your cat"
 
-## 1. Visual Theme & Atmosphere
+The homepage is the store. Its design job is to make one small, honest product
+feel like a brand worth buying from, and to keep the purchase obvious.
 
-Whiskcam's design language is **warm premium minimalism** — a D2C pet brand that feels trustworthy, approachable, and modern without being cold or corporate. The brand sits between Apple's restrained elegance and the warmth of a lifestyle brand like Allbirds.
+## 1. Brand idea
 
-Every design decision serves one goal: **make the product feel inevitable**. The camera is small, the footage is magical, the experience is effortless. The design reflects this: clean layouts, generous whitespace, and a single bold accent color (amber) that draws the eye to action.
+**Whiskcam turns your cat into the director.** A 24 g camera on the collar
+records their rounds offline; you watch the cut when they come home. The brand
+borrows the language of film and tape — premiere, screening, box office, tape
+numbers — and the look of a sampled signal: big pixel type, scanlines, hard
+offset shadows on a cream canvas.
 
-Photography is the hero. Real cat footage, real product shots. No stock photos. The design retreats to let content breathe.
+- **Who it is for:** owners who wonder what their cat does all day and are
+  happy to watch afterwards (not live, not GPS, not at night).
+- **The moment:** opening the card in the evening and seeing their day from
+  collar height.
+- **Why buy from us:** real sample clips before ordering, a first-film guide in
+  four languages, phone/AVI playback help, a person on email, and a plain
+  30-day refund policy (return shipping normally paid by the customer).
 
-**Key Characteristics:**
-- DM Sans typeface — geometric, friendly, modern. Not cold, not playful.
-- Warm neutral palette: near-black (`#1A1A1A`), warm off-white (`#F7F7F5`), true white for cards
-- Single accent: amber (`#F5A623`) reserved for CTAs, overlines, and interactive highlights
-- Light/warm section rhythm — avoids pure black sections (reserve dark for hero and special moments)
-- Rounded but not bubbly — `8px` buttons, `12px` cards (not pill-shaped, not sharp)
-- Product-first layouts — product shot and buy box always above the fold on desktop
-- Clamp-based responsive typography — no abrupt text jumps between breakpoints
+Copy never says _live_, _signal from your cat_, _streaming_ or anything that
+implies transmission. The signal aesthetic is visual only.
 
-## 2. Color Palette & Roles
+Reference: the public preview of Scrolltide's _Mitten_ hero (large pixel
+headline left, scanline cat portrait right, faint ghost echo, minimal mono
+nav, ~12 fps feel). We use the composition principles only; no template code,
+footage or prompt was used. Everything is implemented with our own CSS/SVG.
 
-### Brand Core
-| Token | Hex | Role |
-|-------|-----|------|
-| `wk-black` | `#1A1A1A` | Primary text, dark backgrounds, secondary buttons |
-| `wk-dark` | `#0D0D0D` | Hero background, cinematic sections |
-| `wk-amber` | `#F5A623` | Primary CTA, overline accents, highlights |
-| `wk-amber-hover` | `#E09510` | CTA hover state |
-| `wk-warm` | `#F7F7F5` | Alternate section backgrounds, trust strips |
+## 2. Colour
 
-### Grey Scale
-| Token | Hex | Role |
-|-------|-----|------|
-| `wk-grey-50` | `#FAFAFA` | Hover backgrounds, subtle fills |
-| `wk-grey-100` | `#F3F4F6` | Borders, dividers on white |
-| `wk-grey-200` | `#E5E7EB` | Default borders, card outlines |
-| `wk-grey-300` | `#D1D5DB` | Ghost button borders, disabled outlines |
-| `wk-grey-400` | `#9CA3AF` | Placeholder text, inactive nav on dark |
-| `wk-grey-500` | `#6B7280` | Body text (secondary), subtitles |
-| `wk-grey-600` | `#4B5563` | Body text (primary weight), footer links |
+Defined as CSS variables on `.storefront` in
+`components/landing/storefront-v2.module.css`. The season changes only the
+accent family; layout and type never depend on it.
 
-### Functional
-| Token | Hex | Role |
-|-------|-----|------|
-| `wk-red` | `#E74C3C` | Urgency badges, error states, sale prices |
-| `wk-green` | `#27AE60` | Success states, in-stock indicators |
+| Token             | Evergreen | Halloween | Autumn    | Role                                   |
+| ----------------- | --------- | --------- | --------- | -------------------------------------- |
+| `--ink`           | `#1b1a17` | —         | —         | Text, rules, buttons, dark sections    |
+| `--paper`         | `#f3ecdf` | —         | —         | Hero canvas, alternate sections        |
+| `--sheet`         | `#fbf7ef` | —         | —         | Page and ticket background             |
+| `--muted`         | `#59554b` | —         | —         | Secondary text (6:1 on paper)          |
+| `--line`          | `#d9cfbd` | —         | —         | Hairlines                              |
+| `--accent`        | `#8a4a12` | `#a8390a` | `#94510f` | Accent **text** on cream (≥ 5:1)       |
+| `--accent-on-ink` | `#f2b75e` | `#ff9a52` | `#f0b46a` | Accent text on ink                     |
+| `--pop`           | `#f5a623` | `#ff6b1a` | `#e08a2c` | Fills only: hard shadows, chips, strip |
+| `--glow`          | `#e6dbc5` | `#ff7a22` | `#e9a95a` | The striped moon behind the portrait   |
 
-### Usage Rules
-- **Amber appears ONLY on:** CTA buttons, overline text, free gift badges, price highlights
-- **Never use amber for:** body text, backgrounds, borders, or decorative elements
-- **Dark sections (`wk-dark`):** Reserved for hero and special moments. Most sections use `white` or `wk-warm`
-- **Text on white:** Use `wk-black` for headings, `wk-grey-500` for body, `wk-grey-400` for tertiary
-- **Text on dark:** Use `white` for headings, `wk-grey-400` for body
+Rules:
+
+- Fill colours (`--pop`, `--glow`) never carry text except ink text on `--pop`
+  (≥ 6:1). Accent text uses `--accent` / `--accent-on-ink`.
+- No gradients other than the scanline/stripe patterns. No glows, no glass.
 
 ## 3. Typography
 
-**Typeface:** DM Sans (Google Fonts) — weights 400, 500, 600, 700
+- **Display — "Whiskcam Signal"**: self-hosted Silkscreen
+  (`public/fonts/Silkscreen-Regular.ttf`, SIL OFL 1.1, licence in
+  `public/fonts/OFL-Silkscreen.txt`), declared in
+  `components/landing/pixel-art.module.css`, `font-display: swap`, falling back
+  to the system monospace. Always uppercase. Use via the exported
+  `signalType` class.
+  - Use for: H1 display line, H2s, eyebrows, nav links, tape/timecode labels,
+    step numbers, campaign names and codes.
+  - Never for: body copy, prices, legal/terms, form controls.
+- **Text — DM Sans** (existing `next/font`), 400–700.
 
-### Scale
+| Element                     | Desktop                   | Mobile                    |
+| --------------------------- | ------------------------- | ------------------------- |
+| H1 display (pixel)          | 64px (56 ≤1100, 48 ≤1000) | 40px (34 on short phones) |
+| H2 (pixel)                  | 40px                      | 28px                      |
+| Eyebrow (pixel)             | 14px                      | 14px                      |
+| Body                        | 15–17px                   | 15–16px                   |
+| Smallest informational text | 13px                      | **14px**                  |
 
-| Element | Size | Weight | Line Height | Letter Spacing | Notes |
-|---------|------|--------|-------------|----------------|-------|
-| H1 (Hero) | `clamp(2rem, 8vw, 4.5rem)` | 700 | 1.05 | -0.02em | One per page only |
-| H2 (Section) | `clamp(1.5rem, 3vw, 2.25rem)` | 700 | 1.15 | -0.02em | Section titles |
-| H3 (Card) | `text-lg` (18px) | 600 | 1.3 | -0.02em | Card/feature titles |
-| Body | `text-base` (16px) | 400 | 1.6 (relaxed) | normal | Descriptions, paragraphs |
-| Body Small | `text-sm` (14px) | 400 | 1.5 | normal | Captions, metadata |
-| Overline | `text-xs` (12px) | 600 | 1.0 | 0.1em | Uppercase, amber color |
-| Label | `text-sm` (14px) | 600 | 1.0 | normal | Buttons, badges |
-| Micro | `text-xs` (12px) | 500 | 1.0 | normal | Trust strip, footnotes |
-
-### Rules
-- All `h1`, `h2`, `h3` get `letter-spacing: -0.02em` (set globally in CSS)
-- Use `clamp()` for responsive headlines — never use fixed sizes with breakpoint jumps
-- Minimum readable text: **12px** on desktop, **14px** on mobile
-- Never use `text-[11px]` or smaller for any user-facing text
+The single H1 is the category descriptor ("Whiskcam cat collar camera") plus
+the pixel line ("A film by your cat."). It is campaign-neutral so the
+server-rendered H1 never changes.
 
 ## 4. Components
 
-### Button
-Three variants, three sizes:
+- **Category slate** — ink chip with the pixel cat mark; part of the H1.
+- **Box-office ticket** (hero buy panel) — 2px ink border, hard 8px `--pop`
+  shadow, square corners. Real product photo, kit line, facts, Original/Duo
+  toggle with live Shopify prices (code price + "without the code" price
+  during a campaign), direct **Add to bag**, microSD note, link to `#product`.
+  Shares selection, pending and error state with the `#product` offer and the
+  sticky bar — there is one cart state, not three.
+- **Primary button** — ink background, cream text, square, hard `--pop`
+  offset shadow; hover lifts 2px, press sinks 3px, in `steps()`. Disabled:
+  `#d6cebf`, no shadow. Minimum height 56px (48px in the sticky bar).
+- **Scanline portrait** (`components/landing/signal-portrait.tsx`) — an
+  existing real photo (`/images/lifestyle/wk-cat-2.webp`, camera visible on the
+  collar), grayscale + `multiply` on the canvas, cream rules every 5px, an
+  offset seasonal ghost echo, a striped moon behind. A **Full colour** toggle
+  removes the treatment. It is never presented as camera footage.
+- **Real-clip monitor** — desktop-only ink tile with the hero poster; plays the
+  real 0:22 clip in the screening section.
+- **Spec strip** — pixel labels separated by sprites; ink (evergreen) or
+  orange (Halloween).
+- **Screening** (`#footage`) — ink section, real clips only, tape labels, one
+  plays at a time, no autoplay.
+- **Fit checklist** — honest "good fit if / choose something else if" with
+  pixel tick and cross; followed by the three setup steps.
+- **Credit roll** — numbered list of what buying from Whiskcam actually
+  includes; every item links to something real.
+- **Sprites** (`components/landing/pixel-art.tsx`) — original cat, pumpkin,
+  bat, leaf, drawn as crisp SVG rects. `X` = `currentColor`, `O` =
+  `--pixel-accent`. Decorative (`aria-hidden`) unless titled.
 
-| Variant | Class | Use |
-|---------|-------|-----|
-| `primary` | Amber bg, dark text, amber glow on hover | Main CTAs: "I Want This", "Add to Cart" |
-| `secondary` | Dark bg, white text, subtle glow on hover | Secondary actions |
-| `ghost` | Transparent, grey border, dark text | Tertiary: "Read more", "Show all" |
+## 5. Seasons
 
-| Size | Padding | Font | Min Width |
-|------|---------|------|-----------|
-| `sm` | `px-5 py-2.5` | 14px | — |
-| `md` | `px-7 py-3.5` | 15px | — |
-| `lg` | `px-9 py-4` | 16px | 240px (desktop) |
+`useHalloweenCampaign()` sets `data-season` on `.storefront`:
 
-All buttons: `rounded-[8px]`, `font-semibold`, `active:scale-[0.98]`, `transition-all duration-200`
+| State       | Dates (Paris)                   | Visual                                                                                                                    |
+| ----------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `halloween` | until 31 Oct 23:59              | Orange accents, striped orange moon, bats + pumpkin, "Little Monsters" premiere credit, orange strip, pumpkin ticket stub |
+| `autumn`    | 1–8 Nov 23:59                   | Amber accents, leaves, "autumn screening"                                                                                 |
+| `evergreen` | otherwise (and on first render) | Amber accents, pale moon, no seasonal sprites                                                                             |
 
-### Section Wrapper
-Three background modes: `white`, `warm`, `dark`
-- Vertical padding: `py-16 md:py-24`
-- Container: `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`
+The countdown is the fixed Shopify deadline only. Never add per-visitor
+timers, stock pressure or invented scarcity.
 
-### Section Heading
-Standard pattern for every content section:
-- **Overline:** uppercase, xs, amber, 0.1em tracking, `mb-3`
-- **Title:** H2, clamp-sized, bold, tight leading
-- **Subtitle:** base size, grey-500, `max-w-2xl mx-auto`, `mt-4`
-- Bottom margin: `mb-12 md:mb-16`
+## 6. Motion
 
-### Cards
-- Background: white
-- Border: `border border-wk-grey-100`
-- Radius: `rounded-[12px]` (var `--radius-card`)
-- Padding: `p-5 sm:p-7`
-- Hover: `hover:-translate-y-1 hover:shadow-lg transition-all duration-300`
-- No gradient backgrounds, no colored borders
+- Portrait scans in once (`steps(10)`, 0.8s). The ghost echo jumps a few times
+  then rests. Bats flap a few times then rest. **No infinite loops.**
+- On fine pointers only, the ghost follows the pointer at ~12 updates/s in
+  3px steps (`--gx/--gy`). Touch devices get no pointer motion.
+- Buttons move in `steps(2)`.
+- `prefers-reduced-motion: reduce` removes all animation and transitions.
+  `prefers-reduced-data: reduce` drops the ghost and the moon.
+- No scroll hijacking, parallax, autoplaying video or audio.
 
-### Badges
-- Shape: `rounded-full`
-- Padding: `px-3 py-1` or `px-2.5 py-0.5`
-- Font: `text-xs font-semibold`
-- Colors: amber bg + dark text (highlight), grey-100 bg + grey-600 text (neutral)
+## 7. Layout
 
-## 5. Layout & Spacing
+- Hero (desktop): `title / intro / ticket` in a ≤500px left column, portrait
+  stage on the right (min 620px tall).
+- Hero (mobile ≤760px): title → portrait (190px, 130px on short phones) →
+  ticket overlapping the portrait by ~48px → intro. Category, price and the
+  add button sit in the first screen at 390×844 and 360×740.
+- Section order: hero → spec strip → screening `#footage` → details
+  `#product` → fit checklist + steps → credit roll → reviews + FAQ `#faq` →
+  help & reading → footer. Anchors `#product`, `#footage`, `#faq` are stable.
+- Containers: content max ≈1240px; side padding 32px desktop, 24px tablet,
+  16px mobile.
+- Sticky buy bar (mobile): ink, appears after the hero when the main add
+  button is off-screen; respects the safe-area inset.
 
-### Grid System
-- Container: `max-w-7xl` (1280px) centered
-- Padding: `px-4` (mobile) → `px-6` (sm) → `px-8` (lg)
-- Standard grids:
-  - 2-col: `lg:grid-cols-2 gap-8 lg:gap-14` (product section)
-  - 3-col: `sm:grid-cols-2 lg:grid-cols-3 gap-5` (features, how it works)
-  - 4-col: `grid-cols-2 md:grid-cols-4 gap-8` (stats)
+## 8. Accessibility & performance
 
-### Spacing Scale (Tailwind defaults)
-- Section vertical: `py-16` (64px mobile) → `py-24` (96px desktop)
-- Between sections: handled by stacked section padding
-- Heading to content: `mb-12` (48px) → `mb-16` (64px)
-- Card internal: `p-5` (20px mobile) → `p-7` (28px desktop)
-- Element gaps: `gap-3` (12px) → `gap-4` (16px) → `gap-8` (32px)
+- AA contrast for all text; 14px minimum on mobile; 44px minimum targets.
+- Focus: 3px `--focus` outline, 4px offset (accent-on-ink inside dark
+  sections). Radio toggles keep native inputs (visually hidden) and show focus
+  on the label.
+- Images: `next/image` with explicit `sizes`; only the portrait and the ticket
+  product shot are `priority`. The pixel font is ~tens of KB, self-hosted, no
+  network font fetches.
 
-### Section Order (Conversion Funnel)
-1. **Hero** — hook + product shot
-2. **Social Proof Bar** — trust signals
-3. **Video Showcase** — emotional proof (real footage)
-4. **Product Section** — buy box (position 4 = above fold scroll)
-5. **Reviews** — social validation
-6. **Features Grid** — rational justification
-7. **How It Works** — ease of use
-8. **Comparison Table** — competitive advantage
-9. **CTA Banner** — final push
-10. **FAQ** — objection handling
-11. **Footer** — trust + navigation
+## 9. Don'ts
 
-## 6. Depth & Motion
+- Don't present the treated portrait, sprites or any artwork as camera footage.
+- Don't filter real footage or product photos into illegibility; the product
+  must stay identifiable.
+- Don't use the pixel face for paragraphs, prices or legal text.
+- Don't introduce rounded "SaaS cards", glowing panels or bento grids.
+- Don't add WebGL, new animation libraries or fonts loaded from a network.
+- Don't add fake review badges, aggregate ratings, "verified" claims, or
+  free-return / risk-free promises.
+- Don't hardcode prices; derive them from the Shopify product objects.
 
-### Shadows
-| Level | Value | Use |
-|-------|-------|-----|
-| None | — | Default state for most elements |
-| `shadow-sm` | Tailwind default | Buttons at rest |
-| `shadow-md` | Tailwind default | Cards on hover |
-| `shadow-lg` | Tailwind default | Elevated cards, modals |
-| Amber glow | `0 0 20px rgba(245,166,35,0.4)` | Primary button hover |
-| Product hero | `0 20px 60px rgba(0,0,0,0.5)` | Hero product circle |
+## 9. Measurement
 
-### Motion
-- **Entrance animations:** Framer Motion `AnimatedElement` — fade up with slight Y translate
-- **Hover transitions:** `transition-all duration-200 ease-out` (buttons), `duration-300` (cards)
-- **Scale on press:** `active:scale-[0.98]` on all buttons
-- **Card lift:** `hover:-translate-y-1` with shadow increase
-- **Scroll behavior:** `scroll-behavior: smooth` globally
-- **Reduced motion:** All animations honor `prefers-reduced-motion: reduce`
+Product views start when either buy panel is visible, once per product and only
+with consent. This definition changed on 26 October when the hero became a buy
+panel; do not compare the resulting view-to-cart ratio directly with the old
+offer-only measurement. Add-to-cart events identify `hero`, `offer` or `sticky`.
+Video events identify `home_hero` or `home_footage`. Umami accepts only these
+bounded placement values and never receives cart IDs or form content.
 
-### Rules
-- No bouncing, no elastic easing, no playful animations
-- Subtle and confident: 200ms for interactions, 300ms for layout shifts
-- Never animate color changes on text
-- Carousels: snap scroll, no autoplay
-
-## 7. Do's & Don'ts
-
-### Do
-- Use amber sparingly — it's the "buy" color
-- Let content breathe with generous whitespace
-- Use real cat footage and product photos
-- Keep copy short, punchy, benefit-focused
-- Round corners consistently (8px buttons, 12px cards)
-- Dark hero, then alternate white/warm sections
-- Put product buy box in the top 4 sections
-
-### Don't
-- Don't use more than one accent color
-- Don't use gradients (background or text)
-- Don't use colored borders or colored card backgrounds
-- Don't use text smaller than 12px (14px minimum on mobile)
-- Don't add decorative illustrations or icons — photography only
-- Don't use parallax or scroll-hijacking
-- Don't add urgency timers or fake countdown clocks
-- Don't use more than 2 font weights per element
-- Don't break the amber = action association
-
-## 8. Responsive Strategy
-
-### Breakpoints (Tailwind defaults)
-| Name | Width | Typical Device |
-|------|-------|----------------|
-| Base | 0-639px | Mobile phones |
-| `sm` | 640px+ | Large phones, small tablets |
-| `md` | 768px+ | Tablets |
-| `lg` | 1024px+ | Desktops |
-| `xl` | 1280px+ | Large desktops |
-
-### Mobile-First Rules
-1. **Typography scales via `clamp()`** — no breakpoint jumps for headlines
-2. **Grids collapse naturally:** 3-col → 2-col → 1-col
-3. **Buttons are `w-full` on mobile**, `w-auto` on `sm:`
-4. **Section padding:** `py-16` (mobile) → `py-24` (desktop)
-5. **Container padding:** `px-4` → `px-6` → `px-8`
-6. **Touch targets:** Minimum **44x44px** for all interactive elements
-7. **Sticky ATC bar:** Visible only on mobile (`md:hidden`), respects `safe-area-inset-bottom`
-8. **Product images:** Responsive sizes — 150px (mobile) → 200px (sm) → 300px (lg)
-9. **Carousels:** Horizontal scroll with snap, visible overflow hints on edges
-10. **Navigation:** Hamburger on mobile, inline links on `lg:`
-
-### Performance Targets (Core Web Vitals 2026)
-- **LCP:** < 2.5s — preload hero poster, priority on above-fold images
-- **CLS:** < 0.1 — explicit dimensions on all images/videos, font-display: swap
-- **INP:** < 200ms — minimal JS on interactive elements, no heavy client-side logic
-
-## 9. Agent Prompts
-
-When generating new components or sections for Whiskcam, follow these rules:
-
-```
-You are building UI for Whiskcam, a D2C pet collar camera brand.
-
-DESIGN RULES:
-- Use DM Sans font, Tailwind CSS v4, Framer Motion for animations
-- Colors: wk-black (#1A1A1A), wk-amber (#F5A623), wk-warm (#F7F7F5)
-- Amber is ONLY for CTAs and accent highlights — never for backgrounds or text
-- Cards: white bg, border-wk-grey-100, rounded-[12px], p-5 sm:p-7
-- Buttons: rounded-[8px], font-semibold, three variants (primary/secondary/ghost)
-- Sections: use SectionWrapper (white/warm/dark) + SectionHeading (overline/title/subtitle)
-- Container: max-w-7xl, px-4 sm:px-6 lg:px-8
-- Mobile-first: w-full buttons on mobile, clamp() for headlines, 44px min touch targets
-- All text must use next-intl translations — no hardcoded strings
-- Respect prefers-reduced-motion
-- No gradients, no colored backgrounds on cards, no decorative illustrations
-- Keep it clean, warm, premium. Think Apple warmth, not Apple coldness.
-```
+Analytics failures must never turn a successful Shopify add into a cart error.
+Shopify paid orders and refunds remain the revenue reference. The redesign has
+no measured conversion uplift at launch.

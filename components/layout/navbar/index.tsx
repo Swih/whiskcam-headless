@@ -8,6 +8,7 @@ import { Link, usePathname, useRouter } from "../../../i18n/navigation";
 import { useTranslations } from "next-intl";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
+import { PixelSprite, signalType } from "components/landing/pixel-art";
 
 export function Navbar() {
   const t = useTranslations("nav");
@@ -49,7 +50,7 @@ export function Navbar() {
   return (
     <>
       <nav
-        className={`sticky top-0 z-40 bg-white/95 backdrop-blur-xl ${scrolled ? "shadow-sm" : "border-b border-wk-grey-100"}`}
+        className={`sticky top-0 z-40 border-b-2 border-[#1b1a17] bg-[#f3ecdf]/95 backdrop-blur-xl [--pixel-accent:#f5a623] ${scrolled ? "shadow-[0_4px_0_rgb(27_26_23/0.08)]" : ""}`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
           {/* Mobile hamburger */}
@@ -68,9 +69,10 @@ export function Navbar() {
           {/* Logo — wordmark on desktop, icon on mobile */}
           <Link
             href="/"
-            className="flex items-center"
+            className="flex min-h-11 items-center gap-2"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
+            <PixelSprite name="cat" size={18} className="text-[#1b1a17]" />
             <Image
               src="/images/logos/whiskcam-logo-wordmark.webp"
               alt="Whiskcam"
@@ -89,9 +91,9 @@ export function Navbar() {
                 <li key={link.title}>
                   <button
                     onClick={() => handleNavClick(link.path)}
-                    className={`text-sm font-medium transition-colors ${
+                    className={`${signalType} min-h-11 text-[13px] underline-offset-[6px] hover:underline ${
                       lightSurface
-                        ? "text-wk-grey-600 hover:text-wk-black"
+                        ? "text-[#1b1a17]"
                         : "text-white/70 hover:text-white"
                     }`}
                   >
@@ -102,9 +104,9 @@ export function Navbar() {
                 <li key={link.title}>
                   <Link
                     href={link.path}
-                    className={`text-sm font-medium transition-colors ${
+                    className={`${signalType} inline-flex min-h-11 items-center text-[13px] underline-offset-[6px] hover:underline ${
                       lightSurface
-                        ? "text-wk-grey-600 hover:text-wk-black"
+                        ? "text-[#1b1a17]"
                         : "text-white/70 hover:text-white"
                     }`}
                   >
@@ -134,16 +136,18 @@ export function Navbar() {
           onClose={() => setMobileOpen(false)}
           className="relative z-[60]"
         >
-          <DialogPanel className="fixed inset-0 overflow-y-auto bg-white">
+          <DialogPanel className="fixed inset-0 overflow-y-auto bg-[#f3ecdf] [--pixel-accent:#f5a623]">
             <DialogTitle className="sr-only">Whiskcam</DialogTitle>
-            <div className="flex items-center justify-between px-4 py-3">
+            <div className="flex items-center justify-between border-b-2 border-[#1b1a17] px-4 py-3">
               <Link
                 href="/"
+                className="flex min-h-11 items-center gap-2"
                 onClick={() => {
                   setMobileOpen(false);
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
               >
+                <PixelSprite name="cat" size={18} className="text-[#1b1a17]" />
                 <Image
                   src="/images/logos/whiskcam-logo-wordmark.webp"
                   alt="Whiskcam"
@@ -165,7 +169,7 @@ export function Navbar() {
                   <button
                     key={link.title}
                     onClick={() => handleNavClick(link.path)}
-                    className="block w-full border-b border-wk-grey-100 py-4 text-left text-lg font-semibold text-wk-black transition-colors hover:text-wk-amber"
+                    className={`${signalType} block w-full border-b border-[#d9cfbd] py-4 text-left text-xl text-[#1b1a17] underline-offset-[6px] hover:underline`}
                   >
                     {link.title}
                   </button>
@@ -174,14 +178,14 @@ export function Navbar() {
                     key={link.title}
                     href={link.path}
                     onClick={() => setMobileOpen(false)}
-                    className="block border-b border-wk-grey-100 py-4 text-lg font-semibold text-wk-black transition-colors hover:text-wk-amber"
+                    className={`${signalType} block border-b border-[#d9cfbd] py-4 text-xl text-[#1b1a17] underline-offset-[6px] hover:underline`}
                   >
                     {link.title}
                   </Link>
                 ),
               )}
               {/* Mobile language switcher */}
-              <div className="mt-6 flex items-center gap-2 border-b border-wk-grey-100 pb-4">
+              <div className="mt-6 flex items-center gap-2 border-b border-[#d9cfbd] pb-4">
                 <LanguageSwitcher variant="light" />
               </div>
             </nav>

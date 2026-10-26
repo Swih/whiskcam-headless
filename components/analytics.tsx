@@ -177,11 +177,13 @@ export function trackViewContent(product: {
   name: string;
   price: string;
   currency: string;
+  placement?: "hero" | "offer" | "sticky";
 }) {
   if (!hasConsent()) return;
-  trackUmami("product_view");
+  trackUmami("product_view", { cta_placement: product.placement });
   // GA4
   window.gtag?.("event", "view_item", {
+    ...(product.placement ? { cta_placement: product.placement } : {}),
     currency: product.currency,
     value: parseFloat(product.price),
     items: [{ item_name: product.name, price: parseFloat(product.price) }],
@@ -207,16 +209,19 @@ export function trackAddToCart(product: {
   price: string;
   currency: string;
   quantity: number;
+  placement?: "hero" | "offer" | "sticky";
 }) {
   if (!hasConsent()) return;
   const campaign = getActiveCampaign();
   trackUmami("add_to_cart", {
+    cta_placement: product.placement,
     variant: /duo/i.test(product.name) ? "duo" : "original",
     quantity: product.quantity,
     ...(campaign ? { promo: campaign.id } : {}),
   });
   // GA4
   window.gtag?.("event", "add_to_cart", {
+    ...(product.placement ? { cta_placement: product.placement } : {}),
     currency: product.currency,
     value: parseFloat(product.price) * product.quantity,
     ...(campaign ? { promotion_id: campaign.code } : {}),
